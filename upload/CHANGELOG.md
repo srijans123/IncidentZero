@@ -1,0 +1,1 @@
+- **v1.1** (2026-10-29 13:41:31 UTC) by `Srijan Shukla`: Initial v1.0 reference extraction and upload/ automation

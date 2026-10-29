@@ -1,0 +1,8 @@
+package edu.campus.iitsm.sla.api;
+
+public enum TimerKind {
+  RESP_WARN_50, RESP_WARN_75, RESP_WARN_90, RESP_BREACH,
+  RES_WARN_50, RES_WARN_75, RES_WARN_90, RES_BREACH,
+  ESC_L2, ESC_L3, ESC_L4,
+  AUTO_VERIFY_72H, USER_REMIND_24H
+}

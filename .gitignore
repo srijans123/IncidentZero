@@ -1,0 +1,34 @@
+# Environment and secrets
+.env
+.env.local
+*.env
+!.env.example
+
+# Build outputs
+node_modules/
+backend/target/
+target/
+dist/
+build/
+*.class
+*.jar
+*.war
+
+# Temporary files and logs
+/tmp/
+*.log
+.DS_Store
+Thumbs.db
+
+# IDE directories
+.idea/
+*.iml
+.vscode/
+*.suo
+*.user
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/

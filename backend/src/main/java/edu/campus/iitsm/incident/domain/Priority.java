@@ -1,0 +1,14 @@
+package edu.campus.iitsm.incident.domain;
+
+public enum Priority {
+  P1, P2, P3, P4;
+
+  public boolean isCritical() { return this == P1 || this == P2; }
+  public Priority bumpOneLevel() {
+    return switch (this) {
+      case P4 -> P3;
+      case P3 -> P2;
+      case P2, P1 -> P1;
+    };
+  }
+}
