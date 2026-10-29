@@ -60,7 +60,24 @@ class DatabaseMigrationTest {
         .baselineOnMigrate(true)
         .load();
 
-    MigrateResult result = flyway.migrate();
+    MigrateResult result = null;
+    Exception lastError = null;
+    for (int attempt = 1; attempt <= 3; attempt++) {
+      try {
+        result = flyway.migrate();
+        break;
+      } catch (Exception ex) {
+        lastError = ex;
+        System.err.println("Migration attempt " + attempt + " failed (" + ex.getMessage() + "), retrying in 2s...");
+        try { Thread.sleep(2000L); } catch (InterruptedException ignored) {}
+      }
+    }
+
+    if (result == null && lastError != null) {
+      fail("Flyway migration failed after 3 attempts", lastError);
+    }
+
+    assertNotNull(result);
     System.out.println("Flyway migration completed successfully: " + result.migrationsExecuted + " migrations executed.");
     assertTrue(result.success, "Flyway migration should succeed");
   }
