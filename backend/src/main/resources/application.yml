@@ -10,6 +10,7 @@ spring:
     password: ${DB_APP_PASSWORD:itsm_dev_password}
   flyway:
     enabled: true
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/iitsm}
     user: ${DB_OWNER_USER:itsm_owner}
     password: ${DB_OWNER_PASSWORD:itsm_owner_password}
     locations: classpath:db/migration
@@ -25,6 +26,10 @@ server:
   port: 8080
 
 app:
+  auth:
+    secret: ${BETTER_AUTH_SECRET:4Jqn3ImSvW4jSM8bmB0OdqaEwCCaAPw1mSz06tdFdIQ=}
+    token-validity-seconds: ${TOKEN_VALIDITY_SECONDS:86400}
+    stream-ticket-validity-seconds: ${STREAM_TICKET_VALIDITY_SECONDS:30}
   ai:
     provider: ${AI_PROVIDER:replay}
     embedding-mode: ${EMBEDDING_MODE:fixture}

@@ -2,3 +2,4 @@
 - **v1.2** (2026-10-29 13:43:44 UTC) by `Srijan Shukla`: Complete TASK-01
 - **v1.3** (2026-10-29 13:49:45 UTC) by `Srijan Shukla`: Complete TASK-02
 - **v1.4** (2026-10-29 13:57:08 UTC) by `Srijan Shukla`: Complete TASK-03
+- **v1.5** (2026-10-29 14:19:11 UTC) by `Srijan Shukla`: Complete TASK-04: Better Auth and Spring Security JWT Bridge
