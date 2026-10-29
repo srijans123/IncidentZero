@@ -5,3 +5,4 @@
 - **v1.5** (2026-10-29 14:19:11 UTC) by `Srijan Shukla`: Complete TASK-04: Better Auth and Spring Security JWT Bridge
 - **v1.6** (2026-10-29 14:35:32 UTC) by `Srijan Shukla`: Complete TASK-05: JPA Persistence Adapter and in-tx Audit/SLA listeners
 - **v1.7** (2026-10-29 14:45:24 UTC) by `Srijan Shukla`: Complete TASK-06: Priority and Assignment Strategies
+- **v1.8** (2026-10-29 15:22:08 UTC) by `Srijan Shukla`: Complete TASK-07: 9-Step Intake Pipeline and Notifications

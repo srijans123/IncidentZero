@@ -22,6 +22,7 @@ public interface IntakeStep {
     public boolean securityCategory;
     public int linkedReportsIn15Min;
     public UUID autoLinkedMasterId;
+    public boolean skipClassificationAndAssignment;
     public Incident incident;
   }
 }
