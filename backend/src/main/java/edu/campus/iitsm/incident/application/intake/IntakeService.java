@@ -26,6 +26,20 @@ public class IntakeService {
       int impact,
       int urgency
   ) {
+    return createIncident(actorId, rawTitle, rawDescription, serviceId, serviceTier, impact, urgency, null);
+  }
+
+  @Transactional
+  public Incident createIncident(
+      UUID actorId,
+      String rawTitle,
+      String rawDescription,
+      UUID serviceId,
+      String serviceTier,
+      int impact,
+      int urgency,
+      UUID masterId
+  ) {
     IntakeStep.IntakeContext ctx = new IntakeStep.IntakeContext();
     ctx.actorId = actorId;
     ctx.rawTitle = rawTitle;
@@ -34,6 +48,7 @@ public class IntakeService {
     ctx.serviceTier = serviceTier;
     ctx.impact = impact;
     ctx.urgency = urgency;
+    ctx.autoLinkedMasterId = masterId;
 
     pipeline.process(ctx);
     return ctx.incident;

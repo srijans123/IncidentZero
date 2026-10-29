@@ -20,5 +20,9 @@ public class EnrichStep extends AbstractIntakeStep {
   @Override
   protected void doExecute(IntakeContext ctx) {
     if (ctx.skipClassificationAndAssignment) return;
+    String fullText = ((ctx.rawTitle != null ? ctx.rawTitle : "") + " " + (ctx.rawDescription != null ? ctx.rawDescription : "")).toLowerCase();
+    if (fullText.contains("quiz") || fullText.contains("exam") || fullText.contains("registration")) {
+      ctx.activeCalendarWindow = true;
+    }
   }
 }

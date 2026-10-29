@@ -37,18 +37,29 @@ public class AssignmentPortAdapter implements AssignmentPort {
         .findFirst()
         .orElseGet(() -> strategies.isEmpty() ? new LeastLoadedStrategy() : strategies.get(0));
 
-    UUID teamId = UUID.fromString("10000000-0000-0000-0000-000000000001");
-    UUID defaultTechId = UUID.fromString("00000000-0000-0000-0000-000000000003");
+    UUID appTeamId = UUID.fromString("10000000-0000-0000-0000-000000000003");
+    UUID rohanId = UUID.fromString("019299a0-0000-7000-8000-000000000005");
+    UUID netTeamId = UUID.fromString("10000000-0000-0000-0000-000000000001");
+    UUID vikramId = UUID.fromString("019299a0-0000-7000-8000-000000000003");
+
+    UUID erpServiceId = UUID.fromString("30000000-0000-0000-0000-000000000006");
+    UUID lmsServiceId = UUID.fromString("30000000-0000-0000-0000-000000000007");
+
+    boolean isApp = serviceId != null && (serviceId.equals(erpServiceId) || serviceId.equals(lmsServiceId));
+    UUID teamId = isApp ? appTeamId : netTeamId;
+    UUID techId = isApp ? rohanId : vikramId;
+    String techName = isApp ? "Rohan Kulkarni" : "Vikram Rao";
+    String tier = isApp ? "SENIOR" : "L1";
 
     TechnicianCandidate candidate = new TechnicianCandidate(
-        defaultTechId,
-        "Vikram Network",
+        techId,
+        techName,
         teamId,
-        "L1",
+        tier,
         true,
         0.0,
         8.0,
-        Map.of("ROUTING_SWITCHING", 3),
+        Map.of("ROUTING_SWITCHING", 3, "JAVA_SPRING", 3, "ERP_MOODLE", 3),
         15,
         18.0,
         20,

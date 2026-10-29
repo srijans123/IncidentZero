@@ -81,4 +81,5 @@ Three role-guarded workspaces:
 - [x] TASK-09: Implement all REST Controllers (`/api/v1/*`), RFC 9457 `GlobalProblemDetailsHandler` (`ITSM-4010` to `ITSM-5090`), and `InAppSseHub` (512-event ring buffer with `Last-Event-ID` replay and 15s heartbeat) (`bash scripts/verify-m5.sh`).
 - [x] TASK-10: Scaffold and build the React 19 + TypeScript + Vite + Tailwind + shadcn/ui + React Flow + Recharts frontend (`frontend/`) with Better Auth client integration and all 3 role-guarded workspaces (`/portal`, `/workbench`, `/admin`) mapped to the exact API table in Section 15 (`bash scripts/verify-m6.sh`).
 - [x] TASK-11: Run CodeRabbit CLI review (`cr review --agent --uncommitted`), fix all critical/major findings (max 2 passes), and write ADRs (`docs/adr/ADR-001.md` to `ADR-015.md`).
-- [ ] TASK-12: Execute full end-to-end verification of Demo Workflows 1, 2, and 3 (Employee Copilot Intake, Technician War Room + Pause/Resume SLA + SQL Tamper Detection, and 40-Ticket `ERP_LDAP_POOL_EXHAUSTION` Storm) and push the final version to GitHub via `upload/update_github.sh`.
+- [x] TASK-12: Execute full end-to-end verification of Demo Workflows 1, 2, and 3 (Employee Copilot Intake, Technician War Room + Pause/Resume SLA + SQL Tamper Detection, and 40-Ticket `ERP_LDAP_POOL_EXHAUSTION` Storm) and push the final version to GitHub via `upload/update_github.sh`.
+

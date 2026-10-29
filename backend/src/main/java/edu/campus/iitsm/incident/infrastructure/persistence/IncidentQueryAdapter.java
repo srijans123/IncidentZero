@@ -110,17 +110,17 @@ public class IncidentQueryAdapter implements IncidentQueryPort {
 
   @Override
   public List<IncidentDtos.AuditTimelineItemDto> getTimeline(UUID incidentId) {
-    String sql = "SELECT id, incident_id, event_type, actor_type, actor_id, summary, payload, hash, ts FROM audit_record WHERE incident_id = ? ORDER BY seq ASC";
+    String sql = "SELECT id, incident_id, action, actor_type, actor_id, description, payload, hash, ts FROM audit_record WHERE incident_id = ? ORDER BY chain_index ASC";
     return jdbcTemplate.query(
         sql,
         ps -> ps.setObject(1, incidentId),
         (rs, rowNum) -> new IncidentDtos.AuditTimelineItemDto(
             rs.getLong("id"),
             (UUID) rs.getObject("incident_id"),
-            rs.getString("event_type"),
+            rs.getString("action"),
             rs.getString("actor_type"),
             rs.getString("actor_id"),
-            rs.getString("summary"),
+            rs.getString("description"),
             rs.getString("payload"),
             rs.getString("hash"),
             rs.getTimestamp("ts").toInstant()

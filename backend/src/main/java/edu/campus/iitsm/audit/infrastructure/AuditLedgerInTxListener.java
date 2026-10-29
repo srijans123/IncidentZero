@@ -29,7 +29,8 @@ public class AuditLedgerInTxListener {
   @Transactional(propagation = Propagation.MANDATORY)
   public void onDomainEvent(DomainEvent event) {
     UUID incidentId = event.incidentId();
-    Instant now = event.occurredAt() != null ? event.occurredAt() : clockPort.now();
+    Instant now = (event.occurredAt() != null ? event.occurredAt() : clockPort.now())
+        .truncatedTo(java.time.temporal.ChronoUnit.MICROS);
 
     // Lock the incident row to serialize audit hash chain updates
     String selectSql = "SELECT last_audit_index, last_audit_hash, status FROM incident WHERE id = ? FOR UPDATE";

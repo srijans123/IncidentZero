@@ -40,6 +40,33 @@ public class CategorizationAdapter implements CategorizationPort {
     String fullText = ((title != null ? title : "") + " " + (description != null ? description : "")).toLowerCase();
 
     // Stage 1: Alias Dictionary Match (Confidence 0.90)
+    if (fullText.contains("nalanda") || fullText.contains("moodle")) {
+      String cat = (fullText.contains("login") || fullText.contains("log into") || fullText.contains("sso") || fullText.contains("auth"))
+          ? "AUTHENTICATION" : "SOFTWARE";
+      LlmClassificationSchema schema = new LlmClassificationSchema(
+          cat,
+          "APP-LMS",
+          "CAMPUS",
+          50,
+          2,
+          List.of("nalanda"),
+          List.of(),
+          null,
+          0.90,
+          "Matched Nalanda LMS rule"
+      );
+      return new Suggestion<>(
+          schema,
+          0.90,
+          "ALIAS_DICTIONARY",
+          "alias-v1",
+          "v1",
+          "Keyword alias rule",
+          false,
+          now
+      );
+    }
+
     for (Map.Entry<String, String[]> entry : ALIAS_DICT.entrySet()) {
       if (fullText.contains(entry.getKey())) {
         String service = entry.getValue()[0];

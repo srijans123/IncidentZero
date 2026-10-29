@@ -57,10 +57,12 @@ public class AuditVerificationAdapter implements AuditVerificationPort {
 
     for (var entry : grouped.entrySet()) {
       List<AuditHasher.AuditRowView> incRows = entry.getValue();
+      incRows.sort(Comparator.comparingInt(AuditHasher.AuditRowView::chainIndex));
       String headHash = incRows.get(incRows.size() - 1).hash();
       int headIndex = incRows.get(incRows.size() - 1).chainIndex();
       var report = AuditHasher.verifyIncidentChain(incRows, headHash, headIndex);
       if (!report.valid()) {
+        System.err.println("Audit verification failure for incident " + entry.getKey() + ": " + report.failureReason() + " at row " + report.firstCorruptedRowId());
         return new AuditVerificationResult(
             false,
             report.firstCorruptedRowId(),
@@ -71,5 +73,46 @@ public class AuditVerificationAdapter implements AuditVerificationPort {
     }
 
     return new AuditVerificationResult(true, null, rows.size(), "All cryptographic hash links intact.");
+  }
+
+  @Override
+  public AuditVerificationResult verifyLedger(UUID incidentId) {
+    String sql = "SELECT id, incident_id, chain_index, ts, actor_type, actor_id, action, prev_state, new_state, description, payload, prev_hash, hash FROM audit_record WHERE incident_id = ? ORDER BY chain_index ASC";
+    List<AuditHasher.AuditRowView> incRows = jdbcTemplate.query(
+        sql,
+        ps -> ps.setObject(1, incidentId),
+        (rs, rowNum) -> {
+          UUID incId = (UUID) rs.getObject("incident_id");
+          UUID actId = (UUID) rs.getObject("actor_id");
+          Timestamp ts = rs.getTimestamp("ts");
+          return new AuditHasher.AuditRowView(
+              rs.getLong("id"),
+              incId,
+              rs.getInt("chain_index"),
+              ts != null ? ts.toInstant() : Instant.now(),
+              rs.getString("actor_type"),
+              actId,
+              rs.getString("action"),
+              rs.getString("prev_state"),
+              rs.getString("new_state"),
+              rs.getString("description"),
+              rs.getString("payload"),
+              rs.getString("prev_hash"),
+              rs.getString("hash")
+          );
+        }
+    );
+
+    if (incRows.isEmpty()) {
+      return new AuditVerificationResult(true, null, 0, "No audit records found for incident " + incidentId);
+    }
+
+    String headHash = incRows.get(incRows.size() - 1).hash();
+    int headIndex = incRows.get(incRows.size() - 1).chainIndex();
+    var report = AuditHasher.verifyIncidentChain(incRows, headHash, headIndex);
+    if (!report.valid()) {
+      return new AuditVerificationResult(false, report.firstCorruptedRowId(), incRows.size(), report.failureReason());
+    }
+    return new AuditVerificationResult(true, null, incRows.size(), "Cryptographic hash chain valid");
   }
 }

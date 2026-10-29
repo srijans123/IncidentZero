@@ -63,7 +63,7 @@ public class IncidentController {
       @RequestBody IncidentDtos.CreateIncidentRequest req,
       @AuthenticationPrincipal UserPrincipal principal
   ) {
-    UUID actorId = principal != null ? principal.id() : UUID.fromString("00000000-0000-0000-0000-000000000002");
+    UUID actorId = principal != null ? principal.id() : UUID.fromString("019299a0-0000-7000-8000-000000000001");
     UUID serviceId = req.serviceId() != null ? req.serviceId() : UUID.fromString("30000000-0000-0000-0000-000000000001");
     int urgency = req.urgency() != null ? req.urgency() : 3;
     int impact = req.impactOverride() != null ? req.impactOverride() : 2;
@@ -118,7 +118,7 @@ public class IncidentController {
       @RequestBody(required = false) IncidentDtos.CommandEnvelope env,
       @AuthenticationPrincipal UserPrincipal principal
   ) {
-    UUID actorId = principal != null ? principal.id() : UUID.fromString("00000000-0000-0000-0000-000000000003");
+    UUID actorId = principal != null ? principal.id() : UUID.fromString("019299a0-0000-7000-8000-000000000005");
     String role = principal != null ? principal.role() : "TECHNICIAN";
     String supportTier = principal != null ? principal.supportTier() : "SENIOR";
     IncidentDtos.CommandEnvelope envelope = env != null ? env : new IncidentDtos.CommandEnvelope(
