@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { Sliders, Clock, Calendar, CheckCircle2, Save, Cpu, Sparkles } from 'lucide-react';
+import { ActionButton } from '../../components/ui/ActionButton';
+import { StatusBadge } from '../../components/ui/StatusBadge';
+import { StatusDot } from '../../components/ui/StatusDot';
 
 export const AdminConfig: React.FC = () => {
   const [priorityStrategy, setPriorityStrategy] = useState('ITIL_MATRIX');
-  const [assignStrategy, setAssignStrategy] = useState('HYBRID_WEIGHTED');
+  const [assignStrategy, setAssignStrategy] = useState('HUNGARIAN');
 
   // Hybrid weights
   const [wLoad, setWLoad] = useState(0.35);
@@ -20,213 +23,198 @@ export const AdminConfig: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      {/* Header */}
-      <div className="glass-panel rounded-2xl p-6 border border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      {/* Top Header */}
+      <div className="surface-panel p-6 bg-[#101217] border border-white/[0.08] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <div className="flex items-center space-x-2 text-indigo-400 text-xs font-semibold uppercase tracking-wider mb-1">
-            <Sliders className="w-4 h-4" />
-            <span>Platform Configuration</span>
+          <div className="flex items-center gap-2 text-[#38BDF8] text-xs font-mono font-medium tracking-wider uppercase mb-1">
+            <Sliders className="w-3.5 h-3.5" />
+            <span>Platform Policy & Engine Configuration</span>
           </div>
-          <h1 className="text-xl sm:text-2xl font-extrabold text-white">
-            SLA Matrix, Strategies & Calendar
+          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-[#F3F4F6]">
+            SLA Matrix, Strategies & Campus Calendar
           </h1>
-          <p className="text-xs text-slate-400 mt-1">
-            Fine-tune ITIL policy targets, dispatch algorithms, and academic exam window overrides.
+          <p className="text-xs text-[#9BA1AE] mt-1">
+            Configure ITIL priority matrices, automated dispatch heuristics, and academic window calendar overrides.
           </p>
         </div>
 
-        <button
+        <ActionButton
+          size="cta"
+          variant="primary"
+          icon={<Save className="w-4 h-4" />}
           onClick={handleSave}
-          className="flex items-center space-x-2 px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs shadow-md shadow-indigo-600/30 transition-all"
         >
-          <Save className="w-4 h-4" />
-          <span>{savedSuccess ? 'Changes Saved!' : 'Save Configuration'}</span>
-        </button>
+          {savedSuccess ? 'Configuration Saved!' : 'Save Changes'}
+        </ActionButton>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* Strategy Selectors & Weight Sliders */}
-        <div className="glass-panel rounded-2xl p-6 border border-slate-800 space-y-5">
-          <h2 className="text-sm font-bold text-white flex items-center space-x-2">
-            <Cpu className="w-4 h-4 text-indigo-400" />
-            <span>Triage & Assignment Strategies</span>
-          </h2>
+        {/* Left Column: Engine & Dispatch Strategies */}
+        <div className="surface-panel p-6 bg-[#101217] border border-white/[0.08] space-y-5">
+          <div className="flex items-center gap-2 text-xs font-mono font-semibold text-[#F3F4F6] uppercase">
+            <Cpu className="w-4 h-4 text-[#38BDF8]" />
+            <span>Triage & Assignment Algorithms</span>
+          </div>
 
-          {/* Priority Strategy */}
+          {/* Priority Strategy Selection */}
           <div className="space-y-2 text-xs">
-            <label className="block text-slate-300 font-semibold uppercase tracking-wider text-[11px]">
-              Priority Calculation Strategy
+            <label className="block text-[#9BA1AE] font-mono uppercase text-[11px]">
+              Priority Engine Strategy
             </label>
             <div className="grid grid-cols-3 gap-2">
               {[
-                { id: 'ITIL_MATRIX', name: 'ITIL Matrix (Default)' },
-                { id: 'PRODUCT_SCORE', name: 'Product Score (I × U)' },
-                { id: 'WEIGHTED_SCORE', name: 'Weighted Composite' },
+                { id: 'ITIL_MATRIX', label: 'ITIL 3x3 Matrix', desc: 'Standard ITIL impact × urgency table' },
+                { id: 'PRODUCT_SCORE', label: 'Product Score', desc: 'Normalized product scalar metric' },
+                { id: 'WEIGHTED_SCORE', label: 'Weighted Score', desc: 'Custom polynomial score formula' },
               ].map((s) => (
                 <button
                   key={s.id}
                   type="button"
                   onClick={() => setPriorityStrategy(s.id)}
-                  className={`p-3 rounded-xl border text-left text-xs transition-colors ${
+                  className={`p-2.5 rounded text-left transition-all cursor-pointer border ${
                     priorityStrategy === s.id
-                      ? 'bg-indigo-600/20 text-indigo-200 border-indigo-500'
-                      : 'bg-slate-900 border-slate-800 text-slate-400'
+                      ? 'bg-[#1D212A] border-[#38BDF8] shadow-sm'
+                      : 'bg-[#161920] border-white/[0.06] hover:border-white/[0.12]'
                   }`}
                 >
-                  <div className="font-semibold text-slate-200">{s.name}</div>
+                  <div className="font-semibold text-xs text-[#F3F4F6]">{s.label}</div>
+                  <div className="text-[11px] text-[#9BA1AE] mt-0.5 leading-tight">{s.desc}</div>
                 </button>
               ))}
             </div>
           </div>
 
-          {/* Assignment Strategy */}
-          <div className="space-y-2 text-xs pt-2">
-            <label className="block text-slate-300 font-semibold uppercase tracking-wider text-[11px]">
+          {/* Assignment Strategy Selection */}
+          <div className="space-y-2 text-xs pt-2 border-t border-white/[0.06]">
+            <label className="block text-[#9BA1AE] font-mono uppercase text-[11px]">
               Technician Assignment Strategy
             </label>
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid grid-cols-3 gap-2">
               {[
-                { id: 'HYBRID_WEIGHTED', name: 'Hybrid Weighted (Recommended)' },
-                { id: 'HUNGARIAN_BATCH', name: 'Hungarian Batch (Exact B&B)' },
-                { id: 'LEAST_LOADED', name: 'Least Loaded Ratio' },
-                { id: 'ROUND_ROBIN', name: 'Round Robin Shift' },
+                { id: 'HUNGARIAN', label: 'Hungarian Batch', desc: 'Exact Kuhn-Munkres + multi-pass' },
+                { id: 'LEAST_LOADED', label: 'Least Loaded', desc: 'Greedy min-point capacity reservation' },
+                { id: 'ROUND_ROBIN', label: 'Round Robin', desc: 'Deterministic circular roster order' },
               ].map((s) => (
                 <button
                   key={s.id}
                   type="button"
                   onClick={() => setAssignStrategy(s.id)}
-                  className={`p-3 rounded-xl border text-left text-xs transition-colors ${
+                  className={`p-2.5 rounded text-left transition-all cursor-pointer border ${
                     assignStrategy === s.id
-                      ? 'bg-indigo-600/20 text-indigo-200 border-indigo-500'
-                      : 'bg-slate-900 border-slate-800 text-slate-400'
+                      ? 'bg-[#1D212A] border-[#38BDF8] shadow-sm'
+                      : 'bg-[#161920] border-white/[0.06] hover:border-white/[0.12]'
                   }`}
                 >
-                  <div className="font-semibold text-slate-200">{s.name}</div>
+                  <div className="font-semibold text-xs text-[#F3F4F6]">{s.label}</div>
+                  <div className="text-[11px] text-[#9BA1AE] mt-0.5 leading-tight">{s.desc}</div>
                 </button>
               ))}
             </div>
           </div>
 
-          {/* Sliders for Hybrid Weighted */}
-          {assignStrategy === 'HYBRID_WEIGHTED' && (
-            <div className="space-y-3 pt-3 border-t border-slate-800 text-xs animate-fadeIn">
-              <div className="font-semibold text-slate-300">
-                Hybrid Composite Weight Tuner (Must sum to 1.0)
+          {/* Hybrid Weight Sliders */}
+          <div className="space-y-3 pt-2 border-t border-white/[0.06] text-xs">
+            <span className="block text-[#9BA1AE] font-mono uppercase text-[11px]">
+              Hybrid Dispatch Weights
+            </span>
+            <div className="space-y-2 font-mono text-[11px]">
+              <div className="flex items-center justify-between">
+                <span className="text-slate-300">Technician Load Weight (wLoad):</span>
+                <span className="text-[#38BDF8]">{wLoad.toFixed(2)}</span>
               </div>
+              <input
+                type="range"
+                min="0.1"
+                max="0.8"
+                step="0.05"
+                value={wLoad}
+                onChange={(e) => setWLoad(parseFloat(e.target.value))}
+                className="w-full h-1 bg-[#161920] rounded-lg appearance-none cursor-pointer accent-[#38BDF8]"
+              />
 
-              <div className="space-y-2">
-                <div className="flex justify-between text-[11px]">
-                  <span className="text-slate-400">w_load (Workload Capacity):</span>
-                  <span className="font-mono text-cyan-300 font-bold">{wLoad.toFixed(2)}</span>
-                </div>
-                <input
-                  type="range"
-                  min="0"
-                  max="1"
-                  step="0.05"
-                  value={wLoad}
-                  onChange={(e) => setWLoad(parseFloat(e.target.value))}
-                  className="w-full accent-cyan-400"
-                />
+              <div className="flex items-center justify-between">
+                <span className="text-slate-300">Skill Category Match (wSkill):</span>
+                <span className="text-[#38BDF8]">{wSkill.toFixed(2)}</span>
               </div>
-
-              <div className="space-y-2">
-                <div className="flex justify-between text-[11px]">
-                  <span className="text-slate-400">w_skill (Skill Match Coverage):</span>
-                  <span className="font-mono text-cyan-300 font-bold">{wSkill.toFixed(2)}</span>
-                </div>
-                <input
-                  type="range"
-                  min="0"
-                  max="1"
-                  step="0.05"
-                  value={wSkill}
-                  onChange={(e) => setWSkill(parseFloat(e.target.value))}
-                  className="w-full accent-cyan-400"
-                />
-              </div>
-
-              <div className="space-y-2">
-                <div className="flex justify-between text-[11px]">
-                  <span className="text-slate-400">w_mrt (Mean Resolution Time):</span>
-                  <span className="font-mono text-cyan-300 font-bold">{wMrt.toFixed(2)}</span>
-                </div>
-                <input
-                  type="range"
-                  min="0"
-                  max="1"
-                  step="0.05"
-                  value={wMrt}
-                  onChange={(e) => setWMrt(parseFloat(e.target.value))}
-                  className="w-full accent-cyan-400"
-                />
-              </div>
+              <input
+                type="range"
+                min="0.1"
+                max="0.8"
+                step="0.05"
+                value={wSkill}
+                onChange={(e) => setWSkill(parseFloat(e.target.value))}
+                className="w-full h-1 bg-[#161920] rounded-lg appearance-none cursor-pointer accent-[#38BDF8]"
+              />
             </div>
-          )}
+          </div>
         </div>
 
-        {/* 4x4 SLA Policy Matrix */}
-        <div className="glass-panel rounded-2xl p-6 border border-slate-800 space-y-4">
-          <div className="flex items-center justify-between">
-            <h2 className="text-sm font-bold text-white flex items-center space-x-2">
-              <Clock className="w-4 h-4 text-cyan-400" />
-              <span>4×4 SLA Policy Matrix (Section 7)</span>
-            </h2>
-            <span className="text-[11px] text-slate-400 font-mono">16 Active Rules</span>
-          </div>
-
-          <div className="overflow-x-auto text-xs">
-            <table className="w-full text-center border-collapse">
-              <thead>
-                <tr className="bg-slate-900 text-slate-400 text-[11px]">
-                  <th className="p-2 text-left">Tier / Priority</th>
-                  <th className="p-2">P1 Critical</th>
-                  <th className="p-2">P2 High</th>
-                  <th className="p-2">P3 Medium</th>
-                  <th className="p-2">P4 Low</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-slate-850 font-mono text-[11px]">
-                <tr>
-                  <td className="p-2 text-left font-bold text-rose-300">T0 Core</td>
-                  <td className="p-2 text-emerald-400">5m / 30m (24x7)</td>
-                  <td className="p-2 text-slate-300">15m / 2h (24x7)</td>
-                  <td className="p-2 text-slate-400">1h / 4h</td>
-                  <td className="p-2 text-slate-500">4h / 12h</td>
-                </tr>
-                <tr>
-                  <td className="p-2 text-left font-bold text-indigo-300">T1 Academic</td>
-                  <td className="p-2 text-emerald-400">5m / 30m (24x7)</td>
-                  <td className="p-2 text-slate-300">15m / 2h (24x7)</td>
-                  <td className="p-2 text-slate-400">1h / 8h</td>
-                  <td className="p-2 text-slate-500">4h / 24h</td>
-                </tr>
-                <tr>
-                  <td className="p-2 text-left font-bold text-cyan-300">T2 Auxiliary</td>
-                  <td className="p-2 text-emerald-400">10m / 1h</td>
-                  <td className="p-2 text-slate-300">30m / 4h</td>
-                  <td className="p-2 text-slate-400">2h / 16h</td>
-                  <td className="p-2 text-slate-500">8h / 48h</td>
-                </tr>
-                <tr>
-                  <td className="p-2 text-left font-bold text-slate-400">T3 Facilities</td>
-                  <td className="p-2 text-emerald-400">15m / 2h</td>
-                  <td className="p-2 text-slate-300">1h / 8h</td>
-                  <td className="p-2 text-slate-400">4h / 24h</td>
-                  <td className="p-2 text-slate-500">12h / 72h</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          {/* Academic Calendar / Exam Window Override */}
-          <div className="pt-4 border-t border-slate-800 space-y-2 text-xs">
-            <div className="flex items-center space-x-2 text-amber-300 font-semibold">
-              <Calendar className="w-4 h-4" />
-              <span>Active Academic Calendar Window</span>
+        {/* Right Column: 4x4 SLA Policy Matrix & Calendar Window */}
+        <div className="space-y-6">
+          {/* SLA Policy Targets Matrix */}
+          <div className="surface-panel p-6 bg-[#101217] border border-white/[0.08] space-y-4">
+            <div className="flex items-center justify-between">
+              <span className="font-mono text-xs font-semibold text-[#F3F4F6] uppercase flex items-center gap-2">
+                <Clock className="w-4 h-4 text-[#10B981]" />
+                <span>Priority SLA Targets</span>
+              </span>
+              <span className="text-[11px] font-mono text-[#9BA1AE]">Response / Resolution</span>
             </div>
-            <p className="text-[11px] text-slate-400">
-              Exam Period Override Active: <code className="text-amber-200">MID-SEM-2026-OCT</code> applies $+1$ priority modifier to Nalanda LMS and AUGSD ERP incidents automatically.
+
+            <div className="overflow-x-auto">
+              <table className="w-full text-left border-collapse text-xs">
+                <thead>
+                  <tr className="border-b border-white/[0.08] text-[#8E95A5] font-mono text-[11px]">
+                    <th className="py-2 px-3">Priority</th>
+                    <th className="py-2 px-3">Response Target</th>
+                    <th className="py-2 px-3">Resolution Target</th>
+                    <th className="py-2 px-3">Calendar Coverage</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-white/[0.04] font-mono text-[11px]">
+                  <tr>
+                    <td className="py-2 px-3"><StatusBadge label="P1" variant="crit" isMono /></td>
+                    <td className="py-2 px-3 text-rose-300">15 minutes</td>
+                    <td className="py-2 px-3 text-rose-300 font-bold">4 hours</td>
+                    <td className="py-2 px-3 text-[#9BA1AE]">24x7 Continuous</td>
+                  </tr>
+                  <tr>
+                    <td className="py-2 px-3"><StatusBadge label="P2" variant="warn" isMono /></td>
+                    <td className="py-2 px-3 text-amber-300">30 minutes</td>
+                    <td className="py-2 px-3 text-amber-300">8 hours</td>
+                    <td className="py-2 px-3 text-[#9BA1AE]">Business (09:00 - 18:00)</td>
+                  </tr>
+                  <tr>
+                    <td className="py-2 px-3"><StatusBadge label="P3" variant="neutral" isMono /></td>
+                    <td className="py-2 px-3 text-slate-300">2 hours</td>
+                    <td className="py-2 px-3 text-slate-300">24 hours</td>
+                    <td className="py-2 px-3 text-[#9BA1AE]">Business (09:00 - 18:00)</td>
+                  </tr>
+                  <tr>
+                    <td className="py-2 px-3"><StatusBadge label="P4" variant="ok" isMono /></td>
+                    <td className="py-2 px-3 text-emerald-300">4 hours</td>
+                    <td className="py-2 px-3 text-emerald-300">72 hours</td>
+                    <td className="py-2 px-3 text-[#9BA1AE]">Business (09:00 - 18:00)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          {/* Academic Calendar Window Override Card */}
+          <div className="surface-panel p-5 bg-[#101217] border border-white/[0.08] space-y-3">
+            <div className="flex items-center justify-between">
+              <span className="font-mono text-xs font-semibold text-[#38BDF8] uppercase flex items-center gap-2">
+                <Calendar className="w-4 h-4" />
+                <span>Academic Calendar Urgency Overrides</span>
+              </span>
+              <span className="px-2 py-0.5 rounded text-[11px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-mono">
+                EXAM WINDOW ACTIVE
+              </span>
+            </div>
+
+            <p className="text-xs text-[#9BA1AE] leading-relaxed">
+              When an academic calendar window is active (Mid-Semesters, Compre Exams, or Course Registration), all Nalanda LMS and Campus SSO issues automatically receive a <strong>+1 Priority Bump</strong> (P2 → P1) in accordance with campus ITSM governance.
             </p>
           </div>
         </div>

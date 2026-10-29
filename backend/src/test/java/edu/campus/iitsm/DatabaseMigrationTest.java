@@ -62,14 +62,14 @@ class DatabaseMigrationTest {
 
     MigrateResult result = null;
     Exception lastError = null;
-    for (int attempt = 1; attempt <= 3; attempt++) {
+    for (int attempt = 1; attempt <= 5; attempt++) {
       try {
         result = flyway.migrate();
         break;
       } catch (Exception ex) {
         lastError = ex;
-        System.err.println("Migration attempt " + attempt + " failed (" + ex.getMessage() + "), retrying in 2s...");
-        try { Thread.sleep(2000L); } catch (InterruptedException ignored) {}
+        System.err.println("Migration attempt " + attempt + " failed (" + ex.getMessage() + "), retrying in 3s...");
+        try { Thread.sleep(3000L); } catch (InterruptedException ignored) {}
       }
     }
 

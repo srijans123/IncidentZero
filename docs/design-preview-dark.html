@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Incident-Zero (I-ITSM v2.2) — Design System Preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-canvas: #090A0D;
+      --bg-surface-1: #101217;
+      --bg-surface-2: #161920;
+      --bg-surface-3: #1D212A;
+      --hairline-soft: rgba(255, 255, 255, 0.07);
+      --hairline-strong: rgba(255, 255, 255, 0.14);
+      --ink-primary: #F3F4F6;
+      --ink-secondary: #9BA1AE;
+      --ink-muted: #646B7A;
+      --signal-ok: #10B981;
+      --signal-warn: #F59E0B;
+      --signal-crit: #F43F5E;
+      --signal-accent: #38BDF8;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg-canvas);
+      color: var(--ink-primary);
+      font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      padding: 40px;
+      line-height: 1.5;
+    }
+
+    .container { max-width: 1100px; margin: 0 auto; }
+    h1 { font-size: 32px; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 8px; }
+    .subtitle { color: var(--ink-secondary); font-size: 15px; margin-bottom: 40px; }
+    .accent-quote { font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-size: 22px; color: var(--signal-accent); margin-bottom: 32px; }
+
+    .section { margin-bottom: 48px; border-top: 1px solid var(--hairline-soft); padding-top: 24px; }
+    .section-title { font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-muted); margin-bottom: 20px; font-weight: 600; }
+
+    /* Swatches */
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+    .swatch {
+      background: var(--bg-surface-1);
+      border: 1px solid var(--hairline-soft);
+      border-radius: 8px;
+      padding: 16px;
+      box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.06);
+    }
+    .color-chip { height: 48px; border-radius: 6px; margin-bottom: 12px; border: 1px solid var(--hairline-soft); }
+
+    /* Status Dots */
+    .dot-row { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+    .dot-item { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: var(--ink-secondary); }
+    .status-dot {
+      width: 8px; height: 8px; min-width: 8px; min-height: 8px; border-radius: 9999px; flex-shrink: 0; display: inline-block;
+    }
+    .dot-ok { background: var(--signal-ok); box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15); }
+    .dot-warn { background: var(--signal-warn); box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.15); }
+    .dot-crit { background: var(--signal-crit); box-shadow: 0 0 0 3px rgba(244, 63, 94, 0.2); }
+    .dot-accent { background: var(--signal-accent); box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2); }
+
+    /* Buttons */
+    .btn-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+      border-radius: 6px; font-weight: 500; font-family: inherit; cursor: pointer; transition: all 0.15s ease;
+      white-space: nowrap; flex-shrink: 0; text-decoration: none;
+    }
+    .btn-primary { height: 36px; padding: 0 16px; background: #E2E8F0; color: #090A0D; border: none; font-weight: 600; font-size: 13px; }
+    .btn-secondary { height: 32px; padding: 0 12px; background: var(--bg-surface-2); color: var(--ink-primary); border: 1px solid var(--hairline-soft); font-size: 13px; }
+    .btn-secondary:hover { background: var(--bg-surface-3); border-color: var(--hairline-strong); }
+    .btn-crit { height: 32px; padding: 0 12px; background: rgba(244, 63, 94, 0.12); color: #FDA4AF; border: 1px solid rgba(244, 63, 94, 0.35); font-size: 13px; }
+
+    /* Badges */
+    .badge {
+      height: 22px; padding: 0 8px; font-size: 11px; font-weight: 600; border-radius: 4px;
+      display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; flex-shrink: 0; line-height: 1;
+    }
+    .badge-ok { background: rgba(16, 185, 129, 0.10); border: 1px solid rgba(16, 185, 129, 0.28); color: #6EE7B7; }
+    .badge-warn { background: rgba(245, 158, 11, 0.10); border: 1px solid rgba(245, 158, 11, 0.28); color: #FCD34D; }
+    .badge-crit { background: rgba(244, 63, 94, 0.12); border: 1px solid rgba(244, 63, 94, 0.35); color: #FDA4AF; }
+    .badge-mono { font-family: 'JetBrains Mono', monospace; font-feature-settings: 'tnum'; }
+
+    /* Table */
+    table { width: 100%; border-collapse: collapse; margin-top: 16px; font-size: 13px; }
+    th { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--hairline-strong); color: var(--ink-muted); font-weight: 500; }
+    td { padding: 12px 14px; border-bottom: 1px solid var(--hairline-soft); color: var(--ink-secondary); }
+    tr:hover td { background: var(--bg-surface-2); color: var(--ink-primary); }
+    .text-right { text-align: right; }
+    .mono { font-family: 'JetBrains Mono', monospace; font-feature-settings: 'tnum'; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Incident-Zero Design System</h1>
+    <div class="subtitle">Fusing Linear, Raycast, Sentry, and Vercel for Mission-Critical IT Operations</div>
+    <div class="accent-quote">"AI proposes, the deterministic domain core disposes."</div>
+
+    <div class="section">
+      <div class="section-title">Surface Hierarchy</div>
+      <div class="grid">
+        <div class="swatch">
+          <div class="color-chip" style="background: var(--bg-canvas);"></div>
+          <strong>Canvas Base</strong>
+          <div class="mono" style="font-size: 12px; color: var(--ink-muted);">#090A0D</div>
+        </div>
+        <div class="swatch">
+          <div class="color-chip" style="background: var(--bg-surface-1);"></div>
+          <strong>Surface 1</strong>
+          <div class="mono" style="font-size: 12px; color: var(--ink-muted);">#101217</div>
+        </div>
+        <div class="swatch">
+          <div class="color-chip" style="background: var(--bg-surface-2);"></div>
+          <strong>Surface 2</strong>
+          <div class="mono" style="font-size: 12px; color: var(--ink-muted);">#161920</div>
+        </div>
+        <div class="swatch">
+          <div class="color-chip" style="background: var(--bg-surface-3);"></div>
+          <strong>Surface 3 (Hover)</strong>
+          <div class="mono" style="font-size: 12px; color: var(--ink-muted);">#1D212A</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Status Indicators & Semantics</div>
+      <div class="dot-row" style="margin-bottom: 20px;">
+        <div class="dot-item"><span class="status-dot dot-ok"></span> ON_TRACK / Healthy</div>
+        <div class="dot-item"><span class="status-dot dot-warn"></span> AT_RISK / Paused</div>
+        <div class="dot-item"><span class="status-dot dot-crit"></span> BREACHED / Major P1</div>
+        <div class="dot-item"><span class="status-dot dot-accent"></span> Telemetry Active</div>
+      </div>
+      <div class="btn-row">
+        <span class="badge badge-ok"><span class="status-dot" style="background: var(--signal-ok); width:6px; height:6px;"></span> RESOLVED</span>
+        <span class="badge badge-warn"><span class="status-dot" style="background: var(--signal-warn); width:6px; height:6px;"></span> PENDING_USER</span>
+        <span class="badge badge-crit badge-mono">P1 · CRITICAL</span>
+        <span class="badge badge-ok badge-mono">SLA 04:12.8</span>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Control Ladder</div>
+      <div class="btn-row">
+        <button class="btn btn-primary">Declare Major Incident</button>
+        <button class="btn btn-secondary">Acknowledge</button>
+        <button class="btn btn-secondary">Request Info</button>
+        <button class="btn btn-crit">Trigger Storm Sim</button>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Tabular Telemetry</div>
+      <table>
+        <thead>
+          <tr>
+            <th>INCIDENT ID</th>
+            <th>SERVICE</th>
+            <th>SEVERITY</th>
+            <th>STATUS</th>
+            <th>SLA REMAINING</th>
+            <th class="text-right">AUDIT SHA-256</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="mono" style="color: var(--ink-primary);">INC-2026-000142</td>
+            <td>APP-LMS (Nalanda)</td>
+            <td><span class="badge badge-crit badge-mono">P1</span></td>
+            <td><span class="status-dot dot-crit" style="margin-right: 6px;"></span> INVESTIGATING</td>
+            <td class="mono" style="color: var(--signal-crit);">03:14.2</td>
+            <td class="mono text-right" style="color: var(--ink-muted);">9f82c0...41e8</td>
+          </tr>
+          <tr>
+            <td class="mono" style="color: var(--ink-primary);">INC-2026-000141</td>
+            <td>NET-WIFI-HOSTEL</td>
+            <td><span class="badge badge-warn badge-mono">P2</span></td>
+            <td><span class="status-dot dot-warn" style="margin-right: 6px;"></span> PAUSED</td>
+            <td class="mono" style="color: var(--signal-warn);">42:00.0</td>
+            <td class="mono text-right" style="color: var(--ink-muted);">3ab71e...910d</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+</html>

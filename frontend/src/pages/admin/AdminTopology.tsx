@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
-import { GitBranch, ShieldCheck, CheckCircle2, AlertCircle, Info, RefreshCw } from 'lucide-react';
+import { GitBranch, ShieldCheck, CheckCircle2, AlertCircle, Info, RefreshCw, Layers, Cpu, Eye } from 'lucide-react';
+import { ActionButton } from '../../components/ui/ActionButton';
+import { StatusBadge } from '../../components/ui/StatusBadge';
+import { StatusDot } from '../../components/ui/StatusDot';
+import { TopologyBlastRadius3D } from '../../components/three/TopologyBlastRadius3D';
 
 interface ServiceNode {
   id: string;
@@ -13,259 +17,188 @@ interface ServiceNode {
 }
 
 const CAMPUS_SERVICES: ServiceNode[] = [
-  // Layer 0: Core Network & Identity (T0)
-  { id: '1', code: 'CORE-ROUTER', name: 'Campus Core Backbone Router', tier: 'T0', status: 'HEALTHY', team: 'NOC Network', x: 120, y: 80 },
-  { id: '2', code: 'DNS-DHCP', name: 'Campus Infoblox DNS & DHCP', tier: 'T0', status: 'HEALTHY', team: 'NOC Network', x: 380, y: 80 },
-  { id: '3', code: 'AUTH-LDAP', name: 'Central LDAP & Single Sign-On', tier: 'T0', status: 'DEGRADED', team: 'Identity & Sec', x: 640, y: 80 },
+  // Tier 0
+  { id: '1', code: 'CORE-ROUTER', name: 'Campus Core Backbone Gateway', tier: 'T0', status: 'HEALTHY', team: 'NOC Network', x: 140, y: 70 },
+  { id: '2', code: 'DNS-DHCP', name: 'Campus Infoblox DNS & DHCP', tier: 'T0', status: 'HEALTHY', team: 'NOC Network', x: 380, y: 70 },
+  { id: '3', code: 'AUTH-LDAP', name: 'Active Directory / LDAP SSO', tier: 'T0', status: 'OUTAGE', team: 'Identity & Sec', x: 620, y: 70 },
+  { id: '4', code: 'DB-PRIMARY', name: 'PostgreSQL Serverless Cluster', tier: 'T0', status: 'HEALTHY', team: 'Database Team', x: 860, y: 70 },
 
-  // Layer 1: Core Connectivity & Gateways (T1)
-  { id: '4', code: 'CAMPUS-WIFI', name: 'Aruba Academic Wi-Fi', tier: 'T1', status: 'HEALTHY', team: 'NOC Network', x: 100, y: 220 },
-  { id: '5', code: 'HOSTEL-NET', name: 'Bhawan Wired & Wireless Subnet', tier: 'T2', status: 'HEALTHY', team: 'NOC Network', x: 260, y: 220 },
-  { id: '6', code: 'VPN-GATEWAY', name: 'Fortinet Remote Access VPN', tier: 'T2', status: 'HEALTHY', team: 'NOC Network', x: 440, y: 220 },
-  { id: '7', code: 'MAIL-EXCHANGE', name: 'BITS Campus Exchange & O365', tier: 'T1', status: 'HEALTHY', team: 'IT Services', x: 620, y: 220 },
-  { id: '8', code: 'SECURITY-CCTV', name: 'Axis Surveillance Grid', tier: 'T3', status: 'HEALTHY', team: 'Campus Security', x: 780, y: 220 },
+  // Tier 1
+  { id: '5', code: 'APP-ERP', name: 'Campus ERP & AUGSD Records', tier: 'T1', status: 'DEGRADED', team: 'ERP Team', x: 180, y: 220 },
+  { id: '6', code: 'APP-LMS', name: 'Nalanda Moodle Academic Portal', tier: 'T1', status: 'OUTAGE', team: 'Academic IT', x: 420, y: 220 },
+  { id: '7', code: 'HOSTEL-WIFI', name: 'Bhawan Mesh Network', tier: 'T1', status: 'HEALTHY', team: 'NOC Network', x: 660, y: 220 },
+  { id: '8', code: 'FEE-PORTAL', name: 'Student Fee & Payment Gateway', tier: 'T1', status: 'DEGRADED', team: 'Finance Team', x: 900, y: 220 },
 
-  // Layer 2: Academic & Student Applications (T1)
-  { id: '9', code: 'APP-ERP', name: 'PeopleSoft Campus ERP / AUGSD', tier: 'T1', status: 'DEGRADED', team: 'ERP Team', x: 140, y: 360 },
-  { id: '10', code: 'APP-LMS', name: 'Nalanda Moodle LMS Portal', tier: 'T1', status: 'DEGRADED', team: 'Academic IT', x: 320, y: 360 },
-  { id: '11', code: 'APP-LIB', name: 'Library EZProxy & Catalog', tier: 'T2', status: 'DEGRADED', team: 'Library Services', x: 500, y: 360 },
-  { id: '12', code: 'FEE-PORTAL', name: 'SWD Student Fee & FinAid', tier: 'T1', status: 'HEALTHY', team: 'Accounts Team', x: 680, y: 360 },
+  // Tier 2
+  { id: '9', code: 'APP-LIB', name: 'Library Koha & EZProxy', tier: 'T2', status: 'DEGRADED', team: 'Library Team', x: 200, y: 370 },
+  { id: '10', code: 'CAFETERIA-POS', name: 'Mess POS Payment Terminals', tier: 'T2', status: 'DEGRADED', team: 'Commercial IT', x: 440, y: 370 },
+  { id: '11', code: 'LAB-VDI', name: 'GPU Cluster Academic VDI', tier: 'T2', status: 'HEALTHY', team: 'Lab Systems', x: 680, y: 370 },
+  { id: '12', code: 'SECURITY-CCTV', name: 'Campus Surveillance Network', tier: 'T2', status: 'HEALTHY', team: 'Security Ops', x: 920, y: 370 },
 
-  // Layer 3: Auxiliary & Labs (T2/T3)
-  { id: '13', code: 'LAB-VDI', name: 'Nvidia GPU Academic VDI Pods', tier: 'T2', status: 'HEALTHY', team: 'Lab Systems', x: 100, y: 500 },
-  { id: '14', code: 'RESEARCH-GRID', name: 'HPC Supercomputing Cluster', tier: 'T2', status: 'HEALTHY', team: 'Research IT', x: 260, y: 500 },
-  { id: '15', code: 'PRINT-SVR', name: 'PaperCut Campus Print Fleet', tier: 'T2', status: 'HEALTHY', team: 'IT Services', x: 420, y: 500 },
-  { id: '16', code: 'ROOM-BOOKING', name: 'Campus Auditoriums & Labs', tier: 'T2', status: 'HEALTHY', team: 'Admin Services', x: 580, y: 500 },
-  { id: '17', code: 'SPORTS-PORTAL', name: 'SAC Gym & Courts Reservation', tier: 'T3', status: 'HEALTHY', team: 'Sports Board', x: 740, y: 500 },
-  { id: '18', code: 'STUDENT-PORTAL', name: 'SWD Student Life & Hostels', tier: 'T1', status: 'HEALTHY', team: 'SWD Team', x: 200, y: 640 },
-  { id: '19', code: 'WEB-PORTAL', name: 'Public Campus Homepage & CMS', tier: 'T1', status: 'HEALTHY', team: 'Web Team', x: 540, y: 640 },
+  // Tier 3
+  { id: '13', code: 'BIOMETRIC-GATE', name: 'Hostel Turnstile Biometrics', tier: 'T3', status: 'DEGRADED', team: 'Estate Office', x: 260, y: 520 },
+  { id: '14', code: 'PRINT-FLEET', name: 'PaperCut Student Printing', tier: 'T3', status: 'HEALTHY', team: 'Reprographics', x: 500, y: 520 },
+  { id: '15', code: 'HEALTH-CENTER', name: 'Medical Center Records', tier: 'T3', status: 'HEALTHY', team: 'Health IT', x: 740, y: 520 },
 ];
 
 const DEPENDENCY_EDGES = [
-  // Core Network Edges
-  { from: 'CAMPUS-WIFI', to: 'CORE-ROUTER' },
-  { from: 'CAMPUS-WIFI', to: 'DNS-DHCP' },
-  { from: 'HOSTEL-NET', to: 'CORE-ROUTER' },
-  { from: 'HOSTEL-NET', to: 'DNS-DHCP' },
-  { from: 'VPN-GATEWAY', to: 'CORE-ROUTER' },
-  { from: 'VPN-GATEWAY', to: 'AUTH-LDAP' },
-  { from: 'MAIL-EXCHANGE', to: 'AUTH-LDAP' },
-  { from: 'SECURITY-CCTV', to: 'CORE-ROUTER' },
-
-  // Application to Auth / DB Edges
   { from: 'APP-ERP', to: 'AUTH-LDAP' },
-  { from: 'APP-ERP', to: 'CORE-ROUTER' },
+  { from: 'APP-ERP', to: 'DB-PRIMARY' },
   { from: 'APP-LMS', to: 'AUTH-LDAP' },
-  { from: 'APP-LMS', to: 'CORE-ROUTER' },
+  { from: 'APP-LMS', to: 'DB-PRIMARY' },
+  { from: 'FEE-PORTAL', to: 'DB-PRIMARY' },
+  { from: 'HOSTEL-WIFI', to: 'CORE-ROUTER' },
   { from: 'APP-LIB', to: 'AUTH-LDAP' },
-  { from: 'FEE-PORTAL', to: 'APP-ERP' },
-  { from: 'FEE-PORTAL', to: 'AUTH-LDAP' },
-
-  // Auxiliary Edges
-  { from: 'LAB-VDI', to: 'AUTH-LDAP' },
-  { from: 'LAB-VDI', to: 'CAMPUS-WIFI' },
-  { from: 'RESEARCH-GRID', to: 'AUTH-LDAP' },
-  { from: 'PRINT-SVR', to: 'AUTH-LDAP' },
-  { from: 'ROOM-BOOKING', to: 'AUTH-LDAP' },
-  { from: 'SPORTS-PORTAL', to: 'AUTH-LDAP' },
-  { from: 'STUDENT-PORTAL', to: 'APP-ERP' },
-  { from: 'STUDENT-PORTAL', to: 'AUTH-LDAP' },
-  { from: 'WEB-PORTAL', to: 'CORE-ROUTER' },
-  { from: 'WEB-PORTAL', to: 'DNS-DHCP' },
-  { from: 'APP-LMS', to: 'LAB-VDI' },
+  { from: 'CAFETERIA-POS', to: 'AUTH-LDAP' },
+  { from: 'BIOMETRIC-GATE', to: 'AUTH-LDAP' },
+  { from: 'DNS-DHCP', to: 'CORE-ROUTER' },
 ];
 
 export const AdminTopology: React.FC = () => {
-  const [selectedNode, setSelectedNode] = useState<ServiceNode | null>(CAMPUS_SERVICES[2]); // Default AUTH-LDAP
-
-  const getTierColor = (tier: string) => {
-    switch (tier) {
-      case 'T0':
-        return 'border-rose-500 bg-rose-950/40 text-rose-300';
-      case 'T1':
-        return 'border-indigo-500 bg-indigo-950/40 text-indigo-300';
-      case 'T2':
-        return 'border-cyan-500 bg-cyan-950/40 text-cyan-300';
-      default:
-        return 'border-slate-600 bg-slate-900 text-slate-400';
-    }
-  };
+  const [viewMode, setViewMode] = useState<'3D' | '2D'>('3D');
+  const [selectedNode, setSelectedNode] = useState<ServiceNode | null>(CAMPUS_SERVICES[2]); // AUTH-LDAP
 
   return (
     <div className="space-y-6">
-      {/* Topology Header & Cycle Check Badge */}
-      <div className="glass-panel rounded-2xl p-6 border border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <div>
-          <div className="flex items-center space-x-2 text-indigo-400 text-xs font-semibold uppercase tracking-wider mb-1">
-            <GitBranch className="w-4 h-4" />
-            <span>Interactive Campus Service DAG</span>
+      {/* Top Header & View Switcher */}
+      <div className="surface-panel p-6 bg-[#101217] border border-white/[0.08] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)]">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <div className="flex items-center gap-2 text-[#38BDF8] text-xs font-mono font-medium tracking-wider uppercase mb-1">
+              <GitBranch className="w-3.5 h-3.5" />
+              <span>Campus Service Dependency DAG (B2 Engine)</span>
+            </div>
+            <h1 className="text-2xl font-bold tracking-tight text-[#F3F4F6]">
+              Campus Service Topology & Blast Radius
+            </h1>
+            <p className="text-xs text-[#9BA1AE] mt-1">
+              {CAMPUS_SERVICES.length} catalog services and {DEPENDENCY_EDGES.length} directed dependency edges with automated cycle detection and Leaf-Safe root cause analysis.
+            </p>
           </div>
-          <h1 className="text-xl sm:text-2xl font-extrabold text-white">
-            19 Campus Services & 26 Dependency Edges
-          </h1>
-          <p className="text-xs text-slate-400 mt-1">
-            Used by B2 Leaf-Safe RCA and A1 Cascade duplicate detection for root-cause ranking.
-          </p>
-        </div>
 
-        <div className="flex items-center space-x-3">
-          <div className="flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold">
-            <ShieldCheck className="w-4 h-4" />
-            <span>Acyclic DAG Verified (0 Cycles)</span>
+          {/* Segmented 3D / 2D Switcher */}
+          <div className="flex items-center gap-1.5 p-1 rounded-md bg-[#161920] border border-white/[0.08]">
+            <button
+              type="button"
+              onClick={() => setViewMode('3D')}
+              className={`px-3 py-1.5 rounded text-xs font-medium transition-colors cursor-pointer ${
+                viewMode === '3D'
+                  ? 'bg-[#1D212A] text-[#F3F4F6] shadow-sm border border-white/[0.12]'
+                  : 'text-[#9BA1AE] hover:text-[#F3F4F6]'
+              }`}
+            >
+              3D Orbital Core
+            </button>
+            <button
+              type="button"
+              onClick={() => setViewMode('2D')}
+              className={`px-3 py-1.5 rounded text-xs font-medium transition-colors cursor-pointer ${
+                viewMode === '2D'
+                  ? 'bg-[#1D212A] text-[#F3F4F6] shadow-sm border border-white/[0.12]'
+                  : 'text-[#9BA1AE] hover:text-[#F3F4F6]'
+              }`}
+            >
+              2D Schematic DAG
+            </button>
           </div>
         </div>
       </div>
 
-      {/* Main Canvas & Inspector Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
-        {/* Interactive SVG DAG Canvas (3 Cols) */}
-        <div className="lg:col-span-3 glass-panel rounded-2xl p-4 border border-slate-800 bg-slate-950 overflow-auto">
-          <div className="min-w-[880px] h-[720px] relative select-none">
-            {/* Draw Dependency Edges */}
-            <svg className="absolute inset-0 w-full h-full pointer-events-none">
+      {/* Main Visualization Canvas */}
+      {viewMode === '3D' ? (
+        <TopologyBlastRadius3D
+          className="h-[520px]"
+          isStormActive={true}
+          onSelectService={(svcCode) => {
+            const found = CAMPUS_SERVICES.find((s) => s.code === svcCode);
+            if (found) setSelectedNode(found);
+          }}
+        />
+      ) : (
+        <div className="surface-panel p-4 bg-[#101217] border border-white/[0.08] overflow-x-auto">
+          <div className="min-w-[1000px] h-[520px] relative bg-[#090A0D] rounded-lg border border-white/[0.06] p-4">
+            <svg className="w-full h-full absolute inset-0 pointer-events-none">
               <defs>
-                <marker
-                  id="arrow"
-                  viewBox="0 0 10 10"
-                  refX="18"
-                  refY="5"
-                  markerWidth="6"
-                  markerHeight="6"
-                  orient="auto-start-reverse"
-                >
-                  <path d="M 0 0 L 10 5 L 0 10 z" fill="#6366f1" opacity="0.6" />
-                </marker>
+                <linearGradient id="edgeGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stopColor="#38BDF8" stopOpacity="0.6" />
+                  <stop offset="100%" stopColor="#0284C7" stopOpacity="0.2" />
+                </linearGradient>
               </defs>
               {DEPENDENCY_EDGES.map((edge, idx) => {
-                const src = CAMPUS_SERVICES.find((s) => s.code === edge.from);
-                const dst = CAMPUS_SERVICES.find((s) => s.code === edge.to);
-                if (!src || !dst) return null;
-
-                const isHighlight =
-                  selectedNode &&
-                  (selectedNode.code === edge.from || selectedNode.code === edge.to);
-
+                const s = CAMPUS_SERVICES.find((n) => n.code === edge.from);
+                const t = CAMPUS_SERVICES.find((n) => n.code === edge.to);
+                if (!s || !t) return null;
                 return (
                   <line
                     key={idx}
-                    x1={src.x + 60}
-                    y1={src.y + 20}
-                    x2={dst.x + 60}
-                    y2={dst.y + 20}
-                    stroke={isHighlight ? '#38bdf8' : '#334155'}
-                    strokeWidth={isHighlight ? 2.5 : 1}
-                    strokeDasharray={edge.to === 'AUTH-LDAP' ? '4 2' : undefined}
-                    markerEnd="url(#arrow)"
-                    className="transition-colors duration-200"
+                    x1={s.x + 80}
+                    y1={s.y + 30}
+                    x2={t.x + 80}
+                    y2={t.y + 30}
+                    stroke="url(#edgeGrad)"
+                    strokeWidth="2"
+                    strokeDasharray={edge.to === 'CORE-ROUTER' ? '4,4' : undefined}
                   />
                 );
               })}
             </svg>
 
-            {/* Draw Service Nodes */}
             {CAMPUS_SERVICES.map((node) => {
-              const isSelected = selectedNode?.code === node.code;
+              const isSelected = selectedNode?.id === node.id;
+              const isRca = node.code === 'AUTH-LDAP';
               return (
                 <div
-                  key={node.code}
+                  key={node.id}
                   onClick={() => setSelectedNode(node)}
-                  style={{ left: `${node.x}px`, top: `${node.y}px` }}
-                  className={`absolute w-32 p-2.5 rounded-xl border cursor-pointer transition-all ${getTierColor(
-                    node.tier
-                  )} ${
+                  style={{ left: node.x, top: node.y }}
+                  className={`absolute w-44 p-2.5 rounded-lg border transition-all cursor-pointer ${
                     isSelected
-                      ? 'ring-2 ring-cyan-400 scale-105 z-20 shadow-xl shadow-cyan-500/20'
-                      : 'hover:scale-102 hover:border-slate-400 z-10'
+                      ? 'bg-[#1D212A] border-[#38BDF8] shadow-lg ring-1 ring-[#38BDF8]'
+                      : isRca
+                      ? 'bg-[#161920] border-rose-500/50 shadow-[0_0_12px_rgba(244,63,94,0.3)]'
+                      : 'bg-[#161920] border-white/[0.08] hover:border-white/[0.16]'
                   }`}
                 >
-                  <div className="flex items-center justify-between">
-                    <span className="font-mono text-[9px] font-bold px-1 rounded bg-black/40">
-                      {node.tier}
-                    </span>
-                    <span
-                      className={`w-2 h-2 rounded-full ${
-                        node.status === 'DEGRADED'
-                          ? 'bg-amber-400 animate-ping'
-                          : 'bg-emerald-400'
-                      }`}
-                    />
+                  <div className="flex items-center justify-between font-mono text-[11px] text-[#9BA1AE] mb-1">
+                    <span>{node.tier}</span>
+                    <StatusDot state={node.status} />
                   </div>
-                  <div className="font-mono font-bold text-xs text-white mt-1 truncate">
-                    {node.code}
-                  </div>
-                  <div className="text-[9px] text-slate-400 truncate mt-0.5">{node.team}</div>
+                  <div className="font-mono font-bold text-xs text-[#F3F4F6] truncate">{node.code}</div>
+                  <div className="text-[11px] text-[#9BA1AE] truncate">{node.name}</div>
                 </div>
               );
             })}
           </div>
         </div>
+      )}
 
-        {/* Node Inspector Panel (1 Col) */}
-        <div className="glass-panel rounded-2xl p-6 border border-slate-800 space-y-4">
-          <h2 className="text-sm font-bold text-white flex items-center space-x-2">
-            <Info className="w-4 h-4 text-indigo-400" />
-            <span>Service Node Inspector</span>
-          </h2>
-
-          {selectedNode ? (
-            <div className="space-y-4 text-xs">
-              <div className="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-2">
-                <div className="flex items-center justify-between">
-                  <span className="font-mono font-bold text-sm text-cyan-300">
-                    {selectedNode.code}
-                  </span>
-                  <span className="px-2 py-0.5 rounded bg-indigo-500/20 text-indigo-300 font-mono text-[10px] font-bold">
-                    Tier {selectedNode.tier}
-                  </span>
-                </div>
-                <div className="text-slate-200 font-semibold">{selectedNode.name}</div>
-                <div className="text-[11px] text-slate-400">Team: {selectedNode.team}</div>
-                <div className="pt-1 flex items-center space-x-2">
-                  <span className="text-[11px] text-slate-400">Status:</span>
-                  <span
-                    className={`font-semibold text-[11px] ${
-                      selectedNode.status === 'DEGRADED' ? 'text-amber-400' : 'text-emerald-400'
-                    }`}
-                  >
-                    {selectedNode.status}
-                  </span>
-                </div>
-              </div>
-
-              {/* Dependencies Outgoing */}
-              <div className="space-y-1.5">
-                <div className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">
-                  Depends On (Upstream):
-                </div>
-                {DEPENDENCY_EDGES.filter((e) => e.from === selectedNode.code).map((e, i) => (
-                  <div key={i} className="p-2 bg-slate-900/80 rounded border border-slate-800 font-mono text-[11px] text-indigo-300">
-                    → {e.to}
-                  </div>
-                ))}
-                {DEPENDENCY_EDGES.filter((e) => e.from === selectedNode.code).length === 0 && (
-                  <div className="text-slate-500 text-[11px]">No upstream dependencies (Root service).</div>
-                )}
-              </div>
-
-              {/* Dependents Incoming */}
-              <div className="space-y-1.5 pt-2">
-                <div className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">
-                  Impacted Downstream Services:
-                </div>
-                {DEPENDENCY_EDGES.filter((e) => e.to === selectedNode.code).map((e, i) => (
-                  <div key={i} className="p-2 bg-slate-900/80 rounded border border-slate-800 font-mono text-[11px] text-cyan-300">
-                    ← {e.from}
-                  </div>
-                ))}
-              </div>
+      {/* Selected Service Detail Drawer */}
+      {selectedNode && (
+        <div className="surface-panel p-5 bg-[#101217] border border-white/[0.08] flex flex-col md:flex-row md:items-center justify-between gap-4 text-xs">
+          <div>
+            <div className="flex items-center gap-2 mb-1">
+              <span className="font-mono font-bold text-sm text-[#F3F4F6]">{selectedNode.code}</span>
+              <StatusBadge label={selectedNode.tier} variant="neutral" isMono />
+              <StatusBadge label={selectedNode.status} showDot />
+              {selectedNode.code === 'AUTH-LDAP' && (
+                <span className="px-2 py-0.5 rounded text-[11px] bg-rose-500/20 text-rose-300 border border-rose-500/40 font-mono font-semibold">
+                  ★ TOP B2 ROOT CAUSE (Score 1.05)
+                </span>
+              )}
             </div>
-          ) : (
-            <div className="text-slate-500 text-xs py-8 text-center">
-              Click any node in the canvas to inspect dependencies.
+            <p className="text-[#9BA1AE]">{selectedNode.name} • Assigned Team: <span className="text-slate-200">{selectedNode.team}</span></p>
+          </div>
+
+          <div className="flex items-center gap-3 font-mono text-xs">
+            <div className="px-3 py-1.5 rounded bg-[#161920] border border-white/[0.06] text-slate-300">
+              Downstream Dependents: <strong className="text-[#38BDF8]">{DEPENDENCY_EDGES.filter((e) => e.to === selectedNode.code).length} Services</strong>
             </div>
-          )}
+            <div className="px-3 py-1.5 rounded bg-[#161920] border border-white/[0.06] text-slate-300">
+              Upstream Dependencies: <strong className="text-[#F43F5E]">{DEPENDENCY_EDGES.filter((e) => e.from === selectedNode.code).length} Direct</strong>
+            </div>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };

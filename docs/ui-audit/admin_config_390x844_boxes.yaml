@@ -1,0 +1,52 @@
+# Bounding-Box Snapshot for /admin/config @ 390x844
+viewport: { width: 390, height: 844 }
+route: "/admin/config"
+hasHorizontalOverflow: false
+canvases: 1
+statusDots: 3
+elements:
+  - tag: button
+    text: "CLOCK 1x"
+    box: [0, 0, 0, 0]
+  - tag: button
+    text: "Reporter Portalportal"
+    box: [138, 0, 72, 55]
+  - tag: button
+    text: "Technician War Roomworkbench"
+    box: [212, 0, 90, 55]
+  - tag: button
+    text: "Command Centeradmin"
+    box: [305, 0, 66, 55]
+  - tag: button
+    text: "👩‍🎓Aarav SharmaEMPLOYEE"
+    box: [375, 12, 65, 32]
+  - tag: button
+    text: "Report New Incident"
+    box: [41, 257, 308, 36]
+  - tag: button
+    text: "Explode View"
+    box: [246, 355, 115, 28]
+  - tag: button
+    text: "All Incidents"
+    box: [16, 750, 93, 28]
+  - tag: button
+    text: "Active / In-Flight"
+    box: [117, 750, 117, 28]
+  - tag: button
+    text: "Resolved"
+    box: [242, 750, 75, 28]
+  - tag: button
+    text: "Refresh"
+    box: [325, 750, 83, 28]
+  - tag: span
+    text: "P1"
+    box: [549, 872, 30, 22]
+  - tag: button
+    text: "inc-test-1"
+    box: [846, 872, 96, 22]
+  - tag: span
+    text: "P2"
+    box: [549, 919, 30, 22]
+  - tag: button
+    text: "inc-test-2"
+    box: [846, 919, 96, 22]

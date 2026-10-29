@@ -1,0 +1,52 @@
+# Bounding-Box Snapshot for /portal/incidents/inc-test-1 @ 1920x1080
+viewport: { width: 1920, height: 1080 }
+route: "/portal/incidents/inc-test-1"
+hasHorizontalOverflow: false
+canvases: 1
+statusDots: 3
+elements:
+  - tag: button
+    text: "CLOCK 1x"
+    box: [660, 16, 84, 23]
+  - tag: button
+    text: "Reporter Portalportal"
+    box: [850, 0, 140, 55]
+  - tag: button
+    text: "Technician War Roomworkbench"
+    box: [994, 0, 177, 55]
+  - tag: button
+    text: "Command Centeradmin"
+    box: [1175, 0, 154, 55]
+  - tag: button
+    text: "👩‍🎓Aarav SharmaEMPLOYEE"
+    box: [1433, 12, 151, 32]
+  - tag: button
+    text: "Report New Incident"
+    box: [1367, 131, 176, 36]
+  - tag: button
+    text: "Explode View"
+    box: [1440, 255, 115, 28]
+  - tag: button
+    text: "All Incidents"
+    box: [1177, 608, 93, 28]
+  - tag: button
+    text: "Active / In-Flight"
+    box: [1278, 608, 117, 28]
+  - tag: button
+    text: "Resolved"
+    box: [1403, 608, 75, 28]
+  - tag: button
+    text: "Refresh"
+    box: [1485, 608, 83, 28]
+  - tag: span
+    text: "P1"
+    box: [1037, 712, 30, 22]
+  - tag: button
+    text: "inc-test-1"
+    box: [1455, 712, 96, 22]
+  - tag: span
+    text: "P2"
+    box: [1037, 759, 30, 22]
+  - tag: button
+    text: "inc-test-2"
+    box: [1455, 759, 96, 22]

@@ -11,10 +11,11 @@ import {
   LayoutDashboard,
   Wrench,
   Sliders,
-  CheckCircle2,
-  AlertTriangle,
   Zap,
 } from 'lucide-react';
+import { StatusDot } from './ui/StatusDot';
+import { StatusBadge } from './ui/StatusBadge';
+import { ActionButton } from './ui/ActionButton';
 
 interface HeaderProps {
   currentTab: 'portal' | 'workbench' | 'admin';
@@ -42,178 +43,146 @@ export const Header: React.FC<HeaderProps> = ({ currentTab, setCurrentTab }) => 
     }
   };
 
+  const navItems = [
+    { id: 'portal' as const, label: 'Reporter Portal', icon: LayoutDashboard },
+    { id: 'workbench' as const, label: 'Technician War Room', icon: Wrench },
+    { id: 'admin' as const, label: 'Command Center', icon: Sliders },
+  ];
+
   return (
-    <header className="sticky top-0 z-50 glass-panel border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-md">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Brand Logo & Version */}
-          <div className="flex items-center space-x-3 cursor-pointer" onClick={() => setCurrentTab('portal')}>
-            <div className="p-2 rounded-xl bg-gradient-to-tr from-indigo-600 to-cyan-500 text-white shadow-lg shadow-indigo-500/20">
-              <ShieldAlert className="w-5 h-5" />
+    <header className="sticky top-0 z-40 h-14 border-b border-white/[0.07] bg-[#090A0D]/90 backdrop-blur-md w-full max-w-full overflow-hidden">
+      <div className="max-w-7xl mx-auto px-2 sm:px-4 h-full flex items-center justify-between gap-1">
+        {/* Left: Brand mark & Virtual Clock Badge */}
+        <div className="flex items-center gap-2 sm:gap-4 shrink-0">
+          <div
+            className="flex items-center gap-1.5 sm:gap-2 cursor-pointer select-none"
+            onClick={() => setCurrentTab('portal')}
+          >
+            <div className="w-7 h-7 rounded flex items-center justify-center bg-[#161920] border border-white/[0.10] text-[#38BDF8] shrink-0">
+              <ShieldAlert className="w-4 h-4 shrink-0" />
             </div>
-            <div>
-              <div className="flex items-center space-x-2">
-                <span className="font-extrabold text-lg tracking-tight bg-gradient-to-r from-white via-slate-200 to-indigo-300 bg-clip-text text-transparent">
-                  Incident-Zero
-                </span>
-                <span className="px-1.5 py-0.5 text-[10px] font-semibold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 rounded">
-                  v2.2
-                </span>
-              </div>
-              <p className="text-[11px] text-slate-400 font-medium">Campus ITSM • BITS Pilani</p>
+            <div className="flex items-center gap-1.5">
+              <span className="font-semibold text-xs sm:text-sm tracking-tight text-[#F3F4F6] whitespace-nowrap">
+                INCIDENT<span className="text-[#38BDF8]">—</span>ZERO
+              </span>
+              <span className="hidden sm:inline px-1.5 py-0.5 rounded text-[11px] font-mono font-medium bg-white/[0.06] text-[#9BA1AE] border border-white/[0.06]">
+                v2.2
+              </span>
             </div>
           </div>
 
-          {/* Navigation Workspaces */}
-          <nav className="flex items-center space-x-1 sm:space-x-2 bg-slate-900/90 p-1 rounded-xl border border-slate-800">
-            <button
-              onClick={() => setCurrentTab('portal')}
-              className={`flex items-center space-x-2 px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all ${
-                currentTab === 'portal'
-                  ? 'bg-indigo-600 text-white shadow-sm shadow-indigo-500/30'
-                  : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
-              }`}
-            >
-              <LayoutDashboard className="w-3.5 h-3.5" />
-              <span>Employee Portal</span>
-            </button>
+          {/* SSE Connection Pill */}
+          <div className="hidden md:flex items-center gap-1.5 px-2 py-0.5 rounded bg-[#101217] border border-white/[0.07] text-[11px] font-mono text-[#9BA1AE]">
+            <StatusDot state={isConnected ? 'CONNECTED' : 'DISCONNECTED'} />
+            <span>{isConnected ? 'LIVE SSE' : 'RECONNECTING'}</span>
+          </div>
 
-            <button
-              onClick={() => setCurrentTab('workbench')}
-              className={`flex items-center space-x-2 px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all ${
-                currentTab === 'workbench'
-                  ? 'bg-indigo-600 text-white shadow-sm shadow-indigo-500/30'
-                  : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
-              }`}
-            >
-              <Wrench className="w-3.5 h-3.5" />
-              <span>Tech Workbench</span>
-            </button>
+          {/* Virtual Clock Accelerator */}
+          <button
+            type="button"
+            onClick={toggleDemoClock}
+            disabled={clockLoading}
+            className={`hidden lg:flex items-center gap-1.5 px-2 py-0.5 rounded text-[11px] font-mono transition-colors cursor-pointer border ${
+              isDemoClockFast
+                ? 'bg-amber-500/10 text-amber-300 border-amber-500/30'
+                : 'bg-white/[0.04] text-[#9BA1AE] border-white/[0.07] hover:border-white/[0.14]'
+            }`}
+            title="Toggle Demo Clock 1x / 30x scale factor"
+          >
+            <Clock className="w-3 h-3 text-[#38BDF8] shrink-0" />
+            <span>CLOCK {isDemoClockFast ? '30x' : '1x'}</span>
+          </button>
+        </div>
 
-            <button
-              onClick={() => setCurrentTab('admin')}
-              className={`flex items-center space-x-2 px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all ${
-                currentTab === 'admin'
-                  ? 'bg-indigo-600 text-white shadow-sm shadow-indigo-500/30'
-                  : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
-              }`}
-            >
-              <Sliders className="w-3.5 h-3.5" />
-              <span>Admin Center</span>
-            </button>
-          </nav>
-
-          {/* Controls: Demo Clock, SSE Status, User Switcher */}
-          <div className="flex items-center space-x-3">
-            {/* 30x Demo Clock Toggle */}
-            <button
-              onClick={toggleDemoClock}
-              disabled={clockLoading}
-              title="Toggle 30x Virtual Demo Clock for rapid SLA breach & timer testing"
-              className={`flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium border transition-all ${
-                isDemoClockFast
-                  ? 'bg-amber-500/20 text-amber-300 border-amber-500/40 shadow-sm shadow-amber-500/20 animate-pulse'
-                  : 'bg-slate-900 text-slate-400 border-slate-800 hover:text-slate-300 hover:border-slate-700'
-              }`}
-            >
-              <Clock className="w-3.5 h-3.5" />
-              <span>{isDemoClockFast ? '30× Active' : '1× Clock'}</span>
-            </button>
-
-            {/* SSE Stream Status Indicator */}
-            <div
-              className={`flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium border ${
-                isConnected
-                  ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20'
-                  : 'bg-rose-500/10 text-rose-400 border-rose-500/20'
-              }`}
-              title={isConnected ? 'SSE Live Stream Connected (15s Heartbeat)' : 'SSE Reconnecting...'}
-            >
-              <span
-                className={`w-2 h-2 rounded-full ${
-                  isConnected ? 'bg-emerald-400 animate-ping' : 'bg-rose-400'
-                }`}
-              />
-              <span className="hidden md:inline">{isConnected ? 'Live SSE' : 'Offline'}</span>
-            </div>
-
-            {/* Demo User Switcher Dropdown */}
-            <div className="relative">
+        {/* Center: Workspace Navigation Tabs */}
+        <nav className="flex items-center gap-0.5 sm:gap-1 h-full shrink-0">
+          {navItems.map((item) => {
+            const Icon = item.icon;
+            const isActive = currentTab === item.id;
+            return (
               <button
-                onClick={() => setShowUserDropdown(!showUserDropdown)}
-                className="flex items-center space-x-2 pl-2 pr-3 py-1.5 bg-slate-900/90 hover:bg-slate-850 border border-slate-800 rounded-xl text-xs font-medium transition-colors"
+                key={item.id}
+                type="button"
+                onClick={() => setCurrentTab(item.id)}
+                className={`relative h-full px-2 sm:px-3.5 flex items-center gap-1.5 sm:gap-2 text-xs sm:text-[13px] font-medium transition-colors cursor-pointer whitespace-nowrap ${
+                  isActive
+                    ? 'text-[#F3F4F6]'
+                    : 'text-[#9BA1AE] hover:text-[#F3F4F6]'
+                }`}
               >
-                <span className="text-base">{currentUser.avatar}</span>
-                <div className="text-left hidden sm:block">
-                  <div className="text-slate-200 font-semibold leading-tight">{currentUser.name}</div>
-                  <div className="text-[10px] text-slate-400 capitalize">{currentUser.role.toLowerCase()}</div>
-                </div>
-                <ChevronDown className="w-3.5 h-3.5 text-slate-400 ml-1" />
+                <Icon className={`w-3.5 h-3.5 shrink-0 ${isActive ? 'text-[#38BDF8]' : 'opacity-60'}`} />
+                <span className="hidden sm:inline">{item.label}</span>
+                <span className="inline sm:hidden uppercase font-mono text-[11px]">{item.id}</span>
+                {isActive && (
+                  <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#38BDF8] rounded-t" />
+                )}
               </button>
+            );
+          })}
+        </nav>
 
-              {showUserDropdown && (
-                <div className="absolute right-0 mt-2 w-72 bg-slate-900 border border-slate-800 rounded-xl shadow-2xl p-2 z-50">
-                  <div className="px-2 py-1 text-[11px] font-semibold text-slate-400 uppercase tracking-wider">
-                    Switch Campus Role
-                  </div>
-                  <div className="space-y-1 mt-1 max-h-80 overflow-y-auto">
-                    {SEEDED_USERS.map((user) => (
-                      <button
-                        key={user.id}
-                        onClick={() => {
-                          switchUser(user);
-                          setShowUserDropdown(false);
-                        }}
-                        className={`w-full flex items-center justify-between p-2 rounded-lg text-left text-xs transition-colors ${
-                          currentUser.id === user.id
-                            ? 'bg-indigo-600/20 text-indigo-300 border border-indigo-500/30'
-                            : 'hover:bg-slate-800/80 text-slate-300'
-                        }`}
-                      >
-                        <div className="flex items-center space-x-2.5">
-                          <span className="text-lg">{user.avatar}</span>
-                          <div>
-                            <div className="font-semibold text-slate-200">{user.name}</div>
-                            <div className="text-[10px] text-slate-400">
-                              {user.email} • {user.role} {user.supportTier ? `(${user.supportTier})` : ''}
-                            </div>
-                          </div>
-                        </div>
-                        {currentUser.id === user.id && <CheckCircle2 className="w-4 h-4 text-indigo-400" />}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              )}
+        {/* Right: Demo Persona Switcher Dropdown */}
+        <div className="relative shrink-0">
+          <button
+            type="button"
+            onClick={() => setShowUserDropdown(!showUserDropdown)}
+            className="flex items-center gap-2.5 h-8 px-2.5 rounded-md bg-[#161920] hover:bg-[#1D212A] border border-white/[0.08] hover:border-white/[0.16] transition-all cursor-pointer select-none"
+          >
+            <span className="text-sm shrink-0 leading-none">{currentUser.avatar}</span>
+            <div className="hidden lg:flex flex-col text-left">
+              <span className="text-xs font-medium text-[#F3F4F6] leading-tight truncate max-w-[120px]">
+                {currentUser.name}
+              </span>
+              <span className="text-[11px] text-[#9BA1AE] leading-tight font-mono">
+                {currentUser.supportTier ? `${currentUser.role} · ${currentUser.supportTier}` : currentUser.role}
+              </span>
             </div>
-          </div>
+            <ChevronDown className="w-3.5 h-3.5 text-[#9BA1AE] shrink-0" />
+          </button>
+
+          {/* User Switcher Modal / Dropdown */}
+          {showUserDropdown && (
+            <div className="absolute right-0 mt-1.5 w-72 rounded-lg bg-[#101217] border border-white/[0.12] shadow-2xl py-1 z-50 text-xs">
+              <div className="px-3 py-2 border-b border-white/[0.07] bg-[#161920]/50">
+                <p className="font-semibold text-slate-200">Switch Demo Persona</p>
+                <p className="text-xs text-slate-300 font-mono">8 Pre-Seeded BITS Pilani Accounts</p>
+              </div>
+
+              <div className="max-h-80 overflow-y-auto divide-y divide-white/[0.04]">
+                {SEEDED_USERS.map((user) => {
+                  const isCurrent = user.id === currentUser.id;
+                  return (
+                    <button
+                      key={user.id}
+                      type="button"
+                      onClick={() => {
+                        switchUser(user);
+                        setShowUserDropdown(false);
+                      }}
+                      className={`w-full text-left px-3 py-2 flex items-center justify-between hover:bg-white/[0.06] transition-colors cursor-pointer ${
+                        isCurrent ? 'bg-[#38BDF8]/10' : ''
+                      }`}
+                    >
+                      <div className="flex items-center gap-2.5 min-w-0">
+                        <span className="text-base shrink-0">{user.avatar}</span>
+                        <div className="truncate">
+                          <p className={`font-medium truncate ${isCurrent ? 'text-[#38BDF8]' : 'text-slate-200'}`}>
+                            {user.name}
+                          </p>
+                          <p className="text-xs text-slate-300 font-mono truncate">{user.email}</p>
+                        </div>
+                      </div>
+                      <span className="ml-2 px-1.5 py-0.5 rounded text-[11px] font-mono font-medium shrink-0 bg-white/[0.06] text-slate-300">
+                        {user.role}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          )}
         </div>
       </div>
-
-      {/* Live Storm Progress Banner if active */}
-      {stormProgress && (
-        <div className="bg-gradient-to-r from-amber-600/30 via-rose-600/30 to-purple-600/30 border-t border-b border-amber-500/30 px-4 py-2">
-          <div className="max-w-7xl mx-auto flex items-center justify-between text-xs">
-            <div className="flex items-center space-x-2">
-              <Zap className="w-4 h-4 text-amber-400 animate-bounce" />
-              <span className="font-semibold text-amber-200">
-                Storm Simulation Active ({stormProgress.scenario}):
-              </span>
-              <span className="text-slate-300">
-                Injected {stormProgress.injectedCount} / {stormProgress.totalCount} reports
-              </span>
-            </div>
-            <div className="flex items-center space-x-4">
-              <span className="px-2 py-0.5 rounded bg-indigo-500/30 text-indigo-200 font-mono text-[11px]">
-                {stormProgress.masterCount} Masters
-              </span>
-              <span className="px-2 py-0.5 rounded bg-emerald-500/30 text-emerald-200 font-mono text-[11px]">
-                {stormProgress.childCount} Auto-Linked Children
-              </span>
-            </div>
-          </div>
-        </div>
-      )}
     </header>
   );
 };

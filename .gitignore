@@ -32,3 +32,10 @@ __pycache__/
 *.py[cod]
 *$py.class
 .pytest_cache/
+
+# Impeccable
+.impeccable/*
+!.impeccable/config.json
+!.impeccable/design.json
+!.impeccable/surfaces/
+!.impeccable/critique/

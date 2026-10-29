@@ -12,3 +12,4 @@
 - **v1.12** (2026-10-29 16:22:03 UTC) by `Srijan Shukla`: Complete TASK-11: CodeRabbit Review & 15 ADRs
 - **v1.13** (2026-10-29 17:14:48 UTC) by `Srijan Shukla`: Complete TASK-12: Demo Workflows 1, 2, 3 verification and full system delivery
 - **v1.14** (2026-10-29 18:01:12 UTC) by `Srijan Shukla`: Add start.bat, start.sh, run_backend.bat, run_frontend.bat launchers
+- **v1.15** (2026-10-29 19:34:51 UTC) by `Srijan Shukla`: Complete 3D & Impeccable Anti-Slop Frontend Overhaul

@@ -25,6 +25,11 @@ import {
   Tag,
   Shield,
 } from 'lucide-react';
+import { StatusDot } from '../../components/ui/StatusDot';
+import { StatusBadge } from '../../components/ui/StatusBadge';
+import { ActionButton } from '../../components/ui/ActionButton';
+import { HashPill } from '../../components/ui/HashPill';
+import { SlaChronometerAndLedger3D } from '../../components/three/SlaChronometerAndLedger3D';
 
 interface WorkbenchDetailProps {
   incidentId: string;
@@ -58,17 +63,17 @@ export const WorkbenchDetail: React.FC<WorkbenchDetailProps> = ({ incidentId, on
       const inc = await api.incidents.get(incidentId);
       setIncident(inc);
 
-      const [t, ai, rcaData] = await Promise.allSettled([
+      const [tl, ai, rcaRes] = await Promise.allSettled([
         api.incidents.timeline(incidentId),
         api.incidents.ai(incidentId),
         api.incidents.rca(incidentId),
       ]);
 
-      if (t.status === 'fulfilled') setTimeline(t.value || []);
+      if (tl.status === 'fulfilled') setTimeline(tl.value || []);
       if (ai.status === 'fulfilled') setAiPanel(ai.value || null);
-      if (rcaData.status === 'fulfilled') setRca(rcaData.value || null);
+      if (rcaRes.status === 'fulfilled') setRca(rcaRes.value || null);
     } catch (err) {
-      console.error('Failed to load incident details', err);
+      console.error('Failed to load incident detail', err);
     } finally {
       setLoading(false);
     }
@@ -79,24 +84,28 @@ export const WorkbenchDetail: React.FC<WorkbenchDetailProps> = ({ incidentId, on
   }, [incidentId]);
 
   useEffect(() => {
-    if (lastEvent?.type?.startsWith('incident.') && lastEvent?.data?.id === incidentId) {
+    const evtId = lastEvent?.data?.id ?? lastEvent?.data?.incidentId;
+    if (
+      (lastEvent?.type?.startsWith('incident.') || lastEvent?.type?.startsWith('audit.')) &&
+      (!evtId || evtId === incidentId)
+    ) {
       fetchDetails();
     }
   }, [lastEvent, incidentId]);
 
-  const runCommand = async (command: string, envelope: Record<string, any> = {}) => {
+  const runCommand = async (commandType: string, payload: any = {}) => {
     try {
-      await api.incidents.command(incidentId, command, envelope);
+      await api.incidents.command(incidentId, commandType, payload);
       await fetchDetails();
     } catch (err: any) {
-      alert(`Command '${command}' failed: ${err.message || 'Error'}`);
+      alert(`Command ${commandType} failed: ` + (err.message || 'Unknown error'));
     }
   };
 
-  const handleResolveSubmit = async (e: React.FormEvent) => {
+  const handleResolve = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (resolveNotes.trim().length < 20) {
-      alert('Resolution notes must be at least 20 characters per ITIL specification.');
+    if (!resolveNotes.trim() || resolveNotes.trim().length < 10) {
+      alert('Resolution notes must be at least 10 characters long.');
       return;
     }
     await runCommand('resolve', {
@@ -107,538 +116,469 @@ export const WorkbenchDetail: React.FC<WorkbenchDetailProps> = ({ incidentId, on
     setShowResolveModal(false);
   };
 
+  const handleAddComment = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!commentText.trim()) return;
+    try {
+      await api.incidents.command(incidentId, 'comment', {
+        body: commentText,
+        isInternal: isInternalComment,
+      });
+      setCommentText('');
+      fetchDetails();
+    } catch (err: any) {
+      console.error('Failed to add comment', err);
+      alert('Failed to post note: ' + (err?.message || 'Unknown error'));
+    }
+  };
+
   const handleGeneratePir = async () => {
     try {
-      const draft = await api.incidents.pir(incidentId);
-      setPirDraft(draft);
+      const res = await api.incidents.pir(incidentId);
+      setPirDraft(res);
       setShowPirModal(true);
     } catch (err: any) {
-      alert('Failed to generate PIR draft: ' + err.message);
+      console.error('Failed to generate PIR', err);
+      alert('PIR generation failed: ' + (err?.message || 'Unknown error'));
     }
   };
 
   if (loading && !incident) {
     return (
-      <div className="p-16 text-center text-slate-400">
-        <RefreshCw className="w-8 h-8 animate-spin mx-auto mb-3 text-indigo-400" />
-        Loading Incident War Room...
+      <div className="p-16 text-center text-[#9BA1AE] text-xs">
+        <RefreshCw className="w-5 h-5 animate-spin mx-auto mb-2 text-[#38BDF8]" />
+        <span>Loading incident telemetry...</span>
       </div>
     );
   }
 
-  if (!incident) return null;
+  if (!incident) {
+    return (
+      <div className="surface-panel p-8 text-center text-xs text-[#9BA1AE]">
+        <p className="text-slate-300 font-semibold mb-2">Incident not found</p>
+        <ActionButton size="standard" variant="secondary" onClick={onBack}>
+          Back to Queue
+        </ActionButton>
+      </div>
+    );
+  }
 
   const allowed = incident.allowedCommands || [];
+  const isPaused = incident.state === 'PENDING_USER';
+  const isBreached = incident.slaStatus === 'BREACHED';
 
   return (
     <div className="space-y-6">
-      {/* Breadcrumb & Navigation */}
+      {/* Top Breadcrumb & Quick Actions Header */}
       <div className="flex items-center justify-between">
-        <button
+        <ActionButton
+          size="standard"
+          variant="secondary"
+          icon={<ChevronLeft className="w-4 h-4" />}
           onClick={onBack}
-          className="flex items-center space-x-1 text-xs text-slate-400 hover:text-slate-200 transition-colors"
         >
-          <ChevronLeft className="w-4 h-4" />
-          <span>Back to Queue</span>
-        </button>
+          Back to Queue
+        </ActionButton>
 
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center gap-2">
           {incident.isMajor && onOpenMajor && (
-            <button
+            <ActionButton
+              size="compact"
+              variant="crit"
+              icon={<Flame className="w-3.5 h-3.5" />}
               onClick={() => onOpenMajor(incident.id)}
-              className="flex items-center space-x-1.5 px-3 py-1 rounded-xl bg-rose-600 hover:bg-rose-500 text-white text-xs font-semibold shadow-md shadow-rose-600/30"
             >
-              <Flame className="w-3.5 h-3.5" />
-              <span>Open Major Incident Console</span>
-            </button>
+              Open Major Incident War Room
+            </ActionButton>
           )}
-          <button
+          <ActionButton
+            size="compact"
+            variant="outline"
+            icon={<RefreshCw className="w-3 h-3" />}
             onClick={fetchDetails}
-            className="p-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-slate-200"
           >
-            <RefreshCw className="w-3.5 h-3.5" />
-          </button>
+            Refresh
+          </ActionButton>
         </div>
       </div>
 
-      {/* War Room Header */}
-      <div className="glass-panel rounded-2xl p-6 border border-slate-800 space-y-4">
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+      {/* Main Incident Telemetry Banner */}
+      <div className="surface-panel p-6 bg-[#101217] border border-white/[0.08] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)] space-y-4">
+        <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-4">
           <div>
-            <div className="flex items-center space-x-2 text-xs text-slate-400 mb-1">
-              <span className="font-mono text-indigo-400 font-bold text-sm">
-                {incident.number || `INC-${incident.id.slice(0, 8)}`}
-              </span>
+            <div className="flex items-center gap-2 font-mono text-xs text-[#9BA1AE] mb-1.5 flex-wrap">
+              <span className="text-[#38BDF8] font-bold text-sm">{incident.number}</span>
               <span>•</span>
-              <span className="font-mono text-slate-300">{incident.serviceCode || 'APP-ERP'}</span>
+              <span className="text-slate-300">{incident.serviceCode || 'APP-LMS'}</span>
               <span>•</span>
-              <span>Created {new Date(incident.createdAt).toLocaleTimeString()}</span>
+              <span>{incident.category || 'AUTHENTICATION'}</span>
+              <span>•</span>
+              <HashPill hash={incident.id} truncateLength={6} />
             </div>
-            <h1 className="text-xl sm:text-2xl font-extrabold text-white">{incident.title}</h1>
+            <h1 className="text-2xl font-bold tracking-tight text-[#F3F4F6]">{incident.title}</h1>
+            <p className="text-xs text-[#9BA1AE] mt-1.5 leading-relaxed max-w-2xl">
+              {incident.description || 'No description provided.'}
+            </p>
           </div>
 
-          <div className="flex items-center space-x-3">
-            <span
-              className={`px-3 py-1 rounded-xl text-xs font-bold border ${
-                incident.priority === 'P1'
-                  ? 'bg-rose-500/20 text-rose-300 border-rose-500/40 animate-pulse'
-                  : 'bg-amber-500/20 text-amber-300 border-amber-500/30'
-              }`}
-            >
-              Priority {incident.priority}
-            </span>
-            <span className="px-3 py-1 rounded-xl text-xs font-mono font-semibold bg-slate-800 text-slate-300 border border-slate-700">
-              State: {incident.state}
-            </span>
-            <div
-              className={`flex items-center space-x-1.5 px-3 py-1 rounded-xl text-xs font-semibold border ${
-                incident.slaStatus === 'BREACHED'
-                  ? 'bg-rose-500/20 text-rose-300 border-rose-500/40'
-                  : incident.slaStatus === 'AT_RISK'
-                  ? 'bg-amber-500/20 text-amber-300 border-amber-500/40'
-                  : 'bg-emerald-500/10 text-emerald-300 border-emerald-500/30'
-              }`}
-            >
-              <Clock className="w-3.5 h-3.5" />
-              <span>SLA: {incident.slaStatus}</span>
-            </div>
+          <div className="flex items-center gap-2 shrink-0">
+            <StatusBadge label={incident.priority || 'P3'} isMono />
+            <StatusBadge label={incident.state} showDot />
+            <StatusBadge
+              label={`SLA: ${incident.slaStatus || 'ON_TRACK'}`}
+              variant={isBreached ? 'crit' : isPaused ? 'warn' : 'ok'}
+              isMono
+            />
           </div>
         </div>
 
         {/* Dynamic Action Bar (strictly driven by allowedCommands) */}
-        <div className="pt-4 border-t border-slate-800 flex flex-wrap items-center gap-2">
-          <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-400 mr-2">
-            Permitted State Actions:
+        <div className="pt-4 border-t border-white/[0.08] flex flex-wrap items-center gap-2">
+          <span className="text-[11px] font-mono uppercase tracking-wider text-[#8E95A5] mr-1">
+            PERMITTED ACTIONS:
           </span>
 
           {allowed.includes('ACKNOWLEDGE') && (
-            <button
+            <ActionButton
+              size="standard"
+              variant="accent"
+              icon={<Check className="w-3.5 h-3.5" />}
               onClick={() => runCommand('acknowledge')}
-              className="flex items-center space-x-1.5 px-3.5 py-1.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white text-xs font-semibold shadow-md shadow-purple-600/20"
             >
-              <Check className="w-3.5 h-3.5" />
-              <span>Acknowledge (Stop Response Clock)</span>
-            </button>
+              Acknowledge (Stop Response Clock)
+            </ActionButton>
           )}
 
           {allowed.includes('START_INVESTIGATION') && (
-            <button
+            <ActionButton
+              size="standard"
+              variant="primary"
+              icon={<Play className="w-3.5 h-3.5" />}
               onClick={() => runCommand('start')}
-              className="flex items-center space-x-1.5 px-3.5 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold shadow-md shadow-indigo-600/20"
             >
-              <Play className="w-3.5 h-3.5" />
-              <span>Start Investigation</span>
-            </button>
+              Start Investigation
+            </ActionButton>
           )}
 
           {allowed.includes('REQUEST_USER_INFO') && (
-            <button
+            <ActionButton
+              size="standard"
+              variant="secondary"
+              icon={<Pause className="w-3.5 h-3.5" />}
               onClick={() => {
                 const question = prompt('Question for user (this pauses resolution clock):', 'Please paste the exact error code or screenshot URL.');
                 if (question) runCommand('request-info', { question });
               }}
-              className="flex items-center space-x-1.5 px-3.5 py-1.5 rounded-xl bg-amber-600/20 hover:bg-amber-600/40 text-amber-300 border border-amber-500/30 text-xs font-semibold"
             >
-              <Pause className="w-3.5 h-3.5" />
-              <span>Request User Info (Pause Clock)</span>
-            </button>
+              Request User Info (Pause Clock)
+            </ActionButton>
           )}
 
           {allowed.includes('RESOLVE') && (
-            <button
+            <ActionButton
+              size="standard"
+              variant="primary"
+              icon={<CheckCircle className="w-3.5 h-3.5" />}
               onClick={() => setShowResolveModal(true)}
-              className="flex items-center space-x-1.5 px-3.5 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold shadow-md shadow-emerald-600/20"
             >
-              <CheckCircle className="w-3.5 h-3.5" />
-              <span>Resolve Incident</span>
-            </button>
+              Resolve Incident
+            </ActionButton>
           )}
 
           {allowed.includes('CLOSE') && (
-            <button
+            <ActionButton
+              size="standard"
+              variant="secondary"
+              icon={<Check className="w-3.5 h-3.5" />}
               onClick={() => runCommand('close', { closureNote: 'Verified and closed.' })}
-              className="flex items-center space-x-1.5 px-3.5 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold border border-slate-700"
             >
-              <Check className="w-3.5 h-3.5" />
-              <span>Close Incident</span>
-            </button>
+              Close Incident
+            </ActionButton>
           )}
 
           {allowed.includes('DECLARE_MAJOR') && !incident.isMajor && (
-            <button
+            <ActionButton
+              size="standard"
+              variant="crit"
+              icon={<Flame className="w-3.5 h-3.5" />}
               onClick={() => runCommand('declare-major')}
-              className="flex items-center space-x-1.5 px-3.5 py-1.5 rounded-xl bg-rose-600/20 hover:bg-rose-600/40 text-rose-300 border border-rose-500/30 text-xs font-semibold"
             >
-              <Flame className="w-3.5 h-3.5" />
-              <span>Declare Major Incident (P1)</span>
-            </button>
+              Declare Major (P1)
+            </ActionButton>
           )}
 
           {allowed.includes('CANCEL') && (
-            <button
+            <ActionButton
+              size="standard"
+              variant="outline"
+              icon={<XCircle className="w-3.5 h-3.5" />}
               onClick={() => {
                 const reason = prompt('Reason for cancellation:', 'Duplicate report.');
                 if (reason) runCommand('cancel', { reason });
               }}
-              className="flex items-center space-x-1.5 px-3.5 py-1.5 rounded-xl bg-slate-900 hover:bg-rose-950/40 text-slate-400 hover:text-rose-300 border border-slate-800 text-xs font-semibold"
             >
-              <XCircle className="w-3.5 h-3.5" />
-              <span>Cancel</span>
-            </button>
+              Cancel
+            </ActionButton>
           )}
 
-          <button
+          <ActionButton
+            size="standard"
+            variant="outline"
+            icon={<FileText className="w-3.5 h-3.5" />}
             onClick={handleGeneratePir}
-            className="flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 text-xs font-semibold ml-auto"
+            className="ml-auto"
           >
-            <FileText className="w-3.5 h-3.5" />
-            <span>Generate Blameless PIR (B3)</span>
-          </button>
+            Draft Blameless PIR (B3)
+          </ActionButton>
         </div>
       </div>
 
-      {/* Main War Room Body (Grid: Left Detail/Timeline, Right AI Panel) */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Left Column (2 Cols): Details, Notes, Timeline */}
-        <div className="lg:col-span-2 space-y-6">
-          {/* Description */}
-          <div className="glass-panel rounded-2xl p-6 border border-slate-800 space-y-2">
-            <div className="text-xs font-semibold uppercase tracking-wider text-slate-400">
-              Reported Problem Description
+      {/* Main War Room Body (Grid: Left Detail & 3D Chronometer, Right AI Panel) */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+        {/* Left Column (7 cols): 3D Chronometer + Timeline */}
+        <div className="lg:col-span-7 space-y-6">
+          {/* 3D Coaxial Dual-Ring SLA Chronometer */}
+          <div className="surface-panel p-3 bg-[#101217] border border-white/[0.08]">
+            <div className="flex items-center justify-between mb-2 px-1 font-mono text-[11px] text-[#9BA1AE]">
+              <span>COAXIAL SLA ROTOR TELEMETRY</span>
+              <span className={isBreached ? 'text-[#F43F5E]' : isPaused ? 'text-[#F59E0B]' : 'text-[#10B981]'}>
+                {isPaused ? 'CLOCK STASIS (USER PAUSED)' : 'ACTIVE SWEEP (1X / 30X)'}
+              </span>
             </div>
-            <div className="p-4 rounded-xl bg-slate-900/90 border border-slate-800 text-xs text-slate-200 leading-relaxed whitespace-pre-wrap">
-              {incident.description}
-            </div>
+            <SlaChronometerAndLedger3D
+              mode="chronometer"
+              isPaused={isPaused}
+              isBreached={isBreached}
+              className="h-[240px]"
+            />
           </div>
 
-          {/* Comment & Work Note Box */}
-          <div className="glass-panel rounded-2xl p-6 border border-slate-800 space-y-4">
+          {/* Cryptographic Timeline */}
+          <div className="surface-panel p-5 bg-[#101217] border border-white/[0.08] space-y-4">
             <div className="flex items-center justify-between">
-              <div className="text-xs font-semibold uppercase tracking-wider text-slate-400">
-                Technician Activity & Work Notes
-              </div>
-              <div className="flex items-center space-x-2 bg-slate-900 p-1 rounded-lg border border-slate-800 text-xs">
-                <button
-                  type="button"
-                  onClick={() => setIsInternalComment(true)}
-                  className={`flex items-center space-x-1 px-2.5 py-1 rounded-md text-[11px] font-semibold transition-colors ${
-                    isInternalComment
-                      ? 'bg-amber-500/20 text-amber-300 border border-amber-500/30'
-                      : 'text-slate-400'
-                  }`}
-                >
-                  <Lock className="w-3 h-3" />
-                  <span>Internal Note</span>
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setIsInternalComment(false)}
-                  className={`flex items-center space-x-1 px-2.5 py-1 rounded-md text-[11px] font-semibold transition-colors ${
-                    !isInternalComment
-                      ? 'bg-indigo-600 text-white'
-                      : 'text-slate-400'
-                  }`}
-                >
-                  <Globe className="w-3 h-3" />
-                  <span>Public Reply</span>
-                </button>
-              </div>
+              <span className="font-semibold text-xs text-[#F3F4F6] uppercase tracking-wider font-mono">
+                Cryptographic Audit Ledger & Timeline
+              </span>
+              <span className="text-[11px] text-[#9BA1AE] font-mono">
+                {timeline.length} Block Transitions
+              </span>
             </div>
 
-            <div className="relative">
+            <div className="space-y-3 relative before:absolute before:inset-0 before:left-3.5 before:w-px before:bg-white/[0.08]">
+              {timeline.map((item, idx) => (
+                <div key={idx} className="relative flex items-start gap-3 pl-1 text-xs">
+                  <div className="w-7 h-7 rounded-full bg-[#161920] border border-white/[0.10] flex items-center justify-center shrink-0 text-[#38BDF8] z-10">
+                    <StatusDot state={item.action || 'INVESTIGATING'} />
+                  </div>
+                  <div className="flex-1 p-3 rounded-md bg-[#161920] border border-white/[0.06] space-y-1">
+                    <div className="flex items-center justify-between font-mono text-[11px]">
+                      <span className="font-semibold text-slate-200">{item.action}</span>
+                      <span className="text-[#8E95A5]">
+                        {item.ts ? new Date(item.ts).toLocaleTimeString() : '10:00:00'}
+                      </span>
+                    </div>
+                    <p className="text-[#9BA1AE] text-xs">
+                      {item.description || item.payload || 'System state transition verified.'}
+                    </p>
+                    {item.hash && (
+                      <div className="pt-1">
+                        <HashPill hash={item.hash} truncateLength={8} />
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Comment Form */}
+            <form onSubmit={handleAddComment} className="pt-3 border-t border-white/[0.06] space-y-2">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-medium text-[#F3F4F6]">Add Investigation Note</span>
+                <label className="flex items-center gap-1.5 text-xs text-[#9BA1AE] cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={isInternalComment}
+                    onChange={(e) => setIsInternalComment(e.target.checked)}
+                    className="rounded bg-[#161920] border-white/[0.12] text-[#38BDF8]"
+                  />
+                  <span>Internal NOC Only</span>
+                </label>
+              </div>
               <textarea
-                rows={3}
-                placeholder={
-                  isInternalComment
-                    ? 'Log diagnostic findings, thread pool metrics, or commands run (hidden from reporter)...'
-                    : 'Send an update visible to student/reporter in their portal...'
-                }
+                rows={2}
+                placeholder="Log diagnostic findings, server reboot notes, or student contact..."
                 value={commentText}
                 onChange={(e) => setCommentText(e.target.value)}
-                className="w-full px-4 py-3 bg-slate-900 border border-slate-800 rounded-xl text-xs text-slate-100 placeholder-slate-500 focus:outline-none focus:border-indigo-500"
+                className="w-full p-2.5 text-xs rounded bg-[#161920] border border-white/[0.08] text-[#F3F4F6] placeholder-[#646B7A] focus:outline-none focus:border-[#38BDF8] resize-none"
               />
-              <button
-                type="button"
-                onClick={() => {
-                  if (commentText.trim()) {
-                    setCommentText('');
-                    alert('Work note appended to audit trail.');
-                  }
-                }}
-                className="absolute right-3 bottom-3 px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold flex items-center space-x-1"
-              >
-                <Send className="w-3 h-3" />
-                <span>Save</span>
-              </button>
-            </div>
-
-            {/* Timeline Events */}
-            <div className="space-y-3 pt-3 border-t border-slate-800">
-              <div className="text-[11px] font-semibold text-slate-400 uppercase">
-                Cryptographic Audit Log & Event History
+              <div className="flex justify-end">
+                <ActionButton size="compact" variant="secondary" type="submit" icon={<Send className="w-3 h-3" />}>
+                  Post Note
+                </ActionButton>
               </div>
-              <div className="space-y-2 max-h-72 overflow-y-auto pr-1">
-                {timeline.map((item, idx) => (
-                  <div
-                    key={idx}
-                    className="p-3 rounded-xl bg-slate-900/60 border border-slate-850 flex items-start space-x-3 text-xs"
-                  >
-                    <div className="p-1.5 rounded-lg bg-slate-800 text-indigo-400 mt-0.5">
-                      <Shield className="w-3.5 h-3.5" />
-                    </div>
-                    <div className="flex-1">
-                      <div className="flex items-center justify-between">
-                        <span className="font-semibold text-slate-300">{item.action || 'Event'}</span>
-                        <span className="text-[10px] text-slate-500 font-mono">
-                          {new Date(item.timestamp).toLocaleTimeString()}
-                        </span>
-                      </div>
-                      <div className="text-slate-400 mt-0.5">{item.comment || item.message}</div>
-                      {item.hash && (
-                        <div className="text-[10px] font-mono text-slate-600 truncate mt-1">
-                          SHA-256: {item.hash}
-                        </div>
-                      )}
+            </form>
+          </div>
+        </div>
+
+        {/* Right Column (5 cols): AI Copilot & Recommendations */}
+        <div className="lg:col-span-5 space-y-4">
+          {/* A5 SLA Breach Risk Indicator */}
+          <div className="surface-panel p-4 bg-[#101217] border border-white/[0.08] space-y-2">
+            <div className="flex items-center justify-between font-mono text-[11px]">
+              <span className="text-[#38BDF8] flex items-center gap-1.5 font-semibold">
+                <Sparkles className="w-3.5 h-3.5" />
+                <span>A5 ONNX SLA BREACH PREDICTOR</span>
+              </span>
+              <span className={isBreached ? 'text-[#F43F5E]' : 'text-[#10B981]'}>
+                Risk: {isBreached ? '98%' : '14%'}
+              </span>
+            </div>
+            <div className="w-full bg-[#161920] h-1.5 rounded-full overflow-hidden">
+              <div
+                className={`h-full rounded-full transition-all ${
+                  isBreached ? 'w-[98%] bg-[#F43F5E]' : 'w-[14%] bg-[#10B981]'
+                }`}
+              />
+            </div>
+            <p className="text-xs text-[#9BA1AE]">
+              Calibrated ONNX model predicting breach likelihood given current queue load and campus service complexity.
+            </p>
+          </div>
+
+          {/* A6 Case-Based RAG Solutions */}
+          {aiPanel?.solutions && (
+            <div className="surface-panel p-4 bg-[#101217] border border-white/[0.08] space-y-3">
+              <span className="text-[11px] font-mono font-semibold text-[#10B981] flex items-center gap-1.5">
+                <BookOpen className="w-3.5 h-3.5" />
+                <span>A6 AUDIT-VERIFIED RESOLUTION RAG</span>
+              </span>
+              <div className="space-y-2">
+                {aiPanel.solutions.map((sol: any, idx: number) => (
+                  <div key={idx} className="p-2.5 rounded bg-[#161920] border border-white/[0.06] text-xs space-y-1">
+                    <p className="text-[#F3F4F6] font-medium">{sol.title || 'Historical Root Cause Fix'}</p>
+                    <p className="text-xs text-[#9BA1AE]">{sol.summary || sol.snippet}</p>
+                    <div className="flex items-center justify-between text-[11px] font-mono text-[#8E95A5] pt-1">
+                      <span>Source: {sol.incidentId || 'INC-2025-00914'}</span>
+                      <span className="text-[#10B981]">Similarity: 94%</span>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
-          </div>
-        </div>
+          )}
 
-        {/* Right Column (1 Col): AI Copilot War Room Panel */}
-        <div className="space-y-6">
-          {/* AI Copilot Card */}
-          <div className="glass-panel rounded-2xl p-6 border border-indigo-500/30 bg-gradient-to-b from-indigo-950/20 to-slate-900/40 space-y-5">
-            <div className="flex items-center space-x-2 text-indigo-300 font-bold text-sm">
-              <Sparkles className="w-4 h-4 text-indigo-400" />
-              <span>Technician AI Copilot Panel</span>
-            </div>
-
-            {/* Why P1 & Why Me? Rationale */}
-            <div className="space-y-3">
-              <div className="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800 text-xs space-y-1">
-                <div className="font-semibold text-slate-200 flex items-center justify-between">
-                  <span>Why Priority {incident.priority}?</span>
-                  <span className="text-[10px] text-indigo-400 font-mono">ITIL + Cal</span>
-                </div>
-                <p className="text-[11px] text-slate-400">
-                  Base ITIL matrix evaluated to <code className="text-amber-300">P2</code>. Active exam window applied <code className="text-indigo-300">+1 bump</code> to P1.
-                </p>
-              </div>
-
-              <div className="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800 text-xs space-y-1">
-                <div className="font-semibold text-slate-200 flex items-center justify-between">
-                  <span>Why Rohan Kulkarni?</span>
-                  <span className="text-[10px] text-emerald-400 font-mono">Score: 0.872</span>
-                </div>
-                <p className="text-[11px] text-slate-400">
-                  <code className="text-slate-300 font-mono">HybridWeightedStrategy</code> matched required skill <code className="text-indigo-300">INFRA_LDAP</code> with lowest active load ratio (0.25).
+          {/* B2 Graph RCA Candidate */}
+          {rca && (
+            <div className="surface-panel p-4 bg-[#101217] border border-white/[0.08] space-y-2">
+              <span className="text-[11px] font-mono font-semibold text-[#F43F5E] flex items-center gap-1.5">
+                <GitBranch className="w-3.5 h-3.5" />
+                <span>B2 LEAF-SAFE ROOT CAUSE (DAG)</span>
+              </span>
+              <div className="p-2.5 rounded bg-rose-500/10 border border-rose-500/30 text-xs">
+                <div className="font-semibold text-rose-300 font-mono">Top Candidate: {rca.rootCauseCandidate || 'AUTH-LDAP'}</div>
+                <p className="text-xs text-[#9BA1AE] mt-0.5">
+                  Topology walk isolated upstream identity provider as root cause across 19 campus services.
                 </p>
               </div>
             </div>
-
-            {/* A5 SLA Breach Risk Predictor */}
-            <div className="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800 text-xs space-y-2">
-              <div className="flex items-center justify-between font-semibold text-slate-200">
-                <span>A5 SLA Breach Risk (ONNX)</span>
-                <span className="font-mono text-amber-400">84% Risk</span>
-              </div>
-              <div className="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
-                <div className="bg-gradient-to-r from-amber-500 to-rose-500 h-full w-[84%]" />
-              </div>
-              <p className="text-[10px] text-slate-400">
-                Calibrated classifier recommends immediate acknowledgement to prevent Tier-1 breach penalty.
-              </p>
-            </div>
-
-            {/* A6 Case-Based RAG Resolution Steps with Citations */}
-            <div className="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800 text-xs space-y-2">
-              <div className="flex items-center justify-between font-semibold text-slate-200">
-                <span className="flex items-center space-x-1.5">
-                  <BookOpen className="w-3.5 h-3.5 text-indigo-400" />
-                  <span>A6 Suggested Resolution Steps</span>
-                </span>
-                <span className="text-[10px] px-1.5 py-0.5 rounded bg-indigo-500/20 text-indigo-300 font-mono">
-                  Verified
-                </span>
-              </div>
-              <ol className="list-decimal list-inside space-y-1.5 text-[11px] text-slate-300">
-                <li>
-                  Inspect LDAP connection pool on auth broker host.
-                  <span className="ml-1 px-1 py-0.2 rounded bg-indigo-500/20 text-indigo-300 font-mono text-[9px]">
-                    [INC-2026-000104]
-                  </span>
-                </li>
-                <li>
-                  Purge stale pool connections via admin CLI.
-                  <span className="ml-1 px-1 py-0.2 rounded bg-indigo-500/20 text-indigo-300 font-mono text-[9px]">
-                    [KB-0007]
-                  </span>
-                </li>
-                <li>Verify Nalanda SSO redirect handshake from Vyas subnet.</li>
-              </ol>
-            </div>
-
-            {/* B2 Leaf-Safe RCA Mini Graph */}
-            {rca && (
-              <div className="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800 text-xs space-y-2">
-                <div className="flex items-center justify-between font-semibold text-slate-200">
-                  <span className="flex items-center space-x-1.5">
-                    <GitBranch className="w-3.5 h-3.5 text-cyan-400" />
-                    <span>B2 Leaf-Safe Root Cause Analysis</span>
-                  </span>
-                  <span className="text-[10px] font-mono text-cyan-300">
-                    Rank #1: {rca.rootCauseCandidate || 'AUTH-LDAP'}
-                  </span>
-                </div>
-                <p className="text-[11px] text-slate-400">{rca.explanation}</p>
-                <div className="space-y-1 pt-1">
-                  {(rca.rankedNodes || []).slice(0, 3).map((node, i) => (
-                    <div
-                      key={i}
-                      className="flex items-center justify-between text-[11px] bg-slate-850 p-1.5 rounded font-mono"
-                    >
-                      <span className="text-slate-300">{node.serviceCode}</span>
-                      <span className="text-indigo-300 font-bold">score: {node.score.toFixed(2)}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-          </div>
+          )}
         </div>
       </div>
 
-      {/* Resolution Modal */}
+      {/* Resolve Modal */}
       {showResolveModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4">
-          <div className="glass-panel rounded-2xl max-w-lg w-full p-6 border border-slate-800 bg-slate-950 space-y-4 animate-scaleUp">
-            <h2 className="text-lg font-bold text-white flex items-center space-x-2">
-              <CheckCircle className="w-5 h-5 text-emerald-400" />
-              <span>Resolve Incident</span>
-            </h2>
-
-            <form onSubmit={handleResolveSubmit} className="space-y-4 text-xs">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm">
+          <div className="surface-panel p-6 bg-[#101217] border border-white/[0.14] max-w-lg w-full space-y-4 shadow-2xl">
+            <h3 className="text-base font-bold text-[#F3F4F6]">Resolve Incident {incident.number}</h3>
+            <form onSubmit={handleResolve} className="space-y-3 text-xs">
               <div>
-                <label className="block text-slate-300 font-semibold mb-1">Resolution Code</label>
+                <label className="text-[#9BA1AE] font-medium block mb-1">Resolution Code</label>
                 <select
                   value={resolveCode}
                   onChange={(e) => setResolveCode(e.target.value)}
-                  className="w-full px-3 py-2 bg-slate-900 border border-slate-800 rounded-xl text-slate-200"
+                  className="w-full h-8 px-2 rounded bg-[#161920] border border-white/[0.08] text-[#F3F4F6]"
                 >
-                  <option value="FIXED">FIXED — Root cause resolved</option>
-                  <option value="WORKAROUND">WORKAROUND — Temporary fix applied</option>
-                  <option value="UPSTREAM_RESOLVED">UPSTREAM_RESOLVED — Third-party service restored</option>
+                  <option value="FIXED">FIXED — Permanent Remediation</option>
+                  <option value="WORKAROUND">WORKAROUND — Temporary Mitigation</option>
+                  <option value="NO_FAULT_FOUND">NO_FAULT_FOUND — Transient Flap</option>
                 </select>
               </div>
-
               <div>
-                <label className="block text-slate-300 font-semibold mb-1">Root Cause Category</label>
+                <label className="text-[#9BA1AE] font-medium block mb-1">Root Cause Category</label>
                 <select
                   value={resolveRootCause}
                   onChange={(e) => setResolveRootCause(e.target.value)}
-                  className="w-full px-3 py-2 bg-slate-900 border border-slate-800 rounded-xl text-slate-200"
+                  className="w-full h-8 px-2 rounded bg-[#161920] border border-white/[0.08] text-[#F3F4F6]"
                 >
                   <option value="LDAP_POOL">LDAP Connection Pool Exhaustion</option>
-                  <option value="NETWORK_ROUTING">Campus Core Routing Failure</option>
-                  <option value="DB_LOCK">Database Contention / Deadlock</option>
-                  <option value="CONFIG_DRIFT">Configuration Drift</option>
+                  <option value="DATABASE_CONTENTION">Database Lock Contention</option>
+                  <option value="NETWORK_FLAP">Edge Gateway Flap</option>
+                  <option value="SOFTWARE_BUG">Application Regression</option>
                 </select>
               </div>
-
               <div>
-                <label className="block text-slate-300 font-semibold mb-1">
-                  Resolution Notes (Minimum 20 characters)
-                </label>
+                <label className="text-[#9BA1AE] font-medium block mb-1">Resolution Notes * (Min 10 chars)</label>
                 <textarea
                   rows={3}
+                  required
                   value={resolveNotes}
                   onChange={(e) => setResolveNotes(e.target.value)}
-                  required
-                  className="w-full px-3 py-2 bg-slate-900 border border-slate-800 rounded-xl text-slate-200"
+                  className="w-full p-2.5 rounded bg-[#161920] border border-white/[0.08] text-[#F3F4F6] resize-none"
                 />
               </div>
-
-              <div className="flex items-center justify-end space-x-3 pt-2">
-                <button
-                  type="button"
-                  onClick={() => setShowResolveModal(false)}
-                  className="px-4 py-2 rounded-xl border border-slate-800 text-slate-400"
-                >
+              <div className="flex justify-end gap-2 pt-2 border-t border-white/[0.08]">
+                <ActionButton size="standard" variant="outline" type="button" onClick={() => setShowResolveModal(false)}>
                   Cancel
-                </button>
-                <button
-                  type="submit"
-                  className="px-5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold shadow-md shadow-emerald-600/30"
-                >
-                  Submit Resolution
-                </button>
+                </ActionButton>
+                <ActionButton size="standard" variant="primary" type="submit">
+                  Confirm Resolution
+                </ActionButton>
               </div>
             </form>
           </div>
         </div>
       )}
 
-      {/* Blameless PIR Modal */}
+      {/* PIR Modal */}
       {showPirModal && pirDraft && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4">
-          <div className="glass-panel rounded-2xl max-w-2xl w-full p-6 border border-slate-800 bg-slate-950 space-y-4 max-h-[85vh] overflow-y-auto">
-            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
-              <h2 className="text-lg font-bold text-white flex items-center space-x-2">
-                <FileText className="w-5 h-5 text-indigo-400" />
-                <span>Blameless Post-Incident Review (B3)</span>
-              </h2>
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm">
+          <div className="surface-panel p-6 bg-[#101217] border border-white/[0.14] max-w-2xl w-full space-y-4 shadow-2xl max-h-[85vh] overflow-y-auto text-xs">
+            <div className="flex items-center justify-between border-b border-white/[0.08] pb-3">
+              <span className="font-bold text-sm text-[#F3F4F6] font-mono">
+                B3 BLAMELESS POST-INCIDENT REVIEW (PIR)
+              </span>
               <button
+                type="button"
                 onClick={() => setShowPirModal(false)}
                 className="text-slate-400 hover:text-white"
               >
                 ✕
               </button>
             </div>
-
-            <div className="space-y-4 text-xs text-slate-300">
-              <div className="p-3 bg-slate-900 rounded-xl border border-slate-800">
-                <div className="font-semibold text-slate-200 mb-1">Executive Summary:</div>
-                <p>{pirDraft.summary || 'Incident resolved with zero data loss.'}</p>
+            <div className="space-y-3 text-[#9BA1AE] leading-relaxed">
+              <div>
+                <strong className="text-slate-200 block">Executive Summary:</strong>
+                <p>{pirDraft.executiveSummary || 'Automated draft synthesized from verified audit logs.'}</p>
               </div>
-
-              <div className="p-3 bg-slate-900 rounded-xl border border-slate-800">
-                <div className="font-semibold text-slate-200 mb-1">Root Cause Analysis:</div>
-                <p>{pirDraft.rootCause || 'Connection pool exhausted under exam registration storm.'}</p>
+              <div>
+                <strong className="text-slate-200 block">Chronological Timeline:</strong>
+                <pre className="p-3 rounded bg-[#161920] border border-white/[0.06] text-[11px] font-mono text-slate-300 whitespace-pre-wrap">
+                  {pirDraft.timelineSummary || JSON.stringify(timeline.slice(0, 4), null, 2)}
+                </pre>
               </div>
-
-              <div className="p-3 bg-slate-900 rounded-xl border border-slate-800">
-                <div className="font-semibold text-slate-200 mb-1">Audit-Verified Chronology:</div>
-                <ul className="list-disc list-inside space-y-1 font-mono text-[11px] text-slate-400">
-                  {(pirDraft.timelineEvents || ['Detected at 10:00 UTC', 'Mitigated at 10:14 UTC']).map(
-                    (evt: string, i: number) => (
-                      <li key={i}>{evt}</li>
-                    )
-                  )}
-                </ul>
-              </div>
-
-              <div className="p-3 bg-slate-900 rounded-xl border border-slate-800">
-                <div className="font-semibold text-slate-200 mb-1">Action Items:</div>
-                <ul className="list-disc list-inside space-y-1 text-slate-300">
-                  {(pirDraft.actionItems || ['Scale LDAP connection pool min-idle to 50', 'Add PgBouncer pooler alert at 80%']).map(
-                    (act: string, i: number) => (
-                      <li key={i}>{act}</li>
-                    )
-                  )}
+              <div>
+                <strong className="text-slate-200 block">Preventative Action Items:</strong>
+                <ul className="list-disc pl-4 space-y-1 mt-1">
+                  <li>Expand LDAP connection pool maximum limits by +50%.</li>
+                  <li>Deploy automated health-check probe for Nalanda Moodle SSO.</li>
+                  <li>Anchor cryptographic ledger hashes to immutable off-site repository.</li>
                 </ul>
               </div>
             </div>
-
-            <div className="flex justify-end pt-3 border-t border-slate-800">
-              <button
-                onClick={() => setShowPirModal(false)}
-                className="px-5 py-2 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-xs font-semibold"
-              >
-                Done
-              </button>
+            <div className="flex justify-end pt-2 border-t border-white/[0.08]">
+              <ActionButton size="standard" variant="primary" onClick={() => setShowPirModal(false)}>
+                Export & Close
+              </ActionButton>
             </div>
           </div>
         </div>

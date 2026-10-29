@@ -4,48 +4,70 @@
 
 @layer base {
   :root {
-    --background: 222 47% 7%;
-    --foreground: 210 40% 98%;
-    --card: 222 47% 11%;
-    --card-foreground: 210 40% 98%;
-    --primary: 239 84% 67%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 217 33% 18%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217 33% 18%;
-    --muted-foreground: 215 20% 65%;
-    --accent: 217 33% 22%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217 33% 20%;
-    --radius: 0.75rem;
+    --bg-canvas: #090A0D;
+    --bg-surface-1: #101217;
+    --bg-surface-2: #161920;
+    --bg-surface-3: #1D212A;
+    --hairline-soft: rgba(255, 255, 255, 0.07);
+    --hairline-strong: rgba(255, 255, 255, 0.14);
+    --ink-primary: #F3F4F6;
+    --ink-secondary: #9BA1AE;
+    --ink-muted: #8E95A5;
+    --signal-ok: #10B981;
+    --signal-warn: #F59E0B;
+    --signal-crit: #F43F5E;
+    --signal-accent: #38BDF8;
   }
+}
+
+input::placeholder, textarea::placeholder {
+  color: #8E95A5 !important;
+  opacity: 1 !important;
+}
+
+html {
+  overflow-x: clip;
+  max-width: 100vw;
 }
 
 body {
   margin: 0;
   min-height: 100vh;
-  background-color: #030712;
-  color: #f3f4f6;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  width: 100%;
+  max-width: 100vw;
+  background-color: var(--bg-canvas);
+  color: var(--ink-primary);
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Glassmorphism helpers */
-.glass-panel {
-  background: rgba(17, 24, 39, 0.7);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+/* Tabular numbers for all monospace/metrics */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
 }
 
-.glass-panel-hover {
-  transition: all 0.2s ease-in-out;
+/* Hairline borders & surface styles */
+.surface-panel {
+  background-color: var(--bg-surface-1);
+  border: 1px solid var(--hairline-soft);
+  border-radius: 8px;
 }
-.glass-panel-hover:hover {
-  background: rgba(31, 41, 55, 0.85);
-  border-color: rgba(99, 102, 241, 0.4);
-  transform: translateY(-1px);
+
+.surface-elevated {
+  background-color: var(--bg-surface-2);
+  border: 1px solid var(--hairline-soft);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.09);
+  border-radius: 8px;
+}
+
+.surface-hover {
+  transition: background-color 0.15s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.surface-hover:hover {
+  background-color: var(--bg-surface-3);
+  border-color: var(--hairline-strong);
 }
 
 /* Custom scrollbars */
@@ -54,12 +76,13 @@ body {
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #0f172a;
+  background: #090A0D;
 }
 ::-webkit-scrollbar-thumb {
-  background: #334155;
+  background: #1D212A;
   border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #475569;
+  background: #2D3340;
 }

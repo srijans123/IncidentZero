@@ -8,12 +8,17 @@ import {
   Search,
   Filter,
   Clock,
-  AlertCircle,
-  CheckCircle,
   ExternalLink,
   RefreshCw,
   Sparkles,
+  Server,
+  Layers,
 } from 'lucide-react';
+import { StatusDot } from '../../components/ui/StatusDot';
+import { StatusBadge } from '../../components/ui/StatusBadge';
+import { ActionButton } from '../../components/ui/ActionButton';
+import { HashPill } from '../../components/ui/HashPill';
+import { CampusCoreRack3D } from '../../components/three/CampusCoreRack3D';
 
 interface PortalHomeProps {
   onSelectIncident: (id: string) => void;
@@ -27,6 +32,7 @@ export const PortalHome: React.FC<PortalHomeProps> = ({ onSelectIncident, onOpen
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState<string>('ALL');
+  const [selectedService, setSelectedService] = useState<string | undefined>(undefined);
 
   const fetchIncidents = async () => {
     try {
@@ -66,201 +72,147 @@ export const PortalHome: React.FC<PortalHomeProps> = ({ onSelectIncident, onOpen
     return matchesSearch && inc.state === statusFilter;
   });
 
-  const getPriorityBadge = (p: string) => {
-    switch (p) {
-      case 'P1':
-        return 'bg-rose-500/20 text-rose-300 border-rose-500/40 animate-pulse';
-      case 'P2':
-        return 'bg-amber-500/20 text-amber-300 border-amber-500/30';
-      case 'P3':
-        return 'bg-blue-500/20 text-blue-300 border-blue-500/30';
-      default:
-        return 'bg-slate-700/50 text-slate-300 border-slate-600/30';
-    }
-  };
-
-  const getStateBadge = (state: string) => {
-    switch (state) {
-      case 'NEW':
-      case 'CLASSIFIED':
-        return 'bg-blue-500/10 text-blue-400 border-blue-500/30';
-      case 'ASSIGNED':
-      case 'ACKNOWLEDGED':
-        return 'bg-purple-500/10 text-purple-400 border-purple-500/30';
-      case 'IN_PROGRESS':
-        return 'bg-indigo-500/20 text-indigo-300 border-indigo-500/40';
-      case 'PENDING_USER':
-        return 'bg-amber-500/20 text-amber-300 border-amber-500/40 font-semibold';
-      case 'RESOLVED':
-        return 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40';
-      case 'VERIFIED':
-      case 'CLOSED':
-        return 'bg-slate-800 text-slate-400 border-slate-700';
-      case 'REOPENED':
-        return 'bg-rose-500/20 text-rose-300 border-rose-500/40';
-      default:
-        return 'bg-slate-800 text-slate-300 border-slate-700';
-    }
-  };
-
   return (
     <div className="space-y-6">
-      {/* Welcome Banner */}
-      <div className="glass-panel rounded-2xl p-6 sm:p-8 bg-gradient-to-r from-indigo-950/40 via-slate-900/50 to-cyan-950/40 border border-indigo-500/20">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      {/* Top Welcome & Mission Header */}
+      <div className="surface-panel p-6 bg-[#101217] border border-white/[0.08] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)]">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <div className="flex items-center space-x-2 text-indigo-400 text-xs font-semibold tracking-wider uppercase mb-1">
-              <Sparkles className="w-4 h-4" />
-              <span>Campus IT Helpdesk Copilot</span>
+            <div className="flex items-center gap-2 text-[#38BDF8] text-xs font-mono font-medium tracking-wider uppercase mb-1">
+              <Server className="w-3.5 h-3.5" />
+              <span>Campus IT Telemetry & Incident Portal</span>
             </div>
-            <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
-              Hello, {currentUser.name}
+            <h1 className="text-2xl font-bold tracking-tight text-[#F3F4F6]">
+              Operational Console — {currentUser.name}
             </h1>
-            <p className="text-sm text-slate-400 mt-1 max-w-xl">
-              Track your campus IT tickets, review AI troubleshooting recommendations, or report a new connectivity, ERP, or LMS issue.
+            <p className="text-xs text-[#9BA1AE] mt-1 max-w-xl">
+              Report connectivity, ERP, or LMS issues. Monitor real-time resolution SLAs and inspect active 3D server hardware telemetry.
             </p>
           </div>
-          <button
+          <ActionButton
+            size="cta"
+            variant="primary"
+            icon={<PlusCircle className="w-4 h-4" />}
             onClick={onOpenReport}
-            className="flex items-center justify-center space-x-2 px-5 py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-600 hover:from-indigo-500 hover:to-cyan-500 text-white font-semibold text-sm shadow-lg shadow-indigo-600/30 transition-all hover:scale-[1.02] active:scale-[0.98]"
           >
-            <PlusCircle className="w-5 h-5" />
-            <span>Report New Incident</span>
-          </button>
+            Report New Incident
+          </ActionButton>
         </div>
       </div>
 
-      {/* Filter and Search Bar */}
+      {/* 3D Hardware Telemetry Core Banner */}
+      <CampusCoreRack3D
+        selectedServiceId={selectedService}
+        onSelectService={(svcId) => setSelectedService(svcId)}
+        className="h-[340px]"
+      />
+
+      {/* Control Bar: Search & Status Filters */}
       <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
         <div className="relative w-full sm:w-80">
-          <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+          <Search className="w-3.5 h-3.5 text-[#8E95A5] absolute left-3 top-1/2 -translate-y-1/2" />
           <input
             type="text"
-            placeholder="Search tickets, services, IDs..."
+            placeholder="Search by ID, title, or service..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-9 pr-4 py-2 bg-slate-900 border border-slate-800 rounded-xl text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-indigo-500 transition-colors"
+            className="w-full h-8 pl-8 pr-3 text-xs rounded bg-[#101217] border border-white/[0.08] text-[#F3F4F6] placeholder-[#8E95A5] focus:outline-none focus:border-[#38BDF8] focus:ring-1 focus:ring-[#38BDF8]"
           />
         </div>
 
-        <div className="flex items-center space-x-2 w-full sm:w-auto overflow-x-auto pb-1">
-          {['ALL', 'OPEN', 'RESOLVED'].map((filter) => (
+        <div className="flex items-center gap-2 w-full sm:w-auto overflow-x-auto pb-1 sm:pb-0">
+          {(['ALL', 'OPEN', 'RESOLVED'] as const).map((filter) => (
             <button
               key={filter}
+              type="button"
               onClick={() => setStatusFilter(filter)}
-              className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
+              className={`h-7 px-3 rounded text-xs font-medium whitespace-nowrap transition-colors cursor-pointer border ${
                 statusFilter === filter
-                  ? 'bg-indigo-600 text-white shadow-sm shadow-indigo-500/20'
-                  : 'bg-slate-900 text-slate-400 hover:text-slate-200 border border-slate-800'
+                  ? 'bg-[#1D212A] text-[#F3F4F6] border-white/[0.16] shadow-sm'
+                  : 'bg-transparent text-[#9BA1AE] border-transparent hover:border-white/[0.08] hover:text-[#F3F4F6]'
               }`}
             >
-              {filter === 'ALL' ? 'All Tickets' : filter === 'OPEN' ? 'Active / In Progress' : 'Resolved'}
+              {filter === 'ALL' ? 'All Incidents' : filter === 'OPEN' ? 'Active / In-Flight' : 'Resolved'}
             </button>
           ))}
-          <button
+          <ActionButton
+            size="compact"
+            variant="outline"
+            icon={<RefreshCw className={`w-3 h-3 ${loading ? 'animate-spin' : ''}`} />}
             onClick={fetchIncidents}
-            title="Refresh list"
-            className="p-2 bg-slate-900 hover:bg-slate-850 border border-slate-800 rounded-lg text-slate-400 hover:text-slate-200"
           >
-            <RefreshCw className={`w-3.5 h-3.5 ${loading ? 'animate-spin' : ''}`} />
-          </button>
+            Refresh
+          </ActionButton>
         </div>
       </div>
 
-      {/* Incidents Table / Cards */}
-      <div className="glass-panel rounded-2xl border border-slate-800 overflow-hidden">
+      {/* Incidents Telemetry Grid */}
+      <div className="surface-panel overflow-hidden border border-white/[0.08]">
         {loading && incidents.length === 0 ? (
-          <div className="p-12 text-center text-slate-400 text-sm">
-            <RefreshCw className="w-6 h-6 animate-spin mx-auto mb-2 text-indigo-400" />
-            Loading your campus incidents...
+          <div className="p-12 text-center text-[#9BA1AE] text-xs">
+            <RefreshCw className="w-5 h-5 animate-spin mx-auto mb-2 text-[#38BDF8]" />
+            <span>Synchronizing live campus incidents...</span>
           </div>
         ) : filtered.length === 0 ? (
-          <div className="p-12 text-center text-slate-400 text-sm">
-            <CheckCircle className="w-8 h-8 mx-auto mb-2 text-emerald-400/60" />
-            No campus incidents found matching your query.
+          <div className="p-12 text-center text-[#9BA1AE] text-xs">
+            <p className="font-medium text-slate-300 mb-1">No incidents found</p>
+            <p className="text-xs text-[#8E95A5]">
+              {searchTerm ? 'Try adjusting your search criteria.' : 'No reported incidents in this queue.'}
+            </p>
           </div>
         ) : (
           <div className="overflow-x-auto">
-            <table className="w-full text-left text-xs">
-              <thead className="bg-slate-900/80 border-b border-slate-800 text-slate-400 uppercase font-semibold text-[11px] tracking-wider">
-                <tr>
-                  <th className="py-3 px-4">Ticket</th>
-                  <th className="py-3 px-4">Summary</th>
-                  <th className="py-3 px-4">Service</th>
-                  <th className="py-3 px-4">Priority</th>
-                  <th className="py-3 px-4">Status</th>
-                  <th className="py-3 px-4">SLA Clock</th>
-                  <th className="py-3 px-4 text-right">Action</th>
+            <table className="w-full text-left border-collapse text-xs">
+              <thead>
+                <tr className="border-b border-white/[0.08] bg-[#161920]/40 text-[#8E95A5] font-mono uppercase text-[11px] tracking-wider">
+                  <th className="py-2.5 px-4 font-medium">Incident Code</th>
+                  <th className="py-2.5 px-4 font-medium">Subject / Title</th>
+                  <th className="py-2.5 px-3 font-medium">Service</th>
+                  <th className="py-2.5 px-3 font-medium">Priority</th>
+                  <th className="py-2.5 px-3 font-medium">State</th>
+                  <th className="py-2.5 px-3 font-medium">SLA Resolution</th>
+                  <th className="py-2.5 px-4 font-medium text-right">Audit Block</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-850">
+              <tbody className="divide-y divide-white/[0.04]">
                 {filtered.map((inc) => (
                   <tr
                     key={inc.id}
                     onClick={() => onSelectIncident(inc.id)}
-                    className="hover:bg-slate-850/60 cursor-pointer transition-colors group"
+                    className="hover:bg-[#1D212A]/60 transition-colors cursor-pointer group"
                   >
-                    <td className="py-3.5 px-4 font-mono font-bold text-indigo-400 whitespace-nowrap">
-                      {inc.number || `INC-${inc.id.slice(0, 8)}`}
+                    <td className="py-3 px-4 font-mono font-medium text-[#F3F4F6] whitespace-nowrap">
+                      <span className="group-hover:text-[#38BDF8] transition-colors">{inc.number}</span>
                     </td>
-                    <td className="py-3.5 px-4">
-                      <div className="font-semibold text-slate-200 group-hover:text-indigo-300 transition-colors line-clamp-1 max-w-md">
-                        {inc.title}
-                      </div>
-                      <div className="text-[11px] text-slate-400 line-clamp-1">
-                        {inc.description}
-                      </div>
+                    <td className="py-3 px-4 text-[#F3F4F6] max-w-xs md:max-w-md truncate font-medium">
+                      {inc.title}
                     </td>
-                    <td className="py-3.5 px-4 font-mono text-[11px] text-slate-300">
-                      {inc.serviceCode || 'CAMPUS-NET'}
+                    <td className="py-3 px-3 text-[#9BA1AE] whitespace-nowrap font-mono text-[11px]">
+                      {inc.serviceCode || 'SVC-GENERAL'}
                     </td>
-                    <td className="py-3.5 px-4">
-                      <span
-                        className={`inline-block px-2 py-0.5 rounded text-[10px] font-bold border ${getPriorityBadge(
-                          inc.priority
-                        )}`}
-                      >
-                        {inc.priority}
+                    <td className="py-3 px-3 whitespace-nowrap">
+                      <StatusBadge label={inc.priority || 'P3'} isMono />
+                    </td>
+                    <td className="py-3 px-3 whitespace-nowrap">
+                      <span className="inline-flex items-center gap-1.5">
+                        <StatusDot state={inc.state} />
+                        <span className="text-[#9BA1AE] font-medium text-[11px]">{inc.state}</span>
                       </span>
                     </td>
-                    <td className="py-3.5 px-4">
-                      <span
-                        className={`inline-block px-2 py-0.5 rounded-full text-[10px] font-medium border ${getStateBadge(
-                          inc.state
-                        )}`}
-                      >
-                        {inc.state.replace('_', ' ')}
-                      </span>
-                    </td>
-                    <td className="py-3.5 px-4 whitespace-nowrap">
-                      <div className="flex items-center space-x-1.5 text-[11px]">
-                        <Clock
-                          className={`w-3.5 h-3.5 ${
-                            inc.slaStatus === 'BREACHED'
-                              ? 'text-rose-400 animate-bounce'
-                              : inc.slaStatus === 'AT_RISK'
-                              ? 'text-amber-400'
-                              : 'text-emerald-400'
-                          }`}
-                        />
-                        <span
-                          className={`font-mono ${
-                            inc.slaStatus === 'BREACHED'
-                              ? 'text-rose-400 font-bold'
-                              : inc.slaStatus === 'AT_RISK'
-                              ? 'text-amber-400 font-semibold'
-                              : 'text-slate-300'
-                          }`}
-                        >
-                          {inc.slaStatus || 'ON_TRACK'}
+                    <td className="py-3 px-3 font-mono tabular-nums text-[11px] text-[#9BA1AE] whitespace-nowrap">
+                      {inc.resolutionDueAt ? (
+                        <span>
+                          {new Date(inc.resolutionDueAt).toLocaleTimeString([], {
+                            hour: '2-digit',
+                            minute: '2-digit',
+                          })}
                         </span>
-                      </div>
+                      ) : (
+                        <span className="text-[#8E95A5]">—</span>
+                      )}
                     </td>
-                    <td className="py-3.5 px-4 text-right">
-                      <span className="text-slate-400 group-hover:text-indigo-400 inline-flex items-center space-x-1 text-xs">
-                        <span>View</span>
-                        <ExternalLink className="w-3.5 h-3.5" />
-                      </span>
+                    <td className="py-3 px-4 text-right whitespace-nowrap">
+                      <HashPill hash={inc.id} truncateLength={6} />
                     </td>
                   </tr>
                 ))}

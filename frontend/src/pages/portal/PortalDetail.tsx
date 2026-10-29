@@ -15,7 +15,12 @@ import {
   User,
   Shield,
   Tag,
+  AlertTriangle,
 } from 'lucide-react';
+import { ActionButton } from '../../components/ui/ActionButton';
+import { StatusBadge } from '../../components/ui/StatusBadge';
+import { StatusDot } from '../../components/ui/StatusDot';
+import { HashPill } from '../../components/ui/HashPill';
 
 interface PortalDetailProps {
   incidentId: string;
@@ -24,9 +29,8 @@ interface PortalDetailProps {
 
 const LIFECYCLE_STEPS = [
   'NEW',
-  'CLASSIFIED',
   'ASSIGNED',
-  'IN_PROGRESS',
+  'INVESTIGATING',
   'RESOLVED',
   'CLOSED',
 ];
@@ -62,7 +66,11 @@ export const PortalDetail: React.FC<PortalDetailProps> = ({ incidentId, onBack }
   }, [incidentId]);
 
   useEffect(() => {
-    if (lastEvent?.type?.startsWith('incident.') && lastEvent?.data?.id === incidentId) {
+    const evtId = lastEvent?.data?.id ?? lastEvent?.data?.incidentId;
+    if (
+      (lastEvent?.type?.startsWith('incident.') || lastEvent?.type?.startsWith('audit.')) &&
+      (!evtId || evtId === incidentId)
+    ) {
       fetchDetails();
     }
   }, [lastEvent, incidentId]);
@@ -74,42 +82,45 @@ export const PortalDetail: React.FC<PortalDetailProps> = ({ incidentId, onBack }
     try {
       setIsSubmittingInfo(true);
       await api.incidents.command(incidentId, 'provide-info', {
-        comment: userInfoInput,
+        answer: userInfoInput,
       });
       setUserInfoInput('');
-      await fetchDetails();
+      fetchDetails();
     } catch (err: any) {
-      alert('Failed to submit response: ' + (err.message || 'Error'));
+      console.error('Failed to provide info', err);
+      alert('Failed to send diagnostic response: ' + (err?.message || 'Unknown error'));
     } finally {
       setIsSubmittingInfo(false);
     }
   };
 
-  const handleVerify = async () => {
+  const handleVerifyResolution = async () => {
     try {
       setIsVerifying(true);
-      await api.incidents.command(incidentId, 'verify', {
+      await api.incidents.command(incidentId, 'close', {
         rating: starRating,
-        comment: verifyFeedback || 'Verified by employee. Excellent support.',
+        closureNote: verifyFeedback || 'Verified resolved by student.',
       });
-      await fetchDetails();
+      fetchDetails();
     } catch (err: any) {
-      alert('Verification failed: ' + (err.message || 'Error'));
+      console.error('Failed to verify resolution', err);
+      alert('Failed to verify resolution: ' + (err?.message || 'Unknown error'));
     } finally {
       setIsVerifying(false);
     }
   };
 
-  const handleReject = async () => {
-    const reason = prompt('Please describe why the issue was not resolved:', 'The login error still occurs on the registration portal.');
+  const handleRejectResolution = async () => {
+    const reason = prompt('Please describe why the issue is not resolved:', 'The login error still happens when taking the quiz.');
     if (!reason) return;
 
     try {
       setIsRejecting(true);
       await api.incidents.command(incidentId, 'reject', { reason });
-      await fetchDetails();
+      fetchDetails();
     } catch (err: any) {
-      alert('Rejection failed: ' + (err.message || 'Error'));
+      console.error('Failed to reject resolution', err);
+      alert('Failed to reject resolution: ' + (err?.message || 'Unknown error'));
     } finally {
       setIsRejecting(false);
     }
@@ -117,300 +128,221 @@ export const PortalDetail: React.FC<PortalDetailProps> = ({ incidentId, onBack }
 
   if (loading && !incident) {
     return (
-      <div className="p-16 text-center text-slate-400">
-        <RefreshCw className="w-8 h-8 animate-spin mx-auto mb-3 text-indigo-400" />
-        Loading incident details...
+      <div className="p-16 text-center text-[#9BA1AE] text-xs">
+        <RefreshCw className="w-5 h-5 animate-spin mx-auto mb-2 text-[#38BDF8]" />
+        <span>Loading incident status...</span>
       </div>
     );
   }
 
   if (!incident) {
     return (
-      <div className="p-16 text-center text-slate-400 space-y-4">
-        <AlertCircle className="w-12 h-12 mx-auto text-rose-400" />
-        <h2 className="text-lg font-bold text-slate-200">Incident Not Found</h2>
-        <button
-          onClick={onBack}
-          className="px-4 py-2 bg-indigo-600 rounded-xl text-white text-xs font-semibold"
-        >
-          Return to Portal
-        </button>
+      <div className="surface-panel p-8 text-center text-xs text-[#9BA1AE]">
+        <p className="text-slate-300 font-semibold mb-2">Incident not found</p>
+        <ActionButton size="standard" variant="secondary" onClick={onBack}>
+          Back to List
+        </ActionButton>
       </div>
     );
   }
 
-  const currentStepIndex = LIFECYCLE_STEPS.indexOf(
-    incident.state === 'PENDING_USER'
-      ? 'IN_PROGRESS'
-      : incident.state === 'VERIFIED'
-      ? 'RESOLVED'
-      : incident.state === 'REOPENED'
-      ? 'IN_PROGRESS'
-      : incident.state
-  );
+  const isPendingUserInfo = incident.state === 'PENDING_USER';
+  const isResolved = incident.state === 'RESOLVED';
+  const isClosed = incident.state === 'CLOSED' || incident.state === 'VERIFIED';
 
   return (
-    <div className="max-w-5xl mx-auto space-y-6">
-      {/* Breadcrumb */}
+    <div className="space-y-6">
+      {/* Top Header */}
       <div className="flex items-center justify-between">
-        <button
+        <ActionButton
+          size="standard"
+          variant="secondary"
+          icon={<ChevronLeft className="w-4 h-4" />}
           onClick={onBack}
-          className="flex items-center space-x-1 text-xs text-slate-400 hover:text-slate-200 transition-colors"
         >
-          <ChevronLeft className="w-4 h-4" />
-          <span>Back to All Incidents</span>
-        </button>
-        <div className="flex items-center space-x-2">
-          <span className="font-mono text-xs font-bold px-2 py-0.5 rounded bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
-            {incident.number || `INC-${incident.id.slice(0, 8)}`}
-          </span>
-          <button
-            onClick={fetchDetails}
-            className="p-1.5 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-slate-200"
-          >
-            <RefreshCw className="w-3.5 h-3.5" />
-          </button>
-        </div>
+          Back to My Incidents
+        </ActionButton>
+        <ActionButton
+          size="compact"
+          variant="outline"
+          icon={<RefreshCw className="w-3 h-3" />}
+          onClick={fetchDetails}
+        >
+          Refresh Status
+        </ActionButton>
       </div>
 
-      {/* Main Card */}
-      <div className="glass-panel rounded-2xl p-6 sm:p-8 border border-slate-800 space-y-6">
-        {/* Header with Title and Badges */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-800">
+      {/* Main Incident Card */}
+      <div className="surface-panel p-6 bg-[#101217] border border-white/[0.08] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)] space-y-4">
+        <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
           <div>
-            <div className="flex items-center space-x-2 text-xs text-slate-400 mb-1">
-              <span>Reported on {new Date(incident.createdAt).toLocaleDateString()}</span>
+            <div className="flex items-center gap-2 font-mono text-xs text-[#9BA1AE] mb-1.5 flex-wrap">
+              <span className="text-[#38BDF8] font-bold text-sm">{incident.number}</span>
               <span>•</span>
-              <span className="font-mono text-slate-300">{incident.serviceCode || 'APP-LMS'}</span>
+              <span className="text-slate-300">{incident.serviceCode || 'APP-LMS'}</span>
+              <span>•</span>
+              <HashPill hash={incident.id} truncateLength={6} />
             </div>
-            <h1 className="text-xl sm:text-2xl font-extrabold text-white tracking-tight">
-              {incident.title}
-            </h1>
+            <h1 className="text-2xl font-bold tracking-tight text-[#F3F4F6]">{incident.title}</h1>
+            <p className="text-xs text-[#9BA1AE] mt-1.5 leading-relaxed max-w-2xl">
+              {incident.description || 'No description provided.'}
+            </p>
           </div>
 
-          <div className="flex items-center space-x-3">
-            <span
-              className={`px-3 py-1 rounded-xl text-xs font-bold border ${
-                incident.priority === 'P1'
-                  ? 'bg-rose-500/20 text-rose-300 border-rose-500/40 animate-pulse'
-                  : 'bg-amber-500/20 text-amber-300 border-amber-500/30'
-              }`}
-            >
-              Priority {incident.priority}
-            </span>
-            <div
-              className={`flex items-center space-x-1.5 px-3 py-1 rounded-xl text-xs font-semibold border ${
-                incident.slaStatus === 'BREACHED'
-                  ? 'bg-rose-500/20 text-rose-300 border-rose-500/40'
-                  : incident.slaStatus === 'AT_RISK'
-                  ? 'bg-amber-500/20 text-amber-300 border-amber-500/40'
-                  : 'bg-emerald-500/10 text-emerald-300 border-emerald-500/30'
-              }`}
-            >
-              <Clock className="w-3.5 h-3.5" />
-              <span>SLA: {incident.slaStatus || 'ON_TRACK'}</span>
-            </div>
+          <div className="flex items-center gap-2 shrink-0">
+            <StatusBadge label={incident.priority || 'P3'} isMono />
+            <StatusBadge label={incident.state} showDot />
           </div>
         </div>
 
-        {/* Status Stepper */}
-        <div className="py-2">
-          <div className="text-[11px] font-semibold uppercase tracking-wider text-slate-400 mb-3">
-            Resolution Progress Stepper
-          </div>
-          <div className="grid grid-cols-6 gap-2">
+        {/* Linear Lifecycle Step Progress Bar */}
+        <div className="pt-4 border-t border-white/[0.08]">
+          <div className="text-[11px] font-mono text-[#8E95A5] uppercase mb-2">Resolution Progress</div>
+          <div className="grid grid-cols-5 gap-1.5 text-center text-xs">
             {LIFECYCLE_STEPS.map((step, idx) => {
-              const isPast = idx < currentStepIndex;
-              const isCurrent = idx === currentStepIndex;
+              const normalized =
+                incident.state === 'VERIFIED' ? 'CLOSED'
+                : incident.state === 'PENDING_USER' || incident.state === 'REOPENED' ? 'INVESTIGATING'
+                : incident.state;
+              const currentIdx = LIFECYCLE_STEPS.indexOf(normalized);
+              const isPast = idx <= (currentIdx >= 0 ? currentIdx : 1);
               return (
-                <div key={step} className="text-center space-y-1.5">
-                  <div
-                    className={`h-2 rounded-full transition-all ${
-                      isPast
-                        ? 'bg-indigo-500'
-                        : isCurrent
-                        ? 'bg-cyan-400 animate-pulse'
-                        : 'bg-slate-800'
-                    }`}
-                  />
-                  <span
-                    className={`text-[10px] font-semibold block uppercase tracking-tight ${
-                      isCurrent
-                        ? 'text-cyan-300 font-bold'
-                        : isPast
-                        ? 'text-slate-300'
-                        : 'text-slate-600'
-                    }`}
-                  >
-                    {step.replace('_', ' ')}
-                  </span>
+                <div
+                  key={step}
+                  className={`p-2 rounded text-[11px] font-mono transition-colors ${
+                    isPast
+                      ? 'bg-[#161920] text-[#38BDF8] border border-[#38BDF8]/30 font-semibold'
+                      : 'bg-white/[0.02] text-[#8E95A5] border border-white/[0.04]'
+                  }`}
+                >
+                  {step}
                 </div>
               );
             })}
           </div>
         </div>
+      </div>
 
-        {/* Assigned Tech Info */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 p-4 rounded-xl bg-slate-900/80 border border-slate-800 text-xs">
-          <div>
-            <div className="text-slate-400 text-[11px]">Assigned Engineer</div>
-            <div className="text-slate-200 font-semibold mt-0.5 flex items-center space-x-1.5">
-              <User className="w-3.5 h-3.5 text-indigo-400" />
-              <span>{incident.assigneeName || 'Rohan Kulkarni (Senior Tech)'}</span>
-            </div>
+      {/* Action Banner: User Info Requested (Clock Paused) */}
+      {isPendingUserInfo && (
+        <div className="surface-panel p-5 bg-amber-500/10 border border-amber-500/30 space-y-3">
+          <div className="flex items-center gap-2 text-amber-400 font-bold text-xs">
+            <AlertTriangle className="w-4 h-4 shrink-0" />
+            <span>Technician Awaiting Your Clarification (Resolution SLA Paused)</span>
           </div>
-          <div>
-            <div className="text-slate-400 text-[11px]">Current Status</div>
-            <div className="text-indigo-300 font-semibold mt-0.5 font-mono">
-              {incident.state} {incident.reopenCount > 0 ? `(Reopened ×${incident.reopenCount})` : ''}
-            </div>
-          </div>
-          <div>
-            <div className="text-slate-400 text-[11px]">Resolution Target</div>
-            <div className="text-slate-200 font-semibold mt-0.5 flex items-center space-x-1.5">
-              <Clock className="w-3.5 h-3.5 text-emerald-400" />
-              <span>{incident.resolutionDueAt ? new Date(incident.resolutionDueAt).toLocaleTimeString() : 'Active 24x7'}</span>
-            </div>
-          </div>
-        </div>
-
-        {/* Description Box */}
-        <div className="space-y-2">
-          <div className="text-xs font-semibold uppercase tracking-wider text-slate-400">
-            Description
-          </div>
-          <div className="p-4 rounded-xl bg-slate-900 border border-slate-800 text-xs text-slate-200 leading-relaxed whitespace-pre-wrap">
-            {incident.description}
-          </div>
-        </div>
-
-        {/* Interactive Action 1: PENDING_USER (Clock Paused) */}
-        {incident.state === 'PENDING_USER' && (
-          <div className="p-6 rounded-2xl bg-amber-950/30 border border-amber-500/40 space-y-4 animate-fadeIn">
-            <div className="flex items-center space-x-2 text-amber-300 font-bold text-sm">
-              <Clock className="w-5 h-5 text-amber-400 animate-pulse" />
-              <span>Technician Awaiting Your Response (SLA Clock Paused)</span>
-            </div>
-            <p className="text-xs text-slate-300">
-              The assigned engineer requested clarification. The resolution countdown clock is paused until you reply so your SLA is not penalized:
-            </p>
-            <div className="p-3 rounded-xl bg-slate-900 border border-slate-800 text-xs text-amber-200 italic">
-              "Please paste the exact SSO error code or screenshot URL from Nalanda LMS."
-            </div>
-            <form onSubmit={handleProvideInfo} className="space-y-3">
-              <textarea
-                rows={2}
-                placeholder="Type your response or paste error message..."
-                value={userInfoInput}
-                onChange={(e) => setUserInfoInput(e.target.value)}
-                required
-                className="w-full px-4 py-2.5 bg-slate-900 border border-slate-800 rounded-xl text-xs text-slate-100 placeholder-slate-500 focus:outline-none focus:border-amber-500"
-              />
-              <button
+          <p className="text-xs text-slate-200 leading-relaxed">
+            The assigned engineer paused their work pending your diagnostic input. Please answer below so the clock resumes immediately:
+          </p>
+          <form onSubmit={handleProvideInfo} className="space-y-2">
+            <textarea
+              rows={2}
+              required
+              placeholder="e.g. Cleared browser cookies as requested; still seeing HTTP 504 on Nalanda quiz page."
+              value={userInfoInput}
+              onChange={(e) => setUserInfoInput(e.target.value)}
+              className="w-full p-2.5 text-xs rounded bg-[#161920] border border-white/[0.12] text-[#F3F4F6] placeholder-[#646B7A] focus:outline-none focus:border-[#F59E0B] resize-none"
+            />
+            <div className="flex justify-end">
+              <ActionButton
+                size="standard"
+                variant="primary"
                 type="submit"
-                disabled={isSubmittingInfo}
-                className="flex items-center space-x-2 px-5 py-2 rounded-xl bg-amber-600 hover:bg-amber-500 text-white text-xs font-semibold shadow-md shadow-amber-600/20"
+                isLoading={isSubmittingInfo}
+                icon={<Send className="w-3 h-3" />}
               >
-                <Send className="w-3.5 h-3.5" />
-                <span>{isSubmittingInfo ? 'Sending...' : 'Send Information & Resume Clock'}</span>
-              </button>
-            </form>
-          </div>
-        )}
-
-        {/* Interactive Action 2: RESOLVED (Verify 1-5 Stars or Reject) */}
-        {incident.state === 'RESOLVED' && (
-          <div className="p-6 rounded-2xl bg-emerald-950/30 border border-emerald-500/40 space-y-4 animate-fadeIn">
-            <div className="flex items-center space-x-2 text-emerald-300 font-bold text-sm">
-              <CheckCircle2 className="w-5 h-5 text-emerald-400" />
-              <span>Technician Has Marked This Incident as Resolved</span>
+                Send Diagnostic Reply & Resume
+              </ActionButton>
             </div>
-            <p className="text-xs text-slate-300">
-              Please test your access and rate the resolution. If everything works, click Verify. If the issue is still not fixed, you can Reject to automatically reopen this ticket.
-            </p>
+          </form>
+        </div>
+      )}
 
-            <div className="flex items-center space-x-2 py-1">
-              <span className="text-xs font-semibold text-slate-300 mr-2">Satisfaction Rating:</span>
+      {/* Action Banner: Verification and Rating (When RESOLVED) */}
+      {isResolved && (
+        <div className="surface-panel p-5 bg-[#10B981]/10 border border-[#10B981]/30 space-y-4">
+          <div className="flex items-center gap-2 text-[#10B981] font-bold text-xs">
+            <CheckCircle2 className="w-4 h-4 shrink-0" />
+            <span>Technician Has Resolved Your Issue</span>
+          </div>
+          <p className="text-xs text-slate-200">
+            Please verify whether the service is functioning correctly for you:
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-1">
+            <div className="flex items-center gap-1">
               {[1, 2, 3, 4, 5].map((star) => (
                 <button
                   key={star}
                   type="button"
                   onClick={() => setStarRating(star)}
-                  className="p-1 hover:scale-125 transition-transform"
+                  className="p-1 cursor-pointer"
                 >
                   <Star
-                    className={`w-5 h-5 ${
+                    className={`w-4 h-4 ${
                       star <= starRating ? 'text-amber-400 fill-amber-400' : 'text-slate-600'
                     }`}
                   />
                 </button>
               ))}
-              <span className="text-xs text-amber-300 font-bold ml-2">{starRating} of 5 Stars</span>
+              <span className="text-xs font-mono text-[#9BA1AE] ml-2">Rating: {starRating}/5</span>
             </div>
 
-            <input
-              type="text"
-              placeholder="Optional feedback for technician..."
-              value={verifyFeedback}
-              onChange={(e) => setVerifyFeedback(e.target.value)}
-              className="w-full px-4 py-2 bg-slate-900 border border-slate-800 rounded-xl text-xs text-slate-100 placeholder-slate-500 focus:outline-none focus:border-emerald-500"
-            />
-
-            <div className="flex items-center space-x-3 pt-2">
-              <button
-                onClick={handleVerify}
-                disabled={isVerifying}
-                className="px-5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold shadow-md shadow-emerald-600/30 flex items-center space-x-1.5"
+            <div className="flex items-center gap-2">
+              <ActionButton
+                size="standard"
+                variant="outline"
+                isLoading={isRejecting}
+                icon={<XCircle className="w-3.5 h-3.5" />}
+                onClick={handleRejectResolution}
               >
-                <CheckCircle2 className="w-4 h-4" />
-                <span>{isVerifying ? 'Verifying...' : 'Verify Resolution'}</span>
-              </button>
-              <button
-                onClick={handleReject}
-                disabled={isRejecting}
-                className="px-5 py-2 rounded-xl bg-rose-600/30 hover:bg-rose-600/50 text-rose-300 border border-rose-500/40 text-xs font-semibold flex items-center space-x-1.5"
+                Not Fixed (Reopen)
+              </ActionButton>
+              <ActionButton
+                size="standard"
+                variant="primary"
+                isLoading={isVerifying}
+                icon={<CheckCircle2 className="w-3.5 h-3.5 text-[#10B981]" />}
+                onClick={handleVerifyResolution}
               >
-                <XCircle className="w-4 h-4" />
-                <span>{isRejecting ? 'Reopening...' : 'Reject & Reopen Ticket'}</span>
-              </button>
+                Verify & Close
+              </ActionButton>
             </div>
           </div>
-        )}
+        </div>
+      )}
 
-        {/* Public Timeline */}
-        <div className="space-y-3 pt-4 border-t border-slate-800">
-          <div className="flex items-center space-x-2 text-xs font-semibold uppercase tracking-wider text-slate-400">
-            <MessageSquare className="w-4 h-4 text-indigo-400" />
-            <span>Public Incident Activity & History</span>
-          </div>
+      {/* Public Verified Timeline */}
+      <div className="surface-panel p-5 bg-[#101217] border border-white/[0.08] space-y-4">
+        <div className="flex items-center justify-between">
+          <span className="font-semibold text-xs text-[#F3F4F6] uppercase font-mono">
+            Public Timeline & Status History
+          </span>
+          <span className="text-[11px] text-[#9BA1AE] font-mono">
+            {timeline.length} Recorded Steps
+          </span>
+        </div>
 
-          <div className="space-y-3">
-            {timeline.length === 0 ? (
-              <div className="text-xs text-slate-500 py-4 text-center">
-                Initial triage completed. Awaiting technician notes.
+        <div className="space-y-3 relative before:absolute before:inset-0 before:left-3.5 before:w-px before:bg-white/[0.08]">
+          {timeline.map((item, idx) => (
+            <div key={idx} className="relative flex items-start gap-3 pl-1 text-xs">
+              <div className="w-7 h-7 rounded-full bg-[#161920] border border-white/[0.10] flex items-center justify-center shrink-0 text-[#38BDF8] z-10">
+                <StatusDot state={item.action || 'INVESTIGATING'} />
               </div>
-            ) : (
-              timeline.map((item, idx) => (
-                <div
-                  key={idx}
-                  className="p-3.5 rounded-xl bg-slate-900/80 border border-slate-850 flex items-start space-x-3 text-xs"
-                >
-                  <div className="p-1.5 rounded-lg bg-indigo-500/10 text-indigo-400 mt-0.5">
-                    <Shield className="w-3.5 h-3.5" />
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex items-center justify-between">
-                      <span className="font-semibold text-slate-300">{item.action || 'Event'}</span>
-                      <span className="text-[10px] text-slate-500">
-                        {new Date(item.timestamp).toLocaleTimeString()}
-                      </span>
-                    </div>
-                    <div className="text-slate-400 mt-1">{item.comment || item.message || 'Status updated'}</div>
-                  </div>
+              <div className="flex-1 p-3 rounded bg-[#161920] border border-white/[0.06] space-y-1">
+                <div className="flex items-center justify-between font-mono text-[11px]">
+                  <span className="font-semibold text-slate-200">{item.action}</span>
+                  <span className="text-[#8E95A5]">
+                    {item.ts ? new Date(item.ts).toLocaleTimeString() : '10:00:00'}
+                  </span>
                 </div>
-              ))
-            )}
-          </div>
+                <p className="text-[#9BA1AE] text-xs">{item.description || item.payload}</p>
+                {item.hash && (
+                  <div className="pt-1">
+                    <HashPill hash={item.hash} truncateLength={8} />
+                  </div>
+                )}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>

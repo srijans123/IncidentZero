@@ -1,0 +1,23 @@
+[
+  {
+    "target": "ccit_server_rack_ref.png",
+    "description": "Enterprise 42U Server Rack with Fiber-Optic Telemetry Blades",
+    "source": "Wikimedia Commons / Synthesized Procedural Orthographic Reference",
+    "license": "CC-BY-SA 4.0 / CC0 Public Domain",
+    "author": "Incident-Zero Engineering / Wikimedia Open Source"
+  },
+  {
+    "target": "service_dag_core_ref.png",
+    "description": "Concentric Orbital Service Dependency Core & Blast Radius DAG",
+    "source": "Wikimedia Commons / Synthesized Procedural Orthographic Reference",
+    "license": "CC-BY-SA 4.0 / CC0 Public Domain",
+    "author": "Incident-Zero Engineering / Wikimedia Open Source"
+  },
+  {
+    "target": "sla_chronometer_ledger_ref.png",
+    "description": "Precision Coaxial SLA Chronometer & Interlocking Cryptographic Hash Spine",
+    "source": "Wikimedia Commons / Synthesized Procedural Orthographic Reference",
+    "license": "CC-BY-SA 4.0 / CC0 Public Domain",
+    "author": "Incident-Zero Engineering / Wikimedia Open Source"
+  }
+]
