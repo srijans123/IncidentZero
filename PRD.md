@@ -71,7 +71,7 @@ Three role-guarded workspaces:
 ## 8. Ralph Loop Task Checklist
 
 - [x] TASK-01: Generate `PRD.md`, `docs/DESIGN.md`, `docs/TECH_STACK.md`, `docs/AUTH_AND_DATABASE.md`, and `progress.txt`.
-- [ ] TASK-02: Pass Milestone M1 Pure-JDK 520,036-Transition Verification Harness (`bash scripts/verify-m1.sh`).
+- [x] TASK-02: Pass Milestone M1 Pure-JDK 520,036-Transition Verification Harness (`bash scripts/verify-m1.sh`).
 - [ ] TASK-03: Connect to NeonDB (`NEON_DATABASE_URL` / `DB_URL` from `.env`), run Flyway `V001` -> `V002` -> `V003` -> `R__campus_seed.sql` (19 services, 26 dependency edges, 16 SLA policies, 8 demo users), and pass ArchUnit R1–R9 (`bash scripts/verify-m2.sh`).
 - [ ] TASK-04: Implement Better Auth (`BETTER_AUTH_SECRET`) + Spring Security JWT Bridge (`CommandAuthorizer` + 30s single-use SSE stream-ticket endpoint `POST /api/v1/auth/stream-ticket`).
 - [ ] TASK-05: Implement JPA Persistence Adapter (`IncidentJpaEntity` <-> `Incident.restore(Snapshot)` / `toSnapshot()`, keeping `@Version` separate from background `refreshSla` ticks) and in-transaction `AuditLedgerInTxListener` + `SlaTimerInTxListener` (`@EventListener` + `@Transactional(propagation = MANDATORY)`).
