@@ -1,1 +1,2 @@
 - **v1.1** (2026-10-29 13:41:31 UTC) by `Srijan Shukla`: Initial v1.0 reference extraction and upload/ automation
+- **v1.2** (2026-10-29 13:43:44 UTC) by `Srijan Shukla`: Complete TASK-01
