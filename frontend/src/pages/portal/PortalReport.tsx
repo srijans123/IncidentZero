@@ -33,10 +33,10 @@ export const PortalReport: React.FC<PortalReportProps> = ({ onBack, onSubmitSucc
 
   const debounceTimerRef = useRef<any>(null);
 
-  // Derive target service for 3D rack reactive focus
+  // Derive target service for reactive focus
   const detectedService =
     advice?.suggestedService ||
-    (title.toLowerCase().includes('lms') || title.toLowerCase().includes('quiz') || description.toLowerCase().includes('nalanda')
+    (title.toLowerCase().includes('lms') || title.toLowerCase().includes('quiz') || description.toLowerCase().includes('lms')
       ? 'APP-LMS'
       : undefined);
 
@@ -95,7 +95,7 @@ export const PortalReport: React.FC<PortalReportProps> = ({ onBack, onSubmitSucc
         setAdvice(res);
       } catch {
         // Local heuristic fallback
-        if (title.toLowerCase().includes('nalanda') || title.toLowerCase().includes('lms')) {
+        if (title.toLowerCase().includes('lms')) {
           setAdvice({
             suggestedCategory: 'AUTHENTICATION',
             suggestedService: 'APP-LMS',
@@ -107,7 +107,7 @@ export const PortalReport: React.FC<PortalReportProps> = ({ onBack, onSubmitSucc
               {
                 id: '1',
                 number: 'INC-2026-000104',
-                title: 'Nalanda authentication timeout during quiz window',
+                title: 'LMS authentication timeout during quiz window',
                 score: 0.91,
                 serviceCode: 'APP-LMS',
                 state: 'IN_PROGRESS',
@@ -117,7 +117,7 @@ export const PortalReport: React.FC<PortalReportProps> = ({ onBack, onSubmitSucc
               {
                 id: 'KB-0002',
                 title: 'Clearing Expired BITS SSO Cookies',
-                snippet: 'Clearing expired BITS SSO cookies or using private browsing restores Nalanda access.',
+                snippet: 'Clearing expired BITS SSO cookies or using private browsing restores LMS access.',
                 solution: 'Open an incognito window and clear cookies for sso.bits-pilani.ac.in',
                 serviceCode: 'APP-LMS',
                 relevanceScore: 0.95,
@@ -239,7 +239,7 @@ export const PortalReport: React.FC<PortalReportProps> = ({ onBack, onSubmitSucc
                 <input
                   type="text"
                   required
-                  placeholder="e.g. Cannot log into Nalanda LMS during quiz window"
+                  placeholder="e.g. Cannot log into Campus LMS during quiz window"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
                   className="w-full h-11 px-3 text-xs sm:text-sm font-mono font-bold bg-white text-[#1B1530] border-[3px] border-[var(--line)] shadow-[3px_3px_0_var(--shadow-col)] focus:outline-none"

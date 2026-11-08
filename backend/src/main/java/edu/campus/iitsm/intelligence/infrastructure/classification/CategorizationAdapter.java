@@ -40,7 +40,7 @@ public class CategorizationAdapter implements CategorizationPort {
     String fullText = ((title != null ? title : "") + " " + (description != null ? description : "")).toLowerCase();
 
     // Stage 1: Alias Dictionary Match (Confidence 0.90)
-    if (fullText.contains("nalanda") || fullText.contains("moodle")) {
+    if (fullText.contains("nalanda") || fullText.contains("moodle") || fullText.contains("lms")) {
       String cat = (fullText.contains("login") || fullText.contains("log into") || fullText.contains("sso") || fullText.contains("auth"))
           ? "AUTHENTICATION" : "SOFTWARE";
       LlmClassificationSchema schema = new LlmClassificationSchema(
@@ -49,11 +49,11 @@ public class CategorizationAdapter implements CategorizationPort {
           "CAMPUS",
           50,
           2,
-          List.of("nalanda"),
+          List.of("lms"),
           List.of(),
           null,
           0.90,
-          "Matched Nalanda LMS rule"
+          "Matched Campus LMS rule"
       );
       return new Suggestion<>(
           schema,

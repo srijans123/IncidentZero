@@ -84,7 +84,7 @@ export const AdminOverview: React.FC = () => {
           <div className="divide-y-2 divide-[var(--line)]/20 text-xs font-mono">
             {[
               { code: 'AUTH-LDAP', name: 'Active Directory / LDAP SSO', tier: 'T0', status: 'CRITICAL', latency: '910ms', tickets: 26 },
-              { code: 'APP-LMS', name: 'Nalanda Moodle Academic Portal', tier: 'T1', status: 'CRITICAL', latency: '382ms', tickets: 14 },
+              { code: 'APP-LMS', name: 'Campus Moodle Academic LMS', tier: 'T1', status: 'CRITICAL', latency: '382ms', tickets: 14 },
               { code: 'APP-ERP', name: 'Student Records & AUGSD Portal', tier: 'T1', status: 'WARNING', latency: '145ms', tickets: 8 },
               { code: 'DB-PRIMARY', name: 'PostgreSQL Serverless Core', tier: 'T0', status: 'HEALTHY', latency: '14ms', tickets: 0 },
               { code: 'NET-CORE', name: 'NOC Edge Gateway', tier: 'T0', status: 'HEALTHY', latency: '3ms', tickets: 1 },

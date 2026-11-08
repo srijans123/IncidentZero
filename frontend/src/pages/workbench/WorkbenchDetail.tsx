@@ -596,7 +596,7 @@ export const WorkbenchDetail: React.FC<WorkbenchDetailProps> = ({ incidentId, on
                 <strong className="block font-bold">Preventative Action Items:</strong>
                 <ul className="list-disc pl-4 space-y-1 mt-1 font-medium">
                   <li>Expand LDAP connection pool maximum limits by +50%.</li>
-                  <li>Deploy automated health-check probe for Nalanda Moodle SSO.</li>
+                  <li>Deploy automated health-check probe for Campus LMS Moodle SSO.</li>
                   <li>Anchor cryptographic ledger hashes to immutable off-site repository.</li>
                 </ul>
               </div>

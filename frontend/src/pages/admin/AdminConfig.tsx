@@ -251,7 +251,7 @@ export const AdminConfig: React.FC = () => {
             </div>
 
             <p className="text-xs text-[var(--soft)] leading-relaxed">
-              When an academic calendar window is active (Mid-Semesters, Comprehensive Exams, or Course Registration), all Nalanda LMS and Campus SSO issues automatically receive a <strong>+1 Priority Bump</strong> (P2 → P1) in accordance with campus ITSM governance.
+              When an academic calendar window is active (Mid-Semesters, Comprehensive Exams, or Course Registration), all Campus LMS and Campus SSO issues automatically receive a <strong>+1 Priority Bump</strong> (P2 → P1) in accordance with campus ITSM governance.
             </p>
           </div>
         </div>

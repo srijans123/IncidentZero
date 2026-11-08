@@ -28,7 +28,7 @@ INSERT INTO it_service (id, code, name, tier, owner_team_id, aliases, calendar_t
   ('30000000-0000-0000-0000-000000000004', 'NET-DNS', 'Campus DNS & DHCP Cluster', 'T0', '10000000-0000-0000-0000-000000000001', '{dns,dhcp,ip lease,name resolution}', '{ALL}'),
   ('30000000-0000-0000-0000-000000000005', 'FAC-HVAC', 'Data Center Power & Cooling', 'T1', '10000000-0000-0000-0000-000000000004', '{hvac,server cooling,ups,chiller}', '{}'),
   ('30000000-0000-0000-0000-000000000006', 'APP-ERP', 'Student ERP & Course Registration Portal', 'T1', '10000000-0000-0000-0000-000000000003', '{erp,augsd,registration,timetable,grades}', '{REGISTRATION,FEE_DEADLINE}'),
-  ('30000000-0000-0000-0000-000000000007', 'APP-LMS', 'Nalanda / Moodle LMS', 'T1', '10000000-0000-0000-0000-000000000003', '{nalanda,moodle,lms,quiz,assignment upload}', '{EXAMS}'),
+  ('30000000-0000-0000-0000-000000000007', 'APP-LMS', 'Moodle LMS', 'T1', '10000000-0000-0000-0000-000000000003', '{moodle,lms,quiz,assignment upload}', '{EXAMS}'),
   ('30000000-0000-0000-0000-000000000008', 'APP-MAIL', 'Campus Email & Google Workspace Bridge', 'T1', '10000000-0000-0000-0000-000000000002', '{bitsmail,email,workspace,smtp}', '{}'),
   ('30000000-0000-0000-0000-000000000009', 'NET-WIFI-HOSTEL', 'Hostel Bhawan Aruba Wi-Fi Controllers', 'T1', '10000000-0000-0000-0000-000000000001', '{hostel wifi,bhawan wifi,aruba,bits-student}', '{EXAMS}'),
   ('30000000-0000-0000-0000-000000000010', 'NET-LAN-ACAD', 'Academic Block Wired LAN & Wi-Fi', 'T1', '10000000-0000-0000-0000-000000000001', '{academic lan,nab wifi,fd2 lan,ltc wifi}', '{EXAMS}'),
@@ -179,7 +179,7 @@ INSERT INTO escalation_policy (team_id, ladder) VALUES
 ON CONFLICT (team_id) DO NOTHING;
 
 INSERT INTO knowledge_article (id, code, title, body, service_id, category_id, status, published_at, created_at) VALUES
-  ('80000000-0000-0000-0000-000000000001', 'KB-0002', 'Clearing Expired BITS SSO Cookies for Nalanda & ERP',
+  ('80000000-0000-0000-0000-000000000001', 'KB-0002', 'Clearing Expired BITS SSO Cookies for LMS & ERP',
    '1. Clear browser cookies for *.bits.campus. 2. Verify system clock NTP sync. 3. Re-authenticate via Central CAS SSO.',
    '30000000-0000-0000-0000-000000000007', '20000000-0000-0000-0000-000000000007', 'PUBLISHED', '2026-10-01T09:00:00Z', '2026-10-01T09:00:00Z'),
   ('80000000-0000-0000-0000-000000000002', 'KB-0007', 'Recovering Central OpenLDAP Connection Pool Exhaustion',

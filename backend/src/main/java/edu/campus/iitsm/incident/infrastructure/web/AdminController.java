@@ -118,7 +118,7 @@ public class AdminController {
     UUID lmsMaster = null;
     for (int i = 26; i <= Math.min(35, count); i++) {
       Incident inc = intakeService.createIncident(
-          reporter, "Nalanda quiz login failing with SSO error (" + i + ")",
+          reporter, "LMS quiz login failing with SSO error (" + i + ")",
           "LMS login timeout", lmsSvc, "T1", 2, 2, lmsMaster
       );
       if (lmsMaster == null) lmsMaster = inc.id();

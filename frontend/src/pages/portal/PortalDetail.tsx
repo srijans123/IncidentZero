@@ -250,7 +250,7 @@ export const PortalDetail: React.FC<PortalDetailProps> = ({ incidentId, onBack }
             <textarea
               rows={2}
               required
-              placeholder="e.g. Cleared browser cookies as requested; still seeing HTTP 504 on Nalanda quiz page."
+              placeholder="e.g. Cleared browser cookies as requested; still seeing HTTP 504 on LMS quiz page."
               value={userInfoInput}
               onChange={(e) => setUserInfoInput(e.target.value)}
               className="w-full p-2.5 text-xs font-mono font-bold bg-white text-[#1B1530] border-2 border-[#1B1530] focus:outline-none resize-none"

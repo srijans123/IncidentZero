@@ -15,7 +15,7 @@ export interface ServerBladeInfo {
 }
 
 const SEEDED_BLADES: ServerBladeInfo[] = [
-  { id: 'APP-LMS', name: 'Nalanda Moodle LMS', category: 'Academic Apps', status: 'CRITICAL', tickets: 14, latencyMs: 382 },
+  { id: 'APP-LMS', name: 'Campus Moodle LMS', category: 'Academic Apps', status: 'CRITICAL', tickets: 14, latencyMs: 382 },
   { id: 'AUTH-LDAP', name: 'Campus SSO & LDAP', category: 'Identity Core', status: 'CRITICAL', tickets: 26, latencyMs: 910 },
   { id: 'DB-PRIMARY', name: 'PostgreSQL Serverless', category: 'Data Tier-0', status: 'HEALTHY', tickets: 0, latencyMs: 14 },
   { id: 'SVC-ERP', name: 'Campus ERP & Finance', category: 'Core Business', status: 'WARNING', tickets: 8, latencyMs: 145 },

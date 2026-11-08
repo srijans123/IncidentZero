@@ -26,7 +26,7 @@ const CAMPUS_SERVICES: ServiceNode[] = [
 
   // Tier 1
   { id: '5', code: 'APP-ERP', name: 'Campus ERP & AUGSD Records', tier: 'T1', status: 'DEGRADED', team: 'ERP Team', x: 180, y: 220 },
-  { id: '6', code: 'APP-LMS', name: 'Nalanda Moodle Academic Portal', tier: 'T1', status: 'OUTAGE', team: 'Academic IT', x: 420, y: 220 },
+  { id: '6', code: 'APP-LMS', name: 'Campus Moodle Academic LMS', tier: 'T1', status: 'OUTAGE', team: 'Academic IT', x: 420, y: 220 },
   { id: '7', code: 'HOSTEL-WIFI', name: 'Bhawan Mesh Network', tier: 'T1', status: 'HEALTHY', team: 'NOC Network', x: 660, y: 220 },
   { id: '8', code: 'FEE-PORTAL', name: 'Student Fee & Payment Gateway', tier: 'T1', status: 'DEGRADED', team: 'Finance Team', x: 900, y: 220 },
 

@@ -29,7 +29,7 @@ const SEEDED_NODES: ServiceNode3D[] = [
   { id: 'NET-DNS', name: 'Internal BITS DNS', tier: 'T0', status: 'HEALTHY', activeTickets: 0 },
 
   { id: 'APP-ERP', name: 'ERP Student Records', tier: 'T1', isImpacted: true, status: 'DEGRADED', activeTickets: 12 },
-  { id: 'APP-LMS', name: 'Nalanda Moodle LMS', tier: 'T1', isImpacted: true, status: 'OUTAGE', activeTickets: 14 },
+  { id: 'APP-LMS', name: 'Campus Moodle LMS', tier: 'T1', isImpacted: true, status: 'OUTAGE', activeTickets: 14 },
   { id: 'APP-PORTAL', name: 'Student Academic Portal', tier: 'T1', isImpacted: true, status: 'DEGRADED', activeTickets: 9 },
   { id: 'NET-WIFI-HOSTEL', name: 'Hostel WiFi Mesh', tier: 'T1', status: 'HEALTHY', activeTickets: 2 },
   { id: 'APP-PAYMENT', name: 'Fee & Payment Gateway', tier: 'T1', isImpacted: true, status: 'DEGRADED', activeTickets: 5 },
