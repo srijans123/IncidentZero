@@ -10,7 +10,6 @@ import { StatusDot } from '../../components/ui/StatusDot';
 import { StatusBadge } from '../../components/ui/StatusBadge';
 import { ActionButton } from '../../components/ui/ActionButton';
 import { HashPill } from '../../components/ui/HashPill';
-import { CampusCoreRack3D } from '../../components/three/CampusCoreRack3D';
 
 interface PortalHomeProps {
   onSelectIncident: (id: string) => void;
@@ -24,7 +23,6 @@ export const PortalHome: React.FC<PortalHomeProps> = ({ onSelectIncident, onOpen
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState<'ALL' | 'OPEN' | 'RESOLVED'>('ALL');
-  const [selectedService, setSelectedService] = useState<string | undefined>(undefined);
 
   const fetchIncidents = async () => {
     try {
@@ -79,7 +77,7 @@ export const PortalHome: React.FC<PortalHomeProps> = ({ onSelectIncident, onOpen
               Operational Console — {currentUser.name}
             </h1>
             <p className="text-xs sm:text-sm text-[var(--soft)] mt-1.5 max-w-xl leading-relaxed">
-              Report connectivity, ERP, or LMS issues across campus. Monitor real-time resolution SLAs, heart meters, and inspect active 3D server hardware telemetry.
+              Report connectivity, ERP, or LMS issues across campus. Monitor real-time resolution SLAs, ticking hearts, and track tickets to resolution.
             </p>
           </div>
           <ActionButton
@@ -93,24 +91,6 @@ export const PortalHome: React.FC<PortalHomeProps> = ({ onSelectIncident, onOpen
           >
             Report New Incident
           </ActionButton>
-        </div>
-      </div>
-
-      {/* 3D Hardware Telemetry Core Banner in CRT Monitor Frame */}
-      <div className="crt-frame">
-        <div className="flex items-center justify-between mb-2 px-1 text-xs font-mono font-bold text-[#FFF8DC]">
-          <span className="flex items-center gap-1.5">
-            <PixelIcon name="building" scale={1.6} />
-            <span>CAMPUS CORE SERVER BLADE TELEMETRY (3D PROCEDURAL RACK)</span>
-          </span>
-          <span className="text-[#FFD84D]">60 FPS WEAPONIZED RENDERER</span>
-        </div>
-        <div className="crt-screen">
-          <CampusCoreRack3D
-            selectedServiceId={selectedService}
-            onSelectService={(svcId) => setSelectedService(svcId)}
-            className="h-[320px]"
-          />
         </div>
       </div>
 

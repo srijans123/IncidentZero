@@ -15,7 +15,6 @@ import {
 } from 'lucide-react';
 import { ActionButton } from '../../components/ui/ActionButton';
 import { StatusBadge } from '../../components/ui/StatusBadge';
-import { CampusCoreRack3D } from '../../components/three/CampusCoreRack3D';
 
 interface PortalReportProps {
   onBack: () => void;
@@ -320,24 +319,6 @@ export const PortalReport: React.FC<PortalReportProps> = ({ onBack, onSubmitSucc
 
           {/* Right Copilot Telemetry Column (5 cols) */}
           <div className="lg:col-span-5 space-y-4">
-            {/* Live 3D Hardware Telemetry Focus in CRT Screen */}
-            <div className="crt-frame">
-              <div className="flex items-center justify-between mb-2 text-xs font-mono font-bold text-[#FFF8DC]">
-                <span>3D HARDWARE TELEMETRY FOCUS</span>
-                {detectedService && (
-                  <span className="bg-[#38BDF8] text-[#1B1530] px-1.5 py-0.5">
-                    {detectedService}
-                  </span>
-                )}
-              </div>
-              <div className="crt-screen">
-                <CampusCoreRack3D
-                  selectedServiceId={detectedService}
-                  className="h-[200px]"
-                />
-              </div>
-            </div>
-
             {/* AI Real-time Triage Suggestions */}
             {advice && (
               <div className="pixel-card bg-[var(--card)] space-y-3">
