@@ -19,3 +19,4 @@
 - **v1.19** (2026-11-08 13:40:21 UTC) by `Srijan Shukla`: Remove Nalanda references (BITS Hyderabad LMS) and add GitHub Pages deployment workflow
 - **v1.20** (2026-11-08 13:41:36 UTC) by `Srijan Shukla`: Add deploy_gh_pages script and bump version
 - **v1.21** (2026-11-08 13:45:55 UTC) by `Srijan Shukla`: Fix relative landing navigation to preserve repository subfolder on GitHub Pages
+- **v1.22** (2026-11-08 13:52:29 UTC) by `Srijan Shukla`: Bundle real light and dark brand logos directly into Vite build and landing page

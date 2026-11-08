@@ -5,6 +5,8 @@ import { api } from '../services/api';
 import { sound } from '../services/sound';
 import { PixelIcon } from '../services/pixelSprites';
 import { StatusDot } from './ui/StatusDot';
+import logoDark from '../assets/logo/incident-zero-logo.png';
+import logoLight from '../assets/logo/incident-zero-logo-light.png';
 
 export type ActiveTab = 'stage' | 'portal' | 'workbench' | 'admin' | 'specs';
 
@@ -103,12 +105,12 @@ export const Header: React.FC<HeaderProps> = ({
           >
             <img
               className="brand-img light-only h-7 w-auto object-contain"
-              src="/logo/incident-zero-logo.png"
+              src={logoDark}
               alt="Incident-Zero"
             />
             <img
               className="brand-img dark-only h-7 w-auto object-contain"
-              src="/logo/incident-zero-logo-light.png"
+              src={logoLight}
               alt="Incident-Zero"
             />
             <span className="font-mono text-xs font-bold bg-[#FFD84D] text-[#1B1530] border-2 border-[#1B1530] px-1.5 py-0.5 shadow-[2px_2px_0_#1B1530]">
