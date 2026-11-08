@@ -1,0 +1,1925 @@
+{
+  ".agent/skills/plugin.json": {
+    "mtime": 1793281059.8736467,
+    "seen": 1793304807.4357092,
+    "ast_hash": "057289c9c5d35deaddd411157def3a47",
+    "semantic_hash": "057289c9c5d35deaddd411157def3a47",
+    "ast_empty": true
+  },
+  ".github/workflows/ci.yml": {
+    "mtime": 1793281156.3930826,
+    "seen": 1793304807.4357092,
+    "ast_hash": "6c3048911d83993fd3127875194de52b",
+    "semantic_hash": "6c3048911d83993fd3127875194de52b"
+  },
+  ".impeccable/config.json": {
+    "mtime": 1793299421.4900768,
+    "seen": 1793304807.4366999,
+    "ast_hash": "4ff1a408332c3e6769b77060c87ed4c2",
+    "semantic_hash": "4ff1a408332c3e6769b77060c87ed4c2",
+    "ast_empty": true
+  },
+  "backend/pom.xml": {
+    "mtime": 1793283275.394241,
+    "seen": 1793304807.4366999,
+    "ast_hash": "634f4507d996e5676027347beaaeb174",
+    "semantic_hash": "634f4507d996e5676027347beaaeb174"
+  },
+  "backend/src/main/java/edu/campus/iitsm/IncidentZeroApplication.java": {
+    "mtime": 1793281156.3879669,
+    "seen": 1793304807.4377012,
+    "ast_hash": "736d6f211f9420eef29e7b2a279fe58c",
+    "semantic_hash": "736d6f211f9420eef29e7b2a279fe58c"
+  },
+  "backend/src/main/java/edu/campus/iitsm/assignment/api/AssignmentRationale.java": {
+    "mtime": 1793281156.3660853,
+    "seen": 1793304807.4377012,
+    "ast_hash": "3024f19dca9aa56e1e3782a23b4a5f9c",
+    "semantic_hash": "3024f19dca9aa56e1e3782a23b4a5f9c"
+  },
+  "backend/src/main/java/edu/campus/iitsm/assignment/api/package-info.java": {
+    "mtime": 1793281156.3104243,
+    "seen": 1793304807.4387062,
+    "ast_hash": "545f572f029f0a7d103c9f1ccff90794",
+    "semantic_hash": "545f572f029f0a7d103c9f1ccff90794"
+  },
+  "backend/src/main/java/edu/campus/iitsm/assignment/application/BatchAssignmentScheduler.java": {
+    "mtime": 1793284787.9236934,
+    "seen": 1793304807.4397066,
+    "ast_hash": "5001374728eaec9d7bfef8327c35d250",
+    "semantic_hash": "5001374728eaec9d7bfef8327c35d250"
+  },
+  "backend/src/main/java/edu/campus/iitsm/assignment/application/strategy/ExperienceStrategy.java": {
+    "mtime": 1793284719.1953852,
+    "seen": 1793304807.4397066,
+    "ast_hash": "4547eb964a3f103b9138cca9a9c6216c",
+    "semantic_hash": "4547eb964a3f103b9138cca9a9c6216c"
+  },
+  "backend/src/main/java/edu/campus/iitsm/assignment/application/strategy/HungarianBatchStrategy.java": {
+    "mtime": 1793284750.5894432,
+    "seen": 1793304807.4417028,
+    "ast_hash": "ca333604b64728140986631b7953bdee",
+    "semantic_hash": "ca333604b64728140986631b7953bdee"
+  },
+  "backend/src/main/java/edu/campus/iitsm/assignment/application/strategy/HybridWeightedStrategy.java": {
+    "mtime": 1793284683.5794477,
+    "seen": 1793304807.4426978,
+    "ast_hash": "e195e50454b2d10883787ee5ff7bf123",
+    "semantic_hash": "e195e50454b2d10883787ee5ff7bf123"
+  },
+  "backend/src/main/java/edu/campus/iitsm/assignment/application/strategy/LeastLoadedStrategy.java": {
+    "mtime": 1793284666.0327156,
+    "seen": 1793304807.4437156,
+    "ast_hash": "328b24aaa48819bc972a625e5ac00ac8",
+    "semantic_hash": "328b24aaa48819bc972a625e5ac00ac8"
+  },
+  "backend/src/main/java/edu/campus/iitsm/assignment/application/strategy/PriorityAwareStrategy.java": {
+    "mtime": 1793284737.4681375,
+    "seen": 1793304807.4472528,
+    "ast_hash": "c1162a7d656444f23ac054893f446346",
+    "semantic_hash": "c1162a7d656444f23ac054893f446346"
+  },
+  "backend/src/main/java/edu/campus/iitsm/assignment/application/strategy/RoundRobinStrategy.java": {
+    "mtime": 1793284645.8496592,
+    "seen": 1793304807.4472528,
+    "ast_hash": "2fde3bbc0fa7c77228700613f449de1f",
+    "semantic_hash": "2fde3bbc0fa7c77228700613f449de1f"
+  },
+  "backend/src/main/java/edu/campus/iitsm/assignment/application/strategy/SkillMatchStrategy.java": {
+    "mtime": 1793284708.1673875,
+    "seen": 1793304807.4482548,
+    "ast_hash": "50cef2f5971f230ff9bdc8f719bcb730",
+    "semantic_hash": "50cef2f5971f230ff9bdc8f719bcb730"
+  },
+  "backend/src/main/java/edu/campus/iitsm/assignment/application/strategy/StrategySupport.java": {
+    "mtime": 1793284634.234815,
+    "seen": 1793304807.4492667,
+    "ast_hash": "cffeade89cf0b6df2b3f62ba8bdf116d",
+    "semantic_hash": "cffeade89cf0b6df2b3f62ba8bdf116d"
+  },
+  "backend/src/main/java/edu/campus/iitsm/assignment/domain/AssignmentStrategy.java": {
+    "mtime": 1793281156.3680873,
+    "seen": 1793304807.4502342,
+    "ast_hash": "b4ad64c169379a87060d80c6c163b394",
+    "semantic_hash": "b4ad64c169379a87060d80c6c163b394"
+  },
+  "backend/src/main/java/edu/campus/iitsm/assignment/domain/CapacityReservationPort.java": {
+    "mtime": 1793284763.575397,
+    "seen": 1793304807.4522443,
+    "ast_hash": "818bfd06b58b6ff10f8c9fbed3551643",
+    "semantic_hash": "818bfd06b58b6ff10f8c9fbed3551643"
+  },
+  "backend/src/main/java/edu/campus/iitsm/assignment/domain/HungarianBatchAssigner.java": {
+    "mtime": 1793281156.3650875,
+    "seen": 1793304807.453244,
+    "ast_hash": "08a1feb2dca122b946e16eb4150f06f3",
+    "semantic_hash": "08a1feb2dca122b946e16eb4150f06f3"
+  },
+  "backend/src/main/java/edu/campus/iitsm/assignment/domain/TechnicianCandidate.java": {
+    "mtime": 1793281156.3670878,
+    "seen": 1793304807.4542525,
+    "ast_hash": "dac2bc4162ad7e9054d8c897e4f0f4e7",
+    "semantic_hash": "dac2bc4162ad7e9054d8c897e4f0f4e7"
+  },
+  "backend/src/main/java/edu/campus/iitsm/assignment/infrastructure/AssignmentPortAdapter.java": {
+    "mtime": 1793292542.5489264,
+    "seen": 1793304807.4552546,
+    "ast_hash": "dbdc493de053461f72d368a9a9f7b4f9",
+    "semantic_hash": "dbdc493de053461f72d368a9a9f7b4f9"
+  },
+  "backend/src/main/java/edu/campus/iitsm/assignment/infrastructure/CapacityReservationAdapter.java": {
+    "mtime": 1793284773.1514168,
+    "seen": 1793304807.456254,
+    "ast_hash": "5702a20c60df62ffdae42a88ec9efc3d",
+    "semantic_hash": "5702a20c60df62ffdae42a88ec9efc3d"
+  },
+  "backend/src/main/java/edu/campus/iitsm/audit/api/AuditVerificationPort.java": {
+    "mtime": 1793293275.7235758,
+    "seen": 1793304807.4572525,
+    "ast_hash": "d4b148f6d2d6261cdbf040cafcb28aee",
+    "semantic_hash": "d4b148f6d2d6261cdbf040cafcb28aee"
+  },
+  "backend/src/main/java/edu/campus/iitsm/audit/api/AuditVerificationResult.java": {
+    "mtime": 1793289139.5606284,
+    "seen": 1793304807.4602578,
+    "ast_hash": "7f80b71d2cf8c88935a8e55133271a2f",
+    "semantic_hash": "7f80b71d2cf8c88935a8e55133271a2f"
+  },
+  "backend/src/main/java/edu/campus/iitsm/audit/api/package-info.java": {
+    "mtime": 1793281156.3154254,
+    "seen": 1793304807.4602578,
+    "ast_hash": "79ec76b879c32eeafa3229be4c4ebaba",
+    "semantic_hash": "79ec76b879c32eeafa3229be4c4ebaba"
+  },
+  "backend/src/main/java/edu/campus/iitsm/audit/domain/AuditHasher.java": {
+    "mtime": 1793281156.3660853,
+    "seen": 1793304807.4612532,
+    "ast_hash": "f1692790f5657b47ed68eb05a69cc240",
+    "semantic_hash": "f1692790f5657b47ed68eb05a69cc240"
+  },
+  "backend/src/main/java/edu/campus/iitsm/audit/infrastructure/AuditLedgerInTxListener.java": {
+    "mtime": 1793293557.0765328,
+    "seen": 1793304807.4622543,
+    "ast_hash": "740317d95674f350e6d315fe71682e4c",
+    "semantic_hash": "740317d95674f350e6d315fe71682e4c"
+  },
+  "backend/src/main/java/edu/campus/iitsm/audit/infrastructure/AuditVerificationAdapter.java": {
+    "mtime": 1793293294.7098618,
+    "seen": 1793304807.463254,
+    "ast_hash": "5e1c3344977a04fe88d3be5c253f9c60",
+    "semantic_hash": "5e1c3344977a04fe88d3be5c253f9c60"
+  },
+  "backend/src/main/java/edu/campus/iitsm/catalog/api/package-info.java": {
+    "mtime": 1793281156.3058968,
+    "seen": 1793304807.4642568,
+    "ast_hash": "c76575c11e8a63c8b8a7e272983e6a6a",
+    "semantic_hash": "c76575c11e8a63c8b8a7e272983e6a6a"
+  },
+  "backend/src/main/java/edu/campus/iitsm/catalog/domain/BusinessCalendar.java": {
+    "mtime": 1793281156.364085,
+    "seen": 1793304807.466243,
+    "ast_hash": "16c8fb12b851a22311c4bffe001e359a",
+    "semantic_hash": "16c8fb12b851a22311c4bffe001e359a"
+  },
+  "backend/src/main/java/edu/campus/iitsm/catalog/infrastructure/CalendarConfiguration.java": {
+    "mtime": 1793286846.0639145,
+    "seen": 1793304807.467272,
+    "ast_hash": "8d9bc27bed473d41d56f6607f173b243",
+    "semantic_hash": "8d9bc27bed473d41d56f6607f173b243"
+  },
+  "backend/src/main/java/edu/campus/iitsm/identity/api/AuthTokens.java": {
+    "mtime": 1793282412.7212567,
+    "seen": 1793304807.468271,
+    "ast_hash": "e8c4fbbd8019160a9efff1eb6777a0e0",
+    "semantic_hash": "e8c4fbbd8019160a9efff1eb6777a0e0"
+  },
+  "backend/src/main/java/edu/campus/iitsm/identity/api/IdentityQueryService.java": {
+    "mtime": 1793282436.9174807,
+    "seen": 1793304807.4692671,
+    "ast_hash": "b6e3ce7cbc4e578ab4bf8e098c1b7db5",
+    "semantic_hash": "b6e3ce7cbc4e578ab4bf8e098c1b7db5"
+  },
+  "backend/src/main/java/edu/campus/iitsm/identity/api/LoginRequest.java": {
+    "mtime": 1793282421.186948,
+    "seen": 1793304807.4702704,
+    "ast_hash": "bbd483cb7e84920d33600d2990e8ec20",
+    "semantic_hash": "bbd483cb7e84920d33600d2990e8ec20"
+  },
+  "backend/src/main/java/edu/campus/iitsm/identity/api/StreamTicketResponse.java": {
+    "mtime": 1793282428.410733,
+    "seen": 1793304807.4712703,
+    "ast_hash": "6c3845a4f8f6929e97d5d56fee95afe3",
+    "semantic_hash": "6c3845a4f8f6929e97d5d56fee95afe3"
+  },
+  "backend/src/main/java/edu/campus/iitsm/identity/api/UserPrincipal.java": {
+    "mtime": 1793282405.3686924,
+    "seen": 1793304807.4742794,
+    "ast_hash": "fbfb9c9188c4386e5de1e01c3d941203",
+    "semantic_hash": "fbfb9c9188c4386e5de1e01c3d941203"
+  },
+  "backend/src/main/java/edu/campus/iitsm/identity/api/package-info.java": {
+    "mtime": 1793281156.307895,
+    "seen": 1793304807.475272,
+    "ast_hash": "81928089e4dcbbd69e70a65990bfd6b8",
+    "semantic_hash": "81928089e4dcbbd69e70a65990bfd6b8"
+  },
+  "backend/src/main/java/edu/campus/iitsm/identity/infrastructure/IdentityQueryServiceAdapter.java": {
+    "mtime": 1793282534.2828019,
+    "seen": 1793304807.475272,
+    "ast_hash": "1b0e788f998fa85379e53a64b9b04092",
+    "semantic_hash": "1b0e788f998fa85379e53a64b9b04092"
+  },
+  "backend/src/main/java/edu/campus/iitsm/identity/infrastructure/persistence/AppUserJpaEntity.java": {
+    "mtime": 1793282451.955205,
+    "seen": 1793304807.476271,
+    "ast_hash": "184c266800c4742b727b915772ef8f89",
+    "semantic_hash": "184c266800c4742b727b915772ef8f89"
+  },
+  "backend/src/main/java/edu/campus/iitsm/identity/infrastructure/persistence/AppUserJpaRepository.java": {
+    "mtime": 1793282484.4193206,
+    "seen": 1793304807.4772696,
+    "ast_hash": "8bbe04bff668d89dcdf386961f6031fa",
+    "semantic_hash": "8bbe04bff668d89dcdf386961f6031fa"
+  },
+  "backend/src/main/java/edu/campus/iitsm/identity/infrastructure/persistence/TechnicianProfileJpaEntity.java": {
+    "mtime": 1793282461.1230578,
+    "seen": 1793304807.4782708,
+    "ast_hash": "3efa7fb0d5117e55f00a51188511cc74",
+    "semantic_hash": "3efa7fb0d5117e55f00a51188511cc74"
+  },
+  "backend/src/main/java/edu/campus/iitsm/identity/infrastructure/persistence/TechnicianProfileJpaRepository.java": {
+    "mtime": 1793282492.1153176,
+    "seen": 1793304807.484878,
+    "ast_hash": "8e87d9945e24c90e080d3f90c80c555b",
+    "semantic_hash": "8e87d9945e24c90e080d3f90c80c555b"
+  },
+  "backend/src/main/java/edu/campus/iitsm/identity/infrastructure/security/JwtAuthenticationFilter.java": {
+    "mtime": 1793282547.3745592,
+    "seen": 1793304807.4878845,
+    "ast_hash": "4e898785dc9881daf47e90be1325fee6",
+    "semantic_hash": "4e898785dc9881daf47e90be1325fee6"
+  },
+  "backend/src/main/java/edu/campus/iitsm/identity/infrastructure/security/JwtTokenService.java": {
+    "mtime": 1793282507.3599856,
+    "seen": 1793304807.4888837,
+    "ast_hash": "51a139b9913a6dd435b10a3f252967fc",
+    "semantic_hash": "51a139b9913a6dd435b10a3f252967fc"
+  },
+  "backend/src/main/java/edu/campus/iitsm/identity/infrastructure/security/SecurityConfig.java": {
+    "mtime": 1793282560.2573369,
+    "seen": 1793304807.489881,
+    "ast_hash": "235fcec1537db715e3f41a914ce2add9",
+    "semantic_hash": "235fcec1537db715e3f41a914ce2add9"
+  },
+  "backend/src/main/java/edu/campus/iitsm/identity/infrastructure/security/StreamTicketService.java": {
+    "mtime": 1793282517.6082091,
+    "seen": 1793304807.4918802,
+    "ast_hash": "f3eefc95aef4a3f482b1c01b83178124",
+    "semantic_hash": "f3eefc95aef4a3f482b1c01b83178124"
+  },
+  "backend/src/main/java/edu/campus/iitsm/identity/infrastructure/web/AuthController.java": {
+    "mtime": 1793282573.8002186,
+    "seen": 1793304807.4948785,
+    "ast_hash": "a27682ce65e182f01d45b6b03747592c",
+    "semantic_hash": "a27682ce65e182f01d45b6b03747592c"
+  },
+  "backend/src/main/java/edu/campus/iitsm/incident/api/AssignmentPort.java": {
+    "mtime": 1793287000.1800354,
+    "seen": 1793304807.4948785,
+    "ast_hash": "bec1765f4242992a28a1b466495ef029",
+    "semantic_hash": "bec1765f4242992a28a1b466495ef029"
+  },
+  "backend/src/main/java/edu/campus/iitsm/incident/api/IncidentEvents.java": {
+    "mtime": 1793281156.346942,
+    "seen": 1793304807.4978728,
+    "ast_hash": "02c70669876b34881cd0651478cafec9",
+    "semantic_hash": "02c70669876b34881cd0651478cafec9"
+  },
+  "backend/src/main/java/edu/campus/iitsm/incident/api/IncidentQueryPort.java": {
+    "mtime": 1793288573.91363,
+    "seen": 1793304807.4988866,
+    "ast_hash": "b3f5ed80dd6573ca8452c941cb546d7b",
+    "semantic_hash": "b3f5ed80dd6573ca8452c941cb546d7b"
+  },
+  "backend/src/main/java/edu/campus/iitsm/incident/api/dto/IncidentDtos.java": {
+    "mtime": 1793288565.0858095,
+    "seen": 1793304807.5018816,
+    "ast_hash": "55dea9edcf29e987ec672761f7e928b0",
+    "semantic_hash": "55dea9edcf29e987ec672761f7e928b0"
+  },
+  "backend/src/main/java/edu/campus/iitsm/incident/api/package-info.java": {
+    "mtime": 1793281156.3048985,
+    "seen": 1793304807.5028853,
+    "ast_hash": "493fff92a27e5cda62be59545a06a55c",
+    "semantic_hash": "493fff92a27e5cda62be59545a06a55c"
+  },
+  "backend/src/main/java/edu/campus/iitsm/incident/application/CommandAuthorizer.java": {
+    "mtime": 1793287077.2985218,
+    "seen": 1793304807.5028853,
+    "ast_hash": "3c3d1fb3a4feb0f743f154544d31b4a9",
+    "semantic_hash": "3c3d1fb3a4feb0f743f154544d31b4a9"
+  },
+  "backend/src/main/java/edu/campus/iitsm/incident/application/IncidentCommandService.java": {
+    "mtime": 1793286783.2541428,
+    "seen": 1793304807.505023,
+    "ast_hash": "4ae9b62904ea8194f0bfa6512426e2ee",
+    "semantic_hash": "4ae9b62904ea8194f0bfa6512426e2ee"
+  },
+  "backend/src/main/java/edu/campus/iitsm/incident/application/intake/AbstractIntakeStep.java": {
+    "mtime": 1793286552.393773,
+    "seen": 1793304807.505023,
+    "ast_hash": "3eb9a40e0d71f9d574587d524ff63330",
+    "semantic_hash": "3eb9a40e0d71f9d574587d524ff63330"
+  },
+  "backend/src/main/java/edu/campus/iitsm/incident/application/intake/AssignStep.java": {
+    "mtime": 1793287014.9293685,
+    "seen": 1793304807.5084217,
+    "ast_hash": "0d8746a5805d4a95b804cc8819fc74eb",
+    "semantic_hash": "0d8746a5805d4a95b804cc8819fc74eb"
+  },
+  "backend/src/main/java/edu/campus/iitsm/incident/application/intake/CategoryAndServiceStep.java": {
+    "mtime": 1793286605.2123625,
+    "seen": 1793304807.509473,
+    "ast_hash": "490ec717dafad8819340a615b72cfe4f",
+    "semantic_hash": "490ec717dafad8819340a615b72cfe4f"
+  },
+  "backend/src/main/java/edu/campus/iitsm/incident/application/intake/CreateProvisionalIncidentStep.java": {
+    "mtime": 1793286792.0552986,
+    "seen": 1793304807.5104678,
+    "ast_hash": "1575a3c8530e8d415f9d759842b878dd",
+    "semantic_hash": "1575a3c8530e8d415f9d759842b878dd"
+  },
+  "backend/src/main/java/edu/campus/iitsm/incident/application/intake/DuplicateCheckStep.java": {
+    "mtime": 1793286593.9423172,
+    "seen": 1793304807.5185046,
+    "ast_hash": "6799060a639da39dd5c3faf1761d3520",
+    "semantic_hash": "6799060a639da39dd5c3faf1761d3520"
+  },
+  "backend/src/main/java/edu/campus/iitsm/incident/application/intake/EnrichStep.java": {
+    "mtime": 1793292522.72415,
+    "seen": 1793304807.519506,
+    "ast_hash": "150c89701a687d9ee46165d74cbe0465",
+    "semantic_hash": "150c89701a687d9ee46165d74cbe0465"
+  },
+  "backend/src/main/java/edu/campus/iitsm/incident/application/intake/IntakePipeline.java": {
+    "mtime": 1793286654.022587,
+    "seen": 1793304807.5530956,
+    "ast_hash": "20e7104b07650c14649a8032bda890f9",
+    "semantic_hash": "20e7104b07650c14649a8032bda890f9"
+  },
+  "backend/src/main/java/edu/campus/iitsm/incident/application/intake/IntakeService.java": {
+    "mtime": 1793291498.0580266,
+    "seen": 1793304807.6181066,
+    "ast_hash": "e36517b7a7a9342f8146437f41e9fe4e",
+    "semantic_hash": "e36517b7a7a9342f8146437f41e9fe4e"
+  },
+  "backend/src/main/java/edu/campus/iitsm/incident/application/intake/PersistAndPublishStep.java": {
+    "mtime": 1793286645.784205,
+    "seen": 1793304807.6336827,
+    "ast_hash": "3ea8a03529d30b6474285ad194ed9dae",
+    "semantic_hash": "3ea8a03529d30b6474285ad194ed9dae"
+  },
+  "backend/src/main/java/edu/campus/iitsm/incident/application/intake/PriorityAndSlaStep.java": {
+    "mtime": 1793286802.9296353,
+    "seen": 1793304807.6357203,
+    "ast_hash": "e30246ab3db9782104dbd56289775c37",
+    "semantic_hash": "e30246ab3db9782104dbd56289775c37"
+  },
+  "backend/src/main/java/edu/campus/iitsm/incident/application/intake/SanitizeRedactStep.java": {
+    "mtime": 1793286572.2931902,
+    "seen": 1793304807.6357203,
+    "ast_hash": "75cdf6d4eac9e2fe716477144346dcac",
+    "semantic_hash": "75cdf6d4eac9e2fe716477144346dcac"
+  },
+  "backend/src/main/java/edu/campus/iitsm/incident/application/intake/ValidateStep.java": {
+    "mtime": 1793286561.2214847,
+    "seen": 1793304807.647357,
+    "ast_hash": "68050b538c5674bc9cf6f671a38e3dc0",
+    "semantic_hash": "68050b538c5674bc9cf6f671a38e3dc0"
+  },
+  "backend/src/main/java/edu/campus/iitsm/incident/application/priority/ItilMatrixPriorityStrategy.java": {
+    "mtime": 1793281156.361086,
+    "seen": 1793304807.6483622,
+    "ast_hash": "37441739ba13d7bcd19c90f76f0f71b0",
+    "semantic_hash": "37441739ba13d7bcd19c90f76f0f71b0"
+  },
+  "backend/src/main/java/edu/campus/iitsm/incident/application/priority/PriorityInput.java": {
+    "mtime": 1793281156.3590922,
+    "seen": 1793304807.6493478,
+    "ast_hash": "33990b2c8a3fb4592e143ab21837435a",
+    "semantic_hash": "33990b2c8a3fb4592e143ab21837435a"
+  },
+  "backend/src/main/java/edu/campus/iitsm/incident/application/priority/PriorityResult.java": {
+    "mtime": 1793281156.3600874,
+    "seen": 1793304807.658739,
+    "ast_hash": "108f218f634c44890617c9c266f4168e",
+    "semantic_hash": "108f218f634c44890617c9c266f4168e"
+  },
+  "backend/src/main/java/edu/campus/iitsm/incident/application/priority/PriorityStrategy.java": {
+    "mtime": 1793281156.361086,
+    "seen": 1793304807.6597517,
+    "ast_hash": "802ef012c898a2b947b56ec351cfd2fb",
+    "semantic_hash": "802ef012c898a2b947b56ec351cfd2fb"
+  },
+  "backend/src/main/java/edu/campus/iitsm/incident/application/priority/ProductScorePriorityStrategy.java": {
+    "mtime": 1793281156.3620882,
+    "seen": 1793304807.6617522,
+    "ast_hash": "60aaef379fc4dcd95e37a076c6ac19c2",
+    "semantic_hash": "60aaef379fc4dcd95e37a076c6ac19c2"
+  },
+  "backend/src/main/java/edu/campus/iitsm/incident/application/priority/WeightedScorePriorityStrategy.java": {
+    "mtime": 1793281156.363091,
+    "seen": 1793304807.6637397,
+    "ast_hash": "93f8f71fd4e9e31b57d48f5184245494",
+    "semantic_hash": "93f8f71fd4e9e31b57d48f5184245494"
+  },
+  "backend/src/main/java/edu/campus/iitsm/incident/application/sla/SlaPolicyResolver.java": {
+    "mtime": 1793286755.7873664,
+    "seen": 1793304807.6637397,
+    "ast_hash": "b044a09531d89cba6c228b73845ad772",
+    "semantic_hash": "b044a09531d89cba6c228b73845ad772"
+  },
+  "backend/src/main/java/edu/campus/iitsm/incident/domain/AcknowledgedState.java": {
+    "mtime": 1793281156.3519373,
+    "seen": 1793304807.6647363,
+    "ast_hash": "9220f10ae8856a524624effcea7978dd",
+    "semantic_hash": "9220f10ae8856a524624effcea7978dd"
+  },
+  "backend/src/main/java/edu/campus/iitsm/incident/domain/AssignedState.java": {
+    "mtime": 1793281156.3519373,
+    "seen": 1793304807.6687858,
+    "ast_hash": "7593c6c0947ad5a3eff9809e56284f4a",
+    "semantic_hash": "7593c6c0947ad5a3eff9809e56284f4a"
+  },
+  "backend/src/main/java/edu/campus/iitsm/incident/domain/CancelledState.java": {
+    "mtime": 1793281156.357089,
+    "seen": 1793304807.6687858,
+    "ast_hash": "783890b4360664bc915bab0a4400d79e",
+    "semantic_hash": "783890b4360664bc915bab0a4400d79e"
+  },
+  "backend/src/main/java/edu/campus/iitsm/incident/domain/ClassifiedState.java": {
+    "mtime": 1793281156.3509374,
+    "seen": 1793304807.669785,
+    "ast_hash": "e1e50a4eb0025a35a3e8971bc03d2734",
+    "semantic_hash": "e1e50a4eb0025a35a3e8971bc03d2734"
+  },
+  "backend/src/main/java/edu/campus/iitsm/incident/domain/ClockMode.java": {
+    "mtime": 1793281156.3411286,
+    "seen": 1793304807.6747956,
+    "ast_hash": "1b5bf5181fd92fd7302cc97689d78b93",
+    "semantic_hash": "1b5bf5181fd92fd7302cc97689d78b93"
+  },
+  "backend/src/main/java/edu/campus/iitsm/incident/domain/ClockState.java": {
+    "mtime": 1793281156.340133,
+    "seen": 1793304807.6757858,
+    "ast_hash": "bba1118f00c3004e5b32cad7fa00090f",
+    "semantic_hash": "bba1118f00c3004e5b32cad7fa00090f"
+  },
+  "backend/src/main/java/edu/campus/iitsm/incident/domain/ClosedState.java": {
+    "mtime": 1793281156.35609,
+    "seen": 1793304807.6767838,
+    "ast_hash": "ec17438a12587f8add3c490436f8c91e",
+    "semantic_hash": "ec17438a12587f8add3c490436f8c91e"
+  },
+  "backend/src/main/java/edu/campus/iitsm/incident/domain/CommandType.java": {
+    "mtime": 1793281156.3449378,
+    "seen": 1793304807.6777573,
+    "ast_hash": "e1ffb750bccb6bcafe24b73016e6aea7",
+    "semantic_hash": "e1ffb750bccb6bcafe24b73016e6aea7"
+  },
+  "backend/src/main/java/edu/campus/iitsm/incident/domain/InProgressState.java": {
+    "mtime": 1793281156.3529418,
+    "seen": 1793304807.6790175,
+    "ast_hash": "d249aeb0f84e6adccff6e10813154d55",
+    "semantic_hash": "d249aeb0f84e6adccff6e10813154d55"
+  },
+  "backend/src/main/java/edu/campus/iitsm/incident/domain/Incident.java": {
+    "mtime": 1793281156.3580933,
+    "seen": 1793304807.680068,
+    "ast_hash": "fe9331beb8a9538f4868c52e8d3e9e1b",
+    "semantic_hash": "fe9331beb8a9538f4868c52e8d3e9e1b"
+  },
+  "backend/src/main/java/edu/campus/iitsm/incident/domain/IncidentRepository.java": {
+    "mtime": 1793281156.347937,
+    "seen": 1793304807.680068,
+    "ast_hash": "f28f420424c2ddd2ff697199ef2ff738",
+    "semantic_hash": "f28f420424c2ddd2ff697199ef2ff738"
+  },
+  "backend/src/main/java/edu/campus/iitsm/incident/domain/IncidentState.java": {
+    "mtime": 1793281156.348942,
+    "seen": 1793304807.6816099,
+    "ast_hash": "6c41dd5d092baa7b8d490c17536370b9",
+    "semantic_hash": "6c41dd5d092baa7b8d490c17536370b9"
+  },
+  "backend/src/main/java/edu/campus/iitsm/incident/domain/IncidentStates.java": {
+    "mtime": 1793281156.357089,
+    "seen": 1793304807.6826482,
+    "ast_hash": "844d94db2e4f620f4d382aa1bcd2a38c",
+    "semantic_hash": "844d94db2e4f620f4d382aa1bcd2a38c"
+  },
+  "backend/src/main/java/edu/campus/iitsm/incident/domain/IncidentStatus.java": {
+    "mtime": 1793281156.339134,
+    "seen": 1793304807.683084,
+    "ast_hash": "44b5cc8f820860d7fe30a6892de05442",
+    "semantic_hash": "44b5cc8f820860d7fe30a6892de05442"
+  },
+  "backend/src/main/java/edu/campus/iitsm/incident/domain/NewState.java": {
+    "mtime": 1793281156.34994,
+    "seen": 1793304807.6836317,
+    "ast_hash": "7fc0f1f7bb29bbe426ad0d0485608bb1",
+    "semantic_hash": "7fc0f1f7bb29bbe426ad0d0485608bb1"
+  },
+  "backend/src/main/java/edu/campus/iitsm/incident/domain/PendingUserState.java": {
+    "mtime": 1793281156.3529418,
+    "seen": 1793304807.6846318,
+    "ast_hash": "c83b41f5eae745852397eacf0e3367d2",
+    "semantic_hash": "c83b41f5eae745852397eacf0e3367d2"
+  },
+  "backend/src/main/java/edu/campus/iitsm/incident/domain/Priority.java": {
+    "mtime": 1793281156.3411286,
+    "seen": 1793304807.6846318,
+    "ast_hash": "98eb45a1d715aa560b50e09e3b043281",
+    "semantic_hash": "98eb45a1d715aa560b50e09e3b043281"
+  },
+  "backend/src/main/java/edu/campus/iitsm/incident/domain/PriorityExplanation.java": {
+    "mtime": 1793281156.343129,
+    "seen": 1793304807.6856306,
+    "ast_hash": "dabff58b906fa760d27787cd030e889d",
+    "semantic_hash": "dabff58b906fa760d27787cd030e889d"
+  },
+  "backend/src/main/java/edu/campus/iitsm/incident/domain/PriorityStep.java": {
+    "mtime": 1793281156.3421276,
+    "seen": 1793304807.6856306,
+    "ast_hash": "4a940824fe636c04ab05da0984db872a",
+    "semantic_hash": "4a940824fe636c04ab05da0984db872a"
+  },
+  "backend/src/main/java/edu/campus/iitsm/incident/domain/ReopenedState.java": {
+    "mtime": 1793281156.3549373,
+    "seen": 1793304807.686676,
+    "ast_hash": "95d3c918a982caf52d225b81b90c2726",
+    "semantic_hash": "95d3c918a982caf52d225b81b90c2726"
+  },
+  "backend/src/main/java/edu/campus/iitsm/incident/domain/Resolution.java": {
+    "mtime": 1793281156.34393,
+    "seen": 1793304807.6876512,
+    "ast_hash": "29ecdd97aaa5ba3c313997cd8fad0e0c",
+    "semantic_hash": "29ecdd97aaa5ba3c313997cd8fad0e0c"
+  },
+  "backend/src/main/java/edu/campus/iitsm/incident/domain/ResolvedState.java": {
+    "mtime": 1793281156.3539398,
+    "seen": 1793304807.6886578,
+    "ast_hash": "07458a1da88419dc0fda362f2dbe21cd",
+    "semantic_hash": "07458a1da88419dc0fda362f2dbe21cd"
+  },
+  "backend/src/main/java/edu/campus/iitsm/incident/domain/SlaClock.java": {
+    "mtime": 1793281156.3449378,
+    "seen": 1793304807.6886578,
+    "ast_hash": "1fb6d56244927b64745bd3cbf8eaae98",
+    "semantic_hash": "1fb6d56244927b64745bd3cbf8eaae98"
+  },
+  "backend/src/main/java/edu/campus/iitsm/incident/domain/SlaSnapshot.java": {
+    "mtime": 1793281156.343129,
+    "seen": 1793304807.6896563,
+    "ast_hash": "47e34343ab195c6791a3b660a8329ea6",
+    "semantic_hash": "47e34343ab195c6791a3b660a8329ea6"
+  },
+  "backend/src/main/java/edu/campus/iitsm/incident/domain/SlaStatus.java": {
+    "mtime": 1793281156.339134,
+    "seen": 1793304807.6906636,
+    "ast_hash": "b3bfb48d988d1c12bd6b2d5a96da6c45",
+    "semantic_hash": "b3bfb48d988d1c12bd6b2d5a96da6c45"
+  },
+  "backend/src/main/java/edu/campus/iitsm/incident/domain/StateSupport.java": {
+    "mtime": 1793281156.34994,
+    "seen": 1793304807.6906636,
+    "ast_hash": "9133b5752235085e9cf4860ee04c46ba",
+    "semantic_hash": "9133b5752235085e9cf4860ee04c46ba"
+  },
+  "backend/src/main/java/edu/campus/iitsm/incident/domain/TransitionResult.java": {
+    "mtime": 1793281156.345937,
+    "seen": 1793304807.691659,
+    "ast_hash": "4089a8778fd727918f272c7340e19191",
+    "semantic_hash": "4089a8778fd727918f272c7340e19191"
+  },
+  "backend/src/main/java/edu/campus/iitsm/incident/domain/VerifiedState.java": {
+    "mtime": 1793281156.3549373,
+    "seen": 1793304807.691659,
+    "ast_hash": "3f428c4ed1f92890add83fae21723407",
+    "semantic_hash": "3f428c4ed1f92890add83fae21723407"
+  },
+  "backend/src/main/java/edu/campus/iitsm/incident/domain/package-info.java": {
+    "mtime": 1793281156.3164234,
+    "seen": 1793304807.693204,
+    "ast_hash": "48a50f7094a8d67fc7bf18a7ac9a2c6c",
+    "semantic_hash": "48a50f7094a8d67fc7bf18a7ac9a2c6c"
+  },
+  "backend/src/main/java/edu/campus/iitsm/incident/infrastructure/IncidentConfiguration.java": {
+    "mtime": 1793287086.4165792,
+    "seen": 1793304807.6942563,
+    "ast_hash": "98f70ceb7f8f1da11f440b1db21ec92f",
+    "semantic_hash": "98f70ceb7f8f1da11f440b1db21ec92f"
+  },
+  "backend/src/main/java/edu/campus/iitsm/incident/infrastructure/persistence/IncidentJpaEntity.java": {
+    "mtime": 1793284350.5721807,
+    "seen": 1793304807.6942563,
+    "ast_hash": "1f92900ee4163f925bbda772cd457285",
+    "semantic_hash": "1f92900ee4163f925bbda772cd457285"
+  },
+  "backend/src/main/java/edu/campus/iitsm/incident/infrastructure/persistence/IncidentJpaRepository.java": {
+    "mtime": 1793283851.649743,
+    "seen": 1793304807.695228,
+    "ast_hash": "f67a050d24cfce2cf1b8020e207c02d3",
+    "semantic_hash": "f67a050d24cfce2cf1b8020e207c02d3"
+  },
+  "backend/src/main/java/edu/campus/iitsm/incident/infrastructure/persistence/IncidentQueryAdapter.java": {
+    "mtime": 1793292225.3040206,
+    "seen": 1793304807.695228,
+    "ast_hash": "f840fa7444663ec7b5f09b567ad5d52c",
+    "semantic_hash": "f840fa7444663ec7b5f09b567ad5d52c"
+  },
+  "backend/src/main/java/edu/campus/iitsm/incident/infrastructure/persistence/JpaIncidentRepositoryAdapter.java": {
+    "mtime": 1793284405.8216608,
+    "seen": 1793304807.6962245,
+    "ast_hash": "57589a10c713172daf5134e36426ef3a",
+    "semantic_hash": "57589a10c713172daf5134e36426ef3a"
+  },
+  "backend/src/main/java/edu/campus/iitsm/incident/infrastructure/web/AdminController.java": {
+    "mtime": 1793291797.5101926,
+    "seen": 1793304807.6962245,
+    "ast_hash": "f91a3e41fee215c8ed7b6a6a19ec6452",
+    "semantic_hash": "f91a3e41fee215c8ed7b6a6a19ec6452"
+  },
+  "backend/src/main/java/edu/campus/iitsm/incident/infrastructure/web/IncidentController.java": {
+    "mtime": 1793291191.359646,
+    "seen": 1793304807.6972256,
+    "ast_hash": "d3e36da70607573137fd56e99424247e",
+    "semantic_hash": "d3e36da70607573137fd56e99424247e"
+  },
+  "backend/src/main/java/edu/campus/iitsm/incident/infrastructure/web/IntakeController.java": {
+    "mtime": 1793288614.0013442,
+    "seen": 1793304807.6972256,
+    "ast_hash": "98aa1724ac09e773c192b4aebb6e3fba",
+    "semantic_hash": "98aa1724ac09e773c192b4aebb6e3fba"
+  },
+  "backend/src/main/java/edu/campus/iitsm/intake/application/IntakeStep.java": {
+    "mtime": 1793285793.8688295,
+    "seen": 1793304807.6982386,
+    "ast_hash": "7e82c0bee8e0bbcab62affd8310c29b8",
+    "semantic_hash": "7e82c0bee8e0bbcab62affd8310c29b8"
+  },
+  "backend/src/main/java/edu/campus/iitsm/intake/package-info.java": {
+    "mtime": 1793286531.3398871,
+    "seen": 1793304807.6982386,
+    "ast_hash": "e4aa5dc540c51fafc211efe056c98a77",
+    "semantic_hash": "e4aa5dc540c51fafc211efe056c98a77"
+  },
+  "backend/src/main/java/edu/campus/iitsm/intelligence/api/CategorizationPort.java": {
+    "mtime": 1793287989.3169444,
+    "seen": 1793304807.6992266,
+    "ast_hash": "b67ed69bd6591de16ee941e567e3983a",
+    "semantic_hash": "b67ed69bd6591de16ee941e567e3983a"
+  },
+  "backend/src/main/java/edu/campus/iitsm/intelligence/api/DuplicateCandidate.java": {
+    "mtime": 1793287850.0072742,
+    "seen": 1793304807.7002475,
+    "ast_hash": "afd31b941fb3bcd37b8b397b81d49196",
+    "semantic_hash": "afd31b941fb3bcd37b8b397b81d49196"
+  },
+  "backend/src/main/java/edu/campus/iitsm/intelligence/api/DuplicateDetectionPort.java": {
+    "mtime": 1793287860.9186034,
+    "seen": 1793304807.701234,
+    "ast_hash": "69d09668968fcbd8b21ebf59e580b2e0",
+    "semantic_hash": "69d09668968fcbd8b21ebf59e580b2e0"
+  },
+  "backend/src/main/java/edu/campus/iitsm/intelligence/api/IntelligenceEvents.java": {
+    "mtime": 1793281156.346942,
+    "seen": 1793304807.701234,
+    "ast_hash": "5c58813b9521253d3278512f9c78db64",
+    "semantic_hash": "5c58813b9521253d3278512f9c78db64"
+  },
+  "backend/src/main/java/edu/campus/iitsm/intelligence/api/LlmClassificationSchema.java": {
+    "mtime": 1793281156.3751006,
+    "seen": 1793304807.7022452,
+    "ast_hash": "bb2562ef02e829214d8717e64ea6b3d7",
+    "semantic_hash": "bb2562ef02e829214d8717e64ea6b3d7"
+  },
+  "backend/src/main/java/edu/campus/iitsm/intelligence/api/LlmPirDraftSchema.java": {
+    "mtime": 1793281156.378097,
+    "seen": 1793304807.7032433,
+    "ast_hash": "5cea3ba696020f1dbd839519b818dd19",
+    "semantic_hash": "5cea3ba696020f1dbd839519b818dd19"
+  },
+  "backend/src/main/java/edu/campus/iitsm/intelligence/api/LlmRcaExplanationSchema.java": {
+    "mtime": 1793281156.3770967,
+    "seen": 1793304807.7032433,
+    "ast_hash": "859ce7c354bc12e043c786aa3eb425d1",
+    "semantic_hash": "859ce7c354bc12e043c786aa3eb425d1"
+  },
+  "backend/src/main/java/edu/campus/iitsm/intelligence/api/LlmResolutionSchema.java": {
+    "mtime": 1793281156.376097,
+    "seen": 1793304807.7042415,
+    "ast_hash": "4d8a8fde50dce626e38b0cce1d1d54c3",
+    "semantic_hash": "4d8a8fde50dce626e38b0cce1d1d54c3"
+  },
+  "backend/src/main/java/edu/campus/iitsm/intelligence/api/LlmSearchFilterAst.java": {
+    "mtime": 1793281156.379098,
+    "seen": 1793304807.7042415,
+    "ast_hash": "b47d746309f9e4c1d0ce4ad8679e7c45",
+    "semantic_hash": "b47d746309f9e4c1d0ce4ad8679e7c45"
+  },
+  "backend/src/main/java/edu/campus/iitsm/intelligence/api/NlSearchPort.java": {
+    "mtime": 1793288081.9221416,
+    "seen": 1793304807.7052436,
+    "ast_hash": "d9f9f0195180e6aa8b7639b432cd4970",
+    "semantic_hash": "d9f9f0195180e6aa8b7639b432cd4970"
+  },
+  "backend/src/main/java/edu/campus/iitsm/intelligence/api/PirDrafterPort.java": {
+    "mtime": 1793288059.4465091,
+    "seen": 1793304807.7052436,
+    "ast_hash": "6302284919d62ac972f81971fde57e92",
+    "semantic_hash": "6302284919d62ac972f81971fde57e92"
+  },
+  "backend/src/main/java/edu/campus/iitsm/intelligence/api/RcaRankerPort.java": {
+    "mtime": 1793288037.094377,
+    "seen": 1793304807.7062433,
+    "ast_hash": "b764cbbbae889a36bb805f7ac3c41754",
+    "semantic_hash": "b764cbbbae889a36bb805f7ac3c41754"
+  },
+  "backend/src/main/java/edu/campus/iitsm/intelligence/api/ResolutionRagPort.java": {
+    "mtime": 1793287940.2559614,
+    "seen": 1793304807.7072413,
+    "ast_hash": "518a2937ced05d6d44c8d5cfa0c00aee",
+    "semantic_hash": "518a2937ced05d6d44c8d5cfa0c00aee"
+  },
+  "backend/src/main/java/edu/campus/iitsm/intelligence/api/SlaBreachPredictorPort.java": {
+    "mtime": 1793288015.5969076,
+    "seen": 1793304807.7072413,
+    "ast_hash": "aca0fd7116d20fe376a83aaae790e9b9",
+    "semantic_hash": "aca0fd7116d20fe376a83aaae790e9b9"
+  },
+  "backend/src/main/java/edu/campus/iitsm/intelligence/api/package-info.java": {
+    "mtime": 1793281156.3114247,
+    "seen": 1793304807.708241,
+    "ast_hash": "5cb3f56fdf60c21c2f7d44f871c7a0f5",
+    "semantic_hash": "5cb3f56fdf60c21c2f7d44f871c7a0f5"
+  },
+  "backend/src/main/java/edu/campus/iitsm/intelligence/infrastructure/classification/CategorizationAdapter.java": {
+    "mtime": 1793292265.7279541,
+    "seen": 1793304807.7092462,
+    "ast_hash": "d8134466f24631ec15c4acc49efb69e3",
+    "semantic_hash": "d8134466f24631ec15c4acc49efb69e3"
+  },
+  "backend/src/main/java/edu/campus/iitsm/intelligence/infrastructure/embedding/HashEmbeddingAdapter.java": {
+    "mtime": 1793287747.368193,
+    "seen": 1793304807.710243,
+    "ast_hash": "eef85794494a77e5a759f0565c1aff62",
+    "semantic_hash": "eef85794494a77e5a759f0565c1aff62"
+  },
+  "backend/src/main/java/edu/campus/iitsm/intelligence/infrastructure/embedding/OnnxEmbeddingAdapter.java": {
+    "mtime": 1793287764.4114695,
+    "seen": 1793304807.710243,
+    "ast_hash": "bec5840db3fc8e34b8f8583a1c3dbaaa",
+    "semantic_hash": "bec5840db3fc8e34b8f8583a1c3dbaaa"
+  },
+  "backend/src/main/java/edu/campus/iitsm/intelligence/infrastructure/llm/LanguageModelGatewayAdapter.java": {
+    "mtime": 1793287835.813612,
+    "seen": 1793304807.711241,
+    "ast_hash": "7e04219026f72627cf0acd3c080b1666",
+    "semantic_hash": "7e04219026f72627cf0acd3c080b1666"
+  },
+  "backend/src/main/java/edu/campus/iitsm/intelligence/infrastructure/llm/PiiRedactor.java": {
+    "mtime": 1793287799.7703822,
+    "seen": 1793304807.711241,
+    "ast_hash": "7753fac3dfe40d59b4cf1b691d687b75",
+    "semantic_hash": "7753fac3dfe40d59b4cf1b691d687b75"
+  },
+  "backend/src/main/java/edu/campus/iitsm/intelligence/infrastructure/llm/RuleBasedFallbackService.java": {
+    "mtime": 1793287817.564874,
+    "seen": 1793304807.7122433,
+    "ast_hash": "f506c9c97c97e9db6cf9c582fa2626df",
+    "semantic_hash": "f506c9c97c97e9db6cf9c582fa2626df"
+  },
+  "backend/src/main/java/edu/campus/iitsm/intelligence/infrastructure/pir/PirDrafterAdapter.java": {
+    "mtime": 1793288072.6228929,
+    "seen": 1793304807.7122433,
+    "ast_hash": "d45afa2c8437e93b8212e25a4c1563bf",
+    "semantic_hash": "d45afa2c8437e93b8212e25a4c1563bf"
+  },
+  "backend/src/main/java/edu/campus/iitsm/intelligence/infrastructure/prediction/SlaBreachPredictorAdapter.java": {
+    "mtime": 1793288027.5217948,
+    "seen": 1793304807.7132428,
+    "ast_hash": "b21e4e4dd34b71b1e74977a2ee752b02",
+    "semantic_hash": "b21e4e4dd34b71b1e74977a2ee752b02"
+  },
+  "backend/src/main/java/edu/campus/iitsm/intelligence/infrastructure/rag/ResolutionRagAdapter.java": {
+    "mtime": 1793287958.6272867,
+    "seen": 1793304807.7132428,
+    "ast_hash": "db775f117b575b041070895e6b86f6d7",
+    "semantic_hash": "db775f117b575b041070895e6b86f6d7"
+  },
+  "backend/src/main/java/edu/campus/iitsm/intelligence/infrastructure/rca/RcaRankerAdapter.java": {
+    "mtime": 1793288051.721057,
+    "seen": 1793304807.7142413,
+    "ast_hash": "e0265a1809e03db6db7ee6492ddaddc0",
+    "semantic_hash": "e0265a1809e03db6db7ee6492ddaddc0"
+  },
+  "backend/src/main/java/edu/campus/iitsm/intelligence/infrastructure/search/DuplicateDetectionAdapter.java": {
+    "mtime": 1793287929.3686287,
+    "seen": 1793304807.7152607,
+    "ast_hash": "d644cc2d8cbb6e8b1f4e414299d035b9",
+    "semantic_hash": "d644cc2d8cbb6e8b1f4e414299d035b9"
+  },
+  "backend/src/main/java/edu/campus/iitsm/intelligence/infrastructure/search/NlSearchAdapter.java": {
+    "mtime": 1793288094.8710089,
+    "seen": 1793304807.716313,
+    "ast_hash": "97182ae69ebac782dec47c18bc1e2629",
+    "semantic_hash": "97182ae69ebac782dec47c18bc1e2629"
+  },
+  "backend/src/main/java/edu/campus/iitsm/knowledge/api/package-info.java": {
+    "mtime": 1793281156.3134227,
+    "seen": 1793304807.7172763,
+    "ast_hash": "596d4b1b1761c85ae10f8d7c4238793d",
+    "semantic_hash": "596d4b1b1761c85ae10f8d7c4238793d"
+  },
+  "backend/src/main/java/edu/campus/iitsm/knowledge/infrastructure/web/KnowledgeController.java": {
+    "mtime": 1793288722.189589,
+    "seen": 1793304807.7182932,
+    "ast_hash": "5a12c2406c85e3f0a857843306c7bc39",
+    "semantic_hash": "5a12c2406c85e3f0a857843306c7bc39"
+  },
+  "backend/src/main/java/edu/campus/iitsm/notification/api/SseBroadcastPort.java": {
+    "mtime": 1793289116.4269636,
+    "seen": 1793304807.7182932,
+    "ast_hash": "09d826a4b06c8f3b31680fff05eab461",
+    "semantic_hash": "09d826a4b06c8f3b31680fff05eab461"
+  },
+  "backend/src/main/java/edu/campus/iitsm/notification/api/package-info.java": {
+    "mtime": 1793281156.3144202,
+    "seen": 1793304807.719296,
+    "ast_hash": "62ffdd58519c39269925892ffc8ef792",
+    "semantic_hash": "62ffdd58519c39269925892ffc8ef792"
+  },
+  "backend/src/main/java/edu/campus/iitsm/notification/infrastructure/DefaultNotifierAdapter.java": {
+    "mtime": 1793285772.8114927,
+    "seen": 1793304807.7202954,
+    "ast_hash": "05a656ca6cf1dc1777fb2f51b44390eb",
+    "semantic_hash": "05a656ca6cf1dc1777fb2f51b44390eb"
+  },
+  "backend/src/main/java/edu/campus/iitsm/notification/infrastructure/EmailSmtpChannelAdapter.java": {
+    "mtime": 1793285763.3812857,
+    "seen": 1793304807.721294,
+    "ast_hash": "c704ceedf0431af193eb66c5d71918fd",
+    "semantic_hash": "c704ceedf0431af193eb66c5d71918fd"
+  },
+  "backend/src/main/java/edu/campus/iitsm/notification/infrastructure/InAppSseChannelAdapter.java": {
+    "mtime": 1793285752.602666,
+    "seen": 1793304807.721294,
+    "ast_hash": "4a51ff299a4b6c1fa215488a8ce910a5",
+    "semantic_hash": "4a51ff299a4b6c1fa215488a8ce910a5"
+  },
+  "backend/src/main/java/edu/campus/iitsm/notification/infrastructure/InAppSseHub.java": {
+    "mtime": 1793289131.4964602,
+    "seen": 1793304807.7223125,
+    "ast_hash": "a98ceb068209c3988748e544b5ede91a",
+    "semantic_hash": "a98ceb068209c3988748e544b5ede91a"
+  },
+  "backend/src/main/java/edu/campus/iitsm/notification/infrastructure/web/StreamController.java": {
+    "mtime": 1793288894.882,
+    "seen": 1793304807.7232985,
+    "ast_hash": "39392842c31146265ba0c1ca01092c65",
+    "semantic_hash": "39392842c31146265ba0c1ca01092c65"
+  },
+  "backend/src/main/java/edu/campus/iitsm/shared/domain/Actors.java": {
+    "mtime": 1793281156.3199427,
+    "seen": 1793304807.7232985,
+    "ast_hash": "d0750f69fb8390ba6e4f31d5979c7c45",
+    "semantic_hash": "d0750f69fb8390ba6e4f31d5979c7c45"
+  },
+  "backend/src/main/java/edu/campus/iitsm/shared/domain/ClockPort.java": {
+    "mtime": 1793281156.3219512,
+    "seen": 1793304807.7242944,
+    "ast_hash": "bbac3a5f46fcbe6d58f3be0b607f1b2a",
+    "semantic_hash": "bbac3a5f46fcbe6d58f3be0b607f1b2a"
+  },
+  "backend/src/main/java/edu/campus/iitsm/shared/domain/DomainEvent.java": {
+    "mtime": 1793281156.3219512,
+    "seen": 1793304807.725295,
+    "ast_hash": "15310522cc0951306105708e4ca61cf1",
+    "semantic_hash": "15310522cc0951306105708e4ca61cf1"
+  },
+  "backend/src/main/java/edu/campus/iitsm/shared/domain/EmbeddingPort.java": {
+    "mtime": 1793281156.3249516,
+    "seen": 1793304807.725295,
+    "ast_hash": "7e9143377df4f26f0e4f2dfb9c14bed7",
+    "semantic_hash": "7e9143377df4f26f0e4f2dfb9c14bed7"
+  },
+  "backend/src/main/java/edu/campus/iitsm/shared/domain/IdGeneratorPort.java": {
+    "mtime": 1793281156.32295,
+    "seen": 1793304807.726301,
+    "ast_hash": "82b2ad27d33ca10b5d305f836ed0e404",
+    "semantic_hash": "82b2ad27d33ca10b5d305f836ed0e404"
+  },
+  "backend/src/main/java/edu/campus/iitsm/shared/domain/LanguageModelPort.java": {
+    "mtime": 1793281156.325951,
+    "seen": 1793304807.727295,
+    "ast_hash": "ae24d67ce117b6947f2ed66541f3b443",
+    "semantic_hash": "ae24d67ce117b6947f2ed66541f3b443"
+  },
+  "backend/src/main/java/edu/campus/iitsm/shared/domain/NotificationChannel.java": {
+    "mtime": 1793281156.325951,
+    "seen": 1793304807.7282982,
+    "ast_hash": "eb988a9691fde2843dc7993399c9f406",
+    "semantic_hash": "eb988a9691fde2843dc7993399c9f406"
+  },
+  "backend/src/main/java/edu/campus/iitsm/shared/domain/Notifier.java": {
+    "mtime": 1793281156.32695,
+    "seen": 1793304807.7293143,
+    "ast_hash": "8db3a7fb473f2c1d6c1eb0b5e9caafef",
+    "semantic_hash": "8db3a7fb473f2c1d6c1eb0b5e9caafef"
+  },
+  "backend/src/main/java/edu/campus/iitsm/shared/domain/RandomSourcePort.java": {
+    "mtime": 1793281156.3239512,
+    "seen": 1793304807.7293143,
+    "ast_hash": "396e2969a2ece67a3ad371b783b7928d",
+    "semantic_hash": "396e2969a2ece67a3ad371b783b7928d"
+  },
+  "backend/src/main/java/edu/campus/iitsm/shared/domain/Suggestion.java": {
+    "mtime": 1793281156.3239512,
+    "seen": 1793304807.730848,
+    "ast_hash": "6236dff40c781837d2fbd7b541de95e5",
+    "semantic_hash": "6236dff40c781837d2fbd7b541de95e5"
+  },
+  "backend/src/main/java/edu/campus/iitsm/shared/domain/VirtualAnchoredClock.java": {
+    "mtime": 1793281156.363091,
+    "seen": 1793304807.7318795,
+    "ast_hash": "c2cc4f004591fca7cf86c24082a027c6",
+    "semantic_hash": "c2cc4f004591fca7cf86c24082a027c6"
+  },
+  "backend/src/main/java/edu/campus/iitsm/shared/domain/WorkingTimeCalculator.java": {
+    "mtime": 1793281156.320951,
+    "seen": 1793304807.732882,
+    "ast_hash": "c3a9fcd91ebe13e077fa61f39faea282",
+    "semantic_hash": "c3a9fcd91ebe13e077fa61f39faea282"
+  },
+  "backend/src/main/java/edu/campus/iitsm/shared/domain/error/AuditChainTamperException.java": {
+    "mtime": 1793281156.3371296,
+    "seen": 1793304807.7338822,
+    "ast_hash": "494ddcd17de9e6ae140231a03aefa193",
+    "semantic_hash": "494ddcd17de9e6ae140231a03aefa193"
+  },
+  "backend/src/main/java/edu/campus/iitsm/shared/domain/error/DuplicateIncidentDetectedException.java": {
+    "mtime": 1793281156.3351204,
+    "seen": 1793304807.734895,
+    "ast_hash": "cef41d71f967d6871b223a273fa683b5",
+    "semantic_hash": "cef41d71f967d6871b223a273fa683b5"
+  },
+  "backend/src/main/java/edu/campus/iitsm/shared/domain/error/ExternalGatewayFailureException.java": {
+    "mtime": 1793281156.3361304,
+    "seen": 1793304807.7358844,
+    "ast_hash": "b40bc55482ebd6aa6c382c1d9a3d9ae8",
+    "semantic_hash": "b40bc55482ebd6aa6c382c1d9a3d9ae8"
+  },
+  "backend/src/main/java/edu/campus/iitsm/shared/domain/error/IncidentNotFoundException.java": {
+    "mtime": 1793281156.3316126,
+    "seen": 1793304807.7358844,
+    "ast_hash": "38182150d16356386dc3c6a5e78b018d",
+    "semantic_hash": "38182150d16356386dc3c6a5e78b018d"
+  },
+  "backend/src/main/java/edu/campus/iitsm/shared/domain/error/InvalidCredentialsException.java": {
+    "mtime": 1793281156.3316126,
+    "seen": 1793304807.7368896,
+    "ast_hash": "96861a0282c890a148ec2ae3441aac23",
+    "semantic_hash": "96861a0282c890a148ec2ae3441aac23"
+  },
+  "backend/src/main/java/edu/campus/iitsm/shared/domain/error/InvalidIncidentPayloadException.java": {
+    "mtime": 1793281156.3306134,
+    "seen": 1793304807.7378833,
+    "ast_hash": "d49bc79debc3e818d20a869456715bfc",
+    "semantic_hash": "d49bc79debc3e818d20a869456715bfc"
+  },
+  "backend/src/main/java/edu/campus/iitsm/shared/domain/error/InvalidStateTransitionException.java": {
+    "mtime": 1793281156.328605,
+    "seen": 1793304807.7388804,
+    "ast_hash": "5a75c083861f6d429b1195c6b31a0438",
+    "semantic_hash": "5a75c083861f6d429b1195c6b31a0438"
+  },
+  "backend/src/main/java/edu/campus/iitsm/shared/domain/error/ItsmException.java": {
+    "mtime": 1793281156.328605,
+    "seen": 1793304807.739883,
+    "ast_hash": "17724fec4cba519beb6adc3783efc1d3",
+    "semantic_hash": "17724fec4cba519beb6adc3783efc1d3"
+  },
+  "backend/src/main/java/edu/campus/iitsm/shared/domain/error/MissingSlaConfigurationException.java": {
+    "mtime": 1793281156.3336115,
+    "seen": 1793304807.7408824,
+    "ast_hash": "f8aafe3fe364655c1ab02847feca8579",
+    "semantic_hash": "f8aafe3fe364655c1ab02847feca8579"
+  },
+  "backend/src/main/java/edu/campus/iitsm/shared/domain/error/PersistenceConcurrencyException.java": {
+    "mtime": 1793281156.3351204,
+    "seen": 1793304807.7408824,
+    "ast_hash": "a22ab2efff8b948e6741e06da589f65e",
+    "semantic_hash": "a22ab2efff8b948e6741e06da589f65e"
+  },
+  "backend/src/main/java/edu/campus/iitsm/shared/domain/error/PersistenceFailureException.java": {
+    "mtime": 1793281156.3361304,
+    "seen": 1793304807.7418916,
+    "ast_hash": "bf6bfaba94edfee809285d1a0f9e6610",
+    "semantic_hash": "bf6bfaba94edfee809285d1a0f9e6610"
+  },
+  "backend/src/main/java/edu/campus/iitsm/shared/domain/error/RateLimitExceededException.java": {
+    "mtime": 1793281156.338128,
+    "seen": 1793304807.7428966,
+    "ast_hash": "5cc4ad412e96ea202ab956d8e8d5e929",
+    "semantic_hash": "5cc4ad412e96ea202ab956d8e8d5e929"
+  },
+  "backend/src/main/java/edu/campus/iitsm/shared/domain/error/ServiceNotFoundException.java": {
+    "mtime": 1793281156.3336115,
+    "seen": 1793304807.7434547,
+    "ast_hash": "fd2e53f19ffe33e36c255b3e8297cd81",
+    "semantic_hash": "fd2e53f19ffe33e36c255b3e8297cd81"
+  },
+  "backend/src/main/java/edu/campus/iitsm/shared/domain/error/TechnicianUnavailableException.java": {
+    "mtime": 1793281156.3326123,
+    "seen": 1793304807.7445047,
+    "ast_hash": "7a69bfcb89727d8eacb275bef39d1573",
+    "semantic_hash": "7a69bfcb89727d8eacb275bef39d1573"
+  },
+  "backend/src/main/java/edu/campus/iitsm/shared/domain/error/TechnicianWorkloadExceededException.java": {
+    "mtime": 1793281156.3326123,
+    "seen": 1793304807.7455056,
+    "ast_hash": "aa9089e01ed9523f9d546e0031035818",
+    "semantic_hash": "aa9089e01ed9523f9d546e0031035818"
+  },
+  "backend/src/main/java/edu/campus/iitsm/shared/domain/error/UnauthorizedOperationException.java": {
+    "mtime": 1793281156.3296132,
+    "seen": 1793304807.746502,
+    "ast_hash": "489b4624143acb8466ca814a06156bf5",
+    "semantic_hash": "489b4624143acb8466ca814a06156bf5"
+  },
+  "backend/src/main/java/edu/campus/iitsm/shared/infrastructure/ClockConfiguration.java": {
+    "mtime": 1793286838.0844214,
+    "seen": 1793304807.749506,
+    "ast_hash": "b39ec2dfaa02dc6ebe611025996e04d9",
+    "semantic_hash": "b39ec2dfaa02dc6ebe611025996e04d9"
+  },
+  "backend/src/main/java/edu/campus/iitsm/shared/infrastructure/IdGeneratorAdapter.java": {
+    "mtime": 1793283150.675644,
+    "seen": 1793304807.749506,
+    "ast_hash": "90b3a5898609c443d4ded48a876d14ad",
+    "semantic_hash": "90b3a5898609c443d4ded48a876d14ad"
+  },
+  "backend/src/main/java/edu/campus/iitsm/shared/infrastructure/RandomSourceAdapter.java": {
+    "mtime": 1793283157.6781385,
+    "seen": 1793304807.7505093,
+    "ast_hash": "3d8800c52dbe66f0c10c75c14f96eb2e",
+    "semantic_hash": "3d8800c52dbe66f0c10c75c14f96eb2e"
+  },
+  "backend/src/main/java/edu/campus/iitsm/shared/infrastructure/web/GlobalProblemDetailsHandler.java": {
+    "mtime": 1793288516.4124105,
+    "seen": 1793304807.751502,
+    "ast_hash": "0e2f6e831fb811107939749eecd90174",
+    "semantic_hash": "0e2f6e831fb811107939749eecd90174"
+  },
+  "backend/src/main/java/edu/campus/iitsm/shared/package-info.java": {
+    "mtime": 1793281156.3028908,
+    "seen": 1793304807.751502,
+    "ast_hash": "283e80c662ceb185886ca75a4fb72786",
+    "semantic_hash": "283e80c662ceb185886ca75a4fb72786"
+  },
+  "backend/src/main/java/edu/campus/iitsm/sla/api/TimerKind.java": {
+    "mtime": 1793281156.3680873,
+    "seen": 1793304807.7525027,
+    "ast_hash": "f07bfdb496642eac484f844d2b261b56",
+    "semantic_hash": "f07bfdb496642eac484f844d2b261b56"
+  },
+  "backend/src/main/java/edu/campus/iitsm/sla/api/package-info.java": {
+    "mtime": 1793281156.309424,
+    "seen": 1793304807.7535026,
+    "ast_hash": "70f504ab670c30e2019a2f016d5c29bc",
+    "semantic_hash": "70f504ab670c30e2019a2f016d5c29bc"
+  },
+  "backend/src/main/java/edu/campus/iitsm/sla/infrastructure/SlaTimerInTxListener.java": {
+    "mtime": 1793283911.1710474,
+    "seen": 1793304807.7545016,
+    "ast_hash": "12089898bf25ac969ee195a6729c220a",
+    "semantic_hash": "12089898bf25ac969ee195a6729c220a"
+  },
+  "backend/src/main/resources/application.yml": {
+    "mtime": 1793285408.9154932,
+    "seen": 1793304807.7555008,
+    "ast_hash": "1f67930d8791290411e5e47d833b019f",
+    "semantic_hash": "1f67930d8791290411e5e47d833b019f"
+  },
+  "backend/src/test/java/Verify.java": {
+    "mtime": 1793281156.4009056,
+    "seen": 1793304807.7564998,
+    "ast_hash": "5b655193a0084918b9c1ece96e8e6aa2",
+    "semantic_hash": "5b655193a0084918b9c1ece96e8e6aa2"
+  },
+  "backend/src/test/java/edu/campus/iitsm/AiGatewayTest.java": {
+    "mtime": 1793288198.145585,
+    "seen": 1793304807.7564998,
+    "ast_hash": "f6709af5636050aa4a07513799f7ce46",
+    "semantic_hash": "f6709af5636050aa4a07513799f7ce46"
+  },
+  "backend/src/test/java/edu/campus/iitsm/ApiControllerAndProblemDetailsTest.java": {
+    "mtime": 1793289234.9319053,
+    "seen": 1793304807.757501,
+    "ast_hash": "a87fef061d0f80b3c2c9b3ef15ff41a2",
+    "semantic_hash": "a87fef061d0f80b3c2c9b3ef15ff41a2"
+  },
+  "backend/src/test/java/edu/campus/iitsm/ArchitectureTest.java": {
+    "mtime": 1793281156.3189425,
+    "seen": 1793304807.757501,
+    "ast_hash": "d1eb28ab08582375c7376a20375af501",
+    "semantic_hash": "d1eb28ab08582375c7376a20375af501"
+  },
+  "backend/src/test/java/edu/campus/iitsm/AuditLedgerTamperTest.java": {
+    "mtime": 1793286111.4618852,
+    "seen": 1793304807.7584994,
+    "ast_hash": "557abc7cf81669f3a1e3323966b57518",
+    "semantic_hash": "557abc7cf81669f3a1e3323966b57518"
+  },
+  "backend/src/test/java/edu/campus/iitsm/AuthenticationTest.java": {
+    "mtime": 1793283392.2955842,
+    "seen": 1793304807.7584994,
+    "ast_hash": "b33188137ae2fec7b3e16514a4b8affc",
+    "semantic_hash": "b33188137ae2fec7b3e16514a4b8affc"
+  },
+  "backend/src/test/java/edu/campus/iitsm/CaseBasedRagTest.java": {
+    "mtime": 1793288206.7745748,
+    "seen": 1793304807.7595005,
+    "ast_hash": "5c6c82d284c35f30774c21bdd3695027",
+    "semantic_hash": "5c6c82d284c35f30774c21bdd3695027"
+  },
+  "backend/src/test/java/edu/campus/iitsm/DatabaseMigrationTest.java": {
+    "mtime": 1793300945.416524,
+    "seen": 1793304807.7595005,
+    "ast_hash": "ba607b43b9dd3f0fad088324485e5982",
+    "semantic_hash": "ba607b43b9dd3f0fad088324485e5982"
+  },
+  "backend/src/test/java/edu/campus/iitsm/DemoWorkflowsEndToEndTest.java": {
+    "mtime": 1793293342.3188097,
+    "seen": 1793304807.7605016,
+    "ast_hash": "0c780cdbaf1ece6dbfbed42f2eeefc25",
+    "semantic_hash": "0c780cdbaf1ece6dbfbed42f2eeefc25"
+  },
+  "backend/src/test/java/edu/campus/iitsm/DuplicateDetectionTest.java": {
+    "mtime": 1793288126.7742555,
+    "seen": 1793304807.7605016,
+    "ast_hash": "7750b5081b4f1f351fe919a88395aa65",
+    "semantic_hash": "7750b5081b4f1f351fe919a88395aa65"
+  },
+  "backend/src/test/java/edu/campus/iitsm/IntakePipelineTest.java": {
+    "mtime": 1793287033.3332415,
+    "seen": 1793304807.7615004,
+    "ast_hash": "15a7582bc6faf3cbd670a91af8dcd3aa",
+    "semantic_hash": "15a7582bc6faf3cbd670a91af8dcd3aa"
+  },
+  "backend/src/test/java/edu/campus/iitsm/PersistenceAndListenersTest.java": {
+    "mtime": 1793283933.028849,
+    "seen": 1793304807.7615004,
+    "ast_hash": "53c98ba0b837a70555571c034f8ec493",
+    "semantic_hash": "53c98ba0b837a70555571c034f8ec493"
+  },
+  "backend/src/test/java/edu/campus/iitsm/PriorityStrategyTest.java": {
+    "mtime": 1793286055.2384062,
+    "seen": 1793304807.7635005,
+    "ast_hash": "70261c8751e09bbf23133fb01fc3a008",
+    "semantic_hash": "70261c8751e09bbf23133fb01fc3a008"
+  },
+  "backend/src/test/java/edu/campus/iitsm/SlaClockAndPolicyTest.java": {
+    "mtime": 1793286819.4306872,
+    "seen": 1793304807.764474,
+    "ast_hash": "39e6ccbcbfcbd5538a90211dee730af2",
+    "semantic_hash": "39e6ccbcbfcbd5538a90211dee730af2"
+  },
+  "backend/src/test/java/edu/campus/iitsm/StrategyAndAssignmentTest.java": {
+    "mtime": 1793284941.056566,
+    "seen": 1793304807.764474,
+    "ast_hash": "72606407a1cc4a2b3c4ad9c5e0ffdbcb",
+    "semantic_hash": "72606407a1cc4a2b3c4ad9c5e0ffdbcb"
+  },
+  "deploy/docker-compose.yml": {
+    "mtime": 1793281156.3889637,
+    "seen": 1793304807.7654748,
+    "ast_hash": "8c42e40c4d41455abf98791ce0df25ba",
+    "semantic_hash": "8c42e40c4d41455abf98791ce0df25ba"
+  },
+  "frontend/design-refs/CREDITS.json": {
+    "mtime": 1793298379.247359,
+    "seen": 1793304807.7654748,
+    "ast_hash": "fcd454add6067d9e2b205e2e2513ba5f",
+    "semantic_hash": "fcd454add6067d9e2b205e2e2513ba5f",
+    "ast_empty": true
+  },
+  "frontend/package.json": {
+    "mtime": 1793299496.26535,
+    "seen": 1793304807.7654748,
+    "ast_hash": "a8d585ab07be5e06ceb70f1c0053ad66",
+    "semantic_hash": "a8d585ab07be5e06ceb70f1c0053ad66"
+  },
+  "frontend/postcss.config.js": {
+    "mtime": 1793289805.1373389,
+    "seen": 1793304807.7664812,
+    "ast_hash": "c735540bb63936a123bc867d950c9f69",
+    "semantic_hash": "c735540bb63936a123bc867d950c9f69"
+  },
+  "frontend/src/App.tsx": {
+    "mtime": 1794143854.5384805,
+    "seen": 1794144013.890162,
+    "ast_hash": "aec5be45b4ac24b09e4f4c752112fe23",
+    "semantic_hash": ""
+  },
+  "frontend/src/components/Header.tsx": {
+    "mtime": 1794143309.767192,
+    "seen": 1794144013.890162,
+    "ast_hash": "7cb42ade845ac885509bc7e31b664f05",
+    "semantic_hash": ""
+  },
+  "frontend/src/components/three/CampusCoreRack3D.tsx": {
+    "mtime": 1793299825.8963702,
+    "seen": 1793304807.7675009,
+    "ast_hash": "b4c58010fe16c67652b39dc8ea31d6e9",
+    "semantic_hash": "b4c58010fe16c67652b39dc8ea31d6e9"
+  },
+  "frontend/src/components/three/SlaChronometerAndLedger3D.tsx": {
+    "mtime": 1793298610.8733575,
+    "seen": 1793304807.7675009,
+    "ast_hash": "a45787599aa35aa1a1e9e344bc15b775",
+    "semantic_hash": "a45787599aa35aa1a1e9e344bc15b775"
+  },
+  "frontend/src/components/three/TopologyBlastRadius3D.tsx": {
+    "mtime": 1793299835.6556497,
+    "seen": 1793304807.7685006,
+    "ast_hash": "01b23fc98668b7bac2fdde10d3441f6a",
+    "semantic_hash": "01b23fc98668b7bac2fdde10d3441f6a"
+  },
+  "frontend/src/components/ui/ActionButton.tsx": {
+    "mtime": 1794143237.6962051,
+    "seen": 1794144013.890162,
+    "ast_hash": "9a93a465e62df9acea86523be0061e76",
+    "semantic_hash": ""
+  },
+  "frontend/src/components/ui/HashPill.tsx": {
+    "mtime": 1794143275.8871267,
+    "seen": 1794144013.890162,
+    "ast_hash": "e8f1884fd2fc4305c27c32ecf67fa5c2",
+    "semantic_hash": ""
+  },
+  "frontend/src/components/ui/StatusBadge.tsx": {
+    "mtime": 1794143257.9038155,
+    "seen": 1794144013.890162,
+    "ast_hash": "e1cc840f68bdd37c5173e64070a25922",
+    "semantic_hash": ""
+  },
+  "frontend/src/components/ui/StatusDot.tsx": {
+    "mtime": 1794143267.439277,
+    "seen": 1794144013.890162,
+    "ast_hash": "85a7fb0508a3d24cde036fca4626f92b",
+    "semantic_hash": ""
+  },
+  "frontend/src/context/AuthContext.tsx": {
+    "mtime": 1793291219.8502202,
+    "seen": 1793304807.7715015,
+    "ast_hash": "f62a1fb42d06a9f7bbdd38879a3ffd0e",
+    "semantic_hash": "f62a1fb42d06a9f7bbdd38879a3ffd0e"
+  },
+  "frontend/src/context/SseContext.tsx": {
+    "mtime": 1793290019.5174599,
+    "seen": 1793304807.7715015,
+    "ast_hash": "64acc3ff7d65e52fd9685a630b8f6a4a",
+    "semantic_hash": "64acc3ff7d65e52fd9685a630b8f6a4a"
+  },
+  "frontend/src/main.tsx": {
+    "mtime": 1793290438.9175146,
+    "seen": 1793304807.77251,
+    "ast_hash": "aa122bdcf833a2c00fdf9ca8e5348675",
+    "semantic_hash": "aa122bdcf833a2c00fdf9ca8e5348675"
+  },
+  "frontend/src/pages/admin/AdminAudit.tsx": {
+    "mtime": 1794143755.7305665,
+    "seen": 1794144013.890162,
+    "ast_hash": "8b2474bb29712af751509a6b75a8337f",
+    "semantic_hash": ""
+  },
+  "frontend/src/pages/admin/AdminConfig.tsx": {
+    "mtime": 1794143784.679374,
+    "seen": 1794144013.890162,
+    "ast_hash": "1e0cfb56ab03649e8da76eef628e41e0",
+    "semantic_hash": ""
+  },
+  "frontend/src/pages/admin/AdminOverview.tsx": {
+    "mtime": 1794143569.4076335,
+    "seen": 1794144013.890162,
+    "ast_hash": "8332e69a4cd9ecdac4211533157d0289",
+    "semantic_hash": ""
+  },
+  "frontend/src/pages/admin/AdminTopology.tsx": {
+    "mtime": 1794143957.1220448,
+    "seen": 1794144013.890162,
+    "ast_hash": "03b57db883420c0b5544f1bb6c836257",
+    "semantic_hash": ""
+  },
+  "frontend/src/pages/portal/PortalDetail.tsx": {
+    "mtime": 1794143459.3460531,
+    "seen": 1794144013.890162,
+    "ast_hash": "f7f9ca14b7706536cc44a77cf84c5e46",
+    "semantic_hash": ""
+  },
+  "frontend/src/pages/portal/PortalHome.tsx": {
+    "mtime": 1794143406.5644739,
+    "seen": 1794144013.890162,
+    "ast_hash": "badbf8b17d2d261c8e0d6fa248568eb6",
+    "semantic_hash": ""
+  },
+  "frontend/src/pages/portal/PortalReport.tsx": {
+    "mtime": 1794143435.2649653,
+    "seen": 1794144013.890162,
+    "ast_hash": "429190f527d761f92abc1462e1bbeffb",
+    "semantic_hash": ""
+  },
+  "frontend/src/pages/workbench/WorkbenchDetail.tsx": {
+    "mtime": 1794143523.2050397,
+    "seen": 1794144013.890162,
+    "ast_hash": "0f10c6c651789996444ab8cbe25554ec",
+    "semantic_hash": ""
+  },
+  "frontend/src/pages/workbench/WorkbenchHome.tsx": {
+    "mtime": 1794143482.193635,
+    "seen": 1794144013.890162,
+    "ast_hash": "3894b3c77d6ce4acbb57799a8d7ee0bf",
+    "semantic_hash": ""
+  },
+  "frontend/src/pages/workbench/WorkbenchMajor.tsx": {
+    "mtime": 1794143541.3919277,
+    "seen": 1794144013.890162,
+    "ast_hash": "77c82c377e6076bbd0f4bd9b327fe5e4",
+    "semantic_hash": ""
+  },
+  "frontend/src/services/api.ts": {
+    "mtime": 1793289987.8107977,
+    "seen": 1793304807.7784822,
+    "ast_hash": "1d8fd07ac0073970027f25bbb6eb05b3",
+    "semantic_hash": "1d8fd07ac0073970027f25bbb6eb05b3"
+  },
+  "frontend/src/types/index.ts": {
+    "mtime": 1793289871.5625167,
+    "seen": 1793304807.7795055,
+    "ast_hash": "1f4240983842a6d0eea3332f6efe5c09",
+    "semantic_hash": "1f4240983842a6d0eea3332f6efe5c09"
+  },
+  "frontend/tailwind.config.js": {
+    "mtime": 1794143110.7678,
+    "seen": 1794144013.890162,
+    "ast_hash": "58699da89c7b77c793db31fb77624ec1",
+    "semantic_hash": ""
+  },
+  "frontend/tsconfig.json": {
+    "mtime": 1793289823.2504025,
+    "seen": 1793304807.7795055,
+    "ast_hash": "122c951164dfa067894a87cb72726c55",
+    "semantic_hash": "122c951164dfa067894a87cb72726c55"
+  },
+  "frontend/vite.config.ts": {
+    "mtime": 1793289798.6843977,
+    "seen": 1793304807.7810354,
+    "ast_hash": "d86c8cc3e721bf3ad6a53026299717e5",
+    "semantic_hash": "d86c8cc3e721bf3ad6a53026299717e5"
+  },
+  "ml/train_sla_risk.py": {
+    "mtime": 1793281156.383433,
+    "seen": 1793304807.7810354,
+    "ast_hash": "2600a04cf7342d3a69249dff307cf4a6",
+    "semantic_hash": "2600a04cf7342d3a69249dff307cf4a6"
+  },
+  "scripts/setup_env.py": {
+    "mtime": 1793280956.65316,
+    "seen": 1793304807.7810354,
+    "ast_hash": "bce53321068867ed4ed1c66086b9a55a",
+    "semantic_hash": "bce53321068867ed4ed1c66086b9a55a"
+  },
+  "scripts/verify-m1.sh": {
+    "mtime": 1793281724.753462,
+    "seen": 1793304807.7820714,
+    "ast_hash": "af46f2618f6addf88908a798de460404",
+    "semantic_hash": "af46f2618f6addf88908a798de460404"
+  },
+  "scripts/verify-m2.sh": {
+    "mtime": 1793281860.2261488,
+    "seen": 1793304807.7820714,
+    "ast_hash": "b079685dcbe3839059c59f48381af422",
+    "semantic_hash": "b079685dcbe3839059c59f48381af422"
+  },
+  "scripts/verify-m3.sh": {
+    "mtime": 1793287205.399595,
+    "seen": 1793304807.7830703,
+    "ast_hash": "9b8b0bf7b1030ebb6d40cb5543182f53",
+    "semantic_hash": "9b8b0bf7b1030ebb6d40cb5543182f53"
+  },
+  "scripts/verify-m4.sh": {
+    "mtime": 1793288155.9847875,
+    "seen": 1793304807.7840898,
+    "ast_hash": "ef87d7f7f62ea80d53244dc7a1647396",
+    "semantic_hash": "ef87d7f7f62ea80d53244dc7a1647396"
+  },
+  "scripts/verify-m5.sh": {
+    "mtime": 1793288383.8687086,
+    "seen": 1793304807.7840898,
+    "ast_hash": "62ef6a324ee7470f0e8114acda9ac8d2",
+    "semantic_hash": "62ef6a324ee7470f0e8114acda9ac8d2"
+  },
+  "scripts/verify-m6.sh": {
+    "mtime": 1793281156.399897,
+    "seen": 1793304807.7850828,
+    "ast_hash": "9c8ecd220e7e7c95da543ad566757bd0",
+    "semantic_hash": "9c8ecd220e7e7c95da543ad566757bd0"
+  },
+  "start.sh": {
+    "mtime": 1793296858.503177,
+    "seen": 1793304807.7850828,
+    "ast_hash": "1faa0f249f5cfb3a7c71077f25605cb3",
+    "semantic_hash": "1faa0f249f5cfb3a7c71077f25605cb3"
+  },
+  "tools/apache-maven-3.9.9/bin/mvn": {
+    "mtime": 1793281601.564742,
+    "seen": 1793304807.78608,
+    "ast_hash": "0480f794df1745e254518f67cd70165d",
+    "semantic_hash": "0480f794df1745e254518f67cd70165d"
+  },
+  "tools/apache-maven-3.9.9/bin/mvnDebug": {
+    "mtime": 1793281601.5657442,
+    "seen": 1793304807.7870724,
+    "ast_hash": "69cc50e62a2c073167f47e96d173aaad",
+    "semantic_hash": "69cc50e62a2c073167f47e96d173aaad"
+  },
+  "tools/apache-maven-3.9.9/bin/mvnyjp": {
+    "mtime": 1793281601.5667439,
+    "seen": 1793304807.7870724,
+    "ast_hash": "ce52c322ba1cc0e7d8f879f07af57a03",
+    "semantic_hash": "ce52c322ba1cc0e7d8f879f07af57a03"
+  },
+  "tools/download_maven.py": {
+    "mtime": 1793281590.8901076,
+    "seen": 1793304807.7880683,
+    "ast_hash": "2795521e3d4ef3a43cc6d8aeeec2a2a8",
+    "semantic_hash": "2795521e3d4ef3a43cc6d8aeeec2a2a8"
+  },
+  "tools/fetch_3d_references.py": {
+    "mtime": 1793298358.4258504,
+    "seen": 1793304807.7880683,
+    "ast_hash": "5bb8631d8b4f85c0f0923743b99365f6",
+    "semantic_hash": "5bb8631d8b4f85c0f0923743b99365f6"
+  },
+  "tools/generate_adrs.py": {
+    "mtime": 1793290771.29206,
+    "seen": 1793304807.7890704,
+    "ast_hash": "1b8661057bd3e0aa7bf6e74478e65fd6",
+    "semantic_hash": "1b8661057bd3e0aa7bf6e74478e65fd6"
+  },
+  "tools/run_test.sh": {
+    "mtime": 1793282938.2564352,
+    "seen": 1793304807.7890704,
+    "ast_hash": "a17de23a437548e7357564256ad8cfd7",
+    "semantic_hash": "a17de23a437548e7357564256ad8cfd7"
+  },
+  "tools/setup_phase1.sh": {
+    "mtime": 1793297852.5499077,
+    "seen": 1793304807.7900705,
+    "ast_hash": "90b7ae49919b1070787e0bc75d37c727",
+    "semantic_hash": "90b7ae49919b1070787e0bc75d37c727"
+  },
+  "tools/split.py": {
+    "mtime": 1793281156.3859577,
+    "seen": 1793304807.7910662,
+    "ast_hash": "3c5b110792698e1d8cf6f3fbd1dc20d7",
+    "semantic_hash": "3c5b110792698e1d8cf6f3fbd1dc20d7"
+  },
+  "tools/test_auth.sh": {
+    "mtime": 1793282606.5944355,
+    "seen": 1793304807.7910662,
+    "ast_hash": "1e2e1561fdd1a8442fe09b2462dd90c1",
+    "semantic_hash": "1e2e1561fdd1a8442fe09b2462dd90c1"
+  },
+  "tools/test_e2e.sh": {
+    "mtime": 1793291630.1055877,
+    "seen": 1793304807.7920728,
+    "ast_hash": "a3db53aa7547df89921c4529ed1cdfca",
+    "semantic_hash": "a3db53aa7547df89921c4529ed1cdfca"
+  },
+  "tools/verify_ui_pixel_perfect.mjs": {
+    "mtime": 1793300335.7100027,
+    "seen": 1793304807.7920728,
+    "ast_hash": "c26780306de778d3247ab1846bdcdd88",
+    "semantic_hash": "c26780306de778d3247ab1846bdcdd88"
+  },
+  "upload/update_github.sh": {
+    "mtime": 1793281005.164688,
+    "seen": 1793304807.7930715,
+    "ast_hash": "e772f449e48bd6dbbc5ce043da59960d",
+    "semantic_hash": "e772f449e48bd6dbbc5ce043da59960d"
+  },
+  "backend/src/main/resources/db/migration/R__campus_seed.sql": {
+    "mtime": 1793281156.3740957,
+    "seen": 1793304851.4933412,
+    "ast_hash": "879b56f5335a3d46b92ae6f63da0b770",
+    "semantic_hash": "879b56f5335a3d46b92ae6f63da0b770"
+  },
+  "backend/src/main/resources/db/migration/V001__reference_tables.sql": {
+    "mtime": 1793281217.441478,
+    "seen": 1793304851.4943426,
+    "ast_hash": "0615cd5b6f0a742465751a5932a51098",
+    "semantic_hash": "0615cd5b6f0a742465751a5932a51098"
+  },
+  "backend/src/main/resources/db/migration/V002__incident_core.sql": {
+    "mtime": 1793281156.3720968,
+    "seen": 1793304851.4943426,
+    "ast_hash": "63c5abb88e309b0e52c5b7e4381f8351",
+    "semantic_hash": "63c5abb88e309b0e52c5b7e4381f8351"
+  },
+  "backend/src/main/resources/db/migration/V003__audit_timers_ai.sql": {
+    "mtime": 1793281230.6391044,
+    "seen": 1793304851.4953403,
+    "ast_hash": "53a706a31768418eee002be67cd431bd",
+    "semantic_hash": "53a706a31768418eee002be67cd431bd"
+  },
+  "frontend/src/pages/specs/SystemSpecs.tsx": {
+    "mtime": 1794143817.6237066,
+    "seen": 1794144013.890162,
+    "ast_hash": "65d618616eecc86068a61c3555b049b7",
+    "semantic_hash": ""
+  },
+  "frontend/src/pages/stage/CampusStage.tsx": {
+    "mtime": 1794143384.5343976,
+    "seen": 1794144013.890162,
+    "ast_hash": "a6c0fca86bee85ba72e7bc7966fe1610",
+    "semantic_hash": ""
+  },
+  "frontend/src/services/pixelSprites.tsx": {
+    "mtime": 1794143226.189299,
+    "seen": 1794144013.890162,
+    "ast_hash": "3e280e80b7c57f68fdb0ea9e877d05c3",
+    "semantic_hash": ""
+  },
+  "frontend/src/services/sound.ts": {
+    "mtime": 1794143194.5264144,
+    "seen": 1794144013.890162,
+    "ast_hash": "6c8c445901e2d2d1bf221187969a77f4",
+    "semantic_hash": ""
+  },
+  ".agent/rules/00-incident-zero-guardrails.md": {
+    "mtime": 1793281156.3844395,
+    "seen": 1794144013.890162,
+    "ast_hash": "7f622dcd88781eb9a2bb86f0bcd58146",
+    "semantic_hash": ""
+  },
+  ".agent/skills/ponytail-audit/SKILL.md": {
+    "mtime": 1793281059.9181025,
+    "seen": 1794144013.890162,
+    "ast_hash": "3c74cf12a43402931cf527ba67ea352f",
+    "semantic_hash": ""
+  },
+  ".agent/skills/ponytail-debt/SKILL.md": {
+    "mtime": 1793281059.933154,
+    "seen": 1794144013.890162,
+    "ast_hash": "264761c906ba1bda3d66c6f8580c5afd",
+    "semantic_hash": ""
+  },
+  ".agent/skills/ponytail-gain/SKILL.md": {
+    "mtime": 1793281059.9512727,
+    "seen": 1794144013.890162,
+    "ast_hash": "9898c646647eb82bd0470c4031dc4044",
+    "semantic_hash": ""
+  },
+  ".agent/skills/ponytail-help/SKILL.md": {
+    "mtime": 1793281059.9658444,
+    "seen": 1794144013.890162,
+    "ast_hash": "1a41061b18edaf621502403232766cbc",
+    "semantic_hash": ""
+  },
+  ".agent/skills/ponytail-review/SKILL.md": {
+    "mtime": 1793281059.98537,
+    "seen": 1794144013.890162,
+    "ast_hash": "599ba68a9bd0134e902b4158a4efd271",
+    "semantic_hash": ""
+  },
+  ".agent/skills/ponytail/SKILL.md": {
+    "mtime": 1793281059.898103,
+    "seen": 1794144013.890162,
+    "ast_hash": "1dfb5c89a3089b4ee76f314258b7a2b3",
+    "semantic_hash": ""
+  },
+  "AGENTS.md": {
+    "mtime": 1793281156.3844395,
+    "seen": 1794144013.890162,
+    "ast_hash": "7f622dcd88781eb9a2bb86f0bcd58146",
+    "semantic_hash": ""
+  },
+  "DESIGN.md": {
+    "mtime": 1794143898.360088,
+    "seen": 1794144013.890162,
+    "ast_hash": "d5c9001d268384f91509f3623ddcc939",
+    "semantic_hash": ""
+  },
+  "PRD.md": {
+    "mtime": 1793294011.2769592,
+    "seen": 1794144013.890162,
+    "ast_hash": "e5c796b443e90f3ea2cb5a86ef07ec74",
+    "semantic_hash": ""
+  },
+  "PRODUCT.md": {
+    "mtime": 1793298176.6691697,
+    "seen": 1794144013.890162,
+    "ast_hash": "5bdffd2cba798e9267eb884a6bdb0e53",
+    "semantic_hash": ""
+  },
+  "docs/AUTH_AND_DATABASE.md": {
+    "mtime": 1793281410.963658,
+    "seen": 1794144013.890162,
+    "ast_hash": "ec99cd01cdfc93e7413e02855938a2e3",
+    "semantic_hash": ""
+  },
+  "docs/DESIGN.md": {
+    "mtime": 1794143898.360088,
+    "seen": 1794144013.890162,
+    "ast_hash": "d5c9001d268384f91509f3623ddcc939",
+    "semantic_hash": ""
+  },
+  "docs/PRD.md": {
+    "mtime": 1793294020.0465286,
+    "seen": 1794144013.890162,
+    "ast_hash": "e5c796b443e90f3ea2cb5a86ef07ec74",
+    "semantic_hash": ""
+  },
+  "docs/TECH_STACK.md": {
+    "mtime": 1793281392.91995,
+    "seen": 1794144013.890162,
+    "ast_hash": "6e371898cefe7fee79250ff1d4ad077b",
+    "semantic_hash": ""
+  },
+  "docs/adr/ADR-001.md": {
+    "mtime": 1793290779.6700099,
+    "seen": 1794144013.890162,
+    "ast_hash": "c7e293efa7e080245c26420ca2f6dfe9",
+    "semantic_hash": ""
+  },
+  "docs/adr/ADR-002.md": {
+    "mtime": 1793290779.6700099,
+    "seen": 1794144013.890162,
+    "ast_hash": "91c0322c1a146ce00d91d2f23b2c78b9",
+    "semantic_hash": ""
+  },
+  "docs/adr/ADR-003.md": {
+    "mtime": 1793290779.6710136,
+    "seen": 1794144013.890162,
+    "ast_hash": "d6c3f48bf1879c3643528337f994e8d5",
+    "semantic_hash": ""
+  },
+  "docs/adr/ADR-004.md": {
+    "mtime": 1793290779.6710136,
+    "seen": 1794144013.890162,
+    "ast_hash": "bbe47356caca85ccae17bd7b684f59c9",
+    "semantic_hash": ""
+  },
+  "docs/adr/ADR-005.md": {
+    "mtime": 1793290779.6720145,
+    "seen": 1794144013.890162,
+    "ast_hash": "142d8e112b745418796a1d76fc919ca7",
+    "semantic_hash": ""
+  },
+  "docs/adr/ADR-006.md": {
+    "mtime": 1793290779.6720145,
+    "seen": 1794144013.890162,
+    "ast_hash": "3a6a75fd8368988021200f9570c9edff",
+    "semantic_hash": ""
+  },
+  "docs/adr/ADR-007.md": {
+    "mtime": 1793290779.6760116,
+    "seen": 1794144013.890162,
+    "ast_hash": "af19cf98ecbe3c8497d4249333eba41b",
+    "semantic_hash": ""
+  },
+  "docs/adr/ADR-008.md": {
+    "mtime": 1793290779.6760116,
+    "seen": 1794144013.890162,
+    "ast_hash": "f8e59d1ab699d552ca475bc292b0c82e",
+    "semantic_hash": ""
+  },
+  "docs/adr/ADR-009.md": {
+    "mtime": 1793290779.6770115,
+    "seen": 1794144013.890162,
+    "ast_hash": "43e2712e4b94057f34fb40a77161edd2",
+    "semantic_hash": ""
+  },
+  "docs/adr/ADR-010.md": {
+    "mtime": 1793290779.67801,
+    "seen": 1794144013.890162,
+    "ast_hash": "a48b0a812d5d4e9f1ebfd1dc2061d602",
+    "semantic_hash": ""
+  },
+  "docs/adr/ADR-011.md": {
+    "mtime": 1793290779.67801,
+    "seen": 1794144013.890162,
+    "ast_hash": "d5861eaa8b427393e98dcbace3561919",
+    "semantic_hash": ""
+  },
+  "docs/adr/ADR-012.md": {
+    "mtime": 1793290779.6790133,
+    "seen": 1794144013.890162,
+    "ast_hash": "54924196f3d48468b7b6207dd99a478e",
+    "semantic_hash": ""
+  },
+  "docs/adr/ADR-013.md": {
+    "mtime": 1793290779.6790133,
+    "seen": 1794144013.890162,
+    "ast_hash": "d419ff662b1d368fca6c2f739dd5b57e",
+    "semantic_hash": ""
+  },
+  "docs/adr/ADR-014.md": {
+    "mtime": 1793290779.6800132,
+    "seen": 1794144013.890162,
+    "ast_hash": "868266df72edad7c2812cf8c6b90354e",
+    "semantic_hash": ""
+  },
+  "docs/adr/ADR-015.md": {
+    "mtime": 1793290779.6800132,
+    "seen": 1794144013.890162,
+    "ast_hash": "c30d45c42eb2748c2aa6275aaa71870a",
+    "semantic_hash": ""
+  },
+  "docs/design-preview-dark.html": {
+    "mtime": 1793298264.382702,
+    "seen": 1794144013.890162,
+    "ast_hash": "91233ac953e1fed972fe76feb2a43721",
+    "semantic_hash": ""
+  },
+  "docs/tasks/PRD.md": {
+    "mtime": 1793294030.082341,
+    "seen": 1794144013.890162,
+    "ast_hash": "e5c796b443e90f3ea2cb5a86ef07ec74",
+    "semantic_hash": ""
+  },
+  "docs/tasks/progress.txt": {
+    "mtime": 1793294070.2369204,
+    "seen": 1794144013.890162,
+    "ast_hash": "8f5d39723482c2ecacbc3a4543b55686",
+    "semantic_hash": ""
+  },
+  "frontend/index.html": {
+    "mtime": 1794143099.9703498,
+    "seen": 1794144013.890162,
+    "ast_hash": "4a2904c9b543bf92f76c5a2dcdee4593",
+    "semantic_hash": ""
+  },
+  "frontend/public/landing.html": {
+    "mtime": 1794143933.844424,
+    "seen": 1794144013.890162,
+    "ast_hash": "c67c77f07f107d1d7764afc888f721ec",
+    "semantic_hash": ""
+  },
+  "incident_zero_frontend_architecture.md": {
+    "mtime": 1794141659.844035,
+    "seen": 1794144013.890162,
+    "ast_hash": "f9543ebab4ccbf1df46101fcca18a81a",
+    "semantic_hash": ""
+  },
+  "incident_zero_master_implementation_procedure_v2_2.md": {
+    "mtime": 1793280719.946781,
+    "seen": 1794144013.890162,
+    "ast_hash": "963da3c5ca6bf37e69dc4630da198e79",
+    "semantic_hash": ""
+  },
+  "landing.html": {
+    "mtime": 1794143933.844424,
+    "seen": 1794144013.890162,
+    "ast_hash": "c67c77f07f107d1d7764afc888f721ec",
+    "semantic_hash": ""
+  },
+  "progress.txt": {
+    "mtime": 1793294056.4823534,
+    "seen": 1794144013.890162,
+    "ast_hash": "9cb88b9ac69dbb6d6d8ab74f90707064",
+    "semantic_hash": ""
+  },
+  "tools/apache-maven-3.9.9/README.txt": {
+    "mtime": 1793281601.5112314,
+    "seen": 1794144013.890162,
+    "ast_hash": "03c14d7d61d0210c15ec0e87402fb8eb",
+    "semantic_hash": ""
+  },
+  "tools/apache-maven-3.9.9/lib/ext/README.txt": {
+    "mtime": 1793281601.570754,
+    "seen": 1794144013.890162,
+    "ast_hash": "0182ce445fc8a6c791947c664363c203",
+    "semantic_hash": ""
+  },
+  "tools/apache-maven-3.9.9/lib/ext/hazelcast/README.txt": {
+    "mtime": 1793281601.5713,
+    "seen": 1794144013.890162,
+    "ast_hash": "68b291328747c3e9619dcb30099d07f1",
+    "semantic_hash": ""
+  },
+  "tools/apache-maven-3.9.9/lib/ext/redisson/README.txt": {
+    "mtime": 1793281601.571806,
+    "seen": 1794144013.890162,
+    "ast_hash": "25d16b6329f9efd437154f67365cca59",
+    "semantic_hash": ""
+  },
+  "tools/apache-maven-3.9.9/lib/jansi-native/README.txt": {
+    "mtime": 1793281601.5728135,
+    "seen": 1794144013.890162,
+    "ast_hash": "0acfccc1252e8341880518ad1e4f9ba8",
+    "semantic_hash": ""
+  },
+  "upload/CHANGELOG.md": {
+    "mtime": 1793302491.6321206,
+    "seen": 1794144013.890162,
+    "ast_hash": "df8353b56032cdf3ebc3fdbe6ce844b7",
+    "semantic_hash": ""
+  },
+  "upload/TEAM_SETUP.md": {
+    "mtime": 1793281020.3272593,
+    "seen": 1794144013.890162,
+    "ast_hash": "ec5e17c31298d7786712d2a0172d205f",
+    "semantic_hash": ""
+  },
+  "upload/VERSION.txt": {
+    "mtime": 1793302491.283995,
+    "seen": 1794144013.890162,
+    "ast_hash": "d02d44f13f5bc6aa7e811813915f8ed9",
+    "semantic_hash": ""
+  },
+  "frontend/design-refs/ccit_server_rack_ref.png": {
+    "mtime": 1793298379.0333488,
+    "seen": 1794144013.890162,
+    "ast_hash": "88c5690f4d2db8782b597eb3a4a23ab7",
+    "semantic_hash": ""
+  },
+  "frontend/design-refs/service_dag_core_ref.png": {
+    "mtime": 1793298379.128644,
+    "seen": 1794144013.890162,
+    "ast_hash": "f26fb4f93c56c80c5bae372fe90ba940",
+    "semantic_hash": ""
+  },
+  "frontend/design-refs/sla_chronometer_ledger_ref.png": {
+    "mtime": 1793298379.2453735,
+    "seen": 1794144013.890162,
+    "ast_hash": "584f50961c05b160e82eddad1144dc12",
+    "semantic_hash": ""
+  },
+  "frontend/public/campus/Auditorium.png": {
+    "mtime": 1794127146.094647,
+    "seen": 1794144013.890162,
+    "ast_hash": "38800b0c7e60e9f6f033976980876cfa",
+    "semantic_hash": ""
+  },
+  "frontend/public/campus/F block.png": {
+    "mtime": 1794126931.416361,
+    "seen": 1794144013.890162,
+    "ast_hash": "10fd1bfd1eca8e6c27c72ed801be011c",
+    "semantic_hash": ""
+  },
+  "frontend/public/campus/Library.png": {
+    "mtime": 1794127188.1307974,
+    "seen": 1794144013.890162,
+    "ast_hash": "ec60968794a68be1d9abe080fbf6e75a",
+    "semantic_hash": ""
+  },
+  "frontend/public/campus/Valmiki Bhawan.png": {
+    "mtime": 1794126725.4886372,
+    "seen": 1794144013.890162,
+    "ast_hash": "057faf1d78b2b8ea44e3a8c0cce4c8ac",
+    "semantic_hash": ""
+  },
+  "frontend/public/logo/incident-zero-logo-light.png": {
+    "mtime": 1794140444.1711578,
+    "seen": 1794144013.890162,
+    "ast_hash": "36dcbdcb2152ed623c2e8963de260be9",
+    "semantic_hash": ""
+  },
+  "frontend/public/logo/incident-zero-logo.png": {
+    "mtime": 1794140442.171312,
+    "seen": 1794144013.890162,
+    "ast_hash": "d1299ca2b3fa219dcbf8cfcb713b1a71",
+    "semantic_hash": ""
+  },
+  "logo/incident-zero-logo-light.png": {
+    "mtime": 1794140444.1711578,
+    "seen": 1794144013.890162,
+    "ast_hash": "36dcbdcb2152ed623c2e8963de260be9",
+    "semantic_hash": ""
+  },
+  "logo/incident-zero-logo.png": {
+    "mtime": 1794140442.171312,
+    "seen": 1794144013.890162,
+    "ast_hash": "d1299ca2b3fa219dcbf8cfcb713b1a71",
+    "semantic_hash": ""
+  },
+  "frontend/package-lock.json": {
+    "mtime": 1793299496.3223476,
+    "seen": 1794144013.890162,
+    "ast_hash": "1179cbe79b07af69ec26af9eb53ff435",
+    "semantic_hash": ""
+  }
+}

@@ -1,0 +1,88 @@
+---
+source_file: "backend/src/main/java/edu/campus/iitsm/incident/domain/Priority.java"
+type: "code"
+community: "Community 22"
+location: "L3"
+tags:
+  - graphify/code
+  - graphify/EXTRACTED
+  - community/Community_22
+---
+
+# Priority
+
+## Connections
+- [[dot-Incident()]] - `references` [EXTRACTED]
+- [[dot-applyClassification()]] - `references` [EXTRACTED]
+- [[dot-applyPriority()]] - `references` [EXTRACTED]
+- [[dot-assign()_3]] - `references` [EXTRACTED]
+- [[dot-assign()_4]] - `references` [EXTRACTED]
+- [[dot-bumpOneLevel()]] - `method` [EXTRACTED]
+- [[dot-classify()_4]] - `references` [EXTRACTED]
+- [[dot-classify()_2]] - `references` [EXTRACTED]
+- [[dot-classify()_3]] - `references` [EXTRACTED]
+- [[dot-create()]] - `references` [EXTRACTED]
+- [[dot-createWithNumber()]] - `references` [EXTRACTED]
+- [[dot-isCritical()]] - `method` [EXTRACTED]
+- [[dot-priority()]] - `references` [EXTRACTED]
+- [[dot-register()]] - `references` [EXTRACTED]
+- [[dot-reprioritize()_3]] - `references` [EXTRACTED]
+- [[dot-reprioritize()_4]] - `references` [EXTRACTED]
+- [[dot-reprioritize()_1]] - `references` [EXTRACTED]
+- [[dot-reprioritize()_6]] - `references` [EXTRACTED]
+- [[dot-reprioritize()]] - `references` [EXTRACTED]
+- [[dot-reprioritize()_5]] - `references` [EXTRACTED]
+- [[dot-reprioritize()_2]] - `references` [EXTRACTED]
+- [[dot-resolve()]] - `references` [EXTRACTED]
+- [[dot-selectTechnician()]] - `references` [EXTRACTED]
+- [[dot-selectTechnician()_1]] - `references` [EXTRACTED]
+- [[dot-selectTechnician()_2]] - `references` [EXTRACTED]
+- [[dot-selectTechnician()_3]] - `references` [EXTRACTED]
+- [[dot-selectTechnician()_4]] - `references` [EXTRACTED]
+- [[dot-selectTechnician()_5]] - `references` [EXTRACTED]
+- [[dot-selectTechnician()_6]] - `references` [EXTRACTED]
+- [[dot-selectTechnician()_7]] - `references` [EXTRACTED]
+- [[dot-ticketWeight()]] - `references` [EXTRACTED]
+- [[AssignStep.java]] - `imports` [EXTRACTED]
+- [[AssignmentPort.java]] - `imports` [EXTRACTED]
+- [[AssignmentPortAdapter.java]] - `imports` [EXTRACTED]
+- [[AssignmentStrategy.java]] - `imports` [EXTRACTED]
+- [[AuthenticationTest.java]] - `imports` [EXTRACTED]
+- [[BatchAssignmentScheduler.java]] - `imports` [EXTRACTED]
+- [[CreateProvisionalIncidentStep.java]] - `imports` [EXTRACTED]
+- [[ExperienceStrategy.java]] - `imports` [EXTRACTED]
+- [[HungarianBatchStrategy.java]] - `imports` [EXTRACTED]
+- [[HybridWeightedStrategy.java]] - `imports` [EXTRACTED]
+- [[Incident]] - `references` [EXTRACTED]
+- [[IncidentClassified]] - `references` [EXTRACTED]
+- [[IncidentCreated]] - `references` [EXTRACTED]
+- [[IncidentEvents.java]] - `imports` [EXTRACTED]
+- [[IncidentJpaEntity.java]] - `imports` [EXTRACTED]
+- [[ItilMatrixPriorityStrategy]] - `references` [EXTRACTED]
+- [[ItilMatrixPriorityStrategy.java]] - `imports` [EXTRACTED]
+- [[LeastLoadedStrategy.java]] - `imports` [EXTRACTED]
+- [[P1]] - `case_of` [EXTRACTED]
+- [[P2]] - `case_of` [EXTRACTED]
+- [[P3]] - `case_of` [EXTRACTED]
+- [[P4]] - `case_of` [EXTRACTED]
+- [[PersistenceAndListenersTest.java]] - `imports` [EXTRACTED]
+- [[Priority.java]] - `contains` [EXTRACTED]
+- [[PriorityAndSlaStep.java]] - `imports` [EXTRACTED]
+- [[PriorityAwareStrategy.java]] - `imports` [EXTRACTED]
+- [[PriorityChanged]] - `references` [EXTRACTED]
+- [[PriorityResult]] - `references` [EXTRACTED]
+- [[PriorityResult.java]] - `imports` [EXTRACTED]
+- [[PriorityStep]] - `references` [EXTRACTED]
+- [[PriorityStrategyTest.java]] - `imports` [EXTRACTED]
+- [[ProductScorePriorityStrategy.java]] - `imports` [EXTRACTED]
+- [[RoundRobinStrategy.java]] - `imports` [EXTRACTED]
+- [[SkillMatchStrategy.java]] - `imports` [EXTRACTED]
+- [[SlaClockAndPolicyTest.java]] - `imports` [EXTRACTED]
+- [[SlaKey]] - `references` [EXTRACTED]
+- [[SlaPolicyResolver.java]] - `imports` [EXTRACTED]
+- [[Snapshot]] - `references` [EXTRACTED]
+- [[StrategyAndAssignmentTest.java]] - `imports` [EXTRACTED]
+- [[StrategySupport.java]] - `imports` [EXTRACTED]
+- [[WeightedScorePriorityStrategy.java]] - `imports` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/Community_22

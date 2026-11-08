@@ -1,133 +1,101 @@
-# Incident-Zero (I-ITSM v2.2) — Production Stitch Design System
-
-Fusing **Linear**, **Raycast**, **Sentry**, and **Vercel** design standards for a mission-critical campus IT service management platform.
-
----
-
-## 1. Visual Theme & Atmosphere
-
-Incident-Zero embodies the quiet, focused power of an aerospace flight controller or mission-critical NOC terminal. The visual atmosphere is built upon **Carbon-Obsidian** depths (`#090A0D`), crisp **1px hairline geometry** (`rgba(255, 255, 255, 0.07)`), and **calibrated semantic illumination**. Color is treated as a scarce, precious currency—spent solely on operational reality: healthy systems, warning thresholds, SLA breach alerts, and precision telemetry data conduits.
+# Incident-Zero: Reach Zero — Production Design System & Frontend Architecture (v2.2)
+**BITS Pilani, Hyderabad Campus** · Hexagonal Modular Monolith · Pixel-Arcade Visual Engine
 
 ---
 
-## 2. Color Palette & Semantic Roles
+## 1. Concept & Art Direction
 
-### 2.1 Surface Elevation Ladder
-| Token | Hex / Value | Role |
+Incident-Zero is an incident management command center designed as an arcade experience where uptime is earned and maintained by reaching zero open incidents. Tickets manifest as pixel bugs over real BPHC campus landmarks, the technician is the player, SLAs are represented as ticking hearts, workspaces are swappable ROM cartridges, and the audit trail is an immutable SHA-256 cryptographic hash spine that can be verified or tamper-tested with one keystroke.
+
+The product is enterprise-grade, deterministic, and compiler-verified underneath (520,036 transition matrix paths, zero Spring/JPA imports in domain core, ArchUnit R1–R9 invariants), while the surface is tactile, playful, responsive, and free of generic AI slop.
+
+---
+
+## 2. Visual Theme & Anti-Slop Principles
+
+- **Flat Color, Thick Ink, Hard Shadows:**
+  - `3px solid var(--line)` outlines on all interactive elements, cards, and buttons.
+  - Hard offset drop shadows with zero blur (`shadow-[5px_5px_0_var(--shadow-col)]` or `3px 3px 0 var(--shadow-col)`).
+  - Square corners, crisp integer-scaled SVG matrices (`shape-rendering: crispEdges`).
+  - No purple-to-blue generic SaaS gradients, no fuzzy glassmorphism, no cards nested inside cards.
+
+- **Four Skies (Day, Sunset, Night, Monsoon):**
+  - Instant theme cross-fading through sky-scoped CSS variables (`data-sky="day"`, `sunset`, `night`, `rain`).
+  - Automatic browser `<meta name="theme-color">` synchronization.
+  - Automatic brand logo swapping between `logo/incident-zero-logo.png` (navy on day/sunset) and `logo/incident-zero-logo-light.png` (cream on night/monsoon).
+
+- **Typography Ladder:**
+  - **Headlines & Body:** `Pixelify Sans`, `cursive`, `sans-serif` (display and arcade headings).
+  - **Labels, Badges, & Chips:** `Silkscreen`, `monospace` (arcade labels and status ribbons).
+  - **Technical Identifiers & SLA Timers:** `JetBrains Mono` with `tabular-nums` for incident numbers (`INC-2026-000142`), countdown timers (`04:12.8`), SHA-256 hashes, and coordinates.
+  - **Clean Z Override:** `.z-chr` with `Space Grotesk` or `JetBrains Mono` so 'Z' and 'z' never read as '2' or '8'.
+
+---
+
+## 3. Sky Tokens & Color Palette
+
+### 3.1 Palette (Day Mode)
+| Token | Hex | Role |
 | :--- | :--- | :--- |
-| `--bg-canvas` | `#090A0D` | Deep carbon-slate viewport foundation |
-| `--bg-surface-1` | `#101217` | Base container with `1px solid rgba(255, 255, 255, 0.07)` |
-| `--bg-surface-2` | `#161920` | Elevated panel with `inset 0 1px 0 0 rgba(255, 255, 255, 0.09)` |
-| `--bg-surface-3` | `#1D212A` | Interactive hover & active drawer surface |
-| `--hairline-soft` | `rgba(255, 255, 255, 0.07)` | Standard hairline separator |
-| `--hairline-strong`| `rgba(255, 255, 255, 0.14)` | Focused control & active card border |
+| `--bg` | `#FFE680` | Butter background canvas |
+| `--chk` | `#FFDD5E` | Checkerboard tile contrast |
+| `--card` | `#FFF8DC` | Cream card surface |
+| `--fg` | `#1B1530` | Deep purple-navy ink text |
+| `--soft` | `#4A3F6B` | Secondary label & metadata ink |
+| `--line` | `#1B1530` | 3px ink borders and hard shadows |
+| `--shadow-col` | `#1B1530` | Hard drop shadow color |
+| `--red` / `--ketchup` | `#FF4D3D` | P1 outages, bug hits, critical alerts |
+| `--sky` | `#59C9F5` | P2 high priority, network telemetry |
+| `--grn` / `--ribbon` | `#43D17A` / `#7CE356` | Resolved tickets, healthy systems, XP ribbon |
+| `--grp` | `#7C5CFF` | P3 priority, cryptographic links |
+| `--orange` | `#FF9F43` | Active warning, SLA < 75% |
+| `--pink` | `#FF8AD0` | Specs, architecture accents |
 
-### 2.2 Ink & Contrast Tokens
-| Token | Hex / Value | Contrast Ratio |
-| :--- | :--- | :--- |
-| `--ink-primary` | `#F3F4F6` | $\ge 15:1$ against canvas (Headings, primary values) |
-| `--ink-secondary` | `#9BA1AE` | $\ge 7:1$ against canvas (Labels, metadata, column titles) |
-| `--ink-muted` | `#646B7A` | $\ge 4.6:1$ against canvas (Timestamps, hashes, borders) |
-
-### 2.3 Semantic Signal Currency
-| State | Core Hex | Surface Tint | Hairline Border | Text Ink |
-| :--- | :--- | :--- | :--- | :--- |
-| **`--signal-ok`** (Healthy / Closed) | `#10B981` | `rgba(16, 185, 129, 0.10)` | `rgba(16, 185, 129, 0.28)` | `#6EE7B7` |
-| **`--signal-warn`** (At Risk / Paused) | `#F59E0B` | `rgba(245, 158, 11, 0.10)` | `rgba(245, 158, 11, 0.28)` | `#FCD34D` |
-| **`--signal-crit`** (Breached / P1) | `#F43F5E` | `rgba(244, 63, 94, 0.12)` | `rgba(244, 63, 94, 0.35)` | `#FDA4AF` |
-| **`--signal-accent`** (Telemetry Cyan)| `#38BDF8` | `rgba(56, 189, 248, 0.12)` | `rgba(56, 189, 248, 0.35)` | `#7DD3FC` |
+### 3.2 Four Skies Matrix
+- **Day:** Butter `#FFE680`, Cream `#FFF8DC`, Navy Ink `#1B1530`.
+- **Sunset:** Warm Peach `#FFB870`, Cream `#FFF2E2`, Deep Plum `#24132E`.
+- **Night:** Deep Indigo `#1E1646`, Midnight Slate `#32266E`, Cream Text `#FFF3C4`.
+- **Monsoon:** Storm Steel `#2C3B4D`, Wet Slate `#3E5268`, Off-White `#F0F6FC`.
 
 ---
 
-## 3. Typography Rules
+## 4. Game Feel & Audio Synthesizer
 
-### 3.1 Type Families
-- **UI & Display Sans:** `Plus Jakarta Sans`, `-apple-system`, `BlinkMacSystemFont`, `Segoe UI`, `sans-serif`.
-- **Editorial Accent:** `Instrument Serif`, `Georgia`, `serif` (used in italics for milestone summaries and KPI impact deltas).
-- **Tabular Numeric & Monospace:** `JetBrains Mono`, `ui-monospace`, `monospace` with `font-variant-numeric: tabular-nums` for all incident numbers (`INC-2026-000142`), SLA clocks (`04:12.8`), SHA-256 hashes, and coordinates.
+- **Web Audio 8-bit Synthesizer (`sound.ts`):**
+  - Zero external sound asset dependencies; procedural audio synthesized via Web Audio API.
+  - `sound.blip()`: 880Hz square beep for hover, keystroke, and navigation.
+  - `sound.pick()`: 440Hz -> 660Hz chirp for menu selection and cartridge slotting.
+  - `sound.slot()`: 220Hz low square thump for physical cartridge seating.
+  - `sound.fix()`: 523Hz -> 659Hz -> 784Hz major triad arpeggio on ticket squash/resolution.
+  - `sound.err()`: 130Hz buzzing saw wave on 409 conflict and illegal moves.
+  - `sound.win()`: Full 4-note victory fan-fare on stage clear and ledger verification.
+  - Full mute toggle synced across user sessions.
 
-### 3.2 Scale Ladder
-- `display-xl`: `32px` / `line-height: 1.15` / `font-weight: 600` / `letter-spacing: -0.03em`
-- `heading-lg`: `20px` / `line-height: 1.25` / `font-weight: 600` / `letter-spacing: -0.02em`
-- `heading-md`: `16px` / `line-height: 1.35` / `font-weight: 600` / `letter-spacing: -0.01em`
-- `body-base`: `14px` / `line-height: 1.50` / `font-weight: 400` / `letter-spacing: 0`
-- `caption-sm`: `12px` / `line-height: 1.40` / `font-weight: 500` / `letter-spacing: 0.01em`
-- `mono-code`: `12px` / `line-height: 1.40` / `font-family: JetBrains Mono` / `tabular-nums`
-
----
-
-## 4. Component Stylings
-
-### 4.1 Precision Status Dot (`<StatusDot />`)
-- Geometry: Fixed `8px x 8px`, `border-radius: 9999px; flex-shrink: 0; display: inline-block;`.
-- Halos: Subtle radial ring `box-shadow: 0 0 0 3px rgba(...)` only on active `P1`/`BREACHED` or active `SSE CONNECTED` states. Container always maintains $\ge 4px$ internal clearance.
-
-### 4.2 Standard Control Ladder
-- **Compact Badge / Pill:** `height: 22px; padding: 0 8px; font-size: 11px; font-weight: 500; border-radius: 4px;`
-- **Filter / Action Button:** `height: 32px; padding: 0 12px; font-size: 13px; font-weight: 500; border-radius: 6px;`
-- **Primary Command CTA:** `height: 36px; padding: 0 16px; font-size: 13px; font-weight: 600; border-radius: 6px;`
-- **Icon Alignment:** `display: inline-flex; align-items: center; justify-content: center; gap: 6px;` with icons locked to `14px x 14px; flex-shrink: 0;`.
-
-### 4.3 Command Bar & War Room Toolbar
-- Dedicated horizontal flex container with `flex-wrap: wrap; gap: 8px; align-items: center;`.
-- Never overlaps incident titles or overflows screen edges horizontally.
-
-### 4.4 Data Tables & Hash Pills
-- Strict tabular data grid: right-aligned numeric cells, monospace IDs, and `<HashPill />` truncation (`abc1234f...9e81c02d`) with copy tooltip.
-- Row hover: subtle background transition to `--bg-surface-3` with zero layout jump.
-
-### 4.5 3D Viewport Chrome
-- Fixed or aspect-ratio locked container (`min-height: 320px`, `overflow: hidden`, `border: 1px solid rgba(255, 255, 255, 0.08)`).
-- Semi-transparent HUD overlay anchors on top edges with live metrics and camera controls.
+- **Tactile Feedback:**
+  - 60ms hit-stop and screen shake on bug squash.
+  - 409 conflict shake animation on illegal transitions or stale versions.
+  - Live ticking SLA hearts with danger flash under 25% threshold.
 
 ---
 
-## 5. Layout Principles
+## 5. Swappable ROM Cartridge Architecture
 
-- **Spatial Grid:** 8pt spatial grid with 4pt half-steps (`4px`, `8px`, `12px`, `16px`, `24px`, `32px`).
-- **Fixed Header:** `56px` (`h-14`) sticky top bar with backdrop blur (`backdrop-blur-md`).
-- **Zero Nested Cards:** Content lives in flat, hairline-partitioned surface panels. No cards nested inside cards.
-- **Zero Horizontal Overflow:** Guaranteed `document.documentElement.scrollWidth <= document.documentElement.clientWidth`.
-
----
-
-## 6. Depth & Elevation
-
-- **Hairline Geometry:** `1px solid rgba(255, 255, 255, 0.07)` provides structural boundaries without muddy drop shadows.
-- **Top Specular Highlight:** Panels feature a subtle `inset 0 1px 0 0 rgba(255, 255, 255, 0.09)` simulating light grazing an anodized aluminum bezel.
-- **Backdrop Blur:** Modals and sticky navigation bars utilize `backdrop-filter: blur(12px)`.
-
----
-
-## 7. Do's and Don'ts (Anti-Slop Manifesto)
-
-### DO:
-- Use `Plus Jakarta Sans` or `Geist` for crisp, professional typography.
-- Use `JetBrains Mono` with `tabular-nums` for all countdowns, incident codes, and coordinates.
-- Spend color strictly on semantic state (`ON_TRACK`, `AT_RISK`, `BREACHED`).
-- Provide instant keyboard navigability and clear visual affordance.
-
-### DON'T:
-- Do NOT use Inter, Arial, Roboto, or generic default sans-serifs.
-- Do NOT use purple-to-blue SaaS gradients or neon cyberpunk particle soups.
-- Do NOT nest cards inside cards.
-- Do NOT use elastic/spring bounce animations that delay user interaction.
-- Do NOT use un-truncated 64-character hashes that push table cells off-screen.
+The frontend application is structured as 5 swappable cartridges:
+1. **ROM 00: Campus Stage (`/stage` or `?tab=stage`):**
+   Interactive BPHC campus overworld featuring 4 2×-scale pixel landmarks (C-Block & Auditorium, F-Block & On The Rocks, Valmiki Bhavan, Block-G Library), live crawling bugs, walking technician with overhead wrench-slam squash animation, combo multiplier, scorecard modal, 10-state rules board, and Web Crypto SHA-256 live avalanche editor.
+2. **ROM 01: Student Portal (`/portal` or `?tab=portal`):**
+   Outage reporting intake copilot, voice dictation, urgency selectors, deflection cards, 5-step quest progress bar, SLA stasis banners, and CSAT star ratings.
+3. **ROM 02: Technician Workbench (`/workbench` or `?tab=workbench`):**
+   Active queue table with Hungarian capacity points telemetry, boss-fight incident detail, dynamic action bars populated strictly by backend `allowedCommands`, 3D SLA chronometer, and PIR post-mortem editor.
+4. **ROM 03: Admin Command Center (`/admin` or `?tab=admin`):**
+   Executive KPI grid with tilted count-up cards, 19-node service dependency DAG with 3D orbital view and 2D schematic graph, immutable SHA-256 audit ledger with 40-ticket storm simulator, and Kuhn-Munkres hybrid dispatch weight sliders.
+5. **ROM 04: System Specs (`/specs` or `?tab=specs`):**
+   Formal architecture specification detailing the 10-state machine matrix, OCC row versioning, SLA stasis mechanics, DAG topological sort, and cryptographic hash spine.
 
 ---
 
-## 8. Responsive Behavior
+## 6. Official Brand Logos
 
-- **Desktop Widescreen (`1920x1080`):** 3-column split view (Navigation/Queue, War Room Canvas, AI Provenance Inspector).
-- **Laptop Standard (`1440x900`):** 2-column view with collapsible right-hand AI copilot panel.
-- **Mobile Handheld (`390x844`):** Single-column stacked view with sticky bottom navigation tabs and touch targets $\ge 44px$.
-
----
-
-## 9. Agent Prompt Guide
-
-When authoring or modifying any component in `frontend/src/`:
-1. Always import tokens from standard CSS variables or Tailwind utility mappings.
-2. Ensure every button has explicit height and non-shrinking icon wrappers.
-3. Validate all tables for horizontal clipping and numeric alignment.
-4. Keep all 3D canvas wrappers inside robust error-boundary and aspect-ratio containers.
+- **Light Sky Logo:** `/logo/incident-zero-logo.png` (Navy wordmark, displayed on day and sunset).
+- **Dark Sky Logo:** `/logo/incident-zero-logo-light.png` (Cream wordmark, displayed on night and monsoon).
+- Automatic swapping handled in `<Header />` via `light-only` and `dark-only` CSS selectors.

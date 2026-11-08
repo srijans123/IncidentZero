@@ -1,118 +1,87 @@
 import React from 'react';
 import {
-  ShieldAlert,
   Clock,
   TrendingUp,
-  Cpu,
   Users,
-  CheckCircle2,
-  AlertTriangle,
   Flame,
   Zap,
-  Server,
   Activity,
-  Layers,
 } from 'lucide-react';
+import { PixelIcon } from '../../services/pixelSprites';
 import { StatusBadge } from '../../components/ui/StatusBadge';
 import { StatusDot } from '../../components/ui/StatusDot';
 
 export const AdminOverview: React.FC = () => {
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       {/* Top Header */}
-      <div className="surface-panel p-6 bg-[#101217] border border-white/[0.08] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)]">
+      <div className="pixel-card-offset" style={{ '--b': '#43D17A' } as any}>
+        <span className="pixel-tag-badge">
+          <PixelIcon name="wifi" scale={1.6} />
+          <span>ROM 03 · CAMPUS COMMAND CENTER</span>
+        </span>
+
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
-            <div className="flex items-center gap-2 text-[#38BDF8] text-xs font-mono font-medium tracking-wider uppercase mb-1">
-              <Activity className="w-3.5 h-3.5" />
-              <span>Campus IT Executive Governance</span>
-            </div>
-            <h1 className="text-2xl font-bold tracking-tight text-[#F3F4F6]">
+            <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-[var(--fg)]">
               Operational Command Center
             </h1>
-            <p className="text-xs text-[#9BA1AE] mt-1">
-              Real-time campus IT health metrics, SLA compliance, AI triage performance, and on-call technician utilization.
+            <p className="text-xs sm:text-sm text-[var(--soft)] mt-1.5 font-medium">
+              Real-time BITS Pilani campus IT health metrics, SLA compliance, AI triage performance, and on-call technician utilization.
             </p>
           </div>
-          <div className="flex items-center gap-2 font-mono text-xs">
-            <span className="flex items-center gap-1.5 px-3 py-1.5 rounded bg-[#161920] border border-white/[0.08] text-[#10B981]">
+          <div className="flex items-center gap-2 font-mono text-xs shrink-0">
+            <span className="chip s-DONE font-bold px-3 py-1 shadow-[2px_2px_0_#1B1530]">
               <StatusDot state="CONNECTED" pulse />
-              <span>TELEMETRY LIVE (60 FPS)</span>
+              <span>LIVE TELEMETRY (60 FPS)</span>
             </span>
           </div>
         </div>
       </div>
 
       {/* Executive KPI Grid (5 Cards) */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5">
-        <div className="surface-panel p-4 bg-[#101217] border border-white/[0.08] space-y-2">
-          <div className="text-[#9BA1AE] text-xs font-medium flex items-center justify-between">
-            <span>Total Campus Volume</span>
-            <Users className="w-3.5 h-3.5 text-[#38BDF8]" />
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+        {[
+          { label: 'Total Campus Volume', val: '1,428', delta: '↑ 12% vs mid-sem', icon: <Users className="w-4 h-4 text-[#1B1530]" />, col: 'bg-[#59C9F5]' },
+          { label: 'Active Major P1', val: '1', delta: 'War room active (AUTH-LDAP)', icon: <Flame className="w-4 h-4 text-[#FFF8DC]" />, col: 'bg-[#FF4D3D] text-[#FFF8DC]' },
+          { label: 'SLA Compliance', val: '96.8%', delta: 'Target SLA: 95.0%', icon: <Clock className="w-4 h-4 text-[#1B1530]" />, col: 'bg-[#43D17A]' },
+          { label: 'MTTR (Resolution)', val: '24.2m', delta: '-18% faster via RRF', icon: <TrendingUp className="w-4 h-4 text-[#1B1530]" />, col: 'bg-[#FFD84D]' },
+          { label: 'AI Deflection Rate', val: '34.6%', delta: '494 tickets deflected', icon: <Zap className="w-4 h-4 text-[#FFF8DC]" />, col: 'bg-[#7C5CFF] text-[#FFF8DC]' },
+        ].map((kpi, idx) => (
+          <div
+            key={kpi.label}
+            className="pixel-card p-4 space-y-2 hover:-translate-y-1 transition-transform"
+          >
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-mono font-bold text-[var(--soft)] uppercase">
+                {kpi.label}
+              </span>
+              <span className={`p-1.5 border-2 border-[#1B1530] shadow-[2px_2px_0_#1B1530] ${kpi.col}`}>
+                {kpi.icon}
+              </span>
+            </div>
+            <div className="text-3xl font-bold font-mono text-[var(--fg)] tabular-nums">
+              {kpi.val}
+            </div>
+            <div className="text-[11px] font-mono font-bold text-[var(--soft)]">
+              {kpi.delta}
+            </div>
           </div>
-          <div className="text-2xl font-bold font-mono text-[#F3F4F6] tabular-nums">1,428</div>
-          <div className="text-[11px] text-[#10B981] font-mono flex items-center gap-1">
-            <span className="font-serif italic text-xs">↑ 12%</span> vs last exam week
-          </div>
-        </div>
-
-        <div className="surface-panel p-4 bg-rose-500/10 border border-rose-500/30 space-y-2">
-          <div className="text-rose-400 text-xs font-medium flex items-center justify-between">
-            <span>Active Major P1</span>
-            <Flame className="w-3.5 h-3.5 text-rose-400 fill-current" />
-          </div>
-          <div className="text-2xl font-bold font-mono text-rose-200 tabular-nums">1</div>
-          <div className="text-[11px] text-rose-300 font-mono">
-            War room active (AUTH-LDAP)
-          </div>
-        </div>
-
-        <div className="surface-panel p-4 bg-[#101217] border border-white/[0.08] space-y-2">
-          <div className="text-[#9BA1AE] text-xs font-medium flex items-center justify-between">
-            <span>SLA Compliance</span>
-            <Clock className="w-3.5 h-3.5 text-[#10B981]" />
-          </div>
-          <div className="text-2xl font-bold font-mono text-[#10B981] tabular-nums">96.8%</div>
-          <div className="text-[11px] text-[#9BA1AE] font-mono">
-            Target SLA: 95.0%
-          </div>
-        </div>
-
-        <div className="surface-panel p-4 bg-[#101217] border border-white/[0.08] space-y-2">
-          <div className="text-[#9BA1AE] text-xs font-medium flex items-center justify-between">
-            <span>MTTR (Resolution)</span>
-            <TrendingUp className="w-3.5 h-3.5 text-[#38BDF8]" />
-          </div>
-          <div className="text-2xl font-bold font-mono text-[#38BDF8] tabular-nums">24.2m</div>
-          <div className="text-[11px] text-[#10B981] font-mono">
-            <span className="font-serif italic text-xs">-18%</span> faster with A1 RRF
-          </div>
-        </div>
-
-        <div className="surface-panel p-4 bg-[#101217] border border-white/[0.08] space-y-2">
-          <div className="text-[#9BA1AE] text-xs font-medium flex items-center justify-between">
-            <span>AI Deflection Rate</span>
-            <Zap className="w-3.5 h-3.5 text-amber-400" />
-          </div>
-          <div className="text-2xl font-bold font-mono text-amber-300 tabular-nums">34.6%</div>
-          <div className="text-[11px] text-amber-400 font-mono">
-            494 tickets deflected via A6
-          </div>
-        </div>
+        ))}
       </div>
 
       {/* Middle Section: Service Health Grid & Technician Load */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* Left (7 cols): Campus Service Health Roster */}
-        <div className="lg:col-span-7 surface-panel p-5 bg-[#101217] border border-white/[0.08] space-y-4">
-          <div className="flex items-center justify-between">
-            <span className="font-mono text-xs font-semibold text-[#F3F4F6] uppercase">
-              Core Campus Services Status (Tier 0 & Tier 1)
+        <div className="lg:col-span-7 pixel-card p-5 space-y-4">
+          <div className="flex items-center justify-between border-b-2 border-[var(--line)] pb-2 font-mono text-xs font-bold">
+            <span className="text-[var(--fg)] uppercase">
+              CORE CAMPUS SERVICES STATUS (TIER 0 & TIER 1)
             </span>
-            <span className="text-[11px] font-mono text-[#9BA1AE]">19 Catalog Services Active</span>
+            <span className="text-[var(--soft)]">19 CATALOG SERVICES ACTIVE</span>
           </div>
 
-          <div className="divide-y divide-white/[0.04] text-xs">
+          <div className="divide-y-2 divide-[var(--line)]/20 text-xs font-mono">
             {[
               { code: 'AUTH-LDAP', name: 'Active Directory / LDAP SSO', tier: 'T0', status: 'CRITICAL', latency: '910ms', tickets: 26 },
               { code: 'APP-LMS', name: 'Nalanda Moodle Academic Portal', tier: 'T1', status: 'CRITICAL', latency: '382ms', tickets: 14 },
@@ -125,12 +94,12 @@ export const AdminOverview: React.FC = () => {
                 <div className="flex items-center gap-3">
                   <StatusDot state={svc.status} />
                   <div>
-                    <div className="font-mono font-bold text-slate-200">{svc.code}</div>
-                    <div className="text-[11px] text-[#9BA1AE]">{svc.name}</div>
+                    <div className="font-bold text-[var(--fg)]">{svc.code}</div>
+                    <div className="text-[11px] text-[var(--soft)]">{svc.name}</div>
                   </div>
                 </div>
-                <div className="flex items-center gap-3 font-mono text-[11px] tabular-nums">
-                  <span className="text-[#9BA1AE]">Latency: {svc.latency}</span>
+                <div className="flex items-center gap-3 tabular-nums">
+                  <span className="text-[var(--soft)]">Latency: {svc.latency}</span>
                   <StatusBadge label={svc.status} />
                 </div>
               </div>
@@ -139,12 +108,12 @@ export const AdminOverview: React.FC = () => {
         </div>
 
         {/* Right (5 cols): Technician Capacity & Hungarian Load */}
-        <div className="lg:col-span-5 surface-panel p-5 bg-[#101217] border border-white/[0.08] space-y-4">
-          <div className="flex items-center justify-between">
-            <span className="font-mono text-xs font-semibold text-[#F3F4F6] uppercase">
-              Technician On-Call Capacity (8.0 Max)
+        <div className="lg:col-span-5 pixel-card p-5 space-y-4">
+          <div className="flex items-center justify-between border-b-2 border-[var(--line)] pb-2 font-mono text-xs font-bold">
+            <span className="text-[var(--fg)] uppercase">
+              TECHNICIAN ON-CALL CAPACITY (8.0 MAX)
             </span>
-            <span className="text-[11px] font-mono text-[#10B981]">Hungarian Multi-Pass</span>
+            <span className="text-[#43D17A]">HUNGARIAN MULTI-PASS</span>
           </div>
 
           <div className="space-y-3 text-xs">
@@ -154,22 +123,22 @@ export const AdminOverview: React.FC = () => {
               { name: 'Priya Menon', tier: 'TEAM_LEAD', load: 1.5, tickets: 1, avatar: '👩‍💼' },
               { name: 'Ananya Iyer', tier: 'L1 (NOC)', load: 2.0, tickets: 2, avatar: '📡' },
             ].map((tech) => (
-              <div key={tech.name} className="p-3 rounded bg-[#161920] border border-white/[0.06] space-y-1.5">
+              <div key={tech.name} className="p-3 border-2 border-[var(--line)] bg-[var(--card)] space-y-1.5">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <span className="text-sm">{tech.avatar}</span>
-                    <span className="font-medium text-slate-200">{tech.name}</span>
-                    <span className="px-1.5 py-0.5 rounded text-[11px] font-mono bg-white/[0.06] text-[#9BA1AE]">
+                    <span className="text-base">{tech.avatar}</span>
+                    <span className="font-bold text-[var(--fg)]">{tech.name}</span>
+                    <span className="chip s-ASG text-[10px] py-0 px-1">
                       {tech.tier}
                     </span>
                   </div>
-                  <span className="font-mono text-[11px] text-[#38BDF8] tabular-nums">
+                  <span className="font-mono text-xs font-bold text-[var(--fg)] tabular-nums">
                     {tech.load} / 8.0 pts ({tech.tickets} active)
                   </span>
                 </div>
-                <div className="w-full bg-[#090A0D] h-1.5 rounded-full overflow-hidden">
+                <div className="w-full bg-[#1B1530] h-2.5 border-2 border-[#1B1530] overflow-hidden">
                   <div
-                    className="h-full bg-[#38BDF8] rounded-full"
+                    className="h-full bg-[#FFD84D]"
                     style={{ width: `${(tech.load / 8.0) * 100}%` }}
                   />
                 </div>

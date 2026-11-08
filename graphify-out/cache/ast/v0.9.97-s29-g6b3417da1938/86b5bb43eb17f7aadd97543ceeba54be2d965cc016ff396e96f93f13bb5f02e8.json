@@ -1,0 +1,1 @@
+{"nodes": [{"id": "$graphify-root$_backend_src_main_resources_db_migration_r_campus_seed_sql", "label": "R__campus_seed.sql", "file_type": "code", "source_file": "backend/src/main/resources/db/migration/R__campus_seed.sql", "source_location": null}], "edges": []}

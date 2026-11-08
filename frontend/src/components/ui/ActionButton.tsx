@@ -1,8 +1,9 @@
 import React from 'react';
 import clsx from 'clsx';
+import { sound } from '../../services/sound';
 
 export type ButtonSize = 'compact' | 'standard' | 'cta';
-export type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'crit' | 'accent' | 'ghost';
+export type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'crit' | 'accent' | 'ok' | 'ghost';
 
 interface ActionButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   size?: ButtonSize;
@@ -20,44 +21,48 @@ export const ActionButton: React.FC<ActionButtonProps> = ({
   isLoading = false,
   className,
   disabled,
+  onClick,
   ...props
 }) => {
   const sizeStyles = {
-    compact: 'h-7 px-2.5 text-xs font-medium',
-    standard: 'h-8 px-3 text-[13px] font-medium',
-    cta: 'h-9 px-4 text-[13px] font-semibold',
+    compact: 'h-8 px-2.5 text-xs font-mono font-bold shadow-[3px_3px_0_var(--shadow-col)]',
+    standard: 'h-10 px-4 text-sm font-bold shadow-[4px_4px_0_var(--shadow-col)]',
+    cta: 'h-11 px-5 text-base font-bold shadow-[5px_5px_0_var(--shadow-col)]',
   };
 
   const variantStyles = {
-    primary:
-      'bg-[#E2E8F0] hover:bg-white text-[#090A0D] border border-transparent shadow-sm active:scale-[0.98]',
-    secondary:
-      'bg-[#161920] hover:bg-[#1D212A] text-[#F3F4F6] border border-white/[0.08] hover:border-white/[0.16] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)] active:scale-[0.98]',
-    outline:
-      'bg-transparent hover:bg-white/[0.05] text-[#9BA1AE] hover:text-[#F3F4F6] border border-white/[0.10] active:scale-[0.98]',
-    crit:
-      'bg-[rgba(244,63,94,0.12)] hover:bg-[rgba(244,63,94,0.20)] text-[#FDA4AF] border border-[rgba(244,63,94,0.35)] active:scale-[0.98]',
-    accent:
-      'bg-[rgba(56,189,248,0.12)] hover:bg-[rgba(56,189,248,0.20)] text-[#7DD3FC] border border-[rgba(56,189,248,0.35)] active:scale-[0.98]',
-    ghost:
-      'bg-transparent hover:bg-white/[0.06] text-[#9BA1AE] hover:text-[#F3F4F6] border border-transparent active:scale-[0.98]',
+    primary: 'bg-[#FFD84D] text-[#1B1530] border-[#1B1530] hover:bg-[#FFE066]',
+    secondary: 'bg-[#FFF8DC] text-[#1B1530] border-[#1B1530] hover:bg-[#FFFDF0]',
+    outline: 'bg-transparent text-[var(--fg)] border-[var(--line)] hover:bg-[var(--card)]',
+    crit: 'bg-[#FF4D3D] text-[#FFF8DC] border-[#1B1530] hover:bg-[#FF6657]',
+    accent: 'bg-[#59C9F5] text-[#1B1530] border-[#1B1530] hover:bg-[#7FD6FA]',
+    ok: 'bg-[#43D17A] text-[#1B1530] border-[#1B1530] hover:bg-[#60DD91]',
+    ghost: 'bg-transparent text-[var(--fg)] border-transparent shadow-none hover:bg-black/10',
+  };
+
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (!disabled && !isLoading) {
+      sound.blip();
+      if (onClick) onClick(e);
+    }
   };
 
   return (
     <button
       className={clsx(
-        'inline-flex items-center justify-center gap-1.5 rounded-md leading-none whitespace-nowrap shrink-0 transition-all duration-150 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed select-none focus:outline-none focus:ring-1 focus:ring-[#38BDF8]',
+        'btn inline-flex items-center justify-center gap-2 border-[3px] border-solid select-none leading-none whitespace-nowrap shrink-0 transition-transform duration-75 font-sans',
         sizeStyles[size],
         variantStyles[variant],
         className
       )}
       disabled={disabled || isLoading}
+      onClick={handleClick}
       {...props}
     >
       {isLoading ? (
-        <span className="w-3.5 h-3.5 border-2 border-current border-t-transparent rounded-full animate-spin shrink-0" />
+        <span className="w-3.5 h-3.5 border-2 border-current border-t-transparent rounded-none animate-spin shrink-0" />
       ) : icon ? (
-        <span className="w-3.5 h-3.5 flex items-center justify-center shrink-0 [&>svg]:w-3.5 [&>svg]:h-3.5">
+        <span className="flex items-center justify-center shrink-0 [&>svg]:w-4 [&>svg]:h-4">
           {icon}
         </span>
       ) : null}

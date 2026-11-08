@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { Copy, Check } from 'lucide-react';
-import clsx from 'clsx';
+import { sound } from '../../services/sound';
 
 interface HashPillProps {
   hash: string;
@@ -8,41 +7,31 @@ interface HashPillProps {
   className?: string;
 }
 
-export const HashPill: React.FC<HashPillProps> = ({
-  hash,
-  truncateLength = 8,
-  className,
-}) => {
+export const HashPill: React.FC<HashPillProps> = ({ hash, truncateLength = 6, className = '' }) => {
   const [copied, setCopied] = useState(false);
 
   const displayHash =
-    hash.length > truncateLength * 2 + 3
-      ? `${hash.substring(0, truncateLength)}...${hash.substring(hash.length - truncateLength)}`
+    hash.length > truncateLength * 2
+      ? `${hash.slice(0, truncateLength)}..${hash.slice(-truncateLength)}`
       : hash;
 
   const handleCopy = (e: React.MouseEvent) => {
     e.stopPropagation();
-    navigator.clipboard.writeText(hash);
+    sound.blip();
+    navigator.clipboard?.writeText(hash).catch(() => {});
     setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    setTimeout(() => setCopied(false), 1600);
   };
 
   return (
     <button
       type="button"
       onClick={handleCopy}
-      title={`Click to copy: ${hash}`}
-      className={clsx(
-        'inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[11px] font-mono tabular-nums bg-white/[0.04] hover:bg-white/[0.08] text-[#9BA1AE] hover:text-[#F3F4F6] border border-white/[0.07] hover:border-white/[0.14] transition-all cursor-pointer shrink-0 max-w-full group select-all',
-        className
-      )}
+      title={`Click to copy full SHA-256 hash: ${hash}`}
+      className={`inline-flex items-center gap-1.5 px-2 py-0.5 border-2 border-[#1B1530] bg-[#FFF8DC] text-[#1B1530] hover:bg-[#FFD84D] shadow-[2px_2px_0_var(--shadow-col)] font-mono text-[11px] font-bold cursor-pointer transition-colors select-none ${className}`}
     >
-      <span className="truncate">{displayHash}</span>
-      {copied ? (
-        <Check className="w-3 h-3 text-[#10B981] shrink-0" />
-      ) : (
-        <Copy className="w-3 h-3 opacity-40 group-hover:opacity-100 shrink-0 transition-opacity" />
-      )}
+      <span className="text-[#FF4D3D]">#</span>
+      <span>{copied ? 'COPIED!' : displayHash}</span>
     </button>
   );
 };

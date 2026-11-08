@@ -1,0 +1,3759 @@
+<!doctype html>
+<html lang="en" data-sky="day">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Incident-Zero: Reach Zero — BITS Pilani, Hyderabad Campus</title>
+<meta name="description" content="Incident-Zero: Reach Zero — A playable pixel-arcade campus IT service desk for BITS Pilani, Hyderabad Campus with guarded 10-state lifecycles, live SLA hearts, dependency DAG blast radius, and real Web Crypto SHA-256 audit chains.">
+<meta name="theme-color" id="themeColorMeta" content="#FFE680">
+<meta property="og:title" content="Incident-Zero: Reach Zero — BITS Pilani, Hyderabad Campus">
+<meta property="og:description" content="Real campus uptime. Zero open incidents. Playable BPHC service desk with 10-state guarded transitions, SLA hearts, and real SHA-256 cryptographic audit blocks.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://bits-pilani-hyderabad.incident-zero.app/og-card.png">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 7 6' shape-rendering='crispEdges'%3E%3Cpath d='M1 0h2v1H1zM4 0h2v1H4zM0 1h1v2H0zM3 1h1v1H3zM6 1h1v2H6zM1 3h1v1H1zM5 3h1v1H5zM2 4h1v1H2zM4 4h1v1H4zM3 5h1v1H3z' fill='%231B1530'/%3E%3Cpath d='M1 1h2v1H1zM4 1h2v1H4zM1 2h5v1H1zM2 3h3v1H2zM3 4h1v1H3z' fill='%23FF4D3D'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@600;700;800&family=Pixelify+Sans:wght@400..700&family=Silkscreen:wght@400;700&family=Space+Grotesk:wght@700&display=swap">
+<style>
+/* CLEAN Z & MONOSPACE NUMBER CLASSES */
+.z-chr {
+  font-family: 'Space Grotesk', 'JetBrains Mono', system-ui, sans-serif;
+  font-weight: 700;
+  display: inline;
+}
+.mono-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+/* SKY-SCOPED PAGE-WIDE THEME VARIABLES WITH SMOOTH CROSS-FADE */
+:root,
+:root[data-sky="day"] {
+  --bg: #FFE680;
+  --chk: #FFDD5E;
+  --card: #FFF8DC;
+  --fg: #1B1530;
+  --soft: #4A3F6B;
+  --line: #1B1530;
+  --shadow-col: #1B1530;
+  --nav-bg: #FFF8DC;
+  --red: #FF4D3D;
+  --sky: #59C9F5;
+  --grn: #43D17A;
+  --grp: #7C5CFF;
+  --rail: #E9E3FF;
+  --ribbon: #7CE356;
+  --ribbon-glow: #BDF74A;
+  --hero-fg: #1B1530;
+  --hero-shadow: 4px 4px 0 #FF4D3D, 8px 8px 0 rgba(27, 21, 48, 0.28);
+  --call-bg: #43D17A;
+  --call-chk: #56D98F;
+  --foot-bg: #FFD84D;
+  --foot-fg: #1B1530;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+:root[data-sky="sunset"] {
+  --bg: #FFB870;
+  --chk: #FFA858;
+  --card: #FFF2E2;
+  --fg: #24132E;
+  --soft: #5E355E;
+  --line: #24132E;
+  --shadow-col: #38184C;
+  --nav-bg: #FFF2E2;
+  --rail: #FDE2F3;
+  --ribbon: #FF8A47;
+  --ribbon-glow: #FFD84D;
+  --hero-fg: #1B1530;
+  --hero-shadow: 4px 4px 0 #FFD84D, 8px 8px 0 rgba(36, 19, 46, 0.35);
+  --call-bg: #FF785A;
+  --call-chk: #FF9478;
+  --foot-bg: #24132E;
+  --foot-fg: #FFD84D;
+}
+:root[data-sky="night"] {
+  --bg: #1E1646;
+  --chk: #261C58;
+  --card: #32266E;
+  --fg: #FFF3C4;
+  --soft: #D4CBF7;
+  --line: #0B071E;
+  --shadow-col: #0B071E;
+  --nav-bg: #2B2060;
+  --rail: #261C58;
+  --ribbon: #36B864;
+  --ribbon-glow: #7CE356;
+  --hero-fg: #FFF3C4;
+  --hero-shadow: 4px 4px 0 #FF4D3D, 8px 8px 0 #0B071E;
+  --call-bg: #2B2060;
+  --call-chk: #362978;
+  --foot-bg: #120C2C;
+  --foot-fg: #FFF3C4;
+}
+:root[data-sky="rain"] {
+  --bg: #2C3B4D;
+  --chk: #34465A;
+  --card: #3E5268;
+  --fg: #F0F6FC;
+  --soft: #C6D8EC;
+  --line: #131C26;
+  --shadow-col: #131C26;
+  --nav-bg: #35475B;
+  --rail: #283646;
+  --ribbon: #38BDF8;
+  --ribbon-glow: #7DD3FC;
+  --hero-fg: #FFF3C4;
+  --hero-shadow: 4px 4px 0 #38BDF8, 8px 8px 0 #131C26;
+  --call-bg: #283B4C;
+  --call-chk: #32495E;
+  --foot-bg: #18232E;
+  --foot-fg: #F0F6FC;
+}
+
+html {
+  scroll-padding-top: 90px;
+  scroll-behavior: smooth;
+  height: 100%;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  min-height: 100%;
+  background: repeating-conic-gradient(var(--chk) 0 25%, transparent 0 50%) 0 0 / 24px 24px, var(--bg);
+  color: var(--fg);
+  font: 400 20px/1.45 'Pixelify Sans', system-ui, sans-serif;
+  overflow-x: hidden;
+  transition: background-color 0.45s ease, color 0.35s ease;
+}
+body.hit-stop * {
+  animation-play-state: paused !important;
+  filter: contrast(1.35) brightness(1.08);
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0 0 auto;
+  height: env(safe-area-inset-top, 0px);
+  background: var(--card);
+  z-index: 30;
+}
+svg {
+  display: block;
+  flex-shrink: 0;
+}
+.story-actor svg {
+  width: 100%;
+  height: 100%;
+}
+.px-ico {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+
+/* BRAND LOGOS (AUTOMATIC THEME SWITCHING) */
+.brand-img {
+  height: 30px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+.brand-img.light-only { display: block; }
+.brand-img.dark-only { display: none; }
+:root[data-sky="night"] .brand-img.light-only,
+:root[data-sky="rain"] .brand-img.light-only { display: none; }
+:root[data-sky="night"] .brand-img.dark-only,
+:root[data-sky="rain"] .brand-img.dark-only { display: block; }
+
+.btn {
+  font: 700 17px 'Pixelify Sans', sans-serif;
+  color: #1B1530;
+  background: var(--sky);
+  border: 3px solid var(--line);
+  box-shadow: 4px 4px 0 var(--shadow-col);
+  padding: 8px 16px;
+  min-height: 42px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.08s steps(2), box-shadow 0.08s steps(2), background-color 0.25s ease;
+}
+.btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--shadow-col);
+}
+.btn:active {
+  transform: translate(4px, 4px);
+  box-shadow: 0 0 0 var(--shadow-col);
+}
+.btn.y { background: #FFD84D; color: #1B1530; }
+.btn.r { background: var(--red); color: #FFF8DC; }
+.btn.g { background: var(--grn); color: #1B1530; }
+.btn.w { background: #FFF8DC; color: #1B1530; }
+.btn.sm {
+  font: 700 13px 'JetBrains Mono', monospace;
+  padding: 6px 12px;
+  min-height: 36px;
+  box-shadow: 3px 3px 0 var(--shadow-col);
+}
+:focus-visible {
+  outline: 4px solid var(--grp);
+  outline-offset: 3px;
+}
+.wrap {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+section {
+  padding-top: 72px;
+}
+h1 {
+  font: 700 clamp(42px, 7vw, 90px)/1.02 'Pixelify Sans', sans-serif;
+  margin: 0;
+}
+h2 {
+  font: 700 clamp(32px, 5vw, 56px)/1.02 'Pixelify Sans', sans-serif;
+  margin: 0 0 12px;
+  text-shadow: 3px 3px 0 var(--grn);
+}
+p.lead {
+  max-width: 680px;
+  color: var(--soft);
+  margin: 16px 0 26px;
+}
+
+/* PIXEL-NOTCHED FLOATING NAV WITH COMBO PROGRESS BAR */
+.nav {
+  position: sticky;
+  top: calc(env(safe-area-inset-top, 0px) + 10px);
+  z-index: 40;
+  max-width: 1180px;
+  margin: 10px auto 0;
+  padding: 0 14px;
+  filter: drop-shadow(5px 5px 0 var(--shadow-col));
+}
+.navo, .navi {
+  clip-path: polygon(
+    0 8px, 8px 8px, 8px 0, calc(100% - 8px) 0, calc(100% - 8px) 8px,
+    100% 8px, 100% calc(100% - 8px), calc(100% - 8px) calc(100% - 8px),
+    calc(100% - 8px) 100%, 8px 100%, 8px calc(100% - 8px), 0 calc(100% - 8px)
+  );
+}
+.navo {
+  background: var(--line);
+  padding: 3px;
+}
+.navi {
+  background: var(--nav-bg);
+  display: flex;
+  align-items: center;
+  gap: 8px 14px;
+  flex-wrap: wrap;
+  padding: 8px 16px;
+  transition: background-color 0.4s ease;
+}
+.navi b {
+  font: 700 13px 'JetBrains Mono', monospace;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.combo-wrap {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.combo-meter {
+  width: 78px;
+  height: 7px;
+  background: #1B1530;
+  border: 2px solid var(--line);
+  overflow: hidden;
+}
+.combo-fill {
+  height: 100%;
+  width: 25%;
+  background: linear-gradient(90deg, #FFD84D, #FF4D3D);
+  transition: width 0.2s ease;
+}
+.logo {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-right: auto;
+  cursor: pointer;
+}
+.logo-tag {
+  font: 700 13px 'JetBrains Mono', monospace;
+  background: #FFD84D;
+  color: #1B1530;
+  border: 2px solid #1B1530;
+  padding: 2px 7px;
+}
+.menu {
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  top: 100%;
+  margin-top: 14px;
+  background: var(--card);
+  border: 3px solid var(--line);
+  box-shadow: 6px 6px 0 var(--shadow-col);
+  padding: 18px;
+}
+.menu[hidden] {
+  display: none;
+}
+.menu h3 {
+  font: 700 13px 'JetBrains Mono', monospace;
+  margin: 0 0 12px;
+  color: var(--soft);
+}
+
+/* DITHERED SKY HERO STAGE WITH CROSS-FADE & CLEAN SKY-SCOPED VARIABLES */
+.stage {
+  position: relative;
+  z-index: 4;
+  margin-top: 0;
+  padding: 28px 20px 76px;
+  text-align: center;
+  color: var(--hero-fg);
+  background-color: #59C9F5;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Crect width='16' height='16' fill='%2359C9F5'/%3E%3Crect width='8' height='8' fill='%237FD6FA'/%3E%3Crect x='8' y='8' width='8' height='8' fill='%237FD6FA'/%3E%3C/svg%3E");
+  background-size: 16px 16px;
+  border-bottom: 3px solid var(--line);
+  overflow-x: clip;
+  transition: background-color 0.45s ease, color 0.35s ease;
+}
+:root[data-sky="sunset"] .stage {
+  background-color: #FF785A;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Crect width='16' height='16' fill='%23FF785A'/%3E%3Crect width='8' height='8' fill='%23FF9F68'/%3E%3Crect x='8' y='8' width='8' height='8' fill='%23FF9F68'/%3E%3C/svg%3E");
+}
+:root[data-sky="night"] .stage {
+  background-color: #150E36;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Crect width='16' height='16' fill='%23150E36'/%3E%3Crect width='8' height='8' fill='%231E1646'/%3E%3Crect x='8' y='8' width='8' height='8' fill='%231E1646'/%3E%3C/svg%3E");
+}
+:root[data-sky="rain"] .stage {
+  background-color: #3E5166;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Crect width='16' height='16' fill='%233E5166'/%3E%3Crect width='8' height='8' fill='%2353687E'/%3E%3Crect x='8' y='8' width='8' height='8' fill='%2353687E'/%3E%3C/svg%3E");
+}
+.hero-copy {
+  position: relative;
+  z-index: 10;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 4px 12px;
+}
+.kick {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font: 700 14px 'JetBrains Mono', monospace;
+  background: #FFFFFF;
+  color: #1B1530;
+  border: 3px solid #1B1530;
+  padding: 6px 14px;
+  margin: 0 0 16px;
+  box-shadow: 4px 4px 0 #1B1530;
+}
+.hero-title {
+  display: block;
+  position: relative;
+  z-index: 10;
+  font-family: 'Pixelify Sans', 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  font-weight: 700;
+  font-size: clamp(42px, 6.8vw, 88px);
+  line-height: 1.02;
+  margin: 0 auto 14px;
+  max-width: 960px;
+  color: var(--hero-fg);
+  text-shadow: var(--hero-shadow);
+  transition: color 0.35s ease, text-shadow 0.35s ease;
+}
+.stage .lead {
+  position: relative;
+  z-index: 10;
+  color: var(--hero-fg);
+  font-weight: 600;
+  margin: 12px auto 0;
+  max-width: 680px;
+  opacity: 0.94;
+}
+.hl {
+  display: inline;
+  position: relative;
+  top: 0;
+  font-style: normal;
+  color: inherit;
+  transition: top 0.1s steps(2), color 0.1s;
+  cursor: pointer;
+}
+.hl:hover {
+  top: -12px;
+  color: #FFD84D;
+  text-shadow: 4px 4px 0 #1B1530;
+}
+.fb {
+  position: absolute;
+  background: none;
+  border: 0;
+  padding: 6px;
+  cursor: pointer;
+  animation: bob 2.2s steps(2) infinite;
+  z-index: 3;
+}
+.fb:hover {
+  transform: scale(1.18);
+}
+.sheet {
+  position: relative;
+  z-index: 5;
+  margin-top: -46px;
+  padding-top: 0;
+}
+
+/* PLAYABLE BPHC CAMPUS SCENE (2X SCALED BUILDINGS + 3 PARALLAX LAYERS + NIGHT BLOOM/FIREFLIES + MONSOON LIGHTNING/PUDDLES) */
+.scene {
+  position: relative;
+  height: 465px;
+  border: 3px solid var(--line);
+  box-shadow: 8px 8px 0 var(--shadow-col);
+  background: linear-gradient(#7FD6FA 0 40%, #A6E6FF 40% 68%, #CDF2FF 68%);
+  overflow: hidden;
+  user-select: none;
+  transition: background 0.45s ease, box-shadow 0.35s ease;
+}
+:root[data-sky="sunset"] .scene {
+  background: linear-gradient(#FF6B5B 0 38%, #FFA45B 38% 66%, #FFE07D 66%);
+}
+:root[data-sky="night"] .scene {
+  background: linear-gradient(#0B071E 0 42%, #18113D 42% 68%, #261C58 68%);
+}
+:root[data-sky="rain"] .scene {
+  background: linear-gradient(#2B3947 0 42%, #3F5263 42% 68%, #576E82 68%);
+}
+.scene.scene-shake {
+  animation: sceneShake 0.28s steps(2);
+}
+@keyframes sceneShake {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(-7px, 4px); }
+  50% { transform: translate(7px, -5px); }
+  75% { transform: translate(-5px, -3px); }
+}
+
+/* PULSING RED EDGE VIGNETTE WHEN ANY TICKET IS ON LAST HEART (1 HP) */
+.danger-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9;
+  opacity: 0;
+  box-shadow: inset 0 0 48px 16px rgba(255, 77, 61, 0.82);
+  transition: opacity 0.25s ease;
+}
+.danger-vignette.on {
+  opacity: 1;
+  animation: dangerPulse 0.9s steps(2) infinite;
+}
+@keyframes dangerPulse {
+  50% { box-shadow: inset 0 0 70px 26px rgba(255, 30, 30, 0.95); }
+}
+
+/* MONSOON LIGHTNING FLASH OVERLAY */
+.lightning-layer {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.85);
+  pointer-events: none;
+  opacity: 0;
+  z-index: 8;
+}
+:root[data-sky="rain"] .lightning-layer {
+  animation: lightningFlash 7.5s linear infinite;
+}
+@keyframes lightningFlash {
+  0%, 91%, 94%, 96%, 100% { opacity: 0; }
+  92% { opacity: 0.72; }
+  95% { opacity: 0.45; }
+}
+
+/* STAR TRAILS & MOON ARC IN NIGHT MODE */
+.star-trails {
+  position: absolute;
+  inset: 0 0 32% 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+:root[data-sky="night"] .star-trails {
+  opacity: 0.8;
+}
+
+/* NIGHT DRIFTING FIREFLIES */
+.fireflies {
+  position: absolute;
+  inset: 15% 0 58px 0;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 6;
+  transition: opacity 0.45s ease;
+}
+:root[data-sky="night"] .fireflies {
+  opacity: 1;
+}
+.firefly {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #BDF74A;
+  box-shadow: 0 0 10px 3px #FFD84D;
+  animation: fireflyDrift 4.2s ease-in-out infinite alternate;
+}
+@keyframes fireflyDrift {
+  0% { transform: translate(0, 0) scale(0.8); opacity: 0.35; }
+  50% { transform: translate(18px, -14px) scale(1.25); opacity: 1; }
+  100% { transform: translate(-14px, -26px) scale(0.9); opacity: 0.45; }
+}
+
+/* MONSOON RAIN LAYER */
+.rain-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  background: repeating-linear-gradient(108deg, transparent 0 18px, rgba(166, 230, 255, 0.55) 18px 20px, transparent 20px 44px);
+  background-size: 120px 120px;
+  animation: rainFall 0.42s linear infinite;
+  z-index: 7;
+  transition: opacity 0.35s ease;
+}
+:root[data-sky="rain"] .rain-layer {
+  opacity: 1;
+}
+@keyframes rainFall {
+  from { background-position: 0 0; }
+  to { background-position: -36px 120px; }
+}
+
+.cl {
+  position: absolute;
+  left: 0;
+  animation: drift 70s linear infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+@keyframes drift {
+  from { transform: translateX(-160px); }
+  to { transform: translateX(1400px); }
+}
+
+/* 3 PARALLAX LAYERS BEHIND BUILDINGS: 1. DISTANT SKYLINE HILLS, 2. TREE LINE, 3. CAMPUS LAMP POSTS */
+.hills {
+  position: absolute;
+  left: -4%;
+  right: -4%;
+  bottom: 58px;
+  height: 170px;
+  background: #9BE8B4;
+  clip-path: polygon(0 100%, 0 62%, 9% 62%, 9% 44%, 24% 44%, 24% 58%, 41% 58%, 41% 30%, 57% 30%, 57% 52%, 74% 52%, 74% 36%, 90% 36%, 90% 60%, 100% 60%, 100% 100%);
+  z-index: 1;
+  transition: background-color 0.4s ease;
+  will-change: transform;
+}
+:root[data-sky="sunset"] .hills { background: #D9825B; }
+:root[data-sky="night"] .hills { background: #2D2066; }
+:root[data-sky="rain"] .hills { background: #435D59; }
+
+.treeline {
+  position: absolute;
+  left: -3%;
+  right: -3%;
+  bottom: 58px;
+  height: 92px;
+  background: #5FC982;
+  clip-path: polygon(
+    0 100%, 0 48%, 4% 48%, 4% 30%, 8% 30%, 8% 52%, 14% 52%, 14% 25%, 20% 25%, 20% 46%,
+    27% 46%, 27% 32%, 33% 32%, 33% 55%, 40% 55%, 40% 22%, 46% 22%, 46% 48%, 53% 48%, 53% 28%,
+    60% 28%, 60% 50%, 67% 50%, 67% 26%, 74% 26%, 74% 46%, 81% 46%, 81% 30%, 88% 30%, 88% 52%,
+    94% 52%, 94% 34%, 100% 34%, 100% 100%
+  );
+  z-index: 2;
+  transition: background-color 0.4s ease;
+  will-change: transform;
+}
+:root[data-sky="sunset"] .treeline { background: #A45348; }
+:root[data-sky="night"] .treeline { background: #1B1442; }
+:root[data-sky="rain"] .treeline { background: #2F4443; }
+
+.lamps-layer {
+  position: absolute;
+  inset: 0 0 58px 0;
+  pointer-events: none;
+  z-index: 2;
+  will-change: transform;
+}
+.lamp-post {
+  position: absolute;
+  bottom: 0;
+  width: 6px;
+  height: 108px;
+  background: #1B1530;
+}
+.lamp-head {
+  position: absolute;
+  top: -12px;
+  left: -9px;
+  width: 24px;
+  height: 12px;
+  background: #FFF8DC;
+  border: 3px solid #1B1530;
+  transition: box-shadow 0.35s ease, background-color 0.35s ease;
+}
+:root[data-sky="sunset"] .lamp-head,
+:root[data-sky="night"] .lamp-head,
+:root[data-sky="rain"] .lamp-head {
+  background: #FFD84D;
+  box-shadow: 0 0 22px 6px rgba(255, 216, 77, 0.85);
+}
+
+.sun {
+  position: absolute;
+  right: 235px;
+  top: 22px;
+  width: 66px;
+  height: 66px;
+  background: #FFD84D;
+  clip-path: polygon(25% 0, 75% 0, 75% 12%, 88% 12%, 88% 25%, 100% 25%, 100% 75%, 88% 75%, 88% 88%, 75% 88%, 75% 100%, 25% 100%, 25% 88%, 12% 88%, 12% 75%, 0 75%, 0 25%, 12% 25%, 12% 12%, 25% 12%);
+  animation: pulse 2s steps(2) infinite;
+  z-index: 1;
+  transition: top 0.45s ease, right 0.45s ease, background-color 0.45s ease, box-shadow 0.45s ease;
+}
+:root[data-sky="sunset"] .sun {
+  background: #FF4D3D;
+  top: 78px;
+  right: 180px;
+}
+:root[data-sky="night"] .sun {
+  background: #FFF3C4;
+  top: 26px;
+  right: 140px;
+  box-shadow: 0 0 32px 8px rgba(255, 243, 196, 0.7);
+}
+:root[data-sky="rain"] .sun {
+  opacity: 0.15;
+}
+@keyframes pulse {
+  50% { transform: scale(1.08); }
+}
+
+.ground {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 58px;
+  background: repeating-linear-gradient(90deg, #43D17A 0 16px, #3AC06E 16px 32px);
+  border-top: 6px solid #1B1530;
+  z-index: 2;
+  overflow: hidden;
+}
+:root[data-sky="night"] .ground {
+  background: repeating-linear-gradient(90deg, #1F6E43 0 16px, #195936 16px 32px);
+}
+:root[data-sky="rain"] .ground {
+  background: repeating-linear-gradient(90deg, #2D6A5E 0 16px, #25584E 16px 32px);
+}
+
+/* MONSOON PUDDLE REFLECTIONS ON GROUND */
+.puddles {
+  position: absolute;
+  inset: 6px 2% 4px 2%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+:root[data-sky="rain"] .puddles {
+  opacity: 1;
+}
+.puddle {
+  width: 190px;
+  height: 28px;
+  background: linear-gradient(180deg, rgba(125, 211, 252, 0.55), rgba(255, 216, 77, 0.32), rgba(56, 189, 248, 0.5));
+  border: 2px solid rgba(166, 230, 255, 0.65);
+  border-radius: 50%;
+  animation: puddleRipple 1.6s steps(2) infinite;
+}
+@keyframes puddleRipple {
+  50% { transform: scaleX(1.05); filter: brightness(1.25); }
+}
+
+/* LOTS & 2X SCALED PIXEL-ART BUILDINGS */
+.lots {
+  position: absolute;
+  inset: 0 0 58px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  padding: 0 1%;
+  z-index: 3;
+}
+.lot {
+  flex: 1;
+  min-width: 225px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 4px;
+  position: relative;
+}
+.bld-art {
+  width: 232px;
+  height: 132px;
+  min-width: 224px;
+  min-height: 126px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  position: relative;
+  z-index: 3;
+  transition: filter 0.35s ease;
+}
+.bld-art svg {
+  width: 224px !important;
+  height: 126px !important;
+  min-width: 224px !important;
+  min-height: 126px !important;
+  max-width: none !important;
+  flex-shrink: 0 !important;
+  display: block !important;
+  image-rendering: pixelated;
+  shape-rendering: crispEdges;
+}
+:root[data-sky="night"] .bld-art svg {
+  filter: drop-shadow(0 0 12px rgba(255, 216, 77, 0.55));
+}
+.bug-slot {
+  min-height: 112px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  flex-shrink: 0;
+  z-index: 5;
+}
+.bug {
+  background: none;
+  border: 0;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+  animation: drop 0.7s cubic-bezier(0.3, 1.6, 0.5, 1) both, bob 1.2s steps(2) 0.8s infinite;
+}
+.lot:nth-child(2) .bug { animation-delay: 0.15s, 0.9s; }
+.lot:nth-child(3) .bug { animation-delay: 0.3s, 1.0s; }
+.lot:nth-child(4) .bug { animation-delay: 0.45s, 1.1s; }
+@keyframes drop {
+  from { transform: translateY(-280px); }
+}
+@keyframes bob {
+  50% { transform: translateY(-7px); }
+}
+.bug.angry {
+  animation: bob 0.25s steps(2) infinite;
+}
+.bug.angry .tag {
+  background: var(--red);
+  color: #FFF8DC;
+}
+.bug.hit {
+  animation: hitFlash 0.15s steps(2) infinite !important;
+  transform: scale(1.28, 0.62) !important;
+}
+@keyframes hitFlash {
+  50% { filter: brightness(2.5) contrast(2); }
+}
+.tag {
+  font: 700 13px 'JetBrains Mono', monospace;
+  background: #FFFFFF;
+  color: #1B1530;
+  border: 3px solid #1B1530;
+  box-shadow: 3px 3px 0 #1B1530;
+  padding: 2px 7px;
+  white-space: nowrap;
+}
+.fixed {
+  font: 700 13px 'JetBrains Mono', monospace;
+  background: var(--grn);
+  color: #1B1530;
+  border: 3px solid #1B1530;
+  box-shadow: 3px 3px 0 #1B1530;
+  padding: 4px 10px;
+  margin-bottom: 12px;
+}
+.tech {
+  position: absolute;
+  bottom: 52px;
+  left: 3%;
+  transition: left 0.75s steps(10);
+  z-index: 5;
+}
+.walk svg {
+  animation: hop 0.24s steps(2) infinite;
+}
+@keyframes hop {
+  50% { transform: translateY(-7px); }
+}
+.px {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border: 2px solid #1B1530;
+  pointer-events: none;
+  animation: fly 0.75s steps(7) forwards;
+  z-index: 8;
+}
+@keyframes fly {
+  to {
+    transform: translate(var(--dx), var(--dy));
+    opacity: 0;
+  }
+}
+.stk {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 6;
+  background: var(--red);
+  color: #FFF8DC;
+  border: 3px solid #1B1530;
+  box-shadow: 4px 4px 0 #1B1530;
+  padding: 6px 12px;
+  font: 700 14px 'JetBrains Mono', monospace;
+  transform: rotate(-3deg);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.scene-ctrls {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 6;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.hp {
+  display: inline-flex;
+  gap: 3px;
+}
+.sign {
+  font: 700 13px 'JetBrains Mono', monospace;
+  background: #FFF8DC;
+  color: #1B1530;
+  border: 2px solid #1B1530;
+  padding: 2px 8px;
+  margin-bottom: -24px;
+  z-index: 4;
+  white-space: nowrap;
+}
+.rocks {
+  position: absolute;
+  bottom: 28px;
+  right: 2px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 4;
+  pointer-events: none;
+}
+.rocks svg {
+  width: 76px !important;
+  height: 28px !important;
+  flex-shrink: 0 !important;
+}
+.rocks-lbl {
+  font: 700 12px 'JetBrains Mono', monospace;
+  background: #FFD84D;
+  color: #1B1530;
+  border: 2px solid #1B1530;
+  padding: 0 5px;
+  margin-bottom: 1px;
+  white-space: nowrap;
+}
+.npc {
+  position: absolute;
+  bottom: 52px;
+  left: 0;
+  animation: stroll 28s linear infinite;
+  pointer-events: none;
+  z-index: 4;
+}
+.npc-bub {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #FFFFFF;
+  color: #1B1530;
+  border: 2px solid #1B1530;
+  padding: 1px 6px;
+  font: 700 12px 'JetBrains Mono', monospace;
+  white-space: nowrap;
+  margin-bottom: 2px;
+}
+@keyframes stroll {
+  from { transform: translateX(-80px); }
+  to { transform: translateX(1300px); }
+}
+
+/* FULL-SCREEN STAMPED SCORECARD CELEBRATION MODAL */
+.win {
+  position: absolute;
+  inset: 0;
+  background: rgba(27, 21, 48, 0.92);
+  color: #FFF8DC;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  text-align: center;
+  padding: 20px;
+  z-index: 20;
+}
+.win.on {
+  display: flex;
+  animation: popIn 0.25s steps(3);
+}
+@keyframes popIn {
+  from { transform: scale(0.85); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+.scorecard {
+  background: #FFF8DC;
+  color: #1B1530;
+  border: 4px solid #1B1530;
+  box-shadow: 8px 8px 0 #FFD84D;
+  padding: 16px 24px;
+  max-width: 520px;
+  width: 100%;
+  position: relative;
+  text-align: left;
+}
+.stamp-zero {
+  position: absolute;
+  top: -14px;
+  right: -12px;
+  background: #43D17A;
+  color: #1B1530;
+  border: 3px solid #1B1530;
+  box-shadow: 4px 4px 0 #1B1530;
+  padding: 4px 10px;
+  font: 800 13px 'JetBrains Mono', monospace;
+  transform: rotate(7deg);
+}
+.sc-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin: 10px 0;
+  text-align: center;
+}
+.sc-cell {
+  background: #FFE680;
+  border: 2px solid #1B1530;
+  padding: 6px;
+}
+.sc-cell b {
+  display: block;
+  font: 700 22px 'JetBrains Mono', monospace;
+}
+.sc-cell small {
+  font: 700 12px 'JetBrains Mono', monospace;
+}
+
+/* TICKET QUEUE BELOW SCENE */
+.queue {
+  margin-top: 20px;
+  display: grid;
+  gap: 10px;
+}
+.q {
+  background: var(--card);
+  border: 3px solid var(--line);
+  box-shadow: 5px 5px 0 var(--shadow-col);
+  padding: 12px 16px;
+  display: grid;
+  grid-template-columns: auto 1fr auto auto auto;
+  gap: 12px;
+  align-items: center;
+  transition: background-color 0.35s ease;
+}
+.pr {
+  font: 700 13px 'JetBrains Mono', monospace;
+  padding: 4px 8px;
+  border: 2px solid #1B1530;
+  color: #1B1530;
+}
+.chip {
+  font: 700 13px 'JetBrains Mono', monospace;
+  padding: 4px 8px;
+  border: 2px solid #1B1530;
+  color: #1B1530;
+}
+.s-ASG { background: #FFD84D; }
+.s-WORK { background: #59C9F5; }
+.s-DONE { background: #43D17A; }
+.s-BRC { background: #FF4D3D; color: #FFF8DC; }
+
+/* THICK GLOWING SWEEPING GREEN RIBBON + WALKING MASCOT + 4 ARTICULATED CHARACTERS */
+.story {
+  position: relative;
+  padding: 20px 0;
+}
+#spine {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+.story.surge #ribbonGlowPath {
+  stroke: #FFD84D !important;
+  stroke-width: 96px !important;
+  filter: drop-shadow(0 0 28px #FFD84D) !important;
+  transition: all 0.2s;
+}
+.ribbon-walker {
+  position: absolute;
+  width: 54px;
+  height: 54px;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  pointer-events: none;
+  filter: drop-shadow(3px 3px 0 #1B1530);
+  transition: left 0.08s linear, top 0.08s linear;
+}
+.ribbon-walker-lbl {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #FFD84D;
+  color: #1B1530;
+  border: 2px solid #1B1530;
+  padding: 1px 6px;
+  font: 700 12px 'JetBrains Mono', monospace;
+  white-space: nowrap;
+  margin-bottom: 2px;
+}
+.ribbon-spark {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: var(--ribbon-glow);
+  border: 2px solid #1B1530;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 1;
+  animation: sparkFade 0.75s ease-out forwards;
+}
+@keyframes sparkFade {
+  to { transform: translate(-50%, -50%) scale(0.2); opacity: 0; }
+}
+.story-actor {
+  position: absolute;
+  width: 195px;
+  height: 195px;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  pointer-events: none;
+  filter: drop-shadow(4px 4px 0 var(--shadow-col));
+  transition: transform 0.25s cubic-bezier(0.3, 1.6, 0.5, 1);
+}
+.story.surge .story-actor {
+  animation: actorCheer 0.45s steps(2) 3;
+}
+@keyframes actorCheer {
+  50% { transform: translate(-50%, -68%) scale(1.12) rotate(-6deg); }
+}
+.cheer-tag {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #FFD84D;
+  color: #1B1530;
+  border: 3px solid #1B1530;
+  box-shadow: 3px 3px 0 #1B1530;
+  padding: 2px 8px;
+  font: 700 13px 'JetBrains Mono', monospace;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+.story.surge .cheer-tag {
+  opacity: 1;
+}
+
+.sc {
+  position: relative;
+  z-index: 2;
+  background: var(--card);
+  border: 3px solid var(--line);
+  padding: 36px 28px 28px;
+  margin-top: 84px;
+  width: min(760px, 100%);
+  transition: background-color 0.35s ease;
+}
+.sc.rt {
+  margin-left: auto;
+}
+.sc::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--b, var(--sky));
+  border: 3px solid var(--line);
+  transform: translate(12px, 12px);
+  z-index: -1;
+}
+.sc.rt::before {
+  transform: translate(-12px, 12px);
+}
+.st {
+  position: absolute;
+  top: -18px;
+  left: 22px;
+  background: #FFD84D;
+  color: #1B1530;
+  border: 3px solid #1B1530;
+  box-shadow: 3px 3px 0 #1B1530;
+  padding: 4px 10px;
+  font: 700 13px 'JetBrains Mono', monospace;
+  transform: rotate(-3deg);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* 10-STATE LIFECYCLE BOARD */
+.track {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  margin: 22px 0;
+}
+.tile {
+  background: var(--bg);
+  border: 3px solid var(--line);
+  box-shadow: 4px 4px 0 var(--shadow-col);
+  padding: 12px 6px;
+  text-align: center;
+  font: 700 13px 'JetBrains Mono', monospace;
+  min-height: 82px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 5px;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+.tile:hover {
+  transform: translateY(-2px);
+}
+.tile-num {
+  font-size: 13px;
+  opacity: 0.78;
+}
+.tile.done {
+  background: var(--grn);
+  color: #1B1530;
+}
+.tile.now {
+  background: #FFD84D;
+  color: #1B1530;
+  transform: translate(-2px, -4px);
+  box-shadow: 6px 8px 0 var(--shadow-col);
+}
+.pawn {
+  animation: bob 0.6s steps(2) infinite;
+}
+.row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.err {
+  margin-top: 16px;
+  background: var(--red);
+  color: #FFF8DC;
+  border: 3px solid var(--line);
+  box-shadow: 4px 4px 0 var(--shadow-col);
+  padding: 12px 14px;
+  font: 700 13px 'JetBrains Mono', monospace;
+  display: none;
+}
+.err.on {
+  display: block;
+}
+.shake {
+  animation: sh 0.3s steps(2);
+}
+@keyframes sh {
+  25% { transform: translateX(-8px); }
+  75% { transform: translateX(8px); }
+}
+
+/* CARTRIDGES & PHYSICAL CONSOLE SLOTTING BAY + CRT MONITOR */
+.carts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+.cart {
+  background: var(--c, var(--sky));
+  color: #1B1530;
+  border: 3px solid var(--line);
+  box-shadow: 6px 6px 0 var(--shadow-col);
+  padding: 20px 18px 18px;
+  cursor: pointer;
+  transition: transform 0.12s steps(2), box-shadow 0.12s steps(2);
+  position: relative;
+}
+.cart::before {
+  content: "";
+  display: block;
+  height: 10px;
+  margin: -20px 18px 14px;
+  background: repeating-linear-gradient(90deg, var(--line) 0 8px, transparent 8px 14px);
+}
+.cart:hover {
+  transform: translateY(-6px);
+  box-shadow: 6px 12px 0 var(--shadow-col);
+}
+.cart.active {
+  outline: 4px solid #1B1530;
+  transform: translateY(4px);
+  box-shadow: 2px 2px 0 var(--shadow-col);
+}
+.cart.slot-anim {
+  animation: cartPressDown 0.38s cubic-bezier(0.3, 1.5, 0.6, 1);
+}
+@keyframes cartPressDown {
+  0% { transform: translateY(-6px); }
+  55% { transform: translateY(16px) scale(0.97); }
+  100% { transform: translateY(4px); }
+}
+.cart .win-screen {
+  background: #FFF8DC;
+  border: 3px solid #1B1530;
+  padding: 12px;
+}
+.cart .num {
+  font: 700 13px 'JetBrains Mono', monospace;
+  display: inline-block;
+  background: #1B1530;
+  color: #FFD84D;
+  padding: 2px 7px;
+  margin-bottom: 6px;
+}
+.cart h3 {
+  font: 700 24px 'Pixelify Sans', sans-serif;
+  margin: 0 0 4px;
+}
+.cart p {
+  margin: 0 0 8px;
+  font-size: 16px;
+}
+.cart code {
+  font: 700 13px 'JetBrains Mono', monospace;
+}
+
+/* PHYSICAL CONSOLE CARTRIDGE SLOT BAY ABOVE DECK */
+.console-bay {
+  background: #1B1530;
+  color: #FFF8DC;
+  border: 3px solid var(--line);
+  box-shadow: 5px 5px 0 var(--shadow-col);
+  padding: 14px 18px 0;
+  margin: 16px 0 0;
+  position: relative;
+  overflow: hidden;
+}
+.bay-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.bay-leds {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  font: 700 13px 'JetBrains Mono', monospace;
+}
+.led-dot {
+  width: 10px;
+  height: 10px;
+  background: #43D17A;
+  border: 2px solid #FFF8DC;
+  box-shadow: 0 0 8px #43D17A;
+  display: inline-block;
+}
+.slot-throat {
+  position: relative;
+  height: 54px;
+  background: #0B071E;
+  border: 3px solid #4A3F6B;
+  border-bottom: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: hidden;
+}
+.slot-throat::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+  right: 10%;
+  height: 7px;
+  background: repeating-linear-gradient(90deg, #FFD84D 0 6px, #1B1530 6px 12px);
+}
+.slotted-cart {
+  width: min(340px, 86%);
+  height: 44px;
+  background: var(--slot-col, #FFD84D);
+  color: #1B1530;
+  border: 3px solid #FFF8DC;
+  border-bottom: 0;
+  padding: 6px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font: 700 14px 'JetBrains Mono', monospace;
+  transform: translateY(6px);
+}
+.slotted-cart.inserting {
+  animation: slotSlideIn 0.42s cubic-bezier(0.22, 1.35, 0.5, 1) forwards;
+}
+@keyframes slotSlideIn {
+  0% { transform: translateY(-48px) scale(0.96); }
+  70% { transform: translateY(10px) scale(1.01); }
+  100% { transform: translateY(6px) scale(1); }
+}
+
+/* CRT MONITOR BEZEL, POWER-ON, SCANLINES & PHOSPHOR GLOW */
+.crt-frame {
+  position: relative;
+  background: #1B1530;
+  border: 4px solid var(--line);
+  box-shadow: 6px 6px 0 var(--shadow-col);
+  padding: 14px;
+  margin-top: 0;
+}
+.crt-screen {
+  position: relative;
+  background: var(--card);
+  border: 3px solid #0B071E;
+  padding: 24px;
+  overflow: hidden;
+  box-shadow: inset 0 0 36px rgba(27, 21, 48, 0.16);
+}
+.crt-screen::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(0deg, rgba(27, 21, 48, 0.055) 0 2px, transparent 2px 5px);
+  pointer-events: none;
+  z-index: 6;
+}
+.crt-screen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  box-shadow: inset 0 0 28px rgba(124, 92, 255, 0.14);
+  pointer-events: none;
+  z-index: 6;
+}
+.crt-screen.crt-power {
+  animation: crtPowerOn 0.36s cubic-bezier(0.2, 0.9, 0.3, 1);
+}
+@keyframes crtPowerOn {
+  0% { transform: scaleY(0.04) scaleX(0.75); filter: brightness(3) contrast(2); }
+  55% { transform: scaleY(1.02) scaleX(1.01); filter: brightness(1.5); }
+  100% { transform: scale(1); filter: none; }
+}
+
+/* OVERWORLD & DAG RIPPLE ANIMATION */
+.town {
+  position: absolute;
+  transform: translate(-50%, 0);
+  width: min(148px, 30vw);
+  min-height: 62px;
+  padding: 8px;
+  font: 700 13px 'JetBrains Mono', monospace;
+  border: 3px solid #1B1530;
+  box-shadow: 4px 4px 0 #1B1530;
+  cursor: pointer;
+  text-align: center;
+  z-index: 3;
+  transition: transform 0.12s, background-color 0.25s;
+}
+.town:hover {
+  transform: translate(-50%, -3px);
+}
+.town.delayed-ripple {
+  animation: townRippleHit 0.45s steps(2);
+}
+@keyframes townRippleHit {
+  50% { transform: translate(-50%, -6px) scale(1.08); box-shadow: 0 0 18px #FF4D3D; }
+}
+.inp {
+  width: 100%;
+  font: 600 16px 'Pixelify Sans', sans-serif;
+  padding: 10px 12px;
+  border: 3px solid var(--line);
+  background: #FFFFFF;
+  color: #1B1530;
+  margin: 8px 0 12px;
+}
+textarea.inp.mono-num {
+  font: 700 13px/1.45 'JetBrains Mono', monospace;
+  resize: vertical;
+}
+.mini-track {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 4px;
+  margin: 8px 0;
+}
+.mini-step {
+  font: 700 12px 'JetBrains Mono', monospace;
+  padding: 4px 2px;
+  border: 2px solid #1B1530;
+  text-align: center;
+  background: #FFF8DC;
+  color: #1B1530;
+}
+.mini-step.done { background: #43D17A; }
+.mini-step.now { background: #FFD84D; }
+
+/* REAL SHA-256 BLOCKCHAIN LEDGER & LIVE AVALANCHE EDITOR */
+.chain {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0;
+  margin: 22px 0;
+}
+.blk {
+  background: var(--bg);
+  color: var(--fg);
+  border: 3px solid var(--line);
+  box-shadow: 4px 4px 0 var(--shadow-col);
+  padding: 12px 10px;
+  font: 700 13px 'JetBrains Mono', monospace;
+  min-width: 132px;
+  min-height: 68px;
+  cursor: pointer;
+  text-align: left;
+  transition: transform 0.1s, background-color 0.2s;
+}
+.blk.selected {
+  outline: 4px solid var(--grp);
+  transform: translateY(-4px);
+}
+.blk.ok { background: var(--grn); color: #1B1530; }
+.blk.bad {
+  background: var(--red);
+  color: #FFF8DC;
+  animation: sh 0.35s steps(2);
+}
+.blk.unk { background: #E9E3FF; color: #1B1530; }
+.link {
+  width: 20px;
+  height: 6px;
+  background: var(--line);
+}
+.link.broken {
+  background: var(--red);
+}
+.ledger-editor {
+  background: var(--bg);
+  border: 3px solid var(--line);
+  box-shadow: 5px 5px 0 var(--shadow-col);
+  padding: 16px;
+  margin-top: 16px;
+}
+.hash-compare {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 10px;
+  margin-top: 10px;
+}
+.hash-box {
+  background: #1B1530;
+  color: #BDF74A;
+  border: 2px solid var(--line);
+  padding: 10px 12px;
+  font: 700 13px/1.4 'JetBrains Mono', monospace;
+  word-break: break-all;
+}
+.hash-box.mismatch {
+  color: #FF8AD0;
+  border-color: #FF4D3D;
+  background: #2D0F1E;
+}
+.code-box {
+  background: #1B1530;
+  color: #43D17A;
+  border: 3px solid var(--line);
+  padding: 14px;
+  font: 700 13px/1.5 'JetBrains Mono', monospace;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  margin-top: 12px;
+}
+
+/* STATS, MARQUEE RAILS, CALLOUT & FOOTER */
+.stats {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 32px;
+  align-items: start;
+}
+.stats > div:first-child {
+  position: sticky;
+  top: 110px;
+}
+.hl2 {
+  background: var(--grn);
+  color: #1B1530;
+  padding: 0 8px;
+  border: 3px solid var(--line);
+  box-shadow: 4px 4px 0 var(--shadow-col);
+  display: inline-block;
+  transform: rotate(-1deg);
+}
+.sn {
+  background: var(--card);
+  border: 3px solid var(--line);
+  box-shadow: 8px 8px 0 var(--shadow-col);
+  padding: 26px;
+  margin-bottom: 22px;
+  transform: rotate(var(--r, -1.5deg));
+  transition: transform 0.15s steps(2), background-color 0.35s ease;
+  position: relative;
+}
+.sn:nth-child(2) { --r: 1.5deg; }
+.sn:nth-child(3) { --r: -1deg; }
+.sn:hover {
+  transform: rotate(0deg) translate(-2px, -2px);
+}
+.sn .sn-ico {
+  float: right;
+  background: #FFD84D;
+  border: 3px solid #1B1530;
+  box-shadow: 3px 3px 0 #1B1530;
+  padding: 8px;
+}
+.sn .num {
+  font: 700 clamp(56px, 8vw, 92px)/0.95 'Pixelify Sans', sans-serif;
+  color: var(--grp);
+  text-shadow: 4px 4px 0 var(--line);
+  display: block;
+}
+.rail {
+  border-top: 3px solid var(--line);
+  border-bottom: 3px solid var(--line);
+  background: var(--rail);
+  padding: 14px 0;
+  overflow: hidden;
+  display: flex;
+  margin-top: 72px;
+  transition: background-color 0.35s ease;
+}
+.rail + .rail {
+  margin-top: 0;
+  border-top: 0;
+  background: var(--card);
+}
+.tr {
+  display: flex;
+  gap: 16px;
+  padding-right: 16px;
+  flex-shrink: 0;
+  animation: mar 30s linear infinite;
+}
+@keyframes mar {
+  to { transform: translateX(-50%); }
+}
+.rp {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--card);
+  border: 3px solid var(--line);
+  box-shadow: 4px 4px 0 var(--shadow-col);
+  padding: 8px 18px;
+  font: 700 18px 'Pixelify Sans', sans-serif;
+  white-space: nowrap;
+}
+.call {
+  background-color: var(--call-bg);
+  background-image: repeating-conic-gradient(var(--call-chk) 0 25%, var(--call-bg) 0 50%);
+  background-size: 16px 16px;
+  border-bottom: 3px solid var(--line);
+  padding: 90px 20px;
+  text-align: center;
+  color: var(--fg);
+  transition: background-color 0.45s ease;
+}
+.call h2 {
+  font: 700 clamp(40px, 8vw, 92px)/0.95 'Pixelify Sans', sans-serif;
+  text-shadow: 5px 5px 0 var(--card);
+  margin: 0 0 28px;
+}
+.foot {
+  background: var(--foot-bg) repeating-linear-gradient(0deg, rgba(27, 21, 48, 0.12) 0 2px, transparent 2px 6px);
+  color: var(--foot-fg);
+  padding: 80px 20px 64px;
+  transition: background-color 0.45s ease, color 0.35s ease;
+}
+.coin {
+  font: 700 clamp(36px, 8vw, 88px)/1 'Pixelify Sans', sans-serif;
+  animation: bl 1s steps(1) infinite;
+}
+@keyframes bl {
+  50% { opacity: 0; }
+}
+.foot .coin { font-size: 28px; }
+.foot .big2 {
+  font: 700 clamp(48px, 11vw, 142px)/0.9 'Pixelify Sans', sans-serif;
+  letter-spacing: -0.02em;
+  margin: 14px 0 24px;
+}
+.foot p {
+  margin: 0;
+  font: 700 14px 'JetBrains Mono', monospace;
+}
+.cf {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  border: 1px solid #1B1530;
+  pointer-events: none;
+  z-index: 150;
+  animation: fly 0.6s steps(6) forwards;
+}
+
+@media (max-width: 920px) {
+  .lots {
+    overflow-x: auto;
+    justify-content: flex-start;
+    scroll-snap-type: x mandatory;
+    padding: 0 12px;
+    gap: 16px;
+  }
+  .lot {
+    min-width: 230px;
+    scroll-snap-align: center;
+  }
+  .track { grid-template-columns: repeat(2, 1fr); }
+  .q { grid-template-columns: auto 1fr auto; }
+  .q .q-hide { display: none; }
+  .stats { grid-template-columns: 1fr; }
+  .stats > div:first-child { position: static; }
+  .fb { display: none; }
+  .sc, .sc.rt { width: 100%; margin-left: 0; }
+  .sc::before { transform: translate(8px, 8px); }
+  .story-actor, .ribbon-walker { display: none; }
+  .navi b.opt { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
+
+/* STUNNING PASS: pixel cursor, selection, scrollbar, boot curtain, letter wave, CRT glass, card pop, trail */
+::selection{background:#FFD84D;color:#1B1530}
+html{scrollbar-color:#1B1530 #FFE680}
+::-webkit-scrollbar{width:14px}::-webkit-scrollbar-track{background:#FFE680}::-webkit-scrollbar-thumb{background:#1B1530;border:3px solid #FFE680}
+html,body{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 11 16' width='22' height='32' shape-rendering='crispEdges'%3E%3Crect x='0' y='0' width='1' height='1.02' fill='%231B1530'/%3E%3Crect x='0' y='1' width='2' height='1.02' fill='%231B1530'/%3E%3Crect x='0' y='2' width='1' height='1.02' fill='%231B1530'/%3E%3Crect x='1' y='2' width='1' height='1.02' fill='%23FFFFFF'/%3E%3Crect x='2' y='2' width='1' height='1.02' fill='%231B1530'/%3E%3Crect x='0' y='3' width='1' height='1.02' fill='%231B1530'/%3E%3Crect x='1' y='3' width='2' height='1.02' fill='%23FFFFFF'/%3E%3Crect x='3' y='3' width='1' height='1.02' fill='%231B1530'/%3E%3Crect x='0' y='4' width='1' height='1.02' fill='%231B1530'/%3E%3Crect x='1' y='4' width='3' height='1.02' fill='%23FFFFFF'/%3E%3Crect x='4' y='4' width='1' height='1.02' fill='%231B1530'/%3E%3Crect x='0' y='5' width='1' height='1.02' fill='%231B1530'/%3E%3Crect x='1' y='5' width='4' height='1.02' fill='%23FFFFFF'/%3E%3Crect x='5' y='5' width='1' height='1.02' fill='%231B1530'/%3E%3Crect x='0' y='6' width='1' height='1.02' fill='%231B1530'/%3E%3Crect x='1' y='6' width='5' height='1.02' fill='%23FFFFFF'/%3E%3Crect x='6' y='6' width='1' height='1.02' fill='%231B1530'/%3E%3Crect x='0' y='7' width='1' height='1.02' fill='%231B1530'/%3E%3Crect x='1' y='7' width='6' height='1.02' fill='%23FFFFFF'/%3E%3Crect x='7' y='7' width='1' height='1.02' fill='%231B1530'/%3E%3Crect x='0' y='8' width='1' height='1.02' fill='%231B1530'/%3E%3Crect x='1' y='8' width='7' height='1.02' fill='%23FFFFFF'/%3E%3Crect x='8' y='8' width='1' height='1.02' fill='%231B1530'/%3E%3Crect x='0' y='9' width='1' height='1.02' fill='%231B1530'/%3E%3Crect x='1' y='9' width='5' height='1.02' fill='%23FFFFFF'/%3E%3Crect x='6' y='9' width='4' height='1.02' fill='%231B1530'/%3E%3Crect x='0' y='10' width='1' height='1.02' fill='%231B1530'/%3E%3Crect x='1' y='10' width='2' height='1.02' fill='%23FFFFFF'/%3E%3Crect x='3' y='10' width='1' height='1.02' fill='%231B1530'/%3E%3Crect x='4' y='10' width='2' height='1.02' fill='%23FFFFFF'/%3E%3Crect x='6' y='10' width='1' height='1.02' fill='%231B1530'/%3E%3Crect x='0' y='11' width='1' height='1.02' fill='%231B1530'/%3E%3Crect x='1' y='11' width='1' height='1.02' fill='%23FFFFFF'/%3E%3Crect x='2' y='11' width='1' height='1.02' fill='%231B1530'/%3E%3Crect x='4' y='11' width='1' height='1.02' fill='%231B1530'/%3E%3Crect x='5' y='11' width='2' height='1.02' fill='%23FFFFFF'/%3E%3Crect x='7' y='11' width='1' height='1.02' fill='%231B1530'/%3E%3Crect x='0' y='12' width='2' height='1.02' fill='%231B1530'/%3E%3Crect x='4' y='12' width='1' height='1.02' fill='%231B1530'/%3E%3Crect x='5' y='12' width='2' height='1.02' fill='%23FFFFFF'/%3E%3Crect x='7' y='12' width='1' height='1.02' fill='%231B1530'/%3E%3Crect x='0' y='13' width='1' height='1.02' fill='%231B1530'/%3E%3Crect x='5' y='13' width='1' height='1.02' fill='%231B1530'/%3E%3Crect x='6' y='13' width='2' height='1.02' fill='%23FFFFFF'/%3E%3Crect x='8' y='13' width='1' height='1.02' fill='%231B1530'/%3E%3Crect x='5' y='14' width='1' height='1.02' fill='%231B1530'/%3E%3Crect x='6' y='14' width='2' height='1.02' fill='%23FFFFFF'/%3E%3Crect x='8' y='14' width='1' height='1.02' fill='%231B1530'/%3E%3Crect x='6' y='15' width='2' height='1.02' fill='%231B1530'/%3E%3C/svg%3E") 2 2,auto}
+a,button,summary,label,select,[role="button"],.btn,.cart,.bug,.fb,.blk,.town,.tile,.hl{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 11 16' width='22' height='32' shape-rendering='crispEdges'%3E%3Crect x='0' y='0' width='1' height='1.02' fill='%231B1530'/%3E%3Crect x='0' y='1' width='2' height='1.02' fill='%231B1530'/%3E%3Crect x='0' y='2' width='1' height='1.02' fill='%231B1530'/%3E%3Crect x='1' y='2' width='1' height='1.02' fill='%23FFD84D'/%3E%3Crect x='2' y='2' width='1' height='1.02' fill='%231B1530'/%3E%3Crect x='0' y='3' width='1' height='1.02' fill='%231B1530'/%3E%3Crect x='1' y='3' width='2' height='1.02' fill='%23FFD84D'/%3E%3Crect x='3' y='3' width='1' height='1.02' fill='%231B1530'/%3E%3Crect x='0' y='4' width='1' height='1.02' fill='%231B1530'/%3E%3Crect x='1' y='4' width='3' height='1.02' fill='%23FFD84D'/%3E%3Crect x='4' y='4' width='1' height='1.02' fill='%231B1530'/%3E%3Crect x='0' y='5' width='1' height='1.02' fill='%231B1530'/%3E%3Crect x='1' y='5' width='4' height='1.02' fill='%23FFD84D'/%3E%3Crect x='5' y='5' width='1' height='1.02' fill='%231B1530'/%3E%3Crect x='0' y='6' width='1' height='1.02' fill='%231B1530'/%3E%3Crect x='1' y='6' width='5' height='1.02' fill='%23FFD84D'/%3E%3Crect x='6' y='6' width='1' height='1.02' fill='%231B1530'/%3E%3Crect x='0' y='7' width='1' height='1.02' fill='%231B1530'/%3E%3Crect x='1' y='7' width='6' height='1.02' fill='%23FFD84D'/%3E%3Crect x='7' y='7' width='1' height='1.02' fill='%231B1530'/%3E%3Crect x='0' y='8' width='1' height='1.02' fill='%231B1530'/%3E%3Crect x='1' y='8' width='7' height='1.02' fill='%23FFD84D'/%3E%3Crect x='8' y='8' width='1' height='1.02' fill='%231B1530'/%3E%3Crect x='0' y='9' width='1' height='1.02' fill='%231B1530'/%3E%3Crect x='1' y='9' width='5' height='1.02' fill='%23FFD84D'/%3E%3Crect x='6' y='9' width='4' height='1.02' fill='%231B1530'/%3E%3Crect x='0' y='10' width='1' height='1.02' fill='%231B1530'/%3E%3Crect x='1' y='10' width='2' height='1.02' fill='%23FFD84D'/%3E%3Crect x='3' y='10' width='1' height='1.02' fill='%231B1530'/%3E%3Crect x='4' y='10' width='2' height='1.02' fill='%23FFD84D'/%3E%3Crect x='6' y='10' width='1' height='1.02' fill='%231B1530'/%3E%3Crect x='0' y='11' width='1' height='1.02' fill='%231B1530'/%3E%3Crect x='1' y='11' width='1' height='1.02' fill='%23FFD84D'/%3E%3Crect x='2' y='11' width='1' height='1.02' fill='%231B1530'/%3E%3Crect x='4' y='11' width='1' height='1.02' fill='%231B1530'/%3E%3Crect x='5' y='11' width='2' height='1.02' fill='%23FFD84D'/%3E%3Crect x='7' y='11' width='1' height='1.02' fill='%231B1530'/%3E%3Crect x='0' y='12' width='2' height='1.02' fill='%231B1530'/%3E%3Crect x='4' y='12' width='1' height='1.02' fill='%231B1530'/%3E%3Crect x='5' y='12' width='2' height='1.02' fill='%23FFD84D'/%3E%3Crect x='7' y='12' width='1' height='1.02' fill='%231B1530'/%3E%3Crect x='0' y='13' width='1' height='1.02' fill='%231B1530'/%3E%3Crect x='5' y='13' width='1' height='1.02' fill='%231B1530'/%3E%3Crect x='6' y='13' width='2' height='1.02' fill='%23FFD84D'/%3E%3Crect x='8' y='13' width='1' height='1.02' fill='%231B1530'/%3E%3Crect x='5' y='14' width='1' height='1.02' fill='%231B1530'/%3E%3Crect x='6' y='14' width='2' height='1.02' fill='%23FFD84D'/%3E%3Crect x='8' y='14' width='1' height='1.02' fill='%231B1530'/%3E%3Crect x='6' y='15' width='2' height='1.02' fill='%231B1530'/%3E%3C/svg%3E") 2 2,pointer}
+@keyframes lw{0%,62%,100%{top:0}78%{top:-10px}}
+@media (prefers-reduced-motion:no-preference){.hl{animation:lw 2.6s steps(3) infinite;animation-delay:calc(var(--i,0)*70ms)}}
+.hl:hover{animation:none;top:-14px}
+.crt{position:absolute;inset:0;z-index:6;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(27,21,48,.07) 0 2px,transparent 2px 4px);box-shadow:inset 0 0 90px rgba(27,21,48,.28)}
+.sc::before{transition:transform .16s steps(3)}
+.sc:hover::before{transform:translate(24px,24px)}
+.rail:hover .tr{animation-play-state:paused}
+.ptr{position:fixed;width:8px;height:8px;margin:-4px 0 0 -4px;border:2px solid #1B1530;pointer-events:none;z-index:9998;animation:ptr .6s steps(5) forwards}
+@keyframes ptr{to{transform:translateY(16px) scale(.2);opacity:0}}
+#boot{position:fixed;inset:0;z-index:9999;pointer-events:none;animation:bootGone 0s linear 1.95s forwards}
+#boot .bt,#boot .bb{position:absolute;left:0;right:0;height:50.6%;background:#1B1530}
+#boot .bt{top:0;animation:bootT .7s steps(7) 1.15s forwards}#boot .bb{bottom:0;animation:bootB .7s steps(7) 1.15s forwards}
+#boot .bl{position:absolute;left:0;right:0;top:40%;text-align:center;font:700 clamp(34px,9vw,96px)/1 'Pixelify Sans',sans-serif;color:#FFD84D;text-shadow:5px 5px 0 #FF4D3D;animation:bootTxt 0s linear 1.1s forwards}
+#boot .bs{position:absolute;left:0;right:0;top:58%;text-align:center;font:700 14px 'Silkscreen',monospace;color:#FFF8DC;animation:bl2 .5s steps(1) infinite,bootTxt 0s linear 1.1s forwards}
+@keyframes bootT{to{transform:translateY(-101%)}}@keyframes bootB{to{transform:translateY(101%)}}
+@keyframes bootTxt{to{opacity:0}}@keyframes bootGone{to{visibility:hidden}}@keyframes bl2{50%{opacity:.2}}
+@media (prefers-reduced-motion:reduce){#boot{display:none}}
+</style>
+</head>
+<body><div id="boot" aria-hidden="true"><div class="bt"></div><div class="bb"></div><div class="bl">INCIDENT-ZERO</div><div class="bs">PRESS START</div></div>
+
+<!-- PIXEL-NOTCHED FLOATING NAV WITH OFFICIAL LOGO & FILLING COMBO BAR -->
+<div class="nav">
+  <div class="navo">
+    <div class="navi">
+      <div class="logo" id="logo" title="Incident-Zero — BITS Pilani, Hyderabad Campus">
+        <img class="brand-img light-only" src="data:image/png;base64,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" alt="Incident-Zero">
+        <img class="brand-img dark-only" src="data:image/png;base64,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" alt="Incident-Zero">
+        <span class="logo-tag">BPHC</span>
+      </div>
+      <b id="openBadge"><span class="px-ico" data-ico="bug"></span>OPEN <span id="open" class="mono-num">4</span></b>
+      <b><span class="px-ico" data-ico="coin"></span>SCORE <span id="score" class="mono-num">0000</span></b>
+      <div class="combo-wrap">
+        <b><span class="px-ico" data-ico="bolt"></span>COMBO <span id="cmb" class="mono-num">1x</span></b>
+        <div class="combo-meter" title="Combo multiplier meter"><div class="combo-fill" id="comboBarFill"></div></div>
+      </div>
+      <b class="opt"><span class="px-ico" data-ico="trophy"></span>BEST <span id="hi" class="mono-num">0600</span></b>
+      <button class="btn sm w" id="skyBtn" type="button" title="Cycle campus time of day &amp; weather"><span class="px-ico" data-ico="sun"></span><span id="skyLbl">Sky: Day</span></button>
+      <button class="btn sm y" id="snd" type="button" aria-pressed="true"><span class="px-ico" data-ico="bell"></span><span id="sndLbl">Sound on</span></button>
+      <button class="btn sm" id="mbtn" type="button" aria-expanded="false" aria-controls="menu"><span class="px-ico" data-ico="gamepad"></span>Menu</button>
+    </div>
+  </div>
+  <div class="menu" id="menu" role="region" aria-label="Station menu" hidden>
+    <h3>Select a BPHC station (Esc to close)</h3>
+    <div class="row">
+      <button class="btn y" data-go="scene" type="button"><span class="px-ico" data-ico="building"></span>Campus stage</button>
+      <button class="btn" data-go="rules" type="button"><span class="px-ico" data-ico="shield"></span>10-State board</button>
+      <button class="btn" data-go="carts" type="button"><span class="px-ico" data-ico="gamepad"></span>Cartridges</button>
+      <button class="btn" data-go="deck" type="button"><span class="px-ico" data-ico="wrench"></span>Console</button>
+      <button class="btn" data-go="ledger" type="button"><span class="px-ico" data-ico="chain"></span>SHA-256 Ledger</button>
+      <button class="btn" data-go="statsSection" type="button"><span class="px-ico" data-ico="trophy"></span>Guarantees</button>
+      <button class="btn r" data-go="deck" type="button"><span class="px-ico" data-ico="bolt"></span>Open workbench</button>
+      <a href="/?tab=stage" class="btn g" style="text-decoration:none"><span class="px-ico" data-ico="gamepad"></span>Launch Full App (React)</a>
+    </div>
+  </div>
+</div>
+
+<main>
+  <!-- DITHERED SKY HERO STAGE -->
+  <div class="stage" id="heroStage">
+    <div class="hero-copy">
+      <p class="kick"><span class="px-ico" data-ico="building"></span>BITS Pilani, Hyderabad Campus</p>
+      <h1 id="heroTitle" class="hero-title"><span class="hl">R</span><span class="hl">e</span><span class="hl">a</span><span class="hl">l</span> <span class="hl">c</span><span class="hl">a</span><span class="hl">m</span><span class="hl">p</span><span class="hl">u</span><span class="hl">s</span> <span class="hl">u</span><span class="hl">p</span><span class="hl">t</span><span class="hl">i</span><span class="hl">m</span><span class="hl">e</span><span class="hl">.</span><br><span class="hl z-chr">Z</span><span class="hl">e</span><span class="hl">r</span><span class="hl">o</span> <span class="hl">o</span><span class="hl">p</span><span class="hl">e</span><span class="hl">n</span> <span class="hl">i</span><span class="hl">n</span><span class="hl">c</span><span class="hl">i</span><span class="hl">d</span><span class="hl">e</span><span class="hl">n</span><span class="hl">t</span><span class="hl">s</span><span class="hl">.</span></h1>
+      <p class="lead">A campus service desk where every ticket has three ticking SLA hearts, one legal next move across ten states, and a <span class="mono-num">SHA-256</span> record nobody can fake. Fix the four BPHC outages below!</p>
+    </div>
+  </div>
+
+  <!-- PLAYABLE BPHC CAMPUS SCENE STRADDLING THE SEAM -->
+  <section class="wrap sheet">
+    <div class="scene" id="scene">
+      <div class="stk" id="stk"><span class="px-ico" data-ico="bug"></span>Click a bug!</div>
+      <div class="danger-vignette" id="dangerVignette" aria-hidden="true"></div>
+      <div class="lightning-layer" aria-hidden="true"></div>
+
+      <!-- NIGHT STAR TRAILS (LIKE AUDITORIUM.JPG) & MOON ARC -->
+      <svg class="star-trails" viewBox="0 0 1000 320" preserveAspectRatio="none" aria-hidden="true">
+        <g stroke="rgba(255,243,196,0.42)" stroke-width="1.5" stroke-linecap="round">
+          <line x1="80" y1="300" x2="260" y2="10"/><line x1="150" y1="310" x2="340" y2="5"/>
+          <line x1="240" y1="300" x2="430" y2="12"/><line x1="350" y1="310" x2="540" y2="8"/>
+          <line x1="480" y1="300" x2="670" y2="10"/><line x1="610" y1="310" x2="810" y2="6"/>
+          <line x1="740" y1="300" x2="940" y2="15"/><line x1="830" y1="310" x2="990" y2="45"/>
+        </g>
+        <path d="M 680 95 Q 810 15 930 70" fill="none" stroke="rgba(255,216,77,0.35)" stroke-width="2" stroke-dasharray="6 8"/>
+      </svg>
+
+      <!-- NIGHT DRIFTING FIREFLIES & MONSOON RAIN LAYER -->
+      <div class="fireflies" id="fireflies" aria-hidden="true"></div>
+      <div class="rain-layer" aria-hidden="true"></div>
+
+      <!-- 3 PARALLAX LAYERS BEHIND BUILDINGS -->
+      <div class="sun" id="heroSun"></div>
+      <div id="clouds"></div>
+      <div class="hills" id="heroHills"></div>
+      <div class="treeline" id="heroTrees"></div>
+      <div class="lamps-layer" id="heroLamps" aria-hidden="true">
+        <div class="lamp-post" style="left:24.5%"><div class="lamp-head"></div></div>
+        <div class="lamp-post" style="left:50%"><div class="lamp-head"></div></div>
+        <div class="lamp-post" style="left:75.5%"><div class="lamp-head"></div></div>
+      </div>
+
+      <div class="npc" id="n1"></div>
+      <div class="npc" id="n2" style="animation-delay:-12s"></div>
+      <div class="npc" id="n3" style="animation-delay:-19s"></div>
+
+      <div class="scene-ctrls">
+        <button class="btn sm w" id="pauseBtn" type="button" title="Toggle SLA timer pause (ON HOLD)"><span class="px-ico" data-ico="clock"></span><span id="pauseLbl">Timer: ON</span></button>
+        <button class="btn sm y" id="examBtn" type="button" title="Toggle Exam Week 2x SLA Strategy"><span class="px-ico" data-ico="bolt"></span><span id="examLbl">1x Normal SLA</span></button>
+        <button class="btn sm r" id="ff" type="button" title="Drain one SLA heart from each open ticket"><span class="px-ico" data-ico="clock"></span>+1 hour</button>
+      </div>
+
+      <div class="lots" id="lots"></div>
+      <div class="tech" id="tech"></div>
+      <div class="ground">
+        <div class="puddles" aria-hidden="true">
+          <div class="puddle"></div>
+          <div class="puddle"></div>
+          <div class="puddle"></div>
+          <div class="puddle"></div>
+        </div>
+      </div>
+
+      <!-- STAMPED SCORECARD CELEBRATION MODAL -->
+      <div class="win" id="win" role="dialog" aria-labelledby="winTitle">
+        <div class="coin" id="winTitle" style="color:#43D17A">ZERO OPEN INCIDENTS!</div>
+        <div class="scorecard">
+          <div class="stamp-zero">STAMPED: ZERO</div>
+          <div style="margin-bottom:8px">
+            <img data-brand="dark" alt="Incident-Zero" style="height:24px;width:auto">
+          </div>
+          <div class="mono-num" style="font-size:13px;font-weight:700;color:#4A3F6B">BITS PILANI, HYDERABAD CAMPUS · CLEARANCE CERTIFICATE</div>
+          <div class="sc-grid">
+            <div class="sc-cell"><b id="scScore">0</b><small>FINAL SCORE</small></div>
+            <div class="sc-cell"><b id="scCombo">1x</b><small>MAX COMBO</small></div>
+            <div class="sc-cell"><b id="scBreach">0</b><small>SLA BREACHES</small></div>
+          </div>
+          <div class="mono-num" style="font-size:13px;border-top:2px dashed #1B1530;padding-top:8px">
+            ✔ C-Block &amp; Auditorium · ✔ F-Block &amp; OTR · ✔ Valmiki Bhavan · ✔ Block-G Library
+          </div>
+        </div>
+        <p id="wtxt" style="margin:4px 0 8px">Every BITS Pilani, Hyderabad Campus block is back online.</p>
+        <div class="row" style="justify-content:center">
+          <button class="btn y" id="again" type="button"><span class="px-ico" data-ico="gamepad"></span>Play again</button>
+          <button class="btn g" id="shareScoreBtn" type="button"><span class="px-ico" data-ico="trophy"></span><span id="shareScoreLbl">Copy scorecard</span></button>
+          <button class="btn r" id="examWaveBtn" type="button"><span class="px-ico" data-ico="bolt"></span>Try 2x Exam Wave</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- LIVE INTERACTIVE TICKET QUEUE -->
+    <div class="queue" id="queue" aria-live="polite"></div>
+  </section>
+
+  <!-- THICK GLOWING SWEEPING GREEN RIBBON WITH WALKING MASCOT & 4 ARTICULATED CHARACTERS -->
+  <div class="story" id="story">
+    <svg id="spine" aria-hidden="true"></svg>
+    <div id="ribbonTrail" aria-hidden="true"></div>
+    <div class="ribbon-walker" id="ribbonWalker" aria-hidden="true">
+      <span class="ribbon-walker-lbl">ON CALL</span>
+      <div id="ribbonWalkerSpr"></div>
+    </div>
+    <div class="story-actor" id="actor0" aria-hidden="true"></div>
+    <div class="story-actor" id="actor1" aria-hidden="true"></div>
+    <div class="story-actor" id="actor2" aria-hidden="true"></div>
+    <div class="story-actor" id="actor3" aria-hidden="true"></div>
+
+    <div class="wrap">
+      <!-- CARD 1 / 4: FULL 10-STATE LIFECYCLE BOARD -->
+      <section class="sc" id="rules" style="--b:#FF8AD0">
+        <span class="st"><span class="px-ico" data-ico="shield"></span>1 / 4 · RULES OF PLAY (10 STATES)</span>
+        <h2>No skipping <span class="z-chr">z</span>ones</h2>
+        <p class="lead">Every ticket moves one square at a time across all ten states. Try forcing <code>close()</code> early (or clicking a locked tile): the engine answers with <code>409 Conflict</code>.</p>
+        <div class="track" id="track"></div>
+        <div class="row" id="moves"></div>
+        <div class="err" id="err" role="alert"></div>
+      </section>
+
+      <!-- CARD 2 / 4: 4 CARTRIDGES -->
+      <section class="sc rt" id="carts" style="--b:#59C9F5">
+        <span class="st"><span class="px-ico" data-ico="gamepad"></span>2 / 4 · SELECT CARTRIDGE</span>
+        <h2>Four roles, four <span class="z-chr">z</span>one views</h2>
+        <p class="lead">Students, technicians, admins, and reviewers each get their own ROM cartridge. Click any cartridge to physically slot it into the CRT console below.</p>
+        <div class="carts">
+          <div class="cart" style="--c:#FFD84D" data-n="Portal">
+            <div class="win-screen">
+              <span class="num">01 / STUDENT</span>
+              <h3>Student Portal</h3>
+              <p>Report a BPHC outage with AI power-up tags and follow a 6-step quest bar.</p>
+              <code>POST /api/v1/tickets</code>
+            </div>
+          </div>
+          <div class="cart active" style="--c:#FF4D3D" data-n="Workbench">
+            <div class="win-screen">
+              <span class="num">02 / TECHNICIAN</span>
+              <h3>Workbench</h3>
+              <p>Battle the active campus bug with AI runbook hints and guarded transitions.</p>
+              <code>POST /tickets/{id}/transition</code>
+            </div>
+          </div>
+          <div class="cart" style="--c:#43D17A" data-n="Command">
+            <div class="win-screen">
+              <span class="num">03 / ADMIN</span>
+              <h3>Command</h3>
+              <p>Campus overworld dependency DAG, blast-radius ripples, and storm drills.</p>
+              <code>GET /topology/blast-radius</code>
+            </div>
+          </div>
+          <div class="cart" style="--c:#FF8AD0" data-n="Specs">
+            <div class="win-screen">
+              <span class="num">04 / ARCHITECTURE</span>
+              <h3>System Specs</h3>
+              <p>Explore the state machine, concurrency locks, SLA engine, and DAG architecture.</p>
+              <code>GET /actuator/architecture</code>
+            </div>
+          </div>
+        </div>
+        <p class="lead" id="cmsg" aria-live="polite" style="margin-bottom:0;font-weight:700"></p>
+      </section>
+
+      <!-- CARD 3 / 4: CONSOLE DECK WITH PHYSICAL CARTRIDGE BAY & CRT MONITOR -->
+      <section class="sc" id="deck" style="--b:#FFD84D">
+        <span class="st"><span class="px-ico" data-ico="wrench"></span>3 / 4 · ARCADE CRT CONSOLE</span>
+        <h2>Play the four screens</h2>
+        <div class="row" id="tabs" role="tablist">
+          <button class="btn y" data-t="w" role="tab" aria-selected="true" type="button"><span class="px-ico" data-ico="wrench"></span>Workbench</button>
+          <button class="btn" data-t="c" role="tab" aria-selected="false" type="button"><span class="px-ico" data-ico="wifi"></span>Command overworld</button>
+          <button class="btn" data-t="p" role="tab" aria-selected="false" type="button"><span class="px-ico" data-ico="megaphone"></span>Student portal</button>
+          <button class="btn" data-t="r" role="tab" aria-selected="false" type="button"><span class="px-ico" data-ico="book"></span>System specs</button>
+        </div>
+
+        <!-- PHYSICAL CARTRIDGE SLOTTING BAY -->
+        <div class="console-bay" id="consoleSlotBay">
+          <div class="bay-top">
+            <img data-brand="light" alt="Incident-Zero Deck" style="height:22px;width:auto">
+            <div class="bay-leds">
+              <span><i class="led-dot"></i>CRT PHOSPHOR LOCK</span>
+              <span id="bayRomCode" style="color:#FFD84D">ROM-02 // WORKBENCH</span>
+            </div>
+          </div>
+          <div class="slot-throat">
+            <div class="slotted-cart inserting" id="slottedCartridge" style="--slot-col:#FF4D3D">
+              <span id="slottedCartTitle">🕹️ SLOT 02 · WORKBENCH ROM</span>
+              <span id="slottedCartPin">24-PIN LOCKED</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- CRT SCREEN FRAME -->
+        <div class="crt-frame">
+          <div class="crt-screen" id="screen" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <!-- CARD 4 / 4: REAL WEB CRYPTO SHA-256 AUDIT LEDGER -->
+      <section class="sc rt" id="ledger" style="--b:#43D17A">
+        <span class="st"><span class="px-ico" data-ico="chain"></span>4 / 4 · REAL SHA-256 LEDGER</span>
+        <h2>Tamper with a block</h2>
+        <p class="lead">Every block’s 256-bit digest is computed live with <code>crypto.subtle.digest('SHA-256', prevHash + '|' + payload)</code>. Click any block and edit even one character in the payload textarea below: watch the cryptographic avalanche scramble every downstream hash in real time.</p>
+        <div class="chain" id="chain"></div>
+        <div class="row">
+          <button class="btn y" id="ver" type="button"><span class="px-ico" data-ico="shield"></span>Verify ledger</button>
+          <button class="btn r" id="mutBtn" type="button"><span class="px-ico" data-ico="bolt"></span>Mutate 1 byte (P1 → P4)</button>
+          <button class="btn g" id="rep" type="button"><span class="px-ico" data-ico="wrench"></span>Repair chain</button>
+        </div>
+        <p class="lead" id="lmsg" aria-live="polite" style="margin:14px 0 8px;min-height:28px;font-weight:700"></p>
+
+        <!-- LIVE CRYPTOGRAPHIC BLOCK EDITOR -->
+        <div class="ledger-editor">
+          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+            <b class="mono-num" id="ledgerEditTitle" style="font-size:14px">EDITING BLOCK #0413 PAYLOAD (LIVE SHA-256 AVALANCHE)</b>
+            <span class="chip s-DONE mono-num" id="ledgerSealBadge">SEALED · SHA-256 MATCH</span>
+          </div>
+          <label for="ledgerPayloadInput" class="mono-num" style="display:block;font-size:13px;margin-top:8px;color:var(--soft)">Block Payload (type any character to trigger real-time SHA-256 avalanche across downstream blocks):</label>
+          <textarea id="ledgerPayloadInput" class="inp mono-num" rows="3" spellcheck="false"></textarea>
+          <div class="hash-compare">
+            <div>
+              <div class="mono-num" style="font-size:13px;font-weight:700;margin-bottom:4px">PREVIOUS BLOCK HASH INPUT:</div>
+              <div class="hash-box" id="ledgerPrevHashBox"></div>
+            </div>
+            <div>
+              <div class="mono-num" style="font-size:13px;font-weight:700;margin-bottom:4px">EXPECTED SEALED SHA-256 (256-BIT HEX):</div>
+              <div class="hash-box" id="ledgerExpectedHashBox"></div>
+            </div>
+            <div>
+              <div class="mono-num" style="font-size:13px;font-weight:700;margin-bottom:4px">LIVE COMPUTED SHA-256 (crypto.subtle):</div>
+              <div class="hash-box" id="ledgerComputedHashBox"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</main>
+
+<!-- STICKY TILTED COUNT-UP STATS -->
+<section class="wrap stats" id="statsSection">
+  <div>
+    <h2>A few numbers behind <span class="hl2">the uptime</span></h2>
+    <p class="lead">What the engine enforces by design across BITS Pilani, Hyderabad Campus—not what it hopes for.</p>
+  </div>
+  <div>
+    <div class="sn">
+      <span class="sn-ico"><span class="px-ico" data-ico="gamepad"></span></span>
+      <span class="num" data-n="10">0</span>
+      <p>lifecycle states on the board, and only the legal next moves are ever offered for your role.</p>
+    </div>
+    <div class="sn">
+      <span class="sn-ico" style="background:#FF4D3D"><span class="px-ico" data-ico="shield"></span></span>
+      <span class="num" data-n="409">0</span>
+      <p>is the instant RFC 7807 response to every illegal transition, so nothing ever skips a step.</p>
+    </div>
+    <div class="sn">
+      <span class="sn-ico" style="background:#43D17A"><span class="px-ico" data-ico="chain"></span></span>
+      <span class="num" data-n="256">0</span>
+      <p>bits in each <span class="mono-num">SHA-256</span> cryptographic hash that seals an audit block to the one before it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TWO COUNTER-SCROLLING MARQUEE RAILS -->
+<div class="rail" id="r1" aria-hidden="true"></div>
+<div class="rail" id="r2" aria-hidden="true"></div>
+
+<!-- GREEN DITHERED CALLOUT BAND -->
+<div class="call">
+  <h2>Ready when you are!</h2>
+  <div class="row" style="justify-content:center">
+    <button class="btn y" id="callWbBtn" type="button"><span class="px-ico" data-ico="wrench"></span>Open the workbench</button>
+    <a href="/?tab=workbench" class="btn y" style="text-decoration:none"><span class="px-ico" data-ico="bolt"></span>Launch Full App (React)</a>
+    <button class="btn w" id="callReplayBtn" type="button"><span class="px-ico" data-ico="bug"></span>Respawn campus bugs</button>
+  </div>
+</div>
+
+<!-- SCANLINE FOOTER -->
+<footer class="foot">
+  <div class="wrap">
+    <div style="margin-bottom:14px">
+      <img class="brand-img light-only" data-brand="dark" alt="Incident-Zero" style="height:34px">
+      <img class="brand-img dark-only" data-brand="light" alt="Incident-Zero" style="height:34px">
+    </div>
+    <div class="coin">INSERT COIN</div>
+    <div class="big2">Let’s reach <span class="z-chr">z</span>ero.</div>
+    <p>BITS Pilani, Hyderabad Campus</p>
+  </div>
+</footer>
+
+<script>
+const $ = id => document.getElementById(id);
+
+// EXPANDED ARCHITECTURAL PIXEL PALETTE (MODELED ON ATTACHED BPHC PHOTOS)
+const P = {
+  k: '#1B1530', // Deep ink outline
+  w: '#FFFFFF', // Pure white
+  r: '#FF4D3D', // Bright P1 red
+  y: '#FFD84D', // Warm golden light / sun
+  b: '#59C9F5', // Sky blue
+  g: '#43D17A', // Grass / cypress green
+  o: '#FF9F43', // Amber / warm window glow
+  s: '#F2B38C', // Skin tone
+  l: '#FF8AD0', // Pink
+  p: '#7C5CFF', // Grape purple
+  a: '#9690B0', // Granite boulder grey
+  d: '#6E668A', // Dark granite shadow
+  m: '#B84A32', // BPHC Terracotta / Red sandstone (Auditorium, Library pillars, F-Block base)
+  n: '#8F331E', // Deep red sandstone shadow (Auditorium under-canopy)
+  t: '#E6CFA8', // BPHC Warm beige sandstone (Library, F-Block, Valmiki facade)
+  u: '#C9AD82', // Sandstone shadow
+  c: '#FFF8DC', // Cream portal / Valmiki wall
+  e: '#1D4E5F', // Deep teal reflective glass (F-Block center bays, Library windows)
+  f: '#2D8A4E', // Deep foliage green (Valmiki trees)
+  h: '#3B6EE8'  // Royal blue signage (BLOCK-G / LIBRARY / VALMIKI sign)
+};
+
+// INTEGER-SCALED PIXEL SPRITE RENDERER
+function spr(rows, sc) {
+  const w = rows[0].length, h = rows.length;
+  let r = '';
+  rows.forEach((row, y) => {
+    let x = 0;
+    while (x < w) {
+      const ch = row[x];
+      if (ch === '.') { x++; continue; }
+      let e = x;
+      while (e < w && row[e] === ch) e++;
+      r += `<rect x="${x}" y="${y}" width="${e - x}" height="1.04" fill="${P[ch] || '#1B1530'}"/>`;
+      x = e;
+    }
+  });
+  return `<svg viewBox="0 0 ${w} ${h}" width="${w * sc}" height="${h * sc}" shape-rendering="crispEdges" aria-hidden="true">${r}</svg>`;
+}
+
+// STREAMLINE-STYLE 10x10 PIXEL ICONS FOR BUTTONS, MENU & STAT CARDS
+const ICONS = {
+  bug: ['..k....k..','...k..k...','..kkkkkk..','.krrrrrrk.','krwkrwkrk.','krrrrrrrrk','.kr.rr.rk.','k..k..k..k'],
+  coin: ['..kkkkkk..','.kyyyyyyk.','kyywwyyyyk','kyywkyyyyk','kyywkyyyyk','kyyyyyyyyk','.kyyyyyyk.','..kkkkkk..'],
+  bolt: ['....kkkk..','...kyyyk..','..kyyyk...','.kyyyyykk.','kkkkkyyyk.','...kyyyk..','..kyyk....','.kkk......'],
+  trophy: ['kkkkkkkkkk','kyyyyyyyyk','kyywwwwyyk','.kyyyyyyk.','..kkkkkk..','...kyyk...','..kkkkkk..','.kkkkkkkk.'],
+  sun: ['....kk....','.k.kyyk.k.','..kyyyyyk.','kkyyyyyyyk','..kyyyyyk.','.k.kyyk.k.','....kk....'],
+  bell: ['....kk....','..kkkkkk..','.kyyyyyyk.','.kyyyyyyk.','kyyyyyyyyk','kkkkkkkkkk','...kkkk...'],
+  gamepad: ['.kkkkkkkk.','kddddddddk','kdwkddyrdk','kwwwddbrdk','kdwkdddddk','kkkkkkkkkk'],
+  building: ['..kkkkkk..','.kttttttk.','ktwktwktk.','ktwktwktk.','kttttttttk','kkkkmmkkkk'],
+  shield: ['.kkkkkkkk.','kggggggggk','kgwwwwwwgk','kgwggggwgk','.kgwwwwgk.','..kggggk..','...kkkk...'],
+  wrench: ['..kkk.....','.kwwwk....','kwwkkk....','.kkkkk....','...kkkk...','....kkkk..','.....kkkk.','......kk..'],
+  chain: ['.kkkk.....','kwwwwk....','kwkkkkkk..','.kkkwwwwk.','...kkkkkk.'],
+  clock: ['..kkkkkk..','.kwwwwwwk.','kwwkwwwkwk','kwwkkkwwwk','kwwwwwwwwk','.kwwwwwwk.','..kkkkkk..'],
+  wifi: ['..kkkkkk..','.kbbbbbbk.','kbkkkkkkbk','..kbbbbk..','...kkkk...','....kk....'],
+  megaphone: ['.....kkkk.','...kkyyyk.','.kkyyyyyk.','krrrrrrrk.','.kkyyyyyk.','..kk.kkkk.'],
+  book: ['.kkkkkkkk.','kbbbbbbbbk','kbwwwwwwbk','kbwkkkkwbk','kbwwwwwwbk','kkkkkkkkkk']
+};
+
+function populateIcons() {
+  document.querySelectorAll('.px-ico[data-ico]').forEach(el => {
+    const key = el.dataset.ico;
+    if (ICONS[key]) el.innerHTML = spr(ICONS[key], 2);
+  });
+}
+
+// MULTI-FRAME SPRITE SHEETS FOR BUGS & TECHNICIAN
+const BUG_F1 = [
+  '..k.....k..',
+  '...k...k...',
+  '..kkkkkkk..',
+  '.krrrrrrrk.',
+  'krrwkrwkrrk',
+  'krrrrrrrrrk',
+  '.kr.rrr.rk.',
+  '.k.krrrk.k.',
+  'k...k.k...k'
+];
+const BUG_F2 = [
+  '.k.......k.',
+  '..k.....k..',
+  '..kkkkkkk..',
+  '.krrrrrrrk.',
+  'krrwkrwkrrk',
+  'krrrrrrrrrk',
+  '.kr.rrr.rk.',
+  'k..krrrk..k',
+  '..k..k..k..'
+];
+const BUG_HIT = [
+  '.k.......k.',
+  '..kkkkkkk..',
+  'kwwwwwwwwwk',
+  'kwkwwwwkwkk',
+  'kwwwwwwwwwk',
+  '.kkkkkkkkk.'
+];
+
+const TECH_IDLE = [
+  '..kkkkk..',
+  '.kyyyyyk.',
+  'kkkkkkkkk',
+  '.ksksksk.',
+  '.ksssssk.',
+  '..kkkkk..',
+  '.kbbbbbk.',
+  'sbbbbbbbs',
+  'sbbbbbbbs',
+  '.kbbbbbk.',
+  '.kbk.kbk.',
+  '.kkk.kkk.'
+];
+const TECH_W1 = [
+  '..kkkkk..',
+  '.kyyyyyk.',
+  'kkkkkkkkk',
+  '.ksksksk.',
+  '.ksssssk.',
+  '..kkkkk..',
+  'skbbbbbk.',
+  '.kbbbbbbk',
+  '.kbbbbbk.',
+  '.kbk..kbk',
+  'kkk....kk',
+  '.........'
+];
+const TECH_W2 = [
+  '..kkkkk..',
+  '.kyyyyyk.',
+  'kkkkkkkkk',
+  '.ksksksk.',
+  '.ksssssk.',
+  '..kkkkk..',
+  '.kbbbbbks',
+  'kbbbbbbk.',
+  '.kbbbbbk.',
+  'kbk..kbk.',
+  'kk....kkk',
+  '.........'
+];
+const TECH_SQUASH = [
+  '.....kkk.',
+  '..kkkkwk.',
+  '.kyyyyyk.',
+  'kkkkkkkkk',
+  '.ksksksk.',
+  '..kkkkk..',
+  '.kbbbbbks',
+  'sbbbbbbbs',
+  '.kbbbbbk.',
+  'kbk...kbk',
+  'kkk...kkk',
+  '.........'
+];
+
+// HAND-DRAWN PIXEL ART FOR ALL 4 ATTACHED BPHC PHOTOS (2X SCALED AT 7PX PER PIXEL = 224x126)
+function bldAuditorium(night = false) {
+  const winL = night ? 'y' : 'o';
+  const winR = night ? 'y' : 'b';
+  return [
+    '............kkkkkkkk............',
+    '....kkkkkkkkttttttttkkkkkkkk....',
+    '...kttttuwuwttttttttuwuwttttk...',
+    '...kmmmmmmmmmmmmmmmmmmmmmmmmk...',
+    '..kmmmmmmmmmmmmmmmmmmmmmmmmmmk..',
+    '.kmmmmmmmmmmmmmmmmmmmmmmmmmmmmk.',
+    'kmmmmmmkwkwkwkmmmmkwkwkwkmmmmmmk',
+    'kmmmmmkwkwkwkwmmmmwkwkwkwkmmmmmk',
+    'kmmmmknnnnnnnnmmmmnnnnnnnnkmmmmk',
+    'kmmmkttmmmmmmmmmmmmmmmmmmttkmmmk',
+    'kmmktttmmkeekmmmmmmeekmmmtttkmmk',
+    'kmmktttmmkeekmmmmmmeekmmmtttkmmk',
+    'kmmktttmmmmmmmmmmmmmmmmmmtttkmmk',
+    'kmmktttmmk' + winL + winL + 'kmmmmmmk' + winR + winR + 'kmmtttkmmk',
+    'kmmktttmmk' + winL + winL + 'kmmmmmmk' + winR + winR + 'kmmtttkmmk',
+    'kmmktttmmmmmmmmmmmmmmmmmmtttkmmk',
+    'kmmktttmmk' + winL + winL + 'kmmmmmmk' + winR + winR + 'kmmtttkmmk',
+    'kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk'
+  ];
+}
+
+function bldFBlock(night = false) {
+  const w = night ? 'y' : 'e';
+  return [
+    '............kkkkkkkk............',
+    '..........kkcccccccckk..........',
+    '.........kcccccccccccck.........',
+    '.......kkkkkkkkkkkkkkkkkk.......',
+    '......kmmmmmmmmmmmmmmmmmmk......',
+    'mmkkkkkcccccccccccccccccckkkkkmm',
+    'ttttttcccccckkkkkkkkcccccccttttt',
+    't' + w + 't' + w + 'ttcccccck' + w + 'k' + w + 'k' + w + 'kccccccctt' + w + 't' + w + 't',
+    'ttttttcccccck' + w + 'k' + w + 'k' + w + 'kcccccccttttt',
+    'mmmmmmcccccck' + w + 'k' + w + 'k' + w + 'kccccccmmmmmm',
+    'm' + w + 'm' + w + 'mmcccccck' + w + 'k' + w + 'k' + w + 'kccccccmm' + w + 'm' + w + 'm',
+    'mmmmmmcccccckkkkkkkkccccccmmmmmm',
+    'mmmmmmccccccmmmmmmmmccccccmmmmmm',
+    'fgfggfggggggmmmmmmmmggggggfggfgf',
+    'rplgglggggggccccccccgggggglgglpr',
+    'kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk'
+  ];
+}
+
+function bldValmiki(night = false) {
+  const w = night ? 'y' : 'e';
+  return [
+    '..........kkkkkkkkkkkk..........',
+    '.........kchhhhhhhhhhck.........',
+    '.kkkkkkkkkcccccccccccckkkkkkkkk.',
+    'kttttkttttkttttkttttkttttkttttk.',
+    'kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk',
+    'kcccck' + w + 'kcck' + w + 'kcck' + w + 'kcck' + w + 'kcck' + w + 'kccck',
+    'kcccckmkcckmkcckmkcckmkcckmkccck',
+    'kffkck' + w + 'kcck' + w + 'kcck' + w + 'kcck' + w + 'kcck' + w + 'kffk',
+    'kffffkmkcckmkcckmkcckmkcckmkfffk',
+    'kffffkcccccccccccccccccccckffffk',
+    'kdaaadkcckcwkcwkcwkcwkcckdaaadk.',
+    'kdaaadkcckcwkcwkcwkcwkcckdaaadk.',
+    'kgggggkcckkkkkkkkkkkkkcckgggggk.',
+    'krrrrrkccccccccccccccccckrrrrrk.',
+    'kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk'
+  ];
+}
+
+function bldLibrary(night = false) {
+  const w = night ? 'y' : 'e';
+  return [
+    '..........kkkkkkkkkkkk..........',
+    '........kkmmmmmmmmmmmmkk........',
+    '......kkmmmmmmmmmmmmmmmmkk......',
+    '.....kmmbbbbbbbbbbbbbbbbmmk.....',
+    '....kkkkkkkkkkkkkkkkkkkkkkkk....',
+    'kkkkkkkkttttttttttttttttkkkkkkkk',
+    'kmtmtmtmttttchhhhhhcttttmtmtmtmk',
+    'km' + w + 'm' + w + 'm' + w + 'mttttttttttttttttm' + w + 'm' + w + 'm' + w + 'mk',
+    'kmtmtmtmttmkkkkkkkkkkmmtmtmtmtmk',
+    'km' + w + 'm' + w + 'm' + w + 'mttmk' + w + 'k' + w + 'k' + w + 'k' + w + 'kmmtm' + w + 'm' + w + 'm' + w + 'mk',
+    'kmtmtmtmttmttttttttttmmtmtmtmtmk',
+    'km' + w + 'm' + w + 'm' + w + 'mttmtchhhhhhctmmtm' + w + 'm' + w + 'm' + w + 'mk',
+    'kmtmtmtmttfgkkkkkkkkfgmtmtmtmtmk',
+    'kmtmtmtmttfgk' + w + 'k' + w + 'k' + w + 'kfgmtmtmtmtmk',
+    'kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk'
+  ];
+}
+
+const ROCKS = [
+  '......kkkk..........',
+  '....kkaaaakk..kkkk..',
+  '..kkaaaaaaaakkaaaak.',
+  '.kaaadwaaaaaaadwaaak',
+  'kaaaaaaaaaaaaaaadwak',
+  'krpyaaaaaaaaaaaarpok',
+  '.kkkkkkkkkkkkkkkkkk.'
+];
+
+const HEART = [
+  '.kk.kk.',
+  'krrkrrk',
+  'krrrrrk',
+  '.krrrk.',
+  '..krk..',
+  '...k...'
+];
+const HE = HEART.map(r => r.replace(/r/g, 'w'));
+
+const CLOUD = [
+  '....www.......',
+  '..wwwwwww.ww..',
+  '.wwwwwwwwwwww.',
+  'wwwwwwwwwwwwww',
+  '.wwwwwwwwwwww.'
+];
+
+const sc = 5;
+const bldSc = 7; // 2x building scale (32 * 7 = 224px)
+
+const T = [
+  { id: 'INC-0842', n: 'SWD / ERP login 502', w: 'C-Block & Audi', d: 9, p: 'P1', pc: '#FF4D3D', c: 'r', cat: 'AUTH_SSO', hint: 'Restart SWD Nucleus Keycloak pod & flush Redis session pool in C-Block.', art: bldAuditorium },
+  { id: 'INC-0839', n: 'Academic Wi-Fi down', w: 'F-Block & OTR', d: 12, p: 'P2', pc: '#FF9F43', c: 'o', rock: 1, cat: 'NET_WIFI', hint: 'Failover Aruba 802.1X controller in F-Block Lab 302 near On The Rocks.', art: bldFBlock },
+  { id: 'INC-0831', n: 'Hostel Wi-Fi outage', w: 'Valmiki Bhavan', d: 9, p: 'P1', pc: '#FF4D3D', c: 'l', cat: 'HOSTEL_LAN', hint: 'Reset PoE core switch uplink serving Valmiki & Gautam Bhavan wings.', art: bldValmiki },
+  { id: 'INC-0827', n: 'CMS uploads slow', w: 'Block-G Library', d: 16, p: 'P3', pc: '#FFD84D', c: 'p', cat: 'CMS_MOODLE', hint: 'Scale NFS worker threads backing Block-G Central Library CMS storage.', art: bldLibrary }
+];
+
+let AC, mute = false;
+let combo = 1, maxCombo = 1, last = 0, hi = 600;
+let busy = false, left = 4, score = 0;
+let timerPaused = false, speedMult = 1;
+let activeTab = 'w', bi = 0, selectedBoss = 0, out = null;
+let bugFrameToggle = false, walkTimer = null, fixTimer1 = null, fixTimer2 = null;
+let sceneVisible = true, storyVisible = true;
+
+// 4-STATE PIXEL WEATHER & TIME OF DAY CYCLE WITH THEME-COLOR META SYNC
+const SKY_MODES = [
+  { id: 'day', label: 'Sky: Day', dark: false, meta: '#FFE680' },
+  { id: 'sunset', label: 'Sky: Sunset', dark: false, meta: '#FFB870' },
+  { id: 'night', label: 'Sky: Night', dark: true, meta: '#1E1646' },
+  { id: 'rain', label: 'Sky: Monsoon', dark: true, meta: '#2C3B4D' }
+];
+let skyIdx = 0;
+
+function tone(f, d = 0.1, t = 'square', s = 0, v = 0.06, when = 0) {
+  if (mute) return;
+  try {
+    AC = AC || new (window.AudioContext || window.webkitAudioContext)();
+    const o = AC.createOscillator(), g = AC.createGain(), n = AC.currentTime + when;
+    o.type = t;
+    o.frequency.setValueAtTime(f, n);
+    if (s) o.frequency.exponentialRampToValueAtTime(s, n + d);
+    g.gain.setValueAtTime(v, n);
+    g.gain.exponentialRampToValueAtTime(0.0001, n + d);
+    o.connect(g);
+    g.connect(AC.destination);
+    o.start(n);
+    o.stop(n + d);
+  } catch (e) {}
+}
+
+const sfx = {
+  blip: () => tone(660, 0.07),
+  pick: () => { tone(523, 0.08); tone(784, 0.1, 'square', 0, 0.06, 0.08); },
+  slot: () => { tone(190, 0.07, 'sawtooth', 95, 0.08); tone(587, 0.09, 'square', 880, 0.06, 0.07); },
+  fix: () => [523, 659, 784, 1047].forEach((f, i) => tone(f, 0.1, 'square', 0, 0.06, i * 0.08)),
+  err: () => tone(180, 0.4, 'sawtooth', 60, 0.09),
+  win: () => [523, 659, 784, 1047, 784, 1047, 1319].forEach((f, i) => tone(f, 0.14, 'square', 0, 0.06, i * 0.1))
+};
+
+$('snd').onclick = e => {
+  mute = !mute;
+  $('sndLbl').textContent = mute ? 'Sound off' : 'Sound on';
+  e.currentTarget.setAttribute('aria-pressed', !mute);
+  if (!mute) sfx.blip();
+};
+
+$('skyBtn').onclick = () => {
+  skyIdx = (skyIdx + 1) % SKY_MODES.length;
+  const m = SKY_MODES[skyIdx];
+  document.documentElement.setAttribute('data-sky', m.id);
+  document.documentElement.setAttribute('data-theme', m.dark ? 'dark' : 'light');
+  $('skyLbl').textContent = m.label;
+  const tc = $('themeColorMeta');
+  if (tc) tc.setAttribute('content', m.meta);
+  sfx.blip();
+  refreshBuildingsForTimeOfDay();
+};
+
+function refreshBuildingsForTimeOfDay() {
+  const isNight = SKY_MODES[skyIdx].dark;
+  document.querySelectorAll('.bld-art').forEach((el, i) => {
+    if (T[i]) el.innerHTML = spr(T[i].art(isNight), bldSc);
+  });
+}
+
+document.addEventListener('click', e => {
+  if (e.target.closest('.btn') && e.target.id !== 'snd') sfx.blip();
+});
+
+$('logo').onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+$('clouds').innerHTML = [[22, 0], [76, -30], [48, -55]].map((c, i) =>
+  `<div class="cl" style="top:${c[0]}px;animation-delay:${c[1]}s">${spr(CLOUD, i ? 5 : 7)}</div>`
+).join('');
+
+// POPULATE NIGHT FIREFLIES
+$('fireflies').innerHTML = Array.from({ length: 14 }, (_, i) => {
+  const left = 6 + (i * 7) % 88;
+  const top = 18 + (i * 19) % 72;
+  const delay = (i * 0.37).toFixed(2);
+  return `<i class="firefly" style="left:${left}%;top:${top}%;animation-delay:-${delay}s"></i>`;
+}).join('');
+
+// STROLLING BPHC STUDENTS
+$('n1').innerHTML = `<span class="npc-bub">Lite bro!</span>` + spr(TECH_IDLE.map(r => r.replace(/y/g, 'l').replace(/b/g, 'p')), 3);
+$('n2').innerHTML = `<span class="npc-bub">CP Maggi?</span>` + spr(TECH_IDLE.map(r => r.replace(/y/g, 'g').replace(/b/g, 'o')), 3);
+$('n3').innerHTML = `<span class="npc-bub">OOP @ F-Block</span>` + spr(TECH_IDLE.map(r => r.replace(/y/g, 'b').replace(/b/g, 'r')), 3);
+
+function updateDangerVignette() {
+  const critical = T.some(t => !t.done && t.hp <= 1);
+  const dv = $('dangerVignette');
+  if (dv) dv.classList.toggle('on', critical);
+}
+
+function heart(i) {
+  const t = T[i];
+  const html = [0, 1, 2].map(k => spr(k < t.hp ? HEART : HE, 2)).join('');
+  const e = $('bugHp' + i);
+  if (e) e.innerHTML = html;
+  const qe = $('qh' + i);
+  if (qe) qe.innerHTML = html;
+  updateDangerVignette();
+}
+
+function hud() {
+  $('open').textContent = left;
+  $('score').textContent = String(Math.round(score)).padStart(4, '0');
+  $('cmb').textContent = combo + 'x';
+  $('hi').textContent = String(Math.round(hi)).padStart(4, '0');
+  const fill = $('comboBarFill');
+  if (fill) {
+    const pct = last ? Math.max(15, Math.min(100, (combo / 4) * 100)) : 25;
+    fill.style.width = pct + '%';
+  }
+}
+
+function bump() {
+  const n = Date.now();
+  combo = (last && n - last < 9000) ? Math.min(combo + 1, 4) : 1;
+  if (combo > maxCombo) maxCombo = combo;
+  last = n;
+  return combo;
+}
+
+function chip(i, t, c) {
+  const e = $('c' + i);
+  if (e) {
+    e.textContent = t;
+    e.className = 'chip ' + c;
+  }
+}
+
+function renderQueue() {
+  $('queue').innerHTML = T.map((t, i) => `
+    <div class="q">
+      <div class="pr" style="background:${t.pc}">${t.p}</div>
+      <div>
+        <b class="mono-num">${t.id}</b> ${t.n}<br>
+        <small style="color:var(--soft)">📍 ${t.w} · <span class="mono-num">1♥/${Math.max(2, Math.round(t.d / speedMult))}s</span></small>
+      </div>
+      <span class="hp q-hide" id="qh${i}"></span>
+      <span class="chip ${t.done ? 's-DONE' : t.breach ? 's-BRC' : 's-ASG'}" id="c${i}">
+        ${t.done ? 'RESOLVED' : t.breach ? 'BREACHED' : 'ASSIGNED'}
+      </span>
+      <div>
+        ${t.done
+          ? `<button class="btn sm w" data-qboss="${i}" type="button">War room</button>`
+          : `<button class="btn sm y" data-qfix="${i}" type="button">Fix now</button>`
+        }
+      </div>
+    </div>
+  `).join('');
+  T.forEach((t, i) => heart(i));
+}
+
+function build() {
+  clearTimeout(fixTimer1);
+  clearTimeout(fixTimer2);
+  clearInterval(walkTimer);
+  busy = false;
+  left = T.length;
+  score = 0;
+  combo = 1;
+  maxCombo = 1;
+  last = 0;
+  $('win').classList.remove('on');
+  const isNight = SKY_MODES[skyIdx].dark;
+
+  $('lots').innerHTML = T.map((t, i) => {
+    t.done = 0;
+    t.hp = 3;
+    t.age = 0;
+    t.breach = 0;
+    return `
+      <div class="lot">
+        <div class="bug-slot" id="bslot${i}">
+          <button class="bug" data-i="${i}" type="button" aria-label="Fix ${t.id}: ${t.n}">
+            <span class="bug-spr" id="bspr${i}">${spr(BUG_F1.map(r => r.replace(/r/g, t.c)), sc)}</span>
+            <span class="tag">${t.p} ${t.n}</span>
+            <span class="hp" id="bugHp${i}"></span>
+          </button>
+        </div>
+        <div class="bld-art" id="bart${i}">${spr(t.art(isNight), bldSc)}</div>
+        ${t.rock ? `<span class="rocks"><span class="rocks-lbl">ON THE ROCKS</span>${spr(ROCKS, 3.5)}</span>` : ''}
+        <span class="sign">${t.w}</span>
+      </div>
+    `;
+  }).join('');
+
+  $('tech').innerHTML = spr(TECH_IDLE, sc);
+  $('tech').style.left = '3%';
+  renderQueue();
+  hud();
+  T.forEach((t, i) => heart(i));
+  if (activeTab === 'w') boss();
+  if (activeTab === 'p') portalScreen();
+}
+
+function burst(x, y, cols = ['#FFD84D', '#FF4D3D', '#FFFFFF', '#43D17A']) {
+  for (let k = 0; k < 20; k++) {
+    const d = document.createElement('i');
+    d.className = 'px';
+    d.style.cssText = `left:${x}px;top:${y}px;background:${cols[k % cols.length]};--dx:${(Math.random() - 0.5) * 240}px;--dy:${-Math.random() * 170 + 30}px`;
+    $('scene').appendChild(d);
+    setTimeout(() => d.remove(), 800);
+  }
+}
+
+function triggerFullScreenCelebration() {
+  for (let w = 0; w < 5; w++) {
+    setTimeout(() => {
+      for (let k = 0; k < 14; k++) {
+        const d = document.createElement('i');
+        d.className = 'cf';
+        d.style.cssText = `left:${15 + Math.random() * 70}vw;top:${20 + Math.random() * 50}vh;background:${['#FFD84D', '#FF4D3D', '#59C9F5', '#43D17A', '#FF8AD0'][k % 5]};--dx:${(Math.random() - 0.5) * 260}px;--dy:${-Math.random() * 200 - 20}px`;
+        document.body.appendChild(d);
+        setTimeout(() => d.remove(), 700);
+      }
+    }, w * 180);
+  }
+}
+
+function triggerRibbonSurgeAndCheer(ticketId) {
+  const story = $('story');
+  story.classList.add('surge');
+  document.querySelectorAll('.cheer-tag').forEach(el => {
+    el.textContent = `CHEER! ${ticketId} FIXED!`;
+  });
+  setTimeout(() => story.classList.remove('surge'), 1800);
+}
+
+// 60MS HIT-STOP + SCREEN SHAKE + REAL SPRITE ANIMATION FRAMES
+function triggerHitStopAndShake() {
+  if (matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+  document.body.classList.add('hit-stop');
+  setTimeout(() => {
+    document.body.classList.remove('hit-stop');
+    const scEl = $('scene');
+    scEl.classList.remove('scene-shake');
+    void scEl.offsetWidth;
+    scEl.classList.add('scene-shake');
+  }, 65);
+}
+
+function fix(i) {
+  if (busy || !T[i] || T[i].done) return;
+  busy = true;
+  sfx.pick();
+  const l = document.querySelectorAll('.lot')[i], tech = $('tech');
+  tech.classList.add('walk');
+  if (l) tech.style.left = (l.offsetLeft + l.offsetWidth / 2 - tech.offsetWidth / 2) + 'px';
+
+  let wf = 0;
+  clearInterval(walkTimer);
+  walkTimer = setInterval(() => {
+    wf = !wf;
+    tech.innerHTML = spr(wf ? TECH_W1 : TECH_W2, sc);
+  }, 110);
+
+  fixTimer1 = setTimeout(() => {
+    clearInterval(walkTimer);
+    tech.classList.remove('walk');
+    tech.innerHTML = spr(TECH_SQUASH, sc);
+    const b = l ? l.querySelector('.bug') : null;
+    const bspr = $('bspr' + i);
+    if (b) b.classList.add('hit');
+    if (bspr) bspr.innerHTML = spr(BUG_HIT, sc);
+    chip(i, 'IN PROGRESS', 's-WORK');
+    triggerHitStopAndShake();
+    sfx.blip();
+  }, 760);
+
+  fixTimer2 = setTimeout(() => {
+    tech.innerHTML = spr(TECH_IDLE, sc);
+    const slot = $('bslot' + i);
+    const b = slot ? slot.querySelector('.bug') : null;
+    if (b) {
+      const r = b.getBoundingClientRect(), s = $('scene').getBoundingClientRect();
+      burst(r.left - s.left + r.width / 2, r.top - s.top + 30);
+    }
+    if (slot) {
+      slot.innerHTML = '<div class="fixed">FIXED</div>';
+    }
+    T[i].done = 1;
+    left = T.filter(x => !x.done).length;
+    score += (T[i].p === 'P1' ? 200 : 100) * bump() * (T[i].breach ? 0.5 : 1);
+    renderQueue();
+    sfx.fix();
+    hud();
+    updateDangerVignette();
+    busy = false;
+    triggerRibbonSurgeAndCheer(T[i].id);
+    if (activeTab === 'w') boss();
+    if (activeTab === 'p') portalScreen();
+
+    if (!left) {
+      hi = Math.max(hi, score);
+      hud();
+      const breaches = T.filter(t => t.breach).length;
+      $('scScore').textContent = Math.round(score);
+      $('scCombo').textContent = maxCombo + 'x';
+      $('scBreach').textContent = breaches;
+      $('win').classList.add('on');
+      sfx.win();
+      triggerFullScreenCelebration();
+    }
+  }, 1320);
+}
+
+// 2-FRAME BUG SCUTTLE + COMBO BAR DRAIN LOOP (PAUSES WHEN TAB HIDDEN OR SCENE OFFSCREEN)
+setInterval(() => {
+  if (document.hidden || !sceneVisible || busy) return;
+  bugFrameToggle = !bugFrameToggle;
+  const mat = bugFrameToggle ? BUG_F2 : BUG_F1;
+  T.forEach((t, i) => {
+    if (t.done) return;
+    const el = $('bspr' + i);
+    if (el) el.innerHTML = spr(mat.map(r => r.replace(/r/g, t.c)), sc);
+  });
+  if (last) {
+    const elapsed = Date.now() - last;
+    const fill = $('comboBarFill');
+    if (elapsed > 9000) {
+      combo = 1;
+      last = 0;
+      hud();
+    } else if (fill) {
+      const remainPct = Math.max(15, ((9000 - elapsed) / 9000) * (combo / 4) * 100);
+      fill.style.width = remainPct + '%';
+    }
+  }
+}, 500);
+
+$('lots').addEventListener('click', e => {
+  const b = e.target.closest('.bug');
+  if (b) fix(+b.dataset.i);
+});
+
+$('queue').addEventListener('click', e => {
+  const f = e.target.closest('[data-qfix]');
+  if (f) { fix(+f.dataset.qfix); return; }
+  const qb = e.target.closest('[data-qboss]');
+  if (qb) {
+    selectedBoss = +qb.dataset.qboss;
+    bi = 0;
+    tab('w');
+    $('deck').scrollIntoView({ behavior: 'smooth' });
+  }
+});
+
+$('again').onclick = build;
+$('examWaveBtn').onclick = () => {
+  speedMult = 2;
+  $('examLbl').textContent = '2x Exam Week SLA';
+  $('examBtn').className = 'btn sm r';
+  build();
+};
+$('shareScoreBtn').onclick = () => {
+  const txt = `🕹️ INCIDENT-ZERO (BITS Pilani, Hyderabad Campus)\n🏆 CLEARANCE: ZERO OPEN INCIDENTS\n⭐ SCORE: ${Math.round(score)} | COMBO: ${maxCombo}x | BREACHES: ${T.filter(t => t.breach).length}`;
+  if (navigator.clipboard) navigator.clipboard.writeText(txt).catch(() => {});
+  $('shareScoreLbl').textContent = 'Copied scorecard!';
+  sfx.fix();
+  setTimeout(() => { $('shareScoreLbl').textContent = 'Copy scorecard'; }, 2200);
+};
+$('callReplayBtn').onclick = () => {
+  build();
+  $('scene').scrollIntoView({ behavior: 'smooth' });
+};
+$('callWbBtn').onclick = () => {
+  tab('w');
+  $('deck').scrollIntoView({ behavior: 'smooth' });
+};
+
+function lose(i) {
+  const t = T[i];
+  if (!t || t.done || t.hp < 1) return;
+  t.hp--;
+  heart(i);
+  tone(220, 0.12, 'square', 0, 0.05);
+  if (!t.hp) {
+    t.breach = 1;
+    combo = 1;
+    score = Math.max(0, score - 50);
+    hud();
+    sfx.err();
+    chip(i, 'BREACHED', 's-BRC');
+    const b = [...document.querySelectorAll('.bug')].find(x => +x.dataset.i === i);
+    if (b) {
+      b.classList.add('angry');
+      b.querySelector('.tag').textContent = 'BREACH ' + t.id;
+    }
+  }
+}
+
+setInterval(() => {
+  if (!document.hidden && sceneVisible && !timerPaused && left) {
+    T.forEach((t, i) => {
+      if (t.done) return;
+      t.age++;
+      const step = Math.max(2, Math.round(t.d / speedMult));
+      if (t.age % step === 0) lose(i);
+    });
+  }
+}, 1000);
+
+$('ff').onclick = () => {
+  T.forEach((t, i) => lose(i));
+  sfx.blip();
+};
+
+$('pauseBtn').onclick = () => {
+  timerPaused = !timerPaused;
+  $('pauseLbl').textContent = timerPaused ? 'Timer: PAUSED' : 'Timer: ON';
+  $('pauseBtn').className = 'btn sm ' + (timerPaused ? 'r' : 'w');
+};
+
+$('examBtn').onclick = () => {
+  speedMult = speedMult === 1 ? 2 : 1;
+  $('examLbl').textContent = speedMult === 2 ? '2x Exam Week SLA' : '1x Normal SLA';
+  $('examBtn').className = 'btn sm ' + (speedMult === 2 ? 'r' : 'y');
+  renderQueue();
+};
+
+// CARD 1 / 4: FULL 10-STATE LIFECYCLE BOARD
+const S = [
+  'NEW',
+  'CLASSIFIED',
+  'ASSIGNED',
+  'ACKNOWLEDGED',
+  'IN PROGRESS',
+  'ON HOLD',
+  'ESCALATED',
+  'RESOLVED',
+  'VERIFIED',
+  'CLOSED'
+];
+const M = [
+  'classify()',
+  'assign()',
+  'acknowledge()',
+  'start()',
+  'pauseSla()',
+  'escalate()',
+  'resolve()',
+  'verify()',
+  'close()'
+];
+let cur = 0;
+
+function shake(e) {
+  e.classList.remove('shake');
+  void e.offsetWidth;
+  e.classList.add('shake');
+}
+
+function track() {
+  $('track').innerHTML = S.map((s, i) => `
+    <div class="tile ${i < cur ? 'done' : i === cur ? 'now' : ''}" data-tile="${i}">
+      <span class="tile-num mono-num">${String(i + 1).padStart(2, '0')} / 10</span>
+      ${i === cur ? `<span class="pawn">${spr(TECH_IDLE, 3)}</span>` : ''}
+      <span>${s}</span>
+    </div>
+  `).join('');
+
+  $('moves').innerHTML = cur < 9
+    ? `<button class="btn y" data-m="go" type="button">${M[cur]}</button>` +
+      (cur === 4 ? `<button class="btn g" data-m="directResolve" type="button">resolve() directly</button>` : '') +
+      (cur < 8 ? `<button class="btn r" data-m="bad" type="button">close()</button>` : '')
+    : `<button class="btn y" data-m="reopen" type="button">reopen() [Guard Check]</button>
+       <button class="btn w" data-m="reset" type="button">Start over</button>`;
+  $('err').classList.remove('on');
+}
+
+$('moves').addEventListener('click', e => {
+  const m = e.target.dataset.m;
+  if (!m) return;
+  if (m === 'go') {
+    cur++;
+    cur === 9 ? sfx.fix() : sfx.pick();
+    track();
+  } else if (m === 'directResolve') {
+    cur = 7;
+    sfx.pick();
+    track();
+  } else if (m === 'reopen') {
+    cur = 4;
+    sfx.pick();
+    track();
+  } else if (m === 'reset') {
+    cur = 0;
+    track();
+  } else {
+    sfx.err();
+    shake($('track'));
+    const x = $('err');
+    x.textContent = `409 CONFLICT: close() is not allowed from ${S[cur]}. The next legal move is ${M[cur]}.`;
+    x.classList.add('on');
+  }
+});
+
+$('track').addEventListener('click', e => {
+  const tile = e.target.closest('[data-tile]');
+  if (!tile) return;
+  const idx = +tile.dataset.tile;
+  if (idx === cur + 1) {
+    cur++;
+    cur === 9 ? sfx.fix() : sfx.pick();
+    track();
+  } else if (idx !== cur) {
+    sfx.err();
+    shake($('track'));
+    const x = $('err');
+    x.textContent = `409 CONFLICT: Cannot jump pawn from ${S[cur]} to ${S[idx]}. Next legal move is ${M[cur] || 'reset'}.`;
+    x.classList.add('on');
+  }
+});
+
+// CARD 2 / 4 & 3 / 4: CARTRIDGES, PHYSICAL SLOTTING BAY, CRT SCREEN & VISIBLE DAG RIPPLE
+const BS = ['ASSIGNED', 'ACKNOWLEDGED', 'IN PROGRESS', 'RESOLVED', 'VERIFIED'];
+const BM = ['acknowledge()', 'start()', 'resolve()', 'verify()'];
+
+const TW = {
+  auth: ['SWD Core Auth', 50, 5],
+  erp: ['C-Block ERP', 16, 44],
+  lms: ['Block-G Library', 50, 48],
+  wifi: ['F-Block Wi-Fi', 84, 44],
+  host: ['Valmiki Bhavan', 56, 82],
+  mess: ['CP & Mess POS', 88, 82]
+};
+const E = [
+  ['auth', 'erp'],
+  ['auth', 'lms'],
+  ['auth', 'wifi'],
+  ['wifi', 'host'],
+  ['wifi', 'mess']
+];
+
+function boss() {
+  const t = T[selectedBoss] || T[0];
+  const hp = 4 - bi, dead = bi === 4;
+  $('screen').innerHTML = `
+    <div class="row" style="margin-bottom:16px;padding-bottom:12px;border-bottom:3px dashed var(--line)">
+      <b class="mono-num" style="font-size:13px">SELECT BPHC BOSS:</b>
+      ${T.map((item, idx) => `
+        <button class="btn sm ${idx === selectedBoss ? 'y' : 'w'}" data-selboss="${idx}" type="button">
+          ${item.id} (${item.w})
+        </button>
+      `).join('')}
+    </div>
+    <div style="display:flex;gap:28px;flex-wrap:wrap;align-items:center">
+      <div style="text-align:center">
+        ${spr(dead ? BUG_F1.map(r => r.replace(/r/g, 'g')) : BUG_F1.map(r => r.replace(/r/g, t.c)), 10)}
+        <div class="tag" style="margin-top:8px;display:inline-block;background:${dead ? '#43D17A' : '#FFD84D'}">${dead ? 'DEFEATED' : t.p + ' BOSS'}</div>
+      </div>
+      <div style="flex:1;min-width:240px">
+        <h3 style="margin:0 0 6px;font:700 28px 'Pixelify Sans'">${t.id} · ${t.n}</h3>
+        <div style="display:flex;gap:6px;margin:12px 0">
+          ${[0, 1, 2, 3].map(k => `<i style="flex:1;height:22px;border:3px solid var(--line);background:${k < hp ? '#FF4D3D' : '#fff'}"></i>`).join('')}
+        </div>
+        <div style="background:#E9E3FF;border:3px solid var(--line);padding:10px 12px;margin:10px 0;color:#1B1530;font-size:17px">
+          <b class="mono-num" style="font-size:13px">🤖 AI COPILOT (0.94 SIMILARITY):</b> ${t.hint}
+        </div>
+        <p style="margin:6px 0 14px;color:var(--soft)">State: <b>${BS[bi]}</b>. Allowed next move: <b>${dead ? 'none, the ticket is closed out' : BM[bi]}</b>.</p>
+        <div class="row">
+          ${dead
+            ? `<button class="btn y" data-b="r" type="button">Rematch</button>`
+            : `<button class="btn y" data-b="go" type="button">${BM[bi]}</button>` + (bi < 2 ? `<button class="btn r" data-b="bad" type="button">resolve()</button>` : '')
+          }
+        </div>
+        <div class="err" id="berr" role="alert"></div>
+      </div>
+    </div>
+  `;
+}
+
+// COMPUTE BLAST-RADIUS HOP DEPTH FOR TIMED DAG RIPPLE PULSES
+function computeBlastDepths(rootKey) {
+  const depths = {};
+  if (!rootKey) return depths;
+  depths[rootKey] = 0;
+  const q = [rootKey];
+  while (q.length) {
+    const curr = q.shift();
+    E.forEach(([a, b]) => {
+      if (a === curr && depths[b] === undefined) {
+        depths[b] = depths[curr] + 1;
+        q.push(b);
+      }
+    });
+  }
+  return depths;
+}
+
+function world() {
+  const depths = computeBlastDepths(out);
+  const dl = new Set(Object.keys(depths).filter(k => depths[k] > 0));
+  $('screen').innerHTML = `
+    <div style="position:relative;height:355px;background:repeating-conic-gradient(#B8F0C8 0 25%,#A6E6B8 0 50%) 0 0/24px 24px;border:3px solid #1B1530">
+      <svg viewBox="0 0 100 100" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%" aria-hidden="true">
+        ${E.map(([a, b], idx) => {
+          const broken = depths[a] !== undefined;
+          const x1 = TW[a][1], y1 = TW[a][2] + 9, x2 = TW[b][1], y2 = TW[b][2] + 9;
+          const delaySec = broken ? ((depths[a] || 0) * 0.35).toFixed(2) : '0';
+          return `
+            <line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${broken ? '#FF4D3D' : '#1B1530'}" stroke-width="4" stroke-dasharray="6 8" vector-effect="non-scaling-stroke"/>
+            ${broken ? `
+              <circle r="2.4" fill="#FFD84D" stroke="#FF4D3D" stroke-width="0.9">
+                <animateMotion path="M ${x1} ${y1} L ${x2} ${y2}" dur="0.85s" begin="${delaySec}s" repeatCount="indefinite"/>
+              </circle>
+            ` : ''}
+          `;
+        }).join('')}
+      </svg>
+      ${Object.entries(TW).map(([k, v]) => {
+        const hop = depths[k];
+        const isOut = k === out;
+        const isDel = dl.has(k);
+        const hopMs = isDel ? `+${hop * 140}ms RIPPLE` : 'OK';
+        return `
+          <button class="town ${isDel ? 'delayed-ripple' : ''}" data-k="${k}" type="button" style="left:${v[1]}%;top:${v[2]}%;animation-delay:${(hop || 0) * 0.25}s;background:${isOut ? '#FF4D3D' : isDel ? '#FFD84D' : '#43D17A'};color:${isOut ? '#FFF8DC' : '#1B1530'}">
+            ${v[0]}<br><small>${isOut ? '⚡ OUTAGE ROOT' : isDel ? 'DELAYED (' + hopMs + ')' : 'ONLINE'}</small>
+          </button>
+        `;
+      }).join('')}
+    </div>
+    <div class="row" style="margin-top:16px">
+      <button class="btn g" data-k="clear" type="button">All clear</button>
+      <button class="btn r" data-k="cycle" type="button">+ Illegal road</button>
+      <button class="btn y" data-k="storm" type="button">⚡ Storm Drill</button>
+    </div>
+    <p style="color:var(--soft);margin-bottom:0">Click any BPHC zone to knock it out: watch the outage pulse travel down each dependency edge and trigger timed blast-radius delays.</p>
+    <div class="err" id="werr" role="alert"></div>
+  `;
+}
+
+let selectedPortalLoc = 1;
+function portalScreen() {
+  const steps = ['NEW', 'CLASS', 'ASSIG', 'WORK', 'RESOL', 'CLOSE'];
+  $('screen').innerHTML = `
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px">
+      <div>
+        <h3 style="margin:0 0 8px;font:700 26px 'Pixelify Sans'">Report BPHC Issue</h3>
+        <div class="mono-num" style="font-size:13px;font-weight:700;margin-bottom:6px">1. PICK BPHC BUILDING:</div>
+        <div class="row" style="margin-bottom:10px">
+          ${T.map((t, i) => `
+            <button class="btn sm ${i === selectedPortalLoc ? 'y' : 'w'}" data-ploc="${i}" type="button">${t.w}</button>
+          `).join('')}
+        </div>
+        <div class="mono-num" style="font-size:13px;font-weight:700">2. SYMPTOM:</div>
+        <input class="inp" id="pInp" type="text" value="Wi-Fi dropping in F-Block Lab 302 near On The Rocks">
+        <div style="background:#E9E3FF;border:3px solid var(--line);padding:10px;margin-bottom:12px;color:#1B1530;font-size:16px">
+          <b class="mono-num" style="font-size:13px">⚡ AI POWER-UP CHIP (94% CONFIDENCE):</b><br>
+          Auto-tagged: <b>${T[selectedPortalLoc].cat}</b> · Priority: <b>${T[selectedPortalLoc].p}</b> · Linked to <b>${T[selectedPortalLoc].id}</b>
+        </div>
+        <button class="btn y" data-pact="spawn" type="button">Spawn Bug on Campus</button>
+      </div>
+      <div>
+        <h3 style="margin:0 0 8px;font:700 26px 'Pixelify Sans'">My 6-Step Quest Map</h3>
+        ${T.map(t => {
+          const stIdx = t.done ? 4 : 2;
+          return `
+            <div style="padding:8px 0;border-top:2px dashed var(--line)">
+              <div style="display:flex;justify-content:space-between">
+                <b>${t.id} · ${t.w}</b>
+                <span class="mono-num" style="font-size:13px;font-weight:700">${t.done ? '✔ FIXED' : t.hp + '♥ LEFT'}</span>
+              </div>
+              <div class="mini-track">
+                ${steps.map((s, idx) => `<div class="mini-step ${idx < stIdx ? 'done' : idx === stIdx ? 'now' : ''}">${s}</div>`).join('')}
+              </div>
+            </div>
+          `;
+        }).join('')}
+      </div>
+    </div>
+  `;
+}
+
+// SYSTEM SPECS SCREEN (ZERO MARKS/SCORES — EXPLAINS FEATURES ONLY)
+let activeSpec = 'func';
+const SPECS = {
+  func: [
+    'Functionality — Guarded Lifecycle & Role Ergonomics',
+    'Enforces a strict 10-state machine where every transition is validated against the caller’s role. The frontend dynamically renders only the legal allowedCommands for the active state, while illegal API transitions are rejected with RFC 7807 HTTP 409 ProblemDetails.',
+    'if (!ticket.allowedCommands(actor).contains(cmd)) {\n  throw new IllegalStateTransitionException(ticket.getId(), cmd);\n}'
+  ],
+  tech: [
+    'Technical Depth — Concurrency Control & Cryptographic Audit Chain',
+    'Prevents lost updates when two technicians edit the same ticket via JPA @Version optimistic locking, and seals every state mutation into an append-only SHA-256 hash chain so historical tampering is immediately detected.',
+    'String hash = DigestUtils.sha256Hex(prevHash + "|" + payload);\nif (!hash.equals(block.getCurrHash())) throw new TamperDetectedException(block.getId());'
+  ],
+  sys: [
+    'System Design — Pluggable SLA Strategies & Virtual Thread Storm Engine',
+    'Swaps SLA calculation rules at runtime using Spring SLAPolicyStrategy beans (Normal vs Exam Week 2x drain), pauses SLA timers automatically in ON HOLD, and absorbs high-concurrency alert floods using Java 21 Virtual Threads.',
+    '@Bean\npublic Executor stormWaveExecutor() {\n  return Executors.newVirtualThreadPerTaskExecutor();\n}'
+  ],
+  inno: [
+    'AIOps & Dependency DAG — Blast Radius & Runbook Copilot',
+    'Models BITS Pilani, Hyderabad Campus infrastructure as a Directed Acyclic Graph (DAG). Outages propagate downstream delay flags via BFS, new edges are checked for loops via DFS cycle detection, and the AI Copilot retrieves past fixes by similarity.',
+    'if (dagEngine.createsCycle(sourceTown, targetTown)) {\n  throw new CyclicDependencyException(sourceTown, targetTown);\n}'
+  ],
+  ux: [
+    'User Experience — Tactile BPHC Campus Arcade & Accessibility',
+    'Turns enterprise IT service management into a playable BITS Hyderabad diorama with real-time SLA heart meters, keyboard-accessible controls, semantic ARIA live regions, and automatic prefers-reduced-motion support.',
+    '@media (prefers-reduced-motion: reduce) {\n  * { animation: none !important; transition: none !important; }\n}'
+  ]
+};
+
+function rubricScreen() {
+  const r = SPECS[activeSpec];
+  $('screen').innerHTML = `
+    <div class="row" style="margin-bottom:14px">
+      <button class="btn sm ${activeSpec === 'func' ? 'y' : 'w'}" data-rub="func" type="button">Functionality</button>
+      <button class="btn sm ${activeSpec === 'tech' ? 'y' : 'w'}" data-rub="tech" type="button">Technical Depth</button>
+      <button class="btn sm ${activeSpec === 'sys' ? 'y' : 'w'}" data-rub="sys" type="button">System Design</button>
+      <button class="btn sm ${activeSpec === 'inno' ? 'y' : 'w'}" data-rub="inno" type="button">AIOps &amp; DAG</button>
+      <button class="btn sm ${activeSpec === 'ux' ? 'y' : 'w'}" data-rub="ux" type="button">User Experience</button>
+    </div>
+    <h3 style="margin:0 0 6px;font:700 26px 'Pixelify Sans'">${r[0]}</h3>
+    <p style="margin:0 0 10px;color:var(--soft)">${r[1]}</p>
+    <div class="code-box">${r[2]}</div>
+  `;
+}
+
+const CART_META = {
+  p: { n: 'Portal', code: 'ROM-01 // STUDENT PORTAL', title: '🕹️ SLOT 01 · STUDENT PORTAL ROM', col: '#FFD84D' },
+  w: { n: 'Workbench', code: 'ROM-02 // WORKBENCH', title: '🕹️ SLOT 02 · WORKBENCH ROM', col: '#FF4D3D' },
+  c: { n: 'Command', code: 'ROM-03 // COMMAND DAG', title: '🕹️ SLOT 03 · COMMAND DAG ROM', col: '#43D17A' },
+  r: { n: 'Specs', code: 'ROM-04 // SYSTEM SPECS', title: '🕹️ SLOT 04 · SYSTEM SPECS ROM', col: '#FF8AD0' }
+};
+
+function animateCartridgeSlot(t) {
+  const meta = CART_META[t] || CART_META.w;
+  const scEl = $('slottedCartridge');
+  const scr = $('screen');
+  if ($('bayRomCode')) $('bayRomCode').textContent = meta.code;
+  if ($('slottedCartTitle')) $('slottedCartTitle').textContent = meta.title;
+  if (scEl) {
+    scEl.style.setProperty('--slot-col', meta.col);
+    scEl.classList.remove('inserting');
+    void scEl.offsetWidth;
+    scEl.classList.add('inserting');
+  }
+  if (scr) {
+    scr.classList.remove('crt-power');
+    void scr.offsetWidth;
+    scr.classList.add('crt-power');
+  }
+}
+
+function tab(t, fromCart = false) {
+  activeTab = t;
+  document.querySelectorAll('#tabs .btn').forEach(b => {
+    const on = b.dataset.t === t;
+    b.classList.toggle('y', on);
+    b.setAttribute('aria-selected', on);
+  });
+  const mapCart = { p: 'Portal', w: 'Workbench', c: 'Command', r: 'Specs' };
+  document.querySelectorAll('.cart').forEach(c => {
+    const isMatch = c.dataset.n === mapCart[t];
+    c.classList.toggle('active', isMatch);
+    if (isMatch && fromCart) {
+      c.classList.remove('slot-anim');
+      void c.offsetWidth;
+      c.classList.add('slot-anim');
+    }
+  });
+  animateCartridgeSlot(t);
+  if (t === 'w') boss();
+  else if (t === 'c') world();
+  else if (t === 'p') portalScreen();
+  else rubricScreen();
+}
+
+$('tabs').addEventListener('click', e => {
+  const b = e.target.closest('.btn');
+  if (b) {
+    sfx.slot();
+    tab(b.dataset.t, true);
+  }
+});
+
+document.querySelectorAll('.cart').forEach((c, i) => {
+  c.onmouseenter = () => tone(440 + i * 110, 0.08);
+  c.onclick = () => {
+    sfx.slot();
+    const n = c.dataset.n;
+    $('cmsg').textContent = `🕹️ ${n} cartridge physically slotted into CRT console bay!`;
+    const tMap = { Portal: 'p', Workbench: 'w', Command: 'c', Specs: 'r' };
+    tab(tMap[n] || 'w', true);
+    setTimeout(() => $('deck').scrollIntoView({ behavior: 'smooth' }), 180);
+  };
+});
+
+$('screen').addEventListener('click', e => {
+  const b = e.target.closest('button');
+  if (!b) return;
+  const d = b.dataset;
+  if (d.selboss !== undefined) {
+    selectedBoss = +d.selboss;
+    bi = T[selectedBoss].done ? 4 : 0;
+    sfx.blip();
+    boss();
+  } else if (d.b === 'go') {
+    bi++;
+    if (bi === 4) {
+      sfx.win();
+      if (!T[selectedBoss].done) fix(selectedBoss);
+    } else {
+      sfx.fix();
+    }
+    boss();
+  } else if (d.b === 'r') {
+    bi = 0;
+    boss();
+  } else if (d.b === 'bad') {
+    sfx.err();
+    shake($('screen'));
+    const x = $('berr');
+    x.textContent = '409 CONFLICT: resolve() is not allowed from ' + BS[bi] + '. Next legal move: ' + BM[bi] + '.';
+    x.classList.add('on');
+  } else if (d.k === 'clear') {
+    out = null;
+    world();
+    sfx.fix();
+  } else if (d.k === 'cycle') {
+    sfx.err();
+    shake($('screen'));
+    const x = $('werr');
+    x.textContent = 'CyclicDependencyException: Valmiki Bhavan to SWD Core Auth would close a loop (SWD Core Auth -> F-Block Wi-Fi -> Valmiki Bhavan). Road rejected.';
+    x.classList.add('on');
+  } else if (d.k === 'storm') {
+    out = 'auth';
+    world();
+    sfx.pick();
+    const x = $('werr');
+    x.textContent = '⚡ Syslog Storm absorbed via Virtual Threads -> Watch the DAG outage ripple cascade from SWD Core Auth across all 5 dependent BPHC zones!';
+    x.classList.add('on');
+  } else if (d.k) {
+    out = out === d.k ? null : d.k;
+    world();
+    out ? tone(260, 0.15, 'sawtooth', 120, 0.07) : sfx.fix();
+  } else if (d.ploc !== undefined) {
+    selectedPortalLoc = +d.ploc;
+    sfx.blip();
+    portalScreen();
+  } else if (d.pact === 'spawn') {
+    const inp = $('pInp');
+    const txt = inp && inp.value.trim() ? inp.value.trim().slice(0, 22) : T[selectedPortalLoc].n;
+    T[selectedPortalLoc].n = txt;
+    build();
+    sfx.fix();
+    $('scene').scrollIntoView({ behavior: 'smooth' });
+  } else if (d.rub) {
+    activeSpec = d.rub;
+    sfx.blip();
+    rubricScreen();
+  }
+});
+
+// CARD 4 / 4: GENUINE WEB CRYPTO SHA-256 BLOCKCHAIN LEDGER WITH LIVE AVALANCHE EFFECT
+const GENESIS_HASH = '0000000000000000000000000000000000000000000000000000000000000411';
+const CANONICAL_PAYLOADS = [
+  '{"block":412,"campus":"BITS Pilani, Hyderabad Campus","ticket":"INC-0842","event":"CREATE","zone":"C-Block SWD ERP","priority":"P1"}',
+  '{"block":413,"campus":"BITS Pilani, Hyderabad Campus","ticket":"INC-0842","event":"AI_TRIAGE","category":"AUTH_SSO","confidence":0.94,"priority":"P1"}',
+  '{"block":414,"campus":"BITS Pilani, Hyderabad Campus","ticket":"INC-0842","event":"ASSIGN","assignee":"srijan@hyderabad.bits-pilani.ac.in","priority":"P1"}',
+  '{"block":415,"campus":"BITS Pilani, Hyderabad Campus","ticket":"INC-0842","event":"ACKNOWLEDGE","slaHearts":3,"status":"ON_TIME"}',
+  '{"block":416,"campus":"BITS Pilani, Hyderabad Campus","ticket":"INC-0842","event":"EXEC_RUNBOOK","cmd":"kubectl rollout restart deploy/swd-keycloak"}',
+  '{"block":417,"campus":"BITS Pilani, Hyderabad Campus","ticket":"INC-0842","event":"RESOLVE","breaches":0,"verifiedBy":"SWD-Auditor"}'
+];
+
+let livePayloads = [...CANONICAL_PAYLOADS];
+let sealedHashes = [];
+let computedHashes = [];
+let prevHashes = [];
+let selectedLedgerIdx = 1;
+let verifyRunning = false;
+
+// Pure-JS FIPS 180-4 SHA-256 fallback (only used if crypto.subtle is unavailable on file://)
+function sha256Fallback(ascii) {
+  function rightRotate(v, amt) { return (v >>> amt) | (v << (32 - amt)); }
+  const mathPow = Math.pow, maxWord = mathPow(2, 32);
+  let i, j, result = '';
+  const words = [], asciiBitLength = ascii.length * 8;
+  let hash = [0x6a09e667, 0xbb67ae85, 0x3c6ef372, 0xa54ff53a, 0x510e527f, 0x9b05688c, 0x1f83d9ab, 0x5be0cd19];
+  const k = [
+    0x428a2f98,0x71374491,0xb5c0fbcf,0xe9b5dba5,0x3956c25b,0x59f111f1,0x923f82a4,0xab1c5ed5,
+    0xd807aa98,0x12835b01,0x243185be,0x550c7dc3,0x72be5d74,0x80deb1fe,0x9bdc06a7,0xc19bf174,
+    0xe49b69c1,0xefbe4786,0x0fc19dc6,0x240ca1cc,0x2de92c6f,0x4a7484aa,0x5cb0a9dc,0x76f988da,
+    0x983e5152,0xa831c66d,0xb00327c8,0xbf597fc7,0xc6e00bf3,0xd5a79147,0x06ca6351,0x14292967,
+    0x27b70a85,0x2e1b2138,0x4d2c6dfc,0x53380d13,0x650a7354,0x766a0abb,0x81c2c92e,0x92722c85,
+    0xa2bfe8a1,0xa81a664b,0xc24b8b70,0xc76c51a3,0xd192e819,0xd6990624,0xf40e3585,0x106aa070,
+    0x19a4c116,0x1e376c08,0x2748774c,0x34b0bcb5,0x391c0cb3,0x4ed8aa4a,0x5b9cca4f,0x682e6ff3,
+    0x748f82ee,0x78a5636f,0x84c87814,0x8cc70208,0x90befffa,0xa4506ceb,0xbef9a3f7,0xc67178f2
+  ];
+  ascii += '\x80';
+  while (ascii.length % 64 - 56) ascii += '\x00';
+  for (i = 0; i < ascii.length; i++) {
+    j = ascii.charCodeAt(i);
+    words[i >> 2] |= j << ((3 - i) % 4) * 8;
+  }
+  words[words.length] = (asciiBitLength / maxWord) | 0;
+  words[words.length] = asciiBitLength;
+  for (j = 0; j < words.length;) {
+    const w = words.slice(j, j += 16), oldHash = hash.slice(0);
+    for (i = 0; i < 64; i++) {
+      const w15 = w[i - 15], w2 = w[i - 2];
+      const a = hash[0], e = hash[4];
+      const temp1 = hash[7] + (rightRotate(e, 6) ^ rightRotate(e, 11) ^ rightRotate(e, 25)) + ((e & hash[5]) ^ ((~e) & hash[6])) + k[i] +
+        (w[i] = (i < 16) ? w[i] : (w[i - 16] + (rightRotate(w15, 7) ^ rightRotate(w15, 18) ^ (w15 >>> 3)) + w[i - 7] + (rightRotate(w2, 17) ^ rightRotate(w2, 19) ^ (w2 >>> 10))) | 0);
+      const temp2 = (rightRotate(a, 2) ^ rightRotate(a, 13) ^ rightRotate(a, 22)) + ((a & hash[1]) ^ (a & hash[2]) ^ (hash[1] & hash[2]));
+      hash = [(temp1 + temp2) | 0].concat(hash);
+      hash[4] = (hash[4] + temp1) | 0;
+      hash.pop();
+    }
+    for (i = 0; i < 8; i++) hash[i] = (hash[i] + oldHash[i]) | 0;
+  }
+  for (i = 0; i < 8; i++) {
+    for (j = 3; j + 1; j--) {
+      const b = (hash[i] >> (j * 8)) & 255;
+      result += ((b < 16) ? 0 : '') + b.toString(16);
+    }
+  }
+  return result;
+}
+
+// GENUINE WEB CRYPTO SHA-256 DIGEST
+async function computeSha256Hex(message) {
+  if (window.crypto && window.crypto.subtle) {
+    try {
+      const data = new TextEncoder().encode(message);
+      const buf = await window.crypto.subtle.digest('SHA-256', data);
+      return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+    } catch (e) {}
+  }
+  return sha256Fallback(unescape(encodeURIComponent(message)));
+}
+
+function shortHash(h) {
+  return h ? h.slice(0, 6) + '..' + h.slice(-4) : '......';
+}
+
+async function initLedgerHashes() {
+  let prev = GENESIS_HASH;
+  sealedHashes = [];
+  for (let i = 0; i < 6; i++) {
+    const h = await computeSha256Hex(prev + '|' + CANONICAL_PAYLOADS[i]);
+    sealedHashes.push(h);
+    prev = h;
+  }
+  await recomputeLedgerChain(false);
+}
+
+async function recomputeLedgerChain(updateInputVal = false) {
+  let prev = GENESIS_HASH;
+  computedHashes = [];
+  prevHashes = [];
+  for (let i = 0; i < 6; i++) {
+    prevHashes.push(prev);
+    const h = await computeSha256Hex(prev + '|' + livePayloads[i]);
+    computedHashes.push(h);
+    prev = h;
+  }
+  renderLedgerChain();
+  updateLedgerInspector(updateInputVal);
+}
+
+function renderLedgerChain(overrideStates = null) {
+  let firstBroken = -1;
+  for (let i = 0; i < 6; i++) {
+    if (computedHashes[i] !== sealedHashes[i] && firstBroken === -1) {
+      firstBroken = i;
+    }
+  }
+
+  $('chain').innerHTML = computedHashes.map((h, i) => {
+    const isMatched = h === sealedHashes[i];
+    const isDirectlyEdited = livePayloads[i] !== CANONICAL_PAYLOADS[i];
+    let stateClass = overrideStates ? (overrideStates[i] || '') : (isMatched ? 'ok' : 'bad');
+    const selClass = i === selectedLedgerIdx ? 'selected' : '';
+    const statusLabel = isMatched
+      ? 'SEALED'
+      : isDirectlyEdited
+        ? 'TAMPERED!'
+        : 'AVALANCHE!';
+    const linkBroken = i < 5 && (computedHashes[i] !== sealedHashes[i]);
+    return `
+      <button class="blk ${stateClass} ${selClass}" data-i="${i}" type="button" aria-label="Block ${412 + i}. Click to inspect or edit payload.">
+        #0${412 + i} · <small>${statusLabel}</small><br>
+        <span>${shortHash(h)}</span>
+      </button>${i < 5 ? `<i class="link ${linkBroken ? 'broken' : ''}"></i>` : ''}
+    `;
+  }).join('');
+
+  if (firstBroken === -1) {
+    $('lmsg').textContent = '✔ All 6 blocks match their cryptographic SHA-256 seals.';
+  } else {
+    const cascadeCount = 6 - firstBroken;
+    $('lmsg').textContent = `⚡ AVALANCHE EFFECT: Block #0${412 + firstBroken} payload changed → ${cascadeCount} block(s) (#0${412 + firstBroken}–#0417) SHA-256 hashes scrambled!`;
+  }
+}
+
+function updateLedgerInspector(setTextarea = true) {
+  const idx = selectedLedgerIdx;
+  const isMatch = computedHashes[idx] === sealedHashes[idx];
+  $('ledgerEditTitle').textContent = `EDITING BLOCK #0${412 + idx} PAYLOAD (LIVE SHA-256 AVALANCHE)`;
+  const badge = $('ledgerSealBadge');
+  badge.textContent = isMatch ? 'SEALED · SHA-256 MATCH' : 'BROKEN · HASH MISMATCH';
+  badge.className = 'chip mono-num ' + (isMatch ? 's-DONE' : 's-BRC');
+
+  if (setTextarea) {
+    $('ledgerPayloadInput').value = livePayloads[idx];
+  }
+  $('ledgerPrevHashBox').textContent = prevHashes[idx] || GENESIS_HASH;
+  $('ledgerExpectedHashBox').textContent = sealedHashes[idx] || '';
+  const compBox = $('ledgerComputedHashBox');
+  compBox.textContent = computedHashes[idx] || '';
+  compBox.classList.toggle('mismatch', !isMatch);
+}
+
+$('chain').addEventListener('click', e => {
+  const b = e.target.closest('.blk');
+  if (!b) return;
+  selectedLedgerIdx = +b.dataset.i;
+  sfx.blip();
+  renderLedgerChain();
+  updateLedgerInspector(true);
+});
+
+$('ledgerPayloadInput').addEventListener('input', async e => {
+  livePayloads[selectedLedgerIdx] = e.target.value;
+  tone(300 + (e.target.value.length % 12) * 35, 0.04, 'sawtooth', 0, 0.04);
+  await recomputeLedgerChain(false);
+});
+
+$('mutBtn').onclick = async () => {
+  const idx = selectedLedgerIdx;
+  if (livePayloads[idx].includes('"P1"')) {
+    livePayloads[idx] = livePayloads[idx].replace('"P1"', '"P4_TAMPERED"');
+  } else {
+    livePayloads[idx] = livePayloads[idx].slice(0, -1) + ',"tampered":true}';
+  }
+  sfx.err();
+  await recomputeLedgerChain(true);
+};
+
+$('ver').onclick = () => {
+  if (verifyRunning) return;
+  verifyRunning = true;
+  const st = ['', '', '', '', '', ''];
+  let i = 0;
+  const t = setInterval(() => {
+    if (computedHashes[i] !== sealedHashes[i]) {
+      st[i] = 'bad';
+      for (let j = i + 1; j < 6; j++) st[j] = 'bad';
+      renderLedgerChain(st);
+      sfx.err();
+      $('lmsg').textContent = `🚨 Verification halted at Block #0${412 + i}: computed SHA-256 (${shortHash(computedHashes[i])}) != sealed (${shortHash(sealedHashes[i])}). Downstream chain rejected!`;
+      clearInterval(t);
+      verifyRunning = false;
+      return;
+    }
+    st[i] = 'ok';
+    renderLedgerChain(st);
+    tone(392 + i * 70, 0.1);
+    i++;
+    if (i === 6) {
+      clearInterval(t);
+      verifyRunning = false;
+      $('lmsg').textContent = '✔ Cryptographic verification passed: all 6 SHA-256 digests match.';
+      sfx.fix();
+    }
+  }, 320);
+};
+
+$('rep').onclick = async () => {
+  livePayloads = [...CANONICAL_PAYLOADS];
+  sfx.fix();
+  await recomputeLedgerChain(true);
+  $('lmsg').textContent = '✔ Canonical payloads restored and all 6 SHA-256 seals verified intact.';
+};
+
+// 4 ARTICULATED WIGGLING CHARACTERS + PROPS ON THE THICK GREEN RIBBON BENDS (SMIL PIVOT ROTATION)
+function populateStoryActors() {
+  const K = '#1B1530', S = '#F2B38C';
+  const R = (a, b, x, y, d) => `<animateTransform attributeName="transform" type="rotate" values="${a} ${x} ${y};${b} ${x} ${y};${a} ${x} ${y}" keyTimes="0;.5;1" calcMode="spline" keySplines=".45 0 .55 1;.45 0 .55 1" dur="${d}s" repeatCount="indefinite"/>`;
+  const limb = (d, c, w, x, y, a, b, t, more = '') => `<g>${R(a, b, x, y, t)}<path d="${d}" fill="none" stroke="${K}" stroke-width="${w + 6}" stroke-linecap="round" stroke-linejoin="round"/><path d="${d}" fill="none" stroke="${c}" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round"/>${more}</g>`;
+  const shoe = (x, c) => `<rect x="${x}" y="188" width="26" height="13" rx="4" fill="${c}" stroke="${K}" stroke-width="4"/>`;
+  const fig = o => limb('M100 100L76 134', o.sl, 12, 100, 100, 16, -14, 1.3, `<circle cx="76" cy="136" r="9" fill="${S}" stroke="${K}" stroke-width="4"/>`)
+    + limb('M110 146L108 190', o.pa, 16, 110, 146, -22, 22, 1.1, shoe(94, o.sh))
+    + limb('M130 146L132 190', o.pa, 16, 130, 146, 22, -22, 1.1, shoe(124, o.sh))
+    + `<rect x="96" y="88" width="48" height="62" rx="16" fill="${o.tp}" stroke="${K}" stroke-width="5"/>${o.bib || ''}<circle cx="120" cy="64" r="22" fill="${S}" stroke="${K}" stroke-width="5"/><circle cx="112" cy="65" r="3.5" fill="${K}"/><circle cx="130" cy="65" r="3.5" fill="${K}"/><path d="M112 74Q121 82 130 74" fill="none" stroke="${K}" stroke-width="3.5" stroke-linecap="round"/>${o.hat}`
+    + limb('M140 100L168 80', o.sl, 12, 140, 100, -20, 18, 1, `<circle cx="170" cy="78" r="9" fill="${S}" stroke="${K}" stroke-width="4"/>${o.item}`);
+  const prop = (inner, x, y) => `<g>${R(-8, 8, x, y, 2.4)}${inner}</g>`;
+  const hair = c => `<path d="M98 62C94 30 146 30 142 62C132 50 108 50 98 62Z" fill="${c}" stroke="${K}" stroke-width="4" stroke-linejoin="round"/>`;
+  const A = [
+    { p: prop(`<circle cx="44" cy="50" r="34" fill="#FFD84D" stroke="${K}" stroke-width="5"/><circle cx="44" cy="50" r="23" fill="#FFF8DC" stroke="${K}" stroke-width="4"/><line x1="44" y1="50" x2="31" y2="56" stroke="#FF4D3D" stroke-width="5" stroke-linecap="round"/><g><animateTransform attributeName="transform" type="rotate" from="0 44 50" to="360 44 50" dur="6s" repeatCount="indefinite"/><line x1="44" y1="50" x2="44" y2="30" stroke="#38BDF8" stroke-width="5" stroke-linecap="round"/></g><circle cx="44" cy="50" r="4" fill="${K}"/>`, 44, 50),
+      o: { sl: '#FFFFFF', pa: '#E9D5FF', sh: '#FF4D3D', tp: '#38BDF8', hat: `<circle cx="100" cy="38" r="11" fill="#FF4D3D" stroke="${K}" stroke-width="4"/>` + hair('#FF4D3D'), item: `<polygon points="0,10 26,-8 14,20 9,11" transform="translate(166,52)" fill="#FFFFFF" stroke="${K}" stroke-width="3" stroke-linejoin="round"/>` } },
+    { p: prop(`<rect x="12" y="62" width="64" height="24" rx="6" fill="${K}"/><rect x="18" y="54" width="52" height="12" fill="#7C5CFF" stroke="${K}" stroke-width="4"/><line x1="44" y1="54" x2="44" y2="28" stroke="#FFF8DC" stroke-width="8" stroke-linecap="round"/><circle cx="44" cy="24" r="13" fill="#FF4D3D" stroke="${K}" stroke-width="4"/>`, 44, 70),
+      o: { sl: '#FFD84D', pa: '#38BDF8', sh: K, tp: '#FFD84D', bib: `<rect x="102" y="110" width="36" height="40" rx="8" fill="#38BDF8" stroke="${K}" stroke-width="4"/>`, hat: `<path d="M96 52C96 28 144 28 144 52Z" fill="#FFD84D" stroke="${K}" stroke-width="4" stroke-linejoin="round"/><rect x="90" y="48" width="60" height="9" rx="4" fill="#FFD84D" stroke="${K}" stroke-width="4"/>`, item: `<g transform="translate(170,78) rotate(30)"><rect x="-4" y="-38" width="8" height="38" rx="3" fill="#A9A4C0" stroke="${K}" stroke-width="3"/><circle cx="0" cy="-40" r="10" fill="#A9A4C0" stroke="${K}" stroke-width="3"/><rect x="-3" y="-52" width="6" height="9" fill="#FFF8DC"/></g>` } },
+    { p: prop(`<circle cx="44" cy="50" r="34" fill="#59C9F5" stroke="${K}" stroke-width="5"/><polygon points="28,52 58,34 58,70" fill="#FFD84D" stroke="${K}" stroke-width="4" stroke-linejoin="round"/><path d="M64 38Q74 50 64 62" fill="none" stroke="${K}" stroke-width="4" stroke-linecap="round"/>`, 44, 50),
+      o: { sl: '#FF8AD0', pa: '#7C5CFF', sh: '#FFFFFF', tp: '#FF8AD0', hat: hair('#7C5CFF') + `<path d="M97 64C92 28 148 28 143 64" fill="none" stroke="${K}" stroke-width="5"/><circle cx="97" cy="68" r="7" fill="#59C9F5" stroke="${K}" stroke-width="4"/><circle cx="143" cy="68" r="7" fill="#59C9F5" stroke="${K}" stroke-width="4"/>`, item: `<line x1="170" y1="78" x2="170" y2="26" stroke="${K}" stroke-width="4" stroke-linecap="round"/><path d="M170 26L204 37L170 50Z" fill="#43D17A" stroke="${K}" stroke-width="4" stroke-linejoin="round"/>` } },
+    { p: prop(`<path d="M44 14L78 26V54C78 74 60 86 44 92C28 86 10 74 10 54V26Z" fill="#3FD07F" stroke="${K}" stroke-width="5" stroke-linejoin="round"/><polyline points="28,52 40,64 62,38" fill="none" stroke="#FFF8DC" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>`, 44, 54),
+      o: { sl: '#7C5CFF', pa: K, sh: '#FFD84D', tp: '#7C5CFF', bib: `<circle cx="120" cy="106" r="4" fill="#FFD84D"/><circle cx="120" cy="122" r="4" fill="#FFD84D"/>`, hat: `<ellipse cx="120" cy="44" rx="26" ry="11" fill="#2B2160" stroke="${K}" stroke-width="4"/><circle cx="120" cy="32" r="4" fill="#2B2160"/>`, item: `<line x1="170" y1="78" x2="186" y2="40" stroke="${K}" stroke-width="5" stroke-linecap="round"/><circle cx="188" cy="34" r="10" fill="#FFD84D" stroke="${K}" stroke-width="4"/>` } }
+  ];
+  A.forEach((a, i) => {
+    $('actor' + i).innerHTML = `<div class="cheer-tag">CHEER!</div><svg viewBox="0 0 240 240" role="presentation">${a.p}${fig(a.o)}</svg>`;
+  });
+  if (matchMedia('(prefers-reduced-motion:reduce)').matches) {
+    document.querySelectorAll('.story-actor svg').forEach(v => v.pauseAnimations && v.pauseAnimations());
+  }
+}
+
+// INIT CORE MODULES
+populateIcons();
+const navLightImg = document.querySelector(".logo .light-only");
+const navDarkImg = document.querySelector(".logo .dark-only");
+document.querySelectorAll("img[data-brand=\"dark\"]").forEach(el => { if (navLightImg) el.src = navLightImg.src; });
+document.querySelectorAll("img[data-brand=\"light\"]").forEach(el => { if (navDarkImg) el.src = navDarkImg.src; });
+build();
+track();
+initLedgerHashes();
+tab('w');
+populateStoryActors();
+
+// HOVER-HOPPING LETTERS, BATCHED RAF PARALLAX + RIBBON MASCOT WALKER + INTERSECTION OBSERVER PAUSE
+(function() {
+  const h = $('heroTitle');
+  let lt = 0;
+  h.addEventListener('pointerover', e => {
+    if (e.target.classList.contains('hl') && Date.now() - lt > 90) {
+      lt = Date.now();
+      tone(400 + Math.random() * 500, 0.05);
+    }
+  });
+
+  // 4 Clickable Floating Corner Bugs in Hero Sky Stage (+25 Bonus Score on squash!)
+  const floatBugs = [];
+  [[5, 28, 'r'], [90, 48, 'o'], [12, 68, 'p'], [82, 14, 'l']].forEach(([x, y, c], idx) => {
+    const e = document.createElement('button');
+    e.type = 'button';
+    e.className = 'fb';
+    e.title = 'Bonus bug! Click for +25 pts';
+    e.style.cssText = `left:${x}%;top:${y}%`;
+    e.innerHTML = spr(BUG_F1.map(r => r.replace(/r/g, c)), 4);
+    e.onclick = ev => {
+      ev.stopPropagation();
+      sfx.fix();
+      score += 25;
+      if (score > hi) hi = score;
+      hud();
+      e.style.visibility = 'hidden';
+      setTimeout(() => { e.style.visibility = 'visible'; }, 2800);
+    };
+    document.querySelector('.stage').appendChild(e);
+    floatBugs.push({ el: e, rate: (idx % 2 === 0 ? -0.18 : -0.28) });
+  });
+
+  // Station Menu Drawer
+  const mb = $('mbtn'), mn = $('menu');
+  function tm(o) {
+    mn.hidden = !o;
+    mb.setAttribute('aria-expanded', o);
+  }
+  mb.onclick = () => { tm(mn.hidden); sfx.pick(); };
+  mn.addEventListener('click', e => {
+    const b = e.target.closest('button');
+    if (!b) return;
+    tm(false);
+    if (b.dataset.go) {
+      sfx.pick();
+      $(b.dataset.go).scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      tm(false);
+      $('win').classList.remove('on');
+    }
+  });
+
+  // THICK GLOWING SWEEPING GREEN RIBBON + WALKING MASCOT WITH GLOWING TRAIL
+  const sp = $('spine');
+  const walkerEl = $('ribbonWalker');
+  const walkerSpr = $('ribbonWalkerSpr');
+  const trailContainer = $('ribbonTrail');
+  let glowPath = null, glowHead = null, pathLen = 0;
+  let walkerStepToggle = false, lastSparkP = -1;
+
+  if (walkerSpr) walkerSpr.innerHTML = spr(TECH_IDLE, 4);
+
+  function updateRibbonAndMascot() {
+    if (!glowPath || !pathLen || !storyVisible) return;
+    const r = $('story').getBoundingClientRect();
+    const p = Math.min(1, Math.max(0.04, (innerHeight * 0.62 - r.top) / r.height));
+    glowPath.style.strokeDashoffset = String(pathLen * (1 - p));
+    const pt = glowPath.getPointAtLength(p * pathLen);
+    if (glowHead) {
+      glowHead.setAttribute('cx', pt.x);
+      glowHead.setAttribute('cy', pt.y);
+    }
+    if (walkerEl) {
+      walkerEl.style.left = pt.x + 'px';
+      walkerEl.style.top = (pt.y - 18) + 'px';
+      walkerStepToggle = !walkerStepToggle;
+      if (walkerSpr) walkerSpr.innerHTML = spr(walkerStepToggle ? TECH_W1 : TECH_W2, 4);
+    }
+    if (trailContainer && Math.abs(p - lastSparkP) > 0.018) {
+      lastSparkP = p;
+      const spark = document.createElement('i');
+      spark.className = 'ribbon-spark';
+      spark.style.left = pt.x + 'px';
+      spark.style.top = pt.y + 'px';
+      trailContainer.appendChild(spark);
+      setTimeout(() => spark.remove(), 750);
+    }
+  }
+
+  function spine() {
+    const s = $('story'), W = s.offsetWidth, H = s.offsetHeight, cs = [...s.querySelectorAll('.sc')];
+    if (W < 920) {
+      sp.innerHTML = '';
+      glowPath = null;
+      return;
+    }
+
+    let d = `M ${W * 0.5} 20`;
+    cs.forEach((c, i) => {
+      const y = c.offsetTop + c.offsetHeight * 0.48;
+      const isCardRight = c.classList.contains('rt');
+      const bendX = isCardRight ? W * 0.16 : W * 0.84;
+      const nextY = c.offsetTop + c.offsetHeight + 55;
+      d += ` C ${W * 0.5} ${y - c.offsetHeight * 0.42}, ${bendX} ${y - c.offsetHeight * 0.32}, ${bendX} ${y} S ${W * 0.5} ${y + c.offsetHeight * 0.42}, ${W * 0.5} ${nextY}`;
+
+      const actor = $('actor' + i);
+      if (actor) {
+        actor.style.left = bendX + 'px';
+        actor.style.top = y + 'px';
+      }
+    });
+
+    sp.setAttribute('viewBox', `0 0 ${W} ${H}`);
+    sp.setAttribute('width', W);
+    sp.setAttribute('height', H);
+    sp.innerHTML = `
+      <path d="${d}" fill="none" stroke="var(--line)" stroke-width="118" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="${d}" fill="none" stroke="var(--ribbon)" stroke-width="106" stroke-linecap="round" stroke-linejoin="round"/>
+      <path id="ribbonGlowPath" d="${d}" fill="none" stroke="var(--ribbon-glow)" stroke-width="76" stroke-linecap="round" stroke-linejoin="round" style="filter:drop-shadow(0 0 18px var(--ribbon-glow))"/>
+      <path d="${d}" fill="none" stroke="#1B1530" stroke-width="3" stroke-dasharray="18 28" stroke-linecap="round" opacity="0.35"/>
+      <circle id="ribbonGlowHead" cx="${W * 0.5}" cy="20" r="26" fill="#FFF8DC" stroke="#1B1530" stroke-width="5" style="filter:drop-shadow(0 0 16px #FFD84D)"/>
+    `;
+
+    glowPath = $('ribbonGlowPath');
+    glowHead = $('ribbonGlowHead');
+    if (glowPath) {
+      pathLen = glowPath.getTotalLength();
+      glowPath.style.strokeDasharray = String(pathLen);
+      updateRibbonAndMascot();
+    }
+  }
+
+  // SINGLE BATCHED REQUESTANIMATIONFRAME SCROLL HANDLER (3 PARALLAX LAYERS + RIBBON + MASCOT)
+  let scrollTicking = false;
+  function onScrollRaf() {
+    scrollTicking = false;
+    const sy = window.scrollY;
+    if (sy <= 950 && !matchMedia('(prefers-reduced-motion:reduce)').matches) {
+      const hills = $('heroHills'), trees = $('heroTrees'), lamps = $('heroLamps'), sun = $('heroSun'), clouds = $('clouds');
+      if (hills) hills.style.transform = `translateY(${(sy * 0.08).toFixed(1)}px)`;
+      if (trees) trees.style.transform = `translateY(${(sy * 0.16).toFixed(1)}px)`;
+      if (lamps) lamps.style.transform = `translateY(${(sy * 0.25).toFixed(1)}px)`;
+      if (sun) sun.style.transform = `translateY(${(sy * 0.22).toFixed(1)}px)`;
+      if (clouds) clouds.style.transform = `translateY(${(sy * 0.06).toFixed(1)}px)`;
+      floatBugs.forEach(fb => {
+        fb.el.style.transform = `translateY(${(sy * fb.rate).toFixed(1)}px)`;
+      });
+    }
+    updateRibbonAndMascot();
+  }
+
+  addEventListener('scroll', () => {
+    if (!scrollTicking) {
+      scrollTicking = true;
+      requestAnimationFrame(onScrollRaf);
+    }
+  }, { passive: true });
+
+  addEventListener('resize', spine);
+  new ResizeObserver(spine).observe($('story'));
+  setTimeout(spine, 250);
+
+  // PERFORMANCE: PAUSE OFFSCREEN SECTIONS & SMIL ANIMATIONS VIA INTERSECTIONOBSERVER
+  const visObs = new IntersectionObserver(entries => {
+    entries.forEach(en => {
+      if (en.target.id === 'scene') {
+        sceneVisible = en.isIntersecting;
+      } else if (en.target.id === 'story') {
+        storyVisible = en.isIntersecting;
+        document.querySelectorAll('.story-actor svg').forEach(svg => {
+          if (!svg.pauseAnimations) return;
+          if (en.isIntersecting && !document.hidden && !matchMedia('(prefers-reduced-motion:reduce)').matches) {
+            svg.unpauseAnimations();
+          } else {
+            svg.pauseAnimations();
+          }
+        });
+      }
+    });
+  }, { threshold: 0.02 });
+  visObs.observe($('scene'));
+  visObs.observe($('story'));
+
+  document.addEventListener('visibilitychange', () => {
+    document.querySelectorAll('.story-actor svg').forEach(svg => {
+      if (!svg.pauseAnimations) return;
+      if (document.hidden) svg.pauseAnimations();
+      else if (storyVisible && !matchMedia('(prefers-reduced-motion:reduce)').matches) svg.unpauseAnimations();
+    });
+  });
+
+  // IntersectionObserver Count-Up Numbers
+  const io = new IntersectionObserver(es => es.forEach(en => {
+    if (!en.isIntersecting) return;
+    io.unobserve(en.target);
+    const n = +en.target.dataset.n;
+    if (matchMedia('(prefers-reduced-motion:reduce)').matches) {
+      en.target.textContent = n;
+      return;
+    }
+    let v = 0;
+    const iv = setInterval(() => {
+      v = Math.min(n, v + Math.ceil(n / 24));
+      en.target.textContent = v;
+      if (v === n) {
+        clearInterval(iv);
+        tone(880, 0.08);
+      }
+    }, 40);
+  }), { threshold: 0.6 });
+  document.querySelectorAll('.num').forEach(e => io.observe(e));
+
+  // Counter-Scrolling BPHC Zones & Features Rails
+  const Z = [
+    'C-Block & Auditorium',
+    'F-Block & On The Rocks',
+    'Valmiki Bhavan',
+    'Gautam Bhavan',
+    'Meera & Malviya Bhavan',
+    'Block-G Central Library',
+    'Connaught Place (CP)',
+    'Student Activity Centre (SAC)',
+    'Mess 1 & Mess 2',
+    'SWD Nucleus (C-224)',
+    'Central Workshop'
+  ];
+  const K = [
+    '10-state guarded machine',
+    'SLA heart clock that pauses',
+    'Web Crypto SHA-256 ledger',
+    'BPHC overworld dependency DAG',
+    '4 role-guarded ROM cartridges',
+    'Java 21 virtual thread storm drills',
+    'AI Copilot 0.94 runbook matcher',
+    'RFC 7807 409 conflict guard'
+  ];
+  function rail(id, a, rev) {
+    $(id).innerHTML = `<div class="tr" ${rev ? 'style="animation-direction:reverse"' : ''}>${[0, 1].map(() => a.map((x, i) => `<span class="rp">${spr(BUG_F1.map(r => r.replace(/r/g, 'ropbl'[i % 5])), 2)}${x}</span>`).join('')).join('')}</div>`;
+  }
+  rail('r1', Z);
+  rail('r2', K, 1);
+
+  // Click Confetti on Empty Space
+  document.addEventListener('pointerdown', e => {
+    if (e.target.closest('button,a,input,textarea')) return;
+    for (let k = 0; k < 7; k++) {
+      const d = document.createElement('i');
+      d.className = 'cf';
+      d.style.cssText = `left:${e.clientX}px;top:${e.clientY}px;background:${['#FFD84D', '#FF4D3D', '#59C9F5', '#43D17A'][k % 4]};--dx:${(Math.random() - 0.5) * 120}px;--dy:${-Math.random() * 90 - 10}px`;
+      document.body.appendChild(d);
+      setTimeout(() => d.remove(), 650);
+    }
+  });
+
+  // Rock-solid Hero & Building Visibility Watchdog
+  function ensureHeroAndBuildings() {
+    const hEl = $('heroTitle');
+    if (hEl) {
+      const r = hEl.getBoundingClientRect();
+      if (r.height < 24 || r.width < 60) {
+        hEl.innerHTML = 'Real campus uptime.<br><span class="z-chr">Z</span>ero open incidents.';
+      }
+    }
+    const isNight = SKY_MODES[skyIdx] && SKY_MODES[skyIdx].dark;
+    document.querySelectorAll('.bld-art').forEach((el, idx) => {
+      const svg = el.querySelector('svg');
+      if (!svg || svg.getBoundingClientRect().height < 20) {
+        if (T[idx]) el.innerHTML = spr(T[idx].art(isNight), bldSc);
+      }
+    });
+  }
+  ensureHeroAndBuildings();
+  addEventListener('load', ensureHeroAndBuildings);
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(ensureHeroAndBuildings);
+  }
+})();
+
+(function(){const rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
+const sc=document.getElementById('scene');if(sc&&!sc.querySelector('.crt'))sc.insertAdjacentHTML('beforeend','<div class="crt" aria-hidden="true"></div>');
+document.querySelectorAll('#h1 .hl').forEach((e,i)=>e.style.setProperty('--i',i));
+if(!rm&&matchMedia('(pointer:fine)').matches){let t=0;const C=['#FFD84D','#FF4D3D','#59C9F5','#43D17A','#FF8AD0'];addEventListener('pointermove',e=>{const n=performance.now();if(n-t<45)return;t=n;const d=document.createElement('i');d.className='ptr';d.style.cssText='left:'+e.clientX+'px;top:'+e.clientY+'px;background:'+C[(n/45|0)%5];document.body.appendChild(d);setTimeout(()=>d.remove(),600)},{passive:true})}})();
+</script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+# Dependencies and builds
+node_modules/
+backend/target/
+frontend/node_modules/
+dist/
+build/
+.git/
+*.log
+*.jar
+*.class
+*.whl
+
+# Cloned skill repositories and test fixtures
+.agent/skills/impeccable/
+.agent/skills/playwright-cli/
+.agent/skills/taste-skill/
+.agent/skills/img2threejs/
+docs/awesome-design-md/
+docs/ui-audit/
+graphify-out/
+tmp/
+/tmp/

@@ -1,22 +1,20 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { api } from '../../services/api';
 import { IntakeAdvice } from '../../types';
+import { sound } from '../../services/sound';
+import { PixelIcon } from '../../services/pixelSprites';
 import {
   Mic,
   MicOff,
   Sparkles,
   AlertTriangle,
   BookOpen,
-  ArrowRight,
-  HelpCircle,
   CheckCircle2,
   Send,
   ChevronLeft,
-  Server,
 } from 'lucide-react';
 import { ActionButton } from '../../components/ui/ActionButton';
 import { StatusBadge } from '../../components/ui/StatusBadge';
-import { StatusDot } from '../../components/ui/StatusDot';
 import { CampusCoreRack3D } from '../../components/three/CampusCoreRack3D';
 
 interface PortalReportProps {
@@ -32,16 +30,20 @@ export const PortalReport: React.FC<PortalReportProps> = ({ onBack, onSubmitSucc
   const [isAdviceLoading, setIsAdviceLoading] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [advice, setAdvice] = useState<IntakeAdvice | null>(null);
-  const [showWhyPopover, setShowWhyPopover] = useState(false);
   const [deflected, setDeflected] = useState(false);
 
   const debounceTimerRef = useRef<any>(null);
 
   // Derive target service for 3D rack reactive focus
-  const detectedService = advice?.suggestedService || (title.toLowerCase().includes('lms') || title.toLowerCase().includes('quiz') || description.toLowerCase().includes('nalanda') ? 'APP-LMS' : undefined);
+  const detectedService =
+    advice?.suggestedService ||
+    (title.toLowerCase().includes('lms') || title.toLowerCase().includes('quiz') || description.toLowerCase().includes('nalanda')
+      ? 'APP-LMS'
+      : undefined);
 
   // Web Speech API Voice Recognition
   const startVoiceInput = () => {
+    sound.blip();
     const SpeechRecognition =
       (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
 
@@ -67,15 +69,11 @@ export const PortalReport: React.FC<PortalReportProps> = ({ onBack, onSubmitSucc
         setDescription((prev) => (prev ? prev + ' ' + speechText : speechText));
       }
       setIsRecording(false);
+      sound.pick();
     };
 
-    recognition.onerror = () => {
-      setIsRecording(false);
-    };
-
-    recognition.onend = () => {
-      setIsRecording(false);
-    };
+    recognition.onerror = () => setIsRecording(false);
+    recognition.onend = () => setIsRecording(false);
 
     recognition.start();
   };
@@ -96,9 +94,8 @@ export const PortalReport: React.FC<PortalReportProps> = ({ onBack, onSubmitSucc
           description: description || title,
         });
         setAdvice(res);
-      } catch (err) {
-        console.warn('AI Copilot advice offline fallback', err);
-        // Deterministic local heuristic fallback
+      } catch {
+        // Local heuristic fallback
         if (title.toLowerCase().includes('nalanda') || title.toLowerCase().includes('lms')) {
           setAdvice({
             suggestedCategory: 'AUTHENTICATION',
@@ -143,6 +140,7 @@ export const PortalReport: React.FC<PortalReportProps> = ({ onBack, onSubmitSucc
     e.preventDefault();
     if (!title.trim()) return;
 
+    sound.slot();
     try {
       setIsSubmitting(true);
       const res = await api.incidents.create({
@@ -153,10 +151,12 @@ export const PortalReport: React.FC<PortalReportProps> = ({ onBack, onSubmitSucc
       });
 
       if (res && res.id) {
+        sound.win();
         onSubmitSuccess(res.id);
       }
     } catch (err) {
       console.error('Failed to submit incident', err);
+      sound.err();
       alert('Error creating incident. Check backend connection.');
     } finally {
       setIsSubmitting(false);
@@ -171,60 +171,69 @@ export const PortalReport: React.FC<PortalReportProps> = ({ onBack, onSubmitSucc
           size="standard"
           variant="secondary"
           icon={<ChevronLeft className="w-4 h-4" />}
-          onClick={onBack}
+          onClick={() => {
+            sound.blip();
+            onBack();
+          }}
         >
           Back to Incident List
         </ActionButton>
-        <span className="text-xs font-mono text-[#9BA1AE]">
+        <span className="text-xs font-mono font-bold text-[var(--soft)]">
           STAGE: INTAKE COPILOT & TRIAGE
         </span>
       </div>
 
       {deflected ? (
-        <div className="surface-panel p-8 text-center max-w-xl mx-auto space-y-4 border border-[#10B981]/30 bg-[#101217]">
-          <div className="w-12 h-12 rounded-full bg-[#10B981]/15 text-[#10B981] flex items-center justify-center mx-auto">
-            <CheckCircle2 className="w-6 h-6" />
+        <div className="pixel-card-offset p-8 text-center max-w-xl mx-auto space-y-4" style={{ '--b': '#43D17A' } as any}>
+          <div className="w-16 h-16 bg-[#43D17A] border-[3px] border-[#1B1530] text-[#1B1530] flex items-center justify-center mx-auto shadow-[4px_4px_0_#1B1530]">
+            <CheckCircle2 className="w-8 h-8" />
           </div>
-          <h2 className="text-xl font-bold text-[#F3F4F6]">Knowledge Base Deflection Successful!</h2>
-          <p className="text-xs text-[#9BA1AE] leading-relaxed">
+          <h2 className="text-2xl font-bold text-[var(--fg)]">Self-Service Resolution Confirmed!</h2>
+          <p className="text-xs sm:text-sm text-[var(--soft)] leading-relaxed">
             Glad the BITS IT Self-Service solution worked for you. We recorded this resolution to reinforce AI knowledge ranking.
           </p>
-          <ActionButton size="standard" variant="primary" onClick={onBack}>
+          <ActionButton
+            size="cta"
+            variant="primary"
+            onClick={() => {
+              sound.blip();
+              onBack();
+            }}
+          >
             Return to Dashboard
           </ActionButton>
         </div>
       ) : (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
           {/* Left Form Column (7 cols) */}
-          <div className="lg:col-span-7 surface-panel p-6 bg-[#101217] border border-white/[0.08] space-y-5">
-            <div>
-              <div className="flex items-center gap-2 text-[#38BDF8] text-xs font-mono font-medium mb-1">
-                <Sparkles className="w-3.5 h-3.5" />
-                <span>AI-Assisted Intake Copilot</span>
-              </div>
-              <h1 className="text-xl font-bold text-[#F3F4F6] tracking-tight">
+          <div className="lg:col-span-7 pixel-card-offset" style={{ '--b': '#FFD84D' } as any}>
+            <span className="pixel-tag-badge">
+              <PixelIcon name="megaphone" scale={1.6} />
+              <span>SPAWN BPHC TICKET</span>
+            </span>
+
+            <div className="mb-6">
+              <h1 className="text-2xl sm:text-3xl font-bold text-[var(--fg)] tracking-tight">
                 Report Campus IT Incident
               </h1>
-              <p className="text-xs text-[#9BA1AE] mt-0.5">
+              <p className="text-xs sm:text-sm text-[var(--soft)] mt-1">
                 Describe the problem naturally. The system automatically classifies the service, extracts PII, and routes to on-call technicians.
               </p>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-5">
               {/* Title Field + Voice Input */}
               <div className="space-y-1.5">
                 <div className="flex items-center justify-between">
-                  <label className="text-xs font-medium text-[#F3F4F6]">Incident Title / Summary *</label>
+                  <label className="text-xs font-bold font-mono text-[var(--fg)] uppercase">
+                    Incident Title / Summary *
+                  </label>
                   <button
                     type="button"
                     onClick={startVoiceInput}
-                    className={`inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[11px] font-mono transition-colors ${
-                      isRecording
-                        ? 'bg-rose-500/20 text-rose-300 border border-rose-500/40 animate-pulse'
-                        : 'bg-white/[0.04] text-[#9BA1AE] border border-white/[0.08] hover:border-white/[0.16]'
-                    }`}
+                    className={`btn sm ${isRecording ? 'r animate-pulse' : 'w'} flex items-center gap-1`}
                   >
-                    {isRecording ? <MicOff className="w-3 h-3 text-rose-400" /> : <Mic className="w-3 h-3 text-[#38BDF8]" />}
+                    {isRecording ? <MicOff className="w-3.5 h-3.5" /> : <Mic className="w-3.5 h-3.5 text-[#FF4D3D]" />}
                     <span>{isRecording ? 'Listening...' : 'Voice Dictate'}</span>
                   </button>
                 </div>
@@ -234,51 +243,66 @@ export const PortalReport: React.FC<PortalReportProps> = ({ onBack, onSubmitSucc
                   placeholder="e.g. Cannot log into Nalanda LMS during quiz window"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
-                  className="w-full h-9 px-3 text-xs rounded bg-[#161920] border border-white/[0.08] text-[#F3F4F6] placeholder-[#646B7A] focus:outline-none focus:border-[#38BDF8] focus:ring-1 focus:ring-[#38BDF8]"
+                  className="w-full h-11 px-3 text-xs sm:text-sm font-mono font-bold bg-white text-[#1B1530] border-[3px] border-[var(--line)] shadow-[3px_3px_0_var(--shadow-col)] focus:outline-none"
                 />
               </div>
 
               {/* Description Field */}
               <div className="space-y-1.5">
-                <label className="text-xs font-medium text-[#F3F4F6]">Detailed Description</label>
+                <label className="text-xs font-bold font-mono text-[var(--fg)] uppercase">
+                  Detailed Description
+                </label>
                 <textarea
                   rows={4}
                   placeholder="Provide error codes, hostel room/bhawan, or steps to reproduce..."
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
-                  className="w-full p-3 text-xs rounded bg-[#161920] border border-white/[0.08] text-[#F3F4F6] placeholder-[#646B7A] focus:outline-none focus:border-[#38BDF8] focus:ring-1 focus:ring-[#38BDF8] resize-none"
+                  className="w-full p-3 text-xs sm:text-sm font-mono font-bold bg-white text-[#1B1530] border-[3px] border-[var(--line)] shadow-[3px_3px_0_var(--shadow-col)] focus:outline-none resize-none"
                 />
               </div>
 
               {/* Urgency Selector */}
               <div className="space-y-1.5">
-                <label className="text-xs font-medium text-[#F3F4F6]">Self-Reported Urgency</label>
-                <div className="grid grid-cols-3 gap-2">
+                <label className="text-xs font-bold font-mono text-[var(--fg)] uppercase">
+                  Self-Reported Urgency
+                </label>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
                   {[
-                    { val: 1, label: 'Critical / Exam Outage', desc: 'Active test or grading impacted' },
-                    { val: 2, label: 'High Priority', desc: 'Hostel wing or lab blocked' },
-                    { val: 3, label: 'Standard', desc: 'Routine inquiry or minor glitch' },
+                    { val: 1, label: 'Critical / Exam Outage', desc: 'Active test or grading impacted', col: 'bg-[#FF4D3D] text-[#FFF8DC]' },
+                    { val: 2, label: 'High Priority', desc: 'Hostel wing or lab blocked', col: 'bg-[#FF9F43] text-[#1B1530]' },
+                    { val: 3, label: 'Standard', desc: 'Routine inquiry or minor glitch', col: 'bg-[#FFD84D] text-[#1B1530]' },
                   ].map((opt) => (
                     <button
                       key={opt.val}
                       type="button"
-                      onClick={() => setUrgency(opt.val)}
-                      className={`p-2.5 rounded text-left transition-all cursor-pointer border ${
+                      onClick={() => {
+                        sound.blip();
+                        setUrgency(opt.val);
+                      }}
+                      className={`p-3 border-[3px] border-[var(--line)] text-left cursor-pointer transition-transform hover:-translate-y-0.5 ${
                         urgency === opt.val
-                          ? 'bg-[#1D212A] border-[#38BDF8] shadow-sm'
-                          : 'bg-[#161920] border-white/[0.06] hover:border-white/[0.12]'
+                          ? `${opt.col} shadow-[4px_4px_0_var(--shadow-col)] -translate-y-0.5`
+                          : 'bg-[var(--card)] text-[var(--fg)]'
                       }`}
                     >
-                      <div className="font-semibold text-xs text-[#F3F4F6]">{opt.label}</div>
-                      <div className="text-[11px] text-[#9BA1AE] mt-0.5 leading-tight">{opt.desc}</div>
+                      <div className="font-bold text-xs">{opt.label}</div>
+                      <div className="text-[11px] opacity-80 mt-1 leading-tight">{opt.desc}</div>
                     </button>
                   ))}
                 </div>
               </div>
 
               {/* Form Action Buttons */}
-              <div className="pt-2 flex items-center justify-end gap-3 border-t border-white/[0.06]">
-                <ActionButton size="standard" variant="outline" onClick={onBack} type="button">
+              <div className="pt-4 flex items-center justify-end gap-3 border-t-2 border-[var(--line)]">
+                <ActionButton
+                  size="standard"
+                  variant="outline"
+                  onClick={() => {
+                    sound.blip();
+                    onBack();
+                  }}
+                  type="button"
+                >
                   Cancel
                 </ActionButton>
                 <ActionButton
@@ -286,7 +310,7 @@ export const PortalReport: React.FC<PortalReportProps> = ({ onBack, onSubmitSucc
                   variant="primary"
                   type="submit"
                   isLoading={isSubmitting}
-                  icon={<Send className="w-3.5 h-3.5" />}
+                  icon={<Send className="w-4 h-4" />}
                 >
                   Submit Incident
                 </ActionButton>
@@ -296,36 +320,33 @@ export const PortalReport: React.FC<PortalReportProps> = ({ onBack, onSubmitSucc
 
           {/* Right Copilot Telemetry Column (5 cols) */}
           <div className="lg:col-span-5 space-y-4">
-            {/* Live 3D Hardware Telemetry Focus */}
-            <div className="surface-panel p-3 bg-[#101217] border border-white/[0.08]">
-              <div className="flex items-center justify-between mb-2 px-1">
-                <span className="text-[11px] font-mono text-[#9BA1AE] flex items-center gap-1.5">
-                  <Server className="w-3 h-3 text-[#38BDF8]" />
-                  <span>3D HARDWARE TELEMETRY FOCUS</span>
-                </span>
+            {/* Live 3D Hardware Telemetry Focus in CRT Screen */}
+            <div className="crt-frame">
+              <div className="flex items-center justify-between mb-2 text-xs font-mono font-bold text-[#FFF8DC]">
+                <span>3D HARDWARE TELEMETRY FOCUS</span>
                 {detectedService && (
-                  <span className="px-1.5 py-0.5 rounded text-[11px] font-mono bg-[#38BDF8]/10 text-[#7DD3FC] border border-[#38BDF8]/30">
-                    FOCUS: {detectedService}
+                  <span className="bg-[#38BDF8] text-[#1B1530] px-1.5 py-0.5">
+                    {detectedService}
                   </span>
                 )}
               </div>
-              <CampusCoreRack3D
-                selectedServiceId={detectedService}
-                className="h-[220px]"
-              />
+              <div className="crt-screen">
+                <CampusCoreRack3D
+                  selectedServiceId={detectedService}
+                  className="h-[200px]"
+                />
+              </div>
             </div>
 
             {/* AI Real-time Triage Suggestions */}
             {advice && (
-              <div className="surface-panel p-4 bg-[#101217] border border-white/[0.08] space-y-3">
-                <div className="flex items-center justify-between">
-                  <span className="text-[11px] font-mono font-semibold text-[#38BDF8] flex items-center gap-1.5">
-                    <Sparkles className="w-3.5 h-3.5" />
+              <div className="pixel-card bg-[var(--card)] space-y-3">
+                <div className="flex items-center justify-between font-mono text-xs font-bold text-[var(--fg)]">
+                  <span className="flex items-center gap-1.5 text-[#7C5CFF]">
+                    <Sparkles className="w-4 h-4" />
                     <span>AI INTAKE TRIAGE PREVIEW</span>
                   </span>
-                  <span className="text-[11px] font-mono text-[#9BA1AE]">
-                    Confidence: {Math.round((advice.confidence || 0.92) * 100)}%
-                  </span>
+                  <span>Confidence: {Math.round((advice.confidence || 0.92) * 100)}%</span>
                 </div>
 
                 <div className="flex flex-wrap gap-1.5">
@@ -334,47 +355,48 @@ export const PortalReport: React.FC<PortalReportProps> = ({ onBack, onSubmitSucc
                   <StatusBadge label={advice.priorityRationale || 'PRIORITY: P1'} variant="crit" isMono />
                 </div>
 
-                {/* A6 Deflection Card */}
+                {/* Instant KB Deflection Card */}
                 {advice.matchedKbs && advice.matchedKbs.length > 0 && (
-                  <div className="p-3 rounded bg-[#161920] border border-white/[0.07] space-y-2">
-                    <div className="flex items-center justify-between">
-                      <span className="text-[11px] font-semibold text-[#10B981] flex items-center gap-1">
-                        <BookOpen className="w-3 h-3" />
-                        <span>Instant Self-Service KB: {advice.matchedKbs[0].title}</span>
-                      </span>
+                  <div className="p-3 bg-[#43D17A]/15 border-2 border-[#1B1530] space-y-2">
+                    <div className="font-bold text-xs text-[#1B1530] flex items-center gap-1.5">
+                      <BookOpen className="w-3.5 h-3.5" />
+                      <span>Self-Service KB: {advice.matchedKbs[0].title}</span>
                     </div>
-                    <p className="text-xs text-[#F3F4F6] font-medium leading-relaxed">
+                    <p className="text-xs text-[#1B1530] font-medium leading-relaxed">
                       {advice.matchedKbs[0].solution || advice.matchedKbs[0].snippet}
                     </p>
-                    <ActionButton
-                      size="compact"
-                      variant="primary"
-                      onClick={() => setDeflected(true)}
+                    <button
+                      type="button"
+                      onClick={() => {
+                        sound.win();
+                        setDeflected(true);
+                      }}
+                      className="btn sm g w-full"
                     >
-                      ✓ This Solved My Issue!
-                    </ActionButton>
+                      ✔ This Solved My Issue!
+                    </button>
                   </div>
                 )}
 
-                {/* A1 Similar Duplicate Detection Warning */}
+                {/* Duplicate Warning */}
                 {advice.potentialDuplicates && advice.potentialDuplicates.length > 0 && (
-                  <div className="p-3 rounded bg-amber-500/10 border border-amber-500/25 space-y-2">
-                    <div className="flex items-center gap-1.5 text-amber-400 font-semibold text-[11px]">
-                      <AlertTriangle className="w-3.5 h-3.5 shrink-0" />
-                      <span>Similar Active Campus Outages (A1 RRF)</span>
+                  <div className="p-3 bg-[#FF9F43]/20 border-2 border-[#1B1530] space-y-2">
+                    <div className="flex items-center gap-1.5 font-bold text-xs text-[#1B1530]">
+                      <AlertTriangle className="w-4 h-4" />
+                      <span>Similar Active Outages Detected</span>
                     </div>
-                    <p className="text-xs text-[#9BA1AE] leading-normal">
-                      Similar reports detected. Upon submission, this ticket will be linked as a child to the primary incident for synchronized status:
+                    <p className="text-xs text-[var(--soft)]">
+                      Similar reports detected. This ticket will automatically link to the parent incident:
                     </p>
                     <div className="space-y-1">
                       {advice.potentialDuplicates.map((dup, idx) => (
                         <div
                           key={idx}
-                          className="flex items-center justify-between text-[11px] p-1.5 rounded bg-[#101217] border border-white/[0.06] font-mono"
+                          className="flex items-center justify-between text-xs p-1.5 bg-white border border-[#1B1530] font-mono"
                         >
-                          <span className="text-amber-300 font-semibold">{dup.number}</span>
-                          <span className="text-[#9BA1AE] truncate max-w-[140px]">{dup.title}</span>
-                          <span className="text-slate-400">{Math.round((dup.score || 0.88) * 100)}%</span>
+                          <span className="font-bold text-[#FF4D3D]">{dup.number}</span>
+                          <span className="truncate max-w-[140px] text-[#1B1530]">{dup.title}</span>
+                          <span className="font-bold">{Math.round((dup.score || 0.88) * 100)}%</span>
                         </div>
                       ))}
                     </div>

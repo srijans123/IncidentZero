@@ -1,0 +1,21 @@
+---
+source_file: "backend/src/test/java/edu/campus/iitsm/PersistenceAndListenersTest.java"
+type: "code"
+community: "Community 23"
+location: "L133"
+tags:
+  - graphify/code
+  - graphify/EXTRACTED
+  - community/Community_23
+---
+
+# .testAuditLedgerAndSlaTimerInTxListeners()
+
+## Connections
+- [[dot-empty()]] - `calls` [EXTRACTED]
+- [[IncidentCreated]] - `calls` [INFERRED]
+- [[PersistenceAndListenersTest]] - `method` [EXTRACTED]
+- [[SlaSnapshot]] - `calls` [INFERRED]
+- [[org.junit.jupiter.api.Test]] - `references` [EXTRACTED]
+
+#graphify/code #graphify/EXTRACTED #community/Community_23

@@ -1,83 +1,53 @@
 import React from 'react';
 import clsx from 'clsx';
 
-export type StatusDotState =
-  | 'NEW'
-  | 'ASSIGNED'
-  | 'INVESTIGATING'
-  | 'PAUSED'
-  | 'PAUSED_PENDING_USER_INFO'
-  | 'PAUSED_PENDING_VENDOR'
-  | 'REOPENED'
-  | 'RESOLVED'
-  | 'CLOSED'
-  | 'CANCELLED'
-  | 'ON_TRACK'
-  | 'AT_RISK'
-  | 'BREACHED'
-  | 'CONNECTED'
-  | 'DISCONNECTED'
-  | 'HEALTHY'
-  | 'WARNING'
-  | 'CRITICAL';
-
 interface StatusDotProps {
-  state: StatusDotState | string;
-  className?: string;
+  state?: string;
   pulse?: boolean;
+  className?: string;
 }
 
-export const StatusDot: React.FC<StatusDotProps> = ({ state, className, pulse = false }) => {
-  const normalized = state.toUpperCase();
+export const StatusDot: React.FC<StatusDotProps> = ({ state = 'HEALTHY', pulse = false, className }) => {
+  const upper = (state || '').toUpperCase();
 
-  let colorClasses = 'bg-slate-500';
-  let haloClasses = '';
-
+  let colorClass = 'bg-[#43D17A]';
   if (
-    normalized === 'ON_TRACK' ||
-    normalized === 'RESOLVED' ||
-    normalized === 'CLOSED' ||
-    normalized === 'CONNECTED' ||
-    normalized === 'HEALTHY'
+    upper.includes('BREACH') ||
+    upper.includes('CRIT') ||
+    upper.includes('DISCONNECT') ||
+    upper.includes('OUTAGE') ||
+    upper.includes('TAMPER') ||
+    upper.includes('P1')
   ) {
-    colorClasses = 'bg-[#10B981]';
-    if (pulse || normalized === 'CONNECTED') {
-      haloClasses = 'shadow-[0_0_0_3px_rgba(16,185,129,0.18)]';
-    }
+    colorClass = 'bg-[#FF4D3D]';
   } else if (
-    normalized === 'AT_RISK' ||
-    normalized.startsWith('PAUSED') ||
-    normalized === 'ASSIGNED' ||
-    normalized === 'WARNING'
+    upper.includes('WARN') ||
+    upper.includes('RISK') ||
+    upper.includes('PAUSE') ||
+    upper.includes('HOLD') ||
+    upper.includes('P2') ||
+    upper.includes('P3')
   ) {
-    colorClasses = 'bg-[#F59E0B]';
-    if (pulse) {
-      haloClasses = 'shadow-[0_0_0_3px_rgba(245,158,11,0.18)]';
-    }
+    colorClass = 'bg-[#FFD84D]';
   } else if (
-    normalized === 'BREACHED' ||
-    normalized === 'CRITICAL' ||
-    normalized === 'REOPENED' ||
-    normalized === 'P1'
+    upper.includes('INVESTIGATING') ||
+    upper.includes('NEW') ||
+    upper.includes('CLASSIFIED') ||
+    upper.includes('IN_PROGRESS') ||
+    upper.includes('WORK')
   ) {
-    colorClasses = 'bg-[#F43F5E]';
-    haloClasses = 'shadow-[0_0_0_3px_rgba(244,63,94,0.22)]';
-  } else if (normalized === 'INVESTIGATING' || normalized === 'NEW') {
-    colorClasses = 'bg-[#38BDF8]';
-    if (pulse) {
-      haloClasses = 'shadow-[0_0_0_3px_rgba(56,189,248,0.20)]';
-    }
+    colorClass = 'bg-[#59C9F5]';
   }
 
   return (
     <span
       className={clsx(
-        'status-dot inline-block w-2 h-2 min-w-[8px] min-h-[8px] max-w-[8px] max-h-[8px] rounded-full shrink-0 align-middle transition-all duration-200',
-        colorClasses,
-        haloClasses,
+        'inline-block w-2.5 h-2.5 border-2 border-[#1B1530] shrink-0',
+        colorClass,
+        pulse && 'animate-pulse',
         className
       )}
-      aria-label={`Status: ${state}`}
+      aria-hidden="true"
     />
   );
 };
