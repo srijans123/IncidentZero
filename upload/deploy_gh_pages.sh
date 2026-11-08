@@ -23,3 +23,4 @@ git push origin gh-pages --force
 cd - >/dev/null
 rm -rf "${TMP_DIR}"
 echo "✅ Successfully deployed to gh-pages branch!"
+

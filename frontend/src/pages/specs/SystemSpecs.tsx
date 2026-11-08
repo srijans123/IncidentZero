@@ -61,7 +61,7 @@ export const SystemSpecs: React.FC = () => {
               EXPORT SPECS JSON
             </button>
             <a
-              href="/landing.html"
+              href="./landing.html"
               onClick={() => sound.pick()}
               className="btn y"
             >

@@ -1760,7 +1760,7 @@ a,button,summary,label,select,[role="button"],.btn,.cart,.bug,.fb,.blk,.town,.ti
       <button class="btn" data-go="ledger" type="button"><span class="px-ico" data-ico="chain"></span>SHA-256 Ledger</button>
       <button class="btn" data-go="statsSection" type="button"><span class="px-ico" data-ico="trophy"></span>Guarantees</button>
       <button class="btn r" data-go="deck" type="button"><span class="px-ico" data-ico="bolt"></span>Open workbench</button>
-      <a href="http://127.0.0.1:5173/?tab=stage" onclick="launchReactApp('stage', event)" class="btn g" style="text-decoration:none"><span class="px-ico" data-ico="gamepad"></span>Launch Full App (React)</a>
+      <a href="./index.html?tab=stage" onclick="launchReactApp('stage', event)" class="btn g" style="text-decoration:none"><span class="px-ico" data-ico="gamepad"></span>Launch Full App (React)</a>
     </div>
   </div>
 </div>
@@ -2035,7 +2035,7 @@ a,button,summary,label,select,[role="button"],.btn,.cart,.bug,.fb,.blk,.town,.ti
   <h2>Ready when you are!</h2>
   <div class="row" style="justify-content:center">
     <button class="btn y" id="callWbBtn" type="button"><span class="px-ico" data-ico="wrench"></span>Open the workbench</button>
-    <a href="http://127.0.0.1:5173/?tab=workbench" onclick="launchReactApp('workbench', event)" class="btn y" style="text-decoration:none"><span class="px-ico" data-ico="bolt"></span>Launch Full App (React)</a>
+    <a href="./index.html?tab=workbench" onclick="launchReactApp('workbench', event)" class="btn y" style="text-decoration:none"><span class="px-ico" data-ico="bolt"></span>Launch Full App (React)</a>
     <button class="btn w" id="callReplayBtn" type="button"><span class="px-ico" data-ico="bug"></span>Respawn campus bugs</button>
   </div>
 </div>
@@ -2058,10 +2058,12 @@ const $ = id => document.getElementById(id);
 
 function launchReactApp(tab, e) {
   if (e && e.preventDefault) e.preventDefault();
-  const dest = (window.location.protocol === 'http:' || window.location.protocol === 'https:')
-    ? '/?tab=' + tab
-    : 'http://127.0.0.1:5173/?tab=' + tab;
-  window.location.href = dest;
+  if (window.location.protocol === 'file:') {
+    window.location.href = 'http://127.0.0.1:5173/?tab=' + tab;
+    return;
+  }
+  // Navigate relative to current directory on GitHub Pages or dev server
+  window.location.href = './index.html?tab=' + tab;
 }
 
 // EXPANDED ARCHITECTURAL PIXEL PALETTE (MODELED ON ATTACHED BPHC PHOTOS)
