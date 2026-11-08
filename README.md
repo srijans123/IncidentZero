@@ -1,452 +1,416 @@
 <div align="center">
 
-[![Incident-Zero Banner](assets/banner.svg)](https://srijans123.github.io/IncidentZero/)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./logo/incident-zero-logo-light.png">
+  <source media="(prefers-color-scheme: light)" srcset="./logo/incident-zero-logo.png">
+  <img alt="Incident-Zero" src="./logo/incident-zero-logo.png" width="460">
+</picture>
 
-# INCIDENT-ZERO (I-ITSM v2.2)
-### Autonomous Mission-Critical IT Service Management & Hardware Telemetry Engine
-**BITS Pilani, Hyderabad Campus (BPHC) — Computer Centre & Information Technology (CCIT)**
+<img src="./docs/readme-assets/banner.svg" alt="REACH ZERO: a pixel technician squashes bugs over the BITS Hyderabad campus at night" width="100%">
 
-[![Java 21](https://img.shields.io/badge/Java-21%20LTS-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)](https://openjdk.org/)
-[![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.3.5-6DB33F?style=for-the-badge&logo=springboot&logoColor=white)](https://spring.io/projects/spring-boot)
-[![React 19](https://img.shields.io/badge/React-19.0.0-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
-[![Three.js](https://img.shields.io/badge/Three.js-WebGL_60fps-black?style=for-the-badge&logo=three.js&logoColor=white)](https://threejs.org/)
-[![Vite](https://img.shields.io/badge/Vite-5.4-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
-[![ArchUnit](https://img.shields.io/badge/ArchUnit-R1--R9_Strict-blue?style=for-the-badge)](https://www.archunit.org/)
-[![FSM Verified](https://img.shields.io/badge/FSM_Transitions-520%2C036_Verified-success?style=for-the-badge)](https://github.com/srijans123/IncidentZero)
-[![License](https://img.shields.io/badge/License-MIT-purple?style=for-the-badge)](LICENSE)
+<br>
 
-<br/>
+**An arcade-styled, AI-assisted incident management platform for campus IT.**
+<br>
+Report · Classify · Prioritize · Assign · Investigate · Resolve · Verify · Close
 
-> **"Reach Zero Open Incidents. Zero AI-Slop. Zero Framework Leakage."**  
-> An uncompromising, hexagonal enterprise ITSM engine engineered for campus scale, combining a **Pure JDK 21 Domain Core**, **Immutable Cryptographic Audit Ledger**, **$O(V^3)$ Kuhn-Munkres Optimal Dispatch**, **19-Node Topological Dependency DAG**, **Procedural WebGL 3D Server Blade Telemetry**, and a **Retro Pixel-Arcade Visual Aesthetic** with procedural 8-bit chiptune audio.
+<br>
 
-<br/>
+![Java](https://img.shields.io/badge/Java-21_LTS-1B1530?style=for-the-badge&logo=openjdk&logoColor=FFF3C4)
+![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.5-43D17A?style=for-the-badge&logo=springboot&logoColor=1B1530)
+![React](https://img.shields.io/badge/React-19-59C9F5?style=for-the-badge&logo=react&logoColor=1B1530)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-pgvector-7C5CFF?style=for-the-badge&logo=postgresql&logoColor=white)
+![ONNX](https://img.shields.io/badge/ONNX-in--process-FF9F43?style=for-the-badge&logo=onnx&logoColor=1B1530)
+![Docker](https://img.shields.io/badge/Docker-compose-FF8AD0?style=for-the-badge&logo=docker&logoColor=1B1530)
 
-### 🕹️ Live Deployments & Exploration
-| Destination | URL / Entry Point | Description |
-|:---|:---|:---|
-| **🕹️ Live Pixel Arcade & Stage (Homepage)** | [srijans123.github.io/IncidentZero/](https://srijans123.github.io/IncidentZero/) | Playable 8-bit campus stage, chiptune soundboard, 4 atmospheric skies, CRT toggle |
-| **🚀 Mission Control Workspace** | [srijans123.github.io/IncidentZero/app.html](https://srijans123.github.io/IncidentZero/app.html) | Full 5-cartridge command center (Portal, Technician Workbench, Admin NOC, 3D Racks) |
-| **📦 GitHub Repository** | [github.com/srijans123/IncidentZero](https://github.com/srijans123/IncidentZero) | Complete source code, Docker configs, verified test suites, and technical specs |
+[**Play**](#-quick-start) &nbsp;·&nbsp; [**The rule**](#-the-governing-rule) &nbsp;·&nbsp; [**Cartridges**](#-pick-your-cartridge) &nbsp;·&nbsp; [**Lifecycle**](#-the-lifecycle) &nbsp;·&nbsp; [**Intelligence**](#-intelligence) &nbsp;·&nbsp; [**Architecture**](#-architecture) &nbsp;·&nbsp; [**Docs**](#-docs)
 
 </div>
 
-[![Section Divider](assets/divider.svg)](#-table-of-contents)
+<br>
 
-## 📑 Table of Contents
-1. [Architectural Master Philosophy](#1-architectural-master-philosophy)
-2. [5 Swappable ROM Cartridges](#2-5-swappable-rom-cartridges)
-3. [Compiler-Guarded 10-State FSM & Cryo-Stasis](#3-compiler-guarded-10-state-fsm--cryo-stasis)
-4. [AI Proposes, Deterministic Core Disposes](#4-ai-proposes-deterministic-core-disposes)
-5. [Immutable SHA-256 Cryptographic Audit Ledger](#5-immutable-sha-256-cryptographic-audit-ledger)
-6. [Kuhn-Munkres $O(V^3)$ Optimal Technician Dispatch](#6-kuhn-munkres-ov3-optimal-technician-dispatch)
-7. [19-Node Campus Dependency DAG & Leaf-Safe RCA](#7-19-node-campus-dependency-dag--leaf-safe-rca)
-8. [40-Ticket Outage Storm & Reciprocal Rank Fusion (RRF)](#8-40-ticket-outage-storm--reciprocal-rank-fusion-rrf)
-9. [Procedural 3D Weaponized Telemetry (img2threejs)](#9-procedural-3d-weaponized-telemetry-img2threejs)
-10. [Web Audio Chiptune Synthesizer & 4 Skies Engine](#10-web-audio-chiptune-synthesizer--4-skies-engine)
-11. [8 Seeded Test Personas & Security RBAC](#11-8-seeded-test-personas--security-rbac)
-12. [Project Layout & Directory Hierarchy](#12-project-layout--directory-hierarchy)
-13. [Quickstart & Verification Runbook](#13-quickstart--verification-runbook)
+> ### *"AI proposes, the deterministic domain core disposes."*
 
-[![Section Divider](assets/divider.svg)](#-table-of-contents)
+<img src="./docs/readme-assets/scoreboard.svg" alt="Scoreboard: 10 lifecycle states, 7 assignment strategies, 6 AI features, 19 campus services, 9 ArchUnit rules, 15 decision records, 554,590 state transitions verified" width="100%">
 
-## 1. Architectural Master Philosophy
+<br>
 
-Incident-Zero is built upon the **Ports & Adapters (Hexagonal) Architecture** governed by strict compiler-enforced invariants (ArchUnit R1–R9). It completely decouples enterprise business rules from any web framework, database engine, or AI model.
+## 🎮 What is Incident-Zero?
 
-[![Hexagonal Modular Architecture](assets/architecture.svg)](https://github.com/srijans123/IncidentZero/tree/main/backend/src/main/java/edu/campus/iitsm)
+**Incident-Zero (I-ITSM)** is a campus IT service desk built for **BITS Pilani, Hyderabad Campus**. It manages the *entire* incident lifecycle (report, classify, prioritize, assign, investigate, resolve, verify, close) with intelligence at every stage.
 
-### 🛡️ ArchUnit Invariants (R1 – R9)
-The `backend/src/test/java/edu/campus/iitsm/architecture/ArchitectureTest.java` suite continuously enforces 9 non-negotiable architectural axioms:
-* **R1 (Zero Framework Leakage):** The `..domain..` package has **ZERO** imports from Spring, Jakarta/JPA, Hibernate, or Jackson. It is 100% pure JDK 21.
-* **R2 (Inversion of Control):** Application and Infrastructure layers depend strictly inward upon Domain Ports; Domain never references outer layers.
-* **R3 (Immutable Event Value Objects):** All domain events are pure Java records with non-null, immutable payloads.
-* **R4 (Transactional Audit Spine):** Audit listeners (`AuditLedgerInTxListener`) MUST execute with `@EventListener` + `@Transactional(propagation = Propagation.MANDATORY)`. If an audit log write fails, the entire business transaction rolls back.
-* **R5 (Deterministic Time & Identity):** Never call `Instant.now()` or `UUID.randomUUID()` inside `domain` or `application`. All temporal and identity operations are injected via `ClockPort` and `IdGeneratorPort` to guarantee 100% deterministic unit testing and replayability.
-* **R6 (FSM Encapsulation):** Incident status transitions cannot be modified via getters/setters or raw database updates; every lifecycle step MUST pass through `Incident.transitionTo(...)`.
-* **R7 (Optimistic Concurrency Control):** All incident entities maintain an atomic `@Version` counter. Simultaneous technician edits reject stale revisions with HTTP 409 Conflict.
-* **R8 (Polynomial Complexity Bound):** Hungarian assignment algorithm execution is strictly bounded to $O(V^3)$ time and $O(V^2)$ memory space.
-* **R9 (Acyclic Topological Dependency):** The campus service graph is mathematically validated against cyclic dependencies via Kahn's Algorithm before dispatch execution.
+It is deliberately small to operate:
 
-[![Section Divider](assets/divider.svg)](#-table-of-contents)
+- **one** Java modular monolith
+- **one** React app with **three** role-specific workspaces
+- **one** PostgreSQL database (relational data, full-text search *and* 384-d vector embeddings)
 
-## 2. 5 Swappable ROM Cartridges
+The UI is a love letter to the arcade: tickets are **pixel bugs** crawling over real campus landmarks, the technician is the **player**, SLAs are **ticking hearts**, workspaces are swappable **ROM cartridges**, and the audit trail is a **cryptographic hash spine** you can tamper-test with a keystroke. Underneath, it is strict, compiler-checked engineering.
 
-Instead of a generic, uninspired administrative dashboard, Incident-Zero presents its capabilities through **5 Physical ROM Cartridges**, reflecting physical arcade cartridge architecture with instant slot-switching, tactile click audio, and specialized responsibilities:
+<br>
 
-[![5 Physical ROM Cartridges](assets/cartridges.svg)](https://srijans123.github.io/IncidentZero/app.html)
+## 🧬 The governing rule
 
-### 🕹️ Cartridge 00: Stage (Landing & Showcase)
-* **Live Route:** [srijans123.github.io/IncidentZero/](https://srijans123.github.io/IncidentZero/)
-* **Purpose:** Public-facing pixel-arcade overview of the BPHC campus IT network. Features an interactive 8-bit campus map, live SLA heart meters, real-time ticket statistics, CRT scanline toggles, and chiptune soundboard.
+<img src="./docs/readme-assets/ai-proposes.svg" alt="AI proposes a candidate value with confidence and provenance; the domain core disposes: lifecycle state, priority and SLA math, authorization, audit log" width="100%">
 
-### 📋 Cartridge 01: Portal (Student & Faculty Self-Service)
-* **Live Route:** [srijans123.github.io/IncidentZero/app.html?tab=portal](https://srijans123.github.io/IncidentZero/app.html?tab=portal)
-* **Purpose:** High-friction-free reporting terminal for 5,000+ campus residents across Vyas, Budh, Gandhi, Krishna, Shankar, and Valmiki Bhawans.
-* **Capabilities:** AI-assisted auto-categorization, natural language service matching, real-time status tracker, and one-click feedback resolution.
+AI output is **always a candidate value with a confidence and provenance**, never a command. Only domain code is allowed to change lifecycle state, compute priority, do SLA arithmetic, authorize actions and write the audit log.
 
-### 🛠️ Cartridge 02: Workbench (Technician L1/L2/L3 Terminal)
-* **Live Route:** [srijans123.github.io/IncidentZero/app.html?tab=workbench](https://srijans123.github.io/IncidentZero/app.html?tab=workbench)
-* **Purpose:** High-density command interface for CCIT network engineers, system admins, and hostel technicians.
-* **Capabilities:** Live countdown SLA chronometers, optimistic concurrency conflict shields, multi-filter ticket matrices, inline resolution notes, and SLA cryo-stasis toggles.
+Every intelligent feature ships with the same four things:
 
-### 🛰️ Cartridge 03: Command (NOC Admin & Real-Time Topology)
-* **Live Route:** [srijans123.github.io/IncidentZero/app.html?tab=admin](https://srijans123.github.io/IncidentZero/app.html?tab=admin)
-* **Purpose:** Central executive NOC for CCIT leadership and dispatch controllers.
-* **Capabilities:** $O(V^3)$ Kuhn-Munkres auto-dispatch matrix, 40-ticket outage storm simulation, 19-node campus dependency DAG visualizer, and 3D procedural server blade telemetry.
+| 1. Rules baseline | 2. AI upgrade | 3. Automatic fallback | 4. A metric |
+| :---: | :---: | :---: | :---: |
+| A deterministic implementation that always works | Same interface, smarter engine | Circuit open or model down? Rules answer in milliseconds | A harness that shows whether the upgrade actually helped |
 
-### 📜 Cartridge 04: Specs (Engineering Blueprint & Verification)
-* **Live Route:** [srijans123.github.io/IncidentZero/app.html?tab=specs](https://srijans123.github.io/IncidentZero/app.html?tab=specs)
-* **Purpose:** Interactive live audit terminal for architectural verification.
-* **Capabilities:** Interactive REST API catalog runner, SHA-256 cryptographic audit chain tamper verification, ArchUnit compliance verification, and 8-user persona switcher.
+This isn't a guideline, it's enforced: ArchUnit rule **R6** forbids the `intelligence` module from touching any command service or state mutation, so *"AI proposes, domain disposes"* is a **compile-and-CI fact**. A **kill-the-LLM test** runs in CI to prove every flow survives with the model switched off.
 
-[![Section Divider](assets/divider.svg)](#-table-of-contents)
+<img src="./docs/readme-assets/divider.svg" alt="" width="100%">
 
-## 3. Compiler-Guarded 10-State FSM & Cryo-Stasis
+## 👾 Pick your cartridge
 
-Every incident ticket in Incident-Zero traverses a rigorous, mathematically verified 10-state Finite State Machine. A brute-force transition matrix test verifies all **520,036 potential transition paths**, guaranteeing that illegal state jumps (such as jumping from `REPORTED` directly to `RESOLVED`) throw an immutable `IllegalStateTransitionException`.
+<img src="./docs/readme-assets/cartridges.svg" alt="Five ROM cartridges: Stage, Portal, Workbench, Admin, Specs" width="100%">
 
-[![10-State Finite State Machine](assets/lifecycle.svg)](https://srijans123.github.io/IncidentZero/app.html?tab=workbench)
+One React 19 PWA, five swappable cartridges:
 
-### ❄️ The SLA "Cryo-Stasis" Innovation (`PENDING_USER`)
-In standard IT systems, SLA timers continue running while technicians wait days for a student to reply with their hostel room number or MAC address, causing artificial SLA breaches.
-* When a ticket enters `PENDING_USER`, the domain `SlaClock` enters **Cryo-Stasis**—the elapsed countdown freezes.
-* When the user submits the requested clarification, the ticket returns to `INVESTIGATING` and the SLA chronometer seamlessly resumes with zero penalty.
-* If the user fails to respond within 5 business days, the auto-close watchdog archives the ticket without affecting CCIT technician metrics.
+| ROM | Route | Player | What happens there |
+| :---: | :--- | :--- | :--- |
+| **00** | `/stage` | Everyone | Interactive campus overworld: bugs crawl over BPHC landmarks, the technician squashes them, combo multiplier, 10-state rules board, live SHA-256 avalanche editor |
+| **01** | `/portal` | Reporters (students, faculty) | AI intake copilot (text and voice), instant duplicate deflection, live status, one-click verify or reject |
+| **02** | `/workbench` | On-call technicians | Live SSE queue, boss-fight incident detail, dual SLA chronometers, action bar built *only* from backend `allowedCommands`, war room, post-incident editor |
+| **03** | `/admin` | IT governance | KPI grid, 19-node service dependency graph, audit-ledger verifier, 40-ticket storm simulator, dispatch weight sliders, demo clock |
+| **04** | `/specs` | Reviewers | Formal spec of the state machine, row versioning, SLA stasis, topological sort and the hash spine |
 
-```java
-// edu.campus.iitsm.incident.domain.Incident
-public void pauseSla(Instant now, String reason) {
-    if (this.status != IncidentStatus.INVESTIGATING) {
-        throw new DomainRuleException("SLA can only be paused while investigating");
-    }
-    this.status = IncidentStatus.PENDING_USER;
-    this.slaClock = this.slaClock.freeze(now);
-    recordAuditEntry("SLA_PAUSED", reason, now);
-}
+**Game feel:** every blip, chirp and victory fanfare is synthesized live with the Web Audio API (zero audio files). There are **four skies** (day, sunset, night, monsoon) and the logo swaps itself to match. Illegal moves buzz and shake the screen.
+
+<details>
+<summary><b>🎬 Three demo levels</b></summary>
+
+<br>
+
+1. **Level 1: Employee copilot intake.** Describe an outage in plain words (or dictate it); the copilot fills the diagnostic slots, shows similar incidents and self-help before you submit.
+2. **Level 2: Technician war room.** Acknowledge, investigate, pause the clock with *request user info*, resume, resolve, then **tamper with the audit table in SQL** and watch the verifier catch it.
+3. **Level 3: The boss fight.** A 40-ticket `ERP_LDAP_POOL_EXHAUSTION` storm hits. Duplicates collapse under a master incident, the system declares a **major incident**, batch assignment kicks in, and root-cause ranking highlights the likely culprit on the dependency graph.
+
+</details>
+
+<img src="./docs/readme-assets/divider.svg" alt="" width="100%">
+
+## 🐛 The lifecycle
+
+<img src="./docs/readme-assets/lifecycle.svg" alt="Level map of the ten incident states from NEW to CLOSED with PENDING_USER and REOPENED side quests" width="100%">
+
+- **10 states** (the classic eight plus `PENDING_USER` and `REOPENED`) modelled as a **sealed `IncidentState` hierarchy**. Lifecycle behaviour lives in state classes, not in `if/else` on a status string.
+- `SLA_VIOLATED` is *not* a status. A breached ticket is still `IN_PROGRESS`; breach is an orthogonal `slaStatus` (`ON_TRACK`, `AT_RISK`, `BREACHED`).
+- **Illegal transitions** return **HTTP 409** (`ITSM-4090`) with `incidentId`, `currentState`, `attemptedCommand` and `allowedCommands`. The UI draws its buttons from that list, so a button for an illegal action simply doesn't exist.
+- **Duplicates become children** of a master incident. Resolving the master resolves its children, releases their technician capacity and cancels their timers, while every reporter still verifies or rejects independently.
+- **Major-incident override:** 200+ affected users, **or** 10+ linked reports in 15 minutes, **or** a core (T0) service at campus impact → forced **P1**, an incident commander and a war-room view.
+
+<details>
+<summary><b>📋 Command → transition table</b></summary>
+
+<br>
+
+| Command | From | To | Notes |
+| :--- | :--- | :--- | :--- |
+| `classify` | NEW | CLASSIFIED | category, priority and SLA snapshot present |
+| `assign` | CLASSIFIED | ASSIGNED | assignee on shift and under capacity; atomic load reservation |
+| `acknowledge` | ASSIGNED | ACKNOWLEDGED | stops the **response** clock |
+| `startInvestigation` | ACKNOWLEDGED, REOPENED | IN_PROGRESS | |
+| `requestUserInfo` | IN_PROGRESS | PENDING_USER | **pauses** the resolution clock, 24 h reminder |
+| `provideUserInfo` | PENDING_USER | IN_PROGRESS | reporter reply stored as a public comment |
+| `resolve` | IN_PROGRESS | RESOLVED | resolution code + notes (20+ chars); root cause mandatory for P1/P2 |
+| `verify` | RESOLVED | VERIFIED | reporter, or system after 72 h of silence |
+| `rejectResolution` | RESOLVED | REOPENED | reason required; new response target is 25% of the original |
+| `close` | VERIFIED | CLOSED | P1/P2 need a recorded root cause; stops all clocks |
+
+Plus `reassign`, `linkAsChild`, `unlinkFromMaster`, `resolveWithMaster`, `declareMajor` and the `cancel` extension (which doubles as the live demo of adding a state).
+
+</details>
+
+<br>
+
+## ⏰ Priority, SLA and escalation
+
+**Priority is explainable, not magic.** The default is the ITIL impact × urgency matrix, followed by four bounded, individually logged modifiers (service tier, affected users, active calendar window like exams or fee deadlines, and a floor for security incidents). The whole chain is stored and shown in a **"Why P1?"** panel.
+
+| Impact ＼ Urgency | 1 Low | 2 Medium | 3 High |
+| :--- | :---: | :---: | :---: |
+| **3 · Campus** | 🟨 P3 | 🟧 P2 | 🟥 P1 |
+| **2 · Group** | 🟩 P4 | 🟨 P3 | 🟧 P2 |
+| **1 · Individual** | 🟩 P4 | 🟩 P4 | 🟨 P3 |
+
+- **Dual pause-aware SLA clocks** (`responseClock`, `resolutionClock`) with business-calendar arithmetic (Mon–Fri 09:00–18:00 IST, holiday table). P1/P2 on core services run 24×7.
+- **Escalation ladder** (Chain of Responsibility): Technician → Team Lead → System Admin → IT Manager, firing at 1.0×, 1.5× and 2.0× of the response target. A P1 with a 5-minute target escalates at **5, 7.5 and 10 minutes**.
+- **Demo clock:** a `VirtualAnchoredClock` runs the whole system at up to **30×**, so a 30-minute P1 resolution target ticks out in **60 real seconds**, with timers, SSE gauges and the DelayQueue all staying in sync.
+- **Time is injected.** Domain and application code may never call `Instant.now()` or `new Random()` (ArchUnit **R5**), which is exactly what lets the simulator and demo clock control time.
+
+<details>
+<summary><b>⏱ SLA policy matrix (response / resolution, minutes)</b></summary>
+
+<br>
+
+| Priority | T0 core services | T1 important apps | T2 supporting | T3 individual / hardware |
+| :--- | :---: | :---: | :---: | :---: |
+| **P1** | 5 / 30 | 5 / 30 | 10 / 60 | 15 / 120 |
+| **P2** | 10 / 90 | 15 / 120 | 30 / 240 | 60 / 480 |
+| **P3** | 30 / 360 | 60 / 480 | 120 / 720 | 240 / 1440 |
+| **P4** | 120 / 960 | 240 / 1440 | 480 / 2880 | 480 / 4320 |
+
+Calendar windows stack through Decorators on the policy (e.g. an exam window halves P1/P2 targets). Decorators change the *targets*; the `BusinessCalendar` does the *clock arithmetic*. Two jobs, kept separate.
+
+</details>
+
+<details>
+<summary><b>⚖ Alternate priority strategies (kept for comparison)</b></summary>
+
+<br>
+
+`ProductScorePriorityStrategy` (impact × urgency × criticality) and `WeightedScorePriorityStrategy` ship next to the ITIL matrix and are compared with Cohen's κ. The product score is a cautionary tale: `2×3×1` and `1×2×3` both equal 6, a collision that the matrix avoids by construction.
+
+</details>
+
+<br>
+
+## 🎯 Assignment
+
+Seven pluggable `AssignmentStrategy` classes, switchable at runtime from the Admin UI (the list is read from the registry, so a new strategy appears with zero UI changes):
+
+`RoundRobin` · `LeastLoaded` · `SkillMatch` · `Experience` · `PriorityAware` · **`HybridWeighted`** (default) · **`HungarianBatch`** (storm mode)
+
+```text
+score = 0.40·skillMatch + 0.25·(1 − loadRatio) + 0.20·experience + 0.15·speed
 ```
 
-[![Section Divider](assets/divider.svg)](#-table-of-contents)
+- Every term is bounded to `[0, 1]` with **cold-start and divide-by-zero guards** (Bayesian-smoothed speed, so a brand-new technician gets a neutral score, not a `NaN`).
+- **Storm mode** buffers tickets and solves a **Kuhn–Munkres** optimal matching with marginal-capacity slot gating.
+- **No race conditions:** capacity is reserved with an atomic SQL guard (`points + :w <= capacity`), never a read-then-write check.
+- Every decision carries an **explanation object**, so technicians see *why* they were picked.
 
-## 4. AI Proposes, Deterministic Core Disposes
+<img src="./docs/readme-assets/divider.svg" alt="" width="100%">
 
-Incident-Zero implements a strict **Zero-Hallucination Safety Pattern**: Local Large Language Models (via Ollama) and heuristic intelligence classifiers are treated as **untrusted advisory subsystems**.
+## 🧠 Intelligence
 
-[![AI Proposes Deterministic Disposes](assets/ai-proposes.svg)](https://srijans123.github.io/IncidentZero/app.html?tab=portal)
+Six shipped intelligent features (Tier A), each with a rules baseline sitting right beside its AI upgrade:
 
-1. **Advisory Generation:** The AI analyzes raw unstructured text (*"LMS quiz won't load from Budh Bhawan Wi-Fi"*), generating an advisory JSON proposal:
-   ```json
-   {
-     "suggestedService": "APP-LMS",
-     "category": "SOFTWARE",
-     "urgency": "HIGH",
-     "confidence": 0.942,
-     "duplicateClusterId": "CLUST-2026-08"
-   }
-   ```
-2. **Deterministic Validation Boundary:** The proposal is routed into the Domain Core where hardcoded, deterministic rules validate:
-   * Does the suggested service code exist in the 19-node campus topology?
-   * Does the reporter have permissions for this tier?
-   * Does the cluster violate active master-child containment rules?
-3. **Core Disposes:** The Domain Core commits the action only if all invariants pass; otherwise, it falls back to deterministic rule-based classifiers (`RuleBasedFallbackService.java`) with zero crash risk.
+| | Feature | Rules baseline | AI upgrade |
+| :---: | :--- | :--- | :--- |
+| **A1** | Duplicate and related-incident linking | Lexical matching | **Hybrid RRF:** pgvector HNSW + `tsvector` GIN fused in one query |
+| **A2** | Categorisation, service linking, impact | Alias and keyword rules | Embedding kNN (k=7), with an LLM extractor only when confidence is under 0.6 |
+| **A3** | Explainable priority | ITIL matrix | Four bounded modifiers, each logged as a step |
+| **A4** | Technician recommendation | Round-robin, least-loaded | Hybrid weighted score + Hungarian batch |
+| **A5** | SLA breach risk and early escalation | Elapsed ÷ target threshold bands | **Calibrated GBDT exported to ONNX**, landmark-based; risk ≥ 0.7 escalates early |
+| **A6** | Suggested resolution | kNN list of similar fixes | **Case-based RAG** with a deterministic citation verifier |
 
-[![Section Divider](assets/divider.svg)](#-table-of-contents)
+**Innovation features (Tier B):**
 
-## 5. Immutable SHA-256 Cryptographic Audit Ledger
+- **B1 · Service-desk copilot:** chat and voice intake that fills diagnostic slots, asks at most two clarifying questions and shows deflection before you submit.
+- **B2 · Storm simulator and root-cause ranking** *(hero demo)*: a live 19-service dependency graph with a leaf-safe RCA score (coverage − unexplained penalty + onset timing + tier). The LLM only *writes the explanation*; a verifier checks every service and incident ID it mentions, and the ranker **abstains** when it isn't sure.
+- **B3 · Post-incident review:** blameless PIR and KB drafts generated from the audit facts only; any timestamp not in the facts table is rejected.
+- **B4 · Natural-language search:** compiled to a validated, composable `Specification` over a closed vocabulary. **Never SQL.**
+- **B5 · MCP server:** read-only tools, write proposals need UI approval *(time-boxed spike)*.
 
-To satisfy stringent institutional accountability and prevent internal database tampering, every action performed on an incident is permanently committed to an internal **Cryptographic Hash Chain**.
+### The AI gateway
 
-[![Immutable Cryptographic Hash Chain](assets/hash-chain.svg)](https://srijans123.github.io/IncidentZero/app.html?tab=specs)
-
-Each audit entry calculates its hash using SHA-256 over its predecessor's hash, sequence number, timestamp, action type, actor ID, and payload hash:
-
-$$\text{Hash}_n = \text{SHA-256}\left(\text{Hash}_{n-1} \,\|\, n \,\|\, \text{Timestamp} \,\|\, \text{Action} \,\|\, \text{ActorId} \,\|\, \text{SHA-256}(\text{Payload})\right)$$
-
-* **Genesis Block:** Initialized with a deterministic campus seed hash `0000000000000000000000000000000000000000000000000000000000000000`.
-* **Tamper Verification:** The endpoint `GET /api/v1/incidents/{id}/audit/verify` recalculates the cryptographic spine from Genesis to head. If even a single character in the resolution notes or timestamp was edited directly via SQL, the chain breaks and reports the exact corrupted sequence index.
-
-[![Section Divider](assets/divider.svg)](#-table-of-contents)
-
-## 6. Kuhn-Munkres $O(V^3)$ Optimal Technician Dispatch
-
-When an incident wave strikes, manual assignment causes queue bottlenecks and technician burnout. Incident-Zero implements the **Kuhn-Munkres (Hungarian) Algorithm** for optimal bipartite matching.
-
-$$\min \sum_{i=1}^{n} \sum_{j=1}^{m} C_{i,j} \cdot X_{i,j} \quad \text{subject to} \quad \sum_{i} X_{i,j} \le 1, \; \sum_{j} X_{i,j} \le 1$$
-
-### Dynamic Cost Matrix Calculation
-The edge weight $C_{i,j}$ between Ticket $i$ and Technician $j$ is computed deterministically:
-$$C_{i,j} = w_{\text{skill}} \cdot (1 - \text{SkillOverlap}) + w_{\text{dist}} \cdot \text{QuadrantDistance}(i, j) + w_{\text{load}} \cdot \frac{\text{ActiveTickets}_j}{\text{MaxCapacity}_j} + w_{\text{sla}} \cdot \text{RemainingSlaRatio}_i$$
-
-* **Skill Vector Overlap:** Matches network certifications, hardware repair skills, or ERP domain knowledge.
-* **Physical Distance:** Computes topological walking distance between campus zones (Academic Blocks $\leftrightarrow$ Hostels $\leftrightarrow$ Faculty Quarters).
-* **Workload Rebalancing:** Prevents assigning critical incidents to engineers with full active queues.
-
-[![Section Divider](assets/divider.svg)](#-table-of-contents)
-
-## 7. 19-Node Campus Dependency DAG & Leaf-Safe RCA
-
-The BPHC campus infrastructure is modeled as a Directed Acyclic Graph (DAG) comprising 19 mission-critical nodes across core networks, servers, databases, academic services, and residential hostels.
+Every LLM call walks the same decorator chain around a provider-neutral `LanguageModelPort`:
 
 ```mermaid
-graph TD
-    GW["NET-GATEWAY<br/>(External ISP Gateway)"]
-    CORE["NET-CORE<br/>(Core Fiber Backbone)"]
-    SW_ACAD["SW-ACAD<br/>(Academic Switch)"]
-    SW_HOSTEL["SW-HOSTEL<br/>(Hostel Distribution)"]
-    DC["DC-POWER<br/>(Data Center UPS)"]
-    
-    GW --> CORE
-    DC --> CORE
-    CORE --> SW_ACAD
-    CORE --> SW_HOSTEL
-    
-    DB_PRI["DB-PRIMARY<br/>(PostgreSQL Cluster)"]
-    AUTH["AUTH-LDAP<br/>(Campus SSO / CAS)"]
-    
-    DC --> DB_PRI
-    CORE --> AUTH
-    DB_PRI --> AUTH
-    
-    LMS["APP-LMS<br/>(Moodle Academic LMS)"]
-    ERP["SVC-ERP<br/>(Student Records ERP)"]
-    WIFI_ACAD["WIFI-ACAD<br/>(Lecture Hall APs)"]
-    
-    AUTH --> LMS
-    DB_PRI --> LMS
-    AUTH --> ERP
-    SW_ACAD --> WIFI_ACAD
-    
-    VYAS["HOSTEL-VYAS<br/>(Vyas Bhawan)"]
-    BUDH["HOSTEL-BUDH<br/>(Budh Bhawan)"]
-    GANDHI["HOSTEL-GANDHI<br/>(Gandhi Bhawan)"]
-    VALMIKI["HOSTEL-VALMIKI<br/>(Valmiki Bhawan)"]
-    KRISHNA["HOSTEL-KRISHNA<br/>(Krishna Bhawan)"]
-    SHANKAR["HOSTEL-SHANKAR<br/>(Shankar Bhawan)"]
-    
-    SW_HOSTEL --> VYAS
-    SW_HOSTEL --> BUDH
-    SW_HOSTEL --> GANDHI
-    SW_HOSTEL --> VALMIKI
-    SW_HOSTEL --> KRISHNA
-    SW_HOSTEL --> SHANKAR
+flowchart LR
+    C([Caller]) --> P1[PII<br/>redaction] --> P2[Prompt<br/>guard] --> P3[Semantic<br/>cache] --> P4[Schema<br/>validation] --> P5[Rate<br/>limit] --> P6[Circuit<br/>breaker] --> P7[Metering] --> P8[Replay<br/>recorder] --> P9([Provider])
+    P4 -. 2nd failure .-> F[[Rules fallback<br/>RULES badge]]
+    P6 -. open or failing .-> F
+
+    classDef safe fill:#43D17A,stroke:#1B1530,stroke-width:3px,color:#1B1530;
+    classDef ai fill:#59C9F5,stroke:#1B1530,stroke-width:3px,color:#1B1530;
+    classDef fb fill:#FF9F43,stroke:#1B1530,stroke-width:3px,color:#1B1530;
+    class P1,P2,P4 safe;
+    class C,P3,P5,P6,P7,P8,P9 ai;
+    class F fb;
 ```
 
-### 🍃 Leaf-Safe Root Cause Analysis (RCA)
-When the core fiber switch `NET-CORE` suffers an outage, hundreds of students report Wi-Fi drops across Vyas, Budh, and Gandhi Bhawans.
-* **Alert Cascade Suppression:** Incident-Zero uses topological reverse-traversal to pinpoint that `NET-CORE` is the ancestor root cause.
-* **Blast Radius Calculation:** Computes the reachable downstream subgraph in $O(V + E)$ time.
-* **Child Ticket Aggregation:** Downstream hostel reports are automatically linked as dependent children to the master `NET-CORE` ticket, preventing dispatching 10 technicians to individual hostels for a single backbone fiber cut.
+- **Offline-first.** Embeddings (`all-MiniLM-L6-v2`, 384-d) and the SLA-risk model run **in-process via ONNX Runtime**. Python is used only offline for data generation and training (`/ml`). The LLM is a hosted provider, local Ollama, or **recorded Replay fixtures**, so CI and demos run with no internet.
+- **Guardrails** follow the OWASP LLM Top 10: PII is masked before anything leaves, user text is wrapped as untrusted data, output must match closed-vocabulary schemas, retrieval is filtered by the caller's role, and prompts contain no secrets or SLA numbers.
+- **Failure is designed in.** LLM down, slow, malformed JSON, low confidence, prompt-injection payload, missing model file, missing pgvector: each ends in a *working* incident flow with a small **Rules** badge, never a 500.
+- Every suggestion lands in an `ai_suggestion` table that doubles as audit evidence, a feedback loop (accepted and overridden values feed the kNN index immediately) and an evaluation set.
+- **Honest numbers:** no figure appears in the docs unless our own committed harness (`/ml/eval`, time-split data, bootstrap CIs) produced it.
 
-[![Section Divider](assets/divider.svg)](#-table-of-contents)
+<br>
 
-## 8. 40-Ticket Outage Storm & Reciprocal Rank Fusion (RRF)
+## 🔐 Tamper-evident audit
 
-To test resilience under crisis, Incident-Zero includes a built-in **40-Ticket Outage Storm Simulator**. It generates a massive deluge of concurrent telemetry alerts and student reports over a 3-minute burst.
+<img src="./docs/readme-assets/hash-chain.svg" alt="SHA-256 hash-chained audit ledger: tampering with block 3 breaks the chain for blocks 4 and 5" width="100%">
 
-```
-[STORM PHASE 1] Core Fiber Cut -> 15 Network Failure Reports (t = 0s .. 45s)
-[STORM PHASE 2] DB Primary Connection Pool Exhaustion -> 15 LMS/ERP Failures (t = 45s .. 110s)
-[STORM PHASE 3] Cascading SSO & Hostel Wi-Fi Outage -> 10 Student Reports (t = 110s .. 180s)
-```
+- Every state change appends to a **SHA-256 hash-chained** `audit_record` ledger. Edit or delete a row in SQL and every later block fails verification.
+- Appends use a **row-locked index** plus a **daily off-database anchor**, so a silent rewrite of history can't be hidden by recomputing the chain.
+- Audit rows commit **in the same ACID transaction** as the state change (rule **R9**: synchronous in-transaction listeners, never after-commit ones), so state, audit and SLA timers succeed or roll back together.
+- Verify it live from the Admin cartridge, or break it yourself in Level 2 of the demo.
 
-### ⚡ Hybrid Reciprocal Rank Fusion (RRF)
-To cluster incoming storm tickets in real time, Incident-Zero combines Dense Vector Cosine Similarity with Lexical BM25 ranking:
+<img src="./docs/readme-assets/divider.svg" alt="" width="100%">
 
-$$\text{RRF\_Score}(d) = \sum_{m \in \{\text{Dense}, \text{Lexical}\}} \frac{1}{k + \text{Rank}_m(d)} \quad (k = 60)$$
+## 🧱 Architecture
 
-Tickets exceeding an RRF threshold of $0.85$ are grouped into an existing master incident cluster within $< 15\text{ms}$, suppressing notification fatigue for CCIT command engineers.
+<img src="./docs/readme-assets/architecture.svg" alt="Hexagonal architecture: React PWA, web layer, application layer, domain core with ports, adapters, and eleven Spring Modulith modules" width="100%">
 
-[![Section Divider](assets/divider.svg)](#-table-of-contents)
+A **hexagonal modular monolith** on Spring Boot and Spring Modulith. Dependencies point inward: the domain defines ports (`IncidentRepository`, `Notifier`, `LanguageModelPort`, `EmbeddingPort`, `ClockPort`), and infrastructure implements them. Domain classes are plain Java; JPA entities live only in infrastructure.
 
-## 9. Procedural 3D Weaponized Telemetry (`img2threejs`)
+<details>
+<summary><b>🛡 The nine CI-enforced architecture rules (ArchUnit + Modulith <code>verify()</code>)</b></summary>
 
-Incident-Zero features **procedural 60 FPS Three.js / WebGL 3D visualizations** constructed strictly via procedural code geometry (zero heavyweight external `.gltf` or `.obj` assets):
+<br>
 
-### 🖥️ 1. `CampusCoreRack3D` (42U Server Blade Telemetry)
-* Interactive 42U data center server rack with individual blade servers representing `APP-LMS`, `AUTH-LDAP`, `DB-PRIMARY`, `SVC-ERP`, and `NET-CORE`.
-* Dynamic status beacon LEDs (Green = Healthy, Amber = Warning, Red = Critical Outage).
-* **Explode View:** Clicking `Explode View` animates server blades outward along their Z-axis with smooth cubic easing, revealing internal component heat and latency metrics.
+| Rule | Guarantee |
+| :---: | :--- |
+| **R1** | Domain imports nothing from Spring, JPA, Hibernate or Jackson |
+| **R2** | Application layer imports no JPA, servlet or infrastructure packages |
+| **R3** | Modules talk only through each other's `api` package |
+| **R4** | Controllers never touch repositories |
+| **R5** | No `Instant.now()`, `UUID.randomUUID()` or `new Random()` in domain/application (use injected ports) |
+| **R6** | `intelligence` can't call command services or mutate state: it only returns `Suggestion<T>` |
+| **R7** | Port interfaces live in domain/api; every adapter lives in infrastructure |
+| **R8** | Constructor injection only, no field injection anywhere |
+| **R9** | Audit and SLA-timer listeners are in-transaction (`MANDATORY`), never after-commit |
 
-### 🌐 2. `TopologyBlastRadius3D` (Orbital Blast-Radius Globe)
-* Multi-tiered orbital concentric rings representing Infrastructure Tiers (T1 Core, T2 Distribution, T3 Access).
-* Animated glowing energy pulses along connection splines indicating traffic volume and latency spikes.
-* Interactive orbital camera controls with raycasted node inspection and blast-radius heat maps.
+</details>
 
-[![Section Divider](assets/divider.svg)](#-table-of-contents)
+<details>
+<summary><b>🧩 Design patterns, each tied to a named variation point</b></summary>
 
-## 10. Web Audio Chiptune Synthesizer & 4 Skies Engine
+<br>
 
-### 🎵 8-Bit Web Audio Procedural Synthesizer (`sound.ts`)
-Incident-Zero contains a custom, zero-dependency procedural chiptune sound engine powered by the browser's native `AudioContext`. Every interaction has distinct tactile audio feedback:
+| Pattern | Where | Variation point it protects |
+| :--- | :--- | :--- |
+| **State** | sealed `IncidentState` hierarchy | lifecycle behaviour lives in classes, not `if/else` |
+| **Strategy** | priority, assignment, duplicate detection, categorisation, SLA risk, resolution suggestion | swap an algorithm at runtime; every AI upgrade sits beside its baseline |
+| **Observer** | domain events → audit, notification, SLA timer, live feed, escalation listeners | add a side effect without touching the publisher |
+| **Chain of Responsibility** | escalation handlers | reorder or insert tiers through data |
+| **Factory / Builder** | `IncidentFactory`, `NotificationFactory`, `UserFactory` | one place enforces creation invariants |
+| **Adapter** | notification channels, LLM providers, embeddings | a new channel or provider is one new class |
+| **Repository** | JPA and in-memory implementations | swap persistence; millisecond unit tests |
+| *Bonus* | Decorator (AI gateway, SLA policies), Specification (search), Template Method (intake steps), Composite (service tree) | |
 
-| Sound Method | Waveform | Frequency Modulation | Interaction Trigger |
-|:---|:---|:---|:---|
-| `sound.power()` | Square / Sine | $110\text{Hz} \to 880\text{Hz}$ sweep | CRT monitor toggle / System boot |
-| `sound.slot()` | Noise + Triangle | White noise burst + $440\text{Hz}$ thump | ROM Cartridge swap |
-| `sound.pick()` | Square | $520\text{Hz}$ short blip ($20\text{ms}$) | Persona switcher / Button hover |
-| `sound.coin()` | Square | $987.77\text{Hz} \to 1318.51\text{Hz}$ two-tone | Incident ticket submitted successfully |
-| `sound.warn()` | Sawtooth | $220\text{Hz} \leftrightarrow 440\text{Hz}$ LFO siren | SLA Breach warning / Critical alert |
-| `sound.fix()` | Triangle | $440\text{Hz} \to 880\text{Hz}$ major triad arpeggio | Incident resolved / Heart restored |
-| `sound.win()` | Sine + Arp | C-E-G-B-C victory fanfare | All tickets cleared / Scoreboard cleared |
+</details>
 
----
+<details>
+<summary><b>📈 The 100× scale story: four pre-engineered seams</b></summary>
 
-### 🎨 The Four Atmospheric Skies Theme Matrix
-The entire interface adapts across 4 distinct campus atmospheric moods, updating CSS custom properties and swapping brand logos dynamically:
+<br>
 
-| Theme Token | Mood / Inspiration | Primary Background | Surface Accent | Brand Logo Asset |
-|:---|:---|:---|:---|:---|
-| `sky-day` | Crisp BPHC Academic Morning | `#F8F9FA` (Warm Alabaster) | `#2563EB` (BITS Blue) | `incident-zero-logo.png` (Navy) |
-| `sky-sunset` | Twilight over Rock Garden | `#2A1B18` (Dusk Terracotta) | `#F59E0B` (Amber Gold) | `incident-zero-logo-light.png` (Cream) |
-| `sky-night` | Midnight Server Room NOC | `#090A0D` (Carbon Obsidian) | `#10B981` (Emerald Phosphor)| `incident-zero-logo-light.png` (Cream) |
-| `sky-monsoon` | Hyderabad Monsoon Rain | `#131B19` (Deep Moss Slate) | `#06B6D4` (Rain Cyan) | `incident-zero-logo-light.png` (Cream) |
+1. **Stateless JWT + Redis SSE bus** for multi-node fan-out
+2. **Monthly range-partitioned** `incident` and `audit_record`, plus read replicas
+3. **Kafka outbox swap** behind the existing transactional outbox
+4. **`tenant_id` with Postgres row-level security** for multi-tenancy
 
-[![Section Divider](assets/divider.svg)](#-table-of-contents)
+Redis, Kafka, Kubernetes and RLS are deliberately *out* of v1: a single instance needs none of them, and each has a documented seam instead.
 
-## 11. 8 Seeded Test Personas & Security RBAC
+</details>
 
-Incident-Zero includes an **Instant Demo Persona Switcher** in the navigation header, allowing instant one-click authentication without entering credentials:
+<br>
 
-| Persona | Name | Role & Department | Access Scope |
-|:---|:---|:---|:---|
-| 🎓 **Student** | Aarav Sharma | 3rd Year CS, Vyas Bhawan | Student Portal, Self-Report, View Own Tickets |
-| 👩‍🏫 **Faculty** | Dr. Meera Rao | Professor, Dept of EEE | Faculty Priority Portal, Lab Workstation Tickets |
-| 🎧 **L1 Dispatcher** | Rajesh Kumar | CCIT Helpdesk Triage | Triage Queue, Categorization, Reassignment |
-| 🌐 **L2 Network** | Suresh Patel | Network Infrastructure Team | Switches, Firewalls, Wi-Fi APs, Fiber Backbone |
-| 🖥️ **L2 Systems** | Priya Nair | Systems & Data Center Admin | Server Blades, DB Cluster, Storage, Virtualization |
-| 🛡️ **L3 Security** | Vikram Singh | Cyber Security & CCIT Lead | Master Incident Coordination, Outage Storm NOC |
-| 👔 **IT Director** | Prof. K. V. Sharma | Dean of Administration & IT | Executive Analytics, MTTR Scorecards, SLA Audits |
-| 🔍 **Auditor** | Ananya Sen | Compliance & Quality Assurance | Cryptographic Hash Chain Verifier, Tamper Detection |
+## 🧰 Tech stack
 
-[![Section Divider](assets/divider.svg)](#-table-of-contents)
+| Layer | Pick |
+| :--- | :--- |
+| **Backend** | Java 21 LTS (auto-selects Java 25 under a JDK 25 Maven profile), Spring Boot 3.5, Spring Modulith, Spring Data JPA, Flyway |
+| **Database** | PostgreSQL 16 + **pgvector** (HNSW) + `tsvector` (GIN) |
+| **AI** | ONNX Runtime (in-process embeddings and SLA-risk model), provider-neutral LLM port with Replay and offline modes |
+| **Resilience** | Resilience4j (circuit breaker), Bucket4j (rate limiting) |
+| **Frontend** | React 19, TypeScript, Vite, Tailwind, React Flow (`@xyflow/react`), Three.js / React Three Fiber, Web Audio |
+| **Quality** | JUnit 5, ArchUnit, Spring Modulith verification, six `verify-m*.sh` gates |
+| **DevOps** | Docker Compose, GitHub Actions, Mailpit (dev email) |
 
-## 12. Project Layout & Directory Hierarchy
+> **Note on versions:** the master plan targets Java 25 and Spring Boot 4.1 with a documented fallback to Java 21 and Boot 3.5. The domain core is framework-free, so only adapters change. The current build uses the fallback and keeps a `jdk25` Maven profile ready.
 
-```
-OOP Proj/
-├── assets/                               # Master architecture diagrams & SVG illustrations
-│   ├── banner.svg                        # 8-bit pixel art campus banner
-│   ├── architecture.svg                  # Hexagonal architecture & ArchUnit diagram
-│   ├── cartridges.svg                    # 5 physical ROM cartridge illustrations
-│   ├── lifecycle.svg                     # 10-state FSM lifecycle flow
-│   ├── hash-chain.svg                    # Cryptographic SHA-256 blockchain diagram
-│   ├── ai-proposes.svg                   # AI Proposes, Core Disposes workflow
-│   ├── scoreboard.svg                    # Arcade clearance scorecard
-│   ├── divider.svg                       # Scanline pixel divider
-│   └── footer.svg                        # Institutional footer badge
-├── logo/                                 # Official BITS Pilani I-ITSM logos
-│   ├── incident-zero-logo.png            # Navy logo (for Light / Day theme)
-│   └── incident-zero-logo-light.png      # Cream logo (for Dark / Night themes)
-├── backend/                              # Pure JDK 21 Domain + Spring Boot 3.3.5
-│   ├── src/main/java/edu/campus/iitsm/
-│   │   ├── incident/                     # Incident Module (Domain Core + Application)
-│   │   │   ├── domain/                   # Pure Java FSM, SlaClock, HashChain, Events
-│   │   │   ├── application/              # Use Cases, Command Handlers, In-Tx Listeners
-│   │   │   └── infrastructure/           # Spring Data JPA, SSE Streaming, PostgreSQL
-│   │   ├── dispatch/                     # Kuhn-Munkres Hungarian Dispatch Engine
-│   │   ├── topology/                     # 19-Node Campus Dependency Graph & Leaf RCA
-│   │   └── intelligence/                 # Ollama LLM Gateway, RRF Clustering, Fallback
-│   └── src/test/java/edu/campus/iitsm/   # ArchUnit R1-R9 & 520,036 FSM Transition Tests
-├── frontend/                             # React 19 + TypeScript + Vite + Tailwind CSS
-│   ├── public/                           # Static assets, landing.html, SVGs
-│   ├── src/
-│   │   ├── components/
-│   │   │   ├── common/                   # Pixel CRT Frame, Skies Switcher, Demo Personas
-│   │   │   ├── three/                    # CampusCoreRack3D, TopologyBlastRadius3D
-│   │   │   └── cartridges/               # ROM Cartridge components
-│   │   ├── pages/
-│   │   │   ├── portal/                   # Student reporting terminal
-│   │   │   ├── workbench/                # Technician triage & SLA chronometers
-│   │   │   ├── admin/                    # Hungarian dispatch, Storm sim, Topology
-│   │   │   └── specs/                    # ArchUnit runner & Hash verifier
-│   │   ├── services/
-│   │   │   ├── api.ts                    # Axios client with fallback demo fixtures
-│   │   │   └── sound.ts                  # Web Audio 8-bit procedural sound synthesizer
-│   │   └── App.tsx                       # Main 5-Cartridge router & HUD
-│   └── vite.config.ts                    # Vite config with relative base path
-├── docs/                                 # Technical design docs, ADRs, and specs
-│   ├── DESIGN.md                         # Complete 9-section Stitch design document
-│   └── adr/                              # Architecture Decision Records (ADR 001 - 012)
-├── scripts/                              # Verification shell scripts (M1 through M6)
-├── upload/                               # Automated deployment & release scripts
-│   ├── deploy_gh_pages.sh                # GitHub Pages automated build & push script
-│   ├── update_github.sh                  # Main branch version incrementer & git tagger
-│   └── VERSION.txt                       # Current semantic release version (e.g. v1.23)
-└── landing.html                          # Public pixel-arcade showcase landing page
-```
+<br>
 
-[![Section Divider](assets/divider.svg)](#-table-of-contents)
+## 🚀 Quick start
 
-## 13. Quickstart & Verification Runbook
-
-### 🚀 Prerequisites
-* **Java:** JDK 21 LTS (`java -version`)
-* **Node.js:** v18+ or v20+ LTS (`node -v`)
-* **Maven:** 3.9+ (`mvn -v`)
-* **Git:** Installed with Git Bash (`git --version`)
-
----
-
-### 💻 Local Development Setup
-
-#### 1. Launch the Backend Service
-```bash
-# From the repository root
-cd backend
-mvn clean spring-boot:run
-```
-* Backend starts at `http://localhost:8080`
-* H2 In-Memory DB Console: `http://localhost:8080/h2-console` (JDBC URL: `jdbc:h2:mem:iitsm_db`)
-* Swagger UI / OpenAPI Docs: `http://localhost:8080/swagger-ui.html`
-
-#### 2. Launch the Frontend Application
-```bash
-# In a separate terminal
-cd frontend
-npm install
-npm run dev
-```
-* Frontend starts at `http://localhost:5173`
-* Pixel-Arcade Showcase: `http://localhost:5173/landing.html`
-
----
-
-### 🧪 Run the Compiler & Architecture Verification Tests
-Incident-Zero ships with automated verification scripts testing each architectural milestone:
+**Option A: local dev** (backend on `:8080`, frontend on `:3000`)
 
 ```bash
-# Verify Milestone 1: Domain Core & FSM Transition Matrix (520,036 states)
-bash scripts/verify-m1.sh
+git clone https://github.com/srijans123/IncidentZero.git
+cd IncidentZero
 
-# Verify Milestone 2: ArchUnit R1–R9 Strict Modular Compliance
-bash scripts/verify-m2.sh
-
-# Verify Milestone 3: Kuhn-Munkres Dispatch & Topological DAG RCA
-bash scripts/verify-m3.sh
-
-# Verify Milestone 4: Cryptographic SHA-256 Audit Spine Verification
-bash scripts/verify-m4.sh
-
-# Verify Milestone 5: 40-Ticket Outage Storm & RRF Clustering
-bash scripts/verify-m5.sh
-
-# Verify Milestone 6: Full End-to-End Persona Journey & SSE Streaming
-bash scripts/verify-m6.sh
+cp .env.example .env        # fill in your database and auth secrets
+./start.sh                  # on Windows: start.bat
 ```
 
----
+Requires JDK 21+, Maven 3.9+ and Node 18+.
+
+**Option B: Docker Compose**
+
+```bash
+# Postgres (pgvector) + Mailpit only: pair with start.sh
+docker compose -f deploy/docker-compose.yml up -d db mailpit
+
+# Full stack: database, mail catcher, backend and frontend
+docker compose -f deploy/docker-compose.yml --profile demo up --build
+```
+
+| Service | URL |
+| :--- | :--- |
+| Frontend (compose) | http://localhost:5173 |
+| Frontend (`start.sh`) | http://localhost:3000 |
+| API | http://localhost:8080 |
+| Mailpit (caught emails) | http://localhost:8025 |
+
+The compose demo runs AI in deterministic **`replay`** mode by default (`AI_PROVIDER=replay`), so everything works offline. Use the **role switcher** in the header to hop between an employee, a technician and an administrator.
+
+### 🧪 Run the verification gates
+
+```bash
+bash scripts/verify-m1.sh   # pure-JDK state machine harness: 554,590 transitions
+bash scripts/verify-m2.sh   # Flyway migrations + campus seed + ArchUnit R1-R9
+bash scripts/verify-m3.sh   # intake pipeline
+bash scripts/verify-m4.sh   # AI platform in replay and off modes
+bash scripts/verify-m5.sh   # REST, SSE and backend test suite
+bash scripts/verify-m6.sh   # React 19 type-check and production build
+```
+
+<br>
+
+## 📁 Repo map
+
+```text
+IncidentZero/
+├── backend/      Spring Boot modular monolith (domain · application · infrastructure per module)
+├── frontend/     React 19 PWA: /stage /portal /workbench /admin /specs
+├── ml/           offline training and ONNX export (train_sla_risk.py)
+├── scripts/      verify-m1 … verify-m6 gates
+├── deploy/       docker-compose, Dockerfiles, nginx
+├── docs/         ADR-001 … ADR-015, design notes, README art
+├── logo/         brand logos (navy for light skies, cream for dark skies)
+└── .github/      CI workflows
+```
+
+<br>
+
+## 📚 Docs
+
+| Doc | What's inside |
+| :--- | :--- |
+| [`PRD.md`](./PRD.md) | Product requirements |
+| [`PRODUCT.md`](./PRODUCT.md) | Personas, platform and governing principle |
+| [`DESIGN.md`](./DESIGN.md) | The pixel-arcade design system: palette, type, skies, sound, cartridges |
+| [`incident_zero_master_implementation_procedure_v2_2.md`](./incident_zero_master_implementation_procedure_v2_2.md) | The master plan: decisions, domain model, algorithms, schema, tests, schedule |
+| [`docs/adr/`](./docs/adr) | **15 Architecture Decision Records** (language, topology, database, AI runtime, SSE, OOP, lifecycle, priority, assignment, guardrails, evaluation, testing, audit, scale, frontend) |
+| [`docs/AUTH_AND_DATABASE.md`](./docs/AUTH_AND_DATABASE.md) | Auth bridge and database setup |
+
+<br>
+
+## 📜 The rules of the game
+
+1. **The domain ring has zero framework imports.** ArchUnit enforces it in CI.
+2. **AI proposes, the domain disposes.** Every AI feature has a baseline, a fallback and a metric, and the kill-the-LLM test passes in CI.
+3. **No number without a harness.** Nothing is quoted in docs, video or resume unless our own evaluation produced it.
+4. **Every pattern names its variation point,** and every extensibility claim has a real diff behind it.
+5. **Docs-as-code,** updated the week a decision is made.
+
+<br>
+
+<img src="./docs/readme-assets/footer.svg" alt="OPEN BUGS 00. Thanks for playing." width="100%">
 
 <div align="center">
 
-[![Arcade Scoreboard](assets/scoreboard.svg)](https://srijans123.github.io/IncidentZero/)
-
-<br/>
-
-[![Scanline Footer](assets/footer.svg)](https://srijans123.github.io/IncidentZero/)
-
-**Incident-Zero (I-ITSM v2.2) — Engineered with pride for BITS Pilani, Hyderabad Campus**  
-*Computer Centre & Information Technology (CCIT) Division*  
-All systems nominal. Zero open incidents.
+Built at **BITS Pilani, Hyderabad Campus** by [@srijans123](https://github.com/srijans123) and team.
+<br>
+<sub>The pixel art in this README is generated from code: see <code>tools/readme-art</code>.</sub>
 
 </div>
-
