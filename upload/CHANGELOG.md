@@ -14,3 +14,4 @@
 - **v1.14** (2026-10-29 18:01:12 UTC) by `Srijan Shukla`: Add start.bat, start.sh, run_backend.bat, run_frontend.bat launchers
 - **v1.15** (2026-10-29 19:34:51 UTC) by `Srijan Shukla`: Complete 3D & Impeccable Anti-Slop Frontend Overhaul
 - **v1.16** (2026-11-08 13:20:44 UTC) by `Srijan Shukla`: Frontend & 3D Visual Overhaul with Pixel-Arcade Anti-Slop
+- **v1.17** (2026-11-08 13:27:47 UTC) by `Srijan Shukla`: Fix file protocol redirect in landing.html
