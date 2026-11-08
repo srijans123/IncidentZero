@@ -1,6 +1,6 @@
 <div align="center">
 
-![Incident-Zero Banner](assets/banner.svg)
+[![Incident-Zero Banner](assets/banner.svg)](https://srijans123.github.io/IncidentZero/)
 
 # INCIDENT-ZERO (I-ITSM v2.2)
 ### Autonomous Mission-Critical IT Service Management & Hardware Telemetry Engine
@@ -25,13 +25,13 @@
 ### 🕹️ Live Deployments & Exploration
 | Destination | URL / Entry Point | Description |
 |:---|:---|:---|
-| **🕹️ Live Pixel Arcade & Stage** | [srijans123.github.io/IncidentZero/landing.html](https://srijans123.github.io/IncidentZero/landing.html) | Playable 8-bit campus stage, chiptune soundboard, 4 atmospheric skies, CRT toggle |
-| **🚀 Mission Control Workspace** | [srijans123.github.io/IncidentZero/](https://srijans123.github.io/IncidentZero/) | Full 5-cartridge command center (Portal, Technician Workbench, Admin NOC, 3D Racks) |
+| **🕹️ Live Pixel Arcade & Stage (Homepage)** | [srijans123.github.io/IncidentZero/](https://srijans123.github.io/IncidentZero/) | Playable 8-bit campus stage, chiptune soundboard, 4 atmospheric skies, CRT toggle |
+| **🚀 Mission Control Workspace** | [srijans123.github.io/IncidentZero/app.html](https://srijans123.github.io/IncidentZero/app.html) | Full 5-cartridge command center (Portal, Technician Workbench, Admin NOC, 3D Racks) |
 | **📦 GitHub Repository** | [github.com/srijans123/IncidentZero](https://github.com/srijans123/IncidentZero) | Complete source code, Docker configs, verified test suites, and technical specs |
 
 </div>
 
-![Section Divider](assets/divider.svg)
+[![Section Divider](assets/divider.svg)](#-table-of-contents)
 
 ## 📑 Table of Contents
 1. [Architectural Master Philosophy](#1-architectural-master-philosophy)
@@ -48,13 +48,13 @@
 12. [Project Layout & Directory Hierarchy](#12-project-layout--directory-hierarchy)
 13. [Quickstart & Verification Runbook](#13-quickstart--verification-runbook)
 
-![Section Divider](assets/divider.svg)
+[![Section Divider](assets/divider.svg)](#-table-of-contents)
 
 ## 1. Architectural Master Philosophy
 
 Incident-Zero is built upon the **Ports & Adapters (Hexagonal) Architecture** governed by strict compiler-enforced invariants (ArchUnit R1–R9). It completely decouples enterprise business rules from any web framework, database engine, or AI model.
 
-![Hexagonal Modular Architecture](assets/architecture.svg)
+[![Hexagonal Modular Architecture](assets/architecture.svg)](https://github.com/srijans123/IncidentZero/tree/main/backend/src/main/java/edu/campus/iitsm)
 
 ### 🛡️ ArchUnit Invariants (R1 – R9)
 The `backend/src/test/java/edu/campus/iitsm/architecture/ArchitectureTest.java` suite continuously enforces 9 non-negotiable architectural axioms:
@@ -68,45 +68,45 @@ The `backend/src/test/java/edu/campus/iitsm/architecture/ArchitectureTest.java` 
 * **R8 (Polynomial Complexity Bound):** Hungarian assignment algorithm execution is strictly bounded to $O(V^3)$ time and $O(V^2)$ memory space.
 * **R9 (Acyclic Topological Dependency):** The campus service graph is mathematically validated against cyclic dependencies via Kahn's Algorithm before dispatch execution.
 
-![Section Divider](assets/divider.svg)
+[![Section Divider](assets/divider.svg)](#-table-of-contents)
 
 ## 2. 5 Swappable ROM Cartridges
 
 Instead of a generic, uninspired administrative dashboard, Incident-Zero presents its capabilities through **5 Physical ROM Cartridges**, reflecting physical arcade cartridge architecture with instant slot-switching, tactile click audio, and specialized responsibilities:
 
-![5 Physical ROM Cartridges](assets/cartridges.svg)
+[![5 Physical ROM Cartridges](assets/cartridges.svg)](https://srijans123.github.io/IncidentZero/app.html)
 
 ### 🕹️ Cartridge 00: Stage (Landing & Showcase)
-* **Route:** `/landing.html`
+* **Live Route:** [srijans123.github.io/IncidentZero/](https://srijans123.github.io/IncidentZero/)
 * **Purpose:** Public-facing pixel-arcade overview of the BPHC campus IT network. Features an interactive 8-bit campus map, live SLA heart meters, real-time ticket statistics, CRT scanline toggles, and chiptune soundboard.
 
 ### 📋 Cartridge 01: Portal (Student & Faculty Self-Service)
-* **Route:** `/?tab=portal`
+* **Live Route:** [srijans123.github.io/IncidentZero/app.html?tab=portal](https://srijans123.github.io/IncidentZero/app.html?tab=portal)
 * **Purpose:** High-friction-free reporting terminal for 5,000+ campus residents across Vyas, Budh, Gandhi, Krishna, Shankar, and Valmiki Bhawans.
 * **Capabilities:** AI-assisted auto-categorization, natural language service matching, real-time status tracker, and one-click feedback resolution.
 
 ### 🛠️ Cartridge 02: Workbench (Technician L1/L2/L3 Terminal)
-* **Route:** `/?tab=workbench`
+* **Live Route:** [srijans123.github.io/IncidentZero/app.html?tab=workbench](https://srijans123.github.io/IncidentZero/app.html?tab=workbench)
 * **Purpose:** High-density command interface for CCIT network engineers, system admins, and hostel technicians.
 * **Capabilities:** Live countdown SLA chronometers, optimistic concurrency conflict shields, multi-filter ticket matrices, inline resolution notes, and SLA cryo-stasis toggles.
 
 ### 🛰️ Cartridge 03: Command (NOC Admin & Real-Time Topology)
-* **Route:** `/?tab=admin`
+* **Live Route:** [srijans123.github.io/IncidentZero/app.html?tab=admin](https://srijans123.github.io/IncidentZero/app.html?tab=admin)
 * **Purpose:** Central executive NOC for CCIT leadership and dispatch controllers.
 * **Capabilities:** $O(V^3)$ Kuhn-Munkres auto-dispatch matrix, 40-ticket outage storm simulation, 19-node campus dependency DAG visualizer, and 3D procedural server blade telemetry.
 
 ### 📜 Cartridge 04: Specs (Engineering Blueprint & Verification)
-* **Route:** `/?tab=specs`
+* **Live Route:** [srijans123.github.io/IncidentZero/app.html?tab=specs](https://srijans123.github.io/IncidentZero/app.html?tab=specs)
 * **Purpose:** Interactive live audit terminal for architectural verification.
 * **Capabilities:** Interactive REST API catalog runner, SHA-256 cryptographic audit chain tamper verification, ArchUnit compliance verification, and 8-user persona switcher.
 
-![Section Divider](assets/divider.svg)
+[![Section Divider](assets/divider.svg)](#-table-of-contents)
 
 ## 3. Compiler-Guarded 10-State FSM & Cryo-Stasis
 
 Every incident ticket in Incident-Zero traverses a rigorous, mathematically verified 10-state Finite State Machine. A brute-force transition matrix test verifies all **520,036 potential transition paths**, guaranteeing that illegal state jumps (such as jumping from `REPORTED` directly to `RESOLVED`) throw an immutable `IllegalStateTransitionException`.
 
-![10-State Finite State Machine](assets/lifecycle.svg)
+[![10-State Finite State Machine](assets/lifecycle.svg)](https://srijans123.github.io/IncidentZero/app.html?tab=workbench)
 
 ### ❄️ The SLA "Cryo-Stasis" Innovation (`PENDING_USER`)
 In standard IT systems, SLA timers continue running while technicians wait days for a student to reply with their hostel room number or MAC address, causing artificial SLA breaches.
@@ -126,13 +126,13 @@ public void pauseSla(Instant now, String reason) {
 }
 ```
 
-![Section Divider](assets/divider.svg)
+[![Section Divider](assets/divider.svg)](#-table-of-contents)
 
 ## 4. AI Proposes, Deterministic Core Disposes
 
 Incident-Zero implements a strict **Zero-Hallucination Safety Pattern**: Local Large Language Models (via Ollama) and heuristic intelligence classifiers are treated as **untrusted advisory subsystems**.
 
-![AI Proposes Deterministic Disposes](assets/ai-proposes.svg)
+[![AI Proposes Deterministic Disposes](assets/ai-proposes.svg)](https://srijans123.github.io/IncidentZero/app.html?tab=portal)
 
 1. **Advisory Generation:** The AI analyzes raw unstructured text (*"LMS quiz won't load from Budh Bhawan Wi-Fi"*), generating an advisory JSON proposal:
    ```json
@@ -150,13 +150,13 @@ Incident-Zero implements a strict **Zero-Hallucination Safety Pattern**: Local L
    * Does the cluster violate active master-child containment rules?
 3. **Core Disposes:** The Domain Core commits the action only if all invariants pass; otherwise, it falls back to deterministic rule-based classifiers (`RuleBasedFallbackService.java`) with zero crash risk.
 
-![Section Divider](assets/divider.svg)
+[![Section Divider](assets/divider.svg)](#-table-of-contents)
 
 ## 5. Immutable SHA-256 Cryptographic Audit Ledger
 
 To satisfy stringent institutional accountability and prevent internal database tampering, every action performed on an incident is permanently committed to an internal **Cryptographic Hash Chain**.
 
-![Immutable Cryptographic Hash Chain](assets/hash-chain.svg)
+[![Immutable Cryptographic Hash Chain](assets/hash-chain.svg)](https://srijans123.github.io/IncidentZero/app.html?tab=specs)
 
 Each audit entry calculates its hash using SHA-256 over its predecessor's hash, sequence number, timestamp, action type, actor ID, and payload hash:
 
@@ -165,7 +165,7 @@ $$\text{Hash}_n = \text{SHA-256}\left(\text{Hash}_{n-1} \,\|\, n \,\|\, \text{Ti
 * **Genesis Block:** Initialized with a deterministic campus seed hash `0000000000000000000000000000000000000000000000000000000000000000`.
 * **Tamper Verification:** The endpoint `GET /api/v1/incidents/{id}/audit/verify` recalculates the cryptographic spine from Genesis to head. If even a single character in the resolution notes or timestamp was edited directly via SQL, the chain breaks and reports the exact corrupted sequence index.
 
-![Section Divider](assets/divider.svg)
+[![Section Divider](assets/divider.svg)](#-table-of-contents)
 
 ## 6. Kuhn-Munkres $O(V^3)$ Optimal Technician Dispatch
 
@@ -181,7 +181,7 @@ $$C_{i,j} = w_{\text{skill}} \cdot (1 - \text{SkillOverlap}) + w_{\text{dist}} \
 * **Physical Distance:** Computes topological walking distance between campus zones (Academic Blocks $\leftrightarrow$ Hostels $\leftrightarrow$ Faculty Quarters).
 * **Workload Rebalancing:** Prevents assigning critical incidents to engineers with full active queues.
 
-![Section Divider](assets/divider.svg)
+[![Section Divider](assets/divider.svg)](#-table-of-contents)
 
 ## 7. 19-Node Campus Dependency DAG & Leaf-Safe RCA
 
@@ -237,7 +237,7 @@ When the core fiber switch `NET-CORE` suffers an outage, hundreds of students re
 * **Blast Radius Calculation:** Computes the reachable downstream subgraph in $O(V + E)$ time.
 * **Child Ticket Aggregation:** Downstream hostel reports are automatically linked as dependent children to the master `NET-CORE` ticket, preventing dispatching 10 technicians to individual hostels for a single backbone fiber cut.
 
-![Section Divider](assets/divider.svg)
+[![Section Divider](assets/divider.svg)](#-table-of-contents)
 
 ## 8. 40-Ticket Outage Storm & Reciprocal Rank Fusion (RRF)
 
@@ -256,7 +256,7 @@ $$\text{RRF\_Score}(d) = \sum_{m \in \{\text{Dense}, \text{Lexical}\}} \frac{1}{
 
 Tickets exceeding an RRF threshold of $0.85$ are grouped into an existing master incident cluster within $< 15\text{ms}$, suppressing notification fatigue for CCIT command engineers.
 
-![Section Divider](assets/divider.svg)
+[![Section Divider](assets/divider.svg)](#-table-of-contents)
 
 ## 9. Procedural 3D Weaponized Telemetry (`img2threejs`)
 
@@ -272,7 +272,7 @@ Incident-Zero features **procedural 60 FPS Three.js / WebGL 3D visualizations** 
 * Animated glowing energy pulses along connection splines indicating traffic volume and latency spikes.
 * Interactive orbital camera controls with raycasted node inspection and blast-radius heat maps.
 
-![Section Divider](assets/divider.svg)
+[![Section Divider](assets/divider.svg)](#-table-of-contents)
 
 ## 10. Web Audio Chiptune Synthesizer & 4 Skies Engine
 
@@ -301,7 +301,7 @@ The entire interface adapts across 4 distinct campus atmospheric moods, updating
 | `sky-night` | Midnight Server Room NOC | `#090A0D` (Carbon Obsidian) | `#10B981` (Emerald Phosphor)| `incident-zero-logo-light.png` (Cream) |
 | `sky-monsoon` | Hyderabad Monsoon Rain | `#131B19` (Deep Moss Slate) | `#06B6D4` (Rain Cyan) | `incident-zero-logo-light.png` (Cream) |
 
-![Section Divider](assets/divider.svg)
+[![Section Divider](assets/divider.svg)](#-table-of-contents)
 
 ## 11. 8 Seeded Test Personas & Security RBAC
 
@@ -318,7 +318,7 @@ Incident-Zero includes an **Instant Demo Persona Switcher** in the navigation he
 | 👔 **IT Director** | Prof. K. V. Sharma | Dean of Administration & IT | Executive Analytics, MTTR Scorecards, SLA Audits |
 | 🔍 **Auditor** | Ananya Sen | Compliance & Quality Assurance | Cryptographic Hash Chain Verifier, Tamper Detection |
 
-![Section Divider](assets/divider.svg)
+[![Section Divider](assets/divider.svg)](#-table-of-contents)
 
 ## 12. Project Layout & Directory Hierarchy
 
@@ -375,7 +375,7 @@ OOP Proj/
 └── landing.html                          # Public pixel-arcade showcase landing page
 ```
 
-![Section Divider](assets/divider.svg)
+[![Section Divider](assets/divider.svg)](#-table-of-contents)
 
 ## 13. Quickstart & Verification Runbook
 
@@ -438,14 +438,15 @@ bash scripts/verify-m6.sh
 
 <div align="center">
 
-![Arcade Scoreboard](assets/scoreboard.svg)
+[![Arcade Scoreboard](assets/scoreboard.svg)](https://srijans123.github.io/IncidentZero/)
 
 <br/>
 
-![Scanline Footer](assets/footer.svg)
+[![Scanline Footer](assets/footer.svg)](https://srijans123.github.io/IncidentZero/)
 
 **Incident-Zero (I-ITSM v2.2) — Engineered with pride for BITS Pilani, Hyderabad Campus**  
 *Computer Centre & Information Technology (CCIT) Division*  
 All systems nominal. Zero open incidents.
 
 </div>
+

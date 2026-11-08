@@ -21,3 +21,4 @@
 - **v1.21** (2026-11-08 13:45:55 UTC) by `Srijan Shukla`: Fix relative landing navigation to preserve repository subfolder on GitHub Pages
 - **v1.22** (2026-11-08 13:52:29 UTC) by `Srijan Shukla`: Bundle real light and dark brand logos directly into Vite build and landing page
 - **v1.23** (2026-11-08 14:08:29 UTC) by `Srijan Shukla`: Master README with Claude SVGs, full project innovations, and Reach Zero cleanup
+- **v1.24** (2026-11-08 14:23:13 UTC) by `Srijan Shukla`: Homepage set to landing arcade, logo clicks routed to home, and README SVGs hyperlinked

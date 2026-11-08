@@ -99,9 +99,9 @@ export const Header: React.FC<HeaderProps> = ({
             className="flex items-center gap-2 cursor-pointer select-none shrink-0"
             onClick={() => {
               sound.pick();
-              setCurrentTab('stage');
+              window.location.href = './';
             }}
-            title="Incident-Zero — BITS Pilani, Hyderabad Campus"
+            title="Incident-Zero — Return to Homepage"
           >
             <img
               className="brand-img light-only h-7 w-auto object-contain"

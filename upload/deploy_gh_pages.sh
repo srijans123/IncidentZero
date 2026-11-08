@@ -11,6 +11,11 @@ TMP_DIR=$(mktemp -d)
 echo "Copying build artifacts to temporary directory: ${TMP_DIR}"
 cp -r frontend/dist/* "${TMP_DIR}/"
 
+# Ensure root index.html is the landing page and app.html is the React app
+cp "${TMP_DIR}/index.html" "${TMP_DIR}/app.html"
+cp landing.html "${TMP_DIR}/index.html"
+cp landing.html "${TMP_DIR}/landing.html"
+
 cd "${TMP_DIR}"
 git init -b gh-pages
 git config user.name "$(git -C .. config user.name || echo 'srijans123')"
