@@ -276,7 +276,7 @@ const AppContent: React.FC = () => {
           <div className="flex items-center gap-3">
             <span className="w-3 h-3 bg-[var(--ribbon)] border border-[var(--line)] inline-block"></span>
             <span className="font-bold tracking-wide">
-              INCIDENT-ZERO // REACH <span className="z-chr">Z</span>ERO (v2.2)
+              INCIDENT-ZERO // ZERO OPEN INCIDENTS (v2.2)
             </span>
           </div>
 

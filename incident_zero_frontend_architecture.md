@@ -1,4 +1,4 @@
-# Incident-Zero: Reach Zero — Frontend Architecture and Design Brief
+# Incident-Zero — Frontend Architecture and Design Brief
 **BITS Pilani, Hyderabad Campus** · single-file HTML · no build step
 
 ## 1. Concept

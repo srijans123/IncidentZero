@@ -1,4 +1,4 @@
-# Incident-Zero: Reach Zero — Production Design System & Frontend Architecture (v2.2)
+# Incident-Zero — Production Design System & Frontend Architecture (v2.2)
 **BITS Pilani, Hyderabad Campus** · Hexagonal Modular Monolith · Pixel-Arcade Visual Engine
 
 ---
