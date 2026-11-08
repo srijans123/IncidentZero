@@ -17,3 +17,4 @@
 - **v1.17** (2026-11-08 13:27:47 UTC) by `Srijan Shukla`: Fix file protocol redirect in landing.html
 - **v1.18** (2026-11-08 13:32:49 UTC) by `Srijan Shukla`: Remove 3D server blade telemetry rack from Student Portal
 - **v1.19** (2026-11-08 13:40:21 UTC) by `Srijan Shukla`: Remove Nalanda references (BITS Hyderabad LMS) and add GitHub Pages deployment workflow
+- **v1.20** (2026-11-08 13:41:36 UTC) by `Srijan Shukla`: Add deploy_gh_pages script and bump version
