@@ -16,6 +16,7 @@ import {
 import { ActionButton } from '../../components/ui/ActionButton';
 import { StatusBadge } from '../../components/ui/StatusBadge';
 import { useToast } from '../../components/ui/Toast';
+import { useAuth } from '../../context/AuthContext';
 
 interface PortalReportProps {
   onBack: () => void;
@@ -39,14 +40,18 @@ export const PortalReport: React.FC<PortalReportProps> = ({ onBack, onSubmitSucc
 
   const debounceTimerRef = useRef<any>(null);
 
+  const { token } = useAuth();
+
   // Fetch services list for dropdown
   useEffect(() => {
+    const activeToken = token || localStorage.getItem('iitsm_jwt');
+    if (!activeToken) return;
     api.services.list()
       .then((data) => {
         if (Array.isArray(data)) setServices(data);
       })
       .catch((err) => console.error('Failed to load services', err));
-  }, []);
+  }, [token]);
 
   // Sync copilot suggestion with service dropdown if not manually set
   useEffect(() => {
@@ -206,7 +211,7 @@ export const PortalReport: React.FC<PortalReportProps> = ({ onBack, onSubmitSucc
           <div className="lg:col-span-7 space-y-4">
             <div className="pixel-panel p-4 bg-[var(--card)] border-[3px] border-[var(--line)] shadow-[4px_4px_0_var(--shadow-col)]">
               <div className="flex items-center gap-2 mb-1">
-                <PixelIcon name="ticket" scale={1.8} />
+                <PixelIcon name="ticket" size={20} />
                 <h1 className="text-lg font-bold text-[var(--fg)]">Report a Campus IT Issue</h1>
               </div>
               <p className="text-xs text-[var(--soft)] font-mono">

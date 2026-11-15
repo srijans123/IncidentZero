@@ -105,10 +105,14 @@ export const SseProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   }, [currentUser]);
 
   useEffect(() => {
-    connect();
+    const timer = setTimeout(() => {
+      connect();
+    }, 150);
     return () => {
+      clearTimeout(timer);
       if (eventSourceRef.current) {
         eventSourceRef.current.close();
+        eventSourceRef.current = null;
       }
       clearTimeout(retryTimerRef.current);
     };

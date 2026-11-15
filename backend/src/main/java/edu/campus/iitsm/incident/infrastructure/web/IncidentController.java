@@ -227,7 +227,7 @@ public class IncidentController {
       case "close" -> commandService.close(id, envelope.closureNote() != null ? envelope.closureNote() : "Verified and closed.", actorId, role, supportTier);
       case "cancel" -> commandService.cancel(id, envelope.reason() != null ? envelope.reason() : "Duplicate or invalid report.", actorId, role, supportTier);
       case "declare-major" -> commandService.declareMajor(id, actorId, role, supportTier);
-      case "reassign" -> commandService.reassign(id, envelope.assigneeId(), envelope.teamId(), envelope.reason() != null ? envelope.reason() : "Reassigning incident", actorId, role, supportTier);
+      case "assign", "reassign" -> commandService.reassign(id, envelope.assigneeId(), envelope.teamId(), envelope.reason() != null ? envelope.reason() : "Assigning incident", actorId, role, supportTier);
       default -> throw new IllegalArgumentException("Unknown command: " + command);
     }
 

@@ -17,7 +17,7 @@ interface PortalHomeProps {
 }
 
 export const PortalHome: React.FC<PortalHomeProps> = ({ onSelectIncident, onOpenReport }) => {
-  const { currentUser } = useAuth();
+  const { currentUser, token } = useAuth();
   const { lastEvent } = useSse();
   const [incidents, setIncidents] = useState<Incident[]>([]);
   const [loading, setLoading] = useState(true);
@@ -25,6 +25,11 @@ export const PortalHome: React.FC<PortalHomeProps> = ({ onSelectIncident, onOpen
   const [statusFilter, setStatusFilter] = useState<'ALL' | 'OPEN' | 'RESOLVED'>('ALL');
 
   const fetchIncidents = async () => {
+    const activeToken = token || localStorage.getItem('iitsm_jwt');
+    if (!activeToken) {
+      setLoading(false);
+      return;
+    }
     try {
       setLoading(true);
       const res = await api.incidents.list({ limit: 50 });
@@ -38,7 +43,7 @@ export const PortalHome: React.FC<PortalHomeProps> = ({ onSelectIncident, onOpen
 
   useEffect(() => {
     fetchIncidents();
-  }, [currentUser]);
+  }, [currentUser, token]);
 
   useEffect(() => {
     if (lastEvent?.type?.startsWith('incident.')) {

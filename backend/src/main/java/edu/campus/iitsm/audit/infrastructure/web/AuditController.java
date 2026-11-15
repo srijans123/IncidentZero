@@ -23,7 +23,7 @@ public class AuditController {
     this.jdbcTemplate = jdbcTemplate;
   }
 
-  @PostMapping("/verify")
+  @RequestMapping(value = "/verify", method = {RequestMethod.GET, RequestMethod.POST})
   public ResponseEntity<Map<String, Object>> verifyAuditLedger() {
     AuditVerificationResult result = auditVerificationPort.verifyAllLedgers();
     return ResponseEntity.ok(Map.of(
@@ -41,14 +41,14 @@ public class AuditController {
       @RequestParam(value = "limit", defaultValue = "50") int limit
   ) {
     String sql = """
-        SELECT a.id, a.incident_id, coalesce(i.incident_number, 'INC-GLOBAL') AS incident_number,
+        SELECT a.id, a.incident_id, coalesce(i.number, 'INC-GLOBAL') AS incident_number,
                a.chain_index, a.ts, a.actor_id, coalesce(u.name, 'System') AS actor_name,
                a.action, a.prev_state, a.new_state, a.description, a.hash, a.prev_hash
         FROM audit_record a
         LEFT JOIN incident i ON i.id = a.incident_id
         LEFT JOIN app_user u ON u.id = a.actor_id
         """ + (incidentId != null ? " WHERE a.incident_id = ? " : "") + """
-        ORDER BY a.ts DESC, a.chain_index DESC
+        ORDER BY a.chain_index ASC, a.ts ASC
         LIMIT ?
     """;
 
@@ -67,6 +67,7 @@ public class AuditController {
     m.put("incidentNumber", rs.getString("incident_number"));
     m.put("action", rs.getString("action"));
     m.put("actor", rs.getString("actor_name"));
+    m.put("actorId", rs.getString("actor_id"));
     m.put("fromState", rs.getString("prev_state"));
     m.put("toState", rs.getString("new_state"));
     m.put("description", rs.getString("description"));

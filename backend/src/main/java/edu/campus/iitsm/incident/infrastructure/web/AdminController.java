@@ -68,7 +68,7 @@ public class AdminController {
     ));
   }
 
-  @PostMapping("/simulate/storm")
+  @PostMapping({"/simulate/storm", "/simulate-storm"})
   public ResponseEntity<Map<String, Object>> simulateStorm(
       @RequestBody Map<String, Object> body,
       @org.springframework.security.core.annotation.AuthenticationPrincipal edu.campus.iitsm.identity.api.UserPrincipal principal
@@ -93,66 +93,82 @@ public class AdminController {
     // Reports 1-3: AUTH-LDAP (T0)
     UUID ldapMaster = null;
     for (int i = 1; i <= Math.min(3, count); i++) {
-      Incident inc = intakeService.createIncident(
-          reporter, "LDAP bind timeout on central SSO login page (" + i + ")",
-          "SSO redirect failing with timeout error", ldapSvc, "T0", 2, 2, ldapMaster
-      );
-      if (ldapMaster == null) ldapMaster = inc.id();
-      injected++;
-      if (inc.parentId() == null) masters++; else children++;
-      sseHub.broadcast("storm.progress", Map.of(
-          "scenario", scenario, "injectedCount", injected, "totalCount", count, "masterCount", masters, "childCount", children
-      ));
+      try {
+        Incident inc = intakeService.createIncident(
+            reporter, "LDAP bind timeout on central SSO login page (" + i + ")",
+            "SSO redirect failing with timeout error", ldapSvc, "T0", 2, 2, ldapMaster
+        );
+        if (ldapMaster == null) ldapMaster = inc.id();
+        injected++;
+        if (inc.parentId() == null) masters++; else children++;
+        sseHub.broadcast("storm.progress", Map.of(
+            "scenario", scenario, "injectedCount", injected, "totalCount", count, "masterCount", masters, "childCount", children
+        ));
+      } catch (Exception ex) {
+        // Continue injection
+      }
     }
 
     // Reports 4-25: APP-ERP (Course registration, T1)
     UUID erpMaster = null;
     for (int i = 4; i <= Math.min(25, count); i++) {
-      Incident inc = intakeService.createIncident(
-          reporter, "Course registration portal stuck on SSO redirect HTTP 504 (" + i + ")",
-          "AUGSD course registration portal timeout from student hostel", erpSvc, "T1", 2, 3, erpMaster
-      );
-      if (erpMaster == null) {
-        erpMaster = inc.id();
-        if (commandService != null) {
-          commandService.declareMajor(erpMaster, adminActorId, adminRole, adminTier);
+      try {
+        Incident inc = intakeService.createIncident(
+            reporter, "Course registration portal stuck on SSO redirect HTTP 504 (" + i + ")",
+            "AUGSD course registration portal timeout from student hostel", erpSvc, "T1", 2, 3, erpMaster
+        );
+        if (erpMaster == null) {
+          erpMaster = inc.id();
+          if (commandService != null) {
+            commandService.declareMajor(erpMaster, adminActorId, adminRole, adminTier);
+          }
         }
+        injected++;
+        if (inc.parentId() == null) masters++; else children++;
+        sseHub.broadcast("storm.progress", Map.of(
+            "scenario", scenario, "injectedCount", injected, "totalCount", count, "masterCount", masters, "childCount", children
+        ));
+      } catch (Exception ex) {
+        // Continue injection
       }
-      injected++;
-      if (inc.parentId() == null) masters++; else children++;
-      sseHub.broadcast("storm.progress", Map.of(
-          "scenario", scenario, "injectedCount", injected, "totalCount", count, "masterCount", masters, "childCount", children
-      ));
     }
 
     // Reports 26-35: APP-LMS
     UUID lmsMaster = null;
     for (int i = 26; i <= Math.min(35, count); i++) {
-      Incident inc = intakeService.createIncident(
-          reporter, "LMS quiz login failing with SSO error (" + i + ")",
-          "LMS login timeout", lmsSvc, "T1", 2, 2, lmsMaster
-      );
-      if (lmsMaster == null) lmsMaster = inc.id();
-      injected++;
-      if (inc.parentId() == null) masters++; else children++;
-      sseHub.broadcast("storm.progress", Map.of(
-          "scenario", scenario, "injectedCount", injected, "totalCount", count, "masterCount", masters, "childCount", children
-      ));
+      try {
+        Incident inc = intakeService.createIncident(
+            reporter, "LMS quiz login failing with SSO error (" + i + ")",
+            "LMS login timeout", lmsSvc, "T1", 2, 2, lmsMaster
+        );
+        if (lmsMaster == null) lmsMaster = inc.id();
+        injected++;
+        if (inc.parentId() == null) masters++; else children++;
+        sseHub.broadcast("storm.progress", Map.of(
+            "scenario", scenario, "injectedCount", injected, "totalCount", count, "masterCount", masters, "childCount", children
+        ));
+      } catch (Exception ex) {
+        // Continue injection
+      }
     }
 
     // Reports 36-40: APP-LIB
     UUID libMaster = null;
     for (int i = 36; i <= Math.min(40, count); i++) {
-      Incident inc = intakeService.createIncident(
-          reporter, "IEEE Xplore EZProxy authentication timeout (" + i + ")",
-          "Library proxy auth failure", libSvc, "T2", 2, 2, libMaster
-      );
-      if (libMaster == null) libMaster = inc.id();
-      injected++;
-      if (inc.parentId() == null) masters++; else children++;
-      sseHub.broadcast("storm.progress", Map.of(
-          "scenario", scenario, "injectedCount", injected, "totalCount", count, "masterCount", masters, "childCount", children
-      ));
+      try {
+        Incident inc = intakeService.createIncident(
+            reporter, "IEEE Xplore EZProxy authentication timeout (" + i + ")",
+            "Library proxy auth failure", libSvc, "T2", 2, 2, libMaster
+        );
+        if (libMaster == null) libMaster = inc.id();
+        injected++;
+        if (inc.parentId() == null) masters++; else children++;
+        sseHub.broadcast("storm.progress", Map.of(
+            "scenario", scenario, "injectedCount", injected, "totalCount", count, "masterCount", masters, "childCount", children
+        ));
+      } catch (Exception ex) {
+        // Continue injection
+      }
     }
 
     return ResponseEntity.ok(Map.of(
@@ -210,16 +226,16 @@ public class AdminController {
 
   @GetMapping("/sla-policies")
   public ResponseEntity<List<Map<String, Object>>> getSlaPolicies() {
-    String sql = "SELECT id, tier, priority, response_target_min, resolution_target_min, mode FROM sla_policy ORDER BY tier ASC, priority ASC";
+    String sql = "SELECT id, tier, priority, response_minutes, resolution_minutes, clock_mode FROM sla_policy ORDER BY tier ASC, priority ASC";
     List<Map<String, Object>> policies = jdbcTemplate.query(
         sql,
         (rs, rowNum) -> Map.of(
             "id", rs.getObject("id").toString(),
             "tier", rs.getString("tier"),
             "priority", rs.getString("priority"),
-            "responseTargetMin", rs.getInt("response_target_min"),
-            "resolutionTargetMin", rs.getInt("resolution_target_min"),
-            "mode", rs.getString("mode")
+            "responseTargetMin", rs.getInt("response_minutes"),
+            "resolutionTargetMin", rs.getInt("resolution_minutes"),
+            "mode", rs.getString("clock_mode")
         )
     );
     return ResponseEntity.ok(policies);

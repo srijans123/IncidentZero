@@ -1,0 +1,52 @@
+=== Incident-Zero Baseline Verification (Step A0) ===
+Date: 2026-11-15T23:14:32+05:30
+Branch: fix/e2e-lifecycle
+
+1. Domain Core State Machine Fuzzing & Invariants:
+Command: bash scripts/verify-m1.sh
+Output:
+PASS  state machine: allowedCommands() equals the transition table (17 state/child combinations)
+PASS  state machine: every command is legal exactly where the table says (289 attempts)
+PASS  state machine: a rejected command never changes the aggregate
+PASS  TC-01 close on NEW is rejected (409, ITSM-4090)
+PASS  TC-06 resolve from ASSIGNED is rejected
+PASS  TC-09 non-assignee cannot acknowledge (403)
+PASS  TC-08 short resolution notes rejected (422)
+PASS  P1 resolve needs root-cause category
+PASS  clock: response clock stops at acknowledgement with 3m consumed
+PASS  TC-03 request-info pauses resolution clock with 10m consumed
+PASS  TC-04 30 paused minutes are not counted (20m consumed, 10m left)
+PASS  TC-05 reject: REOPENED, count 1, resolution clock resumes without reset
+PASS  TC-05 reject: new response target is 25% of 5m (75s)
+PASS  TC-16 business clock: Fri 17:00 to Mon 10:00 is 2h elapsed
+PASS  major incident: P1, major flag, commander set, clocks retargeted keeping 2m elapsed
+PASS  declareMajor is idempotent
+PASS  TC-21 SLA: AT_RISK at 80%, resets to ON_TRACK on SLA extension, BREACHED sticky on tick/late-ack, restore round-trips
+PASS  rejected child unlinks to REOPENED and can be reassigned
+PASS  fuzz: invariants hold across all 50,000 sequences (554590 transitions)
+PASS  fuzz: all 11 statuses visited (including deep states)
+PASS  TC-14 product score collides (both P3) while ITIL matrix separates (P2 vs P4)
+PASS  audit: valid chain verifies even when jsonb reorders keys
+PASS  TC-54 audit: edited row 103 is pinpointed
+PASS  TC-31 hungarian: exact (n <= 7) + multi-pass (n > 7) across 5,000 batches have 0 overbookings and <= 1 P1/tech
+
+SUMMARY: 24 passed, 0 failed (554590 transitions verified)
+
+2. Backend Spring Boot & Architecture Tests:
+Command: mvn test (against incidentzero_demo on Neon)
+Output:
+[INFO] Results:
+[INFO] Tests run: 39, Failures: 0, Errors: 0, Skipped: 0
+[INFO] BUILD SUCCESS
+
+3. Frontend Production Build:
+Command: npm --prefix frontend run build
+Output:
+✓ 2179 modules transformed.
+dist/app.html                                          1.62 kB │ gzip:   0.89 kB
+dist/index.html                                        1.63 kB │ gzip:   0.89 kB
+dist/assets/incident-zero-logo-dCTRZE6j.png           62.83 kB
+dist/assets/incident-zero-logo-light-DNgvk8qB.png     68.62 kB
+dist/assets/main-CQ__L2O4.css                         53.08 kB │ gzip:   9.66 kB
+dist/assets/main-D5cDxGZ8.js                       1,474.79 kB │ gzip: 416.27 kB
+✓ built in 27.95s

@@ -32,8 +32,8 @@ for ($i = 0; $i -lt 45; $i++) {
     Start-Sleep -Seconds 2
     try {
         $res = Invoke-RestMethod -Uri "http://localhost:8080/api/v1/auth/login" -Method Post -Body $loginBody -ContentType "application/json" -TimeoutSec 3 -ErrorAction Stop
-        if ($res.token) {
-            Write-Output "[✓] Backend is ready and login answered 200 (Token received)."
+        if ($res.accessToken -or $res.token) {
+            Write-Output "[OK] Backend is ready and login answered 200 (Token received)."
             $ready = $true
             break
         }
@@ -43,8 +43,8 @@ for ($i = 0; $i -lt 45; $i++) {
 }
 
 if (-not $ready) {
-    Write-Error "[X] Backend failed to answer 200 on /api/v1/auth/login within 90 seconds!"
+    Write-Error "[FAIL] Backend failed to answer 200 on /api/v1/auth/login within 90 seconds!"
     exit 1
 }
 
-Write-Output "[✓] demo-reset completed successfully."
+Write-Output "[OK] demo-reset completed successfully."

@@ -124,7 +124,7 @@ const AppContent: React.FC = () => {
       />
 
       {/* Main Workspace Router */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-2 sm:px-4 lg:px-6 py-5 overflow-x-hidden">
+      <main className="flex-1 max-w-7xl w-full mx-auto px-2 sm:px-4 lg:px-6 py-5 overflow-x-hidden relative z-0">
         {/* Workspace 0: Campus Stage (ROM 00) */}
         {currentTab === 'stage' && (
           <CampusStage

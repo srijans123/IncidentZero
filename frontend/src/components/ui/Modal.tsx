@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { sound } from '../../services/sound';
 
 interface ModalProps {
@@ -18,6 +19,7 @@ export const Modal: React.FC<ModalProps> = ({
   footer,
   maxWidth = 'max-w-lg',
 }) => {
+  console.log('[DEBUG Modal render]', title, 'isOpen:', isOpen);
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape' && isOpen) {
@@ -33,7 +35,9 @@ export const Modal: React.FC<ModalProps> = ({
 
   if (!isOpen) return null;
 
-  return (
+  console.log('[DEBUG createPortal executing]', title);
+  try {
+    return createPortal(
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-none">
       <div
         className={`bg-[#FFF8DC] text-[#1B1530] border-[4px] border-[#0B071E] shadow-[8px_8px_0_#0B071E] w-full ${maxWidth} flex flex-col`}
@@ -72,6 +76,11 @@ export const Modal: React.FC<ModalProps> = ({
           </div>
         )}
       </div>
-    </div>
+    </div>,
+    document.body
   );
+  } catch (err) {
+    console.error('[DEBUG createPortal ERROR]', err);
+    return null;
+  }
 };

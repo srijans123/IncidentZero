@@ -53,7 +53,7 @@ async function seed() {
   }
 
   const loginData = await loginRes.json();
-  const token = loginData.token;
+  const token = loginData.accessToken || loginData.token;
   console.log('[✓] Logged in successfully. Creating 4 demo tickets...');
 
   for (const t of TICKETS) {

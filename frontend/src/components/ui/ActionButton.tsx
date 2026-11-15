@@ -16,6 +16,7 @@ interface ActionButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement
 export const ActionButton: React.FC<ActionButtonProps> = ({
   size = 'standard',
   variant = 'secondary',
+  type = 'button',
   icon,
   children,
   isLoading = false,
@@ -41,6 +42,7 @@ export const ActionButton: React.FC<ActionButtonProps> = ({
   };
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    console.log('[ActionButton handleClick]', children);
     if (!disabled && !isLoading) {
       sound.blip();
       if (onClick) onClick(e);
@@ -49,6 +51,7 @@ export const ActionButton: React.FC<ActionButtonProps> = ({
 
   return (
     <button
+      type={type}
       className={clsx(
         'btn inline-flex items-center justify-center gap-2 border-[3px] border-solid select-none leading-none whitespace-nowrap shrink-0 transition-transform duration-75 font-sans',
         sizeStyles[size],

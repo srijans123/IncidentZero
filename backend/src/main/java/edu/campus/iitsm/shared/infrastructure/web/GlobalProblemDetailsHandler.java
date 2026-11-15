@@ -82,6 +82,15 @@ public class GlobalProblemDetailsHandler {
 
   @ExceptionHandler(Exception.class)
   public ResponseEntity<ProblemDetail> handleGeneralException(Exception ex, HttpServletRequest request) {
+    if (request != null && request.getRequestURI() != null && request.getRequestURI().endsWith("/stream")) {
+      return null;
+    }
+    String exName = ex.getClass().getName();
+    if (exName.contains("AsyncRequestNotUsableException") ||
+        exName.contains("ClientAbortException") ||
+        (ex.getCause() != null && ex.getCause().getClass().getName().contains("AsyncRequestNotUsableException"))) {
+      return null;
+    }
     log.error("Unhandled exception at " + request.getRequestURI(), ex);
     ProblemDetail problem = ProblemDetail.forStatusAndDetail(HttpStatus.INTERNAL_SERVER_ERROR, "An internal server error occurred");
     problem.setType(URI.create(BASE_URI + "ITSM-5000"));

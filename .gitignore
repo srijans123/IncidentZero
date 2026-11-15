@@ -60,3 +60,5 @@ video_v3/08_out/contact_sheet/
 *.mp4
 *.webm
 
+test-results/
+demo/

@@ -19,6 +19,7 @@ import { StatusDot } from '../../components/ui/StatusDot';
 import { HashPill } from '../../components/ui/HashPill';
 import { SlaChronometerAndLedger3D } from '../../components/three/SlaChronometerAndLedger3D';
 import { sound } from '../../services/sound';
+import { useToast } from '../../components/ui/Toast';
 
 interface AuditRow {
   id: string;
@@ -38,6 +39,7 @@ interface AuditRow {
 
 export const AdminAudit: React.FC = () => {
   const { stormProgress, clearStorm } = useSse();
+  const toast = useToast();
 
   const [verifyResult, setVerifyResult] = useState<AuditVerificationResult | null>(null);
   const [isVerifying, setIsVerifying] = useState(false);
@@ -103,7 +105,7 @@ export const AdminAudit: React.FC = () => {
     } catch (err: any) {
       sound.err();
       setVerifyResult(null);
-      alert('Audit ledger verification failed: ' + (err?.message || 'Verification endpoint unreachable'));
+      toast.showError(err, 'Audit ledger verification failed');
     } finally {
       setIsVerifying(false);
     }
@@ -122,7 +124,7 @@ export const AdminAudit: React.FC = () => {
     } catch (err: any) {
       sound.err();
       setStormSuccess(null);
-      alert('Storm simulation failed: ' + (err?.message || 'Unknown error'));
+      toast.showError(err, 'Storm simulation failed');
     } finally {
       setIsStormRunning(false);
     }

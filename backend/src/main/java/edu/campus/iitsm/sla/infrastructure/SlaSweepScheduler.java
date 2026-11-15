@@ -12,12 +12,13 @@ public class SlaSweepScheduler {
   private static final Logger log = LoggerFactory.getLogger(SlaSweepScheduler.class);
   private final IncidentSlaSweepPort slaSweepPort;
 
-  public SlaSweepScheduler(IncidentSlaSweepPort slaSweepPort) {
+  public SlaSweepScheduler(@org.springframework.beans.factory.annotation.Autowired(required = false) IncidentSlaSweepPort slaSweepPort) {
     this.slaSweepPort = slaSweepPort;
   }
 
   @Scheduled(fixedDelay = 5000)
   public void sweep() {
+    if (slaSweepPort == null) return;
     try {
       slaSweepPort.sweepSla();
     } catch (Exception e) {

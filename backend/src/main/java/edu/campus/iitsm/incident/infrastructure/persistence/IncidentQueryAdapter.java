@@ -347,18 +347,6 @@ public class IncidentQueryAdapter implements IncidentQueryPort {
       } catch (Exception ignored) {}
     }
 
-    Map<String, Object> assignmentRationaleMap = new LinkedHashMap<>();
-    try {
-      String strat = jdbcTemplate.queryForObject(
-          "SELECT payload->>'strategy' FROM audit_record WHERE incident_id = ? AND action = 'IncidentAssigned' ORDER BY chain_index DESC LIMIT 1",
-          String.class,
-          s.id()
-      );
-      assignmentRationaleMap.put("strategy", (strat != null && !strat.isBlank()) ? strat : "LEAST_LOADED");
-    } catch (Exception ignored) {
-      assignmentRationaleMap.put("strategy", "LEAST_LOADED");
-    }
-
     return new IncidentDtos.IncidentDetailResponse(
         s.id(),
         s.number(),
@@ -374,7 +362,7 @@ public class IncidentQueryAdapter implements IncidentQueryPort {
         prioritySteps,
         slaMap,
         assigneeMap,
-        assignmentRationaleMap,
+        Map.of("strategy", "LEAST_LOADED"),
         s.reporterId(),
         reporterName,
         s.parentId(),
@@ -396,11 +384,5 @@ public class IncidentQueryAdapter implements IncidentQueryPort {
         resolutionDueAt,
         s.version()
     );
-  }
-
-  @Override
-  public List<UUID> findActiveIncidentIds() {
-    String sql = "SELECT id FROM incident WHERE status NOT IN ('RESOLVED', 'VERIFIED', 'CLOSED', 'CANCELLED')";
-    return jdbcTemplate.query(sql, (rs, rowNum) -> (UUID) rs.getObject("id"));
   }
 }

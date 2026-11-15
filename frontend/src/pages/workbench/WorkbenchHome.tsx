@@ -23,7 +23,7 @@ interface WorkbenchHomeProps {
 }
 
 export const WorkbenchHome: React.FC<WorkbenchHomeProps> = ({ onSelectIncident, onOpenMajor }) => {
-  const { currentUser } = useAuth();
+  const { currentUser, token } = useAuth();
   const { lastEvent } = useSse();
   const toast = useToast();
   const [incidents, setIncidents] = useState<Incident[]>([]);
@@ -32,6 +32,11 @@ export const WorkbenchHome: React.FC<WorkbenchHomeProps> = ({ onSelectIncident, 
   const [activeQueue, setActiveQueue] = useState<'ALL' | 'MY' | 'TRIAGE' | 'P1' | 'MAJOR'>('MY');
 
   const fetchQueue = async () => {
+    const activeToken = token || localStorage.getItem('iitsm_jwt');
+    if (!activeToken) {
+      setLoading(false);
+      return;
+    }
     try {
       setLoading(true);
       const res = await api.incidents.list({ limit: 60 });
@@ -45,7 +50,7 @@ export const WorkbenchHome: React.FC<WorkbenchHomeProps> = ({ onSelectIncident, 
 
   useEffect(() => {
     fetchQueue();
-  }, [currentUser]);
+  }, [currentUser, token]);
 
   useEffect(() => {
     if (lastEvent?.type?.startsWith('incident.')) {

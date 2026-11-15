@@ -212,6 +212,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     checkSession();
   }, []);
 
+  useEffect(() => {
+    (window as any).__switchUser = switchUser;
+    (window as any).__SEEDED_USERS = SEEDED_USERS;
+  }, [switchUser]);
+
   return (
     <AuthContext.Provider value={{ currentUser, switchUser, isLoading, token, isBackendOffline, checkSession }}>
       {children}

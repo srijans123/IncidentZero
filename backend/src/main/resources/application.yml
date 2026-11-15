@@ -8,6 +8,13 @@ spring:
     url: ${DB_URL:jdbc:postgresql://localhost:5432/iitsm}
     username: ${DB_APP_USER:itsm_app}
     password: ${DB_APP_PASSWORD:itsm_dev_password}
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 2
+      idle-timeout: 30000
+      max-lifetime: 60000
+      keepalive-time: 15000
+      connection-test-query: SELECT 1
   flyway:
     enabled: true
     url: ${DB_URL:jdbc:postgresql://localhost:5432/iitsm}

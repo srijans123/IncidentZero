@@ -72,6 +72,7 @@ export const Header: React.FC<HeaderProps> = ({
 
   // Esc closes menus
   useEffect(() => {
+    (window as any).__setShowUserDropdown = setShowUserDropdown;
     const handleKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         setShowUserDropdown(false);
@@ -93,7 +94,7 @@ export const Header: React.FC<HeaderProps> = ({
   ];
 
   return (
-    <div className="sticky top-2 z-40 max-w-7xl w-full mx-auto px-2 sm:px-4 filter drop-shadow-[5px_5px_0_var(--shadow-col)]">
+    <div className="sticky top-2 z-50 max-w-7xl w-full mx-auto px-2 sm:px-4">
       <div className="navo">
         <div className="navi flex items-center justify-between gap-2 flex-wrap">
           {/* Left: Official Brand Logos & BPHC Tag */}
@@ -227,7 +228,7 @@ export const Header: React.FC<HeaderProps> = ({
               <span>Menu</span>
             </button>
 
-            {/* Persona Switcher Dropdown */}
+            {/* Persona Switcher Dropdown Button */}
             <div className="relative">
               <button
                 type="button"
@@ -246,49 +247,49 @@ export const Header: React.FC<HeaderProps> = ({
                   {currentUser.role}
                 </span>
               </button>
-
-              {/* Persona Modal */}
-              {showUserDropdown && (
-                <div className="absolute right-0 mt-2 w-72 bg-[var(--card)] border-[3px] border-[var(--line)] shadow-[6px_6px_0_var(--shadow-col)] p-2 z-50 text-xs">
-                  <div className="p-2 border-b-2 border-[var(--line)] bg-[#FFD84D] text-[#1B1530] font-bold font-mono">
-                    🕹️ SWITCH BITS PILANI PERSONA
-                  </div>
-                  <div className="max-h-72 overflow-y-auto divide-y-2 divide-[var(--line)]/20 mt-1">
-                    {SEEDED_USERS.map((user) => {
-                      const isSelected = user.id === currentUser.id;
-                      return (
-                        <button
-                          key={user.id}
-                          type="button"
-                          onClick={() => {
-                            sound.pick();
-                            switchUser(user);
-                            setShowUserDropdown(false);
-                          }}
-                          className={`w-full text-left p-2 flex items-center justify-between hover:bg-[#FFD84D]/40 transition-colors cursor-pointer ${
-                            isSelected ? 'bg-[#FFD84D]/60 font-bold' : ''
-                          }`}
-                        >
-                          <div className="flex items-center gap-2 truncate">
-                            <span className="text-base">{user.avatar}</span>
-                            <div className="truncate">
-                              <p className="text-[var(--fg)] truncate">{user.name}</p>
-                              <p className="text-[11px] text-[var(--soft)] font-mono truncate">
-                                {user.email}
-                              </p>
-                            </div>
-                          </div>
-                          <span className="chip s-ASG ml-2 text-[10px]">{user.role}</span>
-                        </button>
-                      );
-                    })}
-                  </div>
-                </div>
-              )}
             </div>
           </div>
         </div>
       </div>
+
+      {/* Persona Modal */}
+      {showUserDropdown && (
+        <div className="absolute right-2 sm:right-4 mt-1 w-72 bg-[var(--card)] border-[3px] border-[var(--line)] shadow-[6px_6px_0_var(--shadow-col)] p-2 z-50 text-xs">
+          <div className="p-2 border-b-2 border-[var(--line)] bg-[#FFD84D] text-[#1B1530] font-bold font-mono">
+            🕹️ SWITCH BITS PILANI PERSONA
+          </div>
+          <div className="max-h-72 overflow-y-auto divide-y-2 divide-[var(--line)]/20 mt-1">
+            {SEEDED_USERS.map((user) => {
+              const isSelected = user.id === currentUser.id;
+              return (
+                <button
+                  key={user.id}
+                  type="button"
+                  onClick={() => {
+                    sound.pick();
+                    switchUser(user);
+                    setShowUserDropdown(false);
+                  }}
+                  className={`w-full text-left p-2 flex items-center justify-between hover:bg-[#FFD84D]/40 transition-colors cursor-pointer ${
+                    isSelected ? 'bg-[#FFD84D]/60 font-bold' : ''
+                  }`}
+                >
+                  <div className="flex items-center gap-2 truncate">
+                    <span className="text-base">{user.avatar}</span>
+                    <div className="truncate">
+                      <p className="text-[var(--fg)] truncate">{user.name}</p>
+                      <p className="text-[11px] text-[var(--soft)] font-mono truncate">
+                        {user.email}
+                      </p>
+                    </div>
+                  </div>
+                  <span className="chip s-ASG ml-2 text-[10px]">{user.role}</span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      )}
 
       {/* Station Jump Menu Drawer */}
       {showStationMenu && (

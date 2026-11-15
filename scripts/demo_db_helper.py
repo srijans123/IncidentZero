@@ -43,6 +43,40 @@ def main():
         cur.execute("GRANT ALL ON SCHEMA public TO public;")
         print("[✓] Schema public reset successfully.")
 
+    elif action == '--test-trigger':
+        # Verify that audit_record update is rejected by audit_immutable trigger
+        # First ensure there's at least one row, or insert a temporary one
+        cur.execute("SELECT id FROM audit_record LIMIT 1;")
+        row = cur.fetchone()
+        test_id = None
+        if row:
+            test_id = row[0]
+        else:
+            # Insert a temporary row to test trigger
+            cur.execute("""
+                INSERT INTO audit_record (incident_id, chain_index, state, from_state, to_state, command, 
+                                          actor_id, actor_type, rationale, payload, prev_hash, hash)
+                VALUES ('00000000-0000-0000-0000-000000000001', 0, 'SUBMITTED', NULL, 'SUBMITTED', 'create',
+                        '019299a0-0000-7000-8000-000000000001', 'USER', 'test', '{}'::jsonb,
+                        '0000000000000000000000000000000000000000000000000000000000000000',
+                        '1111111111111111111111111111111111111111111111111111111111111111')
+                RETURNING id;
+            """)
+            test_id = cur.fetchone()[0]
+
+        try:
+            cur.execute(f"UPDATE audit_record SET description='tampered' WHERE id={test_id};")
+            print("FAIL: UPDATE was not rejected by audit_immutable trigger!")
+            sys.exit(1)
+        except Exception as e:
+            err_msg = str(e)
+            if 'audit_immutable' in err_msg.lower() or 'append-only' in err_msg.lower():
+                print(f"[✓] UPDATE rejected by audit_immutable trigger as expected: {err_msg.strip()}")
+                sys.exit(0)
+            else:
+                print(f"FAIL: Unexpected error during trigger test: {err_msg}")
+                sys.exit(1)
+
     cur.close()
     conn.close()
 

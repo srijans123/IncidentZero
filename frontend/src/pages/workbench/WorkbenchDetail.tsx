@@ -63,6 +63,7 @@ export const WorkbenchDetail: React.FC<WorkbenchDetailProps> = ({ incidentId, on
 
   // Modals state
   const [showResolveModal, setShowResolveModal] = useState(false);
+  (window as any).__setShowResolveModal = setShowResolveModal;
   const [resolveCode, setResolveCode] = useState('FIXED');
   const [resolveNotes, setResolveNotes] = useState('Restarted LDAP connection pool and purged exhausted sessions.');
   const [resolveRootCause, setResolveRootCause] = useState('LDAP_POOL');
@@ -72,6 +73,8 @@ export const WorkbenchDetail: React.FC<WorkbenchDetailProps> = ({ incidentId, on
   const [reassignReason, setReassignReason] = useState('Escalating to specialist team for deep diagnosis.');
 
   const [showRequestInfoModal, setShowRequestInfoModal] = useState(false);
+  (window as any).__showRequestInfoModal = showRequestInfoModal;
+  (window as any).__setShowRequestInfoModal = setShowRequestInfoModal;
   const [requestQuestion, setRequestQuestion] = useState('Please attach the exact console error log and client timestamp.');
 
   const [showCancelModal, setShowCancelModal] = useState(false);
@@ -354,7 +357,10 @@ export const WorkbenchDetail: React.FC<WorkbenchDetailProps> = ({ incidentId, on
               size="standard"
               variant="secondary"
               icon={<Pause className="w-4 h-4" />}
-              onClick={() => setShowRequestInfoModal(true)}
+              onClick={() => {
+                console.log('[DEBUG onClick Request User Info]');
+                setShowRequestInfoModal(true);
+              }}
             >
               Request User Info (Pause Clock)
             </ActionButton>
@@ -635,7 +641,7 @@ export const WorkbenchDetail: React.FC<WorkbenchDetailProps> = ({ incidentId, on
             <ActionButton size="standard" variant="outline" type="button" onClick={() => setShowResolveModal(false)}>
               Cancel
             </ActionButton>
-            <ActionButton size="standard" variant="ok" type="submit">
+            <ActionButton size="standard" variant="ok" type="submit" onClick={handleResolve}>
               Confirm Resolution
             </ActionButton>
           </div>
@@ -711,7 +717,7 @@ export const WorkbenchDetail: React.FC<WorkbenchDetailProps> = ({ incidentId, on
             <ActionButton size="standard" variant="outline" type="button" onClick={() => setShowRequestInfoModal(false)}>
               Cancel
             </ActionButton>
-            <ActionButton size="standard" variant="secondary" type="submit">
+            <ActionButton size="standard" variant="secondary" type="submit" onClick={handleRequestInfo}>
               Send Request & Pause Clock
             </ActionButton>
           </div>
