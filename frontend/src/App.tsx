@@ -39,7 +39,7 @@ import {
 } from 'lucide-react';
 
 const AppContent: React.FC = () => {
-  const { currentUser } = useAuth();
+  const { currentUser, isBackendOffline } = useAuth();
 
   // Navigation state (defaults to stage, supports URL hash/query)
   const [currentTab, setCurrentTab] = useState<ActiveTab>(() => {
@@ -106,6 +106,13 @@ const AppContent: React.FC = () => {
 
   return (
     <div className="min-h-screen text-[var(--fg)] flex flex-col font-pixel w-full max-w-full overflow-x-clip selection:bg-[var(--line)] selection:text-[var(--bg)]">
+      {/* Persistent Offline Banner if Backend Unreachable */}
+      {isBackendOffline && (
+        <div className="w-full bg-[#FF4D3D] text-[#FFF8DC] border-b-4 border-[#1B1530] py-2 px-4 text-center font-mono text-xs font-bold shadow-[0_4px_0_#1B1530] z-50">
+          CCIT DISPATCH BACKEND OFFLINE · START BACKEND TO RECOVER
+        </div>
+      )}
+
       {/* Top Floating Notched Header Navigation */}
       <Header
         currentTab={currentTab}

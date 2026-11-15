@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import { User } from '../types';
 import { api } from '../services/api';
 
@@ -8,6 +8,7 @@ export interface PredefinedUser {
   name: string;
   role: 'EMPLOYEE' | 'TECHNICIAN' | 'ADMINISTRATOR';
   supportTier?: 'L1' | 'SENIOR' | 'TEAM_LEAD';
+  teamId?: string;
   teamName: string;
   department: string;
   avatar: string;
@@ -97,6 +98,8 @@ interface AuthContextType {
   switchUser: (user: PredefinedUser) => Promise<void>;
   isLoading: boolean;
   token: string | null;
+  isBackendOffline: boolean;
+  checkSession: () => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -108,34 +111,109 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   });
   const [token, setToken] = useState<string | null>(() => localStorage.getItem('iitsm_jwt'));
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isBackendOffline, setIsBackendOffline] = useState<boolean>(false);
 
-  const switchUser = async (user: PredefinedUser) => {
-    setIsLoading(true);
+  const performLogin = async (user: PredefinedUser): Promise<string | null> => {
     try {
-      // Attempt backend login
       const resp = await api.auth.login(user.email, 'Bits@2026');
       if (resp && resp.accessToken) {
         localStorage.setItem('iitsm_jwt', resp.accessToken);
         setToken(resp.accessToken);
+        setIsBackendOffline(false);
+        return resp.accessToken;
       }
-    } catch (e) {
-      console.warn('Backend login deferred, setting demo fallback session', e);
-    } finally {
-      localStorage.setItem('iitsm_user_email', user.email);
+      return null;
+    } catch (err: any) {
+      if (err?.name === 'TypeError' || err?.message?.includes('Failed to fetch') || !err?.status) {
+        setIsBackendOffline(true);
+      }
+      throw err;
+    }
+  };
+
+  const syncProfile = async (baseUser: PredefinedUser, activeToken: string | null) => {
+    if (!activeToken) return;
+    try {
+      const me: any = await api.auth.getMe();
+      if (me) {
+        setIsBackendOffline(false);
+        setCurrentUser({
+          ...baseUser,
+          id: me.id || baseUser.id,
+          name: me.name || baseUser.name,
+          email: me.email || baseUser.email,
+          role: me.role || baseUser.role,
+          supportTier: me.supportTier || baseUser.supportTier,
+          teamId: me.teamId || baseUser.teamId,
+          department: me.department || baseUser.department,
+        });
+      }
+    } catch (err: any) {
+      if (err?.status === 401) {
+        // Re-login once with default credentials and retry
+        localStorage.removeItem('iitsm_jwt');
+        try {
+          const newToken = await performLogin(baseUser);
+          if (newToken) {
+            const meRetry: any = await api.auth.getMe();
+            if (meRetry) {
+              setCurrentUser({
+                ...baseUser,
+                id: meRetry.id || baseUser.id,
+                name: meRetry.name || baseUser.name,
+                email: meRetry.email || baseUser.email,
+                role: meRetry.role || baseUser.role,
+                supportTier: meRetry.supportTier || baseUser.supportTier,
+                teamId: meRetry.teamId || baseUser.teamId,
+                department: meRetry.department || baseUser.department,
+              });
+            }
+          }
+        } catch {
+          // Re-login failed
+        }
+      } else if (err?.name === 'TypeError' || err?.message?.includes('Failed to fetch') || !err?.status) {
+        setIsBackendOffline(true);
+      }
+    }
+  };
+
+  const switchUser = async (user: PredefinedUser) => {
+    setIsLoading(true);
+    localStorage.setItem('iitsm_user_email', user.email);
+    try {
+      const activeToken = await performLogin(user);
+      if (activeToken) {
+        await syncProfile(user, activeToken);
+      } else {
+        setCurrentUser(user);
+      }
+    } catch (e: any) {
+      console.warn('Backend login attempt error:', e);
       setCurrentUser(user);
+    } finally {
       setIsLoading(false);
     }
   };
 
-  useEffect(() => {
-    // Initial token fetch for default user if token missing
-    if (!token) {
-      switchUser(currentUser);
+  const checkSession = useCallback(async () => {
+    const savedEmail = localStorage.getItem('iitsm_user_email');
+    const user = SEEDED_USERS.find((u) => u.email === savedEmail) || currentUser;
+    const existingToken = localStorage.getItem('iitsm_jwt');
+
+    if (existingToken) {
+      await syncProfile(user, existingToken);
+    } else {
+      await switchUser(user);
     }
+  }, [currentUser]);
+
+  useEffect(() => {
+    checkSession();
   }, []);
 
   return (
-    <AuthContext.Provider value={{ currentUser, switchUser, isLoading, token }}>
+    <AuthContext.Provider value={{ currentUser, switchUser, isLoading, token, isBackendOffline, checkSession }}>
       {children}
     </AuthContext.Provider>
   );

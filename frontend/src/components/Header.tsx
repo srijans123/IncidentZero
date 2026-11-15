@@ -86,7 +86,9 @@ export const Header: React.FC<HeaderProps> = ({
     { id: 'stage', label: 'Campus Stage', icon: 'building', cartNum: '00' },
     { id: 'portal', label: 'Student Portal', icon: 'megaphone', cartNum: '01' },
     { id: 'workbench', label: 'Workbench', icon: 'wrench', cartNum: '02' },
-    { id: 'admin', label: 'Command DAG', icon: 'wifi', cartNum: '03' },
+    ...(currentUser.role === 'ADMINISTRATOR'
+      ? [{ id: 'admin' as ActiveTab, label: 'Command DAG', icon: 'wifi', cartNum: '03' }]
+      : []),
     { id: 'specs', label: 'System Specs', icon: 'book', cartNum: '04' },
   ];
 
@@ -198,16 +200,18 @@ export const Header: React.FC<HeaderProps> = ({
               <span className="hidden md:inline">{isMuted ? 'Muted' : 'Audio On'}</span>
             </button>
 
-            {/* Virtual Clock Toggle */}
-            <button
-              type="button"
-              onClick={toggleDemoClock}
-              className={`btn sm ${isDemoClockFast ? 'r' : 'w'} hidden xl:flex items-center gap-1`}
-              title="Toggle Demo Clock (1x vs 30x SLA drain)"
-            >
-              <PixelIcon name="clock" scale={1.6} />
-              <span>{isDemoClockFast ? '30x SLA' : '1x SLA'}</span>
-            </button>
+            {/* Virtual Clock Toggle (Admin Clearance Only) */}
+            {currentUser.role === 'ADMINISTRATOR' && (
+              <button
+                type="button"
+                onClick={toggleDemoClock}
+                className={`btn sm ${isDemoClockFast ? 'r' : 'w'} hidden xl:flex items-center gap-1`}
+                title="Toggle Demo Clock (1x vs 30x SLA drain) - Admin clearance"
+              >
+                <PixelIcon name="clock" scale={1.6} />
+                <span>{isDemoClockFast ? '30x SLA' : '1x SLA'}</span>
+              </button>
+            )}
 
             {/* Station Menu Toggle */}
             <button

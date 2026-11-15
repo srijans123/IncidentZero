@@ -157,12 +157,12 @@ export const SystemSpecs: React.FC = () => {
                   <span>Version Header Match (Happy Path)</span>
                 </h3>
                 <pre className="p-3 bg-[#0E0A1E] text-emerald-300 font-mono text-[11px] overflow-x-auto border border-[var(--line)]">
-{`POST /api/v1/incidents/INC-142/actions/ack
+{`POST /api/v1/incidents/INC-142/commands/acknowledge
 If-Match: "3"
 
 Response: 200 OK
 ETag: "4"
-State: INVESTIGATING`}
+State: ACKNOWLEDGED`}
                 </pre>
               </div>
 
@@ -172,7 +172,7 @@ State: INVESTIGATING`}
                   <span>Version Mismatch (409 Hit-Stop Shake)</span>
                 </h3>
                 <pre className="p-3 bg-[#0E0A1E] text-rose-300 font-mono text-[11px] overflow-x-auto border border-[var(--line)]">
-{`POST /api/v1/incidents/INC-142/actions/ack
+{`POST /api/v1/incidents/INC-142/commands/acknowledge
 If-Match: "2"
 
 Response: 409 Conflict

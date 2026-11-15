@@ -3,7 +3,7 @@ title Incident-Zero Backend (Spring Boot :8080)
 cd /d "%~dp0"
 
 echo ============================================================
-echo   Incident-Zero Backend (Spring Boot 3.5.3 + Java 22)
+echo   Incident-Zero Backend (Spring Boot 3.5.3 + Java 21)
 echo ============================================================
 
 rem 1. Load .env variables
@@ -16,7 +16,7 @@ if exist .env (
     echo [WARNING] .env file not found in root!
 )
 
-rem 2. Configure Java 22 / JDK
+rem 2. Configure Java 21 / JDK
 if "%JAVA_HOME%"=="" (
     if exist "C:\Users\Srijan Shukla\.jdks\corretto-22.0.2" (
         set "JAVA_HOME=C:\Users\Srijan Shukla\.jdks\corretto-22.0.2"

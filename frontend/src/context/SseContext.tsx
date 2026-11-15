@@ -39,6 +39,11 @@ export const SseProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       eventSourceRef.current = null;
     }
 
+    if (!token) {
+      setIsConnected(false);
+      return;
+    }
+
     try {
       // 1. Fetch single-use 30-sec stream ticket
       const { ticket } = await api.auth.issueStreamTicket();

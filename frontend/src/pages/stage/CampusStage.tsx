@@ -693,10 +693,10 @@ export const CampusStage: React.FC<CampusStageProps> = ({
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {[
-            { id: 'portal' as ActiveTab, num: '01 / STUDENT', title: 'Student Portal', desc: 'Report a BPHC outage with AI power-up tags and follow a 6-step quest bar.', code: 'POST /api/v1/tickets', col: 'bg-[#FFD84D]' },
-            { id: 'workbench' as ActiveTab, num: '02 / TECHNICIAN', title: 'Workbench', desc: 'Battle the active campus bug with AI runbook hints and guarded transitions.', code: 'POST /tickets/{id}/transition', col: 'bg-[#FF4D3D] text-white' },
-            { id: 'admin' as ActiveTab, num: '03 / ADMIN', title: 'Command DAG', desc: 'Campus overworld dependency DAG, blast-radius ripples, and storm drills.', code: 'GET /topology/blast-radius', col: 'bg-[#43D17A]' },
-            { id: 'specs' as ActiveTab, num: '04 / ARCHITECTURE', title: 'System Specs', desc: 'Explore state machine invariants, concurrency locks, and SLA engine.', code: 'GET /actuator/architecture', col: 'bg-[#FF8AD0]' },
+            { id: 'portal' as ActiveTab, num: '01 / STUDENT', title: 'Student Portal', desc: 'Report a BPHC outage with AI power-up tags and follow a 6-step quest bar.', code: 'POST /api/v1/incidents', col: 'bg-[#FFD84D]' },
+            { id: 'workbench' as ActiveTab, num: '02 / TECHNICIAN', title: 'Workbench', desc: 'Battle the active campus bug with AI runbook hints and guarded transitions.', code: 'POST /api/v1/incidents/{id}/commands/{cmd}', col: 'bg-[#FF4D3D] text-white' },
+            { id: 'admin' as ActiveTab, num: '03 / ADMIN', title: 'Command DAG', desc: 'Campus overworld dependency DAG, blast-radius ripples, and storm drills.', code: 'GET /api/v1/services/topology', col: 'bg-[#43D17A]' },
+            { id: 'specs' as ActiveTab, num: '04 / ARCHITECTURE', title: 'System Specs', desc: 'Explore state machine invariants, concurrency locks, and SLA engine.', code: 'GET /actuator/health', col: 'bg-[#FF8AD0]' },
           ].map((c) => (
             <div
               key={c.id}
