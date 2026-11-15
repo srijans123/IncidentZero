@@ -25,6 +25,27 @@ export interface User {
   token?: string;
 }
 
+export interface PriorityExplanationStep {
+  rule: string;
+  before: string;
+  after: string;
+  reason: string;
+}
+
+export interface IncidentResolution {
+  code: string;
+  notes: string;
+  rootCauseCategory?: string;
+  resolvedAt?: string;
+  resolvedBy?: string;
+}
+
+export interface SlaPolicyDetail {
+  policyTier?: string;
+  responseTimeMinutes?: number;
+  resolutionTimeMinutes?: number;
+}
+
 export interface Incident {
   id: string;
   number: string;
@@ -38,6 +59,7 @@ export interface Incident {
   serviceCode?: string;
   reporterId?: string;
   reporterEmail?: string;
+  reporterName?: string;
   assigneeId?: string;
   assigneeName?: string;
   createdAt: string;
@@ -47,11 +69,19 @@ export interface Incident {
   reopenCount: number;
   masterIncidentId?: string;
   isMajor: boolean;
+  childCount?: number;
   slaStatus: SlaStatus;
   responseDueAt?: string;
   resolutionDueAt?: string;
   allowedCommands: string[];
+  priorityExplanation?: PriorityExplanationStep[];
+  sla?: SlaPolicyDetail;
+  resolution?: IncidentResolution;
+  rating?: number;
+  closureNote?: string;
+  version?: number;
 }
+
 
 export interface AuditRecord {
   id: string;
@@ -67,7 +97,19 @@ export interface AuditRecord {
   timestamp: string;
 }
 
+export interface TimelineItem {
+  id: string;
+  action: string;
+  actor?: string;
+  actorType?: string;
+  description: string;
+  payload?: any;
+  hash?: string;
+  ts: string;
+}
+
 export interface TimelineEvent {
+
   id: string;
   timestamp: string;
   actor: string;

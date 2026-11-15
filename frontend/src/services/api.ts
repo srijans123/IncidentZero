@@ -1,7 +1,9 @@
-import { Incident, IntakeAdvice, AuditVerificationResult, RcaResult, User } from '../types';
+import { Incident, IntakeAdvice, AuditVerificationResult, RcaResult, User, TimelineItem } from '../types';
+import { toIncident, toTimelineItem, toAuditVerify, toAdvice, toRca } from './mappers';
 
 const ORIGIN = (import.meta.env.VITE_API_BASE_URL ?? '').replace(/\/+$/, ''); // '' = same origin (Vite proxy)
 export const API_BASE = `${ORIGIN}/api/v1`;
+
 
 
 function getAuthHeader(): Record<string, string> {
@@ -66,42 +68,51 @@ export const api = {
   },
 
   incidents: {
-    list: async (params?: { status?: string; priority?: string; q?: string; limit?: number }) => {
+    list: async (params?: { status?: string; priority?: string; q?: string; limit?: number; parentId?: string; mine?: boolean }) => {
       const q = new URLSearchParams();
       if (params?.status) q.set('status', params.status);
       if (params?.priority) q.set('priority', params.priority);
       if (params?.q) q.set('q', params.q);
       if (params?.limit) q.set('limit', String(params.limit));
+      if (params?.parentId) q.set('parentId', params.parentId);
+      if (params?.mine) q.set('mine', 'true');
       const queryString = q.toString() ? `?${q.toString()}` : '';
-      return request<{ items: Incident[]; nextCursor?: string }>(`/incidents${queryString}`);
+      const raw = await request<any>(`/incidents${queryString}`);
+      const items = Array.isArray(raw?.items) ? raw.items.map(toIncident) : (Array.isArray(raw) ? raw.map(toIncident) : []);
+      return { items, nextCursor: raw?.nextCursor };
     },
 
     get: async (id: string): Promise<Incident> => {
-      return request<Incident>(`/incidents/${id}`);
+      const raw = await request<any>(`/incidents/${id}`);
+      return toIncident(raw);
     },
 
     create: async (data: {
       title: string;
       description: string;
+      serviceCode?: string;
       serviceId?: string;
       urgency?: number;
       impactOverride?: number;
     }): Promise<Incident> => {
-      return request<Incident>('/incidents', {
+      const raw = await request<any>('/incidents', {
         method: 'POST',
         body: JSON.stringify(data),
       });
+      return toIncident(raw);
     },
 
     command: async (id: string, command: string, envelope: Record<string, any> = {}): Promise<Incident> => {
-      return request<Incident>(`/incidents/${id}/commands/${command}`, {
+      const raw = await request<any>(`/incidents/${id}/commands/${command}`, {
         method: 'POST',
         body: JSON.stringify(envelope),
       });
+      return toIncident(raw);
     },
 
-    timeline: async (id: string) => {
-      return request<any[]>(`/incidents/${id}/timeline`);
+    timeline: async (id: string): Promise<TimelineItem[]> => {
+      const raw = await request<any[]>(`/incidents/${id}/timeline`);
+      return Array.isArray(raw) ? raw.map(toTimelineItem) : [];
     },
 
     ai: async (id: string) => {
@@ -109,8 +120,10 @@ export const api = {
     },
 
     rca: async (id: string): Promise<RcaResult> => {
-      return request<RcaResult>(`/incidents/${id}/rca`);
+      const raw = await request<any>(`/incidents/${id}/rca`);
+      return toRca(raw);
     },
+
 
     pir: async (id: string) => {
       return request<any>(`/incidents/${id}/pir`, {
@@ -128,12 +141,14 @@ export const api = {
 
   intake: {
     getAdvice: async (data: { title: string; description: string; urgency?: number }): Promise<IntakeAdvice> => {
-      return request<IntakeAdvice>('/intake/advice', {
+      const raw = await request<any>('/intake/advice', {
         method: 'POST',
         body: JSON.stringify(data),
       });
+      return toAdvice(raw);
     },
   },
+
 
   admin: {
     getServices: async () => {
@@ -169,9 +184,11 @@ export const api = {
     },
 
     verifyAuditLedger: async (): Promise<AuditVerificationResult> => {
-      return request<AuditVerificationResult>('/admin/audit/verify', {
+      const raw = await request<any>('/admin/audit/verify', {
         method: 'POST',
       });
+      return toAuditVerify(raw);
     },
+
   },
 };
