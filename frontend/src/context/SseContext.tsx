@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useEffect, useState, useCallback, useRef } from 'react';
-import { api } from '../services/api';
+import { api, API_BASE } from '../services/api';
+
 import { useAuth } from './AuthContext';
 
 export interface StormProgress {
@@ -43,7 +44,8 @@ export const SseProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       const { ticket } = await api.auth.issueStreamTicket();
       if (!ticket) return;
 
-      const es = new EventSource(`/api/v1/stream?ticket=${encodeURIComponent(ticket)}`);
+      const es = new EventSource(`${API_BASE}/stream?ticket=${encodeURIComponent(ticket)}`);
+
       eventSourceRef.current = es;
 
       es.onopen = () => {

@@ -1,6 +1,8 @@
 import { Incident, IntakeAdvice, AuditVerificationResult, RcaResult, User } from '../types';
 
-const API_BASE = '/api/v1';
+const ORIGIN = (import.meta.env.VITE_API_BASE_URL ?? '').replace(/\/+$/, ''); // '' = same origin (Vite proxy)
+export const API_BASE = `${ORIGIN}/api/v1`;
+
 
 function getAuthHeader(): Record<string, string> {
   const token = localStorage.getItem('iitsm_jwt');
