@@ -17,6 +17,7 @@ build/
 # Temporary files and logs
 /tmp/
 *.log
+backend/classpath.txt
 .DS_Store
 Thumbs.db
 
@@ -39,3 +40,23 @@ __pycache__/
 !.impeccable/design.json
 !.impeccable/surfaces/
 !.impeccable/critique/
+
+# Video pipeline (config, raw captures, audio, screenshots, renders)
+video/config.json
+video/.env.video
+video/03_audio/*.wav
+video/04_capture/raw/
+video/04_capture/shots/
+video/04_capture/boxes/
+video/07_remotion/out/
+video/08_out/*.mp4
+video/08_out/contact_sheet/
+video_v3/03_audio/beats/*.wav
+video_v3/04_capture/clips/*.mp4
+video_v3/04_capture/*_frames/
+video_v3/08_out/*.mp4
+video_v3/08_out/acts/*.mp4
+video_v3/08_out/contact_sheet/
+*.mp4
+*.webm
+

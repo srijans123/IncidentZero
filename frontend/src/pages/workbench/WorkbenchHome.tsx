@@ -3,6 +3,7 @@ import { Incident } from '../../types';
 import { api } from '../../services/api';
 import { useAuth } from '../../context/AuthContext';
 import { useSse } from '../../context/SseContext';
+import { useToast } from '../../components/ui/Toast';
 import { sound } from '../../services/sound';
 import { PixelIcon, SlaHearts } from '../../services/pixelSprites';
 import {
@@ -24,10 +25,11 @@ interface WorkbenchHomeProps {
 export const WorkbenchHome: React.FC<WorkbenchHomeProps> = ({ onSelectIncident, onOpenMajor }) => {
   const { currentUser } = useAuth();
   const { lastEvent } = useSse();
+  const toast = useToast();
   const [incidents, setIncidents] = useState<Incident[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
-  const [activeQueue, setActiveQueue] = useState<'ALL' | 'MY' | 'TRIAGE' | 'P1' | 'MAJOR'>('ALL');
+  const [activeQueue, setActiveQueue] = useState<'ALL' | 'MY' | 'TRIAGE' | 'P1' | 'MAJOR'>('MY');
 
   const fetchQueue = async () => {
     try {
@@ -271,7 +273,7 @@ export const WorkbenchHome: React.FC<WorkbenchHomeProps> = ({ onSelectIncident, 
                           >
                             Major Commander
                           </ActionButton>
-                        ) : inc.allowedCommands.includes('ACKNOWLEDGE') ? (
+                        ) : (inc.allowedCommands || []).includes('ACKNOWLEDGE') ? (
                           <ActionButton
                             size="compact"
                             variant="primary"
@@ -279,9 +281,10 @@ export const WorkbenchHome: React.FC<WorkbenchHomeProps> = ({ onSelectIncident, 
                               sound.fix();
                               try {
                                 await api.incidents.command(inc.id, 'acknowledge');
+                                toast.success(`Acknowledged ${inc.number}`);
                               } catch (err: any) {
                                 sound.err();
-                                alert('Acknowledge failed: ' + (err?.message || 'Unknown error'));
+                                toast.error('Acknowledge failed: ' + (err?.message || 'Unknown error'));
                               } finally {
                                 fetchQueue();
                               }

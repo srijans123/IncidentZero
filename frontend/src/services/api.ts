@@ -189,6 +189,25 @@ export const api = {
       });
       return toAuditVerify(raw);
     },
+  },
 
+  services: {
+    list: async () => {
+      return request<{ id: string; code: string; name: string; tier: string }[]>('/services');
+    },
+  },
+
+  technicians: {
+    list: async () => {
+      return request<{
+        id: string;
+        name: string;
+        supportTier: string;
+        teamId: string;
+        teamCode: string;
+        loadPoints: number;
+        capacity: number;
+      }[]>('/technicians');
+    },
   },
 };

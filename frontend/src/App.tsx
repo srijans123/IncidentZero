@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { SseProvider } from './context/SseContext';
+import { ToastProvider } from './components/ui/Toast';
 import { Header, ActiveTab } from './components/Header';
 import { sound } from './services/sound';
 
@@ -304,7 +305,9 @@ export const App: React.FC = () => {
   return (
     <AuthProvider>
       <SseProvider>
-        <AppContent />
+        <ToastProvider>
+          <AppContent />
+        </ToastProvider>
       </SseProvider>
     </AuthProvider>
   );

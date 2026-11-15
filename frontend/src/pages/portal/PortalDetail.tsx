@@ -1,57 +1,76 @@
-import React, { useEffect, useState } from 'react';
-import { Incident } from '../../types';
+import React, { useState, useEffect } from 'react';
 import { api } from '../../services/api';
-import { useSse } from '../../context/SseContext';
+import { Incident, TimelineItem } from '../../types';
 import { sound } from '../../services/sound';
 import { PixelIcon, SlaHearts } from '../../services/pixelSprites';
 import {
   ChevronLeft,
-  CheckCircle2,
-  Star,
-  Send,
-  XCircle,
   RefreshCw,
+  Send,
+  Star,
+  CheckCircle2,
+  XCircle,
   AlertTriangle,
+  Clock,
+  Ban,
 } from 'lucide-react';
 import { ActionButton } from '../../components/ui/ActionButton';
 import { StatusBadge } from '../../components/ui/StatusBadge';
-import { StatusDot } from '../../components/ui/StatusDot';
 import { HashPill } from '../../components/ui/HashPill';
+import { useSse } from '../../context/SseContext';
+import { useToast } from '../../components/ui/Toast';
+import { Modal } from '../../components/ui/Modal';
 
 interface PortalDetailProps {
   incidentId: string;
   onBack: () => void;
 }
 
+// 8 canonical lifecycle progression states
 const LIFECYCLE_STEPS = [
   'NEW',
+  'CLASSIFIED',
   'ASSIGNED',
-  'INVESTIGATING',
+  'ACKNOWLEDGED',
+  'IN_PROGRESS',
   'RESOLVED',
+  'VERIFIED',
   'CLOSED',
 ];
 
 export const PortalDetail: React.FC<PortalDetailProps> = ({ incidentId, onBack }) => {
-  const { lastEvent } = useSse();
+  const { showError, showSuccess } = useToast();
   const [incident, setIncident] = useState<Incident | null>(null);
-  const [timeline, setTimeline] = useState<any[]>([]);
+  const [timeline, setTimeline] = useState<TimelineItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [userInfoInput, setUserInfoInput] = useState('');
+  const [starRating, setStarRating] = useState<number>(5);
   const [isSubmittingInfo, setIsSubmittingInfo] = useState(false);
-  const [starRating, setStarRating] = useState(5);
-  const [verifyFeedback, setVerifyFeedback] = useState('');
   const [isVerifying, setIsVerifying] = useState(false);
+
+  // Reject modal state
+  const [isRejectModalOpen, setIsRejectModalOpen] = useState(false);
+  const [rejectReason, setRejectReason] = useState('');
   const [isRejecting, setIsRejecting] = useState(false);
+
+  // Cancel modal state
+  const [isCancelModalOpen, setIsCancelModalOpen] = useState(false);
+  const [cancelReason, setCancelReason] = useState('');
+  const [isCancelling, setIsCancelling] = useState(false);
+
+  const { lastEvent } = useSse();
 
   const fetchDetails = async () => {
     try {
       setLoading(true);
       const inc = await api.incidents.get(incidentId);
       setIncident(inc);
-      const t = await api.incidents.timeline(incidentId);
-      setTimeline(t || []);
-    } catch (err) {
+
+      const items = await api.incidents.timeline(incidentId);
+      setTimeline(items);
+    } catch (err: any) {
       console.error('Failed to load incident detail', err);
+      showError(err, 'Failed to load incident details');
     } finally {
       setLoading(false);
     }
@@ -62,10 +81,9 @@ export const PortalDetail: React.FC<PortalDetailProps> = ({ incidentId, onBack }
   }, [incidentId]);
 
   useEffect(() => {
-    const evtId = lastEvent?.data?.id ?? lastEvent?.data?.incidentId;
     if (
-      (lastEvent?.type?.startsWith('incident.') || lastEvent?.type?.startsWith('audit.')) &&
-      (!evtId || evtId === incidentId)
+      lastEvent?.type === 'incident.updated' &&
+      lastEvent?.data?.incidentId === incidentId
     ) {
       fetchDetails();
     }
@@ -79,14 +97,15 @@ export const PortalDetail: React.FC<PortalDetailProps> = ({ incidentId, onBack }
     try {
       setIsSubmittingInfo(true);
       await api.incidents.command(incidentId, 'provide-info', {
-        answer: userInfoInput,
+        answer: userInfoInput.trim(),
       });
       setUserInfoInput('');
       sound.fix();
+      showSuccess('Diagnostic reply sent! SLA resolution clock resumed.');
       fetchDetails();
     } catch (err: any) {
       sound.err();
-      alert('Failed to send diagnostic response: ' + (err?.message || 'Unknown error'));
+      showError(err, 'Failed to send diagnostic response');
     } finally {
       setIsSubmittingInfo(false);
     }
@@ -96,32 +115,55 @@ export const PortalDetail: React.FC<PortalDetailProps> = ({ incidentId, onBack }
     sound.win();
     try {
       setIsVerifying(true);
-      await api.incidents.command(incidentId, 'close', {
+      // A9: send 'verify' with { rating }
+      await api.incidents.command(incidentId, 'verify', {
         rating: starRating,
-        closureNote: verifyFeedback || 'Verified resolved by student.',
       });
+      showSuccess('Resolution confirmed! Waiting for service desk to close the ticket.');
       fetchDetails();
     } catch (err: any) {
       sound.err();
-      alert('Failed to verify resolution: ' + (err?.message || 'Unknown error'));
+      showError(err, 'Failed to confirm resolution');
     } finally {
       setIsVerifying(false);
     }
   };
 
-  const handleRejectResolution = async () => {
-    const reason = prompt('Please describe why the issue is not resolved:', 'The login error still happens when taking the quiz.');
-    if (!reason) return;
+  const submitReject = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!rejectReason.trim()) return;
 
     sound.err();
     try {
       setIsRejecting(true);
-      await api.incidents.command(incidentId, 'reject', { reason });
+      await api.incidents.command(incidentId, 'reject', { reason: rejectReason.trim() });
+      setIsRejectModalOpen(false);
+      setRejectReason('');
+      showSuccess('Ticket returned to service desk for further investigation.');
       fetchDetails();
     } catch (err: any) {
-      alert('Failed to reject resolution: ' + (err?.message || 'Unknown error'));
+      showError(err, 'Failed to reject resolution');
     } finally {
       setIsRejecting(false);
+    }
+  };
+
+  const submitCancel = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!cancelReason.trim()) return;
+
+    sound.blip();
+    try {
+      setIsCancelling(true);
+      await api.incidents.command(incidentId, 'cancel', { reason: cancelReason.trim() });
+      setIsCancelModalOpen(false);
+      setCancelReason('');
+      showSuccess('Ticket successfully cancelled.');
+      fetchDetails();
+    } catch (err: any) {
+      showError(err, 'Failed to cancel ticket');
+    } finally {
+      setIsCancelling(false);
     }
   };
 
@@ -147,6 +189,22 @@ export const PortalDetail: React.FC<PortalDetailProps> = ({ incidentId, onBack }
 
   const isPendingUserInfo = incident.state === 'PENDING_USER';
   const isResolved = incident.state === 'RESOLVED';
+  const isVerified = incident.state === 'VERIFIED';
+  const isClosed = incident.state === 'CLOSED';
+  const isCancelled = incident.state === 'CANCELLED';
+  const isReopened = incident.state === 'REOPENED';
+  const canCancel = incident.allowedCommands?.includes('CANCEL');
+
+  // Find index in 8-step progression
+  const stepIndex = LIFECYCLE_STEPS.indexOf(incident.state);
+  const effectiveIndex =
+    stepIndex >= 0
+      ? stepIndex
+      : incident.state === 'PENDING_USER' || incident.state === 'REOPENED'
+      ? LIFECYCLE_STEPS.indexOf('IN_PROGRESS')
+      : incident.state === 'CANCELLED'
+      ? LIFECYCLE_STEPS.indexOf('CLOSED')
+      : 0;
 
   return (
     <div className="space-y-6">
@@ -163,17 +221,32 @@ export const PortalDetail: React.FC<PortalDetailProps> = ({ incidentId, onBack }
         >
           Back to My Incidents
         </ActionButton>
-        <ActionButton
-          size="compact"
-          variant="outline"
-          icon={<RefreshCw className="w-3.5 h-3.5" />}
-          onClick={() => {
-            sound.pick();
-            fetchDetails();
-          }}
-        >
-          Sync Status
-        </ActionButton>
+        <div className="flex items-center gap-2">
+          {canCancel && (
+            <ActionButton
+              size="compact"
+              variant="crit"
+              icon={<Ban className="w-3.5 h-3.5" />}
+              onClick={() => {
+                sound.blip();
+                setIsCancelModalOpen(true);
+              }}
+            >
+              Cancel My Ticket
+            </ActionButton>
+          )}
+          <ActionButton
+            size="compact"
+            variant="outline"
+            icon={<RefreshCw className="w-3.5 h-3.5" />}
+            onClick={() => {
+              sound.pick();
+              fetchDetails();
+            }}
+          >
+            Sync Status
+          </ActionButton>
+        </div>
       </div>
 
       {/* Main Incident Card */}
@@ -200,31 +273,49 @@ export const PortalDetail: React.FC<PortalDetailProps> = ({ incidentId, onBack }
             </p>
           </div>
 
-          <div className="flex items-center gap-2 shrink-0">
+          <div className="flex items-center gap-2 shrink-0 flex-wrap">
             <StatusBadge label={incident.priority || 'P3'} isMono />
             <StatusBadge label={incident.state} showDot />
+            {isPendingUserInfo && (
+              <span className="px-2 py-0.5 bg-[#FF9F43] text-[#1B1530] font-mono text-xs font-bold border border-[#1B1530]">
+                AWAITING USER INPUT
+              </span>
+            )}
+            {isReopened && (
+              <span className="px-2 py-0.5 bg-[#FF4D3D] text-[#FFF8DC] font-mono text-xs font-bold border border-[#1B1530]">
+                REOPENED ({incident.reopenCount}x)
+              </span>
+            )}
+            {isCancelled && (
+              <span className="px-2 py-0.5 bg-slate-500 text-white font-mono text-xs font-bold border border-[#1B1530]">
+                CANCELLED
+              </span>
+            )}
           </div>
         </div>
 
-        {/* Linear Lifecycle Step Progress Bar */}
+        {/* Linear Lifecycle Step Progress Bar (8-Step) */}
         <div className="pt-4 border-t-2 border-[var(--line)]">
-          <div className="text-[11px] font-mono font-bold uppercase text-[var(--soft)] mb-2">
-            6-Step Lifecycle Quest Progress
+          <div className="flex items-center justify-between mb-2">
+            <span className="text-[11px] font-mono font-bold uppercase text-[var(--soft)]">
+              8-Step Lifecycle Progression
+            </span>
+            <span className="text-[11px] font-mono font-bold text-[var(--fg)]">
+              Current State: <strong className="text-[#59C9F5]">{incident.state}</strong>
+            </span>
           </div>
-          <div className="grid grid-cols-5 gap-2 text-center text-xs">
+          <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-8 gap-1.5 text-center text-xs">
             {LIFECYCLE_STEPS.map((step, idx) => {
-              const normalized =
-                incident.state === 'VERIFIED' ? 'CLOSED'
-                : incident.state === 'PENDING_USER' || incident.state === 'REOPENED' ? 'INVESTIGATING'
-                : incident.state;
-              const currentIdx = LIFECYCLE_STEPS.indexOf(normalized);
-              const isPast = idx <= (currentIdx >= 0 ? currentIdx : 1);
+              const isPast = idx <= effectiveIndex;
+              const isCurrent = idx === effectiveIndex;
               return (
                 <div
                   key={step}
-                  className={`p-2.5 border-2 border-[var(--line)] font-mono font-bold text-xs transition-colors ${
-                    isPast
-                      ? 'bg-[#43D17A] text-[#1B1530] shadow-[2px_2px_0_#1B1530]'
+                  className={`p-2 border-2 border-[var(--line)] font-mono font-bold text-[11px] transition-colors ${
+                    isCurrent
+                      ? 'bg-[#FFD84D] text-[#1B1530] shadow-[2px_2px_0_#1B1530] -translate-y-0.5'
+                      : isPast
+                      ? 'bg-[#43D17A] text-[#1B1530]'
                       : 'bg-white/40 text-[var(--soft)]'
                   }`}
                 >
@@ -277,6 +368,12 @@ export const PortalDetail: React.FC<PortalDetailProps> = ({ incidentId, onBack }
             <CheckCircle2 className="w-4 h-4 text-[#43D17A]" />
             <span>TECHNICIAN HAS RESOLVED YOUR ISSUE</span>
           </div>
+          {incident.resolution?.notes && (
+            <div className="p-3 bg-white text-[#1B1530] border-2 border-[#1B1530] font-mono text-xs">
+              <span className="font-bold text-[#FF4D3D]">Resolution Notes: </span>
+              {incident.resolution.notes}
+            </div>
+          )}
           <p className="text-xs text-[var(--fg)]">
             Please verify whether the service is functioning correctly for you:
           </p>
@@ -308,21 +405,52 @@ export const PortalDetail: React.FC<PortalDetailProps> = ({ incidentId, onBack }
                 variant="outline"
                 isLoading={isRejecting}
                 icon={<XCircle className="w-4 h-4" />}
-                onClick={handleRejectResolution}
+                onClick={() => {
+                  sound.blip();
+                  setIsRejectModalOpen(true);
+                }}
               >
-                Not Fixed (Reopen)
+                Not Fixed (Reject)
               </ActionButton>
               <ActionButton
                 size="standard"
-                variant="primary"
+                variant="ok"
                 isLoading={isVerifying}
                 icon={<CheckCircle2 className="w-4 h-4 text-[#1B1530]" />}
                 onClick={handleVerifyResolution}
               >
-                Verify & Close
+                Confirm It Is Fixed
               </ActionButton>
             </div>
           </div>
+        </div>
+      )}
+
+      {/* Verified Banner: Waiting for Service Desk to Close */}
+      {isVerified && (
+        <div className="pixel-card bg-[#59C9F5]/20 border-[3px] border-[#1B1530] space-y-2">
+          <div className="flex items-center gap-2 text-[#1B1530] font-bold text-xs font-mono">
+            <CheckCircle2 className="w-4 h-4 text-[#59C9F5]" />
+            <span>RESOLUTION CONFIRMED</span>
+          </div>
+          <p className="text-xs text-[var(--fg)] font-mono font-bold">
+            Waiting for the service desk to close the ticket.
+          </p>
+        </div>
+      )}
+
+      {/* Closed Banner */}
+      {isClosed && (
+        <div className="pixel-card bg-[#43D17A]/20 border-[3px] border-[#1B1530] space-y-2">
+          <div className="flex items-center gap-2 text-[#1B1530] font-bold text-xs font-mono">
+            <CheckCircle2 className="w-4 h-4 text-[#43D17A]" />
+            <span>TICKET CLOSED</span>
+          </div>
+          {incident.closureNote && (
+            <p className="text-xs text-[var(--fg)] font-mono">
+              Closure Note: {incident.closureNote}
+            </p>
+          )}
         </div>
       )}
 
@@ -339,14 +467,17 @@ export const PortalDetail: React.FC<PortalDetailProps> = ({ incidentId, onBack }
 
         <div className="space-y-3">
           {timeline.map((item, idx) => (
-            <div key={idx} className="p-3 border-2 border-[var(--line)] bg-[var(--card)] space-y-1">
+            <div key={item.id || idx} className="p-3 border-2 border-[var(--line)] bg-[var(--card)] space-y-1">
               <div className="flex items-center justify-between font-mono text-xs font-bold">
                 <span className="text-[#FF4D3D]">{item.action}</span>
                 <span className="text-[var(--soft)]">
-                  {item.ts ? new Date(item.ts).toLocaleTimeString() : '10:00:00'}
+                  {item.actor ? `${item.actor} • ` : ''}
+                  {item.ts ? new Date(item.ts).toLocaleTimeString() : ''}
                 </span>
               </div>
-              <p className="text-xs text-[var(--fg)] font-medium">{item.description || item.payload}</p>
+              <p className="text-xs text-[var(--fg)] font-medium">
+                {item.description || (typeof item.payload === 'string' ? item.payload : JSON.stringify(item.payload))}
+              </p>
               {item.hash && (
                 <div className="pt-1">
                   <HashPill hash={item.hash} truncateLength={8} />
@@ -356,6 +487,88 @@ export const PortalDetail: React.FC<PortalDetailProps> = ({ incidentId, onBack }
           ))}
         </div>
       </div>
+
+      {/* Reject Modal */}
+      <Modal
+        isOpen={isRejectModalOpen}
+        onClose={() => setIsRejectModalOpen(false)}
+        title="Reject Resolution & Reopen Ticket"
+        footer={
+          <>
+            <ActionButton
+              size="standard"
+              variant="outline"
+              onClick={() => setIsRejectModalOpen(false)}
+            >
+              Cancel
+            </ActionButton>
+            <ActionButton
+              size="standard"
+              variant="crit"
+              disabled={!rejectReason.trim() || isRejecting}
+              isLoading={isRejecting}
+              onClick={submitReject}
+            >
+              Submit Rejection
+            </ActionButton>
+          </>
+        }
+      >
+        <div className="space-y-3">
+          <p className="text-xs text-[var(--soft)] font-mono">
+            Please describe why the issue is not resolved. This reason will be logged in the immutable audit ledger.
+          </p>
+          <textarea
+            rows={4}
+            required
+            placeholder="e.g. Tried accessing the LMS quiz again on Vyas Bhawan Wi-Fi, but gateway timeout still occurs."
+            value={rejectReason}
+            onChange={(e) => setRejectReason(e.target.value)}
+            className="w-full p-3 font-mono text-xs bg-white text-[#1B1530] border-2 border-[#1B1530] focus:outline-none"
+          />
+        </div>
+      </Modal>
+
+      {/* Cancel Modal */}
+      <Modal
+        isOpen={isCancelModalOpen}
+        onClose={() => setIsCancelModalOpen(false)}
+        title="Cancel Incident Ticket"
+        footer={
+          <>
+            <ActionButton
+              size="standard"
+              variant="outline"
+              onClick={() => setIsCancelModalOpen(false)}
+            >
+              Back
+            </ActionButton>
+            <ActionButton
+              size="standard"
+              variant="crit"
+              disabled={!cancelReason.trim() || isCancelling}
+              isLoading={isCancelling}
+              onClick={submitCancel}
+            >
+              Confirm Cancellation
+            </ActionButton>
+          </>
+        }
+      >
+        <div className="space-y-3">
+          <p className="text-xs text-[var(--soft)] font-mono">
+            Are you sure you want to cancel this ticket? Please provide a reason for cancelling.
+          </p>
+          <textarea
+            rows={3}
+            required
+            placeholder="e.g. Issue resolved itself after reconnecting to campus network."
+            value={cancelReason}
+            onChange={(e) => setCancelReason(e.target.value)}
+            className="w-full p-3 font-mono text-xs bg-white text-[#1B1530] border-2 border-[#1B1530] focus:outline-none"
+          />
+        </div>
+      </Modal>
     </div>
   );
 };
