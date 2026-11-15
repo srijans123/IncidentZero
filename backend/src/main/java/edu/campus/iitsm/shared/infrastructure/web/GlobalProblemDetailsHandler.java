@@ -8,6 +8,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -60,6 +62,21 @@ public class GlobalProblemDetailsHandler {
         .toList();
     problem.setProperty("errors", errors);
 
+    return ResponseEntity.badRequest().body(problem);
+  }
+
+  @ExceptionHandler({
+      HttpMessageNotReadableException.class,
+      MethodArgumentTypeMismatchException.class,
+      IllegalArgumentException.class
+  })
+  public ResponseEntity<ProblemDetail> handleBadRequestExceptions(Exception ex, HttpServletRequest request) {
+    ProblemDetail problem = ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST, ex.getMessage());
+    problem.setType(URI.create(BASE_URI + "ITSM-4000"));
+    problem.setTitle("Bad Request");
+    problem.setInstance(URI.create(request.getRequestURI()));
+    problem.setProperty("code", "ITSM-4000");
+    problem.setProperty("traceId", UUID.randomUUID().toString().replace("-", ""));
     return ResponseEntity.badRequest().body(problem);
   }
 

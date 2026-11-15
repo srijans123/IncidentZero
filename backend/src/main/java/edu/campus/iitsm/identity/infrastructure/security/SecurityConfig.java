@@ -30,9 +30,26 @@ public class SecurityConfig {
         .csrf(csrf -> csrf.disable())
         .cors(cors -> cors.configurationSource(corsConfigurationSource()))
         .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+        .exceptionHandling(ex -> ex
+            .authenticationEntryPoint((request, response, authException) -> {
+              response.setStatus(401);
+              response.setContentType("application/problem+json");
+              response.getWriter().write("""
+                  {"type":"https://incident-zero.campus.edu/errors/ITSM-4010","title":"Unauthorized Operation","status":401,"detail":"Full authentication is required to access this resource","code":"ITSM-4010"}
+                  """);
+            })
+            .accessDeniedHandler((request, response, accessDeniedException) -> {
+              response.setStatus(403);
+              response.setContentType("application/problem+json");
+              response.getWriter().write("""
+                  {"type":"https://incident-zero.campus.edu/errors/ITSM-4030","title":"Forbidden Operation","status":403,"detail":"Access denied: insufficient permissions","code":"ITSM-4030"}
+                  """);
+            })
+        )
         .authorizeHttpRequests(auth -> auth
             .requestMatchers(HttpMethod.POST, "/api/v1/auth/login", "/api/v1/auth/refresh").permitAll()
             .requestMatchers(HttpMethod.GET, "/api/v1/stream").permitAll()
+            .requestMatchers("/api/v1/admin/**").hasRole("ADMINISTRATOR")
             .requestMatchers("/api/v1/**").authenticated()
             .anyRequest().permitAll()
         )

@@ -27,12 +27,40 @@ public class IncidentController {
   private final IncidentQueryPort queryPort;
   private final IntakeService intakeService;
   private final ClockPort clockPort;
+  private final CategorizationPort categorizationPort;
   private final DuplicateDetectionPort duplicateDetectionPort;
   private final SlaBreachPredictorPort slaBreachPredictorPort;
   private final ResolutionRagPort resolutionRagPort;
   private final RcaRankerPort rcaRankerPort;
   private final PirDrafterPort pirDrafterPort;
   private final NlSearchPort nlSearchPort;
+
+  @org.springframework.beans.factory.annotation.Autowired
+  public IncidentController(
+      IncidentCommandService commandService,
+      IncidentQueryPort queryPort,
+      IntakeService intakeService,
+      ClockPort clockPort,
+      CategorizationPort categorizationPort,
+      DuplicateDetectionPort duplicateDetectionPort,
+      SlaBreachPredictorPort slaBreachPredictorPort,
+      ResolutionRagPort resolutionRagPort,
+      RcaRankerPort rcaRankerPort,
+      PirDrafterPort pirDrafterPort,
+      NlSearchPort nlSearchPort
+  ) {
+    this.commandService = commandService;
+    this.queryPort = queryPort;
+    this.intakeService = intakeService;
+    this.clockPort = clockPort;
+    this.categorizationPort = categorizationPort;
+    this.duplicateDetectionPort = duplicateDetectionPort;
+    this.slaBreachPredictorPort = slaBreachPredictorPort;
+    this.resolutionRagPort = resolutionRagPort;
+    this.rcaRankerPort = rcaRankerPort;
+    this.pirDrafterPort = pirDrafterPort;
+    this.nlSearchPort = nlSearchPort;
+  }
 
   public IncidentController(
       IncidentCommandService commandService,
@@ -46,16 +74,8 @@ public class IncidentController {
       PirDrafterPort pirDrafterPort,
       NlSearchPort nlSearchPort
   ) {
-    this.commandService = commandService;
-    this.queryPort = queryPort;
-    this.intakeService = intakeService;
-    this.clockPort = clockPort;
-    this.duplicateDetectionPort = duplicateDetectionPort;
-    this.slaBreachPredictorPort = slaBreachPredictorPort;
-    this.resolutionRagPort = resolutionRagPort;
-    this.rcaRankerPort = rcaRankerPort;
-    this.pirDrafterPort = pirDrafterPort;
-    this.nlSearchPort = nlSearchPort;
+    this(commandService, queryPort, intakeService, clockPort, null, duplicateDetectionPort,
+         slaBreachPredictorPort, resolutionRagPort, rcaRankerPort, pirDrafterPort, nlSearchPort);
   }
 
   @PostMapping
@@ -64,22 +84,50 @@ public class IncidentController {
       @AuthenticationPrincipal UserPrincipal principal
   ) {
     UUID actorId = principal != null ? principal.id() : UUID.fromString("019299a0-0000-7000-8000-000000000001");
-    UUID serviceId = req.serviceId() != null ? req.serviceId() : UUID.fromString("30000000-0000-0000-0000-000000000001");
-    int urgency = req.urgency() != null ? req.urgency() : 3;
+    int urgency = req.urgency() != null ? req.urgency() : 2;
     int impact = req.impactOverride() != null ? req.impactOverride() : 2;
+
+    String serviceCode = req.serviceCode();
+    UUID serviceId = req.serviceId();
+
+    IncidentDtos.ServiceDto resolvedService = null;
+    if (serviceCode != null && !serviceCode.isBlank()) {
+      resolvedService = queryPort.findService(serviceCode, null).orElse(null);
+    } else if (serviceId != null) {
+      resolvedService = queryPort.findService(null, serviceId).orElse(null);
+    } else {
+      try {
+        var classification = categorizationPort.classify(req.title(), req.description());
+        if (classification != null && classification.value() != null && classification.value().serviceCode() != null) {
+          resolvedService = queryPort.findService(classification.value().serviceCode(), null).orElse(null);
+        }
+      } catch (Exception ignored) {}
+      if (resolvedService == null) {
+        resolvedService = queryPort.findService("APP-ERP", null).orElse(null);
+      }
+    }
+
+    if (resolvedService == null) {
+      throw new edu.campus.iitsm.shared.domain.error.ServiceNotFoundException(serviceCode != null ? serviceCode : "UNKNOWN");
+    }
 
     Incident created = intakeService.createIncident(
         actorId,
         req.title(),
         req.description(),
-        serviceId,
-        "T1",
+        resolvedService.id(),
+        resolvedService.tier(),
         impact,
         urgency
     );
 
     IncidentDtos.IncidentDetailResponse detail = queryPort.findIncidentDetail(created.id())
         .orElseThrow(() -> new IncidentNotFoundException(created.id()));
+
+    if (principal != null) {
+      List<String> permitted = commandService.permittedCommands(created.id(), principal.id(), principal.role(), principal.supportTier());
+      detail = detail.withAllowedCommands(permitted);
+    }
 
     return ResponseEntity
         .created(URI.create("/api/v1/incidents/" + created.id()))
@@ -92,20 +140,47 @@ public class IncidentController {
       @RequestParam(value = "status", required = false) String status,
       @RequestParam(value = "priority", required = false) String priority,
       @RequestParam(value = "serviceId", required = false) UUID serviceId,
+      @RequestParam(value = "parentId", required = false) UUID parentId,
+      @RequestParam(value = "mine", required = false) Boolean mine,
       @RequestParam(value = "q", required = false) String q,
       @RequestParam(value = "cursor", required = false) String cursor,
-      @RequestParam(value = "limit", defaultValue = "50") int limit
+      @RequestParam(value = "limit", defaultValue = "50") int limit,
+      @AuthenticationPrincipal UserPrincipal principal
   ) {
+    UUID callerId = principal != null ? principal.id() : null;
+    String callerRole = principal != null ? principal.role() : null;
+    String callerTier = principal != null ? principal.supportTier() : null;
+
     IncidentDtos.PageResponse<IncidentDtos.IncidentSummaryDto> page = queryPort.listIncidents(
-        status, priority, serviceId, q, cursor, limit
+        status, priority, serviceId, parentId, mine, callerId, callerRole, q, cursor, limit
     );
+
+    if (principal != null) {
+      List<IncidentDtos.IncidentSummaryDto> filtered = page.items().stream()
+          .map(item -> {
+            List<String> permitted = commandService.permittedCommands(item.id(), callerId, callerRole, callerTier);
+            return item.withAllowedCommands(permitted);
+          })
+          .toList();
+      page = new IncidentDtos.PageResponse<>(filtered, page.nextCursor(), page.hasMore(), page.totalMatching());
+    }
+
     return ResponseEntity.ok(page);
   }
 
   @GetMapping("/{id}")
-  public ResponseEntity<IncidentDtos.IncidentDetailResponse> getIncident(@PathVariable("id") UUID id) {
+  public ResponseEntity<IncidentDtos.IncidentDetailResponse> getIncident(
+      @PathVariable("id") UUID id,
+      @AuthenticationPrincipal UserPrincipal principal
+  ) {
     IncidentDtos.IncidentDetailResponse detail = queryPort.findIncidentDetail(id)
         .orElseThrow(() -> new IncidentNotFoundException(id));
+
+    if (principal != null) {
+      List<String> permitted = commandService.permittedCommands(id, principal.id(), principal.role(), principal.supportTier());
+      detail = detail.withAllowedCommands(permitted);
+    }
+
     return ResponseEntity.ok()
         .header(HttpHeaders.ETAG, "\"" + detail.version() + "\"")
         .body(detail);
@@ -143,11 +218,17 @@ public class IncidentController {
       case "close" -> commandService.close(id, envelope.closureNote() != null ? envelope.closureNote() : "Verified and closed.", actorId, role, supportTier);
       case "cancel" -> commandService.cancel(id, envelope.reason() != null ? envelope.reason() : "Duplicate or invalid report.", actorId, role, supportTier);
       case "declare-major" -> commandService.declareMajor(id, actorId, role, supportTier);
+      case "reassign" -> commandService.reassign(id, envelope.assigneeId(), envelope.teamId(), envelope.reason() != null ? envelope.reason() : "Reassigning incident", actorId, role, supportTier);
       default -> throw new IllegalArgumentException("Unknown command: " + command);
     }
 
     IncidentDtos.IncidentDetailResponse updated = queryPort.findIncidentDetail(id)
         .orElseThrow(() -> new IncidentNotFoundException(id));
+
+    if (principal != null) {
+      List<String> permitted = commandService.permittedCommands(id, principal.id(), principal.role(), principal.supportTier());
+      updated = updated.withAllowedCommands(permitted);
+    }
 
     return ResponseEntity.ok()
         .header(HttpHeaders.ETAG, "\"" + updated.version() + "\"")

@@ -52,6 +52,22 @@ public class IncidentCommandService {
     }
   }
 
+  @Transactional(readOnly = true)
+  public List<String> permittedCommands(UUID incidentId, UUID actorId, String role, String supportTier) {
+    Incident inc = load(incidentId);
+    return inc.allowedCommands().stream()
+        .filter(cmd -> {
+          try {
+            commandAuthorizer.authorize(inc, cmd, actorId, role, supportTier);
+            return true;
+          } catch (Exception e) {
+            return false;
+          }
+        })
+        .map(Enum::name)
+        .toList();
+  }
+
   @Transactional
   public void acknowledge(UUID incidentId, UUID actorId, String role, String supportTier) {
     Incident inc = load(incidentId);
@@ -94,6 +110,21 @@ public class IncidentCommandService {
     commandAuthorizer.authorize(inc, CommandType.RESOLVE, actorId, role, supportTier);
     Instant now = clockPort.now();
     inc.resolve(actorId, resolution, now, calendar);
+    commitAndPublish(inc);
+
+    List<Incident> openChildren = incidentRepository.findOpenChildrenByMasterId(incidentId);
+    for (Incident child : openChildren) {
+      child.resolveWithMaster(resolution, now, calendar);
+      commitAndPublish(child);
+    }
+  }
+
+  @Transactional
+  public void reassign(UUID incidentId, UUID newAssigneeId, UUID teamId, String reason, UUID actorId, String role, String supportTier) {
+    Incident inc = load(incidentId);
+    commandAuthorizer.authorize(inc, CommandType.REASSIGN, actorId, role, supportTier);
+    Instant now = clockPort.now();
+    inc.reassign(newAssigneeId, teamId, reason, actorId, now);
     commitAndPublish(inc);
   }
 

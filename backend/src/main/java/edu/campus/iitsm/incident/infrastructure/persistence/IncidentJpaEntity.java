@@ -22,13 +22,18 @@ import org.springframework.data.domain.Persistable;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Entity
 @Table(name = "incident")
 public class IncidentJpaEntity implements Persistable<UUID> {
 
   private static final UUID DEFAULT_POLICY_ID = UUID.fromString("40000000-0000-0000-0000-000000000001");
+
+  private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 
   @Transient
   private boolean isNew = false;
@@ -196,7 +201,15 @@ public class IncidentJpaEntity implements Persistable<UUID> {
     entity.impact = (short) s.impact();
     entity.urgency = (short) s.urgency();
     entity.priority = s.priority() != null ? s.priority().name() : "P3";
-    entity.priorityExplanationJson = "[]";
+    if (s.priorityExplanation() != null && s.priorityExplanation().steps() != null && !s.priorityExplanation().steps().isEmpty()) {
+      try {
+        entity.priorityExplanationJson = OBJECT_MAPPER.writeValueAsString(s.priorityExplanation().steps());
+      } catch (Exception ex) {
+        entity.priorityExplanationJson = "[]";
+      }
+    } else {
+      entity.priorityExplanationJson = "[]";
+    }
     entity.status = s.status() != null ? s.status().name() : "NEW";
     entity.slaStatus = s.slaStatus() != null ? s.slaStatus().name() : "ON_TRACK";
     entity.assigneeId = s.assigneeId();
@@ -271,6 +284,13 @@ public class IncidentJpaEntity implements Persistable<UUID> {
     this.impact = (short) s.impact();
     this.urgency = (short) s.urgency();
     this.priority = s.priority() != null ? s.priority().name() : this.priority;
+    if (s.priorityExplanation() != null && s.priorityExplanation().steps() != null && !s.priorityExplanation().steps().isEmpty()) {
+      try {
+        this.priorityExplanationJson = OBJECT_MAPPER.writeValueAsString(s.priorityExplanation().steps());
+      } catch (Exception ex) {
+        this.priorityExplanationJson = "[]";
+      }
+    }
     this.status = s.status() != null ? s.status().name() : this.status;
     this.slaStatus = s.slaStatus() != null ? s.slaStatus().name() : this.slaStatus;
     this.assigneeId = s.assigneeId();
@@ -341,13 +361,34 @@ public class IncidentJpaEntity implements Persistable<UUID> {
         : null;
 
     Priority p = Priority.valueOf(priority != null ? priority : "P3");
+    PriorityExplanation pExp = PriorityExplanation.empty();
+    if (priorityExplanationJson != null && !priorityExplanationJson.isBlank() && !priorityExplanationJson.equals("[]")) {
+      try {
+        List<Map<String, Object>> stepMaps = OBJECT_MAPPER.readValue(
+            priorityExplanationJson,
+            new TypeReference<List<Map<String, Object>>>() {}
+        );
+        List<PriorityStep> steps = new ArrayList<>();
+        for (Map<String, Object> m : stepMaps) {
+          String rule = (String) m.get("rule");
+          String beforeStr = (String) m.get("before");
+          String afterStr = (String) m.get("after");
+          String reason = (String) m.get("reason");
+          Priority beforeP = beforeStr != null ? Priority.valueOf(beforeStr) : Priority.P3;
+          Priority afterP = afterStr != null ? Priority.valueOf(afterStr) : Priority.P3;
+          steps.add(new PriorityStep(rule, beforeP, afterP, reason));
+        }
+        pExp = new PriorityExplanation(steps);
+      } catch (Exception ignored) {}
+    }
+
     IncidentStatus stat = IncidentStatus.valueOf(status != null ? status : "NEW");
     SlaStatus sStatus = SlaStatus.valueOf(slaStatus != null ? slaStatus : "ON_TRACK");
 
     return new Incident.Snapshot(
         id, number, reporterId, serviceId, categoryId,
         title, description, impact, urgency,
-        p, PriorityExplanation.empty(),
+        p, pExp,
         stat, sStatus, sla,
         respClock, resClock, clockGeneration,
         assigneeId, teamId, parentId, commanderId,
@@ -356,6 +397,10 @@ public class IncidentJpaEntity implements Persistable<UUID> {
         closureNote, createdAt, respondedAt,
         resolvedAt, closedAt, version != null ? version : 0L
     );
+  }
+
+  public String getPriorityExplanationJson() {
+    return priorityExplanationJson;
   }
 
   @Override

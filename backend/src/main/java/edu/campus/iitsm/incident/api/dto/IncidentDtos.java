@@ -42,12 +42,34 @@ public final class IncidentDtos {
       String status,
       String slaStatus,
       String priority,
+      UUID reporterId,
+      String reporterName,
       UUID assigneeId,
       String assigneeName,
       Instant createdAt,
       Instant responseDueAt,
       Instant resolutionDueAt,
+      UUID parentId,
+      boolean major,
+      int childCount,
+      int reopenCount,
+      List<String> allowedCommands,
       long version
+  ) {
+    public IncidentSummaryDto withAllowedCommands(List<String> allowed) {
+      return new IncidentSummaryDto(
+          id, number, title, serviceCode, categoryCode, status, slaStatus, priority,
+          reporterId, reporterName, assigneeId, assigneeName, createdAt, responseDueAt, resolutionDueAt,
+          parentId, major, childCount, reopenCount, allowed, version
+      );
+    }
+  }
+
+  public record ServiceDto(
+      UUID id,
+      String code,
+      String name,
+      String tier
   ) {}
 
   public record PageResponse<T>(
@@ -101,16 +123,37 @@ public final class IncidentDtos {
       Map<String, Object> sla,
       Map<String, Object> assignee,
       Map<String, Object> assignmentRationale,
+      UUID reporterId,
+      String reporterName,
       UUID parentId,
       UUID commanderId,
+      boolean major,
+      int childCount,
       int affectedUsers,
+      int reopenCount,
       List<String> allowedCommands,
       boolean suggestionsPending,
-      long version,
+      Map<String, Object> resolution,
+      Short rating,
+      String closureNote,
+      Instant respondedAt,
+      Instant resolvedAt,
+      Instant closedAt,
       Instant createdAt,
       Instant responseDueAt,
-      Instant resolutionDueAt
-  ) {}
+      Instant resolutionDueAt,
+      long version
+  ) {
+    public IncidentDetailResponse withAllowedCommands(List<String> allowed) {
+      return new IncidentDetailResponse(
+          id, number, title, description, status, slaStatus, serviceCode, categoryCode,
+          impact, urgency, priority, priorityExplanation, sla, assignee, assignmentRationale,
+          reporterId, reporterName, parentId, commanderId, major, childCount, affectedUsers,
+          reopenCount, allowed, suggestionsPending, resolution, rating, closureNote,
+          respondedAt, resolvedAt, closedAt, createdAt, responseDueAt, resolutionDueAt, version
+      );
+    }
+  }
 
   public record IncidentAiPanelDto(
       List<Map<String, Object>> priorityExplanation,
