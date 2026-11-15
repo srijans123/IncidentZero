@@ -29,6 +29,8 @@ Thumbs.db
 *.user
 
 # Python cache
+.venv/
+video/.venv/
 __pycache__/
 *.py[cod]
 *$py.class
@@ -51,14 +53,20 @@ video/04_capture/boxes/
 video/07_remotion/out/
 video/08_out/*.mp4
 video/08_out/contact_sheet/
-video_v3/03_audio/beats/*.wav
-video_v3/04_capture/clips/*.mp4
-video_v3/04_capture/*_frames/
+video_v3/03_audio/*.wav
+video_v3/03_audio/beats/
+video_v3/04_capture/
+video_v3/06_frames/
 video_v3/08_out/*.mp4
-video_v3/08_out/acts/*.mp4
+video_v3/08_out/*.wav
+video_v3/08_out/segments/
+video_v3/08_out/acts/
 video_v3/08_out/contact_sheet/
+.remotion/
+.cache/
 *.mp4
 *.webm
+*.wav
 
 test-results/
 demo/

@@ -1,0 +1,25 @@
+{
+  "exact_replacements": {
+    "Group 76": "Group seventy-six",
+    "BITS Pilani": "Bits Pilani",
+    "SLA": "S L A",
+    "JPA": "J P A",
+    "REST": "rest",
+    "URL": "U R L",
+    "HTTP": "H T T P",
+    "HTML": "H T M L",
+    "SHA-256": "shah two fifty six",
+    "409": "four oh nine",
+    "P2": "P two",
+    "LMS": "L M S",
+    "GitHub": "git hub",
+    "readme": "read me",
+    "doExecute": "do execute"
+  },
+  "regex_replacements": [
+    {
+      "pattern": "\\b([A-Z][a-z0-9]+)([A-Z][a-z0-9]+)+\\b",
+      "description": "Split CamelCase identifiers into space-separated words"
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" shape-rendering="crispEdges">
+  <defs>
+    <!-- 24x24 Checkerboard Dither -->
+    <pattern id="dither_C07-G" width="24" height="24" patternUnits="userSpaceOnUse">
+      <rect width="24" height="24" fill="#1E1646"/>
+      <rect width="12" height="12" fill="#261C58"/>
+      <rect x="12" y="12" width="12" height="12" fill="#261C58"/>
+    </pattern>
+  </defs>
+
+  <!-- Canvas Background -->
+  <rect width="1920" height="1080" fill="url(#dither_C07-G)"/>
+
+  <!-- Card Hard Offset Shadow -->
+  <rect x="106" y="56" width="1708" height="520" fill="#0B071E"/>
+
+  <!-- Card Main Pixel Frame -->
+  <rect x="100" y="50" width="1708" height="520" fill="#161033" stroke="#0B071E" stroke-width="4"/>
+
+  <!-- Header Bar -->
+  <rect x="104" y="54" width="1700" height="46" fill="#2E236C" stroke="#0B071E" stroke-width="2"/>
+
+  <!-- Square Window Controls -->
+  <rect x="120" y="68" width="14" height="14" fill="#FF4D3D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="142" y="68" width="14" height="14" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="164" y="68" width="14" height="14" fill="#43D17A" stroke="#0B071E" stroke-width="2"/>
+
+  <!-- Title & Repo Path -->
+  <text x="200" y="83" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="16" font-weight="bold">V003__audit_timers_ai.sql</text>
+  <text x="500" y="83" fill="#A499D4" font-family="'Courier New', monospace" font-size="13">backend/src/main/resources/db/migration/V003__audit_timers_ai.sql (L18–L23)</text>
+
+  <!-- Language Badge -->
+  <rect x="1690" y="63" width="90" height="24" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <text x="1735" y="80" fill="#0B071E" font-family="'Courier New', monospace" font-size="12" font-weight="bold" text-anchor="middle">SQL</text>
+
+  <!-- Gutter Separator -->
+  <line x1="155" y1="100" x2="155" y2="560" stroke="#2E236C" stroke-width="2"/>
+
+  <!-- Code Lines -->
+  
+    <!-- Line 18 -->
+    <text x="135" y="135" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">18</text>
+    <text x="175" y="135" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">CREATE OR REPLACE FUNCTION audit_immutable() RETURNS trigger AS $$</text>
+
+    <!-- Line 19 -->
+    <text x="135" y="159" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">19</text>
+    <text x="175" y="159" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">BEGIN RAISE EXCEPTION &#x27;audit_record is append-only&#x27;; END;</text>
+
+    <!-- Line 20 -->
+    <text x="135" y="183" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">20</text>
+    <text x="175" y="183" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">$$ LANGUAGE plpgsql;</text>
+
+    <!-- Line 21 -->
+    <text x="135" y="207" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">21</text>
+    <text x="175" y="207" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14"></text>
+
+    <!-- Line 22 -->
+    <text x="135" y="231" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">22</text>
+    <text x="175" y="231" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">CREATE TRIGGER audit_no_change BEFORE <tspan fill="#FFD84D" font-weight="bold">UPDATE</tspan> OR <tspan fill="#FFD84D" font-weight="bold">DELETE</tspan> OR TRUNCATE ON audit_record</text>
+
+    <!-- Line 23 -->
+    <text x="135" y="255" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">23</text>
+    <text x="175" y="255" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">  FOR EACH STATEMENT EXECUTE FUNCTION audit_immutable();</text>
+
+</svg>

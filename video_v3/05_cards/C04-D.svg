@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" shape-rendering="crispEdges">
+  <defs>
+    <!-- 24x24 Checkerboard Dither -->
+    <pattern id="dither_C04-D" width="24" height="24" patternUnits="userSpaceOnUse">
+      <rect width="24" height="24" fill="#1E1646"/>
+      <rect width="12" height="12" fill="#261C58"/>
+      <rect x="12" y="12" width="12" height="12" fill="#261C58"/>
+    </pattern>
+  </defs>
+
+  <!-- Canvas Background -->
+  <rect width="1920" height="1080" fill="url(#dither_C04-D)"/>
+
+  <!-- Card Hard Offset Shadow -->
+  <rect x="106" y="56" width="1708" height="632" fill="#0B071E"/>
+
+  <!-- Card Main Pixel Frame -->
+  <rect x="100" y="50" width="1708" height="632" fill="#161033" stroke="#0B071E" stroke-width="4"/>
+
+  <!-- Header Bar -->
+  <rect x="104" y="54" width="1700" height="46" fill="#2E236C" stroke="#0B071E" stroke-width="2"/>
+
+  <!-- Square Window Controls -->
+  <rect x="120" y="68" width="14" height="14" fill="#FF4D3D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="142" y="68" width="14" height="14" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="164" y="68" width="14" height="14" fill="#43D17A" stroke="#0B071E" stroke-width="2"/>
+
+  <!-- Title & Repo Path -->
+  <text x="200" y="83" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="16" font-weight="bold">BusinessCalendar.java</text>
+  <text x="500" y="83" fill="#A499D4" font-family="'Courier New', monospace" font-size="13">backend/src/main/java/edu/campus/iitsm/catalog/domain/BusinessCalendar.java (L43–L60)</text>
+
+  <!-- Language Badge -->
+  <rect x="1690" y="63" width="90" height="24" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <text x="1735" y="80" fill="#0B071E" font-family="'Courier New', monospace" font-size="12" font-weight="bold" text-anchor="middle">JAVA</text>
+
+  <!-- Gutter Separator -->
+  <line x1="155" y1="100" x2="155" y2="672" stroke="#2E236C" stroke-width="2"/>
+
+  <!-- Code Lines -->
+  
+    <!-- Line 43 -->
+    <text x="135" y="135" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">43</text>
+    <text x="175" y="135" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    while (!cur.toLocalDate().isAfter(stop.toLocalDate())) {</text>
+
+    <!-- Line 44 -->
+    <text x="135" y="159" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">44</text>
+    <text x="175" y="159" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      <tspan fill="#FFD84D" font-weight="bold">if</tspan> (++guardDays &gt; 3700) {</text>
+
+    <!-- Line 45 -->
+    <text x="135" y="183" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">45</text>
+    <text x="175" y="183" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">        <tspan fill="#FFD84D" font-weight="bold">throw</tspan> <tspan fill="#FFD84D" font-weight="bold">new</tspan> IllegalStateException(&quot;workingMillisBetween span exceeds 10-year horizon guard (3700 days)&quot;);</text>
+
+    <!-- Line 46 -->
+    <text x="135" y="207" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">46</text>
+    <text x="175" y="207" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      }</text>
+
+    <!-- Line 47 -->
+    <text x="135" y="231" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">47</text>
+    <text x="175" y="231" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      LocalDate date = cur.toLocalDate();</text>
+
+    <!-- Line 48 -->
+    <text x="135" y="255" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">48</text>
+    <text x="175" y="255" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      <tspan fill="#FFD84D" font-weight="bold">if</tspan> (isWorkingDay(date)) {</text>
+
+    <!-- Line 49 -->
+    <text x="135" y="279" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">49</text>
+    <text x="175" y="279" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">        ZonedDateTime winStart = ZonedDateTime.of(date, dayStart, zone);</text>
+
+    <!-- Line 50 -->
+    <text x="135" y="303" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">50</text>
+    <text x="175" y="303" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">        ZonedDateTime winEnd = ZonedDateTime.of(date, dayEnd, zone);</text>
+
+    <!-- Line 51 -->
+    <text x="135" y="327" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">51</text>
+    <text x="175" y="327" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">        ZonedDateTime effStart = cur.isAfter(winStart) ? cur : winStart;</text>
+
+    <!-- Line 52 -->
+    <text x="135" y="351" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">52</text>
+    <text x="175" y="351" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">        ZonedDateTime effEnd = stop.isBefore(winEnd) ? stop : winEnd;</text>
+
+    <!-- Line 53 -->
+    <text x="135" y="375" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">53</text>
+    <text x="175" y="375" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">        <tspan fill="#FFD84D" font-weight="bold">if</tspan> (effEnd.isAfter(effStart)) {</text>
+
+    <!-- Line 54 -->
+    <text x="135" y="399" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">54</text>
+    <text x="175" y="399" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">          totalMs += Duration.between(effStart, effEnd).toMillis();</text>
+
+    <!-- Line 55 -->
+    <text x="135" y="423" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">55</text>
+    <text x="175" y="423" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">        }</text>
+
+    <!-- Line 56 -->
+    <text x="135" y="447" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">56</text>
+    <text x="175" y="447" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      }</text>
+
+    <!-- Line 57 -->
+    <text x="135" y="471" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">57</text>
+    <text x="175" y="471" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      cur = ZonedDateTime.of(date.plusDays(1), dayStart, zone);</text>
+
+    <!-- Line 58 -->
+    <text x="135" y="495" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">58</text>
+    <text x="175" y="495" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    }</text>
+
+    <!-- Line 59 -->
+    <text x="135" y="519" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">59</text>
+    <text x="175" y="519" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    <tspan fill="#FFD84D" font-weight="bold">return</tspan> totalMs;</text>
+
+    <!-- Line 60 -->
+    <text x="135" y="543" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">60</text>
+    <text x="175" y="543" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">  }</text>
+
+</svg>

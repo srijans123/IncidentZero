@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" shape-rendering="crispEdges">
+  <defs>
+    <!-- 24x24 Checkerboard Dither -->
+    <pattern id="dither_C07-I" width="24" height="24" patternUnits="userSpaceOnUse">
+      <rect width="24" height="24" fill="#1E1646"/>
+      <rect width="12" height="12" fill="#261C58"/>
+      <rect x="12" y="12" width="12" height="12" fill="#261C58"/>
+    </pattern>
+  </defs>
+
+  <!-- Canvas Background -->
+  <rect width="1920" height="1080" fill="url(#dither_C07-I)"/>
+
+  <!-- Card Hard Offset Shadow -->
+  <rect x="106" y="56" width="1708" height="800" fill="#0B071E"/>
+
+  <!-- Card Main Pixel Frame -->
+  <rect x="100" y="50" width="1708" height="800" fill="#161033" stroke="#0B071E" stroke-width="4"/>
+
+  <!-- Header Bar -->
+  <rect x="104" y="54" width="1700" height="46" fill="#2E236C" stroke="#0B071E" stroke-width="2"/>
+
+  <!-- Square Window Controls -->
+  <rect x="120" y="68" width="14" height="14" fill="#FF4D3D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="142" y="68" width="14" height="14" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="164" y="68" width="14" height="14" fill="#43D17A" stroke="#0B071E" stroke-width="2"/>
+
+  <!-- Title & Repo Path -->
+  <text x="200" y="83" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="16" font-weight="bold">GlobalProblemDetailsHandler.java</text>
+  <text x="500" y="83" fill="#A499D4" font-family="'Courier New', monospace" font-size="13">backend/src/main/java/edu/campus/iitsm/shared/infrastructure/web/GlobalProblemDetailsHandler.java (L25–L49)</text>
+
+  <!-- Language Badge -->
+  <rect x="1690" y="63" width="90" height="24" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <text x="1735" y="80" fill="#0B071E" font-family="'Courier New', monospace" font-size="12" font-weight="bold" text-anchor="middle">JAVA</text>
+
+  <!-- Gutter Separator -->
+  <line x1="155" y1="100" x2="155" y2="840" stroke="#2E236C" stroke-width="2"/>
+
+  <!-- Code Lines -->
+  
+    <!-- Line 25 -->
+    <text x="135" y="135" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">25</text>
+    <text x="175" y="135" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">  @ExceptionHandler(ItsmException.class)</text>
+
+    <!-- Line 26 -->
+    <text x="135" y="159" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">26</text>
+    <text x="175" y="159" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">  <tspan fill="#FFD84D" font-weight="bold">public</tspan> ResponseEntity&lt;ProblemDetail&gt; handleItsmException(ItsmException ex, HttpServletRequest request) {</text>
+
+    <!-- Line 27 -->
+    <text x="135" y="183" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">27</text>
+    <text x="175" y="183" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    HttpStatus status = HttpStatus.resolve(ex.httpStatus());</text>
+
+    <!-- Line 28 -->
+    <text x="135" y="207" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">28</text>
+    <text x="175" y="207" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    <tspan fill="#FFD84D" font-weight="bold">if</tspan> (status == null) {</text>
+
+    <!-- Line 29 -->
+    <text x="135" y="231" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">29</text>
+    <text x="175" y="231" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      status = HttpStatus.INTERNAL_SERVER_ERROR;</text>
+
+    <!-- Line 30 -->
+    <text x="135" y="255" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">30</text>
+    <text x="175" y="255" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    }</text>
+
+    <!-- Line 31 -->
+    <text x="135" y="279" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">31</text>
+    <text x="175" y="279" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14"></text>
+
+    <!-- Line 32 -->
+    <text x="135" y="303" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">32</text>
+    <text x="175" y="303" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    ProblemDetail problem = ProblemDetail.forStatusAndDetail(status, ex.getMessage());</text>
+
+    <!-- Line 33 -->
+    <text x="135" y="327" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">33</text>
+    <text x="175" y="327" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    problem.setType(URI.create(BASE_URI + ex.code()));</text>
+
+    <!-- Line 34 -->
+    <text x="135" y="351" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">34</text>
+    <text x="175" y="351" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    problem.setTitle(resolveTitle(ex.code()));</text>
+
+    <!-- Line 35 -->
+    <text x="135" y="375" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">35</text>
+    <text x="175" y="375" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    problem.setInstance(URI.create(request.getRequestURI()));</text>
+
+    <!-- Line 36 -->
+    <text x="135" y="399" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">36</text>
+    <text x="175" y="399" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14"></text>
+
+    <!-- Line 37 -->
+    <text x="135" y="423" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">37</text>
+    <text x="175" y="423" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    String traceId = UUID.randomUUID().toString().replace(&quot;-&quot;, &quot;&quot;);</text>
+
+    <!-- Line 38 -->
+    <text x="135" y="447" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">38</text>
+    <text x="175" y="447" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    problem.setProperty(&quot;code&quot;, ex.code());</text>
+
+    <!-- Line 39 -->
+    <text x="135" y="471" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">39</text>
+    <text x="175" y="471" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    problem.setProperty(&quot;traceId&quot;, traceId);</text>
+
+    <!-- Line 40 -->
+    <text x="135" y="495" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">40</text>
+    <text x="175" y="495" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14"></text>
+
+    <!-- Line 41 -->
+    <text x="135" y="519" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">41</text>
+    <text x="175" y="519" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    <tspan fill="#FFD84D" font-weight="bold">if</tspan> (ex instanceof InvalidStateTransitionException ste) {</text>
+
+    <!-- Line 42 -->
+    <text x="135" y="543" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">42</text>
+    <text x="175" y="543" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      problem.setProperty(&quot;incidentId&quot;, ste.incidentId() != null ? ste.incidentId().toString() : null);</text>
+
+    <!-- Line 43 -->
+    <text x="135" y="567" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">43</text>
+    <text x="175" y="567" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      problem.setProperty(&quot;currentState&quot;, ste.currentState());</text>
+
+    <!-- Line 44 -->
+    <text x="135" y="591" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">44</text>
+    <text x="175" y="591" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      problem.setProperty(&quot;attemptedCommand&quot;, ste.attemptedCommand());</text>
+
+    <!-- Line 45 -->
+    <text x="135" y="615" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">45</text>
+    <text x="175" y="615" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    }</text>
+
+    <!-- Line 46 -->
+    <text x="135" y="639" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">46</text>
+    <text x="175" y="639" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14"></text>
+
+    <!-- Line 47 -->
+    <text x="135" y="663" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">47</text>
+    <text x="175" y="663" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    log.warn(&quot;Handled {}: status={} code={} detail={}&quot;, ex.getClass().getSimpleName(), ex.httpStatus(), ex.code(), ex.getMessage());</text>
+
+    <!-- Line 48 -->
+    <text x="135" y="687" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">48</text>
+    <text x="175" y="687" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    <tspan fill="#FFD84D" font-weight="bold">return</tspan> ResponseEntity.status(status).body(problem);</text>
+
+    <!-- Line 49 -->
+    <text x="135" y="711" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">49</text>
+    <text x="175" y="711" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">  }</text>
+
+</svg>

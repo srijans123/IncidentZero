@@ -1,0 +1,939 @@
+1
+00:00:00,000 --> 00:00:06,339
+Hi, I'm Srijan, and this is Incident-Zero, our Object-Oriented Programming project from
+Group 76.
+
+2
+00:00:06,339 --> 00:00:09,862
+It is a help desk for campus IT at BITS
+Pilani Hyderabad.
+
+3
+00:00:09,862 --> 00:00:15,430
+A student reports a problem, the system sorts
+it and assigns it, and a technician fixes it.
+
+4
+00:00:15,430 --> 00:00:20,682
+Every step is checked by a state machine and
+written to a log that cannot be edited.
+
+5
+00:00:20,682 --> 00:00:25,357
+And yes, it looks like an arcade game. That
+part was just for fun.
+
+6
+00:00:26,607 --> 00:00:33,089
+In this video I will walk through the repository, open the important files, and
+explain what each one does.
+
+7
+00:00:33,089 --> 00:00:37,075
+Then I will run the app and connect every
+click back to the code.
+
+8
+00:00:38,325 --> 00:00:42,725
+This is the repository on GitHub. The readme
+gives the short version.
+
+9
+00:00:42,725 --> 00:00:46,510
+One Java backend, one React app, and one
+PostgreSQL database.
+
+10
+00:00:46,510 --> 00:00:53,516
+A ticket is reported, classified, prioritised, assigned, investigated,
+resolved, verified, and finally closed.
+
+11
+00:00:53,516 --> 00:00:59,054
+Let me go through the folders. The backend folder holds the Java code, built with Spring
+Boot.
+
+12
+00:00:59,054 --> 00:01:03,093
+The frontend folder holds the React app,
+written in TypeScript.
+
+13
+00:01:03,093 --> 00:01:09,076
+Inside docs there are fifteen decision records. Each one explains why we made a
+design choice.
+
+14
+00:01:09,076 --> 00:01:13,907
+The scripts folder has our verification
+scripts, which I will run at the end.
+
+15
+00:01:13,907 --> 00:01:17,924
+Deploy has the Docker Compose file for the
+database and the app.
+
+16
+00:01:17,924 --> 00:01:22,143
+And the workflows folder runs our checks
+automatically on every push.
+
+17
+00:01:22,143 --> 00:01:25,217
+The other folders are tooling, so I will skip
+them.
+
+18
+00:01:25,217 --> 00:01:28,429
+The real work is in the backend, so let's
+start there.
+
+19
+00:01:29,679 --> 00:01:35,275
+Under the main package, the code is split into modules, one folder for each
+responsibility.
+
+20
+00:01:35,275 --> 00:01:39,420
+Incident is the biggest one. It owns the
+ticket and its life cycle.
+
+21
+00:01:39,420 --> 00:01:45,162
+Assignment picks a technician, SLA handles deadlines, and audit keeps the tamper-evident
+log.
+
+22
+00:01:45,162 --> 00:01:52,121
+Identity handles login, notification pushes live updates, and intelligence holds the
+suggestion features.
+
+23
+00:01:52,121 --> 00:01:57,926
+Catalog, knowledge and shared hold the calendar, the help articles, and common
+building blocks.
+
+24
+00:01:57,926 --> 00:02:01,024
+Open the incident module and you see four
+folders.
+
+25
+00:02:01,024 --> 00:02:06,844
+Domain is plain Java. It holds the business rules and knows nothing about Spring or the
+database.
+
+26
+00:02:06,844 --> 00:02:09,663
+Application runs the use cases, step by step.
+
+27
+00:02:09,663 --> 00:02:15,429
+Infrastructure talks to the outside world, and api is what other modules are allowed to
+see.
+
+28
+00:02:15,429 --> 00:02:20,901
+The rule is simple. Outer layers can depend on inner ones, but never the other way
+around.
+
+29
+00:02:20,901 --> 00:02:24,710
+So how do we make sure nobody breaks that
+rule?
+
+30
+00:02:25,960 --> 00:02:31,777
+With a test. This rule says no class in a domain package may depend on Spring, JPA, or
+Jackson.
+
+31
+00:02:31,777 --> 00:02:34,850
+If someone adds one such import, the build
+fails.
+
+32
+00:02:36,100 --> 00:02:40,477
+Now the domain folder of the incident module.
+This is the part I built.
+
+33
+00:02:40,477 --> 00:02:46,442
+Notice the file names: NewState, AssignedState, ResolvedState, and so on. I
+will come back to those.
+
+34
+00:02:46,442 --> 00:02:48,450
+First, the main class, Incident.
+
+35
+00:02:49,700 --> 00:02:53,124
+This factory method is the only way to create
+a ticket.
+
+36
+00:02:53,124 --> 00:02:58,199
+The title must be between five and two
+hundred characters, or it throws an error.
+
+37
+00:02:58,199 --> 00:03:04,010
+The description needs at least ten characters, and impact and urgency must be
+one, two, or three.
+
+38
+00:03:04,010 --> 00:03:09,859
+Only when everything is valid does it build the object and record an IncidentCreated
+event.
+
+39
+00:03:09,859 --> 00:03:16,746
+So a broken ticket can never exist. The rules live inside the object, and that is
+encapsulation.
+
+40
+00:03:17,996 --> 00:03:22,512
+These are the actions: acknowledge, resolve,
+verify, close, and the rest.
+
+41
+00:03:22,512 --> 00:03:27,681
+Look how short they are. Each one just asks
+the current state object to do the work.
+
+42
+00:03:27,681 --> 00:03:31,052
+The Incident itself never checks which state
+it is in.
+
+43
+00:03:31,052 --> 00:03:36,833
+Whatever the state returns goes into commit. It switches to the next state and stores the
+events.
+
+44
+00:03:36,833 --> 00:03:42,658
+It also raises the version number, which helps us catch two people changing the same
+ticket.
+
+45
+00:03:42,658 --> 00:03:47,033
+Later, the application layer pulls those
+events out and publishes them.
+
+46
+00:03:48,283 --> 00:03:52,994
+So where do the rules live? In this
+interface, IncidentState.
+
+47
+00:03:52,994 --> 00:03:58,974
+It is sealed, and it permits exactly eleven state classes. Nobody can add a twelfth by
+accident.
+
+48
+00:03:58,974 --> 00:04:04,621
+Every action has a default body, and that default simply throws an illegal transition
+error.
+
+49
+00:04:04,621 --> 00:04:10,280
+So by default, nothing is allowed. A state has to override a method to make that move
+legal.
+
+50
+00:04:11,530 --> 00:04:14,715
+Here is AssignedState. It overrides
+acknowledge.
+
+51
+00:04:14,715 --> 00:04:18,515
+First it checks that the caller is the
+assigned technician.
+
+52
+00:04:18,515 --> 00:04:20,571
+Then it stops the response clock.
+
+53
+00:04:20,571 --> 00:04:24,855
+And it returns the next state, Acknowledged,
+together with an event.
+
+54
+00:04:24,855 --> 00:04:32,182
+The same call behaves differently depending on the state object. That is polymorphism,
+and this is the State pattern.
+
+55
+00:04:32,182 --> 00:04:34,862
+It replaces a long chain of if-else checks.
+
+56
+00:04:36,112 --> 00:04:41,855
+One more example, ResolvedState. Only the person who reported the ticket can verify the
+fix.
+
+57
+00:04:41,855 --> 00:04:44,551
+And the rating must be between one and five.
+
+58
+00:04:44,551 --> 00:04:47,973
+If they reject the fix instead, the ticket is
+reopened.
+
+59
+00:04:49,223 --> 00:04:56,230
+An illegal move throws this exception. It sits with fourteen other error classes, all
+extending one base class.
+
+60
+00:04:56,230 --> 00:05:02,233
+Each error carries its own code and its own HTTP status. That is inheritance doing useful
+work.
+
+61
+00:05:03,483 --> 00:05:08,321
+Next, time. Every ticket has two deadlines:
+one to respond, and one to resolve.
+
+62
+00:05:08,321 --> 00:05:12,627
+Each deadline is an SlaClock, and it is a
+record, so it never changes.
+
+63
+00:05:12,627 --> 00:05:17,672
+Pause does not modify the clock. It returns a
+new clock with the time used so far.
+
+64
+00:05:17,672 --> 00:05:21,175
+And it asks a calendar how much working time
+has passed.
+
+65
+00:05:22,425 --> 00:05:29,209
+Back in Incident, this method reads both clocks. At seventy-five percent used, the
+ticket is marked at risk.
+
+66
+00:05:29,209 --> 00:05:34,558
+Past the target, it is breached, and a breach
+is permanent. It never goes back to on track.
+
+67
+00:05:35,808 --> 00:05:41,266
+That calendar is this class. A working day is
+a day of the work week that is not a holiday.
+
+68
+00:05:41,266 --> 00:05:45,383
+It walks day by day and adds only the hours
+inside the working window.
+
+69
+00:05:45,383 --> 00:05:50,275
+So a low priority ticket raised on Friday
+evening does not breach over the weekend.
+
+70
+00:05:51,525 --> 00:05:55,842
+One more trick. The code never asks the
+computer for the time directly.
+
+71
+00:05:55,842 --> 00:05:58,450
+It asks this small interface, ClockPort.
+
+72
+00:05:58,450 --> 00:06:03,841
+The real implementation is a virtual clock.
+It multiplies elapsed time by a scale factor.
+
+73
+00:06:03,841 --> 00:06:09,082
+So in a demo, one real second can count as
+thirty, and I can watch a deadline approach.
+
+74
+00:06:09,082 --> 00:06:14,100
+That is abstraction. The domain depends on an
+interface, not on the system clock.
+
+75
+00:06:15,350 --> 00:06:21,377
+Now the application layer. When a ticket comes in, it goes through this folder, the
+intake pipeline.
+
+76
+00:06:21,377 --> 00:06:25,859
+The pipeline receives every step and sorts
+them by their order number.
+
+77
+00:06:25,859 --> 00:06:30,495
+Then it runs them one after another, passing
+the same context object along.
+
+78
+00:06:31,745 --> 00:06:38,309
+There are nine steps. Validate checks the input. Sanitize strips HTML and hides emails
+and phone numbers.
+
+79
+00:06:38,309 --> 00:06:43,739
+Then we create the incident, link it to a master ticket if there is one, and pick a
+category.
+
+80
+00:06:43,739 --> 00:06:49,518
+Enrich looks for exam words, then come priority, assignment, and finally saving to
+the database.
+
+81
+00:06:50,768 --> 00:06:54,892
+All nine extend this abstract class. Its
+execute method is final.
+
+82
+00:06:54,892 --> 00:06:58,894
+It handles timing and error logging the same
+way for every step.
+
+83
+00:06:58,894 --> 00:07:02,151
+Each step only fills in this one method,
+doExecute.
+
+84
+00:07:02,151 --> 00:07:08,106
+The parent fixes the skeleton and the children fill the gap. That is the Template
+Method pattern.
+
+85
+00:07:09,356 --> 00:07:15,074
+For example, step one refuses a title under
+five characters before anything else happens.
+
+86
+00:07:16,324 --> 00:07:21,999
+Step seven is the interesting one. It asks a
+priority strategy to calculate the priority.
+
+87
+00:07:21,999 --> 00:07:26,221
+Then it looks up the SLA policy for that
+service tier and priority.
+
+88
+00:07:26,221 --> 00:07:30,914
+And it calls classify on the incident, which
+moves it from New to Classified.
+
+89
+00:07:32,164 --> 00:07:36,405
+The default strategy is a simple matrix of
+impact against urgency.
+
+90
+00:07:36,405 --> 00:07:41,427
+After that come the bumps. During an exam
+window, the priority goes up one level.
+
+91
+00:07:41,427 --> 00:07:46,146
+There are three strategies behind one
+interface. That is the Strategy pattern.
+
+92
+00:07:47,396 --> 00:07:53,100
+After intake, every action on a ticket goes
+through this class, IncidentCommandService.
+
+93
+00:07:53,100 --> 00:07:56,282
+Every method has the same shape. Load the
+incident.
+
+94
+00:07:56,282 --> 00:07:58,276
+Check that this user is allowed.
+
+95
+00:07:58,276 --> 00:08:00,479
+Call the domain method we just saw.
+
+96
+00:08:00,479 --> 00:08:04,508
+Then save it and publish its events, all
+inside one transaction.
+
+97
+00:08:04,508 --> 00:08:06,785
+If anything fails, nothing is saved.
+
+98
+00:08:08,035 --> 00:08:12,160
+And who is allowed? That is decided here, in
+one switch.
+
+99
+00:08:12,160 --> 00:08:15,541
+Only the assigned technician can acknowledge
+or resolve.
+
+100
+00:08:15,541 --> 00:08:19,417
+Only the student who reported it can verify
+or reject the fix.
+
+101
+00:08:19,417 --> 00:08:23,235
+And only a team lead or an admin can declare
+a major incident.
+
+102
+00:08:24,485 --> 00:08:30,238
+Choosing the technician works the same way as
+priority. One interface, AssignmentStrategy.
+
+103
+00:08:30,238 --> 00:08:36,183
+And seven implementations: round robin, least loaded, skill match, experience, and a few
+more.
+
+104
+00:08:36,183 --> 00:08:40,277
+There is even one that assigns a whole batch
+of tickets together.
+
+105
+00:08:40,277 --> 00:08:44,512
+Least loaded first removes anyone who is off
+shift or already full.
+
+106
+00:08:44,512 --> 00:08:47,870
+Then it sorts by load and takes the least
+busy person.
+
+107
+00:08:47,870 --> 00:08:53,230
+Because they share one interface, changing
+the strategy is a setting, not a code change.
+
+108
+00:08:54,480 --> 00:08:59,282
+Now the outer layer, infrastructure. This is
+where the outside world connects.
+
+109
+00:08:59,282 --> 00:09:04,013
+IncidentController is the REST entry point.
+This method handles a new ticket.
+
+110
+00:09:04,013 --> 00:09:09,340
+It reads the request, hands it to the intake
+service, and returns the created ticket.
+
+111
+00:09:09,340 --> 00:09:13,773
+Notice there are no business rules here. The
+controller only translates.
+
+112
+00:09:13,773 --> 00:09:17,128
+The second method takes the action name from
+the URL.
+
+113
+00:09:17,128 --> 00:09:20,615
+A switch maps each name to the matching
+service method.
+
+114
+00:09:21,865 --> 00:09:28,141
+For the database we use the same idea. The domain defines an interface called
+IncidentRepository.
+
+115
+00:09:28,141 --> 00:09:30,504
+This adapter implements it with JPA.
+
+116
+00:09:30,504 --> 00:09:36,646
+It converts the incident to a snapshot and back, so the domain class has no database
+annotations.
+
+117
+00:09:36,646 --> 00:09:41,680
+This is the Adapter pattern. We could change
+the database without touching the domain.
+
+118
+00:09:42,930 --> 00:09:45,437
+Now my favourite part, the audit ledger.
+
+119
+00:09:45,437 --> 00:09:50,942
+This listener hears every event, and it runs
+inside the same transaction as the change.
+
+120
+00:09:50,942 --> 00:09:54,709
+It locks the incident row and reads the hash
+of the last entry.
+
+121
+00:09:54,709 --> 00:09:58,503
+Then it computes a new hash that includes
+that previous hash.
+
+122
+00:09:58,503 --> 00:10:05,361
+The hasher joins the previous hash, the time, the actor, the action and the payload, then
+runs SHA-256.
+
+123
+00:10:05,361 --> 00:10:11,413
+So every entry is chained to the one before. Change one old row, and every later hash
+stops matching.
+
+124
+00:10:11,413 --> 00:10:15,178
+But what stops someone from quietly editing
+the table itself?
+
+125
+00:10:15,178 --> 00:10:20,311
+The database itself refuses to update or
+delete audit rows. This trigger blocks it.
+
+126
+00:10:21,561 --> 00:10:26,949
+Security is configured in one place. Login is
+open, and everything else needs a token.
+
+127
+00:10:26,949 --> 00:10:30,073
+And the admin routes need the administrator
+role.
+
+128
+00:10:31,323 --> 00:10:35,153
+Finally, errors. This handler catches any of
+our exceptions.
+
+129
+00:10:35,153 --> 00:10:39,498
+It turns them into a standard error response
+with our own error code.
+
+130
+00:10:39,498 --> 00:10:43,257
+So the frontend always gets a clear reason,
+never a stack trace.
+
+131
+00:10:44,507 --> 00:10:47,994
+The frontend is much simpler. Let me go back
+and open it.
+
+132
+00:10:47,994 --> 00:10:53,728
+Services talk to the backend, context holds login and live updates, and pages are the
+screens.
+
+133
+00:10:54,978 --> 00:10:59,687
+Every request goes through this one function.
+It attaches the login token.
+
+134
+00:10:59,687 --> 00:11:04,183
+If the server sends an error, it throws it
+with the server's own message.
+
+135
+00:11:05,433 --> 00:11:08,838
+Switching user logs in again and stores the
+new token.
+
+136
+00:11:10,088 --> 00:11:16,479
+This is the submit handler of the report form. It calls create with the title,
+description and service.
+
+137
+00:11:17,729 --> 00:11:23,244
+And this is the technician screen. A button is drawn only if its action is in the allowed
+list.
+
+138
+00:11:23,244 --> 00:11:29,229
+That list comes from the state object in the backend. The frontend never decides what is
+legal.
+
+139
+00:11:29,229 --> 00:11:32,151
+Okay, enough code. Let's actually run it.
+
+140
+00:11:33,401 --> 00:11:35,504
+I am logged in as Aarav, a student.
+
+141
+00:11:35,504 --> 00:11:38,433
+His Moodle quiz will not open, so he reports
+it.
+
+142
+00:11:38,433 --> 00:11:43,690
+As I type, the copilot reads the text and
+suggests the affected service, Moodle LMS.
+
+143
+00:11:43,690 --> 00:11:46,009
+I set the urgency to high, and submit.
+
+144
+00:11:47,259 --> 00:11:50,718
+Pause. This click runs the submit handler I
+showed you.
+
+145
+00:11:50,718 --> 00:11:53,647
+It sends a POST request to the incidents
+route.
+
+146
+00:11:53,647 --> 00:11:57,005
+The controller receives it and calls the
+intake service.
+
+147
+00:11:57,005 --> 00:11:59,068
+The pipeline runs its nine steps.
+
+148
+00:11:59,068 --> 00:12:04,252
+Step three calls the factory method, which
+checks the rules and records the event.
+
+149
+00:12:04,252 --> 00:12:07,559
+Step nine saves the ticket and publishes its
+events.
+
+150
+00:12:07,559 --> 00:12:11,545
+And the audit listener writes the first links
+of the hash chain.
+
+151
+00:12:12,795 --> 00:12:18,063
+And here is the result. The ticket is already
+assigned to a technician.
+
+152
+00:12:18,063 --> 00:12:23,231
+It came out as priority two. The word quiz
+triggered the exam bump we saw in the matrix.
+
+153
+00:12:23,231 --> 00:12:29,406
+For this service and priority, the policy gives fifteen minutes to respond and two
+hours to resolve.
+
+154
+00:12:29,406 --> 00:12:33,478
+Below is the timeline, with one hashed entry
+for each step so far.
+
+155
+00:12:34,728 --> 00:12:37,813
+Now I switch to the technician it was
+assigned to.
+
+156
+00:12:37,813 --> 00:12:43,381
+The ticket is in his queue. There is no Resolve button yet, because the state does
+not allow it.
+
+157
+00:12:43,381 --> 00:12:45,066
+He clicks acknowledge.
+
+158
+00:12:46,316 --> 00:12:49,859
+The button calls runCommand, which posts the
+action name.
+
+159
+00:12:49,859 --> 00:12:53,352
+The controller's switch picks the acknowledge
+method.
+
+160
+00:12:53,352 --> 00:12:56,743
+The service loads the ticket and asks the
+authorizer.
+
+161
+00:12:56,743 --> 00:12:58,741
+He is the assignee, so it passes.
+
+162
+00:12:58,741 --> 00:13:02,760
+AssignedState stops the response clock and
+returns the next state.
+
+163
+00:13:04,010 --> 00:13:08,202
+The state is now Acknowledged, and the
+response clock has stopped.
+
+164
+00:13:08,202 --> 00:13:12,224
+He starts the investigation, and the state
+becomes In Progress.
+
+165
+00:13:12,224 --> 00:13:15,742
+He needs more details, so he asks the student
+a question.
+
+166
+00:13:16,992 --> 00:13:20,761
+In the code, InProgressState pauses the
+resolution clock.
+
+167
+00:13:20,761 --> 00:13:24,777
+That is the pause method from earlier,
+returning a paused clock.
+
+168
+00:13:26,027 --> 00:13:30,630
+So while we wait for the student, the
+technician is not blamed for the delay.
+
+169
+00:13:30,630 --> 00:13:33,767
+Back to Aarav. He sees the question and
+answers it.
+
+170
+00:13:33,767 --> 00:13:37,263
+The state goes back to In Progress, and the
+clock runs again.
+
+171
+00:13:38,513 --> 00:13:43,120
+The technician fixes the problem and resolves
+the ticket with a proper note.
+
+172
+00:13:43,120 --> 00:13:49,946
+The note needs at least twenty characters. A lazy note like "done" is rejected by the
+domain.
+
+173
+00:13:51,196 --> 00:13:54,992
+Aarav checks Moodle, gives five stars, and
+confirms the fix.
+
+174
+00:13:54,992 --> 00:13:57,889
+This sends the verify action with the rating.
+
+175
+00:13:57,889 --> 00:14:02,972
+ResolvedState checks that he is the reporter,
+then moves the ticket to Verified.
+
+176
+00:14:04,222 --> 00:14:06,081
+The ticket is now Verified.
+
+177
+00:14:06,081 --> 00:14:12,980
+Finally the technician closes it. The ticket is closed, and the state allows no further
+moves.
+
+178
+00:14:12,980 --> 00:14:18,216
+And the timeline shows the full story: who
+did what, when, and the hash of each entry.
+
+179
+00:14:19,466 --> 00:14:24,009
+Now let me try to cheat. I will ask the
+server to close that ticket again.
+
+180
+00:14:24,009 --> 00:14:30,009
+The server says no. Error 409, with the
+current state and the command I tried.
+
+181
+00:14:30,009 --> 00:14:33,539
+That is the default method in IncidentState,
+doing its job.
+
+182
+00:14:34,789 --> 00:14:39,498
+Next, the audit ledger. As the admin, I ask
+the server to verify every chain.
+
+183
+00:14:39,498 --> 00:14:43,138
+It recomputes every hash and compares it with
+the stored one.
+
+184
+00:14:43,138 --> 00:14:44,851
+Every entry is valid.
+
+185
+00:14:46,101 --> 00:14:49,635
+Now I try to change an old entry directly in
+the database.
+
+186
+00:14:49,635 --> 00:14:53,657
+The database refuses. The audit table is
+append only.
+
+187
+00:14:54,907 --> 00:15:01,057
+Last, the tests. This script fires fifty thousand random command sequences at the
+state machine.
+
+188
+00:15:01,057 --> 00:15:07,533
+Twenty-four checks pass, covering more than five hundred and fifty thousand transitions,
+in a few seconds.
+
+189
+00:15:07,533 --> 00:15:11,392
+And the architecture rules I showed at the
+start all pass too.
+
+190
+00:15:12,642 --> 00:15:20,183
+That is Incident-Zero. It was built by Group 76: Suhani Agarwal, Kartikey Negi, Harish
+Kumar, and me, Srijan Shukla.
+
+191
+00:15:21,433 --> 00:15:30,020
+The object-oriented ideas were not decoration. Encapsulation, inheritance,
+polymorphism and abstraction each solved a real problem here.
+
+192
+00:15:30,020 --> 00:15:34,449
+The code is on GitHub, at the address on
+screen. Thank you for watching.

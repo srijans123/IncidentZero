@@ -1,0 +1,11 @@
+{
+  "group": "Group 76",
+  "course": "Object-Oriented Programming, S1 2025–2026",
+  "campus": "BITS Pilani, Hyderabad Campus",
+  "members": [
+    { "name": "Srijan Shukla", "role": "domain core, incident state machine, audit ledger" },
+    { "name": "Suhani Agarwal", "role": "SLA clock, business calendar, SLA policies" },
+    { "name": "Kartikey Negi", "role": "service catalogue and dependency data, major-incident flow" },
+    { "name": "Harish Kumar", "role": "frontend, REST controllers" }
+  ]
+}

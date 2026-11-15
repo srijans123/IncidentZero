@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" shape-rendering="crispEdges">
+  <defs>
+    <!-- 24x24 Checkerboard Dither -->
+    <pattern id="dither_C08-B" width="24" height="24" patternUnits="userSpaceOnUse">
+      <rect width="24" height="24" fill="#1E1646"/>
+      <rect width="12" height="12" fill="#261C58"/>
+      <rect x="12" y="12" width="12" height="12" fill="#261C58"/>
+    </pattern>
+  </defs>
+
+  <!-- Canvas Background -->
+  <rect width="1920" height="1080" fill="url(#dither_C08-B)"/>
+
+  <!-- Card Hard Offset Shadow -->
+  <rect x="106" y="56" width="1708" height="800" fill="#0B071E"/>
+
+  <!-- Card Main Pixel Frame -->
+  <rect x="100" y="50" width="1708" height="800" fill="#161033" stroke="#0B071E" stroke-width="4"/>
+
+  <!-- Header Bar -->
+  <rect x="104" y="54" width="1700" height="46" fill="#2E236C" stroke="#0B071E" stroke-width="2"/>
+
+  <!-- Square Window Controls -->
+  <rect x="120" y="68" width="14" height="14" fill="#FF4D3D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="142" y="68" width="14" height="14" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="164" y="68" width="14" height="14" fill="#43D17A" stroke="#0B071E" stroke-width="2"/>
+
+  <!-- Title & Repo Path -->
+  <text x="200" y="83" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="16" font-weight="bold">AuthContext.tsx</text>
+  <text x="500" y="83" fill="#A499D4" font-family="'Courier New', monospace" font-size="13">frontend/src/context/AuthContext.tsx (L181–L205)</text>
+
+  <!-- Language Badge -->
+  <rect x="1690" y="63" width="90" height="24" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <text x="1735" y="80" fill="#0B071E" font-family="'Courier New', monospace" font-size="12" font-weight="bold" text-anchor="middle">TYPESCRIPT</text>
+
+  <!-- Gutter Separator -->
+  <line x1="155" y1="100" x2="155" y2="840" stroke="#2E236C" stroke-width="2"/>
+
+  <!-- Code Lines -->
+  
+    <!-- Line 181 -->
+    <text x="135" y="135" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">181</text>
+    <text x="175" y="135" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">  <tspan fill="#FFD84D" font-weight="bold">const</tspan> switchUser = <tspan fill="#FFD84D" font-weight="bold">async</tspan> (user: PredefinedUser) =&gt; {</text>
+
+    <!-- Line 182 -->
+    <text x="135" y="159" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">182</text>
+    <text x="175" y="159" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    setIsLoading(true);</text>
+
+    <!-- Line 183 -->
+    <text x="135" y="183" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">183</text>
+    <text x="175" y="183" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    localStorage.setItem(&#x27;iitsm_user_email&#x27;, user.email);</text>
+
+    <!-- Line 184 -->
+    <text x="135" y="207" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">184</text>
+    <text x="175" y="207" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    try {</text>
+
+    <!-- Line 185 -->
+    <text x="135" y="231" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">185</text>
+    <text x="175" y="231" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      <tspan fill="#FFD84D" font-weight="bold">const</tspan> activeToken = <tspan fill="#FFD84D" font-weight="bold">await</tspan> performLogin(user);</text>
+
+    <!-- Line 186 -->
+    <text x="135" y="255" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">186</text>
+    <text x="175" y="255" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      <tspan fill="#FFD84D" font-weight="bold">if</tspan> (activeToken) {</text>
+
+    <!-- Line 187 -->
+    <text x="135" y="279" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">187</text>
+    <text x="175" y="279" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">        <tspan fill="#FFD84D" font-weight="bold">await</tspan> syncProfile(user, activeToken);</text>
+
+    <!-- Line 188 -->
+    <text x="135" y="303" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">188</text>
+    <text x="175" y="303" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      } <tspan fill="#FFD84D" font-weight="bold">else</tspan> {</text>
+
+    <!-- Line 189 -->
+    <text x="135" y="327" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">189</text>
+    <text x="175" y="327" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">        setCurrentUser(user);</text>
+
+    <!-- Line 190 -->
+    <text x="135" y="351" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">190</text>
+    <text x="175" y="351" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      }</text>
+
+    <!-- Line 191 -->
+    <text x="135" y="375" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">191</text>
+    <text x="175" y="375" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    } catch (e: any) {</text>
+
+    <!-- Line 192 -->
+    <text x="135" y="399" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">192</text>
+    <text x="175" y="399" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      console.warn(&#x27;Backend login attempt error:&#x27;, e);</text>
+
+    <!-- Line 193 -->
+    <text x="135" y="423" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">193</text>
+    <text x="175" y="423" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      setCurrentUser(user);</text>
+
+    <!-- Line 194 -->
+    <text x="135" y="447" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">194</text>
+    <text x="175" y="447" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    } finally {</text>
+
+    <!-- Line 195 -->
+    <text x="135" y="471" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">195</text>
+    <text x="175" y="471" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      setIsLoading(false);</text>
+
+    <!-- Line 196 -->
+    <text x="135" y="495" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">196</text>
+    <text x="175" y="495" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    }</text>
+
+    <!-- Line 197 -->
+    <text x="135" y="519" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">197</text>
+    <text x="175" y="519" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">  };</text>
+
+    <!-- Line 198 -->
+    <text x="135" y="543" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">198</text>
+    <text x="175" y="543" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14"></text>
+
+    <!-- Line 199 -->
+    <text x="135" y="567" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">199</text>
+    <text x="175" y="567" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">  <tspan fill="#FFD84D" font-weight="bold">const</tspan> checkSession = useCallback(async () =&gt; {</text>
+
+    <!-- Line 200 -->
+    <text x="135" y="591" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">200</text>
+    <text x="175" y="591" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    <tspan fill="#FFD84D" font-weight="bold">const</tspan> savedEmail = localStorage.getItem(&#x27;iitsm_user_email&#x27;);</text>
+
+    <!-- Line 201 -->
+    <text x="135" y="615" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">201</text>
+    <text x="175" y="615" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    <tspan fill="#FFD84D" font-weight="bold">const</tspan> user = SEEDED_USERS.find((u) =&gt; u.email === savedEmail) || currentUser;</text>
+
+    <!-- Line 202 -->
+    <text x="135" y="639" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">202</text>
+    <text x="175" y="639" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    <tspan fill="#FFD84D" font-weight="bold">const</tspan> existingToken = localStorage.getItem(&#x27;iitsm_jwt&#x27;);</text>
+
+    <!-- Line 203 -->
+    <text x="135" y="663" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">203</text>
+    <text x="175" y="663" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14"></text>
+
+    <!-- Line 204 -->
+    <text x="135" y="687" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">204</text>
+    <text x="175" y="687" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    <tspan fill="#FFD84D" font-weight="bold">if</tspan> (existingToken) {</text>
+
+    <!-- Line 205 -->
+    <text x="135" y="711" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">205</text>
+    <text x="175" y="711" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      <tspan fill="#FFD84D" font-weight="bold">await</tspan> syncProfile(user, existingToken);</text>
+
+</svg>

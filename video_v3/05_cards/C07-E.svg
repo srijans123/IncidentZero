@@ -1,0 +1,521 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" shape-rendering="crispEdges">
+  <defs>
+    <!-- 24x24 Checkerboard Dither -->
+    <pattern id="dither_C07-E" width="24" height="24" patternUnits="userSpaceOnUse">
+      <rect width="24" height="24" fill="#1E1646"/>
+      <rect width="12" height="12" fill="#261C58"/>
+      <rect x="12" y="12" width="12" height="12" fill="#261C58"/>
+    </pattern>
+  </defs>
+
+  <!-- Canvas Background -->
+  <rect width="1920" height="1080" fill="url(#dither_C07-E)"/>
+
+  <!-- Card Hard Offset Shadow -->
+  <rect x="106" y="56" width="1708" height="3080" fill="#0B071E"/>
+
+  <!-- Card Main Pixel Frame -->
+  <rect x="100" y="50" width="1708" height="3080" fill="#161033" stroke="#0B071E" stroke-width="4"/>
+
+  <!-- Header Bar -->
+  <rect x="104" y="54" width="1700" height="46" fill="#2E236C" stroke="#0B071E" stroke-width="2"/>
+
+  <!-- Square Window Controls -->
+  <rect x="120" y="68" width="14" height="14" fill="#FF4D3D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="142" y="68" width="14" height="14" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="164" y="68" width="14" height="14" fill="#43D17A" stroke="#0B071E" stroke-width="2"/>
+
+  <!-- Title & Repo Path -->
+  <text x="200" y="83" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="16" font-weight="bold">AuditLedgerInTxListener.java</text>
+  <text x="500" y="83" fill="#A499D4" font-family="'Courier New', monospace" font-size="13">backend/src/main/java/edu/campus/iitsm/audit/infrastructure/AuditLedgerInTxListener.java (L76–L195)</text>
+
+  <!-- Language Badge -->
+  <rect x="1690" y="63" width="90" height="24" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <text x="1735" y="80" fill="#0B071E" font-family="'Courier New', monospace" font-size="12" font-weight="bold" text-anchor="middle">JAVA</text>
+
+  <!-- Gutter Separator -->
+  <line x1="155" y1="100" x2="155" y2="3120" stroke="#2E236C" stroke-width="2"/>
+
+  <!-- Code Lines -->
+  
+    <!-- Line 76 -->
+    <text x="135" y="135" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">76</text>
+    <text x="175" y="135" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    String prevHash = (lastHash != null &amp;&amp; !lastHash.isBlank()) ? lastHash : AuditHasher.GENESIS_HASH;</text>
+
+    <!-- Line 77 -->
+    <text x="135" y="159" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">77</text>
+    <text x="175" y="159" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14"></text>
+
+    <!-- Line 78 -->
+    <text x="135" y="183" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">78</text>
+    <text x="175" y="183" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    // Previous state chaining</text>
+
+    <!-- Line 79 -->
+    <text x="135" y="207" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">79</text>
+    <text x="175" y="207" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    String prevState = null;</text>
+
+    <!-- Line 80 -->
+    <text x="135" y="231" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">80</text>
+    <text x="175" y="231" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    <tspan fill="#FFD84D" font-weight="bold">if</tspan> (lastIndex &gt; 0) {</text>
+
+    <!-- Line 81 -->
+    <text x="135" y="255" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">81</text>
+    <text x="175" y="255" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      List&lt;String&gt; states = jdbcTemplate.query(</text>
+
+    <!-- Line 82 -->
+    <text x="135" y="279" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">82</text>
+    <text x="175" y="279" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">          &quot;SELECT new_state <tspan fill="#FFD84D" font-weight="bold">FROM</tspan> audit_record <tspan fill="#FFD84D" font-weight="bold">WHERE</tspan> incident_id = ? AND chain_index = ?&quot;,</text>
+
+    <!-- Line 83 -->
+    <text x="135" y="303" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">83</text>
+    <text x="175" y="303" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">          (rs, rowNum) -&gt; rs.getString(&quot;new_state&quot;),</text>
+
+    <!-- Line 84 -->
+    <text x="135" y="327" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">84</text>
+    <text x="175" y="327" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">          incidentId,</text>
+
+    <!-- Line 85 -->
+    <text x="135" y="351" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">85</text>
+    <text x="175" y="351" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">          lastIndex</text>
+
+    <!-- Line 86 -->
+    <text x="135" y="375" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">86</text>
+    <text x="175" y="375" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      );</text>
+
+    <!-- Line 87 -->
+    <text x="135" y="399" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">87</text>
+    <text x="175" y="399" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      <tspan fill="#FFD84D" font-weight="bold">if</tspan> (!states.isEmpty()) {</text>
+
+    <!-- Line 88 -->
+    <text x="135" y="423" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">88</text>
+    <text x="175" y="423" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">        prevState = states.get(0);</text>
+
+    <!-- Line 89 -->
+    <text x="135" y="447" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">89</text>
+    <text x="175" y="447" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      }</text>
+
+    <!-- Line 90 -->
+    <text x="135" y="471" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">90</text>
+    <text x="175" y="471" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    }</text>
+
+    <!-- Line 91 -->
+    <text x="135" y="495" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">91</text>
+    <text x="175" y="495" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14"></text>
+
+    <!-- Line 92 -->
+    <text x="135" y="519" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">92</text>
+    <text x="175" y="519" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    String action = event.getClass().getSimpleName();</text>
+
+    <!-- Line 93 -->
+    <text x="135" y="543" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">93</text>
+    <text x="175" y="543" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    UUID actorId = null;</text>
+
+    <!-- Line 94 -->
+    <text x="135" y="567" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">94</text>
+    <text x="175" y="567" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    String description;</text>
+
+    <!-- Line 95 -->
+    <text x="135" y="591" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">95</text>
+    <text x="175" y="591" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    Map&lt;String, Object&gt; payloadMap = <tspan fill="#FFD84D" font-weight="bold">new</tspan> LinkedHashMap&lt;&gt;();</text>
+
+    <!-- Line 96 -->
+    <text x="135" y="615" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">96</text>
+    <text x="175" y="615" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14"></text>
+
+    <!-- Line 97 -->
+    <text x="135" y="639" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">97</text>
+    <text x="175" y="639" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    <tspan fill="#FFD84D" font-weight="bold">if</tspan> (event instanceof IncidentEvents.IncidentCreated e) {</text>
+
+    <!-- Line 98 -->
+    <text x="135" y="663" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">98</text>
+    <text x="175" y="663" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      actorId = e.reporterId();</text>
+
+    <!-- Line 99 -->
+    <text x="135" y="687" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">99</text>
+    <text x="175" y="687" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      payloadMap.put(&quot;priority&quot;, e.priority() != null ? e.priority().name() : &quot;P3&quot;);</text>
+
+    <!-- Line 100 -->
+    <text x="135" y="711" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">100</text>
+    <text x="175" y="711" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      payloadMap.put(&quot;reporterId&quot;, e.reporterId() != null ? e.reporterId().toString() : &quot;&quot;);</text>
+
+    <!-- Line 101 -->
+    <text x="135" y="735" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">101</text>
+    <text x="175" y="735" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      payloadMap.put(&quot;serviceId&quot;, e.serviceId() != null ? e.serviceId().toString() : &quot;&quot;);</text>
+
+    <!-- Line 102 -->
+    <text x="135" y="759" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">102</text>
+    <text x="175" y="759" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      UserInfo u = lookupUser(actorId);</text>
+
+    <!-- Line 103 -->
+    <text x="135" y="783" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">103</text>
+    <text x="175" y="783" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      description = u.name() + &quot; reported the incident&quot;;</text>
+
+    <!-- Line 104 -->
+    <text x="135" y="807" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">104</text>
+    <text x="175" y="807" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    } <tspan fill="#FFD84D" font-weight="bold">else</tspan> <tspan fill="#FFD84D" font-weight="bold">if</tspan> (event instanceof IncidentEvents.IncidentClassified e) {</text>
+
+    <!-- Line 105 -->
+    <text x="135" y="831" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">105</text>
+    <text x="175" y="831" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      actorId = e.actor();</text>
+
+    <!-- Line 106 -->
+    <text x="135" y="855" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">106</text>
+    <text x="175" y="855" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      payloadMap.put(&quot;categoryId&quot;, e.categoryId() != null ? e.categoryId().toString() : &quot;&quot;);</text>
+
+    <!-- Line 107 -->
+    <text x="135" y="879" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">107</text>
+    <text x="175" y="879" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      payloadMap.put(&quot;priority&quot;, e.priority() != null ? e.priority().name() : &quot;&quot;);</text>
+
+    <!-- Line 108 -->
+    <text x="135" y="903" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">108</text>
+    <text x="175" y="903" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      UserInfo u = lookupUser(actorId);</text>
+
+    <!-- Line 109 -->
+    <text x="135" y="927" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">109</text>
+    <text x="175" y="927" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      description = u.name() + &quot; classified incident as &quot; + (e.priority() != null ? e.priority().name() : &quot;&quot;);</text>
+
+    <!-- Line 110 -->
+    <text x="135" y="951" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">110</text>
+    <text x="175" y="951" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    } <tspan fill="#FFD84D" font-weight="bold">else</tspan> <tspan fill="#FFD84D" font-weight="bold">if</tspan> (event instanceof IncidentEvents.IncidentAssigned e) {</text>
+
+    <!-- Line 111 -->
+    <text x="135" y="975" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">111</text>
+    <text x="175" y="975" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      actorId = e.actor();</text>
+
+    <!-- Line 112 -->
+    <text x="135" y="999" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">112</text>
+    <text x="175" y="999" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      payloadMap.put(&quot;assigneeId&quot;, e.assigneeId() != null ? e.assigneeId().toString() : &quot;&quot;);</text>
+
+    <!-- Line 113 -->
+    <text x="135" y="1023" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">113</text>
+    <text x="175" y="1023" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      payloadMap.put(&quot;strategy&quot;, e.strategy() != null ? e.strategy() : &quot;&quot;);</text>
+
+    <!-- Line 114 -->
+    <text x="135" y="1047" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">114</text>
+    <text x="175" y="1047" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      payloadMap.put(&quot;teamId&quot;, e.teamId() != null ? e.teamId().toString() : &quot;&quot;);</text>
+
+    <!-- Line 115 -->
+    <text x="135" y="1071" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">115</text>
+    <text x="175" y="1071" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      UserInfo assignee = lookupUser(e.assigneeId());</text>
+
+    <!-- Line 116 -->
+    <text x="135" y="1095" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">116</text>
+    <text x="175" y="1095" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      description = &quot;Assigned to &quot; + assignee.name() + &quot; via &quot; + e.strategy();</text>
+
+    <!-- Line 117 -->
+    <text x="135" y="1119" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">117</text>
+    <text x="175" y="1119" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    } <tspan fill="#FFD84D" font-weight="bold">else</tspan> <tspan fill="#FFD84D" font-weight="bold">if</tspan> (event instanceof IncidentEvents.IncidentReassigned e) {</text>
+
+    <!-- Line 118 -->
+    <text x="135" y="1143" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">118</text>
+    <text x="175" y="1143" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      actorId = e.actor();</text>
+
+    <!-- Line 119 -->
+    <text x="135" y="1167" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">119</text>
+    <text x="175" y="1167" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      payloadMap.put(&quot;newAssignee&quot;, e.newAssignee() != null ? e.newAssignee().toString() : &quot;&quot;);</text>
+
+    <!-- Line 120 -->
+    <text x="135" y="1191" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">120</text>
+    <text x="175" y="1191" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      payloadMap.put(&quot;prevAssignee&quot;, e.prevAssignee() != null ? e.prevAssignee().toString() : &quot;&quot;);</text>
+
+    <!-- Line 121 -->
+    <text x="135" y="1215" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">121</text>
+    <text x="175" y="1215" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      payloadMap.put(&quot;reason&quot;, e.reason() != null ? e.reason() : &quot;&quot;);</text>
+
+    <!-- Line 122 -->
+    <text x="135" y="1239" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">122</text>
+    <text x="175" y="1239" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      UserInfo newTech = lookupUser(e.newAssignee());</text>
+
+    <!-- Line 123 -->
+    <text x="135" y="1263" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">123</text>
+    <text x="175" y="1263" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      description = lookupUser(actorId).name() + &quot; reassigned ticket to &quot; + newTech.name() + &quot;: &quot; + e.reason();</text>
+
+    <!-- Line 124 -->
+    <text x="135" y="1287" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">124</text>
+    <text x="175" y="1287" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    } <tspan fill="#FFD84D" font-weight="bold">else</tspan> <tspan fill="#FFD84D" font-weight="bold">if</tspan> (event instanceof IncidentEvents.IncidentAcknowledged e) {</text>
+
+    <!-- Line 125 -->
+    <text x="135" y="1311" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">125</text>
+    <text x="175" y="1311" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      actorId = e.actor();</text>
+
+    <!-- Line 126 -->
+    <text x="135" y="1335" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">126</text>
+    <text x="175" y="1335" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      description = lookupUser(actorId).name() + &quot; acknowledged the incident&quot;;</text>
+
+    <!-- Line 127 -->
+    <text x="135" y="1359" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">127</text>
+    <text x="175" y="1359" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    } <tspan fill="#FFD84D" font-weight="bold">else</tspan> <tspan fill="#FFD84D" font-weight="bold">if</tspan> (event instanceof IncidentEvents.InvestigationStarted e) {</text>
+
+    <!-- Line 128 -->
+    <text x="135" y="1383" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">128</text>
+    <text x="175" y="1383" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      actorId = e.actor();</text>
+
+    <!-- Line 129 -->
+    <text x="135" y="1407" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">129</text>
+    <text x="175" y="1407" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      description = lookupUser(actorId).name() + &quot; started investigation&quot;;</text>
+
+    <!-- Line 130 -->
+    <text x="135" y="1431" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">130</text>
+    <text x="175" y="1431" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    } <tspan fill="#FFD84D" font-weight="bold">else</tspan> <tspan fill="#FFD84D" font-weight="bold">if</tspan> (event instanceof IncidentEvents.UserInfoRequested e) {</text>
+
+    <!-- Line 131 -->
+    <text x="135" y="1455" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">131</text>
+    <text x="175" y="1455" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      actorId = e.actor();</text>
+
+    <!-- Line 132 -->
+    <text x="135" y="1479" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">132</text>
+    <text x="175" y="1479" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      payloadMap.put(&quot;question&quot;, e.question() != null ? e.question() : &quot;&quot;);</text>
+
+    <!-- Line 133 -->
+    <text x="135" y="1503" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">133</text>
+    <text x="175" y="1503" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      description = lookupUser(actorId).name() + &quot; requested user information: &quot; + e.question();</text>
+
+    <!-- Line 134 -->
+    <text x="135" y="1527" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">134</text>
+    <text x="175" y="1527" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    } <tspan fill="#FFD84D" font-weight="bold">else</tspan> <tspan fill="#FFD84D" font-weight="bold">if</tspan> (event instanceof IncidentEvents.UserInfoProvided e) {</text>
+
+    <!-- Line 135 -->
+    <text x="135" y="1551" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">135</text>
+    <text x="175" y="1551" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      actorId = e.reporter();</text>
+
+    <!-- Line 136 -->
+    <text x="135" y="1575" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">136</text>
+    <text x="175" y="1575" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      String ans = UserInfoContext.getAndClear();</text>
+
+    <!-- Line 137 -->
+    <text x="135" y="1599" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">137</text>
+    <text x="175" y="1599" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      <tspan fill="#FFD84D" font-weight="bold">if</tspan> (ans != null &amp;&amp; !ans.isBlank()) {</text>
+
+    <!-- Line 138 -->
+    <text x="135" y="1623" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">138</text>
+    <text x="175" y="1623" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">        payloadMap.put(&quot;response&quot;, ans);</text>
+
+    <!-- Line 139 -->
+    <text x="135" y="1647" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">139</text>
+    <text x="175" y="1647" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      }</text>
+
+    <!-- Line 140 -->
+    <text x="135" y="1671" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">140</text>
+    <text x="175" y="1671" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      description = lookupUser(actorId).name() + &quot; provided requested information&quot;;</text>
+
+    <!-- Line 141 -->
+    <text x="135" y="1695" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">141</text>
+    <text x="175" y="1695" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    } <tspan fill="#FFD84D" font-weight="bold">else</tspan> <tspan fill="#FFD84D" font-weight="bold">if</tspan> (event instanceof IncidentEvents.IncidentResolved e) {</text>
+
+    <!-- Line 142 -->
+    <text x="135" y="1719" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">142</text>
+    <text x="175" y="1719" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      actorId = e.actor();</text>
+
+    <!-- Line 143 -->
+    <text x="135" y="1743" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">143</text>
+    <text x="175" y="1743" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      payloadMap.put(&quot;code&quot;, e.resolution() != null ? e.resolution().code() : &quot;FIXED&quot;);</text>
+
+    <!-- Line 144 -->
+    <text x="135" y="1767" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">144</text>
+    <text x="175" y="1767" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      payloadMap.put(&quot;notes&quot;, e.resolution() != null ? e.resolution().notes() : &quot;&quot;);</text>
+
+    <!-- Line 145 -->
+    <text x="135" y="1791" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">145</text>
+    <text x="175" y="1791" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      <tspan fill="#FFD84D" font-weight="bold">if</tspan> (e.resolution() != null &amp;&amp; e.resolution().rootCauseCategory() != null) {</text>
+
+    <!-- Line 146 -->
+    <text x="135" y="1815" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">146</text>
+    <text x="175" y="1815" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">        payloadMap.put(&quot;rootCauseCategory&quot;, e.resolution().rootCauseCategory());</text>
+
+    <!-- Line 147 -->
+    <text x="135" y="1839" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">147</text>
+    <text x="175" y="1839" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      }</text>
+
+    <!-- Line 148 -->
+    <text x="135" y="1863" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">148</text>
+    <text x="175" y="1863" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      description = lookupUser(actorId).name() + &quot; resolved the incident (&quot; + (e.resolution() != null ? e.resolution().code() : &quot;FIXED&quot;) + &quot;)&quot;;</text>
+
+    <!-- Line 149 -->
+    <text x="135" y="1887" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">149</text>
+    <text x="175" y="1887" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    } <tspan fill="#FFD84D" font-weight="bold">else</tspan> <tspan fill="#FFD84D" font-weight="bold">if</tspan> (event instanceof IncidentEvents.ResolutionVerified e) {</text>
+
+    <!-- Line 150 -->
+    <text x="135" y="1911" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">150</text>
+    <text x="175" y="1911" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      actorId = e.actor();</text>
+
+    <!-- Line 151 -->
+    <text x="135" y="1935" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">151</text>
+    <text x="175" y="1935" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      payloadMap.put(&quot;rating&quot;, e.rating() != null ? e.rating() : 5);</text>
+
+    <!-- Line 152 -->
+    <text x="135" y="1959" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">152</text>
+    <text x="175" y="1959" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      description = lookupUser(actorId).name() + &quot; verified resolution (&quot; + (e.rating() != null ? e.rating() : 5) + &quot; stars)&quot;;</text>
+
+    <!-- Line 153 -->
+    <text x="135" y="1983" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">153</text>
+    <text x="175" y="1983" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    } <tspan fill="#FFD84D" font-weight="bold">else</tspan> <tspan fill="#FFD84D" font-weight="bold">if</tspan> (event instanceof IncidentEvents.ResolutionRejected e) {</text>
+
+    <!-- Line 154 -->
+    <text x="135" y="2007" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">154</text>
+    <text x="175" y="2007" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      actorId = e.reporter();</text>
+
+    <!-- Line 155 -->
+    <text x="135" y="2031" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">155</text>
+    <text x="175" y="2031" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      payloadMap.put(&quot;reason&quot;, e.reason() != null ? e.reason() : &quot;&quot;);</text>
+
+    <!-- Line 156 -->
+    <text x="135" y="2055" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">156</text>
+    <text x="175" y="2055" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      description = lookupUser(actorId).name() + &quot; rejected resolution: &quot; + e.reason();</text>
+
+    <!-- Line 157 -->
+    <text x="135" y="2079" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">157</text>
+    <text x="175" y="2079" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    } <tspan fill="#FFD84D" font-weight="bold">else</tspan> <tspan fill="#FFD84D" font-weight="bold">if</tspan> (event instanceof IncidentEvents.IncidentClosed e) {</text>
+
+    <!-- Line 158 -->
+    <text x="135" y="2103" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">158</text>
+    <text x="175" y="2103" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      actorId = e.actor();</text>
+
+    <!-- Line 159 -->
+    <text x="135" y="2127" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">159</text>
+    <text x="175" y="2127" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      description = lookupUser(actorId).name() + &quot; closed the incident&quot;;</text>
+
+    <!-- Line 160 -->
+    <text x="135" y="2151" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">160</text>
+    <text x="175" y="2151" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    } <tspan fill="#FFD84D" font-weight="bold">else</tspan> <tspan fill="#FFD84D" font-weight="bold">if</tspan> (event instanceof IncidentEvents.IncidentCancelled e) {</text>
+
+    <!-- Line 161 -->
+    <text x="135" y="2175" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">161</text>
+    <text x="175" y="2175" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      actorId = e.actor();</text>
+
+    <!-- Line 162 -->
+    <text x="135" y="2199" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">162</text>
+    <text x="175" y="2199" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      payloadMap.put(&quot;reason&quot;, e.reason() != null ? e.reason() : &quot;&quot;);</text>
+
+    <!-- Line 163 -->
+    <text x="135" y="2223" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">163</text>
+    <text x="175" y="2223" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      description = lookupUser(actorId).name() + &quot; cancelled the incident: &quot; + e.reason();</text>
+
+    <!-- Line 164 -->
+    <text x="135" y="2247" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">164</text>
+    <text x="175" y="2247" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    } <tspan fill="#FFD84D" font-weight="bold">else</tspan> <tspan fill="#FFD84D" font-weight="bold">if</tspan> (event instanceof IncidentEvents.MajorIncidentDeclared e) {</text>
+
+    <!-- Line 165 -->
+    <text x="135" y="2271" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">165</text>
+    <text x="175" y="2271" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      actorId = e.actor();</text>
+
+    <!-- Line 166 -->
+    <text x="135" y="2295" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">166</text>
+    <text x="175" y="2295" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      description = lookupUser(actorId).name() + &quot; declared major incident (P1)&quot;;</text>
+
+    <!-- Line 167 -->
+    <text x="135" y="2319" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">167</text>
+    <text x="175" y="2319" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    } <tspan fill="#FFD84D" font-weight="bold">else</tspan> <tspan fill="#FFD84D" font-weight="bold">if</tspan> (event instanceof IncidentEvents.PriorityChanged e) {</text>
+
+    <!-- Line 168 -->
+    <text x="135" y="2343" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">168</text>
+    <text x="175" y="2343" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      payloadMap.put(&quot;after&quot;, e.after() != null ? e.after().name() : &quot;&quot;);</text>
+
+    <!-- Line 169 -->
+    <text x="135" y="2367" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">169</text>
+    <text x="175" y="2367" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      payloadMap.put(&quot;before&quot;, e.before() != null ? e.before().name() : &quot;&quot;);</text>
+
+    <!-- Line 170 -->
+    <text x="135" y="2391" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">170</text>
+    <text x="175" y="2391" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      payloadMap.put(&quot;reason&quot;, e.reason() != null ? e.reason() : &quot;&quot;);</text>
+
+    <!-- Line 171 -->
+    <text x="135" y="2415" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">171</text>
+    <text x="175" y="2415" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      description = &quot;Priority changed from &quot; + (e.before() != null ? e.before().name() : &quot;&quot;) + &quot; to &quot; + (e.after() != null ? e.after().name() : &quot;&quot;);</text>
+
+    <!-- Line 172 -->
+    <text x="135" y="2439" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">172</text>
+    <text x="175" y="2439" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    } <tspan fill="#FFD84D" font-weight="bold">else</tspan> {</text>
+
+    <!-- Line 173 -->
+    <text x="135" y="2463" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">173</text>
+    <text x="175" y="2463" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      description = &quot;Domain event &quot; + action + &quot; occurred for incident &quot; + incidentId;</text>
+
+    <!-- Line 174 -->
+    <text x="135" y="2487" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">174</text>
+    <text x="175" y="2487" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    }</text>
+
+    <!-- Line 175 -->
+    <text x="135" y="2511" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">175</text>
+    <text x="175" y="2511" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14"></text>
+
+    <!-- Line 176 -->
+    <text x="135" y="2535" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">176</text>
+    <text x="175" y="2535" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    UserInfo actorInfo = lookupUser(actorId);</text>
+
+    <!-- Line 177 -->
+    <text x="135" y="2559" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">177</text>
+    <text x="175" y="2559" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    String actorType = (actorId == null || Actors.SYSTEM.equals(actorId)) ? &quot;SYSTEM&quot; : &quot;USER&quot;;</text>
+
+    <!-- Line 178 -->
+    <text x="135" y="2583" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">178</text>
+    <text x="175" y="2583" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    UUID effectiveActorId = (actorId == null || Actors.SYSTEM.equals(actorId)) ? null : actorId;</text>
+
+    <!-- Line 179 -->
+    <text x="135" y="2607" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">179</text>
+    <text x="175" y="2607" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14"></text>
+
+    <!-- Line 180 -->
+    <text x="135" y="2631" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">180</text>
+    <text x="175" y="2631" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    String rawPayload;</text>
+
+    <!-- Line 181 -->
+    <text x="135" y="2655" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">181</text>
+    <text x="175" y="2655" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    try {</text>
+
+    <!-- Line 182 -->
+    <text x="135" y="2679" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">182</text>
+    <text x="175" y="2679" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      rawPayload = payloadMap.isEmpty() ? &quot;{}&quot; : objectMapper.writeValueAsString(payloadMap);</text>
+
+    <!-- Line 183 -->
+    <text x="135" y="2703" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">183</text>
+    <text x="175" y="2703" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    } catch (Exception ex) {</text>
+
+    <!-- Line 184 -->
+    <text x="135" y="2727" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">184</text>
+    <text x="175" y="2727" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      rawPayload = &quot;{}&quot;;</text>
+
+    <!-- Line 185 -->
+    <text x="135" y="2751" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">185</text>
+    <text x="175" y="2751" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    }</text>
+
+    <!-- Line 186 -->
+    <text x="135" y="2775" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">186</text>
+    <text x="175" y="2775" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    String canonicalPayload = AuditHasher.canonicalizeJson(rawPayload);</text>
+
+    <!-- Line 187 -->
+    <text x="135" y="2799" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">187</text>
+    <text x="175" y="2799" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14"></text>
+
+    <!-- Line 188 -->
+    <text x="135" y="2823" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">188</text>
+    <text x="175" y="2823" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    String hash = AuditHasher.computeHash(</text>
+
+    <!-- Line 189 -->
+    <text x="135" y="2847" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">189</text>
+    <text x="175" y="2847" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">        prevHash, incidentId, nextIndex, now, actorType, effectiveActorId,</text>
+
+    <!-- Line 190 -->
+    <text x="135" y="2871" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">190</text>
+    <text x="175" y="2871" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">        action, prevState, currentStatus, description, canonicalPayload</text>
+
+    <!-- Line 191 -->
+    <text x="135" y="2895" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">191</text>
+    <text x="175" y="2895" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    );</text>
+
+    <!-- Line 192 -->
+    <text x="135" y="2919" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">192</text>
+    <text x="175" y="2919" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14"></text>
+
+    <!-- Line 193 -->
+    <text x="135" y="2943" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">193</text>
+    <text x="175" y="2943" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    String insertSql = &quot;INSERT INTO audit_record (incident_id, chain_index, ts, actor_id, actor_type, action, prev_state, new_state, description, payload, prev_hash, hash) &quot; +</text>
+
+    <!-- Line 194 -->
+    <text x="135" y="2967" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">194</text>
+    <text x="175" y="2967" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">        &quot;VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?::jsonb, ?, ?)&quot;;</text>
+
+    <!-- Line 195 -->
+    <text x="135" y="2991" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">195</text>
+    <text x="175" y="2991" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14"></text>
+
+</svg>

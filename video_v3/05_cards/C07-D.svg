@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" shape-rendering="crispEdges">
+  <defs>
+    <!-- 24x24 Checkerboard Dither -->
+    <pattern id="dither_C07-D" width="24" height="24" patternUnits="userSpaceOnUse">
+      <rect width="24" height="24" fill="#1E1646"/>
+      <rect width="12" height="12" fill="#261C58"/>
+      <rect x="12" y="12" width="12" height="12" fill="#261C58"/>
+    </pattern>
+  </defs>
+
+  <!-- Canvas Background -->
+  <rect width="1920" height="1080" fill="url(#dither_C07-D)"/>
+
+  <!-- Card Hard Offset Shadow -->
+  <rect x="106" y="56" width="1708" height="520" fill="#0B071E"/>
+
+  <!-- Card Main Pixel Frame -->
+  <rect x="100" y="50" width="1708" height="520" fill="#161033" stroke="#0B071E" stroke-width="4"/>
+
+  <!-- Header Bar -->
+  <rect x="104" y="54" width="1700" height="46" fill="#2E236C" stroke="#0B071E" stroke-width="2"/>
+
+  <!-- Square Window Controls -->
+  <rect x="120" y="68" width="14" height="14" fill="#FF4D3D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="142" y="68" width="14" height="14" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="164" y="68" width="14" height="14" fill="#43D17A" stroke="#0B071E" stroke-width="2"/>
+
+  <!-- Title & Repo Path -->
+  <text x="200" y="83" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="16" font-weight="bold">AuditLedgerInTxListener.java</text>
+  <text x="500" y="83" fill="#A499D4" font-family="'Courier New', monospace" font-size="13">backend/src/main/java/edu/campus/iitsm/audit/infrastructure/AuditLedgerInTxListener.java (L54–L63)</text>
+
+  <!-- Language Badge -->
+  <rect x="1690" y="63" width="90" height="24" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <text x="1735" y="80" fill="#0B071E" font-family="'Courier New', monospace" font-size="12" font-weight="bold" text-anchor="middle">JAVA</text>
+
+  <!-- Gutter Separator -->
+  <line x1="155" y1="100" x2="155" y2="560" stroke="#2E236C" stroke-width="2"/>
+
+  <!-- Code Lines -->
+  
+    <!-- Line 54 -->
+    <text x="135" y="135" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">54</text>
+    <text x="175" y="135" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">  @EventListener</text>
+
+    <!-- Line 55 -->
+    <text x="135" y="159" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">55</text>
+    <text x="175" y="159" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">  @Transactional(propagation = Propagation.MANDATORY)</text>
+
+    <!-- Line 56 -->
+    <text x="135" y="183" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">56</text>
+    <text x="175" y="183" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">  <tspan fill="#FFD84D" font-weight="bold">public</tspan> <tspan fill="#FFD84D" font-weight="bold">void</tspan> onDomainEvent(DomainEvent event) {</text>
+
+    <!-- Line 57 -->
+    <text x="135" y="207" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">57</text>
+    <text x="175" y="207" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    UUID incidentId = event.incidentId();</text>
+
+    <!-- Line 58 -->
+    <text x="135" y="231" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">58</text>
+    <text x="175" y="231" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    Instant now = (event.occurredAt() != null ? event.occurredAt() : clockPort.now())</text>
+
+    <!-- Line 59 -->
+    <text x="135" y="255" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">59</text>
+    <text x="175" y="255" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">        .truncatedTo(ChronoUnit.MICROS);</text>
+
+    <!-- Line 60 -->
+    <text x="135" y="279" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">60</text>
+    <text x="175" y="279" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14"></text>
+
+    <!-- Line 61 -->
+    <text x="135" y="303" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">61</text>
+    <text x="175" y="303" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    // Lock the incident row to serialize audit hash chain updates</text>
+
+    <!-- Line 62 -->
+    <text x="135" y="327" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">62</text>
+    <text x="175" y="327" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    String selectSql = &quot;SELECT last_audit_index, last_audit_hash, status <tspan fill="#FFD84D" font-weight="bold">FROM</tspan> incident <tspan fill="#FFD84D" font-weight="bold">WHERE</tspan> id = ? FOR UPDATE&quot;;</text>
+
+    <!-- Line 63 -->
+    <text x="135" y="351" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">63</text>
+    <text x="175" y="351" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    Map&lt;String, Object&gt; row;</text>
+
+</svg>

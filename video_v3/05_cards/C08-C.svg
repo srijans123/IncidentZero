@@ -1,0 +1,137 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" shape-rendering="crispEdges">
+  <defs>
+    <!-- 24x24 Checkerboard Dither -->
+    <pattern id="dither_C08-C" width="24" height="24" patternUnits="userSpaceOnUse">
+      <rect width="24" height="24" fill="#1E1646"/>
+      <rect width="12" height="12" fill="#261C58"/>
+      <rect x="12" y="12" width="12" height="12" fill="#261C58"/>
+    </pattern>
+  </defs>
+
+  <!-- Canvas Background -->
+  <rect width="1920" height="1080" fill="url(#dither_C08-C)"/>
+
+  <!-- Card Hard Offset Shadow -->
+  <rect x="106" y="56" width="1708" height="776" fill="#0B071E"/>
+
+  <!-- Card Main Pixel Frame -->
+  <rect x="100" y="50" width="1708" height="776" fill="#161033" stroke="#0B071E" stroke-width="4"/>
+
+  <!-- Header Bar -->
+  <rect x="104" y="54" width="1700" height="46" fill="#2E236C" stroke="#0B071E" stroke-width="2"/>
+
+  <!-- Square Window Controls -->
+  <rect x="120" y="68" width="14" height="14" fill="#FF4D3D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="142" y="68" width="14" height="14" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="164" y="68" width="14" height="14" fill="#43D17A" stroke="#0B071E" stroke-width="2"/>
+
+  <!-- Title & Repo Path -->
+  <text x="200" y="83" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="16" font-weight="bold">PortalReport.tsx</text>
+  <text x="500" y="83" fill="#A499D4" font-family="'Courier New', monospace" font-size="13">frontend/src/pages/portal/PortalReport.tsx (L132–L155)</text>
+
+  <!-- Language Badge -->
+  <rect x="1690" y="63" width="90" height="24" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <text x="1735" y="80" fill="#0B071E" font-family="'Courier New', monospace" font-size="12" font-weight="bold" text-anchor="middle">TYPESCRIPT</text>
+
+  <!-- Gutter Separator -->
+  <line x1="155" y1="100" x2="155" y2="816" stroke="#2E236C" stroke-width="2"/>
+
+  <!-- Code Lines -->
+  
+    <!-- Line 132 -->
+    <text x="135" y="135" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">132</text>
+    <text x="175" y="135" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">  <tspan fill="#FFD84D" font-weight="bold">const</tspan> handleSubmit = <tspan fill="#FFD84D" font-weight="bold">async</tspan> (e: React.FormEvent) =&gt; {</text>
+
+    <!-- Line 133 -->
+    <text x="135" y="159" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">133</text>
+    <text x="175" y="159" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    e.preventDefault();</text>
+
+    <!-- Line 134 -->
+    <text x="135" y="183" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">134</text>
+    <text x="175" y="183" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    setTouched({ title: true, description: true });</text>
+
+    <!-- Line 135 -->
+    <text x="135" y="207" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">135</text>
+    <text x="175" y="207" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14"></text>
+
+    <!-- Line 136 -->
+    <text x="135" y="231" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">136</text>
+    <text x="175" y="231" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    <tspan fill="#FFD84D" font-weight="bold">if</tspan> (!isFormValid) {</text>
+
+    <!-- Line 137 -->
+    <text x="135" y="255" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">137</text>
+    <text x="175" y="255" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      sound.err();</text>
+
+    <!-- Line 138 -->
+    <text x="135" y="279" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">138</text>
+    <text x="175" y="279" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      showError({ message: &#x27;Please fix validation errors before submitting.&#x27; });</text>
+
+    <!-- Line 139 -->
+    <text x="135" y="303" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">139</text>
+    <text x="175" y="303" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      <tspan fill="#FFD84D" font-weight="bold">return;</tspan></text>
+
+    <!-- Line 140 -->
+    <text x="135" y="327" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">140</text>
+    <text x="175" y="327" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    }</text>
+
+    <!-- Line 141 -->
+    <text x="135" y="351" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">141</text>
+    <text x="175" y="351" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14"></text>
+
+    <!-- Line 142 -->
+    <text x="135" y="375" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">142</text>
+    <text x="175" y="375" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    sound.slot();</text>
+
+    <!-- Line 143 -->
+    <text x="135" y="399" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">143</text>
+    <text x="175" y="399" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">    try {</text>
+
+    <!-- Line 144 -->
+    <text x="135" y="423" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">144</text>
+    <text x="175" y="423" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      setIsSubmitting(true);</text>
+
+    <!-- Line 145 -->
+    <text x="135" y="447" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">145</text>
+    <text x="175" y="447" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      <tspan fill="#FFD84D" font-weight="bold">const</tspan> res = <tspan fill="#FFD84D" font-weight="bold">await</tspan> api.incidents.create({</text>
+
+    <!-- Line 146 -->
+    <text x="135" y="471" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">146</text>
+    <text x="175" y="471" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">        title: title.trim(),</text>
+
+    <!-- Line 147 -->
+    <text x="135" y="495" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">147</text>
+    <text x="175" y="495" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">        description: description.trim(),</text>
+
+    <!-- Line 148 -->
+    <text x="135" y="519" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">148</text>
+    <text x="175" y="519" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">        serviceCode: serviceCode || advice?.suggestedService || undefined,</text>
+
+    <!-- Line 149 -->
+    <text x="135" y="543" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">149</text>
+    <text x="175" y="543" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">        urgency: urgency,</text>
+
+    <!-- Line 150 -->
+    <text x="135" y="567" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">150</text>
+    <text x="175" y="567" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      });</text>
+
+    <!-- Line 151 -->
+    <text x="135" y="591" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">151</text>
+    <text x="175" y="591" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14"></text>
+
+    <!-- Line 152 -->
+    <text x="135" y="615" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">152</text>
+    <text x="175" y="615" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">      <tspan fill="#FFD84D" font-weight="bold">if</tspan> (res &amp;&amp; res.id) {</text>
+
+    <!-- Line 153 -->
+    <text x="135" y="639" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">153</text>
+    <text x="175" y="639" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">        sound.win();</text>
+
+    <!-- Line 154 -->
+    <text x="135" y="663" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">154</text>
+    <text x="175" y="663" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">        showSuccess(`Incident ${res.number || res.id} reported successfully!`);</text>
+
+    <!-- Line 155 -->
+    <text x="135" y="687" fill="#7B739E" font-family="'Courier New', monospace" font-size="14" text-anchor="end">155</text>
+    <text x="175" y="687" fill="#FFF8DC" font-family="'Courier New', monospace" font-size="14">        onSubmitSuccess(res.id);</text>
+
+</svg>

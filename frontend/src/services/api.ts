@@ -1,5 +1,6 @@
 import { Incident, IntakeAdvice, AuditVerificationResult, RcaResult, User, TimelineItem } from '../types';
 import { toIncident, toTimelineItem, toAuditVerify, toAdvice, toRca } from './mappers';
+import { demoBackendApi, IS_DEMO_MODE } from './demoBackend';
 
 const ORIGIN = (import.meta.env.VITE_API_BASE_URL ?? '').replace(/\/+$/, ''); // '' = same origin (Vite proxy)
 export const API_BASE = `${ORIGIN}/api/v1`;
@@ -46,7 +47,7 @@ async function request<T>(path: string, options: RequestInit = {}): Promise<T> {
   return response.json();
 }
 
-export const api = {
+const realApi = {
   auth: {
     login: async (email: string, password = 'Bits@2026') => {
       return request<{ accessToken: string; refreshToken?: string; expiresInSeconds: number }>(
@@ -256,3 +257,5 @@ export const api = {
     },
   },
 };
+
+export const api = (IS_DEMO_MODE ? demoBackendApi : realApi) as typeof realApi;

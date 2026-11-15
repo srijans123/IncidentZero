@@ -108,8 +108,16 @@ const AppContent: React.FC = () => {
     <div className="min-h-screen text-[var(--fg)] flex flex-col font-pixel w-full max-w-full overflow-x-clip selection:bg-[var(--line)] selection:text-[var(--bg)]">
       {/* Persistent Offline Banner if Backend Unreachable */}
       {isBackendOffline && (
-        <div className="w-full bg-[#FF4D3D] text-[#FFF8DC] border-b-4 border-[#1B1530] py-2 px-4 text-center font-mono text-xs font-bold shadow-[0_4px_0_#1B1530] z-50">
-          CCIT DISPATCH BACKEND OFFLINE · START BACKEND TO RECOVER
+        <div className="w-full bg-[#FF4D3D] text-[#FFF8DC] border-b-4 border-[#1B1530] py-2 px-4 text-center font-mono text-xs font-bold shadow-[0_4px_0_#1B1530] z-50 flex items-center justify-center gap-2">
+          <span>CCIT DISPATCH BACKEND OFFLINE · START BACKEND TO RECOVER</span>
+          <a
+            href="https://github.com/srijans123/IncidentZero#quick-start"
+            target="_blank"
+            rel="noreferrer"
+            className="underline text-[#FFD84D] hover:text-white ml-2"
+          >
+            README Quick-Start ↗
+          </a>
         </div>
       )}
 

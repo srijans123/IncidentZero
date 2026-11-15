@@ -1,0 +1,962 @@
+{
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a00b01.wav": {
+    "key": "ad521de9417783539c920051a2db09f4e13886a6784d0677b6f471a3d8a202bf",
+    "duration": 6.339,
+    "timestamp": 1794784254.8828168
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a00b02.wav": {
+    "key": "991d624bbb3310c5c540d08f02cd69e3f00e9c9aa616414894f3bccbf3b1bcc4",
+    "duration": 3.523,
+    "timestamp": 1794784272.4080489
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a00b03.wav": {
+    "key": "408f60484e0539296277e9dd227d2a25cbf0133967c45b02ce6ea37a597c2a6f",
+    "duration": 5.568,
+    "timestamp": 1794784281.5304794
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a00b04.wav": {
+    "key": "9f0330c30502f611f6b393d857781568a33b61b6a61cec72639c449f93daacb7",
+    "duration": 5.252,
+    "timestamp": 1794784290.8487782
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a00b05.wav": {
+    "key": "6c01a381c7fcd308f6a7a07392ef86f12ee9e4179fae8f2fa06a4b4d2b818549",
+    "duration": 4.675,
+    "timestamp": 1794784297.3765314
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a00b06.wav": {
+    "key": "339482e47a49da0a5a8369acc05f6aad20e57a805b927e61ec79cd858cc39e8f",
+    "duration": 6.482,
+    "timestamp": 1794784304.2437646
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a00b07.wav": {
+    "key": "8809d0a418d91b094bedc9b653239c78eed9376f8a811059d927591059141f63",
+    "duration": 3.986,
+    "timestamp": 1794784310.6922467
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a01b01.wav": {
+    "key": "9e0817e5ab555a077952f3f00ede269fbecd04c5652ea7c1e74c15dbb7c75003",
+    "duration": 4.4,
+    "timestamp": 1794784346.0429506
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a01b02.wav": {
+    "key": "442ff48a04251365d01e53f1cd35b34a3c3d6d41c5f179d7e56991a87e4e13e9",
+    "duration": 3.785,
+    "timestamp": 1794784351.8949735
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a01b03.wav": {
+    "key": "2c54f93ba29a3e465e1d76746c02d38a536176710b97fa8287730e55c2ce7494",
+    "duration": 7.006,
+    "timestamp": 1794784358.6078682
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a01b04.wav": {
+    "key": "af73302ecec8c6278aaac9a753a61403e97fcbbdcbcfdbdf673a57708eec3c18",
+    "duration": 5.538,
+    "timestamp": 1794784365.2202363
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a01b05.wav": {
+    "key": "989644183ff9dc830af2d572b837bb8fcaabeff92693cdec2a32cab0ab70e055",
+    "duration": 4.039,
+    "timestamp": 1794784393.1324322
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a01b06.wav": {
+    "key": "ce19e3f52894fc36b3c8cc729ba76aec5bb095852bd1905b1875633aa08d0595",
+    "duration": 5.983,
+    "timestamp": 1794784400.7484827
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a01b07.wav": {
+    "key": "8e55b2df8b6ac878902b0a9b9cb9b066883c73a9565f99798730da47fde313a8",
+    "duration": 4.831,
+    "timestamp": 1794784406.6947978
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a01b08.wav": {
+    "key": "1b8addc55a1aac591d1fe5734e6cc0d014a176b71750fbb6905e494153932b39",
+    "duration": 4.017,
+    "timestamp": 1794784413.755809
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a01b09.wav": {
+    "key": "877a7991bea67d9084b595bf18299d3da8a974594446b6dfb55f0997f554d7e8",
+    "duration": 4.219,
+    "timestamp": 1794784419.7709134
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a01b10.wav": {
+    "key": "0828eacf6e35da253c4ea76ce0a7d76ee21fe09f6e6c18828f3f6daab3f0b2ad",
+    "duration": 3.074,
+    "timestamp": 1794784425.9657993
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a01b11.wav": {
+    "key": "89c4668a96e0fa7220eee6f4614b3f02e4c13a08e5601a1e0d706f67ee1075e9",
+    "duration": 3.212,
+    "timestamp": 1794784451.6959028
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a02b01.wav": {
+    "key": "5fc15a973e9e8f355c25d93f050043c97788263289e50e969b7f831712f56938",
+    "duration": 5.596,
+    "timestamp": 1794784457.9244516
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a02b02.wav": {
+    "key": "a66fdbfb90d2b21786c99a8324ee8e8b9a2658455e51ee7ee334a3f945990a3e",
+    "duration": 4.145,
+    "timestamp": 1794784464.347438
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a02b03.wav": {
+    "key": "e56e60d2b2d7c006d71b7c034fb7768148e3f8b2e9afde7fbda41bd43fd5f7e0",
+    "duration": 5.742,
+    "timestamp": 1794784496.151943
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a02b04.wav": {
+    "key": "5a193de9def87f20c25b4e12cf309fc1822f8b2cd046db2598e439d1ecbab2db",
+    "duration": 6.959,
+    "timestamp": 1794784502.2744722
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a02b05.wav": {
+    "key": "548e69917f7fba4182a83f4321c3717ee7be687cb9f96522605e0f090af009f0",
+    "duration": 5.805,
+    "timestamp": 1794784516.0927978
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a02b06.wav": {
+    "key": "a37f087590dcfd2cb509a8bc3dd08b656e7870ce38fec0691378a44f060bfa0e",
+    "duration": 3.098,
+    "timestamp": 1794784522.5761902
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a02b07.wav": {
+    "key": "28ea6e34f4dcb812ced069eba5dc6336aa5852eaec7d5710cdca9549ecf109c6",
+    "duration": 5.82,
+    "timestamp": 1794784529.9183347
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a02b08.wav": {
+    "key": "bfe1e8ccac77dfd5f607843d6885e19d72775e13da428c00378cfd8cd5c08b9c",
+    "duration": 2.819,
+    "timestamp": 1794784536.625191
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a02b09.wav": {
+    "key": "9cfe1f6954dd0a46e2438593a9464f7026920f3ed7cc5b800041427587d3bf94",
+    "duration": 5.766,
+    "timestamp": 1794784543.3986297
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a02b10.wav": {
+    "key": "97a4f1bd4cd36b8307cddaa106147946219d5f1c98d5967803201d209a3626ae",
+    "duration": 5.472,
+    "timestamp": 1794784549.92265
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a02b11.wav": {
+    "key": "2dfad86ba346d29fcee91f9aa413aac987fcfaf52e9dec85fdfb91f592b5ce61",
+    "duration": 3.809,
+    "timestamp": 1794784555.6743932
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a02b12.wav": {
+    "key": "017c929be5287284df55df4a01558e9a330bf4513c8adf939bb3c362ddd7ff7b",
+    "duration": 5.817,
+    "timestamp": 1794784586.557333
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a02b13.wav": {
+    "key": "385a373f7c842536179d3d079b6063c75cf1736306a3d84c2bcfa81d9c39634a",
+    "duration": 3.073,
+    "timestamp": 1794784592.022731
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a03b01.wav": {
+    "key": "1a91f99e1201eaa81d7bb2e7ce252c46a8e557449630bd172411a413ae005e12",
+    "duration": 4.377,
+    "timestamp": 1794784597.6818428
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a03b02.wav": {
+    "key": "89011af207c2cd254ef03e803e5189aaa177e7736e10b40a68f3461fa51105ed",
+    "duration": 5.965,
+    "timestamp": 1794784604.501643
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a03b03.wav": {
+    "key": "8cacbb345a90e262334a1970643a1d4a143177a0f42af6467c2ee8fac4a5f542",
+    "duration": 2.008,
+    "timestamp": 1794784611.1975188
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a03b04.wav": {
+    "key": "8c5e91910447a174f1c119ed34b433a531652fd9ff10d6cb2d3187c782d86144",
+    "duration": 3.424,
+    "timestamp": 1794784617.363116
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a03b05.wav": {
+    "key": "9cbb15086a293b81f43996375a00d20327e36cb66ef41fabcafad527b63d0bc5",
+    "duration": 5.075,
+    "timestamp": 1794784648.8845866
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a03b06.wav": {
+    "key": "3d16bee99601f8d5d96c8044e138e5c3c2836ba9bedc5df69f4b259c489cab76",
+    "duration": 5.811,
+    "timestamp": 1794784655.9740632
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a03b07.wav": {
+    "key": "bcb1d7db6ebf100905fe326ea838307085f66e8b708166f284135106f8537be0",
+    "duration": 5.849,
+    "timestamp": 1794784688.7210703
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a03b08.wav": {
+    "key": "500b3688a05961e88da44ba2821ae4d87ddfd2fb1b34636334b8e48d3db98a80",
+    "duration": 6.887,
+    "timestamp": 1794784696.9952722
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a03b09.wav": {
+    "key": "be5a93a5473378adc8c1895541636744962c899653f8b82db1184ccd93c2f490",
+    "duration": 4.516,
+    "timestamp": 1794784709.7537005
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a03b10.wav": {
+    "key": "22803dbddb3af1f18582dff213ac48daefbfee843c6b9969eb93b5bc80602961",
+    "duration": 5.169,
+    "timestamp": 1794784715.963227
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a03b11.wav": {
+    "key": "9c4a331d56860219638773a60ec4c7ee25a2ff8569c1e332c0c86cf1dc9c0078",
+    "duration": 3.371,
+    "timestamp": 1794784722.059009
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a03b12.wav": {
+    "key": "7c98871edf66a81a5a5b0e39722f88b96d58bba23a802bc19107c31a09c79723",
+    "duration": 5.781,
+    "timestamp": 1794784728.675961
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a03b13.wav": {
+    "key": "c752908dcc6dcb16d8cfcd95ffd8e83decda7388815fe2fe666b64a28f5bfc7d",
+    "duration": 5.825,
+    "timestamp": 1794784735.7079701
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a03b14.wav": {
+    "key": "257c20df2f8a38cb67d939bac37189063a55bb5a1be67c733cac8c3dd46c75f1",
+    "duration": 4.375,
+    "timestamp": 1794784741.5035954
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a03b15.wav": {
+    "key": "1db80a90fa0998af17ea67d77caac9ee82e289bb7803cf2f41f0e1775701a008",
+    "duration": 4.711,
+    "timestamp": 1794784747.4047518
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a03b16.wav": {
+    "key": "1248ea423289daaf6ec5dc9af97c0a668bb872338e68cd3b4afbb00d0a5ea004",
+    "duration": 5.98,
+    "timestamp": 1794784753.3824506
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a03b17.wav": {
+    "key": "db371c9114a926382ee017255488227caf372a6cd495680c81b003432234d2f8",
+    "duration": 5.647,
+    "timestamp": 1794784761.6828263
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a03b18.wav": {
+    "key": "8aa9c34a3eec4ea168e2ce4e9635a67e5a91f271a755c62eee63a55b9d397082",
+    "duration": 5.659,
+    "timestamp": 1794784767.9459574
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a03b19.wav": {
+    "key": "d826315d4f8442ad02a5d299d56f9164de3c1412eb95e67c264faa101162de13",
+    "duration": 3.185,
+    "timestamp": 1794784794.7071867
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a03b20.wav": {
+    "key": "eb892e05122ba450adb79a791593d3ded89e2e9d96e105554d99caa61407e0b5",
+    "duration": 3.8,
+    "timestamp": 1794784800.9246843
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a03b21.wav": {
+    "key": "fb56f7de1e13e36830786f3951b28a8a2e54cbd89906c056eaff45cab331b29f",
+    "duration": 2.056,
+    "timestamp": 1794784806.1440938
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a03b22.wav": {
+    "key": "76de3c12464dda30bfd99e596b6557967525d1a49caa303cad2a16b087ae3c49",
+    "duration": 4.284,
+    "timestamp": 1794784817.8643088
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a03b23.wav": {
+    "key": "4123b122781916d3a7dee9d13677d277eae947bc94162639685d59d4b2e53f4a",
+    "duration": 7.327,
+    "timestamp": 1794784826.2047362
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a03b24.wav": {
+    "key": "54ebf1f2a17c87f3eb8d93a9c5d825d36babe6659921b3f3b935f883c45a4eaa",
+    "duration": 2.68,
+    "timestamp": 1794784847.8256586
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a03b25.wav": {
+    "key": "bb148d0841fd328c511be5135ef981c94d4e4c47ac6728013b85e1d01d61e832",
+    "duration": 5.743,
+    "timestamp": 1794784854.8687332
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a03b26.wav": {
+    "key": "3e5495e7b57a59d68e8fb2f70ed7476d0a24df42e43b1d1007c6f49b78c86fa0",
+    "duration": 2.696,
+    "timestamp": 1794784860.673361
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a03b27.wav": {
+    "key": "c4197d7cd817e80dc0d1aa39e841d452749d6affb7d448b4918b70a3d1b194a7",
+    "duration": 3.422,
+    "timestamp": 1794784867.3585935
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a03b28.wav": {
+    "key": "c4e7c7a05260dfd5016710804dcc7c0fe550806837c5d78d4500914ad641814b",
+    "duration": 7.007,
+    "timestamp": 1794784876.9481726
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a03b29.wav": {
+    "key": "9744ced396f8856295f29945b14d578a22cbc94ed3ed2be8f9602755d11f94f1",
+    "duration": 6.003,
+    "timestamp": 1794784911.5018997
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a04b01.wav": {
+    "key": "61df5cc1ca9d7ac4aa150749ab162d83a54d87fc57110c5c5fc8d6036fe36edc",
+    "duration": 4.838,
+    "timestamp": 1794784918.4287674
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a04b02.wav": {
+    "key": "39839d0b3983c1284b5a513bf4115fe39788508db4c1dd96bbc9bd7bafb35c63",
+    "duration": 4.306,
+    "timestamp": 1794784946.1685736
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a04b03.wav": {
+    "key": "6f3906e1e1ec820c2e73c2379c92cc34ac9bf3b041c7eb614c8e4e3a3c0a8705",
+    "duration": 5.045,
+    "timestamp": 1794784951.7934678
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a04b04.wav": {
+    "key": "645835b494d8610baa1ad3c0ddb23d96957d47a7056fc4a797e5910b3e71cbc8",
+    "duration": 3.503,
+    "timestamp": 1794784957.323023
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a04b05.wav": {
+    "key": "58738b835ac93387f1663349012ea581cb9fdcf950556f3466096b7f9db83c53",
+    "duration": 6.784,
+    "timestamp": 1794784993.2793317
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a04b06.wav": {
+    "key": "27b1fb568bcd0907a2db090625f00a421a5edce77c03eeb063aba36338693178",
+    "duration": 5.349,
+    "timestamp": 1794784999.1029987
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a04b07.wav": {
+    "key": "f55df2b2c3158021362d8ae01bf75e22b80873df3481348ab75dff9a21cb9440",
+    "duration": 5.458,
+    "timestamp": 1794785005.9071004
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a04b08.wav": {
+    "key": "b1641636ed95c9064cf691e4eb3460fd3489ae23cefcd9488294b341f522d67b",
+    "duration": 4.117,
+    "timestamp": 1794785012.1746364
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a04b09.wav": {
+    "key": "086152db4cef783902e645cb1fbed4e70a89113af0961f4278ae6966769afd84",
+    "duration": 4.892,
+    "timestamp": 1794785019.0093145
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a04b10.wav": {
+    "key": "edde11deb28173d6b8f633e1228f6c087f93f0b9976d2ec5e4fe7c6d80f6da83",
+    "duration": 4.317,
+    "timestamp": 1794785025.087906
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a04b11.wav": {
+    "key": "94b0431389a5d7f7d154531a768c71acbadeee90fbe6d87314414375ea416eab",
+    "duration": 2.608,
+    "timestamp": 1794785051.63922
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a04b12.wav": {
+    "key": "764fb48bede9401a78807a2fde92ab9c6b49162c27a0c9609823447cae957a36",
+    "duration": 5.391,
+    "timestamp": 1794785057.562811
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a04b13.wav": {
+    "key": "940060e150a547709cbfaa5d69b8b17851655087e39032e63468dfecca66b593",
+    "duration": 5.241,
+    "timestamp": 1794785063.864369
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a04b14.wav": {
+    "key": "0e0f89d6af9c2be151d6d3f6ed625b31b33fb4af132c4f673ca994297a715a2d",
+    "duration": 5.018,
+    "timestamp": 1794785070.8122482
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a05b01.wav": {
+    "key": "0e0166829bccc118d428eea4fc56ee929dea4ba0084ec491933005116d101e4c",
+    "duration": 6.027,
+    "timestamp": 1794785078.1013455
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a05b02.wav": {
+    "key": "054e3f85824ddf1dfc6cd28500fbb800629c1e9c972954423341f265ab80e664",
+    "duration": 4.482,
+    "timestamp": 1794785084.059406
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a05b03.wav": {
+    "key": "417f45b195191816a1b41e6ed56cf04f457391a57ba7a69150bec9786046869f",
+    "duration": 4.636,
+    "timestamp": 1794785089.9869435
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a05b04.wav": {
+    "key": "e84ebcb7c95683a2e224bd13558c0d9228d9884525ec904763554b2af9524c0f",
+    "duration": 6.564,
+    "timestamp": 1794785125.2647104
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a05b05.wav": {
+    "key": "9363fca4fdd10bbbece0569183f28731e792f47285e8c4609bede38781a9c8e2",
+    "duration": 5.43,
+    "timestamp": 1794785131.819229
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a05b06.wav": {
+    "key": "922404d862d2a19e0d745bbfc410cd42dc8b49636d3d7ed645d2bf9642ddcfc0",
+    "duration": 5.779,
+    "timestamp": 1794785138.2301226
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a05b07.wav": {
+    "key": "fbc2c6e3b2d47f1906abe265f7e3ff03752ccab358fbc1d0524eb277ef9b8889",
+    "duration": 4.124,
+    "timestamp": 1794785164.5149689
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a05b08.wav": {
+    "key": "6ef502e5e1c8692f762a5d1fbb5fcf93094fb42afd7481403fe43549101747d4",
+    "duration": 4.002,
+    "timestamp": 1794785170.1854112
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a05b09.wav": {
+    "key": "23355cd5a0b4e701bd6ffd55838b168c2b0a44169cbf0100f8e93c20d3953076",
+    "duration": 3.257,
+    "timestamp": 1794785175.8545728
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a05b10.wav": {
+    "key": "c7d0131c88886dc90621bfd3bac119034523568a89c7eb7ffda672471da45829",
+    "duration": 5.955,
+    "timestamp": 1794785182.6530294
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a05b11.wav": {
+    "key": "b7fff7b71533ac4e6df5cda1572b51e45c16cbba293df581d2d3b32630a0b48d",
+    "duration": 5.718,
+    "timestamp": 1794785189.9968035
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a05b12.wav": {
+    "key": "76adb68d0cf9f59c9a508f74590540b70f579564139896fba0dc18ba2f953e98",
+    "duration": 5.675,
+    "timestamp": 1794785195.824134
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a05b13.wav": {
+    "key": "203b6e97517df1ae544f4425bbe10424d0e1ae7679bb1fd09c901faa02266d7a",
+    "duration": 4.222,
+    "timestamp": 1794785227.2648995
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a05b14.wav": {
+    "key": "7c4b90a9216cc7631ddd6cfe17f11501e778d5afe82f17d35ca38cd056677092",
+    "duration": 4.693,
+    "timestamp": 1794785232.9671173
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a05b15.wav": {
+    "key": "147fd0b296f29b37cc5110f6a3e094e197ff5cac6e5d18e612df12ebaaf70c71",
+    "duration": 4.241,
+    "timestamp": 1794785239.1326864
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a05b16.wav": {
+    "key": "d0101aa9374e41ac0fd3404a5584473820ede7a99ba7726ba072858692747884",
+    "duration": 5.022,
+    "timestamp": 1794785244.5608807
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a05b17.wav": {
+    "key": "65d9e1acd3eff3c356718e6097dcba7b70bc46b018b0b7f6c5f25ffcb2ba4e94",
+    "duration": 4.719,
+    "timestamp": 1794785251.1731615
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a06b01.wav": {
+    "key": "a3158eb885ace4e0945e03a3a8178f03536af047822db7b529415c74b0ab224c",
+    "duration": 5.704,
+    "timestamp": 1794785256.6102977
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a06b02.wav": {
+    "key": "f70a36faeb87c0fee0558538ab9ab92a16d5c2aafc3d2f464f6c206fbae14375",
+    "duration": 3.182,
+    "timestamp": 1794785263.8998606
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a06b03.wav": {
+    "key": "f7ade5fa36e670071fac057bdb8134ded85e5f8dc8de37442a2097d991760253",
+    "duration": 1.994,
+    "timestamp": 1794785268.4228299
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a06b04.wav": {
+    "key": "958b08acade435f3e0652357fc335573f233ab2454f55b02aa6d61a576a67bae",
+    "duration": 2.203,
+    "timestamp": 1794785273.9490595
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a06b05.wav": {
+    "key": "96d60eaf0a15f4c1ec5df5856cc2eae180e83c00407157fae58b13d4c40dc037",
+    "duration": 4.029,
+    "timestamp": 1794785281.2632644
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a06b06.wav": {
+    "key": "58ee88e16d5c5b13ebad7a3603d124bb97c7574b8b1fe5d8db4c439a1ccdb131",
+    "duration": 2.277,
+    "timestamp": 1794785286.1014729
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a06b07.wav": {
+    "key": "5145cefb997d9829e6c91bd49b1be03be25243e22852c8a61a15aab0eac6e998",
+    "duration": 4.125,
+    "timestamp": 1794785292.0536828
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a06b08.wav": {
+    "key": "1dc07a676574efe8f4713d40cb30b3ff474f13db41980c8f6076b792d7ea5aa2",
+    "duration": 3.381,
+    "timestamp": 1794785297.6331427
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a06b09.wav": {
+    "key": "1a07e8a12fc3242d86425e2aad752d171e0b3b8af36a582efe7f8aad755c4160",
+    "duration": 3.876,
+    "timestamp": 1794785305.2149985
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a06b10.wav": {
+    "key": "4a1f766112b190b49d643de9aff9fd35db3e273efc073f2fd9b49394f6ebdc4c",
+    "duration": 3.818,
+    "timestamp": 1794785310.8362627
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a06b11.wav": {
+    "key": "877e62aa2dadbfc7258b82c4d1b3d5cdc602dbea13f044fc66fa01a822a07c11",
+    "duration": 5.753,
+    "timestamp": 1794785340.424662
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a06b12.wav": {
+    "key": "cecc4b29e5806796263b4d3e37916670a79ede1cd00a9a58ede1e30285fa57c4",
+    "duration": 5.945,
+    "timestamp": 1794785347.449915
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a06b13.wav": {
+    "key": "c44d3eb77a8fdc00cd2d275346dd1d7ed55c3b66e0eb257d6cdef501722e94f9",
+    "duration": 4.094,
+    "timestamp": 1794785353.650473
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a06b14.wav": {
+    "key": "5754a74757d2420cb77ba05cf66596ed1ce3bfcd3f6d15fbb5d020b262ff4d74",
+    "duration": 4.235,
+    "timestamp": 1794785359.6214743
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a06b15.wav": {
+    "key": "00084311f49dced015d347375fd1a400963d687d35bf234354a7d8f485d88b98",
+    "duration": 3.358,
+    "timestamp": 1794785365.5635371
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a06b16.wav": {
+    "key": "d6bc3ee4e7e71b4c64266fbfa047cd95ed35e9c0c8419b9090aea2002fdbfd99",
+    "duration": 5.36,
+    "timestamp": 1794785373.7234974
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a07b01.wav": {
+    "key": "2edeb9353e1d9a350f57a627d9a9de2c51986f3f197ee41fe5828d237fc3d381",
+    "duration": 4.802,
+    "timestamp": 1794785380.730114
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a07b02.wav": {
+    "key": "b83f407ade7f6de7e2f9349f3accab0dc38b7ff182f609d5ea41ae01b6c65ae5",
+    "duration": 4.731,
+    "timestamp": 1794785387.8916636
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a07b03.wav": {
+    "key": "5ce41cfac48ed862adf4e29cc0991679fa7fb15fc10a3e2e4377769ab43b1bcf",
+    "duration": 5.327,
+    "timestamp": 1794785395.310091
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a07b04.wav": {
+    "key": "2d1fa9d59b73e93720562bbc465d8e6aeb6ebd390c2d25faa6e5836a74639844",
+    "duration": 4.433,
+    "timestamp": 1794785402.9339657
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a07b05.wav": {
+    "key": "9fbebbe2c509576731827a2063e6dee74e4798129ac5d424b0ea1a32ecf43305",
+    "duration": 3.355,
+    "timestamp": 1794785432.0548522
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a07b06.wav": {
+    "key": "41d35e35a1753590e8bc6379889976bc1246e7cfe54f9464f0d3f08e414e2c74",
+    "duration": 3.487,
+    "timestamp": 1794785438.112174
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a07b07.wav": {
+    "key": "7d1c67f74a06d2597393eaf2e031c872ad6746d742e073d90b353aa4443ff8ac",
+    "duration": 6.276,
+    "timestamp": 1794785474.0278156
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a07b08.wav": {
+    "key": "bc4ac165461ac4484675fda7c224a2cc5ccb13dd53185cd43b776d7cff273fad",
+    "duration": 2.363,
+    "timestamp": 1794785502.0536008
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a07b09.wav": {
+    "key": "7529e7de9714cdb168a073d1d32c96b265b8a36dbeb944c14be16b12745b86c2",
+    "duration": 6.142,
+    "timestamp": 1794785508.8903873
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a07b10.wav": {
+    "key": "b4b0c37646edcffeb625c496327fb224479cbf7fb64888c519fc4f8d41516441",
+    "duration": 5.034,
+    "timestamp": 1794785516.008583
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a07b11.wav": {
+    "key": "2ae276c68d515d38da5f23890c74138a301891d67a94706d24699c43ce69753f",
+    "duration": 2.507,
+    "timestamp": 1794785542.7303195
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a07b12.wav": {
+    "key": "246ad12b93ce1fd5dfc5179f1546eeb06f1dc4803ab82f0e8e9e4719baac1099",
+    "duration": 5.505,
+    "timestamp": 1794785548.6531181
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a07b13.wav": {
+    "key": "27a3af73cbd25342663b0c308b4bb8e29856c460502cd611e5b6cfd311f33c02",
+    "duration": 3.767,
+    "timestamp": 1794785555.2490304
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a07b14.wav": {
+    "key": "9565e0c6af9097d39192968264ac6de2b7ece704aa1351e4422a6d9c73973d26",
+    "duration": 3.794,
+    "timestamp": 1794785560.5658052
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a07b15.wav": {
+    "key": "842954b15ebb780f9a8a9cb6f31473a4fea94d7c48d088161e4e92b1249275b2",
+    "duration": 6.858,
+    "timestamp": 1794785599.5376282
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a07b16.wav": {
+    "key": "e6cf0be71b827670ac80f34dc4e9522e043ebb3b0b2e63d12b6e5a9a275517ba",
+    "duration": 6.052,
+    "timestamp": 1794785617.943959
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a07b17.wav": {
+    "key": "37593af46c5f37ac486a244d1d8e234b858841190af54f8d1a1cd3e3dc15f586",
+    "duration": 3.765,
+    "timestamp": 1794785624.4042475
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a07b18.wav": {
+    "key": "acec09921385a3e9387bbffb325ad2d0914246d088af80d30f70eaf4e4895818",
+    "duration": 5.133,
+    "timestamp": 1794785631.6642127
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a07b19.wav": {
+    "key": "0dca2d5e48b87578a0f2d9dfd87780e8be3fb78e34a9a45568616714aae3c14e",
+    "duration": 5.388,
+    "timestamp": 1794785638.9233825
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a07b20.wav": {
+    "key": "1f46d14616eebbd0a9366eceab11b29bff76ec212f5c3aacffa8bff850f12213",
+    "duration": 3.124,
+    "timestamp": 1794785645.42533
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a07b21.wav": {
+    "key": "571431d40bd5c0e808528a850e80b72828fd7fa165238309c247da07d372cf5c",
+    "duration": 3.83,
+    "timestamp": 1794785652.379814
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a07b22.wav": {
+    "key": "47f9cff66227818b4b0df753ec78911832350b4b6520bf738cd4078e60bb41c0",
+    "duration": 4.345,
+    "timestamp": 1794785658.7831438
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a07b23.wav": {
+    "key": "33023995d39677883f22c1b1d01a6f4c6eb9a9147fb0e42fc363f990a91cd7db",
+    "duration": 3.759,
+    "timestamp": 1794785687.0421586
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a08b01.wav": {
+    "key": "27768386e319c577fb1b84754ef9dd73cc294ce5b57cc669c8e557ab3e10f763",
+    "duration": 3.487,
+    "timestamp": 1794785713.671972
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a08b02.wav": {
+    "key": "f743b28d68b872a5ad50098745392b63960ce2aa648db3ca0c68dc1cf9ca6255",
+    "duration": 5.734,
+    "timestamp": 1794785720.2191062
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a08b03.wav": {
+    "key": "2e2cec10b01427a6caf4ffd248e1e71a033dade3348f34fff1967b870a76b179",
+    "duration": 4.709,
+    "timestamp": 1794785726.419876
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a08b04.wav": {
+    "key": "f6419157ce9b8e358965aa232ca8c7bc4b852e1d3e80c69d154fe122ace8b84d",
+    "duration": 4.496,
+    "timestamp": 1794785732.5083966
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a08b05.wav": {
+    "key": "e6be16ad847cffeef81da72b8ae0060733fe44272fb22112d6af245e04c7e868",
+    "duration": 3.405,
+    "timestamp": 1794785737.890746
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a08b06.wav": {
+    "key": "bc9213964d98f3e16e5410a0d320319db2686ad7ce8f6d13891c93111359451f",
+    "duration": 6.391,
+    "timestamp": 1794785743.910322
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a08b07.wav": {
+    "key": "212ce599c7fc6923fc376ec95de1a39bed25f0f335bf1692d0495d15b8757dbd",
+    "duration": 5.515,
+    "timestamp": 1794785750.1555817
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a08b08.wav": {
+    "key": "4018ed3f661b6be3822160c991b639f707c7e67a2700d35852af344bfdfc5986",
+    "duration": 5.985,
+    "timestamp": 1794785785.0576394
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a08b09.wav": {
+    "key": "b3e4fd014790828bf7a0eae7a341f86c317cc75bf14a35815099a4f3562d59f0",
+    "duration": 2.922,
+    "timestamp": 1794785796.229825
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a09b01.wav": {
+    "key": "8e745c25729aacc05ca864313c7261a05970f3129ed6b390394d8cfff78b7765",
+    "duration": 2.103,
+    "timestamp": 1794785821.625929
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a09b02.wav": {
+    "key": "eaf015d8fbd40bf591d41c83bb29cd7193abded511f6a3878552e59a88c3d566",
+    "duration": 2.929,
+    "timestamp": 1794785832.2944193
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a09b03.wav": {
+    "key": "9de45ff7cb23b27f0984af6f247cc5eff3fdf077ba99bb69731d1aaa70a52588",
+    "duration": 5.257,
+    "timestamp": 1794785862.2288542
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a09b04.wav": {
+    "key": "5bb2b6a6bc36aeba4dd9ed3e9abe13dd37aceaf20cc047868620b6634a9a6f36",
+    "duration": 2.319,
+    "timestamp": 1794785877.9967268
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a09b05.wav": {
+    "key": "f157953f326a3c5606450d033ddefa090bcc9e7b9ee41a399f2f197ca24db09d",
+    "duration": 3.459,
+    "timestamp": 1794785883.2713678
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a09b06.wav": {
+    "key": "2b61da80ad6cba4b61ac964d68c36aaefff378fe8711a7317d401b27084cbcc9",
+    "duration": 2.929,
+    "timestamp": 1794785888.1435418
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a09b07.wav": {
+    "key": "ae5eb6e0b55a15c371b2ac80505d257a47cb34772943dc25b03f69388ba7a13b",
+    "duration": 3.358,
+    "timestamp": 1794785892.8055983
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a09b08.wav": {
+    "key": "55abe5f42d21074609748b95896f5c810dcd6be3d4230f89a9cf78386f7d0815",
+    "duration": 2.063,
+    "timestamp": 1794785897.462758
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a09b09.wav": {
+    "key": "5d11fa192fd4db666df588dbeb10bb0dfd4d435936602f648be52b66cd7ee823",
+    "duration": 5.184,
+    "timestamp": 1794785903.144057
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a09b10.wav": {
+    "key": "1d8f72cb5d96f0a158454b35f0e45e7867f8c4b5cfeebb370fbd24a067b1178e",
+    "duration": 3.307,
+    "timestamp": 1794785913.061915
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a09b11.wav": {
+    "key": "93c77651adaec42cfc255eaa5e41e06be8134b3253c0a66c47ae4a925e0d8ffb",
+    "duration": 3.986,
+    "timestamp": 1794785918.5282364
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a09b12.wav": {
+    "key": "162a6808a6267baaae8f15ed01ea6ae23b098090a11f6747d6d20ab7df4879f1",
+    "duration": 5.268,
+    "timestamp": 1794785926.3030148
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a09b13.wav": {
+    "key": "7aebc42bc0acba691b0cf7eb7ab1386ce6eaa700737b2cbb613d50ac9b60b2e4",
+    "duration": 5.168,
+    "timestamp": 1794785933.1801531
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a09b14.wav": {
+    "key": "e6b49d137a3332b9b4aa2ef6bc9e9a94b41bc62d3d09372cb4ae3aa49be3c2b7",
+    "duration": 6.175,
+    "timestamp": 1794785941.3783739
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a09b15.wav": {
+    "key": "6f8acaaa20e889a0f40573f0e00929cc546bfd7b8f71761d7cd58ade589c5116",
+    "duration": 4.072,
+    "timestamp": 1794785946.902149
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a09b16.wav": {
+    "key": "f18777c993b0b04b2d6bc0e3981c9f957982615be8b40bfba99f6bb7df30be12",
+    "duration": 3.085,
+    "timestamp": 1794785953.4324472
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a09b17.wav": {
+    "key": "46a8836a3ec9efd0468da5f1b44c85d6ab9d32dc5e234eec7d431d03b4a0926c",
+    "duration": 5.568,
+    "timestamp": 1794785960.9247634
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a09b18.wav": {
+    "key": "f2077077e252e7b883ec7695b8811f0a92dd2b72ae1883c94b570cf425d2a4f1",
+    "duration": 1.685,
+    "timestamp": 1794785972.4096763
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a09b19.wav": {
+    "key": "16213f52342c52a574d6c55201607647740720dd0c17138c754a11fdd8bccf1b",
+    "duration": 3.543,
+    "timestamp": 1794786003.4839313
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a09b20.wav": {
+    "key": "b95861da0e6ecb80bfcc5662255eb3ffe87677b6388acf661d8ca026bd013031",
+    "duration": 3.493,
+    "timestamp": 1794786028.2899053
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a09b21.wav": {
+    "key": "7dc50d522bb2f9f6b8b00da088296c2e1b5d197d9c8f3281d14d1659fc7dba8e",
+    "duration": 3.391,
+    "timestamp": 1794786034.4981115
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a09b22.wav": {
+    "key": "9d1f0b44a0649cd8c1eb416debbc9c98f69aa9f17b078cd62a34b6430b6c5540",
+    "duration": 1.998,
+    "timestamp": 1794786044.4586303
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a09b23.wav": {
+    "key": "a02530cc870917afc2d1aebe19861bd1293f0c0f6591458b3bf37472b1569b23",
+    "duration": 4.019,
+    "timestamp": 1794786050.1270504
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a09b24.wav": {
+    "key": "380302dea0273ecf1f2857bd9c21857635f437940037568eea7cac182155d2cb",
+    "duration": 4.192,
+    "timestamp": 1794786055.6185257
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a09b25.wav": {
+    "key": "fae2adc34f14cd2ea119fa69308ee7d9b4f70a4c00838a306c23510555b7d268",
+    "duration": 4.022,
+    "timestamp": 1794786061.0957253
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a09b26.wav": {
+    "key": "33e874b4ba6f0873fe664dbda4df674cf83dde7a5e049d1dd0f21ee54d818a6d",
+    "duration": 3.518,
+    "timestamp": 1794786066.808667
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a09b27.wav": {
+    "key": "8dedfae029a5f7edc0e8306dde18ae40a2dbc714eb5d8c6f99337f8e1c7e3ae0",
+    "duration": 3.769,
+    "timestamp": 1794786072.994789
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a09b28.wav": {
+    "key": "7db0bf4c270ea7a4f439ec23b8e5ba99f74f87c06c268eccee037046528f2924",
+    "duration": 4.016,
+    "timestamp": 1794786079.5017507
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a09b29.wav": {
+    "key": "ef634c250de7f60a7d8cdf84ee265f1b64c7cf480643bb27677e85bd31cfecd5",
+    "duration": 4.603,
+    "timestamp": 1794786085.820909
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a09b30.wav": {
+    "key": "315b1c775887d1e1a0b027a5fa7940a6c861d56692c7c1190bc233f8e72da023",
+    "duration": 3.137,
+    "timestamp": 1794786113.8514018
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a09b31.wav": {
+    "key": "a5a5e48732c34794cda786780ac6b502c1a5567eca25d217068dced932b6b423",
+    "duration": 3.496,
+    "timestamp": 1794786120.5103567
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a09b32.wav": {
+    "key": "3d22704c963e29f24d6d75a60de5409dda9522f9e07654d960d46ac42ff8b194",
+    "duration": 4.607,
+    "timestamp": 1794786126.8688896
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a09b33.wav": {
+    "key": "90c3f4e819661e83662c338eaf8fea8460b0c5fe35ba5e2293646a8203a06518",
+    "duration": 6.826,
+    "timestamp": 1794786134.5932853
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a09b34.wav": {
+    "key": "6f299a92f33910ca0e10d83d7106f3ba4bf031dcefb68b08dd22de1490edcef2",
+    "duration": 3.796,
+    "timestamp": 1794786151.2977507
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a09b35.wav": {
+    "key": "b54b913104a29be35886f002704e5dd8f77507c75948102d8d5e227768ef4af5",
+    "duration": 2.897,
+    "timestamp": 1794786157.593477
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a09b36.wav": {
+    "key": "5f577bc962a769ee2daad3bbd9b48f1d35dcd235265507a93dc103db5066cf7e",
+    "duration": 5.083,
+    "timestamp": 1794786172.0272367
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a09b37.wav": {
+    "key": "06d69e1d2170017c9126085a62dab8300247c72eecd6b9127ec15de20722ed29",
+    "duration": 1.859,
+    "timestamp": 1794786176.667137
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a09b38.wav": {
+    "key": "dd94621b0d0e0ba6ec77b530827da4594ee5858de4fff4fa867176f8921bc339",
+    "duration": 6.899,
+    "timestamp": 1794786183.504282
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a09b39.wav": {
+    "key": "56102a42b555a80cbf9da29e143d12f12564ebd2ce564dfe16772533977381a6",
+    "duration": 5.236,
+    "timestamp": 1794786189.7254922
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a10b01.wav": {
+    "key": "901c3d62622ed02996ba25abbd985ecdb6ab13b2f77f6c1a8af79b14a8c9945a",
+    "duration": 4.543,
+    "timestamp": 1794786195.307449
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a10b02.wav": {
+    "key": "97a49a2efdeba4b93e240ca7a705b32ea47b3e7f3ec9f4a6e5b70d3614826339",
+    "duration": 6.0,
+    "timestamp": 1794786230.6021733
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a10b03.wav": {
+    "key": "92d166b772ce4da5f62256b2e82f35db14971ee5a5cbf5f6917baaebc8eec312",
+    "duration": 3.53,
+    "timestamp": 1794786236.9662323
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a10b04.wav": {
+    "key": "db8281289ae973303f1533d7b9e758cb92ea72513efc45405911d7af1a47a4b4",
+    "duration": 4.709,
+    "timestamp": 1794786243.1245642
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a10b05.wav": {
+    "key": "7c154fbf7076071990250e1cb393d2cbff2fc36b7a3cb9a7e0debc0862815a87",
+    "duration": 3.64,
+    "timestamp": 1794786249.9675229
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a10b06.wav": {
+    "key": "15ce6b8d67115ca626de8790963609ec3c38964eda848708903d655059cd8564",
+    "duration": 1.713,
+    "timestamp": 1794786255.2445686
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a10b07.wav": {
+    "key": "c5b0fedf6d621bafe59dd311dcba3ea5f40b8260c3ca81d03af8f5b99159cfa0",
+    "duration": 3.534,
+    "timestamp": 1794786261.3345582
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a10b08.wav": {
+    "key": "f3abeefbe09390ea3bd8713beb990592d31edddd4517834e7a5fe60742b8b576",
+    "duration": 4.022,
+    "timestamp": 1794786267.8208394
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a10b09.wav": {
+    "key": "7ae3f60bb7311f40904ad79f16ededa54589c61436229bcce6bd230528018873",
+    "duration": 6.15,
+    "timestamp": 1794786300.0981832
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a10b10.wav": {
+    "key": "fbda473272e047271a4b356a9721e6e138ee349f33065b1abe3682290fd7e7bd",
+    "duration": 6.476,
+    "timestamp": 1794786335.4475048
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a10b11.wav": {
+    "key": "8b22ec30cc931984ec7db15aa86623a82d016ad1f5a23b08257eb729dca31acc",
+    "duration": 3.859,
+    "timestamp": 1794786367.3934402
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a11b01.wav": {
+    "key": "76d78317a43017f2c81ed12e3205cf948e4daa28faa325e7f95d0f867d0d75c3",
+    "duration": 7.541,
+    "timestamp": 1794786409.9175165
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a11b02.wav": {
+    "key": "807ebf13d85bb5f40bdcdb6ad93a68355de670953548f1ff1fa1b43d39ab63af",
+    "duration": 8.587,
+    "timestamp": 1794786417.2299304
+  },
+  "C:\\Users\\Srijan Shukla\\Documents\\OOP Proj\\video_v3\\03_audio\\beats\\a11b03.wav": {
+    "key": "98bfd0516118ff8fa364d233fb8c7dd87aae86ff53b52945bd9cff81ee31ff1a",
+    "duration": 4.429,
+    "timestamp": 1794786445.8407292
+  }
+}

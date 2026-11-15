@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useAuth, SEEDED_USERS, PredefinedUser } from '../context/AuthContext';
 import { useSse } from '../context/SseContext';
 import { api } from '../services/api';
+import { IS_DEMO_MODE } from '../services/demoBackend';
 import { sound } from '../services/sound';
 import { PixelIcon } from '../services/pixelSprites';
 import { StatusDot } from './ui/StatusDot';
@@ -119,6 +120,11 @@ export const Header: React.FC<HeaderProps> = ({
             <span className="font-mono text-xs font-bold bg-[#FFD84D] text-[#1B1530] border-2 border-[#1B1530] px-1.5 py-0.5 shadow-[2px_2px_0_#1B1530]">
               BPHC
             </span>
+            {IS_DEMO_MODE && (
+              <span className="font-mono text-[10px] font-bold bg-[#FF4D3D] text-[#FFF8DC] border-2 border-[#1B1530] px-1.5 py-0.5 shadow-[2px_2px_0_#1B1530]">
+                DEMO MODE: runs in your browser, no server
+              </span>
+            )}
           </div>
 
           {/* Real-time Arcade HUD Counters */}
