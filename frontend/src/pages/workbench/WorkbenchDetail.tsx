@@ -20,6 +20,7 @@ import {
   XCircle,
   BookOpen,
   GitBranch,
+  Cpu,
   RefreshCw,
   UserCheck,
 } from 'lucide-react';
@@ -520,45 +521,61 @@ export const WorkbenchDetail: React.FC<WorkbenchDetailProps> = ({ incidentId, on
             </p>
           </div>
 
-          {/* Case-Based RAG Solutions */}
-          {aiPanel?.solutions && (
-            <div className="pixel-card space-y-3">
-              <span className="text-xs font-mono font-bold text-[#43D17A] flex items-center gap-1.5">
-                <BookOpen className="w-4 h-4" />
-                <span>AUDIT-VERIFIED RESOLUTION RAG</span>
-              </span>
-              <div className="space-y-2">
-                {aiPanel.solutions.map((sol: any, idx: number) => (
-                  <div key={idx} className="p-2.5 bg-white border-2 border-[#1B1530] text-xs space-y-1">
-                    <p className="font-bold text-[#1B1530]">{sol.title || 'Historical Root Cause Fix'}</p>
-                    <p className="text-xs text-[var(--soft)]">{sol.summary || sol.snippet}</p>
-                    <div className="flex items-center justify-between text-[11px] font-mono font-bold text-[var(--soft)] pt-1">
-                      <span>Source: {sol.incidentId || 'INC-2025-00914'}</span>
-                      <span className="text-[#43D17A]">Similarity: 94%</span>
-                    </div>
-                  </div>
-                ))}
+          {/* Triage & Priority Rationale */}
+          <div className="pixel-card space-y-2">
+            <span className="text-xs font-mono font-bold text-[#59C9F5] flex items-center gap-1.5">
+              <Cpu className="w-4 h-4" />
+              <span>TRIAGE & PRIORITY RATIONALE</span>
+            </span>
+            <div className="p-3 bg-[var(--bg)] border-2 border-[var(--line)] text-xs space-y-1.5 font-mono">
+              <div className="flex items-center justify-between">
+                <span className="text-[var(--soft)]">Impact / Urgency:</span>
+                <span className="font-bold text-[var(--fg)]">{incident.impact} / {incident.urgency}</span>
               </div>
-            </div>
-          )}
-
-          {/* Root Cause Candidate */}
-          {rca && (
-            <div className="pixel-card space-y-2">
-              <span className="text-xs font-mono font-bold text-[#FF4D3D] flex items-center gap-1.5">
-                <GitBranch className="w-4 h-4" />
-                <span>B2 LEAF-SAFE ROOT CAUSE (DAG)</span>
-              </span>
-              <div className="p-3 bg-[#FF4D3D]/15 border-2 border-[#1B1530] text-xs">
-                <div className="font-bold text-[#FF4D3D] font-mono">
-                  Top Candidate: {rca.rootCauseCandidate || 'AUTH-LDAP'}
+              <div className="flex items-center justify-between">
+                <span className="text-[var(--soft)]">Assigned Priority:</span>
+                <span className="font-bold text-[var(--fg)]">{incident.priority}</span>
+              </div>
+              {(incident.priorityExplanation as any)?.examBump && (
+                <div className="chip y text-[10px] mt-1">
+                  EXAM WINDOW BUMP (+1)
                 </div>
-                <p className="text-xs text-[var(--soft)] mt-0.5">
-                  Topology walk isolated upstream identity provider as root cause across 19 campus services.
+              )}
+              {(incident.priorityExplanation as any)?.rule && (
+                <p className="text-[10px] text-[var(--soft)] pt-1 border-t border-[var(--line)]/40">
+                  Rule: {(incident.priorityExplanation as any).rule}
                 </p>
-              </div>
+              )}
             </div>
-          )}
+          </div>
+
+          {/* Dispatch & Assignment Rationale */}
+          <div className="pixel-card space-y-2">
+            <span className="text-xs font-mono font-bold text-[#7C5CFF] flex items-center gap-1.5">
+              <GitBranch className="w-4 h-4" />
+              <span>DISPATCH & ASSIGNMENT RATIONALE</span>
+            </span>
+            <div className="p-3 bg-[var(--bg)] border-2 border-[var(--line)] text-xs space-y-1.5 font-mono">
+              <div className="flex items-center justify-between">
+                <span className="text-[var(--soft)]">Assigned Tech:</span>
+                <span className="font-bold text-[var(--fg)]">{incident.assigneeName || 'Unassigned'}</span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-[var(--soft)]">Active Strategy:</span>
+                <span className="font-bold text-[var(--sky)]">
+                  {incident.assignmentExplanation?.strategy || 'LEAST_LOADED'}
+                </span>
+              </div>
+              {incident.assignmentExplanation?.score !== undefined && (
+                <div className="flex items-center justify-between">
+                  <span className="text-[var(--soft)]">Candidate Score:</span>
+                  <span className="font-bold text-[#43D17A]">
+                    {Number(incident.assignmentExplanation.score).toFixed(2)}
+                  </span>
+                </div>
+              )}
+            </div>
+          </div>
         </div>
       </div>
 

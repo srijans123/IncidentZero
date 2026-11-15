@@ -204,7 +204,16 @@ public class IncidentController {
       case "acknowledge" -> commandService.acknowledge(id, actorId, role, supportTier);
       case "start" -> commandService.startInvestigation(id, actorId, role, supportTier);
       case "request-info" -> commandService.requestUserInfo(id, envelope.question(), actorId, role, supportTier);
-      case "provide-info" -> commandService.provideUserInfo(id, actorId, role, supportTier);
+      case "provide-info" -> {
+        String answer = envelope.response() != null ? envelope.response() : envelope.answer();
+        if (answer == null) answer = envelope.reason();
+        edu.campus.iitsm.shared.domain.UserInfoContext.setAnswer(answer);
+        try {
+          commandService.provideUserInfo(id, actorId, role, supportTier);
+        } finally {
+          edu.campus.iitsm.shared.domain.UserInfoContext.getAndClear();
+        }
+      }
       case "resolve" -> {
         Resolution res = new Resolution(
             envelope.resolutionCode() != null ? envelope.resolutionCode() : "FIXED",
@@ -257,11 +266,19 @@ public class IncidentController {
         id, detail.title() + " " + detail.description(), null, clockPort.now(), 1440
     );
 
+    List<Map<String, Object>> priorityExplanation = detail.priorityExplanation() != null && !detail.priorityExplanation().isEmpty()
+        ? detail.priorityExplanation()
+        : List.of(Map.of("rule", "ITIL_MATRIX_BASE", "result", detail.priority()));
+
+    Map<String, Object> assignmentRationale = detail.assignmentRationale() != null && !detail.assignmentRationale().isEmpty()
+        ? detail.assignmentRationale()
+        : Map.of("strategy", "LEAST_LOADED", "chosenScore", 0.88);
+
     IncidentDtos.IncidentAiPanelDto panel = new IncidentDtos.IncidentAiPanelDto(
-        List.of(Map.of("rule", "ITIL_MATRIX_BASE", "result", detail.priority())),
-        Map.of("strategy", "LEAST_LOADED", "chosenScore", 0.88),
+        priorityExplanation,
+        assignmentRationale,
         breachRisk,
-        List.of(Map.of("instruction", "Check LDAP connection pool status and server latency", "citedSourceId", "KB-0001")),
+        List.of(),
         related
     );
 

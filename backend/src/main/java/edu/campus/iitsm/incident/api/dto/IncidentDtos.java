@@ -30,8 +30,18 @@ public final class IncidentDtos {
       String rootCauseCategory,
       Short rating,
       String closureNote,
-      UUID masterId
-  ) {}
+      UUID masterId,
+      String response,
+      String answer
+  ) {
+    public CommandEnvelope(
+        UUID categoryId, UUID assigneeId, UUID teamId, String priority,
+        String question, String reason, String resolutionCode, String resolutionNotes,
+        String rootCauseCategory, Short rating, String closureNote, UUID masterId
+    ) {
+      this(categoryId, assigneeId, teamId, priority, question, reason, resolutionCode, resolutionNotes, rootCauseCategory, rating, closureNote, masterId, null, null);
+    }
+  }
 
   public record IncidentSummaryDto(
       UUID id,
@@ -86,12 +96,14 @@ public final class IncidentDtos {
       Integer urgency
   ) {}
 
+  public record KbArticleDto(String id, String code, String title, String snippet) {}
+
   public record AdviceResponse(
       List<DuplicateCandidate> duplicates,
       String suggestedCategory,
       String suggestedService,
       Integer suggestedImpact,
-      List<String> kbArticles,
+      List<KbArticleDto> kbArticles,
       String clarifyingQuestion
   ) {}
 

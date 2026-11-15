@@ -9,10 +9,8 @@ import {
   Clock,
   RefreshCw,
   AlertOctagon,
-  Layers,
   Flame,
   CheckCircle2,
-  Lock,
   Binary,
 } from 'lucide-react';
 import { ActionButton } from '../../components/ui/ActionButton';
@@ -22,16 +20,20 @@ import { HashPill } from '../../components/ui/HashPill';
 import { SlaChronometerAndLedger3D } from '../../components/three/SlaChronometerAndLedger3D';
 import { sound } from '../../services/sound';
 
-interface MockAuditRow {
+interface AuditRow {
   id: string;
-  incidentNumber: string;
-  sequence: number;
-  fromState: string;
-  toState: string;
+  chainIndex?: number;
+  incidentId?: string;
+  incidentNumber?: string;
+  sequence?: number;
+  fromState?: string;
+  toState?: string;
   action: string;
   actor: string;
   hash: string;
+  prevHash?: string;
   timestamp: string;
+  details?: string;
 }
 
 export const AdminAudit: React.FC = () => {
@@ -41,11 +43,30 @@ export const AdminAudit: React.FC = () => {
   const [isVerifying, setIsVerifying] = useState(false);
   const [isStormRunning, setIsStormRunning] = useState(false);
   const [stormSuccess, setStormSuccess] = useState<any>(null);
-  const [tamperSimulated, setTamperSimulated] = useState(false);
+  const [auditRows, setAuditRows] = useState<AuditRow[]>([]);
+  const [loading, setLoading] = useState(true);
 
   // Live avalanche sandbox
   const [avalancheInput, setAvalancheInput] = useState('INC-2026-000142:INVESTIGATING->RESOLVED');
   const [avalancheHash, setAvalancheHash] = useState('');
+
+  const fetchAuditRecords = async () => {
+    try {
+      setLoading(true);
+      const rows = await api.admin.getAudit({ limit: 50 });
+      if (Array.isArray(rows)) {
+        setAuditRows(rows);
+      }
+    } catch (err) {
+      console.error('Failed to load audit records', err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchAuditRecords();
+  }, []);
 
   useEffect(() => {
     let active = true;
@@ -67,72 +88,18 @@ export const AdminAudit: React.FC = () => {
     };
   }, [avalancheInput]);
 
-  const [auditRows] = useState<MockAuditRow[]>([
-    {
-      id: '501',
-      incidentNumber: 'INC-2026-000142',
-      sequence: 1,
-      fromState: 'NONE',
-      toState: 'NEW',
-      action: 'CREATE_PROVISIONAL',
-      actor: 'Diya Nair (Student)',
-      hash: 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
-      timestamp: '2026-10-29T10:00:00Z',
-    },
-    {
-      id: '502',
-      incidentNumber: 'INC-2026-000142',
-      sequence: 2,
-      fromState: 'NEW',
-      toState: 'CLASSIFIED',
-      action: 'CLASSIFY_PRIORITY',
-      actor: 'Pipeline Triage (P1 Exam)',
-      hash: '87298351d387ec42a8b9f71c42f042e92c2a3928192348572194857219842719',
-      timestamp: '2026-10-29T10:00:01Z',
-    },
-    {
-      id: '503',
-      incidentNumber: 'INC-2026-000142',
-      sequence: 3,
-      fromState: 'CLASSIFIED',
-      toState: 'ASSIGNED',
-      action: 'ASSIGN_LOAD',
-      actor: 'LeastLoaded Strategy',
-      hash: '9482710385729184712039847120938471209384710293847102938471029384',
-      timestamp: '2026-10-29T10:00:02Z',
-    },
-    {
-      id: '504',
-      incidentNumber: 'INC-2026-000142',
-      sequence: 4,
-      fromState: 'ASSIGNED',
-      toState: 'INVESTIGATING',
-      action: 'ACKNOWLEDGE',
-      actor: 'Rohan Kulkarni (Senior Tech)',
-      hash: '1029384710293847102938471029384710293847102938471029384710293847',
-      timestamp: '2026-10-29T10:03:00Z',
-    },
-    {
-      id: '505',
-      incidentNumber: 'INC-2026-000142',
-      sequence: 5,
-      fromState: 'INVESTIGATING',
-      toState: 'RESOLVED',
-      action: 'RESOLVE',
-      actor: 'Rohan Kulkarni (Senior Tech)',
-      hash: '4958201948572019485720194857201948572019485720194857201948572019',
-      timestamp: '2026-10-29T10:20:00Z',
-    },
-  ]);
-
   const handleVerifyLedger = async () => {
     sound.pick();
     setIsVerifying(true);
     try {
       const res = await api.admin.verifyAuditLedger();
       setVerifyResult(res);
-      setTamperSimulated(false);
-      sound.win();
+      await fetchAuditRecords();
+      if (res.valid) {
+        sound.win();
+      } else {
+        sound.err();
+      }
     } catch (err: any) {
       sound.err();
       setVerifyResult(null);
@@ -140,17 +107,6 @@ export const AdminAudit: React.FC = () => {
     } finally {
       setIsVerifying(false);
     }
-  };
-
-  const handleSimulateTamper = () => {
-    sound.err();
-    setTamperSimulated(true);
-    setVerifyResult({
-      valid: false,
-      totalRecordsChecked: 142,
-      tamperedRowId: '503',
-      message: 'Tamper detected at row 503.',
-    });
   };
 
   const handleTriggerStorm = async () => {
@@ -161,6 +117,7 @@ export const AdminAudit: React.FC = () => {
     try {
       const res = await api.admin.simulateStorm({ reportCount: 40 });
       setStormSuccess(res);
+      await fetchAuditRecords();
       sound.win();
     } catch (err: any) {
       sound.err();
@@ -185,7 +142,7 @@ export const AdminAudit: React.FC = () => {
               SHA-256 Audit Ledger & Storm Engine
             </h1>
             <p className="text-xs font-pixel text-[var(--soft)] mt-1">
-              Cryptographically verify state transitions with canonical SHA-256 hash chaining, pinpoint tamper injections, and trigger 40-ticket cluster storms.
+              Cryptographically verify state transitions with canonical SHA-256 hash chaining, verify database spine immutability, and trigger 40-ticket cluster storms.
             </p>
           </div>
 
@@ -197,15 +154,15 @@ export const AdminAudit: React.FC = () => {
               className="btn g"
             >
               <ShieldCheck className="w-4 h-4 inline mr-1" />
-              VERIFY LEDGER
+              {isVerifying ? 'VERIFYING CHAIN...' : 'VERIFY LEDGER'}
             </button>
             <button
               type="button"
-              onClick={handleSimulateTamper}
-              className="btn r"
+              onClick={fetchAuditRecords}
+              className="btn w"
             >
-              <ShieldAlert className="w-4 h-4 inline mr-1" />
-              INJECT TAMPER
+              <RefreshCw className="w-4 h-4 inline mr-1" />
+              REFRESH
             </button>
           </div>
         </div>
@@ -215,18 +172,22 @@ export const AdminAudit: React.FC = () => {
       <div className="bg-[var(--line)] p-2 shadow-[7px_7px_0_var(--shadow-col)] border-[3px] border-[var(--line)]">
         <div className="flex items-center justify-between px-3 py-1 bg-[var(--line)] text-[var(--card)] font-silkscreen text-[11px]">
           <span className="flex items-center gap-2">
-            <span className={`w-2 h-2 rounded-full ${tamperSimulated ? 'bg-[var(--red)] animate-ping' : 'bg-[var(--ribbon)]'}`}></span>
+            <span className={`w-2 h-2 rounded-full ${verifyResult && !verifyResult.valid ? 'bg-[var(--red)] animate-ping' : 'bg-[var(--ribbon)]'}`}></span>
             PROCEDURAL 3D SHA-256 BLOCK SPINE
           </span>
-          <span className={`font-mono font-bold ${tamperSimulated ? 'text-[var(--red)]' : 'text-[var(--ribbon)]'}`}>
-            {tamperSimulated ? 'BLOCK 503 FRACTURED (TAMPER DETECTED)' : 'ALL 5 HASH BLOCKS SECURE'}
+          <span className={`font-mono font-bold ${verifyResult && !verifyResult.valid ? 'text-[var(--red)]' : 'text-[var(--ribbon)]'}`}>
+            {verifyResult
+              ? verifyResult.valid
+                ? `ALL ${verifyResult.totalRecordsChecked} HASH BLOCKS SECURE`
+                : `BLOCK ${verifyResult.tamperedRowId || 'FAIL'} FRACTURED (TAMPER DETECTED)`
+              : 'CANONICAL MERKLE / SHA-256 SPINE'}
           </span>
         </div>
 
         <div className="relative bg-[#090A0D] border-2 border-[var(--card)] overflow-hidden">
           <SlaChronometerAndLedger3D
             mode="ledger"
-            isTampered={tamperSimulated}
+            isTampered={verifyResult ? !verifyResult.valid : false}
             className="h-[300px]"
           />
         </div>
@@ -302,7 +263,7 @@ export const AdminAudit: React.FC = () => {
                 <p className="text-xs opacity-90 mt-0.5">
                   {verifyResult.valid
                     ? `All ${verifyResult.totalRecordsChecked} records verified against canonical database spine. Chain intact.`
-                    : `Hash mismatch detected at row ID ${verifyResult.tamperedRowId || '503'}. Immediate auditor review required.`}
+                    : `Hash mismatch detected at row ID ${verifyResult.tamperedRowId || 'unknown'}. Immediate auditor review required.`}
                 </p>
               </div>
             </div>
@@ -381,7 +342,7 @@ export const AdminAudit: React.FC = () => {
             Audit Ledger Trail (SHA-256 Hash Chain)
           </span>
           <span className="text-[11px] font-mono text-[var(--soft)]">
-            Canonical SHA-256 Database Hash Chain
+            Canonical SHA-256 Database Hash Chain • {auditRows.length} Records Loaded
           </span>
         </div>
 
@@ -389,7 +350,7 @@ export const AdminAudit: React.FC = () => {
           <table className="w-full text-left border-collapse text-xs">
             <thead>
               <tr className="border-b-2 border-[var(--line)] bg-[var(--card)] text-[var(--soft)] font-mono uppercase text-[11px] tracking-wider">
-                <th className="py-2.5 px-4 font-bold">Row ID</th>
+                <th className="py-2.5 px-4 font-bold">Index / ID</th>
                 <th className="py-2.5 px-4 font-bold">Incident</th>
                 <th className="py-2.5 px-3 font-bold">Action</th>
                 <th className="py-2.5 px-3 font-bold">Actor</th>
@@ -398,38 +359,40 @@ export const AdminAudit: React.FC = () => {
               </tr>
             </thead>
             <tbody className="divide-y divide-[var(--line)]/30 font-pixel">
-              {auditRows.map((row) => {
-                const isCorrupt = tamperSimulated && row.id === '503';
-                return (
-                  <tr
-                    key={row.id}
-                    className={`transition-colors ${
-                      isCorrupt ? 'bg-rose-200 text-rose-900 font-bold' : 'hover:bg-[var(--bg)]/70'
-                    }`}
-                  >
+              {loading ? (
+                <tr>
+                  <td colSpan={6} className="py-8 text-center text-xs font-mono text-[var(--soft)]">
+                    LOADING CANONICAL AUDIT LEDGER...
+                  </td>
+                </tr>
+              ) : auditRows.length === 0 ? (
+                <tr>
+                  <td colSpan={6} className="py-8 text-center text-xs font-mono text-[var(--soft)]">
+                    NO AUDIT RECORDS FOUND IN DATABASE
+                  </td>
+                </tr>
+              ) : (
+                auditRows.map((row, idx) => (
+                  <tr key={row.id || idx} className="transition-colors hover:bg-[var(--bg)]/70">
                     <td className="py-2.5 px-4 font-mono font-bold whitespace-nowrap">
-                      {isCorrupt ? (
-                        <span className="chip r text-[10px]">#{row.id} [TAMPERED]</span>
-                      ) : (
-                        `#${row.id}`
-                      )}
+                      #{row.chainIndex ?? (row.sequence ?? idx + 1)}
                     </td>
                     <td className="py-2.5 px-4 font-mono text-[var(--sky)] font-bold whitespace-nowrap">
-                      {row.incidentNumber}
+                      {row.incidentNumber || (row.incidentId ? row.incidentId.slice(0, 8) : 'GLOBAL')}
                     </td>
                     <td className="py-2.5 px-3 whitespace-nowrap">
                       <span className="chip text-[10px] font-mono">{row.action}</span>
                     </td>
                     <td className="py-2.5 px-3 text-[var(--soft)] whitespace-nowrap">{row.actor}</td>
                     <td className="py-2.5 px-3 font-mono text-[11px] whitespace-nowrap">
-                      {new Date(row.timestamp).toLocaleTimeString()}
+                      {row.timestamp ? new Date(row.timestamp).toLocaleTimeString() : '10:00:00'}
                     </td>
                     <td className="py-2.5 px-4 text-right whitespace-nowrap">
                       <HashPill hash={row.hash} truncateLength={8} />
                     </td>
                   </tr>
-                );
-              })}
+                ))
+              )}
             </tbody>
           </table>
         </div>

@@ -151,6 +151,36 @@ export const api = {
 
 
   admin: {
+    getMetrics: async () => {
+      return request<{
+        totalVolume: number;
+        activeMajorP1: number;
+        slaCompliance: string;
+        mttrMinutes: string;
+        statusBreakdown: { status: string; count: number }[];
+        priorityBreakdown: { priority: string; count: number }[];
+      }>('/admin/metrics');
+    },
+
+    getAudit: async (params?: { incidentId?: string; limit?: number }) => {
+      const q = new URLSearchParams();
+      if (params?.incidentId) q.set('incidentId', params.incidentId);
+      if (params?.limit) q.set('limit', String(params.limit));
+      const queryString = q.toString() ? `?${q.toString()}` : '';
+      return request<any[]>(`/admin/audit${queryString}`);
+    },
+
+    getSlaPolicies: async () => {
+      return request<{
+        id: string;
+        tier: string;
+        priority: string;
+        responseTargetMin: number;
+        resolutionTargetMin: number;
+        mode: string;
+      }[]>('/admin/sla-policies');
+    },
+
     getServices: async () => {
       return request<any[]>('/admin/services');
     },
@@ -194,6 +224,21 @@ export const api = {
   services: {
     list: async () => {
       return request<{ id: string; code: string; name: string; tier: string }[]>('/services');
+    },
+
+    getTopology: async () => {
+      return request<{
+        nodes: {
+          id: string;
+          code: string;
+          name: string;
+          tier: string;
+          team: string;
+          openIncidents: number;
+          status: 'HEALTHY' | 'DEGRADED' | 'OUTAGE';
+        }[];
+        edges: { from: string; to: string; type: string }[];
+      }>('/services/topology');
     },
   },
 

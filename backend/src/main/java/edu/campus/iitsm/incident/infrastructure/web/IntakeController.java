@@ -5,11 +5,16 @@ import edu.campus.iitsm.intelligence.api.CategorizationPort;
 import edu.campus.iitsm.intelligence.api.DuplicateCandidate;
 import edu.campus.iitsm.intelligence.api.DuplicateDetectionPort;
 import edu.campus.iitsm.intelligence.api.LlmClassificationSchema;
-import edu.campus.iitsm.shared.domain.ClockPort;
 import edu.campus.iitsm.shared.domain.Suggestion;
+import edu.campus.iitsm.shared.domain.ClockPort;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -19,15 +24,27 @@ public class IntakeController {
   private final CategorizationPort categorizationPort;
   private final DuplicateDetectionPort duplicateDetectionPort;
   private final ClockPort clockPort;
+  private final JdbcTemplate jdbcTemplate;
+
+  @org.springframework.beans.factory.annotation.Autowired
+  public IntakeController(
+      CategorizationPort categorizationPort,
+      DuplicateDetectionPort duplicateDetectionPort,
+      ClockPort clockPort,
+      JdbcTemplate jdbcTemplate
+  ) {
+    this.categorizationPort = categorizationPort;
+    this.duplicateDetectionPort = duplicateDetectionPort;
+    this.clockPort = clockPort;
+    this.jdbcTemplate = jdbcTemplate;
+  }
 
   public IntakeController(
       CategorizationPort categorizationPort,
       DuplicateDetectionPort duplicateDetectionPort,
       ClockPort clockPort
   ) {
-    this.categorizationPort = categorizationPort;
-    this.duplicateDetectionPort = duplicateDetectionPort;
-    this.clockPort = clockPort;
+    this(categorizationPort, duplicateDetectionPort, clockPort, null);
   }
 
   @PostMapping("/advice")
@@ -49,8 +66,44 @@ public class IntakeController {
         null, title + " " + desc, null, clockPort.now(), 1440
     );
 
-    // 3. Relevant KB articles
-    List<String> kbArticles = List.of("KB-0001: Common SSO and LDAP Connection Troubleshooting");
+    // 3. Relevant KB articles (full-text on search_tsv, top 3)
+    List<IncidentDtos.KbArticleDto> kbArticles = new ArrayList<>();
+    if (jdbcTemplate != null) {
+      String queryText = (title + " " + desc).trim();
+      try {
+        if (!queryText.isBlank()) {
+          String kbSql = """
+              SELECT id, code, title, substring(body from 1 for 150) AS snippet
+              FROM knowledge_article
+              WHERE is_active = true AND search_tsv @@ plainto_tsquery('english', ?)
+              ORDER BY ts_rank(search_tsv, plainto_tsquery('english', ?)) DESC
+              LIMIT 3
+          """;
+          kbArticles = jdbcTemplate.query(
+              kbSql,
+              (rs, rowNum) -> new IncidentDtos.KbArticleDto(
+                  rs.getObject("id").toString(),
+                  rs.getString("code"),
+                  rs.getString("title"),
+                  rs.getString("snippet") != null ? rs.getString("snippet") : ""
+              ),
+              queryText, queryText
+          );
+        }
+        if (kbArticles.isEmpty()) {
+          String fallbackSql = "SELECT id, code, title, substring(body from 1 for 150) AS snippet FROM knowledge_article WHERE is_active = true ORDER BY code ASC LIMIT 3";
+          kbArticles = jdbcTemplate.query(
+              fallbackSql,
+              (rs, rowNum) -> new IncidentDtos.KbArticleDto(
+                  rs.getObject("id").toString(),
+                  rs.getString("code"),
+                  rs.getString("title"),
+                  rs.getString("snippet") != null ? rs.getString("snippet") : ""
+              )
+          );
+        }
+      } catch (Exception ignored) {}
+    }
 
     String question = cat != null ? cat.clarifyingQuestion() : null;
 

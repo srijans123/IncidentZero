@@ -12,10 +12,14 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Instant;
 import java.util.List;
+import edu.campus.iitsm.incident.api.IncidentQueryPort;
+import edu.campus.iitsm.incident.api.IncidentSlaSweepPort;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.util.UUID;
 
 @Service
-public class IncidentCommandService {
+public class IncidentCommandService implements IncidentSlaSweepPort {
 
   private final IncidentRepository incidentRepository;
   private final CommandAuthorizer commandAuthorizer;
@@ -23,6 +27,25 @@ public class IncidentCommandService {
   private final WorkingTimeCalculator calendar;
   private final SlaPolicyResolver slaPolicyResolver;
   private final ApplicationEventPublisher eventPublisher;
+  private final IncidentQueryPort queryPort;
+
+  @Autowired
+  public IncidentCommandService(
+      IncidentRepository incidentRepository,
+      CommandAuthorizer commandAuthorizer,
+      ClockPort clockPort,
+      WorkingTimeCalculator calendar,
+      SlaPolicyResolver slaPolicyResolver,
+      ApplicationEventPublisher eventPublisher,
+      IncidentQueryPort queryPort) {
+    this.incidentRepository = incidentRepository;
+    this.commandAuthorizer = commandAuthorizer;
+    this.clockPort = clockPort;
+    this.calendar = calendar;
+    this.slaPolicyResolver = slaPolicyResolver;
+    this.eventPublisher = eventPublisher;
+    this.queryPort = queryPort;
+  }
 
   public IncidentCommandService(
       IncidentRepository incidentRepository,
@@ -31,12 +54,26 @@ public class IncidentCommandService {
       WorkingTimeCalculator calendar,
       SlaPolicyResolver slaPolicyResolver,
       ApplicationEventPublisher eventPublisher) {
-    this.incidentRepository = incidentRepository;
-    this.commandAuthorizer = commandAuthorizer;
-    this.clockPort = clockPort;
-    this.calendar = calendar;
-    this.slaPolicyResolver = slaPolicyResolver;
-    this.eventPublisher = eventPublisher;
+    this(incidentRepository, commandAuthorizer, clockPort, calendar, slaPolicyResolver, eventPublisher, null);
+  }
+
+  @Override
+  @Transactional
+  public void sweepSla() {
+    if (queryPort == null) return;
+    Instant now = clockPort.now();
+    List<UUID> activeIds = queryPort.findActiveIncidentIds();
+    for (UUID id : activeIds) {
+      try {
+        Incident inc = load(id);
+        if (inc.status().isTerminal()) continue;
+        edu.campus.iitsm.incident.domain.SlaStatus before = inc.slaStatus();
+        inc.refreshSla(now, calendar);
+        if (inc.slaStatus() != before) {
+          commitAndPublish(inc);
+        }
+      } catch (Exception ignored) {}
+    }
   }
 
   private Incident load(UUID id) {

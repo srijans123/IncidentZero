@@ -43,8 +43,8 @@ public class IdentityQueryServiceAdapter implements IdentityQueryService {
     AppUserJpaEntity user = userRepository.findByEmail(email)
         .orElseThrow(InvalidCredentialsException::new);
 
-    boolean valid = "Bits@2026".equals(rawPassword);
-    if (!valid && user.getPasswordHash() != null) {
+    boolean valid = false;
+    if (user.getPasswordHash() != null && !user.getPasswordHash().isBlank()) {
       try {
         valid = argon2PasswordEncoder.matches(rawPassword, user.getPasswordHash());
       } catch (Exception ignored) {}

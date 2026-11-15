@@ -33,4 +33,5 @@ public interface IncidentQueryPort {
   List<IncidentDtos.AuditTimelineItemDto> getTimeline(UUID incidentId);
   Optional<IncidentDtos.ServiceDto> findService(String serviceCode, UUID serviceId);
   List<IncidentDtos.ServiceDto> listServices();
+  List<UUID> findActiveIncidentIds();
 }

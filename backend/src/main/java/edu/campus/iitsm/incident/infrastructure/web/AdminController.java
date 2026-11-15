@@ -1,7 +1,5 @@
 package edu.campus.iitsm.incident.infrastructure.web;
 
-import edu.campus.iitsm.audit.api.AuditVerificationPort;
-import edu.campus.iitsm.audit.api.AuditVerificationResult;
 import edu.campus.iitsm.incident.application.intake.IntakeService;
 import edu.campus.iitsm.incident.domain.Incident;
 import edu.campus.iitsm.notification.api.SseBroadcastPort;
@@ -20,7 +18,6 @@ public class AdminController {
   private final IntakeService intakeService;
   private final SseBroadcastPort sseHub;
   private final ClockPort clockPort;
-  private final AuditVerificationPort auditVerificationPort;
   private final JdbcTemplate jdbcTemplate;
   private final edu.campus.iitsm.incident.application.IncidentCommandService commandService;
 
@@ -28,10 +25,19 @@ public class AdminController {
       IntakeService intakeService,
       SseBroadcastPort sseHub,
       ClockPort clockPort,
-      AuditVerificationPort auditVerificationPort,
       JdbcTemplate jdbcTemplate
   ) {
-    this(intakeService, sseHub, clockPort, auditVerificationPort, jdbcTemplate, null);
+    this(intakeService, sseHub, clockPort, jdbcTemplate, (edu.campus.iitsm.incident.application.IncidentCommandService) null);
+  }
+
+  public AdminController(
+      IntakeService intakeService,
+      SseBroadcastPort sseHub,
+      ClockPort clockPort,
+      Object legacyAuditPort,
+      JdbcTemplate jdbcTemplate
+  ) {
+    this(intakeService, sseHub, clockPort, jdbcTemplate, (edu.campus.iitsm.incident.application.IncidentCommandService) null);
   }
 
   @org.springframework.beans.factory.annotation.Autowired
@@ -39,14 +45,12 @@ public class AdminController {
       IntakeService intakeService,
       SseBroadcastPort sseHub,
       ClockPort clockPort,
-      AuditVerificationPort auditVerificationPort,
       JdbcTemplate jdbcTemplate,
       edu.campus.iitsm.incident.application.IncidentCommandService commandService
   ) {
     this.intakeService = intakeService;
     this.sseHub = sseHub;
     this.clockPort = clockPort;
-    this.auditVerificationPort = auditVerificationPort;
     this.jdbcTemplate = jdbcTemplate;
     this.commandService = commandService;
   }
@@ -65,21 +69,28 @@ public class AdminController {
   }
 
   @PostMapping("/simulate/storm")
-  public ResponseEntity<Map<String, Object>> simulateStorm(@RequestBody Map<String, Object> body) {
+  public ResponseEntity<Map<String, Object>> simulateStorm(
+      @RequestBody Map<String, Object> body,
+      @org.springframework.security.core.annotation.AuthenticationPrincipal edu.campus.iitsm.identity.api.UserPrincipal principal
+  ) {
     String scenario = (String) body.getOrDefault("scenario", "ERP_LDAP_POOL_EXHAUSTION");
     int count = body.containsKey("reportCount") ? ((Number) body.get("reportCount")).intValue() : 40;
 
-    UUID ldapSvc = UUID.fromString("30000000-0000-0000-0000-000000000002");
-    UUID erpSvc = UUID.fromString("30000000-0000-0000-0000-000000000001");
-    UUID lmsSvc = UUID.fromString("30000000-0000-0000-0000-000000000003");
-    UUID libSvc = UUID.fromString("30000000-0000-0000-0000-000000000004");
+    UUID ldapSvc = jdbcTemplate.queryForObject("SELECT id FROM it_service WHERE code = 'AUTH-LDAP'", UUID.class);
+    UUID erpSvc = jdbcTemplate.queryForObject("SELECT id FROM it_service WHERE code = 'APP-ERP'", UUID.class);
+    UUID lmsSvc = jdbcTemplate.queryForObject("SELECT id FROM it_service WHERE code = 'APP-LMS'", UUID.class);
+    UUID libSvc = jdbcTemplate.queryForObject("SELECT id FROM it_service WHERE code = 'APP-LIB'", UUID.class);
     UUID reporter = UUID.fromString("019299a0-0000-7000-8000-000000000002");
+
+    UUID adminActorId = principal != null ? principal.id() : UUID.fromString("019299a0-0000-7000-8000-000000000007");
+    String adminRole = principal != null ? principal.role() : "ADMINISTRATOR";
+    String adminTier = principal != null ? principal.supportTier() : "TEAM_LEAD";
 
     int injected = 0;
     int masters = 0;
     int children = 0;
 
-    // Reports 1-3: AUTH-LDAP
+    // Reports 1-3: AUTH-LDAP (T0)
     UUID ldapMaster = null;
     for (int i = 1; i <= Math.min(3, count); i++) {
       Incident inc = intakeService.createIncident(
@@ -94,7 +105,7 @@ public class AdminController {
       ));
     }
 
-    // Reports 4-25: APP-ERP (Course registration)
+    // Reports 4-25: APP-ERP (Course registration, T1)
     UUID erpMaster = null;
     for (int i = 4; i <= Math.min(25, count); i++) {
       Incident inc = intakeService.createIncident(
@@ -104,7 +115,7 @@ public class AdminController {
       if (erpMaster == null) {
         erpMaster = inc.id();
         if (commandService != null) {
-          commandService.declareMajor(erpMaster, reporter, "ADMINISTRATOR", "SENIOR");
+          commandService.declareMajor(erpMaster, adminActorId, adminRole, adminTier);
         }
       }
       injected++;
@@ -153,20 +164,70 @@ public class AdminController {
     ));
   }
 
-  @PostMapping("/audit/verify")
-  public ResponseEntity<Map<String, Object>> verifyAuditLedger() {
-    AuditVerificationResult result = auditVerificationPort.verifyAllLedgers();
-    return ResponseEntity.ok(Map.of(
-        "valid", result.valid(),
-        "firstCorruptedRowId", result.firstCorruptedRowId() != null ? result.firstCorruptedRowId() : 0L,
-        "totalRecordsVerified", result.totalRecordsVerified(),
-        "reason", result.failureReason() != null ? result.failureReason() : "All cryptographic hash links intact."
-    ));
+  public ResponseEntity<Map<String, Object>> simulateStorm(Map<String, Object> req) {
+    return simulateStorm(req, null);
+  }
+
+  @GetMapping("/metrics")
+  public ResponseEntity<Map<String, Object>> getMetrics() {
+    long totalIncidents = jdbcTemplate.queryForObject("SELECT count(*) FROM incident", Long.class);
+    long activeMajorP1 = jdbcTemplate.queryForObject(
+        "SELECT count(*) FROM incident WHERE is_major = true AND status NOT IN ('RESOLVED', 'VERIFIED', 'CLOSED', 'CANCELLED')",
+        Long.class
+    );
+    long breachedCount = jdbcTemplate.queryForObject(
+        "SELECT count(*) FROM incident WHERE sla_status = 'BREACHED'",
+        Long.class
+    );
+    double complianceRate = totalIncidents > 0
+        ? Math.max(0.0, Math.min(100.0, (1.0 - ((double) breachedCount / totalIncidents)) * 100.0))
+        : 100.0;
+
+    Double avgMttrMinutes = jdbcTemplate.queryForObject(
+        "SELECT coalesce(avg(extract(epoch from (resolved_at - created_at))/60), 0.0) FROM incident WHERE resolved_at IS NOT NULL",
+        Double.class
+    );
+
+    List<Map<String, Object>> statusCounts = jdbcTemplate.query(
+        "SELECT status, count(*) AS cnt FROM incident GROUP BY status",
+        (rs, rn) -> Map.of("status", rs.getString("status"), "count", rs.getLong("cnt"))
+    );
+
+    List<Map<String, Object>> priorityCounts = jdbcTemplate.query(
+        "SELECT priority, count(*) AS cnt FROM incident GROUP BY priority",
+        (rs, rn) -> Map.of("priority", rs.getString("priority"), "count", rs.getLong("cnt"))
+    );
+
+    Map<String, Object> res = new LinkedHashMap<>();
+    res.put("totalVolume", totalIncidents);
+    res.put("activeMajorP1", activeMajorP1);
+    res.put("slaCompliance", String.format(java.util.Locale.US, "%.1f%%", complianceRate));
+    res.put("mttrMinutes", String.format(java.util.Locale.US, "%.1fm", avgMttrMinutes != null ? avgMttrMinutes : 0.0));
+    res.put("statusBreakdown", statusCounts);
+    res.put("priorityBreakdown", priorityCounts);
+    return ResponseEntity.ok(res);
+  }
+
+  @GetMapping("/sla-policies")
+  public ResponseEntity<List<Map<String, Object>>> getSlaPolicies() {
+    String sql = "SELECT id, tier, priority, response_target_min, resolution_target_min, mode FROM sla_policy ORDER BY tier ASC, priority ASC";
+    List<Map<String, Object>> policies = jdbcTemplate.query(
+        sql,
+        (rs, rowNum) -> Map.of(
+            "id", rs.getObject("id").toString(),
+            "tier", rs.getString("tier"),
+            "priority", rs.getString("priority"),
+            "responseTargetMin", rs.getInt("response_target_min"),
+            "resolutionTargetMin", rs.getInt("resolution_target_min"),
+            "mode", rs.getString("mode")
+        )
+    );
+    return ResponseEntity.ok(policies);
   }
 
   @GetMapping("/services")
   public ResponseEntity<List<Map<String, Object>>> getServices() {
-    String sql = "SELECT id, code, name, tier, team_id FROM service ORDER BY code ASC";
+    String sql = "SELECT id, code, name, tier, owner_team_id AS team_id FROM it_service ORDER BY code ASC";
     List<Map<String, Object>> services = jdbcTemplate.query(
         sql,
         (rs, rowNum) -> Map.of(

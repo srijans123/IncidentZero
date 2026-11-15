@@ -123,18 +123,6 @@ const AppContent: React.FC = () => {
         bestScore={hudStats.bestScore}
       />
 
-      {/* Role Notice Banner if Student visits Admin Center */}
-      {currentTab === 'admin' && currentUser.role === 'EMPLOYEE' && (
-        <div className="max-w-7xl w-full mx-auto px-4 mt-3">
-          <div className="bg-[var(--card)] border-[3px] border-[var(--line)] px-4 py-2 text-xs text-[var(--fg)] text-center flex items-center justify-center gap-2 shadow-[3px_3px_0_var(--shadow-col)]">
-            <AlertCircle className="w-4 h-4 text-amber-500 shrink-0" />
-            <span>
-              CAMPUS DEMO MODE: Signed in as student <strong>{currentUser.name}</strong> with Admin Command clearance.
-            </span>
-          </div>
-        </div>
-      )}
-
       {/* Main Workspace Router */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-2 sm:px-4 lg:px-6 py-5 overflow-x-hidden">
         {/* Workspace 0: Campus Stage (ROM 00) */}

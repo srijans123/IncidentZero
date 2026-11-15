@@ -196,15 +196,21 @@ interface TopologyBlastRadius3DProps {
   onSelectService?: (serviceId: string) => void;
   className?: string;
   isStormActive?: boolean;
+  nodes?: ServiceNode3D[];
+  edges?: DependencyEdge3D[];
 }
 
 export const TopologyBlastRadius3D: React.FC<TopologyBlastRadius3DProps> = ({
   onSelectService,
   className = 'h-[440px]',
   isStormActive = false,
+  nodes,
+  edges,
 }) => {
-  const [selectedNode, setSelectedNode] = useState<ServiceNode3D | null>(SEEDED_NODES[1]); // AUTH-LDAP default
-  const nodePositions = useMemo(() => calculateNodePositions(SEEDED_NODES), []);
+  const activeNodes = nodes && nodes.length > 0 ? nodes : SEEDED_NODES;
+  const activeEdges = edges && edges.length > 0 ? edges : SEEDED_EDGES;
+  const [selectedNode, setSelectedNode] = useState<ServiceNode3D | null>(activeNodes[1] || activeNodes[0]); // AUTH-LDAP default
+  const nodePositions = useMemo(() => calculateNodePositions(activeNodes), [activeNodes]);
 
   const handleSelect = (node: ServiceNode3D) => {
     setSelectedNode(node);
@@ -234,7 +240,7 @@ export const TopologyBlastRadius3D: React.FC<TopologyBlastRadius3DProps> = ({
             ))}
 
             {/* Directed Dependency Edges */}
-            {SEEDED_EDGES.map((edge, idx) => {
+            {activeEdges.map((edge, idx) => {
               const start = nodePositions[edge.source];
               const end = nodePositions[edge.target];
               if (!start || !end) return null;
@@ -251,7 +257,7 @@ export const TopologyBlastRadius3D: React.FC<TopologyBlastRadius3DProps> = ({
             })}
 
             {/* Service Nodes */}
-            {SEEDED_NODES.map((node) => {
+            {activeNodes.map((node) => {
               const pos = nodePositions[node.id];
               if (!pos) return null;
               return (

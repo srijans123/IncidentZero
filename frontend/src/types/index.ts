@@ -74,7 +74,8 @@ export interface Incident {
   responseDueAt?: string;
   resolutionDueAt?: string;
   allowedCommands: string[];
-  priorityExplanation?: PriorityExplanationStep[];
+  priorityExplanation?: PriorityExplanationStep[] | any;
+  assignmentExplanation?: Record<string, any>;
   sla?: SlaPolicyDetail;
   resolution?: IncidentResolution;
   rating?: number;
