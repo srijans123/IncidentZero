@@ -120,8 +120,21 @@ public class IncidentCommandService {
   }
 
   @Transactional
+  public void assign(UUID incidentId, UUID assigneeId, UUID teamId, String strategy, UUID actorId, String role, String supportTier) {
+    Incident inc = load(incidentId);
+    commandAuthorizer.authorize(inc, CommandType.ASSIGN, actorId, role, supportTier);
+    Instant now = clockPort.now();
+    inc.assign(assigneeId, teamId, strategy != null ? strategy : "MANUAL", actorId, now);
+    commitAndPublish(inc);
+  }
+
+  @Transactional
   public void reassign(UUID incidentId, UUID newAssigneeId, UUID teamId, String reason, UUID actorId, String role, String supportTier) {
     Incident inc = load(incidentId);
+    if (inc.assigneeId() == null || inc.status() == IncidentStatus.CLASSIFIED) {
+      assign(incidentId, newAssigneeId, teamId, reason != null ? reason : "MANUAL", actorId, role, supportTier);
+      return;
+    }
     commandAuthorizer.authorize(inc, CommandType.REASSIGN, actorId, role, supportTier);
     Instant now = clockPort.now();
     inc.reassign(newAssigneeId, teamId, reason, actorId, now);

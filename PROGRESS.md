@@ -8,5 +8,6 @@
 | Part A (A3) | DONE | `validate: 192 beats, 40 cards, 13 diagrams — 0 errors, 12 warnings` |
 | R2 | DONE | `✓ built in 20.46s` |
 | R3 | DONE | `[OK] Backend already running on 8080 and answering login.`<br>`curl http://localhost:8080/api/v1/services: 401`<br>`curl http://localhost:3000/app.html: 200` |
+| R4 | DONE | `SUMMARY: 24 passed, 0 failed (554590 transitions verified)`<br>`OVERALL GATE A STATUS: PASS (11/11)` |
 
-NEXT STEP: R4. Backend regression (bash scripts/verify-m1.sh && node scripts/e2e_lifecycle.mjs)
+NEXT STEP: R5. Prove the in-browser backend (preview server on 4173 & record T09)

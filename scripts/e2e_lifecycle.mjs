@@ -503,7 +503,8 @@ async function main() {
       // If master is unassigned or in CLASSIFIED state, assign to technician (Vikram) as Admin
       if (!masterAssigneeId || currentStatus === 'CLASSIFIED') {
         const vikramId = '019299a0-0000-7000-8000-000000000003';
-        const assignRes = await request(`/incidents/${master.id}/commands/reassign`, {
+        const cmdName = currentStatus === 'CLASSIFIED' ? 'assign' : 'reassign';
+        const assignRes = await request(`/incidents/${master.id}/commands/${cmdName}`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${adminToken}` },
           body: JSON.stringify({ assigneeId: vikramId, reason: 'Appointed incident commander for storm master' }),
@@ -516,18 +517,18 @@ async function main() {
 
       // Transition to IN_PROGRESS
       if (currentStatus === 'ASSIGNED') {
-        await request(`/incidents/${master.id}/commands/acknowledge`, {
+        const ackRes = await request(`/incidents/${master.id}/commands/acknowledge`, {
           method: 'POST',
           headers: { Authorization: `Bearer ${masterAssigneeToken}` },
         });
-        currentStatus = 'ACKNOWLEDGED';
+        currentStatus = ackRes.data?.status || ackRes.data?.state || 'ACKNOWLEDGED';
       }
       if (currentStatus === 'ACKNOWLEDGED') {
-        await request(`/incidents/${master.id}/commands/start`, {
+        const startRes = await request(`/incidents/${master.id}/commands/start`, {
           method: 'POST',
           headers: { Authorization: `Bearer ${masterAssigneeToken}` },
         });
-        currentStatus = 'IN_PROGRESS';
+        currentStatus = startRes.data?.status || startRes.data?.state || 'IN_PROGRESS';
       }
 
       // Resolve the master incident as the assigned technician
