@@ -13,7 +13,7 @@ const INFRA = `${J}/incident/infrastructure`, SHARED = `${J}/shared/domain`, STR
 /** With the text cursor, drag-select the card's lines on the GitHub page, then open the card over them. */
 const sel = (id) => { const c = cards[id]; return [['ghSelect', c.path, c.from, c.to, { plus: c.plus || 0 }], ['wait', 250], ['card', id]]; };
 /** Open file `name` in folder `dir` on GitHub (back to the folder, click the file), select the card's lines, open the card. */
-const file = (id, dir, name) => [['cardClose'], ['ghOpen', dir, name, cards[id].path], ...sel(id)];
+const file = (id, dir, name) => [['cardClose'], ['wait', 400], ['ghOpen', dir, name, cards[id].path], ...sel(id)];
 /** Another card from the file that is already open. */
 const next = (id) => [['cardClose'], ['ghUnselect'], ...sel(id)];
 /** Turn a list of steps into cues that start at second 0 and run back to back. */
@@ -24,13 +24,13 @@ const hover = (word, name, hold = 600) => [`@${word}`, 'ghHover', name, hold];
 export const act0 = {
   id: 'T00', title: 'Act 0 · landing page, then the app', retries: 3,
   beats: [
-    { id: 'a00b01', pre: [['goto', 'LANDING', { settle: 1800 }], ['expect', 'Launch Full App (React)']], cues: [[0.4, 'move', 'h1'], ['@Incident-Zero', 'scrollBy', 260, 1600]] },
+    { id: 'a00b01', pre: [['goto', 'LANDING', { settle: 1800 }], ['expect', 'Incident-Zero']], cues: [[0.4, 'move', 'h1'], ['@Incident-Zero', 'scrollBy', 260, 1600]] },
     { id: 'a00b02', cues: [[0, 'scrollBy', 420, 1800]] },
     { id: 'a00b03', cues: [[0, 'scrollTo', '#carts', { ms: 1400 }], ['@technician', 'scrollTo', '#deck', { ms: 1200 }]] },
     { id: 'a00b04', cues: [['@log', 'scrollTo', '#ledger', { ms: 1200 }], ['+0', 'try', 'click', '#ver']] },
-    { id: 'a00b05', cues: [[0, 'scrollTo', '#statsSection', { ms: 1200 }], ['@That', 'scrollTo', '.call', { ms: 1000 }], ['+0', 'point', { text: 'Launch Full App (React)' }, { hold: 900 }]], hold: 0.2 },
+    { id: 'a00b05', cues: [[0, 'scrollTo', '#statsSection', { ms: 1200 }], ['@That', 'scrollTo', '.call', { ms: 1000 }], ['+0', 'point', { within: '.call', text: 'Launch Full App (React)' }, { hold: 900 }]], hold: 0.2 },
     { id: 'a00b06',
-      pre: [['click', { text: 'Launch Full App (React)' }, { after: 1500 }], ['nav', 'CURRENT'], ['ready'], ['expect', 'Workbench']],
+      pre: [['click', { within: '.call', text: 'Launch Full App (React)' }, { after: 1500 }], ['nav', 'CURRENT'], ['ready'], ['expect', 'Workbench']],
       cues: [[0.3, 'move', { role: 'button', name: 'Campus Stage' }], ['@repository', 'move', { role: 'button', name: 'Student Portal' }], ['@explain', 'move', { role: 'button', name: 'Workbench' }]] },
     { id: 'a00b07', cues: [['@run', 'click', { role: 'button', name: 'Student Portal' }], ['+0', 'ready'], ['@click', 'point', { text: 'Report New Incident' }, { hold: 900 }]] },
   ],
@@ -49,7 +49,7 @@ export const act1 = {
     { id: 'a01b06', cues: [[0, 'ghClick', 'docs', { fallback: 'tree/<SHA>/docs' }], ['+0', 'ghClick', 'adr', { fallback: 'tree/<SHA>/docs/adr' }], ['@Each', 'ghHover', 'ADR-001.md', 400], ['+0', 'ghHover', 'ADR-004.md', 400]] },
     { id: 'a01b07', cues: [[0, 'ghGoto', 'tree/<SHA>'], ['+0', 'ghHover', 'scripts', 1400]] },
     { id: 'a01b08', cues: [[0, 'ghHover', 'deploy', 1400]] },
-    { id: 'a01b09', cues: [[0, 'ghHover', '.github', 1400]] },
+    { id: 'a01b09', cues: [[0, 'ghHover', '.github/workflows', 1400]] },
     { id: 'a01b10', cues: [[0, 'ghHover', 'tools', 450], ['+0', 'ghHover', 'upload', 450]] },
     { id: 'a01b11', cues: [['@backend', 'ghClick', 'backend', { fallback: 'tree/<SHA>/backend' }]] },
   ],
@@ -72,7 +72,8 @@ export const act2 = {
     { id: 'a02b10', cues: [[0, 'diagram', 'layers'], ['@Outer', 'glow', 'infra'], ['@inner', 'glow', 'domain'], ['@never', 'mark', 'domain', 'good', 'depends on nothing outside']] },
     { id: 'a02b11', cues: [[0.2, 'glow', 'app'], ['+0.8', 'glow', 'infra']], post: [['diagramClose']] },
     { id: 'a02b12',
-      cues: [[0, 'ghGoto', 'blob/<SHA>/backend/src/test/java/edu/campus/iitsm/ArchitectureTest.java'], ...sel('C02-A').map((s) => ['+0', ...s]),
+      pre: [['ghGoto', 'blob/<SHA>/backend/src/test/java/edu/campus/iitsm/ArchitectureTest.java'], ...sel('C02-A')],
+      cues: [
         ['@domain', 'hl', 'resideInAPackage("..domain..")'], ['@Spring', 'hl', '"org.springframework.."'], ['+0', 'tok', '"org.springframework.."'], ['@JPA', 'hl', '"jakarta.persistence.."'], ['+0', 'tok', '"jakarta.persistence.."'], ['@Jackson', 'hl', '"tools.jackson.."'], ['+0', 'tok', '"tools.jackson.."']] },
     { id: 'a02b13', cues: [[0, 'hl', 'R1_domain_has_zero_framework_imports'], ['@build', 'note', 'Checked on every build']], hold: 0.6, post: [['cardClose']] },
   ],
