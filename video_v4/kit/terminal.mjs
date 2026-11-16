@@ -48,10 +48,19 @@ const jobs = {
     return save('psql', out, ['audit_record is append-only']);
   },
   // 3. the randomised state-machine harness
-  async m1() { const out = sh('bash scripts/verify-m1.sh'); return save('m1', out.trimEnd().split('\n').slice(-14).join('\n'), ['SUMMARY: 24 passed, 0 failed']); },
+  async m1() {
+    const bash = fs.existsSync('C:\\Program Files\\Git\\bin\\bash.exe') ? '"C:\\Program Files\\Git\\bin\\bash.exe"' : 'bash';
+    const out = sh(`${bash} scripts/verify-m1.sh`);
+    return save('m1', out.trimEnd().split('\n').slice(-14).join('\n'), ['SUMMARY: 24 passed, 0 failed']);
+  },
   // 4. the architecture rules
   async arch() {
-    const out = sh('mvn -f backend/pom.xml test -Dtest=ArchitectureTest');
+    const corretto = path.join(process.env.USERPROFILE || '', '.jdks', 'corretto-22.0.2');
+    const localMvn = path.join(REPO, 'tools', 'apache-maven-3.9.9', 'bin', 'mvn.cmd');
+    const cmd = (fs.existsSync(corretto) && fs.existsSync(localMvn))
+      ? `cmd /c "set JAVA_HOME=${corretto}&& \"${localMvn}\" -f backend/pom.xml test -Dtest=ArchitectureTest"`
+      : 'mvn -f backend/pom.xml test -Dtest=ArchitectureTest';
+    const out = sh(cmd);
     const keep = out.split('\n').filter((l) => /Running .*ArchitectureTest|Tests run:|BUILD (SUCCESS|FAILURE)|Total time/.test(l)).slice(-7).join('\n');
     return save('arch', keep, ['BUILD SUCCESS', 'Failures: 0']);
   },

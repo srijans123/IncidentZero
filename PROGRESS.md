@@ -28,8 +28,10 @@
 | V4 (T07) | DONE | `=== take T07 OK: 166.4 s, 6762 distinct frames, 0 warnings`<br>`T07: 23/23 pictures in video_v4/out/frames`<br>`C3 pictures checked: all match (a07b03, a07b13, a07b15, a07b18, a07b20)` |
 | V4 (T08) | DONE | `=== take T08 OK: 71.8 s, 2899 distinct frames, 0 warnings`<br>`T08: 9/9 pictures in video_v4/out/frames`<br>`C3 pictures checked: all match (a08b04, a08b07)` |
 | V5 (T09) | DONE | `=== take T09 OK: 250.0 s, 15892 distinct frames, 0 warnings`<br>`T09: 39/39 pictures in video_v4/out/frames`<br>`C3 pictures checked: all match (a09b02, a09b03, a09b07, a09b08, a09b09, a09b11, a09b12, a09b13, a09b14, a09b17, a09b22, a09b23, a09b25, a09b28, a09b29, a09b31, a09b33, a09b36, a09b37, a09b38)` |
+| V6 (T10) | DONE | `OK illegal: 11 lines saved`<br>`OK psql: 1 lines saved`<br>`OK m1: 14 lines saved`<br>`OK arch: 7 lines saved`<br>`=== take T10 OK: 63.4 s, 1782 distinct frames, 0 warnings`<br>`T10: 11/11 pictures in video_v4/out/frames`<br>`C3 pictures checked: all match (a10b02, a10b06, a10b08, a10b10, a10b11)` |
+| V6 (T11) | DONE | `=== take T11 OK: 25.7 s, 623 distinct frames, 0 warnings`<br>`T11: 3/3 pictures in video_v4/out/frames`<br>`C3 pictures checked: all match (a11b01, a11b03)` |
 
-NEXT STEP: V6 (Terminal & Ending - T10, T11)
+NEXT STEP: V7 & V8. Assemble master video and run Gate V
 
 ### Gate R
 

@@ -1,4 +1,4 @@
-﻿# scripts/demo-up.ps1
+# scripts/demo-up.ps1
 # Starts DB if needed, starts backend on 8080 with demo DB, starts Vite on 3000, waits for login 200
 
 Write-Output "[*] Executing demo-up..."

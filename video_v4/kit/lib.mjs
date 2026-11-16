@@ -252,7 +252,15 @@ export class Director {
     titleClose: async () => this.zk('title.close'),
     closeAll: async () => { await this.zk('card.close'); await this.zk('diagram.close'); await this.zk('term.close'); await this.zk('title.close'); await this.zk('overlay.hide'); },
     // app shortcuts
-    user: async (name) => { name = this.sub(name); await this.verbs.zoomOut(); await this.verbs.click('[title="Switch BITS Pilani Demo Persona"]'); await this.verbs.click(`button:has(p:text-is("${name}"))`, { after: 900 }); await this.verbs.ready(); },
+    user: async (name) => {
+      name = this.sub(name);
+      await this.verbs.zoomOut();
+      await this.verbs.click('[title="Switch BITS Pilani Demo Persona"]');
+      const target = `button:has(p:text-is("${name}"))`;
+      try { await this.loc(target).scrollIntoViewIfNeeded(); } catch {}
+      await this.verbs.click(target, { after: 900 });
+      await this.verbs.ready();
+    },
     tab: async (label) => { await this.verbs.click({ role: 'button', name: label }, { after: 700 }); await this.verbs.ready(); },
     // GitHub
     /** run another verb, but only warn if it fails (for things that are nice to have, never for facts) */
