@@ -1,0 +1,75 @@
+{
+  "command": "mvn test -Dtest=ArchitectureTest",
+  "title": "ArchUnit Architecture Invariants Verification (R1\u2013R9)",
+  "duration_sec": 13.2,
+  "lines": [
+    {
+      "type": "prompt",
+      "text": "group76@bits-hyd:~/IncidentZero$ mvn test -Dtest=ArchitectureTest"
+    },
+    {
+      "type": "info",
+      "text": "[INFO] Scanning for projects..."
+    },
+    {
+      "type": "info",
+      "text": "[INFO] --------------------< edu.campus:incident-zero >--------------------"
+    },
+    {
+      "type": "info",
+      "text": "[INFO] Building Incident-Zero (I-ITSM) 2.2.0-SNAPSHOT"
+    },
+    {
+      "type": "info",
+      "text": "[INFO] --------------------------------[ jar ]---------------------------------"
+    },
+    {
+      "type": "info",
+      "text": "[INFO] --- maven-surefire-plugin:3.2.5:test (default-test) @ incident-zero ---"
+    },
+    {
+      "type": "info",
+      "text": "[INFO] Running edu.campus.iitsm.architecture.ArchitectureTest"
+    },
+    {
+      "type": "success",
+      "text": "  [RULE R1] domain_classes_should_not_depend_on_frameworks .............. PASSED"
+    },
+    {
+      "type": "success",
+      "text": "  [RULE R2] audit_and_sla_listeners_must_be_mandatory_transactional ...... PASSED"
+    },
+    {
+      "type": "success",
+      "text": "  [RULE R3] no_direct_calls_to_instant_now_or_uuid_randomUUID ............ PASSED"
+    },
+    {
+      "type": "success",
+      "text": "  [RULE R4] modulith_subdomain_boundaries_must_be_acyclic ............... PASSED"
+    },
+    {
+      "type": "success",
+      "text": "  [RULE R5] controllers_must_reside_in_infrastructure_layer ............. PASSED"
+    },
+    {
+      "type": "success",
+      "text": "  [RULE R6] ports_must_be_pure_interfaces_without_annotations ........... PASSED"
+    },
+    {
+      "type": "info",
+      "text": "[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.842 s"
+    },
+    {
+      "type": "success",
+      "text": "[INFO] ------------------------------------------------------------------------"
+    },
+    {
+      "type": "success",
+      "text": "[INFO] BUILD SUCCESS"
+    },
+    {
+      "type": "success",
+      "text": "[INFO] ------------------------------------------------------------------------"
+    }
+  ]
+}

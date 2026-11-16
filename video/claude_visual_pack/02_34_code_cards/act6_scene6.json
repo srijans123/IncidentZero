@@ -1,0 +1,9 @@
+{
+  "id": "act6_scene6",
+  "title": "Skill Match Technician Routing Strategy",
+  "file": "backend/src/main/java/edu/campus/iitsm/assignment/application/strategy/SkillMatchStrategy.java",
+  "display_file": "backend/src/main/java/edu/campus/iitsm/assignment/application/strategy/SkillMatchStrategy.java",
+  "lines": "15-45",
+  "exists": true,
+  "code": "\n  @Override\n  public String name() {\n    return \"SkillMatch\";\n  }\n\n  @Override\n  public Optional<AssignmentRationale> selectTechnician(\n      UUID incidentId,\n      UUID serviceId,\n      UUID ownerTeamId,\n      Priority priority,\n      double ticketWeight,\n      Set<String> requiredSkills,\n      List<TechnicianCandidate> candidates\n  ) {\n    List<TechnicianCandidate> eligible = StrategySupport.filterEligible(ownerTeamId, ticketWeight, requiredSkills, candidates);\n    if (eligible.isEmpty()) return Optional.empty();\n\n    eligible.sort(Comparator\n        .<TechnicianCandidate>comparingDouble(c -> StrategySupport.calculateSkillMatch(requiredSkills, c)).reversed()\n        .thenComparingDouble(TechnicianCandidate::loadRatio)\n        .thenComparing(TechnicianCandidate::technicianId));\n\n    TechnicianCandidate chosen = eligible.get(0);\n    double skillScore = StrategySupport.calculateSkillMatch(requiredSkills, chosen);\n\n    AssignmentRationale rationale = new AssignmentRationale(\n        name(),\n        chosen.technicianId(),\n        skillScore,\n"
+}

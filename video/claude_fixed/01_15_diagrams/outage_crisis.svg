@@ -1,0 +1,173 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" shape-rendering="crispEdges" text-rendering="geometricPrecision">
+  <defs>
+    <!-- 24x24 16-Bit Pixel Checkerboard Dither Pattern (IncidentZero Signature Canvas) -->
+    <pattern id="pixelChecker" width="48" height="48" patternUnits="userSpaceOnUse">
+      <rect width="48" height="48" fill="#1E1646"/>
+      <rect x="0" y="0" width="24" height="24" fill="#261C58"/>
+      <rect x="24" y="24" width="24" height="24" fill="#261C58"/>
+    </pattern>
+    <!-- Subtle Pixel Grid Overlay -->
+    <pattern id="pixelGrid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#32266E" stroke-width="1" stroke-opacity="0.45"/>
+    </pattern>
+    <!-- CRT Scanline Overlay Pattern -->
+    <pattern id="crtScanlines" width="8" height="4" patternUnits="userSpaceOnUse">
+      <rect x="0" y="0" width="8" height="2" fill="#0B071E" fill-opacity="0.18"/>
+      <rect x="0" y="2" width="8" height="2" fill="none"/>
+    </pattern>
+  </defs>
+
+  <rect x="0" y="0" width="1920" height="1080" fill="url(#pixelChecker)"/>
+  <rect x="0" y="0" width="1920" height="1080" fill="url(#pixelGrid)"/>
+  <rect x="16" y="16" width="1888" height="1048" fill="none" stroke="#0B071E" stroke-width="8"/>
+  <rect x="24" y="24" width="1872" height="1032" fill="none" stroke="#7C5CFF" stroke-width="4"/>
+  <rect x="32" y="32" width="12" height="12" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="1876" y="32" width="12" height="12" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="32" y="1036" width="12" height="12" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="1876" y="1036" width="12" height="12" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="66" y="54" width="1800" height="108" fill="#0B071E"/>
+  <rect x="60" y="48" width="1800" height="108" fill="#1B1530" stroke="#0B071E" stroke-width="4"/>
+  <rect x="60" y="48" width="16" height="108" fill="#FF4D3D" stroke="#0B071E" stroke-width="4"/>
+  <line x1="76" y1="54" x2="1856" y2="54" stroke="#FF4D3D" stroke-width="2"/>
+  <text x="96" y="96" font-family="'Pixelify Sans', 'Silkscreen', 'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="30" font-weight="900" fill="#FFFFFF" letter-spacing="1.5">CAMPUS INFRASTRUCTURE FAILURE &amp; TICKET STORM</text>
+  <text x="96" y="132" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="700" fill="#59C9F5" letter-spacing="0.5">Cascading operational paralysis across academic, residential, and examination services</text>
+  <rect x="1516" y="72" width="320" height="44" fill="#0B071E"/>
+  <rect x="1510" y="66" width="320" height="44" fill="#FFD84D" stroke="#0B071E" stroke-width="3"/>
+  <rect x="1524" y="80" width="16" height="16" fill="#43D17A" stroke="#0B071E" stroke-width="2"/>
+  <text x="1682" y="94" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="900" fill="#1B1530" text-anchor="middle" letter-spacing="1">GROUP 76 · PROBLEM STATEMENT</text>
+  <text x="1670" y="134" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="12" font-weight="700" fill="#D4CBF7" text-anchor="middle" letter-spacing="1">INCIDENT-ZERO (I-ITSM v2.2)</text>
+  <rect x="67" y="192" width="414" height="240" fill="#0B071E"/>
+  <rect x="60" y="185" width="414" height="240" fill="#1B1530" stroke="#0B071E" stroke-width="4"/>
+  <rect x="64" y="189" width="406" height="232" fill="none" stroke="#FF4D3D" stroke-width="2" stroke-opacity="0.65"/>
+  <rect x="60" y="185" width="414" height="40" fill="#2B2060" stroke="#0B071E" stroke-width="4"/>
+  <rect x="64" y="189" width="406" height="4" fill="#FF4D3D"/>
+  <text x="78" y="210" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="900" fill="#FFFFFF" letter-spacing="1">STAGE 01 · ROOT TRIGGER</text>
+  <rect x="378" y="197" width="84" height="24" fill="#0B071E"/>
+  <rect x="376" y="195" width="84" height="24" fill="#FF4D3D" stroke="#0B071E" stroke-width="2"/>
+  <text x="418" y="211" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="12" font-weight="900" fill="#1B1530" text-anchor="middle" letter-spacing="1">01</text>
+  <text x="84" y="267" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="20" font-weight="900" fill="#FFFFFF">Academic Core Fiber Sever</text>
+  <text x="84" y="307" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="600" fill="#FFF3C4" text-anchor="start">Physical fiber optic conduit sheared</text>
+  <text x="84" y="331" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="600" fill="#FFF3C4" text-anchor="start">during library wing excavation.</text>
+  <polygon points="482,293 514,305 482,317" fill="#FF4D3D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="529" y="192" width="414" height="240" fill="#0B071E"/>
+  <rect x="522" y="185" width="414" height="240" fill="#1B1530" stroke="#0B071E" stroke-width="4"/>
+  <rect x="526" y="189" width="406" height="232" fill="none" stroke="#FF9F43" stroke-width="2" stroke-opacity="0.65"/>
+  <rect x="522" y="185" width="414" height="40" fill="#2B2060" stroke="#0B071E" stroke-width="4"/>
+  <rect x="526" y="189" width="406" height="4" fill="#FF9F43"/>
+  <text x="540" y="211" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="900" fill="#FFFFFF" letter-spacing="1">STAGE 02 · CASCADE</text>
+  <rect x="840" y="197" width="84" height="24" fill="#0B071E"/>
+  <rect x="838" y="195" width="84" height="24" fill="#FF9F43" stroke="#0B071E" stroke-width="2"/>
+  <text x="880" y="211" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="12" font-weight="900" fill="#1B1530" text-anchor="middle" letter-spacing="1">02</text>
+  <text x="546" y="267" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="20" font-weight="900" fill="#FFFFFF">LMS &amp; Auth Cluster Offline</text>
+  <text x="546" y="307" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="600" fill="#FFF3C4" text-anchor="start">RADIUS authentication drops; exam</text>
+  <text x="546" y="331" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="600" fill="#FFF3C4" text-anchor="start">portal unresponsive across campus.</text>
+  <polygon points="944,293 976,305 944,317" fill="#FF9F43" stroke="#0B071E" stroke-width="2"/>
+  <rect x="991" y="192" width="414" height="240" fill="#0B071E"/>
+  <rect x="984" y="185" width="414" height="240" fill="#1B1530" stroke="#0B071E" stroke-width="4"/>
+  <rect x="988" y="189" width="406" height="232" fill="none" stroke="#FFD84D" stroke-width="2" stroke-opacity="0.65"/>
+  <rect x="984" y="185" width="414" height="40" fill="#2B2060" stroke="#0B071E" stroke-width="4"/>
+  <rect x="988" y="189" width="406" height="4" fill="#FFD84D"/>
+  <text x="1002" y="210" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="900" fill="#FFFFFF" letter-spacing="1">STAGE 03 · BLAST RADIUS</text>
+  <rect x="1302" y="197" width="84" height="24" fill="#0B071E"/>
+  <rect x="1300" y="195" width="84" height="24" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <text x="1342" y="211" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="12" font-weight="900" fill="#1B1530" text-anchor="middle" letter-spacing="1">03</text>
+  <text x="1008" y="267" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="20" font-weight="900" fill="#FFFFFF">6,000+ Campus Stakeholders</text>
+  <text x="1008" y="307" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="600" fill="#FFF3C4" text-anchor="start">Students locked out of online quizzes;</text>
+  <text x="1008" y="331" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="600" fill="#FFF3C4" text-anchor="start">faculty grade submissions blocked.</text>
+  <polygon points="1406,293 1438,305 1406,317" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="1453" y="192" width="414" height="240" fill="#0B071E"/>
+  <rect x="1446" y="185" width="414" height="240" fill="#1B1530" stroke="#0B071E" stroke-width="4"/>
+  <rect x="1450" y="189" width="406" height="232" fill="none" stroke="#59C9F5" stroke-width="2" stroke-opacity="0.65"/>
+  <rect x="1446" y="185" width="414" height="40" fill="#2B2060" stroke="#0B071E" stroke-width="4"/>
+  <rect x="1450" y="189" width="406" height="4" fill="#59C9F5"/>
+  <text x="1464" y="211" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="900" fill="#FFFFFF" letter-spacing="1">STAGE 04 · STORM CHAOS</text>
+  <rect x="1764" y="197" width="84" height="24" fill="#0B071E"/>
+  <rect x="1762" y="195" width="84" height="24" fill="#59C9F5" stroke="#0B071E" stroke-width="2"/>
+  <text x="1804" y="211" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="12" font-weight="900" fill="#1B1530" text-anchor="middle" letter-spacing="1">04</text>
+  <text x="1470" y="267" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="20" font-weight="900" fill="#FFFFFF">1,200+ Unsorted Tickets</text>
+  <text x="1470" y="307" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="600" fill="#FFF3C4" text-anchor="start">Helpdesk queue flooded with duplicate</text>
+  <text x="1470" y="331" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="600" fill="#FFF3C4" text-anchor="start">symptoms; zero root-cause visibility.</text>
+  <rect x="68" y="468" width="875" height="560" fill="#0B071E"/>
+  <rect x="60" y="460" width="875" height="560" fill="#1B1530" stroke="#0B071E" stroke-width="4"/>
+  <rect x="64" y="464" width="867" height="552" fill="none" stroke="#FF4D3D" stroke-width="2" stroke-opacity="0.65"/>
+  <rect x="60" y="460" width="875" height="46" fill="#FF4D3D" stroke="#0B071E" stroke-width="4"/>
+  <rect x="64" y="464" width="867" height="4" fill="#FF4D3D"/>
+  <text x="78" y="489" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="900" fill="#FFFFFF" letter-spacing="1">CONVENTIONAL CAMPUS HELPDESK (LEGACY FAILURE MODE)</text>
+  <rect x="781" y="475" width="142" height="24" fill="#0B071E"/>
+  <rect x="779" y="473" width="142" height="24" fill="#FF4D3D" stroke="#0B071E" stroke-width="2"/>
+  <text x="850" y="489" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="12" font-weight="900" fill="#1B1530" text-anchor="middle" letter-spacing="1">MTTR &gt; 6.8 HRS</text>
+  <rect x="92" y="530" width="819" height="80" fill="#0B071E"/>
+  <rect x="88" y="526" width="819" height="80" fill="#2B2060" stroke="#FF4D3D" stroke-width="2"/>
+  <rect x="104" y="544" width="28" height="28" fill="#FF4D3D" stroke="#0B071E" stroke-width="2"/>
+  <text x="118" y="564" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="900" fill="#FFFFFF" text-anchor="middle">✕</text>
+  <text x="148" y="558" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="900" fill="#FF4D3D">Zero Topology Awareness</text>
+  <text x="148" y="586" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="600" fill="#FFF3C4">Treats every reported symptom as an isolated ticket with no service graph.</text>
+  <rect x="92" y="624" width="819" height="80" fill="#0B071E"/>
+  <rect x="88" y="620" width="819" height="80" fill="#2B2060" stroke="#FF4D3D" stroke-width="2"/>
+  <rect x="104" y="638" width="28" height="28" fill="#FF4D3D" stroke="#0B071E" stroke-width="2"/>
+  <text x="118" y="658" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="900" fill="#FFFFFF" text-anchor="middle">✕</text>
+  <text x="148" y="652" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="900" fill="#FF4D3D">Manual Triage Bottleneck</text>
+  <text x="148" y="680" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="600" fill="#FFF3C4">Single human admin manually reads and assigns 1,200+ incoming storm tickets.</text>
+  <rect x="92" y="718" width="819" height="80" fill="#0B071E"/>
+  <rect x="88" y="714" width="819" height="80" fill="#2B2060" stroke="#FF4D3D" stroke-width="2"/>
+  <rect x="104" y="732" width="28" height="28" fill="#FF4D3D" stroke="#0B071E" stroke-width="2"/>
+  <text x="118" y="752" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="900" fill="#FFFFFF" text-anchor="middle">✕</text>
+  <text x="148" y="746" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="900" fill="#FF4D3D">Vulnerable Database Rows</text>
+  <text x="148" y="774" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="600" fill="#FFF3C4">Technicians or DBAs can silently alter historical timestamps via raw SQL.</text>
+  <rect x="92" y="812" width="819" height="80" fill="#0B071E"/>
+  <rect x="88" y="808" width="819" height="80" fill="#2B2060" stroke="#FF4D3D" stroke-width="2"/>
+  <rect x="104" y="826" width="28" height="28" fill="#FF4D3D" stroke="#0B071E" stroke-width="2"/>
+  <text x="118" y="846" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="900" fill="#FFFFFF" text-anchor="middle">✕</text>
+  <text x="148" y="840" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="900" fill="#FF4D3D">Broken SLA Timers</text>
+  <text x="148" y="868" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="600" fill="#FFF3C4">Clocks keep ticking during vendor/client hold or outside working hours.</text>
+  <rect x="92" y="906" width="819" height="80" fill="#0B071E"/>
+  <rect x="88" y="902" width="819" height="80" fill="#2B2060" stroke="#FF4D3D" stroke-width="2"/>
+  <rect x="104" y="920" width="28" height="28" fill="#FF4D3D" stroke="#0B071E" stroke-width="2"/>
+  <text x="118" y="940" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="900" fill="#FFFFFF" text-anchor="middle">✕</text>
+  <text x="148" y="934" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="900" fill="#FF4D3D">High Mean Time To Resolve</text>
+  <text x="148" y="962" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="600" fill="#FFF3C4">Critical campus outages drag on for 6.8+ hours with cascading SLA breaches.</text>
+  <rect x="993" y="468" width="875" height="560" fill="#0B071E"/>
+  <rect x="985" y="460" width="875" height="560" fill="#1B1530" stroke="#0B071E" stroke-width="4"/>
+  <rect x="989" y="464" width="867" height="552" fill="none" stroke="#43D17A" stroke-width="2" stroke-opacity="0.65"/>
+  <rect x="985" y="460" width="875" height="46" fill="#43D17A" stroke="#0B071E" stroke-width="4"/>
+  <rect x="989" y="464" width="867" height="4" fill="#43D17A"/>
+  <rect x="1001" y="478" width="14" height="14" fill="#FF4D3D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="1023" y="478" width="14" height="14" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="1045" y="478" width="14" height="14" fill="#43D17A" stroke="#0B071E" stroke-width="2"/>
+  <text x="1075" y="489" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="900" fill="#FFFFFF" letter-spacing="1">INCIDENT-ZERO (I-ITSM v2.2) AUTONOMOUS ENGINE</text>
+  <rect x="1706" y="475" width="142" height="24" fill="#0B071E"/>
+  <rect x="1704" y="473" width="142" height="24" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <text x="1775" y="489" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="12" font-weight="900" fill="#1B1530" text-anchor="middle" letter-spacing="1">MTTR &lt; 42 MINS</text>
+  <rect x="1017" y="530" width="819" height="80" fill="#0B071E"/>
+  <rect x="1013" y="526" width="819" height="80" fill="#2B2060" stroke="#43D17A" stroke-width="2"/>
+  <rect x="1029" y="544" width="28" height="28" fill="#43D17A" stroke="#0B071E" stroke-width="2"/>
+  <text x="1043" y="564" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="900" fill="#1B1530" text-anchor="middle">✓</text>
+  <text x="1073" y="558" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="900" fill="#7CE356">Service Dependency DAG</text>
+  <text x="1073" y="586" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="600" fill="#FFFFFF">Tarjan O(V+E) cycle guard &amp; automatic downstream blast-radius calculation.</text>
+  <rect x="1017" y="624" width="819" height="80" fill="#0B071E"/>
+  <rect x="1013" y="620" width="819" height="80" fill="#2B2060" stroke="#43D17A" stroke-width="2"/>
+  <rect x="1029" y="638" width="28" height="28" fill="#43D17A" stroke="#0B071E" stroke-width="2"/>
+  <text x="1043" y="658" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="900" fill="#1B1530" text-anchor="middle">✓</text>
+  <text x="1073" y="652" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="900" fill="#7CE356">HNSW Storm Correlation</text>
+  <text x="1073" y="680" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="600" fill="#FFFFFF">Clusters 500+ duplicate natural-language reports into 1 master problem in &lt;3.2ms.</text>
+  <rect x="1017" y="718" width="819" height="80" fill="#0B071E"/>
+  <rect x="1013" y="714" width="819" height="80" fill="#2B2060" stroke="#43D17A" stroke-width="2"/>
+  <rect x="1029" y="732" width="28" height="28" fill="#43D17A" stroke="#0B071E" stroke-width="2"/>
+  <text x="1043" y="752" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="900" fill="#1B1530" text-anchor="middle">✓</text>
+  <text x="1073" y="746" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="900" fill="#7CE356">Cryptographic Merkle Chain</text>
+  <text x="1073" y="774" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="600" fill="#FFFFFF">SHA-256 tamper-evident immutable audit ledger with FOR UPDATE locking.</text>
+  <rect x="1017" y="812" width="819" height="80" fill="#0B071E"/>
+  <rect x="1013" y="808" width="819" height="80" fill="#2B2060" stroke="#43D17A" stroke-width="2"/>
+  <rect x="1029" y="826" width="28" height="28" fill="#43D17A" stroke="#0B071E" stroke-width="2"/>
+  <text x="1043" y="846" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="900" fill="#1B1530" text-anchor="middle">✓</text>
+  <text x="1073" y="840" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="900" fill="#7CE356">Dual-Clock SLA Chronometer</text>
+  <text x="1073" y="868" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="600" fill="#FFFFFF">Freezes SLA on WAITING_FOR_CLIENT; enforces sticky breach &amp; business hours.</text>
+  <rect x="1017" y="906" width="819" height="80" fill="#0B071E"/>
+  <rect x="1013" y="902" width="819" height="80" fill="#2B2060" stroke="#43D17A" stroke-width="2"/>
+  <rect x="1029" y="920" width="28" height="28" fill="#43D17A" stroke="#0B071E" stroke-width="2"/>
+  <text x="1043" y="940" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="900" fill="#1B1530" text-anchor="middle">✓</text>
+  <text x="1073" y="934" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="900" fill="#7CE356">7 Pluggable Routing Rules</text>
+  <text x="1073" y="962" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="600" fill="#FFFFFF">Skill-Match, Least-Loaded &amp; Hungarian dispatch cuts MTTR to under 42 minutes.</text>
+  <!-- Subtle 16-Bit CRT Scanline Overlay -->
+  <rect x="24" y="24" width="1872" height="1032" fill="url(#crtScanlines)" pointer-events="none"/>
+</svg>

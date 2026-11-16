@@ -1,0 +1,9 @@
+{
+  "id": "act8_scene5",
+  "title": "GoF Factory/Builder: Incident Snapshot",
+  "file": "backend/src/main/java/edu/campus/iitsm/incident/domain/Incident.java",
+  "display_file": "backend/src/main/java/edu/campus/iitsm/incident/domain/Incident.java",
+  "lines": "1-35",
+  "exists": true,
+  "code": "package edu.campus.iitsm.incident.domain;\n\nimport edu.campus.iitsm.incident.api.IncidentEvents.*;\nimport edu.campus.iitsm.shared.domain.DomainEvent;\nimport edu.campus.iitsm.shared.domain.WorkingTimeCalculator;\nimport edu.campus.iitsm.shared.domain.error.InvalidIncidentPayloadException;\nimport java.time.Instant;\nimport java.util.ArrayList;\nimport java.util.List;\nimport java.util.Set;\nimport java.util.UUID;\n\npublic final class Incident {\n\n  public record Snapshot(\n      UUID id, String number, UUID reporterId, UUID serviceId, UUID categoryId,\n      String title, String description, int impact, int urgency,\n      Priority priority, PriorityExplanation priorityExplanation,\n      IncidentStatus status, SlaStatus slaStatus, SlaSnapshot sla,\n      SlaClock responseClock, SlaClock resolutionClock, int clockGeneration,\n      UUID assigneeId, UUID teamId, UUID parentId, UUID commanderId,\n      boolean major, int affectedUsers, int reassignCount, int reopenCount,\n      Resolution resolution, List<Resolution> archivedResolutions, Integer rating,\n      String closureNote, Instant createdAt, Instant respondedAt,\n      Instant resolvedAt, Instant closedAt, long version\n  ) {}\n\n  private final UUID id;\n  private final String number;\n  private final UUID reporterId;\n  private final UUID serviceId;\n  private final Instant createdAt;\n  private final List<DomainEvent> pending = new ArrayList<>();\n  private final List<Resolution> archivedResolutions = new ArrayList<>();\n\n"
+}

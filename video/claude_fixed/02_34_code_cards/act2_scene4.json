@@ -1,0 +1,9 @@
+{
+  "id": "act2_scene4",
+  "title": "AuditLedger In-Tx Listener (@EventListener)",
+  "file": "backend/src/main/java/edu/campus/iitsm/audit/infrastructure/AuditLedgerInTxListener.java",
+  "display_file": "backend/src/main/java/edu/campus/iitsm/audit/infrastructure/AuditLedgerInTxListener.java",
+  "lines": "20-40",
+  "exists": true,
+  "code": "  private final JdbcTemplate jdbcTemplate;\n  private final ClockPort clockPort;\n\n  public AuditLedgerInTxListener(JdbcTemplate jdbcTemplate, ClockPort clockPort) {\n    this.jdbcTemplate = jdbcTemplate;\n    this.clockPort = clockPort;\n  }\n\n  @EventListener\n  @Transactional(propagation = Propagation.MANDATORY)\n  public void onDomainEvent(DomainEvent event) {\n    UUID incidentId = event.incidentId();\n    Instant now = (event.occurredAt() != null ? event.occurredAt() : clockPort.now())\n        .truncatedTo(java.time.temporal.ChronoUnit.MICROS);\n\n    // Lock the incident row to serialize audit hash chain updates\n    String selectSql = \"SELECT last_audit_index, last_audit_hash, status FROM incident WHERE id = ? FOR UPDATE\";\n    Map<String, Object> row;\n    try {\n      row = jdbcTemplate.queryForMap(selectSql, incidentId);\n    } catch (Exception e) {\n"
+}

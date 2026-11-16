@@ -1,0 +1,151 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" shape-rendering="crispEdges" text-rendering="geometricPrecision">
+  <defs>
+    <!-- 24x24 16-Bit Pixel Checkerboard Dither Pattern (IncidentZero Signature Canvas) -->
+    <pattern id="pixelChecker" width="48" height="48" patternUnits="userSpaceOnUse">
+      <rect width="48" height="48" fill="#1E1646"/>
+      <rect x="0" y="0" width="24" height="24" fill="#261C58"/>
+      <rect x="24" y="24" width="24" height="24" fill="#261C58"/>
+    </pattern>
+    <!-- Subtle Pixel Grid Overlay -->
+    <pattern id="pixelGrid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#32266E" stroke-width="1" stroke-opacity="0.45"/>
+    </pattern>
+    <!-- CRT Scanline Overlay Pattern -->
+    <pattern id="crtScanlines" width="8" height="4" patternUnits="userSpaceOnUse">
+      <rect x="0" y="0" width="8" height="2" fill="#0B071E" fill-opacity="0.18"/>
+      <rect x="0" y="2" width="8" height="2" fill="none"/>
+    </pattern>
+  </defs>
+
+  <rect x="0" y="0" width="1920" height="1080" fill="url(#pixelChecker)"/>
+  <rect x="0" y="0" width="1920" height="1080" fill="url(#pixelGrid)"/>
+  <rect x="16" y="16" width="1888" height="1048" fill="none" stroke="#0B071E" stroke-width="8"/>
+  <rect x="24" y="24" width="1872" height="1032" fill="none" stroke="#7C5CFF" stroke-width="4"/>
+  <rect x="32" y="32" width="12" height="12" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="1876" y="32" width="12" height="12" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="32" y="1036" width="12" height="12" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="1876" y="1036" width="12" height="12" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="66" y="54" width="1800" height="108" fill="#0B071E"/>
+  <rect x="60" y="48" width="1800" height="108" fill="#1B1530" stroke="#0B071E" stroke-width="4"/>
+  <rect x="60" y="48" width="16" height="108" fill="#FFD84D" stroke="#0B071E" stroke-width="4"/>
+  <line x1="76" y1="54" x2="1856" y2="54" stroke="#FFD84D" stroke-width="2"/>
+  <text x="96" y="96" font-family="'Pixelify Sans', 'Silkscreen', 'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="30" font-weight="900" fill="#FFFFFF" letter-spacing="1.5">SEVEN PLUGGABLE TECHNICIAN ROUTING STRATEGIES</text>
+  <text x="96" y="132" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="700" fill="#59C9F5" letter-spacing="0.5">Open-Closed Principle: Pluggable AssignmentStrategy interface with runtime strategy selection</text>
+  <rect x="1516" y="72" width="320" height="44" fill="#0B071E"/>
+  <rect x="1510" y="66" width="320" height="44" fill="#FFD84D" stroke="#0B071E" stroke-width="3"/>
+  <rect x="1524" y="80" width="16" height="16" fill="#43D17A" stroke="#0B071E" stroke-width="2"/>
+  <text x="1682" y="94" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="900" fill="#1B1530" text-anchor="middle" letter-spacing="1">GROUP 76 · ROUTING ENGINE</text>
+  <text x="1670" y="134" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="12" font-weight="700" fill="#D4CBF7" text-anchor="middle" letter-spacing="1">INCIDENT-ZERO (I-ITSM v2.2)</text>
+  <rect x="67" y="192" width="576" height="240" fill="#0B071E"/>
+  <rect x="60" y="185" width="576" height="240" fill="#1B1530" stroke="#0B071E" stroke-width="4"/>
+  <rect x="64" y="189" width="568" height="232" fill="none" stroke="#59C9F5" stroke-width="2" stroke-opacity="0.65"/>
+  <rect x="60" y="185" width="576" height="42" fill="#2B2060" stroke="#0B071E" stroke-width="4"/>
+  <rect x="64" y="189" width="568" height="4" fill="#59C9F5"/>
+  <text x="78" y="212" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="900" fill="#FFFFFF" letter-spacing="1">01 · ROUND-ROBIN DISPATCH</text>
+  <rect x="533" y="198" width="91" height="24" fill="#0B071E"/>
+  <rect x="531" y="196" width="91" height="24" fill="#59C9F5" stroke="#0B071E" stroke-width="2"/>
+  <text x="576" y="212" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="12" font-weight="900" fill="#1B1530" text-anchor="middle" letter-spacing="1">STRAT 01</text>
+  <text x="84" y="265" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="600" fill="#FFFFFF" text-anchor="start">Cycles deterministically across active technicians via</text>
+  <text x="84" y="290" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="600" fill="#FFFFFF" text-anchor="start">atomic modulo counter. Guarantees equal shift</text>
+  <text x="84" y="315" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="600" fill="#FFFFFF" text-anchor="start">distribution.</text>
+  <rect x="84" y="363" width="528" height="40" fill="#120C2C" stroke="#59C9F5" stroke-width="2"/>
+  <text x="348" y="388" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="900" fill="#59C9F5" text-anchor="middle">Complexity: O(1) · Zero Starvation</text>
+  <rect x="679" y="192" width="576" height="240" fill="#0B071E"/>
+  <rect x="672" y="185" width="576" height="240" fill="#1B1530" stroke="#0B071E" stroke-width="4"/>
+  <rect x="676" y="189" width="568" height="232" fill="none" stroke="#43D17A" stroke-width="2" stroke-opacity="0.65"/>
+  <rect x="672" y="185" width="576" height="42" fill="#2B2060" stroke="#0B071E" stroke-width="4"/>
+  <rect x="676" y="189" width="568" height="4" fill="#43D17A"/>
+  <text x="690" y="212" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="900" fill="#FFFFFF" letter-spacing="1">02 · LEAST-LOADED BALANCING</text>
+  <rect x="1145" y="198" width="91" height="24" fill="#0B071E"/>
+  <rect x="1143" y="196" width="91" height="24" fill="#43D17A" stroke="#0B071E" stroke-width="2"/>
+  <text x="1188" y="212" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="12" font-weight="900" fill="#1B1530" text-anchor="middle" letter-spacing="1">STRAT 02</text>
+  <text x="696" y="265" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="600" fill="#FFFFFF" text-anchor="start">Queries active in-flight tickets per technician and</text>
+  <text x="696" y="290" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="600" fill="#FFFFFF" text-anchor="start">routes to the lowest current workload.</text>
+  <rect x="696" y="363" width="528" height="40" fill="#120C2C" stroke="#43D17A" stroke-width="2"/>
+  <text x="960" y="388" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="900" fill="#43D17A" text-anchor="middle">Prevents Technician Burnout</text>
+  <rect x="1291" y="192" width="576" height="240" fill="#0B071E"/>
+  <rect x="1284" y="185" width="576" height="240" fill="#1B1530" stroke="#0B071E" stroke-width="4"/>
+  <rect x="1288" y="189" width="568" height="232" fill="none" stroke="#FFD84D" stroke-width="2" stroke-opacity="0.65"/>
+  <rect x="1284" y="185" width="576" height="42" fill="#2B2060" stroke="#0B071E" stroke-width="4"/>
+  <rect x="1288" y="189" width="568" height="4" fill="#FFD84D"/>
+  <text x="1302" y="212" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="900" fill="#FFFFFF" letter-spacing="1">03 · CAMPUS-AFFINITY ZONING</text>
+  <rect x="1757" y="198" width="91" height="24" fill="#0B071E"/>
+  <rect x="1755" y="196" width="91" height="24" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <text x="1800" y="212" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="12" font-weight="900" fill="#1B1530" text-anchor="middle" letter-spacing="1">STRAT 03</text>
+  <text x="1308" y="265" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="600" fill="#FFFFFF" text-anchor="start">Matches incident physical zone (Hostel, Academic,</text>
+  <text x="1308" y="290" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="600" fill="#FFFFFF" text-anchor="start">Library, Sports) to nearest stationed tech.</text>
+  <rect x="1308" y="363" width="528" height="40" fill="#120C2C" stroke="#FFD84D" stroke-width="2"/>
+  <text x="1572" y="388" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="900" fill="#FFD84D" text-anchor="middle">Minimizes Walking Transit Time</text>
+  <rect x="67" y="462" width="426" height="250" fill="#0B071E"/>
+  <rect x="60" y="455" width="426" height="250" fill="#1B1530" stroke="#0B071E" stroke-width="4"/>
+  <rect x="64" y="459" width="418" height="242" fill="none" stroke="#7C5CFF" stroke-width="2" stroke-opacity="0.65"/>
+  <rect x="60" y="455" width="426" height="42" fill="#2B2060" stroke="#0B071E" stroke-width="4"/>
+  <rect x="64" y="459" width="418" height="4" fill="#7C5CFF"/>
+  <text x="78" y="482" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="900" fill="#FFFFFF" letter-spacing="1">04 · SKILL-MATCH</text>
+  <rect x="390" y="468" width="84" height="24" fill="#0B071E"/>
+  <rect x="388" y="466" width="84" height="24" fill="#7C5CFF" stroke="#0B071E" stroke-width="2"/>
+  <text x="430" y="482" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="12" font-weight="900" fill="#1B1530" text-anchor="middle" letter-spacing="1">04</text>
+  <text x="82" y="535" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="600" fill="#FFFFFF" text-anchor="start">Matches category skill matrix (Network,</text>
+  <text x="82" y="559" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="600" fill="#FFFFFF" text-anchor="start">Fiber, DB, Electrical) to certified</text>
+  <text x="82" y="583" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="600" fill="#FFFFFF" text-anchor="start">specialist.</text>
+  <rect x="82" y="643" width="382" height="40" fill="#120C2C" stroke="#7C5CFF" stroke-width="2"/>
+  <text x="273" y="668" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="900" fill="#7C5CFF" text-anchor="middle">High First-Touch Fix</text>
+  <rect x="525" y="462" width="426" height="250" fill="#0B071E"/>
+  <rect x="518" y="455" width="426" height="250" fill="#1B1530" stroke="#0B071E" stroke-width="4"/>
+  <rect x="522" y="459" width="418" height="242" fill="none" stroke="#FF4D3D" stroke-width="2" stroke-opacity="0.65"/>
+  <rect x="518" y="455" width="426" height="42" fill="#2B2060" stroke="#0B071E" stroke-width="4"/>
+  <rect x="522" y="459" width="418" height="4" fill="#FF4D3D"/>
+  <text x="536" y="482" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="900" fill="#FFFFFF" letter-spacing="1">05 · PRIORITY-WEIGHTED</text>
+  <rect x="848" y="468" width="84" height="24" fill="#0B071E"/>
+  <rect x="846" y="466" width="84" height="24" fill="#FF4D3D" stroke="#0B071E" stroke-width="2"/>
+  <text x="888" y="482" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="12" font-weight="900" fill="#1B1530" text-anchor="middle" letter-spacing="1">05</text>
+  <text x="540" y="535" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="600" fill="#FFFFFF" text-anchor="start">Routes P1/P2 critical outages exclusively</text>
+  <text x="540" y="559" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="600" fill="#FFFFFF" text-anchor="start">to Senior Tier-3 Engineers.</text>
+  <rect x="540" y="643" width="382" height="40" fill="#120C2C" stroke="#FF4D3D" stroke-width="2"/>
+  <text x="731" y="668" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="900" fill="#FF4D3D" text-anchor="middle">Strict SLA Guard</text>
+  <rect x="983" y="462" width="426" height="250" fill="#0B071E"/>
+  <rect x="976" y="455" width="426" height="250" fill="#1B1530" stroke="#0B071E" stroke-width="4"/>
+  <rect x="980" y="459" width="418" height="242" fill="none" stroke="#59C9F5" stroke-width="2" stroke-opacity="0.65"/>
+  <rect x="976" y="455" width="426" height="42" fill="#2B2060" stroke="#0B071E" stroke-width="4"/>
+  <rect x="980" y="459" width="418" height="4" fill="#59C9F5"/>
+  <text x="994" y="482" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="900" fill="#FFFFFF" letter-spacing="1">06 · SHIFT-AWARE</text>
+  <rect x="1306" y="468" width="84" height="24" fill="#0B071E"/>
+  <rect x="1304" y="466" width="84" height="24" fill="#59C9F5" stroke="#0B071E" stroke-width="2"/>
+  <text x="1346" y="482" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="12" font-weight="900" fill="#1B1530" text-anchor="middle" letter-spacing="1">06</text>
+  <text x="998" y="535" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="600" fill="#FFFFFF" text-anchor="start">Filters roster by active shift window</text>
+  <text x="998" y="559" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="600" fill="#FFFFFF" text-anchor="start">(Morning, Evening, Night Duty).</text>
+  <rect x="998" y="643" width="382" height="40" fill="#120C2C" stroke="#59C9F5" stroke-width="2"/>
+  <text x="1189" y="668" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="900" fill="#59C9F5" text-anchor="middle">Zero Off-Duty Leaks</text>
+  <rect x="1441" y="462" width="426" height="250" fill="#0B071E"/>
+  <rect x="1434" y="455" width="426" height="250" fill="#1B1530" stroke="#0B071E" stroke-width="4"/>
+  <rect x="1438" y="459" width="418" height="242" fill="none" stroke="#43D17A" stroke-width="2" stroke-opacity="0.65"/>
+  <rect x="1434" y="455" width="426" height="42" fill="#2B2060" stroke="#0B071E" stroke-width="4"/>
+  <rect x="1438" y="459" width="418" height="4" fill="#43D17A"/>
+  <text x="1452" y="482" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="900" fill="#FFFFFF" letter-spacing="1">07 · HUNGARIAN BATCH</text>
+  <rect x="1764" y="468" width="84" height="24" fill="#0B071E"/>
+  <rect x="1762" y="466" width="84" height="24" fill="#43D17A" stroke="#0B071E" stroke-width="2"/>
+  <text x="1804" y="482" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="12" font-weight="900" fill="#1B1530" text-anchor="middle" letter-spacing="1">07</text>
+  <text x="1456" y="535" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="600" fill="#FFFFFF" text-anchor="start">Optimal O(N^3) bipartite minimum-cost</text>
+  <text x="1456" y="559" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="600" fill="#FFFFFF" text-anchor="start">matching across queued ticket batches.</text>
+  <rect x="1456" y="643" width="382" height="40" fill="#120C2C" stroke="#43D17A" stroke-width="2"/>
+  <text x="1647" y="668" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="900" fill="#43D17A" text-anchor="middle">Global Cost Minimum</text>
+  <rect x="68" y="743" width="1800" height="285" fill="#0B071E"/>
+  <rect x="60" y="735" width="1800" height="285" fill="#120C2C" stroke="#0B071E" stroke-width="4"/>
+  <rect x="64" y="739" width="1792" height="277" fill="none" stroke="#59C9F5" stroke-width="2" stroke-opacity="0.65"/>
+  <rect x="60" y="735" width="1800" height="44" fill="#2B2060" stroke="#0B071E" stroke-width="4"/>
+  <rect x="64" y="739" width="1792" height="4" fill="#59C9F5"/>
+  <rect x="76" y="752" width="14" height="14" fill="#FF4D3D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="98" y="752" width="14" height="14" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="120" y="752" width="14" height="14" fill="#43D17A" stroke="#0B071E" stroke-width="2"/>
+  <text x="150" y="763" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="900" fill="#FFFFFF" letter-spacing="1">POLYMORPHIC STRATEGY INTERFACE // edu.campus.iitsm.assignment.domain.AssignmentStrategy</text>
+  <rect x="1656" y="749" width="192" height="24" fill="#0B071E"/>
+  <rect x="1654" y="747" width="192" height="24" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <text x="1750" y="763" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="12" font-weight="900" fill="#1B1530" text-anchor="middle" letter-spacing="1">GOF STRATEGY PATTERN</text>
+  <text x="104" y="818" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="17" font-weight="700" xml:space="preserve"><tspan fill="#59C9F5">public interface </tspan><tspan fill="#FFD84D">AssignmentStrategy </tspan><tspan fill="#FFFFFF">{</tspan></text>
+  <text x="104" y="854" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="17" font-weight="700" xml:space="preserve"><tspan fill="#FFD84D">    String </tspan><tspan fill="#7CE356">name</tspan><tspan fill="#9D8FD9">();  // e.g. &quot;ROUND_ROBIN&quot;, &quot;SKILL_MATCH&quot;, &quot;LEAST_LOADED&quot;, &quot;HUNGARIAN&quot;</tspan></text>
+  <text x="104" y="890" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="17" font-weight="700" xml:space="preserve"><tspan fill="#FFD84D">    Optional&lt;UUID&gt; </tspan><tspan fill="#7CE356">selectAssignee</tspan><tspan fill="#FFF3C4">(Incident.Snapshot incident, List&lt;Candidate&gt; pool);</tspan></text>
+  <text x="104" y="926" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="17" font-weight="700" xml:space="preserve"><tspan fill="#59C9F5">    default Map&lt;UUID, UUID&gt; </tspan><tspan fill="#7CE356">assignBatch</tspan><tspan fill="#FFF3C4">(List&lt;Incident.Snapshot&gt; batch, List&lt;Candidate&gt; pool) { ... }</tspan></text>
+  <text x="104" y="962" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="17" font-weight="700" xml:space="preserve"><tspan fill="#FFFFFF">}</tspan><tspan fill=""></tspan><tspan fill=""></tspan></text>
+  <!-- Subtle 16-Bit CRT Scanline Overlay -->
+  <rect x="24" y="24" width="1872" height="1032" fill="url(#crtScanlines)" pointer-events="none"/>
+</svg>

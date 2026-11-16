@@ -1,0 +1,9 @@
+{
+  "id": "act6_scene2",
+  "title": "Locality Sensitive Hash Embedding Port",
+  "file": "backend/src/main/java/edu/campus/iitsm/intelligence/infrastructure/embedding/HashEmbeddingAdapter.java",
+  "display_file": "backend/src/main/java/edu/campus/iitsm/intelligence/infrastructure/embedding/HashEmbeddingAdapter.java",
+  "lines": "15-45",
+  "exists": true,
+  "code": "  public float[] embed(String text) {\n    if (text == null || text.isBlank()) {\n      float[] zero = new float[DIMENSIONS];\n      zero[0] = 1.0f;\n      return zero;\n    }\n\n    float[] vec = new float[DIMENSIONS];\n    String normalized = text.toLowerCase().trim();\n    String[] tokens = normalized.split(\"\\\\s+\");\n\n    // Token trigrams and character n-grams to seed dimensions\n    for (int i = 0; i < tokens.length; i++) {\n      String token = tokens[i];\n      byte[] hash = sha256(token + \":\" + i);\n      for (int d = 0; d < DIMENSIONS; d++) {\n        int byteIdx = d % hash.length;\n        int val = hash[byteIdx] & 0xFF;\n        vec[d] += (float) (val - 128) / 128.0f;\n      }\n      if (i + 2 < tokens.length) {\n        String trigram = tokens[i] + \" \" + tokens[i + 1] + \" \" + tokens[i + 2];\n        byte[] thash = sha256(trigram);\n        for (int d = 0; d < DIMENSIONS; d++) {\n          int bidx = (d + 13) % thash.length;\n          int val = thash[bidx] & 0xFF;\n          vec[d] += 2.0f * ((float) (val - 128) / 128.0f);\n        }\n      }\n    }\n\n"
+}

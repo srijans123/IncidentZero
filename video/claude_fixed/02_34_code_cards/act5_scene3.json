@@ -1,0 +1,9 @@
+{
+  "id": "act5_scene3",
+  "title": "Service Topology DAG Schema & Relations",
+  "file": "backend/src/main/resources/db/migration/V001__reference_tables.sql",
+  "display_file": "backend/src/main/resources/db/migration/V001__reference_tables.sql",
+  "lines": "1-35",
+  "exists": true,
+  "code": "CREATE EXTENSION IF NOT EXISTS vector;\nCREATE EXTENSION IF NOT EXISTS pg_trgm;\n\nDO $$\nBEGIN\n  IF NOT EXISTS (SELECT 1 FROM pg_roles WHERE rolname = 'itsm_app') THEN\n    CREATE ROLE itsm_app WITH LOGIN PASSWORD 'itsm_dev_password';\n  END IF;\nEXCEPTION WHEN OTHERS THEN\n  RAISE NOTICE 'Managed NeonDB role skip';\nEND $$;\n\nCREATE TABLE team (\n  id uuid PRIMARY KEY,\n  code text NOT NULL UNIQUE,\n  name text NOT NULL UNIQUE,\n  created_at timestamptz NOT NULL DEFAULT now()\n);\n\nCREATE TABLE app_user (\n  id uuid PRIMARY KEY,\n  type text NOT NULL CHECK (type IN ('EMPLOYEE','TECHNICIAN','ADMINISTRATOR')),\n  employee_number text NOT NULL UNIQUE,\n  name text NOT NULL,\n  email text NOT NULL UNIQUE,\n  password_hash text NOT NULL,\n  department text,\n  location_block text,\n  admin_role text CHECK (admin_role IN ('SYSTEM_ADMIN','IT_MANAGER')),\n  active boolean NOT NULL DEFAULT true,\n  failed_logins integer NOT NULL DEFAULT 0,\n  locked_until timestamptz,\n  created_at timestamptz NOT NULL DEFAULT now(),\n  updated_at timestamptz NOT NULL DEFAULT now()\n);\n"
+}

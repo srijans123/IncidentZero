@@ -1,0 +1,160 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" shape-rendering="crispEdges" text-rendering="geometricPrecision">
+  <defs>
+    <!-- 24x24 16-Bit Pixel Checkerboard Dither Pattern (IncidentZero Signature Canvas) -->
+    <pattern id="pixelChecker" width="48" height="48" patternUnits="userSpaceOnUse">
+      <rect width="48" height="48" fill="#1E1646"/>
+      <rect x="0" y="0" width="24" height="24" fill="#261C58"/>
+      <rect x="24" y="24" width="24" height="24" fill="#261C58"/>
+    </pattern>
+    <!-- Subtle Pixel Grid Overlay -->
+    <pattern id="pixelGrid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#32266E" stroke-width="1" stroke-opacity="0.45"/>
+    </pattern>
+    <!-- CRT Scanline Overlay Pattern -->
+    <pattern id="crtScanlines" width="8" height="4" patternUnits="userSpaceOnUse">
+      <rect x="0" y="0" width="8" height="2" fill="#0B071E" fill-opacity="0.18"/>
+      <rect x="0" y="2" width="8" height="2" fill="none"/>
+    </pattern>
+  </defs>
+
+  <rect x="0" y="0" width="1920" height="1080" fill="url(#pixelChecker)"/>
+  <rect x="0" y="0" width="1920" height="1080" fill="url(#pixelGrid)"/>
+  <rect x="16" y="16" width="1888" height="1048" fill="none" stroke="#0B071E" stroke-width="8"/>
+  <rect x="24" y="24" width="1872" height="1032" fill="none" stroke="#7C5CFF" stroke-width="4"/>
+  <rect x="32" y="32" width="12" height="12" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="1876" y="32" width="12" height="12" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="32" y="1036" width="12" height="12" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="1876" y="1036" width="12" height="12" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="66" y="54" width="1800" height="108" fill="#0B071E"/>
+  <rect x="60" y="48" width="1800" height="108" fill="#1B1530" stroke="#0B071E" stroke-width="4"/>
+  <rect x="60" y="48" width="16" height="108" fill="#FFD84D" stroke="#0B071E" stroke-width="4"/>
+  <line x1="76" y1="54" x2="1856" y2="54" stroke="#FFD84D" stroke-width="2"/>
+  <text x="96" y="96" font-family="'Pixelify Sans', 'Silkscreen', 'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="30" font-weight="900" fill="#FFFFFF" letter-spacing="1.5">COMPREHENSIVE TECHNICAL SPECIFICATIONS &amp; REPORT</text>
+  <text x="96" y="132" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="700" fill="#59C9F5" letter-spacing="0.5">Key engineering milestones, benchmarks, and production-grade deliverables of Incident-Zero (v2.2)</text>
+  <rect x="1516" y="72" width="320" height="44" fill="#0B071E"/>
+  <rect x="1510" y="66" width="320" height="44" fill="#FFD84D" stroke="#0B071E" stroke-width="3"/>
+  <rect x="1524" y="80" width="16" height="16" fill="#43D17A" stroke="#0B071E" stroke-width="2"/>
+  <text x="1682" y="94" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="900" fill="#1B1530" text-anchor="middle" letter-spacing="1">GROUP 76 · SUMMARY</text>
+  <text x="1670" y="134" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="12" font-weight="700" fill="#D4CBF7" text-anchor="middle" letter-spacing="1">INCIDENT-ZERO (I-ITSM v2.2)</text>
+  <rect x="68" y="188" width="576" height="260" fill="#0B071E"/>
+  <rect x="60" y="180" width="576" height="260" fill="#1B1530" stroke="#0B071E" stroke-width="4"/>
+  <rect x="64" y="184" width="568" height="252" fill="none" stroke="#59C9F5" stroke-width="2" stroke-opacity="0.65"/>
+  <rect x="60" y="180" width="576" height="44" fill="#2B2060" stroke="#0B071E" stroke-width="4"/>
+  <rect x="64" y="184" width="568" height="4" fill="#59C9F5"/>
+  <text x="78" y="208" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="900" fill="#FFFFFF" letter-spacing="1">CORE AGGREGATE ENGINE</text>
+  <rect x="540" y="194" width="84" height="24" fill="#0B071E"/>
+  <rect x="538" y="192" width="84" height="24" fill="#59C9F5" stroke="#0B071E" stroke-width="2"/>
+  <text x="580" y="208" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="12" font-weight="900" fill="#1B1530" text-anchor="middle" letter-spacing="1">KPI 01</text>
+  <rect x="88" y="246" width="520" height="78" fill="#FFF8DC" stroke="#0B071E" stroke-width="4"/>
+  <text x="348" y="298" font-family="'Pixelify Sans', 'Silkscreen', 'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="42" font-weight="900" fill="#1B1530" text-anchor="middle" letter-spacing="1">11 FSM STATES</text>
+  <text x="88" y="364" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="800" fill="#FFFFFF">✓ 520,036 mathematically verified transitions</text>
+  <text x="88" y="400" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="800" fill="#59C9F5">✓ Zero framework dependencies in domain</text>
+  <rect x="680" y="188" width="576" height="260" fill="#0B071E"/>
+  <rect x="672" y="180" width="576" height="260" fill="#1B1530" stroke="#0B071E" stroke-width="4"/>
+  <rect x="676" y="184" width="568" height="252" fill="none" stroke="#43D17A" stroke-width="2" stroke-opacity="0.65"/>
+  <rect x="672" y="180" width="576" height="44" fill="#2B2060" stroke="#0B071E" stroke-width="4"/>
+  <rect x="676" y="184" width="568" height="4" fill="#43D17A"/>
+  <text x="690" y="208" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="900" fill="#FFFFFF" letter-spacing="1">SLA &amp; CHRONOMETER ENGINE</text>
+  <rect x="1152" y="194" width="84" height="24" fill="#0B071E"/>
+  <rect x="1150" y="192" width="84" height="24" fill="#43D17A" stroke="#0B071E" stroke-width="2"/>
+  <text x="1192" y="208" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="12" font-weight="900" fill="#1B1530" text-anchor="middle" letter-spacing="1">KPI 02</text>
+  <rect x="700" y="246" width="520" height="78" fill="#FFF8DC" stroke="#0B071E" stroke-width="4"/>
+  <text x="960" y="298" font-family="'Pixelify Sans', 'Silkscreen', 'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="42" font-weight="900" fill="#1B1530" text-anchor="middle" letter-spacing="1">&lt; 10s RESET</text>
+  <text x="700" y="364" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="800" fill="#FFFFFF">✓ Dual-clock paused calendar arithmetic</text>
+  <text x="700" y="400" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="800" fill="#43D17A">✓ Sticky breach enforcement across resets</text>
+  <rect x="1292" y="188" width="576" height="260" fill="#0B071E"/>
+  <rect x="1284" y="180" width="576" height="260" fill="#1B1530" stroke="#0B071E" stroke-width="4"/>
+  <rect x="1288" y="184" width="568" height="252" fill="none" stroke="#FFD84D" stroke-width="2" stroke-opacity="0.65"/>
+  <rect x="1284" y="180" width="576" height="44" fill="#2B2060" stroke="#0B071E" stroke-width="4"/>
+  <rect x="1288" y="184" width="568" height="4" fill="#FFD84D"/>
+  <text x="1302" y="208" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="900" fill="#FFFFFF" letter-spacing="1">AUDIT &amp; TOPOLOGY ENGINE</text>
+  <rect x="1764" y="194" width="84" height="24" fill="#0B071E"/>
+  <rect x="1762" y="192" width="84" height="24" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <text x="1804" y="208" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="12" font-weight="900" fill="#1B1530" text-anchor="middle" letter-spacing="1">KPI 03</text>
+  <rect x="1312" y="246" width="520" height="78" fill="#FFF8DC" stroke="#0B071E" stroke-width="4"/>
+  <text x="1572" y="298" font-family="'Pixelify Sans', 'Silkscreen', 'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="42" font-weight="900" fill="#1B1530" text-anchor="middle" letter-spacing="1">SHA-256 CHAIN</text>
+  <text x="1312" y="364" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="800" fill="#FFFFFF">✓ Tarjan O(V+E) cycle rejection guard</text>
+  <text x="1312" y="400" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="800" fill="#FFD84D">✓ Tamper-evident Merkle cryptographic ledger</text>
+  <rect x="68" y="483" width="1800" height="545" fill="#0B071E"/>
+  <rect x="60" y="475" width="1800" height="545" fill="#1B1530" stroke="#0B071E" stroke-width="4"/>
+  <rect x="64" y="479" width="1792" height="537" fill="none" stroke="#7C5CFF" stroke-width="2" stroke-opacity="0.65"/>
+  <rect x="60" y="475" width="1800" height="46" fill="#2B2060" stroke="#0B071E" stroke-width="4"/>
+  <rect x="64" y="479" width="1792" height="4" fill="#7C5CFF"/>
+  <rect x="76" y="493" width="14" height="14" fill="#FF4D3D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="98" y="493" width="14" height="14" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="120" y="493" width="14" height="14" fill="#43D17A" stroke="#0B071E" stroke-width="2"/>
+  <text x="150" y="504" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="900" fill="#FFFFFF" letter-spacing="1">ENTERPRISE SYSTEM ARCHITECTURE STACK &amp; TEAM ROSTER</text>
+  <rect x="1689" y="490" width="159" height="24" fill="#0B071E"/>
+  <rect x="1687" y="488" width="159" height="24" fill="#43D17A" stroke="#0B071E" stroke-width="2"/>
+  <text x="1766" y="504" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="12" font-weight="900" fill="#1B1530" text-anchor="middle" letter-spacing="1">PRODUCTION READY</text>
+  <rect x="98" y="554" width="414" height="444" fill="#0B071E"/>
+  <rect x="92" y="548" width="414" height="444" fill="#2B2060" stroke="#59C9F5" stroke-width="3"/>
+  <rect x="95" y="551" width="408" height="6" fill="#59C9F5"/>
+  <text x="116" y="594" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="18" font-weight="900" fill="#59C9F5">BACKEND &amp; RUNTIME</text>
+  <line x1="116" y1="612" x2="482" y2="612" stroke="#59C9F5" stroke-width="2" stroke-opacity="0.5"/>
+  <rect x="116" y="638" width="12" height="12" fill="#59C9F5" stroke="#0B071E" stroke-width="2"/>
+  <text x="140" y="650" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="700" fill="#FFFFFF">Java 21 / 22 Corretto LTS</text>
+  <rect x="116" y="692" width="12" height="12" fill="#59C9F5" stroke="#0B071E" stroke-width="2"/>
+  <text x="140" y="704" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="700" fill="#FFFFFF">Spring Boot 3.4 &amp; Modulith</text>
+  <rect x="116" y="746" width="12" height="12" fill="#59C9F5" stroke="#0B071E" stroke-width="2"/>
+  <text x="140" y="758" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="700" fill="#FFFFFF">Spring Web MVC &amp; SSE Sinks</text>
+  <rect x="116" y="800" width="12" height="12" fill="#59C9F5" stroke="#0B071E" stroke-width="2"/>
+  <text x="140" y="812" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="700" fill="#FFFFFF">Flyway SQL Schema Migrations</text>
+  <rect x="116" y="854" width="12" height="12" fill="#59C9F5" stroke="#0B071E" stroke-width="2"/>
+  <text x="140" y="866" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="700" fill="#FFFFFF">ArchUnit Rules (R1–R9)</text>
+  <rect x="116" y="908" width="12" height="12" fill="#59C9F5" stroke="#0B071E" stroke-width="2"/>
+  <text x="140" y="920" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="700" fill="#FFFFFF">RFC-7807 Problem Details</text>
+  <rect x="538" y="554" width="414" height="444" fill="#0B071E"/>
+  <rect x="532" y="548" width="414" height="444" fill="#2B2060" stroke="#43D17A" stroke-width="3"/>
+  <rect x="535" y="551" width="408" height="6" fill="#43D17A"/>
+  <text x="556" y="594" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="18" font-weight="900" fill="#43D17A">DATA &amp; ALGORITHMS</text>
+  <line x1="556" y1="612" x2="922" y2="612" stroke="#43D17A" stroke-width="2" stroke-opacity="0.5"/>
+  <rect x="556" y="638" width="12" height="12" fill="#43D17A" stroke="#0B071E" stroke-width="2"/>
+  <text x="580" y="650" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="700" fill="#FFFFFF">PostgreSQL 16 Serverless</text>
+  <rect x="556" y="692" width="12" height="12" fill="#43D17A" stroke="#0B071E" stroke-width="2"/>
+  <text x="580" y="704" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="700" fill="#FFFFFF">Tarjan SCC Cycle Engine</text>
+  <rect x="556" y="746" width="12" height="12" fill="#43D17A" stroke="#0B071E" stroke-width="2"/>
+  <text x="580" y="758" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="700" fill="#FFFFFF">HNSW &amp; ONNX Vector Search</text>
+  <rect x="556" y="800" width="12" height="12" fill="#43D17A" stroke="#0B071E" stroke-width="2"/>
+  <text x="580" y="812" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="700" fill="#FFFFFF">SHA-256 Merkle Audit Chain</text>
+  <rect x="556" y="854" width="12" height="12" fill="#43D17A" stroke="#0B071E" stroke-width="2"/>
+  <text x="580" y="866" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="700" fill="#FFFFFF">7 Pluggable Routing Rules</text>
+  <rect x="556" y="908" width="12" height="12" fill="#43D17A" stroke="#0B071E" stroke-width="2"/>
+  <text x="580" y="920" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="700" fill="#FFFFFF">Hungarian Bipartite Matching</text>
+  <rect x="978" y="554" width="414" height="444" fill="#0B071E"/>
+  <rect x="972" y="548" width="414" height="444" fill="#2B2060" stroke="#FFD84D" stroke-width="3"/>
+  <rect x="975" y="551" width="408" height="6" fill="#FFD84D"/>
+  <text x="996" y="594" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="18" font-weight="900" fill="#FFD84D">16-BIT PIXEL FRONTEND</text>
+  <line x1="996" y1="612" x2="1362" y2="612" stroke="#FFD84D" stroke-width="2" stroke-opacity="0.5"/>
+  <rect x="996" y="638" width="12" height="12" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <text x="1020" y="650" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="700" fill="#FFFFFF">React 19 &amp; Vite Build Tool</text>
+  <rect x="996" y="692" width="12" height="12" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <text x="1020" y="704" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="700" fill="#FFFFFF">Four Skies Dynamic Theme</text>
+  <rect x="996" y="746" width="12" height="12" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <text x="1020" y="758" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="700" fill="#FFFFFF">Live Campus Arcade Stage</text>
+  <rect x="996" y="800" width="12" height="12" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <text x="1020" y="812" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="700" fill="#FFFFFF">Realtime SSE Event Stream</text>
+  <rect x="996" y="854" width="12" height="12" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <text x="1020" y="866" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="700" fill="#FFFFFF">Pixelify Sans &amp; Silkscreen</text>
+  <rect x="996" y="908" width="12" height="12" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <text x="1020" y="920" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="700" fill="#FFFFFF">Playwright E2E Test Suite</text>
+  <rect x="1418" y="554" width="414" height="444" fill="#0B071E"/>
+  <rect x="1412" y="548" width="414" height="444" fill="#2B2060" stroke="#FF4D3D" stroke-width="3"/>
+  <rect x="1415" y="551" width="408" height="6" fill="#FF4D3D"/>
+  <text x="1436" y="594" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="18" font-weight="900" fill="#FF4D3D">GROUP 76 · BITS HYD</text>
+  <line x1="1436" y1="612" x2="1802" y2="612" stroke="#FF4D3D" stroke-width="2" stroke-opacity="0.5"/>
+  <rect x="1436" y="638" width="12" height="12" fill="#FF4D3D" stroke="#0B071E" stroke-width="2"/>
+  <text x="1460" y="650" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="700" fill="#FFFFFF">Srijan Shukla (2025A7PS0194H)</text>
+  <rect x="1436" y="692" width="12" height="12" fill="#FF4D3D" stroke="#0B071E" stroke-width="2"/>
+  <text x="1460" y="704" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="700" fill="#FFFFFF">Suhani Agarwal (2025ADPS0216H)</text>
+  <rect x="1436" y="746" width="12" height="12" fill="#FF4D3D" stroke="#0B071E" stroke-width="2"/>
+  <text x="1460" y="758" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="700" fill="#FFFFFF">Kartikey Negi (2025ADPS0129H)</text>
+  <rect x="1436" y="800" width="12" height="12" fill="#FF4D3D" stroke="#0B071E" stroke-width="2"/>
+  <text x="1460" y="812" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="700" fill="#FFFFFF">Hairsh Kumar (2025A7PS0910H)</text>
+  <rect x="1436" y="854" width="12" height="12" fill="#FF4D3D" stroke="#0B071E" stroke-width="2"/>
+  <text x="1460" y="866" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="700" fill="#FFFFFF">CS F213 / MAC F212 OOP</text>
+  <rect x="1436" y="908" width="12" height="12" fill="#FF4D3D" stroke="#0B071E" stroke-width="2"/>
+  <text x="1460" y="920" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="700" fill="#FFFFFF">BITS Pilani Hyderabad Campus</text>
+  <!-- Subtle 16-Bit CRT Scanline Overlay -->
+  <rect x="24" y="24" width="1872" height="1032" fill="url(#crtScanlines)" pointer-events="none"/>
+</svg>

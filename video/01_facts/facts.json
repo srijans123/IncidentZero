@@ -1,0 +1,180 @@
+{
+  "system_name": "Incident-Zero (I-ITSM v2.2)",
+  "institution": "BITS Pilani, Hyderabad Campus",
+  "course": "CS F213 / MAC F212 — Object-Oriented Programming (Semester-I, 2026-2027)",
+  "group_no": 76,
+  "pages_routes_per_role": {
+    "EMPLOYEE": {
+      "route": "/portal",
+      "views": [
+        "portal/home: submitted ticket tracker, open status count, quick search",
+        "portal/report: multi-step intake copilot, AI duplicate deflection & solution previews",
+        "portal/detail: full incident timeline, public work notes, satisfaction verification"
+      ]
+    },
+    "TECHNICIAN": {
+      "route": "/workbench",
+      "views": [
+        "workbench/home: queue management (tabs: ALL, MY, TRIAGE, P1, MAJOR), text/status/service filters",
+        "workbench/detail: War Room investigation, first-touch ACK, dual SLA countdown chronometers, pause/resume stasis, AI suggested resolutions RAG, RFC 9457 state transitions",
+        "workbench/major: Major Incident Commander, duplicate child cluster tree, root-cause guidance"
+      ]
+    },
+    "ADMINISTRATOR": {
+      "route": "/admin",
+      "views": [
+        "admin/overview: campus health metrics, active outages, SLA compliance rate",
+        "admin/topology: 19-service / 26-edge CMDB dependency DAG (@xyflow/react), Leaf-Safe RCA blast radius, 40-ticket storm drill trigger",
+        "admin/audit: cryptographic SHA-256 hash-chain verification tool, live SQL tamper injection demo, avalanche failure check",
+        "admin/config: SLA policy configuration matrix, assignment strategy runtime hot-swap"
+      ]
+    },
+    "CAMPUS_STAGE": {
+      "route": "/?tab=stage",
+      "views": [
+        "stage/CampusStage: interactive 4-landmark BPHC diorama (Auditorium, F-Block, Valmiki Bhavan, Central Library), bonus bug squashing, day/sunset/night/monsoon sky engine, live Web Audio API sound synthesis"
+      ]
+    },
+    "SPECS": {
+      "route": "/?tab=specs",
+      "views": [
+        "specs/SystemSpecs: hexagonal architecture verification, ArchUnit R1–R9 rules, 11 design patterns, 10 custom data structures"
+      ]
+    }
+  },
+  "api_endpoints": [
+    { "method": "POST", "path": "/api/v1/auth/login", "desc": "Better Auth / JWT authentication with role payload" },
+    { "method": "POST", "path": "/api/v1/auth/stream-ticket", "desc": "Generates 30-second single-use ticket for EventSource SSE" },
+    { "method": "POST", "path": "/api/v1/intake/tickets", "desc": "9-step synchronous intake pipeline execution" },
+    { "method": "GET", "path": "/api/v1/incidents", "desc": "Query incidents with filters: status, priority, serviceId, q, cursor, limit" },
+    { "method": "GET", "path": "/api/v1/incidents/{id}", "desc": "Detailed incident aggregate with audit entries and SLA clocks" },
+    { "method": "POST", "path": "/api/v1/incidents/{id}/acknowledge", "desc": "First-touch technician ACK (stops response SLA clock)" },
+    { "method": "POST", "path": "/api/v1/incidents/{id}/transition", "desc": "State transition dispatch (enforcing 22 legal transitions)" },
+    { "method": "POST", "path": "/api/v1/incidents/{id}/assign", "desc": "Assign incident to technician using active assignment strategy" },
+    { "method": "POST", "path": "/api/v1/incidents/{id}/resolve", "desc": "Document resolution details and stop resolution SLA clock" },
+    { "method": "POST", "path": "/api/v1/incidents/{id}/verify", "desc": "Reporter satisfaction confirmation (transitions to VERIFIED)" },
+    { "method": "POST", "path": "/api/v1/incidents/{id}/close", "desc": "Terminal closure after verification" },
+    { "method": "POST", "path": "/api/v1/incidents/{id}/reopen", "desc": "Reopen incident within 48-hour reopen window" },
+    { "method": "GET", "path": "/api/v1/knowledge/suggestions", "desc": "Hybrid RAG search with citation verification against past resolutions" },
+    { "method": "GET", "path": "/api/v1/stream/events", "desc": "Server-Sent Events stream with 512-event ring buffer and Last-Event-ID replay" },
+    { "method": "GET", "path": "/api/v1/admin/topology", "desc": "Returns 19-service / 26-edge campus service dependency DAG" },
+    { "method": "POST", "path": "/api/v1/admin/storm-drill", "desc": "Executes 40-ticket ERP LDAP pool exhaustion outage simulation" },
+    { "method": "GET", "path": "/api/v1/admin/audit/verify", "desc": "Performs SHA-256 hash-chain verification across all audit entries" },
+    { "method": "POST", "path": "/api/v1/admin/audit/tamper-demo", "desc": "Injects in-database tampering and proves cryptographic detection" }
+  ],
+  "entities": [
+    { "name": "Incident", "package": "edu.campus.iitsm.incident.domain.model.Incident", "desc": "Aggregate root with 14 private fields, defensive copy audit list, sealed state" },
+    { "name": "IncidentState", "package": "edu.campus.iitsm.incident.domain.IncidentState", "desc": "Sealed interface governing 11 concrete state implementations" },
+    { "name": "SlaTimer", "package": "edu.campus.iitsm.sla.domain.SlaTimer", "desc": "Dual pause-aware response and resolution chronometers with business calendar awareness" },
+    { "name": "BusinessCalendar", "package": "edu.campus.iitsm.catalog.domain.BusinessCalendar", "desc": "BPHC operating calendar (Mon-Fri 08:00–20:00 IST with holiday schedule)" },
+    { "name": "AppUser", "package": "edu.campus.iitsm.identity.infrastructure.persistence.AppUserJpaEntity", "desc": "Identity aggregate representing Employee, Technician, or Admin" },
+    { "name": "TechnicianProfile", "package": "edu.campus.iitsm.identity.infrastructure.persistence.TechnicianProfileJpaEntity", "desc": "Technician skills, tier, active incident load, and max capacity" },
+    { "name": "Service", "package": "edu.campus.iitsm.catalog.domain.Service", "desc": "Campus IT service with critical tier and SLA mapping" },
+    { "name": "AuditEntry", "package": "edu.campus.iitsm.audit.domain.AuditEntry", "desc": "Immutable ledger record holding prev_hash, payload, and entry_hash (SHA-256)" }
+  ],
+  "lifecycle_states": [
+    "NEW",
+    "CLASSIFIED",
+    "ASSIGNED",
+    "ACKNOWLEDGED",
+    "IN_PROGRESS",
+    "PENDING_USER",
+    "PENDING_VENDOR",
+    "RESOLVED",
+    "VERIFIED",
+    "CLOSED",
+    "REOPENED"
+  ],
+  "transition_matrix": {
+    "total_states": 11,
+    "legal_transitions": 22,
+    "blocked_transitions": 78,
+    "examples_blocked": [
+      "NEW -> CLOSED (blocked without intermediate investigation/resolution)",
+      "NEW -> RESOLVED (blocked without assignment and investigation)",
+      "IN_PROGRESS -> CLOSED (must transition through RESOLVED and VERIFIED)",
+      "CLOSED -> IN_PROGRESS (terminal state cannot be directly resumed)"
+    ]
+  },
+  "assignment_strategies": [
+    { "name": "RoundRobinStrategy", "file": "edu/campus/iitsm/assignment/application/strategy/RoundRobinStrategy.java", "type": "Fair rotation" },
+    { "name": "LeastLoadedStrategy", "file": "edu/campus/iitsm/assignment/application/strategy/LeastLoadedStrategy.java", "type": "Workload balancing" },
+    { "name": "SkillMatchStrategy", "file": "edu/campus/iitsm/assignment/application/strategy/SkillMatchStrategy.java", "type": "Capability matching" },
+    { "name": "ExperienceStrategy", "file": "edu/campus/iitsm/assignment/application/strategy/ExperienceStrategy.java", "type": "Seniority weighting" },
+    { "name": "PriorityAwareStrategy", "file": "edu/campus/iitsm/assignment/application/strategy/PriorityAwareStrategy.java", "type": "P1 critical escalation" },
+    { "name": "HybridWeightedStrategy", "file": "edu/campus/iitsm/assignment/application/strategy/HybridWeightedStrategy.java", "type": "Multi-criteria composite score" },
+    { "name": "HungarianBatchStrategy", "file": "edu/campus/iitsm/assignment/application/strategy/HungarianBatchStrategy.java", "type": "O(n^3) Kuhn-Munkres optimal bipartite matching" }
+  ],
+  "notification_channels": [
+    { "name": "EmailSmtpChannelAdapter", "file": "edu/campus/iitsm/notification/infrastructure/EmailSmtpChannelAdapter.java", "type": "SMTP / Email Dispatch" },
+    { "name": "InAppSseChannelAdapter", "file": "edu/campus/iitsm/notification/infrastructure/InAppSseChannelAdapter.java", "type": "Real-Time Browser SSE Push via InAppSseHub" }
+  ],
+  "intelligent_features": [
+    { "code": "A1", "name": "Typed Hybrid RRF Duplicate Detector", "file": "edu/campus/iitsm/intelligence/infrastructure/search/DuplicateDetectionAdapter.java", "desc": "Combines pg_trgm BM25 text match with pgvector cosine similarity using Reciprocal Rank Fusion" },
+    { "code": "A2", "name": "Categorization Cascade", "file": "edu/campus/iitsm/intelligence/infrastructure/classification/CategorizationAdapter.java", "desc": "Deterministic rule-based heuristics fallback to ONNX GBDT / local LLM classifier" },
+    { "code": "A3", "name": "Explainable Priority Engine", "file": "edu/campus/iitsm/incident/application/priority/ItilMatrixPriorityStrategy.java", "desc": "ITIL 3x3 Impact x Urgency matrix with explicit additive campus modifiers" },
+    { "code": "A4", "name": "Smart Technician Recommender & Kuhn-Munkres Hungarian Batch Assigner", "file": "edu/campus/iitsm/assignment/domain/HungarianBatchAssigner.java", "desc": "Kuhn-Munkres dual potential optimization proving 61.5% lower cost than greedy" },
+    { "code": "A5", "name": "In-Process ONNX SLA Breach Risk Predictor", "file": "edu/campus/iitsm/intelligence/infrastructure/prediction/SlaBreachPredictorAdapter.java", "desc": "Calibrated hazard regression predicting probability of SLA violation before deadline" },
+    { "code": "A6", "name": "Case-Based RAG with Citation Verifier", "file": "edu/campus/iitsm/intelligence/infrastructure/rag/ResolutionRagAdapter.java", "desc": "Retrieves verified resolutions from historical incidents with strict source citation guarantees" },
+    { "code": "B2", "name": "Leaf-Safe CMDB Graph RCA Ranker + 40-Ticket Storm Simulator", "file": "edu/campus/iitsm/intelligence/infrastructure/rca/RcaRankerAdapter.java", "desc": "19-service / 26-edge campus dependency DAG analyzing topology via Tarjan SCC and reverse Dijkstra walk" },
+    { "code": "B3", "name": "Automated Post-Incident Review (PIR) Drafter", "file": "edu/campus/iitsm/intelligence/infrastructure/pir/PirDrafterAdapter.java", "desc": "Generates structured post-mortem markdown from audit log events" },
+    { "code": "B4", "name": "Natural Language Search Query Parser", "file": "edu/campus/iitsm/intelligence/infrastructure/search/NlSearchAdapter.java", "desc": "Converts plain English queries into structured boolean filter ASTs" }
+  ],
+  "design_patterns": [
+    { "pattern": "State Pattern", "class": "IncidentState", "file": "edu/campus/iitsm/incident/domain/IncidentState.java", "desc": "11 sealed classes enforcing valid transitions and SLA clock state" },
+    { "pattern": "Strategy Pattern (Priority)", "class": "PriorityStrategy", "file": "edu/campus/iitsm/incident/application/priority/PriorityStrategy.java", "desc": "ItilMatrix, ProductScore, WeightedScore interchangeable algorithms" },
+    { "pattern": "Strategy Pattern (Assignment)", "class": "AssignmentStrategy", "file": "edu/campus/iitsm/assignment/domain/AssignmentStrategy.java", "desc": "7 distinct routing strategies hot-swappable at runtime" },
+    { "pattern": "Observer Pattern", "class": "DomainEvent & InTxListeners", "file": "edu/campus/iitsm/audit/infrastructure/AuditLedgerInTxListener.java", "desc": "Transactional event listeners reacting to incident creation, transition, breach" },
+    { "pattern": "Factory Pattern", "class": "IncidentFactory", "file": "edu/campus/iitsm/incident/domain/IncidentFactory.java", "desc": "Encapsulates initial state wiring and UUID generation" },
+    { "pattern": "Builder Pattern", "class": "Incident.Builder", "file": "edu/campus/iitsm/incident/domain/model/Incident.java", "desc": "Staged type-safe construction preventing invalid partial initialization" },
+    { "pattern": "Adapter Pattern", "class": "JpaIncidentRepositoryAdapter, EmailSmtpChannelAdapter", "file": "edu/campus/iitsm/incident/infrastructure/persistence/JpaIncidentRepositoryAdapter.java", "desc": "Hexagonal ports adapted to JPA, SMTP, SSE, and ONNX" },
+    { "pattern": "Repository Pattern", "class": "IncidentRepositoryPort", "file": "edu/campus/iitsm/incident/domain/IncidentRepositoryPort.java", "desc": "Decouples domain aggregate from persistence infrastructure" },
+    { "pattern": "Chain of Responsibility", "class": "IntakePipeline & SlaEscalationChain", "file": "edu/campus/iitsm/intake/application/IntakePipeline.java", "desc": "9-step synchronous intake pipeline and 5-stage SLA escalation chain" },
+    { "pattern": "Decorator Pattern", "class": "LanguageModelPort Decorators", "file": "edu/campus/iitsm/intelligence/infrastructure/llm/LanguageModelGatewayAdapter.java", "desc": "8-layer decorator pipeline for PII redaction, prompt guard, circuit breaker" },
+    { "pattern": "Specification Pattern", "class": "IncidentSpecification", "file": "edu/campus/iitsm/incident/domain/IncidentSpecification.java", "desc": "Composable business predicates for filtering and validation" },
+    { "pattern": "Template Method Pattern", "class": "AbstractReportExporter", "file": "edu/campus/iitsm/reporting/domain/AbstractReportExporter.java", "desc": "Invariant export skeleton: fetch -> redact -> render -> SHA-256 sign" },
+    { "pattern": "Composite Pattern", "class": "ServiceDependencyGraph", "file": "edu/campus/iitsm/intelligence/domain/ServiceDependencyGraph.java", "desc": "Campus service topology modeled as hierarchical DAG" }
+  ],
+  "custom_exceptions": [
+    { "name": "InvalidCredentialsException", "code": "ITSM-4010", "status": 401 },
+    { "name": "UnauthorizedOperationException", "code": "ITSM-4030", "status": 403 },
+    { "name": "IncidentNotFoundException", "code": "ITSM-4040", "status": 404 },
+    { "name": "ServiceNotFoundException", "code": "ITSM-4044", "status": 404 },
+    { "name": "InvalidIncidentPayloadException", "code": "ITSM-4001", "status": 400 },
+    { "name": "InvalidStateTransitionException", "code": "ITSM-4090", "status": 409 },
+    { "name": "PersistenceConcurrencyException", "code": "ITSM-4091", "status": 409 },
+    { "name": "DuplicateIncidentDetectedException", "code": "ITSM-4092", "status": 409 },
+    { "name": "MissingSlaConfigurationException", "code": "ITSM-4220", "status": 422 },
+    { "name": "TechnicianWorkloadExceededException", "code": "ITSM-4221", "status": 422 },
+    { "name": "TechnicianUnavailableException", "code": "ITSM-4222", "status": 422 },
+    { "name": "RateLimitExceededException", "code": "ITSM-4290", "status": 429 },
+    { "name": "ExternalGatewayFailureException", "code": "ITSM-5020", "status": 502 },
+    { "name": "PersistenceFailureException", "code": "ITSM-5030", "status": 503 },
+    { "name": "AuditChainTamperException", "code": "ITSM-5090", "status": 500 }
+  ],
+  "auth_method": "Better Auth integration with signed JWT bearer tokens, role claims (EMPLOYEE, TECHNICIAN, ADMINISTRATOR), and 30s single-use SSE stream tickets (POST /api/v1/auth/stream-ticket)",
+  "db_engine_and_schema": "PostgreSQL 16 + pgvector 0.8.0 + pg_trgm + Flyway migrations (V001__reference_tables.sql, V002__incident_core.sql, V003__audit_timers_ai.sql, R__campus_seed.sql with 19 services, 26 dependency edges, 16 SLA policies, 8 demo users)",
+  "test_files_and_count": {
+    "total_test_classes": 14,
+    "total_unit_and_integration_tests": 41,
+    "formal_matrix_transition_checks": 520036,
+    "architecture_rules": 9,
+    "test_suite_files": [
+      "ArchitectureTest.java",
+      "AuthenticationTest.java",
+      "DatabaseMigrationTest.java",
+      "DuplicateDetectionTest.java",
+      "IntakePipelineTest.java",
+      "PersistenceAndListenersTest.java",
+      "PriorityStrategyTest.java",
+      "SlaClockAndPolicyTest.java",
+      "StrategyAndAssignmentTest.java",
+      "AiGatewayTest.java",
+      "CaseBasedRagTest.java",
+      "AuditLedgerTamperTest.java",
+      "ApiControllerAndProblemDetailsTest.java",
+      "DemoWorkflowsEndToEndTest.java"
+    ]
+  }
+}
+

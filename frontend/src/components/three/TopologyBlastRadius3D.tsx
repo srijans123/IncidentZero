@@ -1,5 +1,6 @@
 import React, { useRef, useMemo, useState } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
+import { Safe3D } from './Safe3D';
 import { OrbitControls, Float, Text } from '@react-three/drei';
 import * as THREE from 'three';
 import { Network, ShieldAlert, Cpu, Radio, Sparkles } from 'lucide-react';
@@ -221,6 +222,7 @@ export const TopologyBlastRadius3D: React.FC<TopologyBlastRadius3DProps> = ({
 
   return (
     <div className={`relative w-full rounded-lg overflow-hidden border border-white/[0.08] bg-[#090A0D] ${className}`}>
+      <Safe3D>
       <Canvas
         camera={{ position: [0, 8.5, 9.5], fov: 45 }}
         className="w-full h-full cursor-grab active:cursor-grabbing"
@@ -281,6 +283,7 @@ export const TopologyBlastRadius3D: React.FC<TopologyBlastRadius3DProps> = ({
           minPolarAngle={Math.PI / 6}
         />
       </Canvas>
+      </Safe3D>
 
       {/* Top Left Header */}
       <div className="absolute top-3 left-3 flex items-center gap-2 pointer-events-none">

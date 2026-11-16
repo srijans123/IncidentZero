@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 992" width="1920" height="992">
+<!-- Terminal: typed command, real saved output, the line being spoken about in yellow, blinking caret
+     REFERENCE PICTURE ONLY. The video does not use this file: kit/stagekit.js draws the live version in the browser. -->
+<rect width="1920" height="992" fill="#6B5F4E"/>
+<rect x="222" y="152" width="1500" height="700" fill="#000" opacity=".55"/><rect x="210" y="140" width="1500" height="700" fill="#0B0A14" stroke="#1B1530" stroke-width="4"/><rect x="212" y="142" width="1496" height="42" fill="#1B1530"/><rect x="228" y="156" width="14" height="14" fill="#FF4D3D"/><rect x="254" y="156" width="14" height="14" fill="#FFD84D"/><rect x="280" y="156" width="14" height="14" fill="#43D17A"/><text x="306" y="170" font-family="JetBrains Mono, Cascadia Code, Consolas, monospace" font-size="18" font-weight="700" fill="#FFF8DC">Terminal — IncidentZero</text>
+<text x="236" y="232" font-family="JetBrains Mono, Cascadia Code, Consolas, monospace" font-size="21" xml:space="preserve"><tspan fill="#43D17A" font-weight="800">$ </tspan><tspan fill="#fff">bash scripts/verify-m1.sh</tspan></text>
+<text x="236" y="264" font-family="JetBrains Mono, Cascadia Code, Consolas, monospace" font-size="21" fill="#C8F5D2" xml:space="preserve">ok   transition table (11 states)</text>
+<text x="236" y="296" font-family="JetBrains Mono, Cascadia Code, Consolas, monospace" font-size="21" fill="#C8F5D2" xml:space="preserve">ok   illegal moves rejected</text>
+<rect x="232" y="306" width="790" height="30" fill="#FFE14D"/><text x="236" y="328" font-family="JetBrains Mono, Cascadia Code, Consolas, monospace" font-size="21" fill="#1B1530">SUMMARY: 24 passed, 0 failed (554590 transitions verified)</text><text x="236" y="360" font-family="JetBrains Mono, Cascadia Code, Consolas, monospace" font-size="21" fill="#43D17A" font-weight="800">$ </text><rect x="262" y="340" width="12" height="24" fill="#C8F5D2"/>
+</svg>

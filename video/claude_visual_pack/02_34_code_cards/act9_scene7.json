@@ -1,0 +1,9 @@
+{
+  "id": "act9_scene7",
+  "title": "RFC-7807 Standard Error Details",
+  "file": "backend/src/main/java/edu/campus/iitsm/shared/infrastructure/web/GlobalProblemDetailsHandler.java",
+  "display_file": "backend/src/main/java/edu/campus/iitsm/shared/infrastructure/web/GlobalProblemDetailsHandler.java",
+  "lines": "1-35",
+  "exists": true,
+  "code": "package edu.campus.iitsm.shared.infrastructure.web;\n\nimport edu.campus.iitsm.shared.domain.error.InvalidStateTransitionException;\nimport edu.campus.iitsm.shared.domain.error.ItsmException;\nimport jakarta.servlet.http.HttpServletRequest;\nimport org.slf4j.Logger;\nimport org.slf4j.LoggerFactory;\nimport org.springframework.http.HttpStatus;\nimport org.springframework.http.ProblemDetail;\nimport org.springframework.http.ResponseEntity;\nimport org.springframework.web.bind.MethodArgumentNotValidException;\nimport org.springframework.web.bind.annotation.ExceptionHandler;\nimport org.springframework.web.bind.annotation.RestControllerAdvice;\n\nimport java.net.URI;\nimport java.util.UUID;\n\n@RestControllerAdvice\npublic class GlobalProblemDetailsHandler {\n  private static final Logger log = LoggerFactory.getLogger(GlobalProblemDetailsHandler.class);\n  private static final String BASE_URI = \"https://incident-zero.campus.edu/errors/\";\n\n  @ExceptionHandler(ItsmException.class)\n  public ResponseEntity<ProblemDetail> handleItsmException(ItsmException ex, HttpServletRequest request) {\n    HttpStatus status = HttpStatus.resolve(ex.httpStatus());\n    if (status == null) {\n      status = HttpStatus.INTERNAL_SERVER_ERROR;\n    }\n\n    ProblemDetail problem = ProblemDetail.forStatusAndDetail(status, ex.getMessage());\n    problem.setType(URI.create(BASE_URI + ex.code()));\n    problem.setTitle(resolveTitle(ex.code()));\n    problem.setInstance(URI.create(request.getRequestURI()));\n\n    String traceId = UUID.randomUUID().toString().replace(\"-\", \"\");\n"
+}

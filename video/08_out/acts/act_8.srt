@@ -1,0 +1,80 @@
+1
+00:00:00,000 --> 00:00:06,925
+A premier objective of this course project was translating classical
+
+2
+00:00:06,925 --> 00:00:11,080
+object-oriented design principles into enterprise reality.
+
+3
+00:00:11,600 --> 00:00:17,082
+The Strategy Pattern abstracts incident assignment algorithms, allowing runtime polymorphism
+
+4
+00:00:17,082 --> 00:00:20,920
+between Round Robin and Least Loaded routing.
+
+5
+00:00:21,433 --> 00:00:27,208
+The State Pattern encapsulates all eleven lifecycle states, isolating valid
+
+6
+00:00:27,208 --> 00:00:30,673
+transitions and eliminating fragile conditional branching.
+
+7
+00:00:31,200 --> 00:00:36,965
+The Observer Pattern, powered by Spring Modulith event publication, decouples
+
+8
+00:00:36,965 --> 00:00:41,000
+SLA timers, audit logging, and email notifications.
+
+9
+00:00:41,500 --> 00:00:47,875
+The Builder Pattern enforces strict entity construction invariants, calculating initial
+
+10
+00:00:47,875 --> 00:00:51,700
+SLA deadlines and priority ratings atomically.
+
+11
+00:00:52,200 --> 00:00:58,175
+The Decorator Pattern layers multi-channel notifications, wrapping base email alerts
+
+12
+00:00:58,175 --> 00:01:01,760
+with in-app notifications and SMS broadcasts.
+
+13
+00:01:02,267 --> 00:01:07,667
+The Adapter Pattern bridges domain repositories with Spring Data JPA
+
+14
+00:01:07,667 --> 00:01:11,987
+entities, protecting domain logic from database schema changes.
+
+15
+00:01:12,500 --> 00:01:18,414
+The Facade Pattern provides clean, high-level interfaces for controllers, coordinating
+
+16
+00:01:18,414 --> 00:01:20,780
+complex multi-module transactions seamlessly.
+
+17
+00:01:21,300 --> 00:01:25,700
+The Template Method Pattern governs calendar calculations, providing a rigid
+
+18
+00:01:25,700 --> 00:01:29,660
+skeleton for holiday checks while allowing variable shift windows.
+
+19
+00:01:30,167 --> 00:01:35,788
+Together, these eleven patterns exemplify SOLID principles, yielding a codebase
+
+20
+00:01:35,788 --> 00:01:40,847
+that is deeply modular, extensible, and easy to maintain.
+

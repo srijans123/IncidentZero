@@ -70,3 +70,7 @@ video_v3/08_out/contact_sheet/
 
 test-results/
 demo/
+
+# round 2 video build output
+video_v4/out/
+.pages-build/

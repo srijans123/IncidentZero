@@ -27,6 +27,7 @@ import {
 import { StatusBadge } from '../../components/ui/StatusBadge';
 import { ActionButton } from '../../components/ui/ActionButton';
 import { HashPill } from '../../components/ui/HashPill';
+import { SlaPriorityPanel } from '../../components/SlaPriorityPanel';
 import { SlaChronometerAndLedger3D } from '../../components/three/SlaChronometerAndLedger3D';
 
 interface WorkbenchDetailProps {
@@ -63,7 +64,6 @@ export const WorkbenchDetail: React.FC<WorkbenchDetailProps> = ({ incidentId, on
 
   // Modals state
   const [showResolveModal, setShowResolveModal] = useState(false);
-  (window as any).__setShowResolveModal = setShowResolveModal;
   const [resolveCode, setResolveCode] = useState('FIXED');
   const [resolveNotes, setResolveNotes] = useState('Restarted LDAP connection pool and purged exhausted sessions.');
   const [resolveRootCause, setResolveRootCause] = useState('LDAP_POOL');
@@ -73,8 +73,6 @@ export const WorkbenchDetail: React.FC<WorkbenchDetailProps> = ({ incidentId, on
   const [reassignReason, setReassignReason] = useState('Escalating to specialist team for deep diagnosis.');
 
   const [showRequestInfoModal, setShowRequestInfoModal] = useState(false);
-  (window as any).__showRequestInfoModal = showRequestInfoModal;
-  (window as any).__setShowRequestInfoModal = setShowRequestInfoModal;
   const [requestQuestion, setRequestQuestion] = useState('Please attach the exact console error log and client timestamp.');
 
   const [showCancelModal, setShowCancelModal] = useState(false);
@@ -358,7 +356,6 @@ export const WorkbenchDetail: React.FC<WorkbenchDetailProps> = ({ incidentId, on
               variant="secondary"
               icon={<Pause className="w-4 h-4" />}
               onClick={() => {
-                console.log('[DEBUG onClick Request User Info]');
                 setShowRequestInfoModal(true);
               }}
             >
@@ -504,56 +501,8 @@ export const WorkbenchDetail: React.FC<WorkbenchDetailProps> = ({ incidentId, on
 
         {/* Right Column (5 cols): AI Copilot & Recommendations */}
         <div className="lg:col-span-5 space-y-4">
-          {/* SLA Breach Risk Indicator */}
-          <div className="pixel-card space-y-2">
-            <div className="flex items-center justify-between font-mono text-xs font-bold">
-              <span className="text-[#7C5CFF] flex items-center gap-1.5">
-                <Sparkles className="w-4 h-4" />
-                <span>ONNX SLA BREACH PREDICTOR</span>
-              </span>
-              <span className={isBreached ? 'text-[#FF4D3D]' : 'text-[#43D17A]'}>
-                Risk: {isBreached ? '98%' : '14%'}
-              </span>
-            </div>
-            <div className="w-full bg-[#1B1530] h-2.5 border-2 border-[#1B1530] overflow-hidden">
-              <div
-                className={`h-full transition-all ${
-                  isBreached ? 'w-[98%] bg-[#FF4D3D]' : 'w-[14%] bg-[#43D17A]'
-                }`}
-              />
-            </div>
-            <p className="text-xs text-[var(--soft)] font-medium">
-              Calibrated ONNX model predicting breach likelihood given current queue load and campus service complexity.
-            </p>
-          </div>
-
-          {/* Triage & Priority Rationale */}
-          <div className="pixel-card space-y-2">
-            <span className="text-xs font-mono font-bold text-[#59C9F5] flex items-center gap-1.5">
-              <Cpu className="w-4 h-4" />
-              <span>TRIAGE & PRIORITY RATIONALE</span>
-            </span>
-            <div className="p-3 bg-[var(--bg)] border-2 border-[var(--line)] text-xs space-y-1.5 font-mono">
-              <div className="flex items-center justify-between">
-                <span className="text-[var(--soft)]">Impact / Urgency:</span>
-                <span className="font-bold text-[var(--fg)]">{incident.impact} / {incident.urgency}</span>
-              </div>
-              <div className="flex items-center justify-between">
-                <span className="text-[var(--soft)]">Assigned Priority:</span>
-                <span className="font-bold text-[var(--fg)]">{incident.priority}</span>
-              </div>
-              {(incident.priorityExplanation as any)?.examBump && (
-                <div className="chip y text-[10px] mt-1">
-                  EXAM WINDOW BUMP (+1)
-                </div>
-              )}
-              {(incident.priorityExplanation as any)?.rule && (
-                <p className="text-[10px] text-[var(--soft)] pt-1 border-t border-[var(--line)]/40">
-                  Rule: {(incident.priorityExplanation as any).rule}
-                </p>
-              )}
-            </div>
-          </div>
+          {/* Priority steps and SLA targets, straight from the backend */}
+          <SlaPriorityPanel incident={incident} />
 
           {/* Dispatch & Assignment Rationale */}
           <div className="pixel-card space-y-2">

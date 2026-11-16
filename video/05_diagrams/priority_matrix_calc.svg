@@ -1,0 +1,150 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" shape-rendering="crispEdges" text-rendering="geometricPrecision">
+  <defs>
+    <!-- 24x24 16-Bit Pixel Checkerboard Dither Pattern (IncidentZero Signature Canvas) -->
+    <pattern id="pixelChecker" width="48" height="48" patternUnits="userSpaceOnUse">
+      <rect width="48" height="48" fill="#1E1646"/>
+      <rect x="0" y="0" width="24" height="24" fill="#261C58"/>
+      <rect x="24" y="24" width="24" height="24" fill="#261C58"/>
+    </pattern>
+    <!-- Subtle Pixel Grid Overlay -->
+    <pattern id="pixelGrid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#32266E" stroke-width="1" stroke-opacity="0.45"/>
+    </pattern>
+    <!-- CRT Scanline Overlay Pattern -->
+    <pattern id="crtScanlines" width="8" height="4" patternUnits="userSpaceOnUse">
+      <rect x="0" y="0" width="8" height="2" fill="#0B071E" fill-opacity="0.18"/>
+      <rect x="0" y="2" width="8" height="2" fill="none"/>
+    </pattern>
+  </defs>
+
+  <rect x="0" y="0" width="1920" height="1080" fill="url(#pixelChecker)"/>
+  <rect x="0" y="0" width="1920" height="1080" fill="url(#pixelGrid)"/>
+  <rect x="16" y="16" width="1888" height="1048" fill="none" stroke="#0B071E" stroke-width="8"/>
+  <rect x="24" y="24" width="1872" height="1032" fill="none" stroke="#7C5CFF" stroke-width="4"/>
+  <rect x="32" y="32" width="12" height="12" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="1876" y="32" width="12" height="12" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="32" y="1036" width="12" height="12" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="1876" y="1036" width="12" height="12" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="66" y="54" width="1800" height="108" fill="#0B071E"/>
+  <rect x="60" y="48" width="1800" height="108" fill="#1B1530" stroke="#0B071E" stroke-width="4"/>
+  <rect x="60" y="48" width="16" height="108" fill="#FFD84D" stroke="#0B071E" stroke-width="4"/>
+  <line x1="76" y1="54" x2="1856" y2="54" stroke="#FFD84D" stroke-width="2"/>
+  <text x="96" y="96" font-family="'Pixelify Sans', 'Silkscreen', 'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="30" font-weight="900" fill="#FFFFFF" letter-spacing="1.5">3×3 DETERMINISTIC PRIORITY CALCULATION MATRIX</text>
+  <text x="96" y="132" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="700" fill="#59C9F5" letter-spacing="0.5">ITIL-compliant matrix mapping Impact and Urgency to deterministic incident priority bands</text>
+  <rect x="1516" y="72" width="320" height="44" fill="#0B071E"/>
+  <rect x="1510" y="66" width="320" height="44" fill="#FFD84D" stroke="#0B071E" stroke-width="3"/>
+  <rect x="1524" y="80" width="16" height="16" fill="#43D17A" stroke="#0B071E" stroke-width="2"/>
+  <text x="1682" y="94" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="900" fill="#1B1530" text-anchor="middle" letter-spacing="1">GROUP 76 · PRIORITY SPEC</text>
+  <text x="1670" y="134" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="12" font-weight="700" fill="#D4CBF7" text-anchor="middle" letter-spacing="1">INCIDENT-ZERO (I-ITSM v2.2)</text>
+  <rect x="68" y="188" width="1800" height="840" fill="#0B071E"/>
+  <rect x="60" y="180" width="1800" height="840" fill="#1B1530" stroke="#0B071E" stroke-width="4"/>
+  <rect x="64" y="184" width="1792" height="832" fill="none" stroke="#FFD84D" stroke-width="2" stroke-opacity="0.65"/>
+  <rect x="60" y="180" width="1800" height="46" fill="#2B2060" stroke="#0B071E" stroke-width="4"/>
+  <rect x="64" y="184" width="1792" height="4" fill="#FFD84D"/>
+  <rect x="76" y="198" width="14" height="14" fill="#FF4D3D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="98" y="198" width="14" height="14" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="120" y="198" width="14" height="14" fill="#43D17A" stroke="#0B071E" stroke-width="2"/>
+  <text x="150" y="209" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="900" fill="#FFFFFF" letter-spacing="1">PRIORITY.JAVA // IMPACT × URGENCY DETERMINISTIC LOOKUP TABLE</text>
+  <rect x="1689" y="195" width="159" height="24" fill="#0B071E"/>
+  <rect x="1687" y="193" width="159" height="24" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <text x="1766" y="209" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="12" font-weight="900" fill="#1B1530" text-anchor="middle" letter-spacing="1">PURE DOMAIN ENUM</text>
+  <rect x="465" y="253" width="426" height="86" fill="#0B071E"/>
+  <rect x="460" y="248" width="426" height="86" fill="#2B2060" stroke="#FF4D3D" stroke-width="3"/>
+  <rect x="463" y="251" width="420" height="6" fill="#FF4D3D"/>
+  <text x="673" y="286" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="18" font-weight="900" fill="#FF4D3D" text-anchor="middle">URGENCY 3 · HIGH</text>
+  <text x="673" y="314" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="13" font-weight="700" fill="#FFF3C4" text-anchor="middle">Immediate academic / exam halt</text>
+  <rect x="915" y="253" width="426" height="86" fill="#0B071E"/>
+  <rect x="910" y="248" width="426" height="86" fill="#2B2060" stroke="#FFD84D" stroke-width="3"/>
+  <rect x="913" y="251" width="420" height="6" fill="#FFD84D"/>
+  <text x="1123" y="286" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="18" font-weight="900" fill="#FFD84D" text-anchor="middle">URGENCY 2 · MEDIUM</text>
+  <text x="1123" y="314" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="13" font-weight="700" fill="#FFF3C4" text-anchor="middle">Degraded service, workaround exists</text>
+  <rect x="1365" y="253" width="426" height="86" fill="#0B071E"/>
+  <rect x="1360" y="248" width="426" height="86" fill="#2B2060" stroke="#59C9F5" stroke-width="3"/>
+  <rect x="1363" y="251" width="420" height="6" fill="#59C9F5"/>
+  <text x="1573" y="286" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="18" font-weight="900" fill="#59C9F5" text-anchor="middle">URGENCY 1 · LOW</text>
+  <text x="1573" y="314" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="13" font-weight="700" fill="#FFF3C4" text-anchor="middle">Minor inconvenience / scheduled request</text>
+  <rect x="101" y="253" width="340" height="86" fill="#0B071E"/>
+  <rect x="96" y="248" width="340" height="86" fill="#FFF8DC" stroke="#0B071E" stroke-width="3"/>
+  <text x="266" y="285" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="900" fill="#1B1530" text-anchor="middle">IMPACT ↓  \  URGENCY →</text>
+  <text x="266" y="314" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="13" font-weight="800" fill="#4A3F6B" text-anchor="middle">Priority.calculate(i, u)</text>
+  <rect x="102" y="364" width="340" height="186" fill="#0B071E"/>
+  <rect x="96" y="358" width="340" height="186" fill="#2B2060" stroke="#FF4D3D" stroke-width="3"/>
+  <rect x="99" y="361" width="334" height="6" fill="#FF4D3D"/>
+  <text x="266" y="438" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="20" font-weight="900" fill="#FF4D3D" text-anchor="middle">IMPACT 3 · HIGH</text>
+  <text x="266" y="476" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="700" fill="#FFFFFF" text-anchor="middle">Whole campus / Bhavan offline</text>
+  <rect x="466" y="364" width="426" height="186" fill="#0B071E"/>
+  <rect x="460" y="358" width="426" height="186" fill="#15102B" stroke="#FF4D3D" stroke-width="3.5"/>
+  <rect x="463.5" y="361.5" width="419.0" height="6" fill="#FF4D3D"/>
+  <rect x="484" y="382" width="230" height="44" fill="#FF4D3D" stroke="#0B071E" stroke-width="3"/>
+  <text x="599" y="411" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="20" font-weight="900" fill="#1B1530" text-anchor="middle">P1 · CRITICAL</text>
+  <text x="484" y="462" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="17" font-weight="800" fill="#FFFFFF">Ack: 15m · Resolve: 1h</text>
+  <text x="484" y="500" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="700" fill="#FF4D3D">24x7 Continuous · Auto-SMS Pager</text>
+  <rect x="916" y="364" width="426" height="186" fill="#0B071E"/>
+  <rect x="910" y="358" width="426" height="186" fill="#15102B" stroke="#FFD84D" stroke-width="3.5"/>
+  <rect x="913.5" y="361.5" width="419.0" height="6" fill="#FFD84D"/>
+  <rect x="934" y="382" width="230" height="44" fill="#FFD84D" stroke="#0B071E" stroke-width="3"/>
+  <text x="1049" y="411" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="20" font-weight="900" fill="#1B1530" text-anchor="middle">P2 · HIGH</text>
+  <text x="934" y="462" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="17" font-weight="800" fill="#FFFFFF">Ack: 30m · Resolve: 4h</text>
+  <text x="934" y="500" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="700" fill="#FFD84D">Senior Tech Dispatch Queue</text>
+  <rect x="1366" y="364" width="426" height="186" fill="#0B071E"/>
+  <rect x="1360" y="358" width="426" height="186" fill="#15102B" stroke="#59C9F5" stroke-width="3.5"/>
+  <rect x="1363.5" y="361.5" width="419.0" height="6" fill="#59C9F5"/>
+  <rect x="1384" y="382" width="230" height="44" fill="#59C9F5" stroke="#0B071E" stroke-width="3"/>
+  <text x="1499" y="411" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="20" font-weight="900" fill="#1B1530" text-anchor="middle">P3 · MEDIUM</text>
+  <text x="1384" y="462" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="17" font-weight="800" fill="#FFFFFF">Ack: 1h · Resolve: 8h</text>
+  <text x="1384" y="500" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="700" fill="#59C9F5">Standard Business Hours SLA</text>
+  <rect x="102" y="574" width="340" height="186" fill="#0B071E"/>
+  <rect x="96" y="568" width="340" height="186" fill="#2B2060" stroke="#FFD84D" stroke-width="3"/>
+  <rect x="99" y="571" width="334" height="6" fill="#FFD84D"/>
+  <text x="266" y="648" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="20" font-weight="900" fill="#FFD84D" text-anchor="middle">IMPACT 2 · MEDIUM</text>
+  <text x="266" y="686" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="700" fill="#FFFFFF" text-anchor="middle">Single department / lab wing</text>
+  <rect x="466" y="574" width="426" height="186" fill="#0B071E"/>
+  <rect x="460" y="568" width="426" height="186" fill="#15102B" stroke="#FFD84D" stroke-width="3.5"/>
+  <rect x="463.5" y="571.5" width="419.0" height="6" fill="#FFD84D"/>
+  <rect x="484" y="592" width="230" height="44" fill="#FFD84D" stroke="#0B071E" stroke-width="3"/>
+  <text x="599" y="621" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="20" font-weight="900" fill="#1B1530" text-anchor="middle">P2 · HIGH</text>
+  <text x="484" y="672" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="17" font-weight="800" fill="#FFFFFF">Ack: 30m · Resolve: 4h</text>
+  <text x="484" y="710" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="700" fill="#FFD84D">Senior Tech Dispatch Queue</text>
+  <rect x="916" y="574" width="426" height="186" fill="#0B071E"/>
+  <rect x="910" y="568" width="426" height="186" fill="#15102B" stroke="#59C9F5" stroke-width="3.5"/>
+  <rect x="913.5" y="571.5" width="419.0" height="6" fill="#59C9F5"/>
+  <rect x="934" y="592" width="230" height="44" fill="#59C9F5" stroke="#0B071E" stroke-width="3"/>
+  <text x="1049" y="621" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="20" font-weight="900" fill="#1B1530" text-anchor="middle">P3 · MEDIUM</text>
+  <text x="934" y="672" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="17" font-weight="800" fill="#FFFFFF">Ack: 1h · Resolve: 8h</text>
+  <text x="934" y="710" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="700" fill="#59C9F5">Standard Business Hours SLA</text>
+  <rect x="1366" y="574" width="426" height="186" fill="#0B071E"/>
+  <rect x="1360" y="568" width="426" height="186" fill="#15102B" stroke="#43D17A" stroke-width="3.5"/>
+  <rect x="1363.5" y="571.5" width="419.0" height="6" fill="#43D17A"/>
+  <rect x="1384" y="592" width="230" height="44" fill="#43D17A" stroke="#0B071E" stroke-width="3"/>
+  <text x="1499" y="621" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="20" font-weight="900" fill="#1B1530" text-anchor="middle">P4 · LOW</text>
+  <text x="1384" y="672" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="17" font-weight="800" fill="#FFFFFF">Ack: 2h · Resolve: 24h</text>
+  <text x="1384" y="710" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="700" fill="#43D17A">Batch / Routine Maintenance</text>
+  <rect x="102" y="784" width="340" height="186" fill="#0B071E"/>
+  <rect x="96" y="778" width="340" height="186" fill="#2B2060" stroke="#43D17A" stroke-width="3"/>
+  <rect x="99" y="781" width="334" height="6" fill="#43D17A"/>
+  <text x="266" y="858" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="20" font-weight="900" fill="#43D17A" text-anchor="middle">IMPACT 1 · LOW</text>
+  <text x="266" y="896" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="700" fill="#FFFFFF" text-anchor="middle">Individual user workstation</text>
+  <rect x="466" y="784" width="426" height="186" fill="#0B071E"/>
+  <rect x="460" y="778" width="426" height="186" fill="#15102B" stroke="#59C9F5" stroke-width="3.5"/>
+  <rect x="463.5" y="781.5" width="419.0" height="6" fill="#59C9F5"/>
+  <rect x="484" y="802" width="230" height="44" fill="#59C9F5" stroke="#0B071E" stroke-width="3"/>
+  <text x="599" y="831" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="20" font-weight="900" fill="#1B1530" text-anchor="middle">P3 · MEDIUM</text>
+  <text x="484" y="882" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="17" font-weight="800" fill="#FFFFFF">Ack: 1h · Resolve: 8h</text>
+  <text x="484" y="920" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="700" fill="#59C9F5">Standard Business Hours SLA</text>
+  <rect x="916" y="784" width="426" height="186" fill="#0B071E"/>
+  <rect x="910" y="778" width="426" height="186" fill="#15102B" stroke="#43D17A" stroke-width="3.5"/>
+  <rect x="913.5" y="781.5" width="419.0" height="6" fill="#43D17A"/>
+  <rect x="934" y="802" width="230" height="44" fill="#43D17A" stroke="#0B071E" stroke-width="3"/>
+  <text x="1049" y="831" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="20" font-weight="900" fill="#1B1530" text-anchor="middle">P4 · LOW</text>
+  <text x="934" y="882" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="17" font-weight="800" fill="#FFFFFF">Ack: 2h · Resolve: 24h</text>
+  <text x="934" y="920" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="700" fill="#43D17A">Batch / Routine Maintenance</text>
+  <rect x="1366" y="784" width="426" height="186" fill="#0B071E"/>
+  <rect x="1360" y="778" width="426" height="186" fill="#15102B" stroke="#43D17A" stroke-width="3.5"/>
+  <rect x="1363.5" y="781.5" width="419.0" height="6" fill="#43D17A"/>
+  <rect x="1384" y="802" width="230" height="44" fill="#43D17A" stroke="#0B071E" stroke-width="3"/>
+  <text x="1499" y="831" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="20" font-weight="900" fill="#1B1530" text-anchor="middle">P4 · LOW</text>
+  <text x="1384" y="882" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="17" font-weight="800" fill="#FFFFFF">Ack: 2h · Resolve: 24h</text>
+  <text x="1384" y="920" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="700" fill="#43D17A">Self-Service &amp; Next-Day Queue</text>
+  <!-- Subtle 16-Bit CRT Scanline Overlay -->
+  <rect x="24" y="24" width="1872" height="1032" fill="url(#crtScanlines)" pointer-events="none"/>
+</svg>

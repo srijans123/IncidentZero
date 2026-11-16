@@ -1,0 +1,59 @@
+{
+  "command": "mvn test",
+  "title": "Comprehensive Full-Stack Backend Test Suite",
+  "duration_sec": 10.7,
+  "lines": [
+    {
+      "type": "prompt",
+      "text": "group76@bits-hyd:~/IncidentZero$ mvn test"
+    },
+    {
+      "type": "info",
+      "text": "[INFO] Scanning for projects..."
+    },
+    {
+      "type": "info",
+      "text": "[INFO] Running edu.campus.iitsm.IncidentZeroApplicationTests"
+    },
+    {
+      "type": "info",
+      "text": "[INFO] Running edu.campus.iitsm.architecture.ArchitectureTest (9 tests)"
+    },
+    {
+      "type": "info",
+      "text": "[INFO] Running edu.campus.iitsm.incident.domain.IncidentStateMachineTest (520,036 transitions)"
+    },
+    {
+      "type": "info",
+      "text": "[INFO] Running edu.campus.iitsm.sla.domain.SlaTimerTest (5 tests)"
+    },
+    {
+      "type": "info",
+      "text": "[INFO] Running edu.campus.iitsm.assignment.domain.RoutingStrategyTest (7 tests)"
+    },
+    {
+      "type": "info",
+      "text": "[INFO] Running edu.campus.iitsm.audit.domain.AuditHasherTest (6 tests)"
+    },
+    {
+      "type": "info",
+      "text": "[INFO] Running edu.campus.iitsm.intelligence.OnnxEmbeddingTest (4 tests)"
+    },
+    {
+      "type": "info",
+      "text": "[INFO] Running edu.campus.iitsm.ApiControllerAndProblemDetailsTest (18 tests)"
+    },
+    {
+      "type": "success",
+      "text": "[INFO] Tests run: 520,085, Failures: 0, Errors: 0, Skipped: 0"
+    },
+    {
+      "type": "success",
+      "text": "[INFO] BUILD SUCCESS"
+    },
+    {
+      "type": "info",
+      "text": "[INFO] Total time:  4.682 s"
+    }
+  ]
+}

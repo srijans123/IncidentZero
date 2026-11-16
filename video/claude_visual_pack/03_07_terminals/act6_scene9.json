@@ -1,0 +1,51 @@
+{
+  "command": "mvn test -Dtest=RoutingStrategyTest",
+  "title": "Seven Polymorphic Routing Strategies Verification",
+  "duration_sec": 11.2,
+  "lines": [
+    {
+      "type": "prompt",
+      "text": "group76@bits-hyd:~/IncidentZero$ mvn test -Dtest=RoutingStrategyTest"
+    },
+    {
+      "type": "info",
+      "text": "[INFO] Running edu.campus.iitsm.assignment.domain.RoutingStrategyTest"
+    },
+    {
+      "type": "success",
+      "text": "  [STRATEGY 1] RoundRobinStrategy: Equal modulo distribution across 6 tech PASSED"
+    },
+    {
+      "type": "success",
+      "text": "  [STRATEGY 2] LeastLoadedStrategy: Dispatches to min active workload ... PASSED"
+    },
+    {
+      "type": "success",
+      "text": "  [STRATEGY 3] CampusAffinityStrategy: Matches Hostel / Academic zones .. PASSED"
+    },
+    {
+      "type": "success",
+      "text": "  [STRATEGY 4] SkillMatchStrategy: Matches Network / Hardware matrix .... PASSED"
+    },
+    {
+      "type": "success",
+      "text": "  [STRATEGY 5] PriorityWeightedStrategy: Reserves Senior for P1/P2 ...... PASSED"
+    },
+    {
+      "type": "success",
+      "text": "  [STRATEGY 6] ShiftAwareStrategy: Excludes off-duty technicians ....... PASSED"
+    },
+    {
+      "type": "success",
+      "text": "  [STRATEGY 7] HungarianBatchStrategy: Global optimal bipartite matching . PASSED"
+    },
+    {
+      "type": "info",
+      "text": "[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.120 s"
+    },
+    {
+      "type": "success",
+      "text": "[INFO] BUILD SUCCESS"
+    }
+  ]
+}

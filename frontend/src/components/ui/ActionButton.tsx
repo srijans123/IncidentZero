@@ -42,7 +42,6 @@ export const ActionButton: React.FC<ActionButtonProps> = ({
   };
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    console.log('[ActionButton handleClick]', children);
     if (!disabled && !isLoading) {
       sound.blip();
       if (onClick) onClick(e);

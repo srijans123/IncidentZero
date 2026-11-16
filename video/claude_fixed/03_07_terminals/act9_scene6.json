@@ -1,0 +1,43 @@
+{
+  "command": "node frontend/node_modules/playwright/cli.js test",
+  "title": "Playwright End-to-End Headless Browser Journey Suite",
+  "duration_sec": 10.7,
+  "lines": [
+    {
+      "type": "prompt",
+      "text": "group76@bits-hyd:~/IncidentZero$ npx playwright test"
+    },
+    {
+      "type": "info",
+      "text": "Running 6 tests using 2 workers"
+    },
+    {
+      "type": "success",
+      "text": "  \u2713  tests/portal-lifecycle.spec.ts:12:1 \u203a Student reports Wi-Fi outage (1.2s)"
+    },
+    {
+      "type": "success",
+      "text": "  \u2713  tests/workbench-triage.spec.ts:18:1 \u203a Tech triages P1 and acknowledges (950ms)"
+    },
+    {
+      "type": "success",
+      "text": "  \u2713  tests/sla-freeze.spec.ts:24:1 \u203a Timer freezes during WAITING_FOR_CLIENT (840ms)"
+    },
+    {
+      "type": "success",
+      "text": "  \u2713  tests/resolution-verification.spec.ts:31:1 \u203a Resolve & verify closure (1.1s)"
+    },
+    {
+      "type": "success",
+      "text": "  \u2713  tests/admin-audit-chain.spec.ts:40:1 \u203a Verify SHA-256 Merkle chain (720ms)"
+    },
+    {
+      "type": "success",
+      "text": "  \u2713  tests/campus-stage-arcade.spec.ts:48:1 \u203a Render 6k node stage HUD (1.4s)"
+    },
+    {
+      "type": "success",
+      "text": "  6 passed (4.8s)"
+    }
+  ]
+}

@@ -118,7 +118,10 @@ export const WorkbenchHome: React.FC<WorkbenchHomeProps> = ({ onSelectIncident, 
               War Room Dispatch — {currentUser.name}
             </h1>
             <p className="text-xs sm:text-sm text-[var(--soft)] mt-1.5 font-mono">
-              Active Tier: <span className="text-[var(--fg)] font-bold">{currentUser.supportTier || 'L1 / NOC'}</span> | Hungarian Capacity: <span className="text-[#43D17A] font-bold">0.0 / 8.0 PTS</span> (Multi-Pass Engine)
+              Active Tier: <span className="text-[var(--fg)] font-bold">{currentUser.supportTier || 'L1 / NOC'}</span> | Open tickets assigned to you:{' '}
+              <span className="text-[#43D17A] font-bold" data-testid="my-open-count">
+                {incidents.filter((i) => i.assigneeId === currentUser.id && !['RESOLVED', 'VERIFIED', 'CLOSED', 'CANCELLED'].includes(i.state)).length}
+              </span>
             </p>
           </div>
 

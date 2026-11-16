@@ -1,0 +1,9 @@
+{
+  "id": "act9_scene4",
+  "title": "End-to-End Problem Details Integration Test",
+  "file": "backend/src/test/java/edu/campus/iitsm/ApiControllerAndProblemDetailsTest.java",
+  "display_file": "backend/src/test/java/edu/campus/iitsm/ApiControllerAndProblemDetailsTest.java",
+  "lines": "30-65",
+  "exists": true,
+  "code": "import java.util.List;\nimport java.util.Map;\nimport java.util.Optional;\nimport java.util.UUID;\n\nimport static org.mockito.ArgumentMatchers.*;\nimport static org.mockito.Mockito.*;\nimport static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;\nimport static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;\n\nclass ApiControllerAndProblemDetailsTest {\n\n  private MockMvc mockMvc;\n  private IncidentCommandService commandService;\n  private IncidentQueryPort queryPort;\n  private IntakeService intakeService;\n  private IdentityQueryService identityQueryService;\n  private InAppSseHub sseHub;\n  private ClockPort clockPort;\n  private CategorizationPort categorizationPort;\n  private DuplicateDetectionPort duplicateDetectionPort;\n  private SlaBreachPredictorPort slaBreachPredictorPort;\n  private ResolutionRagPort resolutionRagPort;\n  private RcaRankerPort rcaRankerPort;\n  private PirDrafterPort pirDrafterPort;\n  private NlSearchPort nlSearchPort;\n  private JdbcTemplate jdbcTemplate;\n\n  @BeforeEach\n  void setUp() {\n    commandService = mock(IncidentCommandService.class);\n    queryPort = mock(IncidentQueryPort.class);\n    intakeService = mock(IntakeService.class);\n    identityQueryService = mock(IdentityQueryService.class);\n    categorizationPort = mock(CategorizationPort.class);\n    duplicateDetectionPort = mock(DuplicateDetectionPort.class);\n"
+}

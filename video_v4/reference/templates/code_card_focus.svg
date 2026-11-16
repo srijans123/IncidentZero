@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 992" width="1920" height="992">
+<!-- Code card: spoken lines yellow, exact expression red, every other line blurred, note chip top right
+     REFERENCE PICTURE ONLY. The video does not use this file: kit/stagekit.js draws the live version in the browser. -->
+<rect width="1920" height="992" fill="#6B5F4E"/>
+<defs><filter id="blur"><feGaussianBlur stdDeviation="3.2"/></filter></defs>
+<rect x="192" y="232" width="1560" height="470" fill="#000" opacity=".55"/>
+<rect x="180" y="220" width="1560" height="470" fill="#17122E" stroke="#1B1530" stroke-width="4"/>
+<rect x="182" y="222" width="1556" height="46" fill="#1B1530"/>
+<rect x="200" y="238" width="14" height="14" fill="#FF4D3D"/><rect x="226" y="238" width="14" height="14" fill="#FFD84D"/><rect x="252" y="238" width="14" height="14" fill="#43D17A"/>
+<text x="280" y="252" font-family="JetBrains Mono, Cascadia Code, Consolas, monospace" font-size="19" font-weight="700" fill="#FFF8DC">iitsm/incident/domain/<tspan fill="#FFD84D">Incident.java</tspan></text><text x="1722" y="252" text-anchor="end" font-family="JetBrains Mono, Cascadia Code, Consolas, monospace" font-size="19" font-weight="700" fill="#59C9F5">lines 90–114</text>
+<g filter="url(#blur)" opacity=".28"><text x="250" y="310" text-anchor="end" font-family="JetBrains Mono, Cascadia Code, Consolas, monospace" font-size="22" fill="#6E67A0">97</text><text x="280" y="310" xml:space="preserve" font-family="JetBrains Mono, Cascadia Code, Consolas, monospace" font-size="22" fill="#E7E3FF">  String cleanTitle = StateSupport.requireText(&quot;title&quot;, title);</text></g>
+<g filter="url(#blur)" opacity=".28"><text x="250" y="348" text-anchor="end" font-family="JetBrains Mono, Cascadia Code, Consolas, monospace" font-size="22" fill="#6E67A0">98</text><text x="280" y="348" xml:space="preserve" font-family="JetBrains Mono, Cascadia Code, Consolas, monospace" font-size="22" fill="#E7E3FF">  String cleanDesc = StateSupport.requireText(&quot;description&quot;, description);</text></g>
+<rect x="182" y="359" width="1556" height="38" fill="#FFE14D"/><rect x="182" y="359" width="92" height="38" fill="#F2CF2E"/>
+<text x="250" y="386" text-anchor="end" font-family="JetBrains Mono, Cascadia Code, Consolas, monospace" font-size="22" fill="#5b4a00">99</text>
+<rect x="357.2" y="361" width="690.4" height="34" fill="#FF4D3D"/>
+<text x="280" y="386" xml:space="preserve" font-family="JetBrains Mono, Cascadia Code, Consolas, monospace" font-size="22" fill="#1B1530">  if (<tspan fill="#fff">cleanTitle.length() &lt; 5 || cleanTitle.length() &gt; 200</tspan>) {</text>
+<rect x="182" y="397" width="1556" height="38" fill="#FFE14D"/><rect x="182" y="397" width="92" height="38" fill="#F2CF2E"/>
+<text x="250" y="424" text-anchor="end" font-family="JetBrains Mono, Cascadia Code, Consolas, monospace" font-size="22" fill="#5b4a00">100</text>
+<text x="280" y="424" xml:space="preserve" font-family="JetBrains Mono, Cascadia Code, Consolas, monospace" font-size="22" fill="#1B1530">    throw new InvalidIncidentPayloadException(&quot;title&quot;, &quot;must be between 5 and 200 characters&quot;);</text>
+<g filter="url(#blur)" opacity=".28"><text x="250" y="462" text-anchor="end" font-family="JetBrains Mono, Cascadia Code, Consolas, monospace" font-size="22" fill="#6E67A0">101</text><text x="280" y="462" xml:space="preserve" font-family="JetBrains Mono, Cascadia Code, Consolas, monospace" font-size="22" fill="#E7E3FF">  }</text></g>
+<g filter="url(#blur)" opacity=".28"><text x="250" y="500" text-anchor="end" font-family="JetBrains Mono, Cascadia Code, Consolas, monospace" font-size="22" fill="#6E67A0">102</text><text x="280" y="500" xml:space="preserve" font-family="JetBrains Mono, Cascadia Code, Consolas, monospace" font-size="22" fill="#E7E3FF">  if (cleanDesc.length() &lt; 10 || cleanDesc.length() &gt; 4000) {</text></g>
+<g filter="url(#blur)" opacity=".28"><text x="250" y="538" text-anchor="end" font-family="JetBrains Mono, Cascadia Code, Consolas, monospace" font-size="22" fill="#6E67A0">103</text><text x="280" y="538" xml:space="preserve" font-family="JetBrains Mono, Cascadia Code, Consolas, monospace" font-size="22" fill="#E7E3FF">    throw new InvalidIncidentPayloadException(&quot;description&quot;, &quot;must be between 10 and 4000 characters&quot;);</text></g>
+<g filter="url(#blur)" opacity=".28"><text x="250" y="576" text-anchor="end" font-family="JetBrains Mono, Cascadia Code, Consolas, monospace" font-size="22" fill="#6E67A0">104</text><text x="280" y="576" xml:space="preserve" font-family="JetBrains Mono, Cascadia Code, Consolas, monospace" font-size="22" fill="#E7E3FF">  }</text></g>
+<g transform="translate(1470,300) rotate(2)"><rect x="6" y="6" width="232" height="52" fill="#1B1530"/><rect width="232" height="52" fill="#FFD84D" stroke="#1B1530" stroke-width="3"/><text x="116" y="36" text-anchor="middle" font-family="Space Grotesk, Segoe UI, sans-serif" font-size="26" font-weight="800" fill="#1B1530">Encapsulation</text></g>
+</svg>

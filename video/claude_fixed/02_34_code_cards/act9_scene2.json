@@ -1,0 +1,9 @@
+{
+  "id": "act9_scene2",
+  "title": "SLA Clock Exhaustive Verification Test",
+  "file": "backend/src/test/java/edu/campus/iitsm/SlaClockAndPolicyTest.java",
+  "display_file": "backend/src/test/java/edu/campus/iitsm/SlaClockAndPolicyTest.java",
+  "lines": "20-55",
+  "exists": true,
+  "code": "  @Test\n  void testSlaPolicyResolution() {\n    SlaPolicyResolver resolver = new SlaPolicyResolver();\n\n    // T0 P1: 5m resp (300,000ms), 30m res (1,800,000ms), CONTINUOUS_24X7\n    SlaSnapshot t0p1 = resolver.resolve(\"T0\", Priority.P1);\n    assertEquals(\"T0\", t0p1.tier());\n    assertEquals(300_000L, t0p1.responseTargetMs());\n    assertEquals(1_800_000L, t0p1.resolutionTargetMs());\n    assertEquals(ClockMode.CONTINUOUS_24X7, t0p1.mode());\n\n    // T2 P3: 120m resp (7,200,000ms), 720m res (43,200,000ms), BUSINESS_HOURS\n    SlaSnapshot t2p3 = resolver.resolve(\"T2\", Priority.P3);\n    assertEquals(\"T2\", t2p3.tier());\n    assertEquals(7_200_000L, t2p3.responseTargetMs());\n    assertEquals(43_200_000L, t2p3.resolutionTargetMs());\n    assertEquals(ClockMode.BUSINESS_HOURS, t2p3.mode());\n  }\n\n  @Test\n  void testSlaDualClockLifecycleAndPause() {\n    ZoneId zone = ZoneId.of(\"Asia/Kolkata\");\n    BusinessCalendar cal = new BusinessCalendar(\n        zone,\n        Set.of(DayOfWeek.MONDAY, DayOfWeek.TUESDAY, DayOfWeek.WEDNESDAY, DayOfWeek.THURSDAY, DayOfWeek.FRIDAY),\n        LocalTime.of(8, 0),\n        LocalTime.of(18, 0),\n        Set.of()\n    );\n\n    // Monday 09:00:00\n    Instant t0 = ZonedDateTime.of(LocalDate.of(2026, 3, 2), LocalTime.of(9, 0), zone).toInstant();\n    SlaClock clock = SlaClock.start(t0, 600_000L, ClockMode.CONTINUOUS_24X7); // 10 minutes target\n    assertEquals(ClockState.RUNNING, clock.state());\n    assertEquals(600_000L, clock.remainingMs(t0, cal));\n\n"
+}

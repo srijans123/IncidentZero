@@ -2,6 +2,7 @@ import React, { createContext, useContext, useEffect, useState, useCallback, use
 import { api, API_BASE } from '../services/api';
 
 import { useAuth } from './AuthContext';
+import { isDemoMode, demoEvents } from '../services/demoBackend';
 
 export interface StormProgress {
   scenario: string;
@@ -41,6 +42,13 @@ export const SseProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
     if (!token) {
       setIsConnected(false);
+      return;
+    }
+
+    // In-browser backend: there is no server stream to open. Changes arrive
+    // through the local event bus instead (see the effect below).
+    if (isDemoMode()) {
+      setIsConnected(true);
       return;
     }
 
@@ -103,6 +111,13 @@ export const SseProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       }, 7000);
     }
   }, [currentUser]);
+
+  useEffect(() => {
+    if (!isDemoMode()) return;
+    return demoEvents.subscribe((evt) => {
+      setLastEvent({ type: evt.type, data: evt.data, timestamp: new Date().toISOString() });
+    });
+  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => {

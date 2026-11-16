@@ -1,0 +1,9 @@
+{
+  "id": "act2_scene3",
+  "title": "ClockPort Hexagonal Outbound Port",
+  "file": "backend/src/main/java/edu/campus/iitsm/shared/domain/ClockPort.java",
+  "display_file": "backend/src/main/java/edu/campus/iitsm/shared/domain/ClockPort.java",
+  "lines": "1-25",
+  "exists": true,
+  "code": "package edu.campus.iitsm.shared.domain;\n\nimport java.time.Instant;\n\npublic interface ClockPort {\n  /** Virtual/simulated clock time for incident lifecycle, SLA clocks, timers, and audit rows. */\n  Instant now();\n  /** Real wall-clock time for JWT expiration, 30s SSE stream tickets, and HTTP rate-limit windows. */\n  default Instant wallNow() { return Instant.now(); }\n  int scaleFactor();\n  long realNanosUntil(Instant targetVirtualInstant);\n}\n"
+}

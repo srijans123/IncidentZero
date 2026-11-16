@@ -1,0 +1,80 @@
+1
+00:00:00,000 --> 00:00:08,769
+Accountability requires unalterable proof. Incident-Zero guarantees non-repudiation through a cryptographically
+
+2
+00:00:08,769 --> 00:00:11,400
+linked audit ledger.
+
+3
+00:00:11,900 --> 00:00:17,252
+Every ticket change computes a SHA-256 digest over the sequence
+
+4
+00:00:17,252 --> 00:00:22,605
+index, timestamp, actor ID, action name, payload, and the prior
+
+5
+00:00:22,605 --> 00:00:23,140
+hash.
+
+6
+00:00:23,667 --> 00:00:28,631
+The admin console displays the unbroken cryptographic hash chain for
+
+7
+00:00:28,631 --> 00:00:32,107
+every ticket, allowing one-click verification of history.
+
+8
+00:00:32,633 --> 00:00:37,056
+At the database level, an append-only trigger immediately rejects any
+
+9
+00:00:37,056 --> 00:00:40,593
+UPDATE, DELETE, or TRUNCATE statement on audit records.
+
+10
+00:00:41,100 --> 00:00:44,814
+If a malicious actor alters a single byte directly in
+
+11
+00:00:44,814 --> 00:00:48,529
+the database, the cryptographic verification algorithm flags the chain as
+
+12
+00:00:48,529 --> 00:00:48,900
+tampered.
+
+13
+00:00:49,433 --> 00:00:56,287
+Authentication is powered by RFC-9106 Argon2id password hashing and cryptographically
+
+14
+00:00:56,287 --> 00:00:59,713
+signed stateless JWT access tokens.
+
+15
+00:01:00,233 --> 00:01:05,690
+Strict Role-Based Access Control isolates student self-service from technician queues
+
+16
+00:01:05,690 --> 00:01:07,873
+and executive administrative governance.
+
+17
+00:01:08,400 --> 00:01:15,634
+Tokens carry cryptographically verified claims, preventing privilege escalation between Employee, Technician, and
+
+18
+00:01:15,634 --> 00:01:16,840
+Administrator roles.
+
+19
+00:01:17,367 --> 00:01:21,692
+Real-time updates stream securely over Server-Sent Events using short-lived, single-use
+
+20
+00:01:21,692 --> 00:01:24,287
+stream tickets to prevent ticket hijacking.
+

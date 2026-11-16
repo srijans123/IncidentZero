@@ -1,0 +1,137 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" shape-rendering="crispEdges" text-rendering="geometricPrecision">
+  <defs>
+    <!-- 24x24 16-Bit Pixel Checkerboard Dither Pattern (IncidentZero Signature Canvas) -->
+    <pattern id="pixelChecker" width="48" height="48" patternUnits="userSpaceOnUse">
+      <rect width="48" height="48" fill="#1E1646"/>
+      <rect x="0" y="0" width="24" height="24" fill="#261C58"/>
+      <rect x="24" y="24" width="24" height="24" fill="#261C58"/>
+    </pattern>
+    <!-- Subtle Pixel Grid Overlay -->
+    <pattern id="pixelGrid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#32266E" stroke-width="1" stroke-opacity="0.45"/>
+    </pattern>
+    <!-- CRT Scanline Overlay Pattern -->
+    <pattern id="crtScanlines" width="8" height="4" patternUnits="userSpaceOnUse">
+      <rect x="0" y="0" width="8" height="2" fill="#0B071E" fill-opacity="0.18"/>
+      <rect x="0" y="2" width="8" height="2" fill="none"/>
+    </pattern>
+  </defs>
+
+  <rect x="0" y="0" width="1920" height="1080" fill="url(#pixelChecker)"/>
+  <rect x="0" y="0" width="1920" height="1080" fill="url(#pixelGrid)"/>
+  <rect x="16" y="16" width="1888" height="1048" fill="none" stroke="#0B071E" stroke-width="8"/>
+  <rect x="24" y="24" width="1872" height="1032" fill="none" stroke="#7C5CFF" stroke-width="4"/>
+  <rect x="32" y="32" width="12" height="12" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="1876" y="32" width="12" height="12" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="32" y="1036" width="12" height="12" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="1876" y="1036" width="12" height="12" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="66" y="54" width="1800" height="108" fill="#0B071E"/>
+  <rect x="60" y="48" width="1800" height="108" fill="#1B1530" stroke="#0B071E" stroke-width="4"/>
+  <rect x="60" y="48" width="16" height="108" fill="#59C9F5" stroke="#0B071E" stroke-width="4"/>
+  <line x1="76" y1="54" x2="1856" y2="54" stroke="#59C9F5" stroke-width="2"/>
+  <text x="96" y="96" font-family="'Pixelify Sans', 'Silkscreen', 'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="30" font-weight="900" fill="#FFFFFF" letter-spacing="1.5">CODE INSPECTION // ONNX DENSE VECTOR EMBEDDING</text>
+  <text x="96" y="132" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="700" fill="#59C9F5" letter-spacing="0.5">FILE: backend/src/main/java/edu/campus/iitsm/intelligence/infrastructure/embedding/OnnxEmbeddingAdapter.java (LINES 20-50)</text>
+  <rect x="1516" y="72" width="320" height="44" fill="#0B071E"/>
+  <rect x="1510" y="66" width="320" height="44" fill="#FFD84D" stroke="#0B071E" stroke-width="3"/>
+  <rect x="1524" y="80" width="16" height="16" fill="#43D17A" stroke="#0B071E" stroke-width="2"/>
+  <text x="1682" y="94" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="900" fill="#1B1530" text-anchor="middle" letter-spacing="1">ARCHUNIT · JAVA SOURCE</text>
+  <text x="1670" y="134" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="12" font-weight="700" fill="#D4CBF7" text-anchor="middle" letter-spacing="1">INCIDENT-ZERO (I-ITSM v2.2)</text>
+  <clipPath id="clip_act6_scene4"><rect x="64" y="180" width="1792" height="836"/></clipPath>
+  <rect x="68" y="184" width="1800" height="844" fill="#0B071E"/>
+  <rect x="60" y="176" width="1800" height="844" fill="#120C2C" stroke="#0B071E" stroke-width="4"/>
+  <rect x="64" y="180" width="1792" height="836" fill="none" stroke="#59C9F5" stroke-width="2" stroke-opacity="0.65"/>
+  <rect x="60" y="176" width="1800" height="46" fill="#2B2060" stroke="#0B071E" stroke-width="4"/>
+  <rect x="64" y="180" width="1792" height="4" fill="#59C9F5"/>
+  <rect x="76" y="194" width="14" height="14" fill="#FF4D3D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="98" y="194" width="14" height="14" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="120" y="194" width="14" height="14" fill="#43D17A" stroke="#0B071E" stroke-width="2"/>
+  <text x="150" y="205" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="900" fill="#FFFFFF" letter-spacing="1">backend/src/main/java/edu/campus/iitsm/intelligence/infrastructure/embedding/OnnxEmbeddingAdapter.java  [LINES 20-50]</text>
+  <rect x="1689" y="191" width="159" height="24" fill="#0B071E"/>
+  <rect x="1687" y="189" width="159" height="24" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <text x="1766" y="205" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="12" font-weight="900" fill="#1B1530" text-anchor="middle" letter-spacing="1">JAVA · READ-ONLY</text>
+  <rect x="64" y="222" width="1792" height="34" fill="#1B1530"/>
+  <line x1="64" y1="256" x2="1856" y2="256" stroke="#7C5CFF" stroke-width="2"/>
+  <text x="84" y="244" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="13" font-weight="700" fill="#FFD84D">SCENE: ACT6_SCENE4  ·  MODULE: ONNX Dense Vector Embedding</text>
+  <text x="1836" y="244" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="12" font-weight="700" fill="#7CE356" text-anchor="end">UTF-8 // LF // COMPILER VERIFIED</text>
+  <rect x="64" y="256" width="82" height="722" fill="#171136"/>
+  <line x1="146" y1="256" x2="146" y2="978" stroke="#7C5CFF" stroke-width="2" stroke-opacity="0.6"/>
+  <g clip-path="url(#clip_act6_scene4)">
+    <text x="134" y="280" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="700" fill="#9D8FD9" text-anchor="end">20</text>
+    <text x="162" y="280" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" xml:space="preserve"><tspan fill="#FFF3C4">  </tspan><tspan fill="#59C9F5" font-weight="700">public</tspan><tspan fill="#FFF3C4"> </tspan><tspan fill="#FFD84D">OnnxEmbeddingAdapter</tspan><tspan fill="#FFF3C4">(</tspan></text>
+    <rect x="148" y="285" width="1704" height="23" fill="#1B1530" fill-opacity="0.45"/>
+    <text x="134" y="303" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="700" fill="#9D8FD9" text-anchor="end">21</text>
+    <text x="162" y="303" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" xml:space="preserve"><tspan fill="#FFF3C4">      </tspan><tspan fill="#FFD84D">HashEmbeddingAdapter</tspan><tspan fill="#FFF3C4"> </tspan><tspan fill="#FFF3C4">hashAdapter</tspan><tspan fill="#FFF3C4">,</tspan></text>
+    <text x="134" y="326" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="700" fill="#9D8FD9" text-anchor="end">22</text>
+    <text x="162" y="326" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" xml:space="preserve"><tspan fill="#FFD84D" font-weight="700">      @Value(&quot;${app.ai.embedding-mode:fixture}&quot;) String embeddingMode,</tspan></text>
+    <rect x="148" y="331" width="1704" height="23" fill="#1B1530" fill-opacity="0.45"/>
+    <text x="134" y="349" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="700" fill="#9D8FD9" text-anchor="end">23</text>
+    <text x="162" y="349" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" xml:space="preserve"><tspan fill="#FFD84D" font-weight="700">      @Value(&quot;${app.ai.onnx-model-path:models/bge-small-en-v1.5-q.onnx}&quot;) String modelPath</tspan></text>
+    <text x="134" y="372" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="700" fill="#9D8FD9" text-anchor="end">24</text>
+    <text x="162" y="372" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" xml:space="preserve"><tspan fill="#FFF3C4">  ) {</tspan></text>
+    <rect x="148" y="377" width="1704" height="23" fill="#1B1530" fill-opacity="0.45"/>
+    <text x="134" y="395" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="700" fill="#9D8FD9" text-anchor="end">25</text>
+    <text x="162" y="395" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" xml:space="preserve"><tspan fill="#FFF3C4">    </tspan><tspan fill="#59C9F5" font-weight="700">this</tspan><tspan fill="#FFF3C4">.</tspan><tspan fill="#FFF3C4">hashAdapter</tspan><tspan fill="#FFF3C4"> = </tspan><tspan fill="#FFF3C4">hashAdapter</tspan><tspan fill="#FFF3C4">;</tspan></text>
+    <text x="134" y="418" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="700" fill="#9D8FD9" text-anchor="end">26</text>
+    <text x="162" y="418" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" xml:space="preserve"><tspan fill="#FFF3C4">    </tspan><tspan fill="#59C9F5" font-weight="700">this</tspan><tspan fill="#FFF3C4">.</tspan><tspan fill="#FFF3C4">embeddingMode</tspan><tspan fill="#FFF3C4"> = </tspan><tspan fill="#FFF3C4">embeddingMode</tspan><tspan fill="#FFF3C4">;</tspan></text>
+    <rect x="148" y="423" width="1704" height="23" fill="#1B1530" fill-opacity="0.45"/>
+    <text x="134" y="441" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="700" fill="#9D8FD9" text-anchor="end">27</text>
+    <text x="162" y="441" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" xml:space="preserve"><tspan fill="#FFF3C4">    </tspan><tspan fill="#59C9F5" font-weight="700">this</tspan><tspan fill="#FFF3C4">.</tspan><tspan fill="#FFF3C4">modelPath</tspan><tspan fill="#FFF3C4"> = </tspan><tspan fill="#FFF3C4">modelPath</tspan><tspan fill="#FFF3C4">;</tspan></text>
+    <text x="134" y="464" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="700" fill="#9D8FD9" text-anchor="end">28</text>
+    <text x="162" y="464" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" xml:space="preserve"><tspan fill="#FFF3C4">    </tspan><tspan fill="#59C9F5" font-weight="700">if</tspan><tspan fill="#FFF3C4"> (</tspan><tspan fill="#7CE356">&quot;onnx&quot;</tspan><tspan fill="#FFF3C4">.</tspan><tspan fill="#FFF3C4">equalsIgnoreCase</tspan><tspan fill="#FFF3C4">(</tspan><tspan fill="#FFF3C4">embeddingMode</tspan><tspan fill="#FFF3C4">) &amp;&amp; !</tspan><tspan fill="#59C9F5" font-weight="700">new</tspan><tspan fill="#FFF3C4"> </tspan><tspan fill="#FFD84D">File</tspan><tspan fill="#FFF3C4">(</tspan><tspan fill="#FFF3C4">modelPath</tspan><tspan fill="#FFF3C4">).</tspan><tspan fill="#FFF3C4">exists</tspan><tspan fill="#FFF3C4">()) {</tspan></text>
+    <rect x="148" y="469" width="1704" height="23" fill="#1B1530" fill-opacity="0.45"/>
+    <text x="134" y="487" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="700" fill="#9D8FD9" text-anchor="end">29</text>
+    <text x="162" y="487" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" xml:space="preserve"><tspan fill="#FFF3C4">      </tspan><tspan fill="#FFF3C4">log</tspan><tspan fill="#FFF3C4">.</tspan><tspan fill="#FFF3C4">warn</tspan><tspan fill="#FFF3C4">(</tspan><tspan fill="#7CE356">&quot;ONNX model file not found at {}. Falling back to deterministic HashEmbeddingAdapter.&quot;</tspan><tspan fill="#FFF3C4">, </tspan><tspan fill="#FFF3C4">modelPath</tspan><tspan fill="#FFF3C4">);</tspan></text>
+    <text x="134" y="510" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="700" fill="#9D8FD9" text-anchor="end">30</text>
+    <text x="162" y="510" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" xml:space="preserve"><tspan fill="#FFF3C4">    }</tspan></text>
+    <rect x="148" y="515" width="1704" height="23" fill="#1B1530" fill-opacity="0.45"/>
+    <text x="134" y="533" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="700" fill="#9D8FD9" text-anchor="end">31</text>
+    <text x="162" y="533" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" xml:space="preserve"><tspan fill="#FFF3C4">  }</tspan></text>
+    <text x="134" y="556" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="700" fill="#9D8FD9" text-anchor="end">32</text>
+    <text x="162" y="556" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" xml:space="preserve"></text>
+    <rect x="148" y="561" width="1704" height="23" fill="#1B1530" fill-opacity="0.45"/>
+    <text x="134" y="579" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="700" fill="#9D8FD9" text-anchor="end">33</text>
+    <text x="162" y="579" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" xml:space="preserve"><tspan fill="#FFD84D" font-weight="700">  @Override</tspan></text>
+    <text x="134" y="602" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="700" fill="#9D8FD9" text-anchor="end">34</text>
+    <text x="162" y="602" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" xml:space="preserve"><tspan fill="#FFF3C4">  </tspan><tspan fill="#59C9F5" font-weight="700">public</tspan><tspan fill="#FFF3C4"> </tspan><tspan fill="#59C9F5" font-weight="700">float</tspan><tspan fill="#FFF3C4">[] </tspan><tspan fill="#FFF3C4">embed</tspan><tspan fill="#FFF3C4">(</tspan><tspan fill="#FFD84D">String</tspan><tspan fill="#FFF3C4"> </tspan><tspan fill="#FFF3C4">text</tspan><tspan fill="#FFF3C4">) {</tspan></text>
+    <rect x="148" y="607" width="1704" height="23" fill="#1B1530" fill-opacity="0.45"/>
+    <text x="134" y="625" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="700" fill="#9D8FD9" text-anchor="end">35</text>
+    <text x="162" y="625" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" xml:space="preserve"><tspan fill="#FFF3C4">    </tspan><tspan fill="#59C9F5" font-weight="700">if</tspan><tspan fill="#FFF3C4"> (</tspan><tspan fill="#7CE356">&quot;onnx&quot;</tspan><tspan fill="#FFF3C4">.</tspan><tspan fill="#FFF3C4">equalsIgnoreCase</tspan><tspan fill="#FFF3C4">(</tspan><tspan fill="#FFF3C4">embeddingMode</tspan><tspan fill="#FFF3C4">) &amp;&amp; </tspan><tspan fill="#59C9F5" font-weight="700">new</tspan><tspan fill="#FFF3C4"> </tspan><tspan fill="#FFD84D">File</tspan><tspan fill="#FFF3C4">(</tspan><tspan fill="#FFF3C4">modelPath</tspan><tspan fill="#FFF3C4">).</tspan><tspan fill="#FFF3C4">exists</tspan><tspan fill="#FFF3C4">()) {</tspan></text>
+    <text x="134" y="648" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="700" fill="#9D8FD9" text-anchor="end">36</text>
+    <text x="162" y="648" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" xml:space="preserve"><tspan fill="#9D8FD9" font-style="italic">      // In production with model weights present, ONNX environment evaluates tokens</tspan></text>
+    <rect x="148" y="653" width="1704" height="23" fill="#1B1530" fill-opacity="0.45"/>
+    <text x="134" y="671" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="700" fill="#9D8FD9" text-anchor="end">37</text>
+    <text x="162" y="671" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" xml:space="preserve"><tspan fill="#9D8FD9" font-style="italic">      // For fixture/CI mode, deterministic trigram hashing provides 100% reproducible vectors</tspan></text>
+    <text x="134" y="694" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="700" fill="#9D8FD9" text-anchor="end">38</text>
+    <text x="162" y="694" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" xml:space="preserve"><tspan fill="#FFF3C4">      </tspan><tspan fill="#59C9F5" font-weight="700">return</tspan><tspan fill="#FFF3C4"> </tspan><tspan fill="#FFF3C4">hashAdapter</tspan><tspan fill="#FFF3C4">.</tspan><tspan fill="#FFF3C4">embed</tspan><tspan fill="#FFF3C4">(</tspan><tspan fill="#FFF3C4">text</tspan><tspan fill="#FFF3C4">);</tspan></text>
+    <rect x="148" y="699" width="1704" height="23" fill="#1B1530" fill-opacity="0.45"/>
+    <text x="134" y="717" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="700" fill="#9D8FD9" text-anchor="end">39</text>
+    <text x="162" y="717" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" xml:space="preserve"><tspan fill="#FFF3C4">    }</tspan></text>
+    <text x="134" y="740" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="700" fill="#9D8FD9" text-anchor="end">40</text>
+    <text x="162" y="740" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" xml:space="preserve"><tspan fill="#FFF3C4">    </tspan><tspan fill="#59C9F5" font-weight="700">return</tspan><tspan fill="#FFF3C4"> </tspan><tspan fill="#FFF3C4">hashAdapter</tspan><tspan fill="#FFF3C4">.</tspan><tspan fill="#FFF3C4">embed</tspan><tspan fill="#FFF3C4">(</tspan><tspan fill="#FFF3C4">text</tspan><tspan fill="#FFF3C4">);</tspan></text>
+    <rect x="148" y="745" width="1704" height="23" fill="#1B1530" fill-opacity="0.45"/>
+    <text x="134" y="763" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="700" fill="#9D8FD9" text-anchor="end">41</text>
+    <text x="162" y="763" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" xml:space="preserve"><tspan fill="#FFF3C4">  }</tspan></text>
+    <text x="134" y="786" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="700" fill="#9D8FD9" text-anchor="end">42</text>
+    <text x="162" y="786" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" xml:space="preserve"></text>
+    <rect x="148" y="791" width="1704" height="23" fill="#1B1530" fill-opacity="0.45"/>
+    <text x="134" y="809" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="700" fill="#9D8FD9" text-anchor="end">43</text>
+    <text x="162" y="809" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" xml:space="preserve"><tspan fill="#FFD84D" font-weight="700">  @Override</tspan></text>
+    <text x="134" y="832" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="700" fill="#9D8FD9" text-anchor="end">44</text>
+    <text x="162" y="832" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" xml:space="preserve"><tspan fill="#FFF3C4">  </tspan><tspan fill="#59C9F5" font-weight="700">public</tspan><tspan fill="#FFF3C4"> </tspan><tspan fill="#FFD84D">String</tspan><tspan fill="#FFF3C4"> </tspan><tspan fill="#FFF3C4">modelVersion</tspan><tspan fill="#FFF3C4">() {</tspan></text>
+    <rect x="148" y="837" width="1704" height="23" fill="#1B1530" fill-opacity="0.45"/>
+    <text x="134" y="855" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="700" fill="#9D8FD9" text-anchor="end">45</text>
+    <text x="162" y="855" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" xml:space="preserve"><tspan fill="#FFF3C4">    </tspan><tspan fill="#59C9F5" font-weight="700">return</tspan><tspan fill="#FFF3C4"> </tspan><tspan fill="#FFF3C4">hashAdapter</tspan><tspan fill="#FFF3C4">.</tspan><tspan fill="#FFF3C4">modelVersion</tspan><tspan fill="#FFF3C4">();</tspan></text>
+    <text x="134" y="878" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="700" fill="#9D8FD9" text-anchor="end">46</text>
+    <text x="162" y="878" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" xml:space="preserve"><tspan fill="#FFF3C4">  }</tspan></text>
+    <rect x="148" y="883" width="1704" height="23" fill="#1B1530" fill-opacity="0.45"/>
+    <text x="134" y="901" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="700" fill="#9D8FD9" text-anchor="end">47</text>
+    <text x="162" y="901" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" xml:space="preserve"><tspan fill="#FFF3C4">}</tspan></text>
+  </g>
+  <rect x="64" y="978" width="1792" height="38" fill="#1B1530"/>
+  <line x1="64" y1="978" x2="1856" y2="978" stroke="#59C9F5" stroke-width="2"/>
+  <rect x="80" y="989" width="14" height="14" fill="#43D17A" stroke="#0B071E" stroke-width="2"/>
+  <text x="104" y="1001" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="13" font-weight="900" fill="#7CE356" letter-spacing="1">COMPILED &amp; VERIFIED // ZERO FRAMEWORK LEAKS // ARCHUNIT R1–R9 PASSED</text>
+  <text x="1836" y="1001" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="13" font-weight="700" fill="#D4CBF7" text-anchor="end">GROUP 76 · BITS PILANI HYD</text>
+  <!-- Subtle 16-Bit CRT Scanline Overlay -->
+  <rect x="24" y="24" width="1872" height="1032" fill="url(#crtScanlines)" pointer-events="none"/>
+</svg>

@@ -1,0 +1,9 @@
+{
+  "id": "act8_scene7",
+  "title": "GoF Command Pattern: Batch Scheduler",
+  "file": "backend/src/main/java/edu/campus/iitsm/assignment/application/BatchAssignmentScheduler.java",
+  "display_file": "backend/src/main/java/edu/campus/iitsm/assignment/application/BatchAssignmentScheduler.java",
+  "lines": "15-45",
+  "exists": true,
+  "code": "import java.util.HashMap;\nimport java.util.List;\nimport java.util.Map;\nimport java.util.UUID;\n\n@Service\npublic class BatchAssignmentScheduler {\n\n  private final IncidentRepository incidentRepository;\n  private final ClockPort clockPort;\n\n  public BatchAssignmentScheduler(IncidentRepository incidentRepository, ClockPort clockPort) {\n    this.incidentRepository = incidentRepository;\n    this.clockPort = clockPort;\n  }\n\n  public boolean shouldFlush(List<Incident> waitingTickets, Instant now) {\n    if (waitingTickets == null || waitingTickets.isEmpty()) return false;\n    if (waitingTickets.size() >= 5) return true;\n    Incident oldest = waitingTickets.get(0);\n    long waitedSeconds = Duration.between(oldest.createdAt(), now).toSeconds();\n    return waitedSeconds >= 10;\n  }\n\n  public BatchResult processBatch(\n      List<Incident> waitingTickets,\n      Map<UUID, Double> techFreeCapacity,\n      Map<UUID, Map<UUID, Double>> scoreMatrix\n  ) {\n    if (waitingTickets.isEmpty()) return new BatchResult(List.of(), List.of());\n\n"
+}

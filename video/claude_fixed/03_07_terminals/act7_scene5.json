@@ -1,0 +1,71 @@
+{
+  "command": "python video/test_tamper_detection.py",
+  "title": "Cryptographic Merkle Ledger Tamper Detection Verification",
+  "duration_sec": 12.7,
+  "lines": [
+    {
+      "type": "prompt",
+      "text": "group76@bits-hyd:~/IncidentZero$ python video/test_tamper_detection.py"
+    },
+    {
+      "type": "info",
+      "text": "[*] Fetching immutable audit chain for incident: INC-2026-0042..."
+    },
+    {
+      "type": "success",
+      "text": "[*] Verified initial 3-block Merkle chain: GENESIS -> REPORTED -> TRIAGED -> RESOLVED (VALID)"
+    },
+    {
+      "type": "info",
+      "text": "    Block #0: hash=883e6a305225e70c... prev=0000000000000000..."
+    },
+    {
+      "type": "info",
+      "text": "    Block #1: hash=e63e1c8cee6942f2... prev=883e6a305225e70c..."
+    },
+    {
+      "type": "info",
+      "text": "    Block #2: hash=65e3aa3ac976b131... prev=e63e1c8cee6942f2..."
+    },
+    {
+      "type": "warn",
+      "text": "[SIMULATED ATTACK] Adversary executes raw SQL update:"
+    },
+    {
+      "type": "warn",
+      "text": "    UPDATE audit_ledger SET payload = '{\"resolution\":\"CANCELLED\"}' WHERE block_index = 2;"
+    },
+    {
+      "type": "info",
+      "text": "[*] Running Ledger Integrity Validator..."
+    },
+    {
+      "type": "info",
+      "text": "[-] Recorded Hash:   65e3aa3ac976b131322984052e0131f0eaf1bfba1cc0ea820171a305e1d1b3dc"
+    },
+    {
+      "type": "info",
+      "text": "[-] Recomputed Hash: a95816d1d4c1d54355ebf9f4b9fb9c3549f6deccb0bb5125b9a132c029c2f7c6"
+    },
+    {
+      "type": "error",
+      "text": "[!] CRITICAL INTEGRITY VIOLATION DETECTED!"
+    },
+    {
+      "type": "error",
+      "text": "    AuditChainTamperException: Cryptographic hash divergence at Block #2"
+    },
+    {
+      "type": "success",
+      "text": "============================================================"
+    },
+    {
+      "type": "success",
+      "text": "  RESULT: TAMPER DETECTION PASS (Mathematical Invariant R7 Verified)"
+    },
+    {
+      "type": "success",
+      "text": "============================================================"
+    }
+  ]
+}

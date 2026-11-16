@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#050811"/>
+      <stop offset="100%" stop-color="#0c1424"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1920" height="1080" fill="url(#bg)"/>
+
+  <!-- Left Column: Webcam Slot -->
+  <rect x="160" y="140" width="760" height="800" rx="16" fill="#090e19" stroke="rgba(0, 240, 255, 0.5)" stroke-width="2"/>
+  <!-- Target Reticle in Webcam Slot -->
+  <circle cx="540" cy="500" r="120" fill="none" stroke="rgba(0, 240, 255, 0.3)" stroke-width="2" stroke-dasharray="8 6"/>
+  <line x1="540" y1="360" x2="540" y2="640" stroke="rgba(0, 240, 255, 0.3)" stroke-width="1.5"/>
+  <line x1="400" y1="500" x2="680" y2="500" stroke="rgba(0, 240, 255, 0.3)" stroke-width="1.5"/>
+  <text x="540" y="506" fill="#00f0ff" font-family="'JetBrains Mono', monospace" font-size="16" font-weight="700" text-anchor="middle">[ WEBCAM VIDEO SLOT ]</text>
+  <text x="540" y="540" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="13" text-anchor="middle">1080p Member Clip · Submissions (§9)</text>
+
+  <!-- Right Column: Student Details & Contributions -->
+  <rect x="960" y="140" width="800" height="800" rx="16" fill="#090e19" stroke="rgba(0, 255, 157, 0.4)" stroke-width="2"/>
+
+  <!-- Header -->
+  <rect x="1000" y="180" width="200" height="32" rx="6" fill="rgba(0, 255, 157, 0.15)" stroke="#00ff9d" stroke-width="1"/>
+  <text x="1100" y="202" fill="#00ff9d" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="800" text-anchor="middle">TEAM MEMBER SPEC</text>
+
+  <text x="1000" y="280" fill="#ffffff" font-family="'Segoe UI', sans-serif" font-size="44" font-weight="900">Suhani Agarwal</text>
+  <text x="1000" y="330" fill="#00f0ff" font-family="'JetBrains Mono', monospace" font-size="24" font-weight="800">BITS ID: 2025ADPS0216H</text>
+  <text x="1000" y="375" fill="#94a3b8" font-family="'Segoe UI', sans-serif" font-size="20" font-weight="600">Event-Driven Modulith &amp; Cryptographic Audit Ledger</text>
+
+  <line x1="1000" y1="415" x2="1720" y2="415" stroke="rgba(255, 255, 255, 0.1)" stroke-width="1.5"/>
+
+  <!-- Contributions Section -->
+  <text x="1000" y="460" fill="#cbd5e1" font-family="'Segoe UI', sans-serif" font-size="20" font-weight="700">Individual Engineering Deliverables:</text>
+  <text x="1030" y="510" fill="#94a3b8" font-family="'Segoe UI', sans-serif" font-size="17">✔ Domain modeling &amp; OOP architecture compliance</text>
+  <text x="1030" y="555" fill="#94a3b8" font-family="'Segoe UI', sans-serif" font-size="17">✔ Strict encapsulation, immutable records &amp; factory patterns</text>
+  <text x="1030" y="600" fill="#94a3b8" font-family="'Segoe UI', sans-serif" font-size="17">✔ Modulith event-driven architecture &amp; transactional listener</text>
+  <text x="1030" y="645" fill="#94a3b8" font-family="'Segoe UI', sans-serif" font-size="17">✔ Live system demonstration and architectural presentation</text>
+
+  <!-- Footer Tag -->
+  <rect x="1000" y="860" width="720" height="46" rx="8" fill="#0e1726" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1"/>
+  <text x="1360" y="889" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="700" text-anchor="middle">GROUP 76 · BITS PILANI HYDERABAD CAMPUS · 2026-2027</text>
+</svg>

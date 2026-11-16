@@ -1,0 +1,9 @@
+{
+  "id": "act7_scene4",
+  "title": "Immutable Audit Ledger Table DDL",
+  "file": "backend/src/main/resources/db/migration/V003__audit_timers_ai.sql",
+  "display_file": "backend/src/main/resources/db/migration/V003__audit_timers_ai.sql",
+  "lines": "1-35",
+  "exists": true,
+  "code": "CREATE TABLE audit_record (\n  id bigserial PRIMARY KEY,\n  incident_id uuid NOT NULL REFERENCES incident (id),\n  chain_index integer NOT NULL,\n  ts timestamptz NOT NULL,\n  actor_id uuid,\n  actor_type text NOT NULL CHECK (actor_type IN ('USER','SYSTEM','AI','MCP')),\n  action text NOT NULL,\n  prev_state text,\n  new_state text,\n  description text NOT NULL,\n  payload jsonb NOT NULL DEFAULT '{}',\n  prev_hash char(64) NOT NULL,\n  hash char(64) NOT NULL,\n  UNIQUE (incident_id, chain_index)\n);\n\nCREATE OR REPLACE FUNCTION audit_immutable() RETURNS trigger AS $$\nBEGIN RAISE EXCEPTION 'audit_record is append-only'; END;\n$$ LANGUAGE plpgsql;\n\nCREATE TRIGGER audit_no_change BEFORE UPDATE OR DELETE OR TRUNCATE ON audit_record\n  FOR EACH STATEMENT EXECUTE FUNCTION audit_immutable();\n\nCREATE TABLE sla_timer (\n  id bigserial PRIMARY KEY,\n  incident_id uuid NOT NULL REFERENCES incident (id),\n  kind text NOT NULL CHECK (kind IN (\n    'RESP_WARN_50','RESP_WARN_75','RESP_WARN_90','RESP_BREACH',\n    'RES_WARN_50','RES_WARN_75','RES_WARN_90','RES_BREACH',\n    'ESC_L2','ESC_L3','ESC_L4','AUTO_VERIFY_72H','USER_REMIND_24H'\n  )),\n  generation integer NOT NULL,\n  due_at timestamptz NOT NULL,\n  fired_at timestamptz,\n"
+}

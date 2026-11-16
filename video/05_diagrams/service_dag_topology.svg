@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" shape-rendering="crispEdges" text-rendering="geometricPrecision">
+  <defs>
+    <!-- 24x24 16-Bit Pixel Checkerboard Dither Pattern (IncidentZero Signature Canvas) -->
+    <pattern id="pixelChecker" width="48" height="48" patternUnits="userSpaceOnUse">
+      <rect width="48" height="48" fill="#1E1646"/>
+      <rect x="0" y="0" width="24" height="24" fill="#261C58"/>
+      <rect x="24" y="24" width="24" height="24" fill="#261C58"/>
+    </pattern>
+    <!-- Subtle Pixel Grid Overlay -->
+    <pattern id="pixelGrid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#32266E" stroke-width="1" stroke-opacity="0.45"/>
+    </pattern>
+    <!-- CRT Scanline Overlay Pattern -->
+    <pattern id="crtScanlines" width="8" height="4" patternUnits="userSpaceOnUse">
+      <rect x="0" y="0" width="8" height="2" fill="#0B071E" fill-opacity="0.18"/>
+      <rect x="0" y="2" width="8" height="2" fill="none"/>
+    </pattern>
+  </defs>
+
+  <rect x="0" y="0" width="1920" height="1080" fill="url(#pixelChecker)"/>
+  <rect x="0" y="0" width="1920" height="1080" fill="url(#pixelGrid)"/>
+  <rect x="16" y="16" width="1888" height="1048" fill="none" stroke="#0B071E" stroke-width="8"/>
+  <rect x="24" y="24" width="1872" height="1032" fill="none" stroke="#7C5CFF" stroke-width="4"/>
+  <rect x="32" y="32" width="12" height="12" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="1876" y="32" width="12" height="12" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="32" y="1036" width="12" height="12" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="1876" y="1036" width="12" height="12" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="66" y="54" width="1800" height="108" fill="#0B071E"/>
+  <rect x="60" y="48" width="1800" height="108" fill="#1B1530" stroke="#0B071E" stroke-width="4"/>
+  <rect x="60" y="48" width="16" height="108" fill="#43D17A" stroke="#0B071E" stroke-width="4"/>
+  <line x1="76" y1="54" x2="1856" y2="54" stroke="#43D17A" stroke-width="2"/>
+  <text x="96" y="96" font-family="'Pixelify Sans', 'Silkscreen', 'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="30" font-weight="900" fill="#FFFFFF" letter-spacing="1.5">CAMPUS SERVICE DEPENDENCY DAG &amp; TARJAN SCC ENGINE</text>
+  <text x="96" y="132" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="700" fill="#59C9F5" letter-spacing="0.5">Directed acyclic topology of 12 campus nodes with O(V+E) cycle rejection and cascading blast radius</text>
+  <rect x="1516" y="72" width="320" height="44" fill="#0B071E"/>
+  <rect x="1510" y="66" width="320" height="44" fill="#FFD84D" stroke="#0B071E" stroke-width="3"/>
+  <rect x="1524" y="80" width="16" height="16" fill="#43D17A" stroke="#0B071E" stroke-width="2"/>
+  <text x="1682" y="94" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="900" fill="#1B1530" text-anchor="middle" letter-spacing="1">GROUP 76 · DAG TOPOLOGY</text>
+  <text x="1670" y="134" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="12" font-weight="700" fill="#D4CBF7" text-anchor="middle" letter-spacing="1">INCIDENT-ZERO (I-ITSM v2.2)</text>
+  <rect x="68" y="188" width="1800" height="560" fill="#0B071E"/>
+  <rect x="60" y="180" width="1800" height="560" fill="#1B1530" stroke="#0B071E" stroke-width="4"/>
+  <rect x="64" y="184" width="1792" height="552" fill="none" stroke="#59C9F5" stroke-width="2" stroke-opacity="0.65"/>
+  <rect x="60" y="180" width="1800" height="44" fill="#2B2060" stroke="#0B071E" stroke-width="4"/>
+  <rect x="64" y="184" width="1792" height="4" fill="#59C9F5"/>
+  <rect x="76" y="197" width="14" height="14" fill="#FF4D3D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="98" y="197" width="14" height="14" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="120" y="197" width="14" height="14" fill="#43D17A" stroke="#0B071E" stroke-width="2"/>
+  <text x="150" y="208" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="900" fill="#FFFFFF" letter-spacing="1">CAMPUS INFRASTRUCTURE DIRECTED ACYCLIC GRAPH (LIVE TOPOLOGY VIEW)</text>
+  <rect x="1664" y="194" width="184" height="24" fill="#0B071E"/>
+  <rect x="1662" y="192" width="184" height="24" fill="#43D17A" stroke="#0B071E" stroke-width="2"/>
+  <text x="1754" y="208" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="12" font-weight="900" fill="#1B1530" text-anchor="middle" letter-spacing="1">12 NODES · 0 CYCLES</text>
+  <g stroke="#59C9F5" stroke-width="4" fill="none">
+    <path d="M 960 330 L 960 365 L 360 365 L 360 400"/>
+    <path d="M 960 330 L 960 400"/>
+    <path d="M 960 330 L 960 365 L 1560 365 L 1560 400"/>
+    <path d="M 360 500 L 360 535 L 220 535 L 220 570"/>
+    <path d="M 360 500 L 360 535 L 560 535 L 560 570"/>
+    <path d="M 960 500 L 960 535 L 890 535 L 890 570"/>
+    <path d="M 960 500 L 960 535 L 1230 535 L 1230 570"/>
+    <path d="M 1560 500 L 1560 570"/>
+  </g>
+  <rect x="766" y="246" width="400" height="92" fill="#0B071E"/>
+  <rect x="760" y="240" width="400" height="92" fill="#2B2060" stroke="#FF4D3D" stroke-width="4"/>
+  <rect x="764" y="244" width="392" height="6" fill="#FF4D3D"/>
+  <text x="960" y="280" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="20" font-weight="900" fill="#FF4D3D" text-anchor="middle">CORE NETWORK BACKBONE (T0)</text>
+  <text x="960" y="310" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="700" fill="#FFFFFF" text-anchor="middle">Root Campus Switch &amp; Border Gateway</text>
+  <rect x="196" y="406" width="340" height="100" fill="#0B071E"/>
+  <rect x="190" y="400" width="340" height="100" fill="#2B2060" stroke="#59C9F5" stroke-width="3"/>
+  <rect x="193" y="403" width="334" height="6" fill="#59C9F5"/>
+  <text x="360" y="444" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="18" font-weight="900" fill="#59C9F5" text-anchor="middle">CAMPUS WI-FI (T1)</text>
+  <text x="360" y="476" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="700" fill="#FFFFFF" text-anchor="middle">Aruba AP Controllers (850 APs)</text>
+  <rect x="796" y="406" width="340" height="100" fill="#0B071E"/>
+  <rect x="790" y="400" width="340" height="100" fill="#2B2060" stroke="#FFD84D" stroke-width="3"/>
+  <rect x="793" y="403" width="334" height="6" fill="#FFD84D"/>
+  <text x="960" y="444" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="18" font-weight="900" fill="#FFD84D" text-anchor="middle">LMS &amp; AUTH SSO (T1)</text>
+  <text x="960" y="476" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="700" fill="#FFFFFF" text-anchor="middle">Moodle Cluster &amp; RADIUS LDAP</text>
+  <rect x="1396" y="406" width="340" height="100" fill="#0B071E"/>
+  <rect x="1390" y="400" width="340" height="100" fill="#2B2060" stroke="#7C5CFF" stroke-width="3"/>
+  <rect x="1393" y="403" width="334" height="6" fill="#7C5CFF"/>
+  <text x="1560" y="444" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="18" font-weight="900" fill="#7C5CFF" text-anchor="middle">DATA CENTER SAN (T1)</text>
+  <text x="1560" y="476" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="700" fill="#FFFFFF" text-anchor="middle">Hyper-V Virtual Host Blades</text>
+  <rect x="95" y="575" width="280" height="104" fill="#0B071E"/>
+  <rect x="90" y="570" width="280" height="104" fill="#15102B" stroke="#43D17A" stroke-width="3"/>
+  <rect x="93" y="573" width="274" height="6" fill="#43D17A"/>
+  <text x="230" y="614" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="17" font-weight="900" fill="#FFFFFF" text-anchor="middle">HOSTEL SUBNETS</text>
+  <text x="230" y="646" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="13" font-weight="700" fill="#43D17A" text-anchor="middle">Malaviya &amp; Valmiki Wings</text>
+  <rect x="425" y="575" width="280" height="104" fill="#0B071E"/>
+  <rect x="420" y="570" width="280" height="104" fill="#15102B" stroke="#43D17A" stroke-width="3"/>
+  <rect x="423" y="573" width="274" height="6" fill="#43D17A"/>
+  <text x="560" y="614" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="17" font-weight="900" fill="#FFFFFF" text-anchor="middle">LIBRARY KOHA DB</text>
+  <text x="560" y="646" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="13" font-weight="700" fill="#43D17A" text-anchor="middle">RFID Gate &amp; OPAC Catalog</text>
+  <rect x="755" y="575" width="280" height="104" fill="#0B071E"/>
+  <rect x="750" y="570" width="280" height="104" fill="#15102B" stroke="#FFD84D" stroke-width="3"/>
+  <rect x="753" y="573" width="274" height="6" fill="#FFD84D"/>
+  <text x="890" y="614" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="17" font-weight="900" fill="#FFFFFF" text-anchor="middle">EXAM ENGINE</text>
+  <text x="890" y="646" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="13" font-weight="700" fill="#FFD84D" text-anchor="middle">Secure Lockdown Quizzing</text>
+  <rect x="1085" y="575" width="280" height="104" fill="#0B071E"/>
+  <rect x="1080" y="570" width="280" height="104" fill="#15102B" stroke="#59C9F5" stroke-width="3"/>
+  <rect x="1083" y="573" width="274" height="6" fill="#59C9F5"/>
+  <text x="1220" y="614" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="17" font-weight="900" fill="#FFFFFF" text-anchor="middle">ERP / SWD PORTAL</text>
+  <text x="1220" y="646" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="13" font-weight="700" fill="#59C9F5" text-anchor="middle">Registration &amp; Timetables</text>
+  <rect x="1415" y="575" width="340" height="104" fill="#0B071E"/>
+  <rect x="1410" y="570" width="340" height="104" fill="#15102B" stroke="#7C5CFF" stroke-width="3"/>
+  <rect x="1413" y="573" width="334" height="6" fill="#7C5CFF"/>
+  <text x="1580" y="614" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="17" font-weight="900" fill="#FFFFFF" text-anchor="middle">LAB GPU / HPC VMs</text>
+  <text x="1580" y="646" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="13" font-weight="700" fill="#7C5CFF" text-anchor="middle">Department Compute Nodes</text>
+  <rect x="68" y="778" width="1800" height="250" fill="#0B071E"/>
+  <rect x="60" y="770" width="1800" height="250" fill="#1B1530" stroke="#0B071E" stroke-width="4"/>
+  <rect x="64" y="774" width="1792" height="242" fill="none" stroke="#43D17A" stroke-width="2" stroke-opacity="0.65"/>
+  <rect x="60" y="770" width="1800" height="44" fill="#43D17A" stroke="#0B071E" stroke-width="4"/>
+  <rect x="64" y="774" width="1792" height="4" fill="#43D17A"/>
+  <text x="78" y="798" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="900" fill="#FFFFFF" letter-spacing="1">TARJAN STRONGLY CONNECTED COMPONENTS (SCC) INVARIANT ENGINE</text>
+  <rect x="1622" y="784" width="226" height="24" fill="#0B071E"/>
+  <rect x="1620" y="782" width="226" height="24" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <text x="1733" y="798" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="12" font-weight="900" fill="#1B1530" text-anchor="middle" letter-spacing="1">O(|V| + |E|) LINEAR TIME</text>
+  <text x="96" y="856" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="17" font-weight="900" fill="#7CE356">• Linear Time Complexity: Single-pass DFS discovery/low-link indexing validates all 12+ campus nodes in O(|V| + |E|).</text>
+  <text x="96" y="898" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="17" font-weight="800" fill="#FFFFFF">• Cycle Rejection Guard: Any dependency edge addition (u → v) creating an SCC of size &gt; 1 throws CycleDetectedException.</text>
+  <text x="96" y="940" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="17" font-weight="800" fill="#59C9F5">• Cascading Blast Radius: BFS traversal down the DAG computes impacted downstream services &amp; elevates priority automatically.</text>
+  <text x="96" y="982" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="900" fill="#FFD84D">• Verified by Automated Suite: TopologyAndStormTest confirms cycle rejection and transitive impact propagation.</text>
+  <!-- Subtle 16-Bit CRT Scanline Overlay -->
+  <rect x="24" y="24" width="1872" height="1032" fill="url(#crtScanlines)" pointer-events="none"/>
+</svg>

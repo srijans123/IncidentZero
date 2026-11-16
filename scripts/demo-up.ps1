@@ -15,7 +15,7 @@ $loginBody = '{"email":"emp@bits.campus","password":"Bits@2026"}'
 $backendUp = $false
 try {
     $res = Invoke-RestMethod -Uri "http://localhost:8080/api/v1/auth/login" -Method Post -Body $loginBody -ContentType "application/json" -TimeoutSec 3 -ErrorAction Stop
-    if ($res.token) {
+    if ($res.accessToken -or $res.token) {
         $backendUp = $true
         Write-Output "[✓] Backend already running on 8080 and answering login."
     }
@@ -30,7 +30,7 @@ if (-not $backendUp) {
         Start-Sleep -Seconds 2
         try {
             $res = Invoke-RestMethod -Uri "http://localhost:8080/api/v1/auth/login" -Method Post -Body $loginBody -ContentType "application/json" -TimeoutSec 3 -ErrorAction Stop
-            if ($res.token) {
+            if ($res.accessToken -or $res.token) {
                 Write-Output "[✓] Backend is ready and login answered 200."
                 $backendUp = $true
                 break

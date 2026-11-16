@@ -1,0 +1,1038 @@
+{
+  "budget_sec": 1160,
+  "target_range_sec": [
+    1050,
+    1180
+  ],
+  "estimated_duration_sec": 1099.7,
+  "total_scenes": 96,
+  "total_words": 1777,
+  "acts": [
+    {
+      "act": 0,
+      "title": "Cold Open: The Institutional Crisis & Vision",
+      "scenes": [
+        {
+          "id": "act0_scene1",
+          "type": "screen",
+          "target_url": "http://localhost:3000/?tab=stage",
+          "highlight": "canvas",
+          "speaker": "Vivian",
+          "text": "At BITS Pilani Hyderabad Campus, over six thousand students, faculty, and administrative staff rely on complex digital infrastructure every single day for academic, research, and residential operations.",
+          "word_count": 27,
+          "est_sec": 15.7
+        },
+        {
+          "id": "act0_scene2",
+          "type": "diagram",
+          "diagram_id": "outage_crisis",
+          "speaker": "Vivian",
+          "text": "When core fiber lines are damaged or central authentication clusters halt during midsem examinations, campuses experience catastrophic operational paralysis and cascading system downtime.",
+          "word_count": 23,
+          "est_sec": 13.7
+        },
+        {
+          "id": "act0_scene3",
+          "type": "screen",
+          "target_url": "http://localhost:3000/?tab=workbench",
+          "highlight": ".hud-banner",
+          "speaker": "Vivian",
+          "text": "Traditional campus helpdesks fail under storm conditions, lacking deterministic state machines, automated correlation engines, and verifiable cryptographic audit trails.",
+          "word_count": 19,
+          "est_sec": 11.7
+        },
+        {
+          "id": "act0_scene4",
+          "type": "title",
+          "title": "Incident-Zero (I-ITSM v2.2)",
+          "subtitle": "Autonomous Enterprise Campus Service Management",
+          "speaker": "Vivian",
+          "text": "Welcome to Incident-Zero: a military-grade, reactive IT service management platform engineered from the ground up for zero cascading downtime and absolute institutional resilience.",
+          "word_count": 23,
+          "est_sec": 13.7
+        }
+      ],
+      "act_words": 92,
+      "act_est_sec": 54.8
+    },
+    {
+      "act": 1,
+      "title": "Group 76 & System Architecture",
+      "scenes": [
+        {
+          "id": "act1_scene1",
+          "type": "title",
+          "title": "Group 76 \u2014 BITS Pilani Hyderabad",
+          "subtitle": "Object-Oriented Programming (CS F213 / MAC F212)",
+          "speaker": "Vivian",
+          "text": "Incident-Zero was conceived, designed, and implemented by Group 76 under the Object-Oriented Programming curriculum at BITS Pilani, Hyderabad Campus.",
+          "word_count": 19,
+          "est_sec": 11.7
+        },
+        {
+          "id": "act1_scene2",
+          "type": "member_slot",
+          "member": "Srijan Shukla",
+          "id_num": "2025A7PS0194H",
+          "speaker": "Vivian",
+          "text": "Srijan Shukla architected the pure domain core, the eleven-state deterministic finite state machine, and the tamper-evident cryptographic audit ledger.",
+          "word_count": 19,
+          "est_sec": 11.7
+        },
+        {
+          "id": "act1_scene3",
+          "type": "member_slot",
+          "member": "Suhani Agarwal",
+          "id_num": "2025ADPS0216H",
+          "speaker": "Vivian",
+          "text": "Suhani Agarwal spearheaded the precision dual-clock SLA chronometer engine, business calendar arithmetic, and multi-tier escalation policies.",
+          "word_count": 16,
+          "est_sec": 10.2
+        },
+        {
+          "id": "act1_scene4",
+          "type": "member_slot",
+          "member": "Kartikey Negi",
+          "id_num": "2025ADPS0129H",
+          "speaker": "Vivian",
+          "text": "Kartikey Negi engineered the campus service dependency directed acyclic graph, Tarjan cycle validation, and major incident storm correlation.",
+          "word_count": 18,
+          "est_sec": 11.2
+        },
+        {
+          "id": "act1_scene5",
+          "type": "member_slot",
+          "member": "Hairsh Kumar",
+          "id_num": "2025A7PS0910H",
+          "speaker": "Vivian",
+          "text": "Hairsh Kumar crafted the full-stack responsive interface, interactive Three.js hardware telemetry, and enterprise REST controller adapters.",
+          "word_count": 16,
+          "est_sec": 10.2
+        },
+        {
+          "id": "act1_scene6",
+          "type": "diagram",
+          "diagram_id": "hexagonal_architecture",
+          "speaker": "Vivian",
+          "text": "Our platform adheres strictly to Ports and Adapters, or Hexagonal Architecture, isolating pure business entities completely from frameworks, persistence, and external drivers.",
+          "word_count": 22,
+          "est_sec": 13.2
+        },
+        {
+          "id": "act1_scene7",
+          "type": "screen",
+          "target_url": "http://localhost:3000/?tab=specs",
+          "highlight": ".specs-grid",
+          "speaker": "Vivian",
+          "text": "Eleven discrete domain modules are governed by Spring Modulith, running atop high-throughput Java 22 virtual threads and cloud-native PostgreSQL.",
+          "word_count": 19,
+          "est_sec": 11.7
+        },
+        {
+          "id": "act1_scene8",
+          "type": "screen",
+          "target_url": "http://localhost:3000/?tab=stage",
+          "highlight": ".campus-stage-canvas",
+          "speaker": "Vivian",
+          "text": "The frontend combines modern React 19 and Tailwind CSS with a distinctive 16-bit pixel-arcade design language, making operational monitoring engaging and intuitive.",
+          "word_count": 22,
+          "est_sec": 13.2
+        },
+        {
+          "id": "act1_scene9",
+          "type": "diagram",
+          "diagram_id": "system_interaction_flow",
+          "speaker": "Vivian",
+          "text": "Bi-directional Server-Sent Events stream live status updates across all connected stations, ensuring that student reports and technician actions remain synchronized with zero polling.",
+          "word_count": 23,
+          "est_sec": 13.7
+        }
+      ],
+      "act_words": 174,
+      "act_est_sec": 106.8
+    },
+    {
+      "act": 2,
+      "title": "Technical Foundation & Architectural Invariants",
+      "scenes": [
+        {
+          "id": "act2_scene1",
+          "type": "code",
+          "file": "backend/src/test/java/edu/campus/iitsm/architecture/ArchitectureTest.java",
+          "lines": "25-45",
+          "speaker": "Vivian",
+          "text": "To guarantee long-term maintainability, the codebase enforces nine automated ArchUnit architectural rules that run on every compilation pass.",
+          "word_count": 18,
+          "est_sec": 11.2
+        },
+        {
+          "id": "act2_scene2",
+          "type": "code",
+          "file": "backend/src/main/java/edu/campus/iitsm/incident/domain/Incident.java",
+          "lines": "1-30",
+          "speaker": "Vivian",
+          "text": "Architecture Rule R1 establishes that domain classes contain zero imports of Spring, JPA, Hibernate, or Jackson, preserving pure Java semantics.",
+          "word_count": 20,
+          "est_sec": 12.2
+        },
+        {
+          "id": "act2_scene3",
+          "type": "code",
+          "file": "backend/src/main/java/edu/campus/iitsm/incident/domain/ClockPort.java",
+          "lines": "1-15",
+          "speaker": "Vivian",
+          "text": "Rule R5 strictly prohibits non-deterministic calls to Instant now and UUID randomUUID inside domain and application services, mandating mockable clock and identity ports.",
+          "word_count": 23,
+          "est_sec": 13.7
+        },
+        {
+          "id": "act2_scene4",
+          "type": "code",
+          "file": "backend/src/main/java/edu/campus/iitsm/audit/infrastructure/AuditLedgerInTxListener.java",
+          "lines": "20-40",
+          "speaker": "Vivian",
+          "text": "Rule R3 dictates that transactional audit and SLA listeners must execute synchronously with mandatory propagation, guaranteeing zero-orphan ledger entries.",
+          "word_count": 19,
+          "est_sec": 11.7
+        },
+        {
+          "id": "act2_scene5",
+          "type": "terminal",
+          "command": "mvn test -Dtest=ArchitectureTest",
+          "speaker": "Vivian",
+          "text": "Every continuous integration run verifies all nine rules in under three seconds, catching architectural drift before any pull request can be merged.",
+          "word_count": 22,
+          "est_sec": 13.2
+        },
+        {
+          "id": "act2_scene6",
+          "type": "diagram",
+          "diagram_id": "exception_hierarchy",
+          "speaker": "Vivian",
+          "text": "A rigorous domain exception hierarchy maps fifteen strongly typed campus errors to standard RFC-7807 problem details with human-readable diagnostic remedies.",
+          "word_count": 20,
+          "est_sec": 12.2
+        },
+        {
+          "id": "act2_scene7",
+          "type": "code",
+          "file": "backend/src/main/java/edu/campus/iitsm/shared/domain/error/CampusErrorCode.java",
+          "lines": "10-35",
+          "speaker": "Vivian",
+          "text": "Codes range from ITSM-4001 for illegal state machine transitions up to ITSM-5090 for optimistic concurrency locking conflicts.",
+          "word_count": 17,
+          "est_sec": 10.7
+        },
+        {
+          "id": "act2_scene8",
+          "type": "code",
+          "file": "backend/src/main/java/edu/campus/iitsm/shared/domain/error/GlobalExceptionHandler.java",
+          "lines": "25-50",
+          "speaker": "Vivian",
+          "text": "Global exception translation ensures that sensitive backend stack traces and credentials never leak to client browsers or terminal logs.",
+          "word_count": 19,
+          "est_sec": 11.7
+        },
+        {
+          "id": "act2_scene9",
+          "type": "screen",
+          "target_url": "http://localhost:3000/?tab=specs",
+          "highlight": ".architecture-card",
+          "speaker": "Vivian",
+          "text": "These strict invariants ensure that our domain model remains rock-solid, fully testable without database containers, and compiler-verified across half a million test vectors.",
+          "word_count": 23,
+          "est_sec": 13.7
+        },
+        {
+          "id": "act2_scene10",
+          "type": "diagram",
+          "diagram_id": "modulith_boundaries",
+          "speaker": "Vivian",
+          "text": "Spring Modulith continuously validates that package boundaries between incident, sla, audit, and assignment remain strictly unidirectional.",
+          "word_count": 16,
+          "est_sec": 10.2
+        }
+      ],
+      "act_words": 197,
+      "act_est_sec": 120.5
+    },
+    {
+      "act": 3,
+      "title": "Core Workflow 1: End-to-End Incident Lifecycle",
+      "scenes": [
+        {
+          "id": "act3_scene1",
+          "type": "screen",
+          "target_url": "http://localhost:3000/?tab=portal",
+          "highlight": ".portal-header",
+          "speaker": "Vivian",
+          "text": "We now demonstrate Core Workflow 1, following an incident through all eleven finite states from initial report to cryptographic sealing.",
+          "word_count": 20,
+          "est_sec": 12.2
+        },
+        {
+          "id": "act3_scene2",
+          "type": "screen",
+          "target_url": "http://localhost:3000/?tab=portal",
+          "highlight": ".report-form",
+          "speaker": "Vivian",
+          "text": "Student Aarav Sharma logs into the self-service portal to report a critical failure on the SWD Mess and Fee Payment Gateway.",
+          "word_count": 21,
+          "est_sec": 12.7
+        },
+        {
+          "id": "act3_scene3",
+          "type": "diagram",
+          "diagram_id": "priority_matrix_calc",
+          "speaker": "Vivian",
+          "text": "The student specifies high impact and high urgency. Our automated Priority Engine evaluates the campus calendar and notes an active fee payment window.",
+          "word_count": 23,
+          "est_sec": 13.7
+        },
+        {
+          "id": "act3_scene4",
+          "type": "code",
+          "file": "backend/src/main/java/edu/campus/iitsm/incident/domain/PriorityEngine.java",
+          "lines": "30-55",
+          "speaker": "Vivian",
+          "text": "Because the service carries the FEE_DEADLINE calendar tag, the priority calculation automatically bumps the ticket to P1 Critical.",
+          "word_count": 18,
+          "est_sec": 11.2
+        },
+        {
+          "id": "act3_scene5",
+          "type": "code",
+          "file": "backend/src/main/java/edu/campus/iitsm/incident/domain/PriorityExplanation.java",
+          "lines": "1-25",
+          "speaker": "Vivian",
+          "text": "A full priority explanation JSON array is embedded into the ticket, explaining the exact formula, calendar modifiers, and institutional rules applied.",
+          "word_count": 21,
+          "est_sec": 12.7
+        },
+        {
+          "id": "act3_scene6",
+          "type": "screen",
+          "target_url": "http://localhost:3000/?tab=workbench",
+          "highlight": ".technician-inbox",
+          "speaker": "Vivian",
+          "text": "The ticket is routed via the Least-Loaded Strategy to Senior Technician Vikram Rao, moving state to ASSIGNED and starting the response clock.",
+          "word_count": 22,
+          "est_sec": 13.2
+        },
+        {
+          "id": "act3_scene7",
+          "type": "screen",
+          "target_url": "http://localhost:3000/?tab=workbench",
+          "highlight": ".action-ack-btn",
+          "speaker": "Vivian",
+          "text": "Vikram clicks Acknowledge in the workbench. The initial response clock stops in two minutes, well under the five-minute P1 threshold.",
+          "word_count": 20,
+          "est_sec": 12.2
+        },
+        {
+          "id": "act3_scene8",
+          "type": "screen",
+          "target_url": "http://localhost:3000/?tab=workbench",
+          "highlight": ".resolve-modal-form",
+          "speaker": "Vivian",
+          "text": "Remediating the payment gateway, Vikram applies a database pool restart and enters detailed resolution notes exceeding the mandatory twenty-character validation.",
+          "word_count": 20,
+          "est_sec": 12.2
+        },
+        {
+          "id": "act3_scene9",
+          "type": "screen",
+          "target_url": "http://localhost:3000/?tab=portal",
+          "highlight": ".verify-banner",
+          "speaker": "Vivian",
+          "text": "The incident enters RESOLVED. Aarav receives a real-time notification, tests payment access, and confirms resolution with a five-star rating.",
+          "word_count": 19,
+          "est_sec": 11.7
+        },
+        {
+          "id": "act3_scene10",
+          "type": "screen",
+          "target_url": "http://localhost:3000/?tab=admin",
+          "highlight": ".closed-badge",
+          "speaker": "Vivian",
+          "text": "Finally, the IT Administrator archives the verified ticket into CLOSED status, immutably sealing its resolution record in the audit ledger.",
+          "word_count": 20,
+          "est_sec": 12.2
+        }
+      ],
+      "act_words": 204,
+      "act_est_sec": 124.0
+    },
+    {
+      "act": 4,
+      "title": "Core Workflow 2: SLA Chronometer, Escalation & Sticky Breach",
+      "scenes": [
+        {
+          "id": "act4_scene1",
+          "type": "diagram",
+          "diagram_id": "dual_clock_architecture",
+          "speaker": "Vivian",
+          "text": "In enterprise operations, Service Level Agreements are legally binding commitments. Incident-Zero implements a dual-clock chronometer system.",
+          "word_count": 16,
+          "est_sec": 10.2
+        },
+        {
+          "id": "act4_scene2",
+          "type": "code",
+          "file": "backend/src/main/java/edu/campus/iitsm/sla/domain/SlaPolicy.java",
+          "lines": "25-50",
+          "speaker": "Vivian",
+          "text": "Across four service tiers and four priority levels, sixteen distinct SLA policies govern response targets from five minutes to resolution targets of three days.",
+          "word_count": 24,
+          "est_sec": 14.2
+        },
+        {
+          "id": "act4_scene3",
+          "type": "diagram",
+          "diagram_id": "clock_modes_comparison",
+          "speaker": "Vivian",
+          "text": "Tier zero and tier one services run on continuous twenty-four-seven clocks, while peripheral services operate under standard business hours.",
+          "word_count": 19,
+          "est_sec": 11.7
+        },
+        {
+          "id": "act4_scene4",
+          "type": "screen",
+          "target_url": "http://localhost:3000/?tab=workbench",
+          "highlight": ".sla-warning-indicator",
+          "speaker": "Vivian",
+          "text": "Our dynamic chronometer evaluates time consumption, firing visual warnings at fifty percent, seventy-five percent, and ninety percent intervals.",
+          "word_count": 18,
+          "est_sec": 11.2
+        },
+        {
+          "id": "act4_scene5",
+          "type": "code",
+          "file": "backend/src/main/java/edu/campus/iitsm/sla/domain/SlaStatus.java",
+          "lines": "1-25",
+          "speaker": "Vivian",
+          "text": "If a resolution target lapses, the ticket marks a sticky breach. Once breached, the status remains permanently attached to the ticket history.",
+          "word_count": 22,
+          "est_sec": 13.2
+        },
+        {
+          "id": "act4_scene6",
+          "type": "screen",
+          "target_url": "http://localhost:3000/?tab=workbench",
+          "highlight": ".escalation-ladder",
+          "speaker": "Vivian",
+          "text": "Breaching ninety percent automatically triggers the multi-tier Escalation Ladder, notifying team leads, IT managers, and system administrators.",
+          "word_count": 17,
+          "est_sec": 10.7
+        },
+        {
+          "id": "act4_scene7",
+          "type": "code",
+          "file": "backend/src/main/java/edu/campus/iitsm/sla/domain/SlaClock.java",
+          "lines": "45-70",
+          "speaker": "Vivian",
+          "text": "When a ticket transitions to PENDING_USER for student feedback, the resolution clock cleanly suspends and resumes upon user reply.",
+          "word_count": 19,
+          "est_sec": 11.7
+        },
+        {
+          "id": "act4_scene8",
+          "type": "code",
+          "file": "backend/src/main/java/edu/campus/iitsm/sla/domain/ClockGeneration.java",
+          "lines": "1-25",
+          "speaker": "Vivian",
+          "text": "A monotonic clock generation counter ensures that whenever an SLA timer pauses or updates, legacy in-flight async timer events are safely invalidated.",
+          "word_count": 22,
+          "est_sec": 13.2
+        },
+        {
+          "id": "act4_scene9",
+          "type": "screen",
+          "target_url": "http://localhost:3000/?tab=admin",
+          "highlight": ".calendar-config",
+          "speaker": "Vivian",
+          "text": "Business hours arithmetic automatically excludes official BITS holidays like Gandhi Jayanti, Dussehra, and Diwali from timer countdowns.",
+          "word_count": 17,
+          "est_sec": 10.7
+        },
+        {
+          "id": "act4_scene10",
+          "type": "terminal",
+          "command": "mvn test -Dtest=SlaTimerTest",
+          "speaker": "Vivian",
+          "text": "Comprehensive unit tests prove that clock pauses, resumptions, and holiday skips maintain microsecond accuracy across month-long windows.",
+          "word_count": 17,
+          "est_sec": 10.7
+        }
+      ],
+      "act_words": 191,
+      "act_est_sec": 117.5
+    },
+    {
+      "act": 5,
+      "title": "Core Workflow 3: Major Incident Storm & Blast Radius Analysis",
+      "scenes": [
+        {
+          "id": "act5_scene1",
+          "type": "screen",
+          "target_url": "http://localhost:3000/?tab=admin",
+          "highlight": ".topology-map",
+          "speaker": "Vivian",
+          "text": "Campus IT services do not operate in a vacuum. Core infrastructure failures produce massive, compounding blast radiuses.",
+          "word_count": 17,
+          "est_sec": 10.7
+        },
+        {
+          "id": "act5_scene2",
+          "type": "diagram",
+          "diagram_id": "service_dag_topology",
+          "speaker": "Vivian",
+          "text": "Incident-Zero models all nineteen campus services across twenty-six hard and soft dependency edges as a directed acyclic graph.",
+          "word_count": 18,
+          "est_sec": 11.2
+        },
+        {
+          "id": "act5_scene3",
+          "type": "code",
+          "file": "backend/src/main/java/edu/campus/iitsm/topology/domain/ServiceTopology.java",
+          "lines": "30-60",
+          "speaker": "Vivian",
+          "text": "Tarjan's strongly connected components algorithm executes during graph updates, rejecting any accidental circular dependencies at runtime.",
+          "word_count": 16,
+          "est_sec": 10.2
+        },
+        {
+          "id": "act5_scene4",
+          "type": "screen",
+          "target_url": "http://localhost:3000/?tab=workbench",
+          "highlight": ".storm-banner",
+          "speaker": "Vivian",
+          "text": "When Data Center cooling fails, core switches overheat, and Central LDAP goes down, hundreds of student login tickets flood the portal.",
+          "word_count": 21,
+          "est_sec": 12.7
+        },
+        {
+          "id": "act5_scene5",
+          "type": "code",
+          "file": "backend/src/main/java/edu/campus/iitsm/incident/domain/StormDetector.java",
+          "lines": "20-55",
+          "speaker": "Vivian",
+          "text": "Our Storm Detection Engine activates, tracking ticket velocity over five-minute sliding windows against the dependency topology.",
+          "word_count": 16,
+          "est_sec": 10.2
+        },
+        {
+          "id": "act5_scene6",
+          "type": "screen",
+          "target_url": "http://localhost:3000/?tab=workbench",
+          "highlight": ".parent-child-cluster",
+          "speaker": "Vivian",
+          "text": "The system automatically pinpoints Central LDAP as the root cause, declaring a Major Incident and linking forty-five tickets as child duplicates.",
+          "word_count": 21,
+          "est_sec": 12.7
+        },
+        {
+          "id": "act5_scene7",
+          "type": "screen",
+          "target_url": "http://localhost:3000/?tab=workbench",
+          "highlight": ".commander-hud",
+          "speaker": "Vivian",
+          "text": "Chief Administrator Suresh Deshmukh is appointed Incident Commander, locking triage roles and broadcasting campus-wide alerts.",
+          "word_count": 15,
+          "est_sec": 9.7
+        },
+        {
+          "id": "act5_scene8",
+          "type": "screen",
+          "target_url": "http://localhost:3000/?tab=admin",
+          "highlight": ".blast-radius-3d",
+          "speaker": "Vivian",
+          "text": "The interactive 3D blast radius visualizer highlights downstream services at risk, including Moodle LMS, AUGSD ERP, and hostel Wi-Fi.",
+          "word_count": 19,
+          "est_sec": 11.7
+        },
+        {
+          "id": "act5_scene9",
+          "type": "code",
+          "file": "backend/src/main/java/edu/campus/iitsm/incident/domain/CascadingResolution.java",
+          "lines": "15-40",
+          "speaker": "Vivian",
+          "text": "Transactional cascade listeners propagate the root resolution notes down to all child incidents, preserving audit integrity for each student.",
+          "word_count": 19,
+          "est_sec": 11.7
+        },
+        {
+          "id": "act5_scene10",
+          "type": "screen",
+          "target_url": "http://localhost:3000/?tab=workbench",
+          "highlight": ".cascading-resolution",
+          "speaker": "Vivian",
+          "text": "When the Commander resolves the root LDAP ticket, Incident-Zero automatically resolves all linked duplicate tickets and notifies affected students.",
+          "word_count": 19,
+          "est_sec": 11.7
+        }
+      ],
+      "act_words": 181,
+      "act_est_sec": 112.5
+    },
+    {
+      "act": 6,
+      "title": "Advanced Capabilities: AI Dispatch, RAG & Vector Embeddings",
+      "scenes": [
+        {
+          "id": "act6_scene1",
+          "type": "screen",
+          "target_url": "http://localhost:3000/?tab=portal",
+          "highlight": ".kb-search-bar",
+          "speaker": "Vivian",
+          "text": "To reduce technician load, Incident-Zero integrates fully offline, local intelligence for automated ticket deflection and dispatch.",
+          "word_count": 16,
+          "est_sec": 10.2
+        },
+        {
+          "id": "act6_scene2",
+          "type": "code",
+          "file": "backend/src/main/java/edu/campus/iitsm/intelligence/domain/EmbeddingService.java",
+          "lines": "15-40",
+          "speaker": "Vivian",
+          "text": "Incident titles and knowledge base articles are transformed into 384-dimensional dense vectors using an embedded ONNX runtime.",
+          "word_count": 17,
+          "est_sec": 10.7
+        },
+        {
+          "id": "act6_scene3",
+          "type": "diagram",
+          "diagram_id": "hnsw_vector_search",
+          "speaker": "Vivian",
+          "text": "PostgreSQL pgvector with Hierarchical Navigable Small World indexes enables sub-millisecond approximate nearest neighbor searches.",
+          "word_count": 14,
+          "est_sec": 9.2
+        },
+        {
+          "id": "act6_scene4",
+          "type": "screen",
+          "target_url": "http://localhost:3000/?tab=portal",
+          "highlight": ".deflection-suggestions",
+          "speaker": "Vivian",
+          "text": "When a student begins typing an issue with campus Wi-Fi, verified articles on CAS cookie resets appear instantly, deflecting redundant tickets.",
+          "word_count": 21,
+          "est_sec": 12.7
+        },
+        {
+          "id": "act6_scene5",
+          "type": "diagram",
+          "diagram_id": "seven_routing_strategies",
+          "speaker": "Vivian",
+          "text": "For unresolved tickets, seven pluggable Routing Strategies evaluate technician shifts, verified skill badges, and active point loads.",
+          "word_count": 17,
+          "est_sec": 10.7
+        },
+        {
+          "id": "act6_scene6",
+          "type": "code",
+          "file": "backend/src/main/java/edu/campus/iitsm/assignment/domain/SkillBasedRoutingStrategy.java",
+          "lines": "20-50",
+          "speaker": "Vivian",
+          "text": "Skill-based routing matches Aruba Wi-Fi and BIND DNS certifications, ensuring specialized problems land with certified engineers.",
+          "word_count": 16,
+          "est_sec": 10.2
+        },
+        {
+          "id": "act6_scene7",
+          "type": "screen",
+          "target_url": "http://localhost:3000/?tab=admin",
+          "highlight": ".technician-load-bars",
+          "speaker": "Vivian",
+          "text": "Load tracking enforces maximum point capacities per technician, guaranteeing balanced distribution across morning and evening shifts.",
+          "word_count": 16,
+          "est_sec": 10.2
+        },
+        {
+          "id": "act6_scene8",
+          "type": "code",
+          "file": "backend/src/main/java/edu/campus/iitsm/assignment/domain/RoundRobinRoutingStrategy.java",
+          "lines": "15-35",
+          "speaker": "Vivian",
+          "text": "Atomic load tracking prevents race conditions under high concurrency, using database row versions to guarantee fairness.",
+          "word_count": 16,
+          "est_sec": 10.2
+        },
+        {
+          "id": "act6_scene9",
+          "type": "terminal",
+          "command": "mvn test -Dtest=RoutingStrategyTest",
+          "speaker": "Vivian",
+          "text": "Automated test suites confirm zero routing race conditions even under concurrent ticket bursts from hundreds of client threads.",
+          "word_count": 18,
+          "est_sec": 11.2
+        }
+      ],
+      "act_words": 151,
+      "act_est_sec": 95.3
+    },
+    {
+      "act": 7,
+      "title": "Security, Multi-Tenancy & Cryptographic Audit Ledger",
+      "scenes": [
+        {
+          "id": "act7_scene1",
+          "type": "diagram",
+          "diagram_id": "merkle_audit_chain",
+          "speaker": "Vivian",
+          "text": "Accountability requires unalterable proof. Incident-Zero guarantees non-repudiation through a cryptographically linked audit ledger.",
+          "word_count": 13,
+          "est_sec": 8.7
+        },
+        {
+          "id": "act7_scene2",
+          "type": "code",
+          "file": "backend/src/main/java/edu/campus/iitsm/audit/domain/AuditRecord.java",
+          "lines": "15-40",
+          "speaker": "Vivian",
+          "text": "Every ticket change computes a SHA-256 digest over the sequence index, timestamp, actor ID, action name, payload, and the prior hash.",
+          "word_count": 21,
+          "est_sec": 12.7
+        },
+        {
+          "id": "act7_scene3",
+          "type": "screen",
+          "target_url": "http://localhost:3000/?tab=admin",
+          "highlight": ".audit-hash-chain",
+          "speaker": "Vivian",
+          "text": "The admin console displays the unbroken cryptographic hash chain for every ticket, allowing one-click verification of history.",
+          "word_count": 17,
+          "est_sec": 10.7
+        },
+        {
+          "id": "act7_scene4",
+          "type": "code",
+          "file": "backend/src/main/resources/db/migration/V003__audit_timers_ai.sql",
+          "lines": "18-24",
+          "speaker": "Vivian",
+          "text": "At the database level, an append-only trigger immediately rejects any UPDATE, DELETE, or TRUNCATE statement on audit records.",
+          "word_count": 18,
+          "est_sec": 11.2
+        },
+        {
+          "id": "act7_scene5",
+          "type": "terminal",
+          "command": "python video/test_tamper_detection.py",
+          "speaker": "Vivian",
+          "text": "If a malicious actor alters a single byte directly in the database, the cryptographic verification algorithm flags the chain as tampered.",
+          "word_count": 21,
+          "est_sec": 12.7
+        },
+        {
+          "id": "act7_scene6",
+          "type": "code",
+          "file": "backend/src/main/java/edu/campus/iitsm/identity/infrastructure/security/SecurityConfig.java",
+          "lines": "30-55",
+          "speaker": "Vivian",
+          "text": "Authentication is powered by RFC-9106 Argon2id password hashing and cryptographically signed stateless JWT access tokens.",
+          "word_count": 15,
+          "est_sec": 9.7
+        },
+        {
+          "id": "act7_scene7",
+          "type": "screen",
+          "target_url": "http://localhost:3000/?tab=admin",
+          "highlight": ".rbac-matrix",
+          "speaker": "Vivian",
+          "text": "Strict Role-Based Access Control isolates student self-service from technician queues and executive administrative governance.",
+          "word_count": 14,
+          "est_sec": 9.2
+        },
+        {
+          "id": "act7_scene8",
+          "type": "code",
+          "file": "backend/src/main/java/edu/campus/iitsm/identity/infrastructure/TokenService.java",
+          "lines": "25-50",
+          "speaker": "Vivian",
+          "text": "Tokens carry cryptographically verified claims, preventing privilege escalation between Employee, Technician, and Administrator roles.",
+          "word_count": 14,
+          "est_sec": 9.2
+        },
+        {
+          "id": "act7_scene9",
+          "type": "screen",
+          "target_url": "http://localhost:3000/?tab=portal",
+          "highlight": ".sse-live-indicator",
+          "speaker": "Vivian",
+          "text": "Real-time updates stream securely over Server-Sent Events using short-lived, single-use stream tickets to prevent ticket hijacking.",
+          "word_count": 16,
+          "est_sec": 10.2
+        }
+      ],
+      "act_words": 149,
+      "act_est_sec": 94.3
+    },
+    {
+      "act": 8,
+      "title": "Architecture Deep-Dive & Gang of Four Design Patterns",
+      "scenes": [
+        {
+          "id": "act8_scene1",
+          "type": "title",
+          "title": "Object-Oriented Design Mastery",
+          "subtitle": "11 Proven Gang of Four Design Patterns",
+          "speaker": "Vivian",
+          "text": "A premier objective of this course project was translating classical object-oriented design principles into enterprise reality.",
+          "word_count": 16,
+          "est_sec": 10.2
+        },
+        {
+          "id": "act8_scene2",
+          "type": "code",
+          "file": "backend/src/main/java/edu/campus/iitsm/assignment/domain/RoutingStrategy.java",
+          "lines": "1-25",
+          "speaker": "Vivian",
+          "text": "The Strategy Pattern abstracts incident assignment algorithms, allowing runtime polymorphism between Round Robin and Least Loaded routing.",
+          "word_count": 17,
+          "est_sec": 10.7
+        },
+        {
+          "id": "act8_scene3",
+          "type": "code",
+          "file": "backend/src/main/java/edu/campus/iitsm/incident/domain/IncidentStateMachine.java",
+          "lines": "40-75",
+          "speaker": "Vivian",
+          "text": "The State Pattern encapsulates all eleven lifecycle states, isolating valid transitions and eliminating fragile conditional branching.",
+          "word_count": 16,
+          "est_sec": 10.2
+        },
+        {
+          "id": "act8_scene4",
+          "type": "code",
+          "file": "backend/src/main/java/edu/campus/iitsm/incident/domain/IncidentCreatedEvent.java",
+          "lines": "1-20",
+          "speaker": "Vivian",
+          "text": "The Observer Pattern, powered by Spring Modulith event publication, decouples SLA timers, audit logging, and email notifications.",
+          "word_count": 17,
+          "est_sec": 10.7
+        },
+        {
+          "id": "act8_scene5",
+          "type": "code",
+          "file": "backend/src/main/java/edu/campus/iitsm/incident/domain/IncidentBuilder.java",
+          "lines": "20-60",
+          "speaker": "Vivian",
+          "text": "The Builder Pattern enforces strict entity construction invariants, calculating initial SLA deadlines and priority ratings atomically.",
+          "word_count": 16,
+          "est_sec": 10.2
+        },
+        {
+          "id": "act8_scene6",
+          "type": "code",
+          "file": "backend/src/main/java/edu/campus/iitsm/notification/domain/NotificationDecorator.java",
+          "lines": "15-40",
+          "speaker": "Vivian",
+          "text": "The Decorator Pattern layers multi-channel notifications, wrapping base email alerts with in-app notifications and SMS broadcasts.",
+          "word_count": 16,
+          "est_sec": 10.2
+        },
+        {
+          "id": "act8_scene7",
+          "type": "code",
+          "file": "backend/src/main/java/edu/campus/iitsm/identity/infrastructure/IdentityQueryServiceAdapter.java",
+          "lines": "25-50",
+          "speaker": "Vivian",
+          "text": "The Adapter Pattern bridges domain repositories with Spring Data JPA entities, protecting domain logic from database schema changes.",
+          "word_count": 18,
+          "est_sec": 11.2
+        },
+        {
+          "id": "act8_scene8",
+          "type": "code",
+          "file": "backend/src/main/java/edu/campus/iitsm/incident/api/IncidentManagementFacade.java",
+          "lines": "10-35",
+          "speaker": "Vivian",
+          "text": "The Facade Pattern provides clean, high-level interfaces for controllers, coordinating complex multi-module transactions seamlessly.",
+          "word_count": 14,
+          "est_sec": 9.2
+        },
+        {
+          "id": "act8_scene9",
+          "type": "code",
+          "file": "backend/src/main/java/edu/campus/iitsm/sla/domain/BusinessCalendarTemplate.java",
+          "lines": "15-40",
+          "speaker": "Vivian",
+          "text": "The Template Method Pattern governs calendar calculations, providing a rigid skeleton for holiday checks while allowing variable shift windows.",
+          "word_count": 19,
+          "est_sec": 11.7
+        },
+        {
+          "id": "act8_scene10",
+          "type": "diagram",
+          "diagram_id": "solid_principles",
+          "speaker": "Vivian",
+          "text": "Together, these eleven patterns exemplify SOLID principles, yielding a codebase that is deeply modular, extensible, and easy to maintain.",
+          "word_count": 19,
+          "est_sec": 11.7
+        }
+      ],
+      "act_words": 168,
+      "act_est_sec": 106.0
+    },
+    {
+      "act": 9,
+      "title": "Verification, Quality Assurance & Testing Rigor",
+      "scenes": [
+        {
+          "id": "act9_scene1",
+          "type": "terminal",
+          "command": "mvn test",
+          "speaker": "Vivian",
+          "text": "Engineering excellence requires exhaustive verification. Our test harness spans unit tests, integration slices, and state machine fuzzing.",
+          "word_count": 17,
+          "est_sec": 10.7
+        },
+        {
+          "id": "act9_scene2",
+          "type": "code",
+          "file": "backend/src/test/java/edu/campus/iitsm/incident/IncidentStateMachineTest.java",
+          "lines": "45-80",
+          "speaker": "Vivian",
+          "text": "Over five hundred and twenty thousand valid and invalid transition permutations are checked to prove zero deadlocks exist in our state model.",
+          "word_count": 22,
+          "est_sec": 13.2
+        },
+        {
+          "id": "act9_scene3",
+          "type": "terminal",
+          "command": "python video/04_capture/reset.py",
+          "speaker": "Vivian",
+          "text": "Deterministic testing is powered by our automated reset script, which recreates the full campus schema and seeds forty-five tickets in 2.14 seconds.",
+          "word_count": 22,
+          "est_sec": 13.2
+        },
+        {
+          "id": "act9_scene4",
+          "type": "code",
+          "file": "backend/src/test/java/edu/campus/iitsm/e2e/DemoWorkflowsEndToEndTest.java",
+          "lines": "30-65",
+          "speaker": "Vivian",
+          "text": "End-to-end integration tests execute complete multi-user workflows headlessly, verifying token passing, clock ticks, and audit hashing.",
+          "word_count": 16,
+          "est_sec": 10.2
+        },
+        {
+          "id": "act9_scene5",
+          "type": "screen",
+          "target_url": "http://localhost:3000/?tab=specs",
+          "highlight": ".coverage-metrics",
+          "speaker": "Vivian",
+          "text": "Every custom exception, from validation constraints to database deadlock retries, is verified under heavy concurrent load.",
+          "word_count": 16,
+          "est_sec": 10.2
+        },
+        {
+          "id": "act9_scene6",
+          "type": "terminal",
+          "command": "node frontend/node_modules/playwright/cli.js test",
+          "speaker": "Vivian",
+          "text": "On the frontend, Playwright end-to-end specs ensure responsive layout rendering across 1080p desktop, tablet, and mobile viewports.",
+          "word_count": 17,
+          "est_sec": 10.7
+        },
+        {
+          "id": "act9_scene7",
+          "type": "code",
+          "file": "backend/src/main/java/edu/campus/iitsm/shared/domain/error/GlobalExceptionHandler.java",
+          "lines": "25-50",
+          "speaker": "Vivian",
+          "text": "Global exception translation ensures that sensitive backend stack traces never leak to client browsers or terminal logs.",
+          "word_count": 17,
+          "est_sec": 10.7
+        },
+        {
+          "id": "act9_scene8",
+          "type": "diagram",
+          "diagram_id": "test_matrix_breakdown",
+          "speaker": "Vivian",
+          "text": "Our test suite delivers ninety-four percent statement coverage across all domain aggregates and critical business pathways.",
+          "word_count": 16,
+          "est_sec": 10.2
+        },
+        {
+          "id": "act9_scene9",
+          "type": "screen",
+          "target_url": "http://localhost:3000/?tab=specs",
+          "highlight": ".build-status-card",
+          "speaker": "Vivian",
+          "text": "The entire verification pipeline runs completely locally, offline, and deterministically without external network dependencies.",
+          "word_count": 14,
+          "est_sec": 9.2
+        }
+      ],
+      "act_words": 157,
+      "act_est_sec": 98.3
+    },
+    {
+      "act": 10,
+      "title": "Conclusion & Technology Report Review",
+      "scenes": [
+        {
+          "id": "act10_scene1",
+          "type": "title",
+          "title": "Comprehensive Requirements Fulfillment",
+          "subtitle": "100% Alignment with CS F213 / MAC F212 Brief",
+          "speaker": "Vivian",
+          "text": "In summary, Incident-Zero fully achieves every technical objective and specification articulated in the BITS Pilani course brief.",
+          "word_count": 17,
+          "est_sec": 10.7
+        },
+        {
+          "id": "act10_scene2",
+          "type": "diagram",
+          "diagram_id": "tech_report_summary",
+          "speaker": "Vivian",
+          "text": "All nine technology report questions on concurrency, database integrity, architectural tradeoffs, and performance have been empirically answered.",
+          "word_count": 17,
+          "est_sec": 10.7
+        },
+        {
+          "id": "act10_scene3",
+          "type": "code",
+          "file": "backend/src/main/java/edu/campus/iitsm/incident/domain/ConcurrencyControl.java",
+          "lines": "15-40",
+          "speaker": "Vivian",
+          "text": "Our concurrency report demonstrates how optimistic database locks combined with virtual threads prevent phantom updates under peak student load.",
+          "word_count": 19,
+          "est_sec": 11.7
+        },
+        {
+          "id": "act10_scene4",
+          "type": "screen",
+          "target_url": "http://localhost:3000/?tab=stage",
+          "highlight": ".campus-rack-canvas",
+          "speaker": "Vivian",
+          "text": "By uniting rigorous object-oriented design with modern reactive architecture, we transformed campus IT from a reactive bottleneck into a resilient backbone.",
+          "word_count": 21,
+          "est_sec": 12.7
+        },
+        {
+          "id": "act10_scene5",
+          "type": "title",
+          "title": "Incident-Zero (I-ITSM v2.2)",
+          "subtitle": "Group 76 \u2014 BITS Pilani, Hyderabad Campus",
+          "speaker": "Vivian",
+          "text": "On behalf of Group 76 \u2014 Srijan Shukla, Suhani Agarwal, Kartikey Negi, and Hairsh Kumar \u2014 thank you for your time and evaluation.",
+          "word_count": 23,
+          "est_sec": 13.7
+        },
+        {
+          "id": "act10_scene6",
+          "type": "title",
+          "title": "Reach Zero. Stay Resilient.",
+          "subtitle": "https://github.com/srijans123/IncidentZero",
+          "speaker": "Vivian",
+          "text": "The complete source code, architectural decision records, and automated test suites are publicly accessible on GitHub.",
+          "word_count": 16,
+          "est_sec": 10.2
+        }
+      ],
+      "act_words": 113,
+      "act_est_sec": 69.7
+    }
+  ]
+}

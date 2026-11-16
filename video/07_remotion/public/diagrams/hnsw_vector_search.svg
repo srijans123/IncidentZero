@@ -1,0 +1,145 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" shape-rendering="crispEdges" text-rendering="geometricPrecision">
+  <defs>
+    <!-- 24x24 16-Bit Pixel Checkerboard Dither Pattern (IncidentZero Signature Canvas) -->
+    <pattern id="pixelChecker" width="48" height="48" patternUnits="userSpaceOnUse">
+      <rect width="48" height="48" fill="#1E1646"/>
+      <rect x="0" y="0" width="24" height="24" fill="#261C58"/>
+      <rect x="24" y="24" width="24" height="24" fill="#261C58"/>
+    </pattern>
+    <!-- Subtle Pixel Grid Overlay -->
+    <pattern id="pixelGrid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#32266E" stroke-width="1" stroke-opacity="0.45"/>
+    </pattern>
+    <!-- CRT Scanline Overlay Pattern -->
+    <pattern id="crtScanlines" width="8" height="4" patternUnits="userSpaceOnUse">
+      <rect x="0" y="0" width="8" height="2" fill="#0B071E" fill-opacity="0.18"/>
+      <rect x="0" y="2" width="8" height="2" fill="none"/>
+    </pattern>
+  </defs>
+
+  <rect x="0" y="0" width="1920" height="1080" fill="url(#pixelChecker)"/>
+  <rect x="0" y="0" width="1920" height="1080" fill="url(#pixelGrid)"/>
+  <rect x="16" y="16" width="1888" height="1048" fill="none" stroke="#0B071E" stroke-width="8"/>
+  <rect x="24" y="24" width="1872" height="1032" fill="none" stroke="#7C5CFF" stroke-width="4"/>
+  <rect x="32" y="32" width="12" height="12" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="1876" y="32" width="12" height="12" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="32" y="1036" width="12" height="12" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="1876" y="1036" width="12" height="12" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="66" y="54" width="1800" height="108" fill="#0B071E"/>
+  <rect x="60" y="48" width="1800" height="108" fill="#1B1530" stroke="#0B071E" stroke-width="4"/>
+  <rect x="60" y="48" width="16" height="108" fill="#59C9F5" stroke="#0B071E" stroke-width="4"/>
+  <line x1="76" y1="54" x2="1856" y2="54" stroke="#59C9F5" stroke-width="2"/>
+  <text x="96" y="96" font-family="'Pixelify Sans', 'Silkscreen', 'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="30" font-weight="900" fill="#FFFFFF" letter-spacing="1.5">SEMANTIC STORM CLUSTERING (HNSW VECTOR SEARCH)</text>
+  <text x="96" y="132" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="700" fill="#59C9F5" letter-spacing="0.5">Hierarchical Navigable Small World graph for millisecond semantic duplicate clustering</text>
+  <rect x="1516" y="72" width="320" height="44" fill="#0B071E"/>
+  <rect x="1510" y="66" width="320" height="44" fill="#FFD84D" stroke="#0B071E" stroke-width="3"/>
+  <rect x="1524" y="80" width="16" height="16" fill="#43D17A" stroke="#0B071E" stroke-width="2"/>
+  <text x="1682" y="94" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="900" fill="#1B1530" text-anchor="middle" letter-spacing="1">GROUP 76 · AI CORRELATION</text>
+  <text x="1670" y="134" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="12" font-weight="700" fill="#D4CBF7" text-anchor="middle" letter-spacing="1">INCIDENT-ZERO (I-ITSM v2.2)</text>
+  <rect x="68" y="188" width="450" height="840" fill="#0B071E"/>
+  <rect x="60" y="180" width="450" height="840" fill="#1B1530" stroke="#0B071E" stroke-width="4"/>
+  <rect x="64" y="184" width="442" height="832" fill="none" stroke="#59C9F5" stroke-width="2" stroke-opacity="0.65"/>
+  <rect x="60" y="180" width="450" height="46" fill="#2B2060" stroke="#0B071E" stroke-width="4"/>
+  <rect x="64" y="184" width="442" height="4" fill="#59C9F5"/>
+  <text x="78" y="208" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="900" fill="#FFFFFF" letter-spacing="1">01 // INCOMING TICKET STREAM</text>
+  <rect x="373" y="195" width="125" height="24" fill="#0B071E"/>
+  <rect x="371" y="193" width="125" height="24" fill="#59C9F5" stroke="#0B071E" stroke-width="2"/>
+  <text x="433" y="209" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="12" font-weight="900" fill="#1B1530" text-anchor="middle" letter-spacing="1">UNSTRUCTURED</text>
+  <rect x="89" y="259" width="402" height="162" fill="#0B071E"/>
+  <rect x="84" y="254" width="402" height="162" fill="#2B2060" stroke="#0B071E" stroke-width="3"/>
+  <rect x="87" y="257" width="396" height="6" fill="#59C9F5"/>
+  <text x="104" y="296" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="900" fill="#FFFFFF">&quot;Wi-Fi down in Malaviya Bhavan&quot;</text>
+  <text x="104" y="334" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="700" fill="#7CE356">vec: [0.842, -0.312, 0.541, ...]</text>
+  <text x="104" y="368" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="13" font-weight="600" fill="#D4CBF7">Reporter: student_01@bits.hyd</text>
+  <rect x="89" y="443" width="402" height="162" fill="#0B071E"/>
+  <rect x="84" y="438" width="402" height="162" fill="#2B2060" stroke="#0B071E" stroke-width="3"/>
+  <rect x="87" y="441" width="396" height="6" fill="#59C9F5"/>
+  <text x="104" y="480" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="900" fill="#FFFFFF">&quot;No internet hostel 4 wing B&quot;</text>
+  <text x="104" y="518" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="700" fill="#7CE356">vec: [0.839, -0.308, 0.539, ...]</text>
+  <text x="104" y="552" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="13" font-weight="600" fill="#D4CBF7">Reporter: student_84@bits.hyd</text>
+  <rect x="89" y="627" width="402" height="162" fill="#0B071E"/>
+  <rect x="84" y="622" width="402" height="162" fill="#2B2060" stroke="#0B071E" stroke-width="3"/>
+  <rect x="87" y="625" width="396" height="6" fill="#FFD84D"/>
+  <text x="104" y="664" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="900" fill="#FFFFFF">&quot;DNS failure cannot reach LMS&quot;</text>
+  <text x="104" y="702" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="700" fill="#7CE356">vec: [0.812, -0.295, 0.518, ...]</text>
+  <text x="104" y="736" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="13" font-weight="600" fill="#D4CBF7">Reporter: faculty_12@bits.hyd</text>
+  <rect x="89" y="811" width="402" height="162" fill="#0B071E"/>
+  <rect x="84" y="806" width="402" height="162" fill="#2B2060" stroke="#0B071E" stroke-width="3"/>
+  <rect x="87" y="809" width="396" height="6" fill="#FF4D3D"/>
+  <text x="104" y="848" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="900" fill="#FFFFFF">&quot;500+ similar reports arriving&quot;</text>
+  <text x="104" y="886" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="700" fill="#7CE356">Storm burst: 42 tickets / sec</text>
+  <text x="104" y="920" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="13" font-weight="600" fill="#D4CBF7">Auto-routed to HNSW embedder</text>
+  <rect x="553" y="188" width="810" height="840" fill="#0B071E"/>
+  <rect x="545" y="180" width="810" height="840" fill="#1B1530" stroke="#0B071E" stroke-width="4"/>
+  <rect x="549" y="184" width="802" height="832" fill="none" stroke="#43D17A" stroke-width="2" stroke-opacity="0.65"/>
+  <rect x="545" y="180" width="810" height="46" fill="#43D17A" stroke="#0B071E" stroke-width="4"/>
+  <rect x="549" y="184" width="802" height="4" fill="#43D17A"/>
+  <rect x="561" y="198" width="14" height="14" fill="#FF4D3D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="583" y="198" width="14" height="14" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="605" y="198" width="14" height="14" fill="#43D17A" stroke="#0B071E" stroke-width="2"/>
+  <text x="635" y="209" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="900" fill="#FFFFFF" letter-spacing="1">02 // HNSW MULTI-LAYER GRAPH TRAVERSAL</text>
+  <rect x="1193" y="195" width="150" height="24" fill="#0B071E"/>
+  <rect x="1191" y="193" width="150" height="24" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <text x="1266" y="209" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="12" font-weight="900" fill="#1B1530" text-anchor="middle" letter-spacing="1">O(log N) SEARCH</text>
+  <rect x="578" y="259" width="754" height="180" fill="#0B071E"/>
+  <rect x="573" y="254" width="754" height="180" fill="#2B2060" stroke="#FFD84D" stroke-width="3"/>
+  <rect x="576" y="257" width="748" height="6" fill="#FFD84D"/>
+  <text x="597" y="294" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="17" font-weight="900" fill="#FFD84D">LAYER 2 (COARSE NAVIGATION) · Long-Distance Graph Skips</text>
+  <line x1="695" y1="369" x2="1195" y2="369" stroke="#FFD84D" stroke-width="5" stroke-dasharray="14,8"/>
+  <rect x="677" y="351" width="36" height="36" fill="#FFD84D" stroke="#0B071E" stroke-width="3"/>
+  <rect x="927" y="351" width="36" height="36" fill="#FFD84D" stroke="#0B071E" stroke-width="3"/>
+  <rect x="1177" y="351" width="36" height="36" fill="#FFD84D" stroke="#0B071E" stroke-width="3"/>
+  <rect x="578" y="465" width="754" height="190" fill="#0B071E"/>
+  <rect x="573" y="460" width="754" height="190" fill="#2B2060" stroke="#59C9F5" stroke-width="3"/>
+  <rect x="576" y="463" width="748" height="6" fill="#59C9F5"/>
+  <text x="597" y="500" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="17" font-weight="900" fill="#59C9F5">LAYER 1 (MEDIUM GRAIN) · Regional Cluster Refinement</text>
+  <line x1="665" y1="580" x2="1225" y2="580" stroke="#59C9F5" stroke-width="4"/>
+  <rect x="650" y="565" width="30" height="30" fill="#59C9F5" stroke="#0B071E" stroke-width="3"/>
+  <rect x="790" y="565" width="30" height="30" fill="#59C9F5" stroke="#0B071E" stroke-width="3"/>
+  <rect x="930" y="565" width="30" height="30" fill="#59C9F5" stroke="#0B071E" stroke-width="3"/>
+  <rect x="1070" y="565" width="30" height="30" fill="#59C9F5" stroke="#0B071E" stroke-width="3"/>
+  <rect x="1210" y="565" width="30" height="30" fill="#59C9F5" stroke="#0B071E" stroke-width="3"/>
+  <rect x="578" y="681" width="754" height="308" fill="#0B071E"/>
+  <rect x="573" y="676" width="754" height="308" fill="#2B2060" stroke="#43D17A" stroke-width="3"/>
+  <rect x="576" y="679" width="748" height="6" fill="#43D17A"/>
+  <text x="597" y="718" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="17" font-weight="900" fill="#7CE356">LAYER 0 (DENSE LOCAL GRAPH) · Cosine Similarity &gt;= 0.88</text>
+  <text x="597" y="758" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="700" fill="#FFFFFF">• Nearest-neighbor vector lookup completes in &lt; 3.2 milliseconds.</text>
+  <text x="597" y="790" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="700" fill="#FFFFFF">• Dual adapter support: ONNX dense embeddings + LSH hash fallback.</text>
+  <text x="597" y="822" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="700" fill="#D4CBF7">• Matches incoming ticket vector against active open problem roots.</text>
+  <rect x="601" y="862" width="698" height="56" fill="#FFF8DC" stroke="#0B071E" stroke-width="4"/>
+  <text x="950" y="898" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="18" font-weight="900" fill="#1B1530" text-anchor="middle">★ CORRELATION CONFIDENCE: 94.6% MATCH (THRESHOLD 0.88) ★</text>
+  <rect x="1398" y="188" width="470" height="840" fill="#0B071E"/>
+  <rect x="1390" y="180" width="470" height="840" fill="#1B1530" stroke="#0B071E" stroke-width="4"/>
+  <rect x="1394" y="184" width="462" height="832" fill="none" stroke="#FF4D3D" stroke-width="2" stroke-opacity="0.65"/>
+  <rect x="1390" y="180" width="470" height="46" fill="#FF4D3D" stroke="#0B071E" stroke-width="4"/>
+  <rect x="1394" y="184" width="462" height="4" fill="#FF4D3D"/>
+  <text x="1408" y="209" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="900" fill="#FFFFFF" letter-spacing="1">03 // STORM CORRELATION ROOT</text>
+  <rect x="1740" y="195" width="108" height="24" fill="#0B071E"/>
+  <rect x="1738" y="193" width="108" height="24" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <text x="1792" y="209" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="12" font-weight="900" fill="#1B1530" text-anchor="middle" letter-spacing="1">MASTER PRB</text>
+  <rect x="1420" y="260" width="422" height="360" fill="#0B071E"/>
+  <rect x="1414" y="254" width="422" height="360" fill="#2B2060" stroke="#FF4D3D" stroke-width="3"/>
+  <rect x="1417" y="257" width="416" height="6" fill="#FF4D3D"/>
+  <rect x="1434" y="278" width="280" height="36" fill="#FF4D3D" stroke="#0B071E" stroke-width="2.5"/>
+  <text x="1574" y="302" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="900" fill="#FFFFFF" text-anchor="middle">MASTER INCIDENT #PRB-882</text>
+  <text x="1434" y="352" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="18" font-weight="900" fill="#FFD84D">Malaviya Bhavan Core</text>
+  <text x="1434" y="380" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="18" font-weight="900" fill="#FFD84D">Switch Broadcast Loop</text>
+  <line x1="1434" y1="402" x2="1816" y2="402" stroke="#7C5CFF" stroke-width="2"/>
+  <text x="1434" y="438" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="800" fill="#FFFFFF">• Linked Children: 524 Tickets</text>
+  <text x="1434" y="472" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="800" fill="#7CE356">• Assignee: Vikram Anand</text>
+  <text x="1434" y="506" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="800" fill="#FF4D3D">• Priority: P1 Critical (T0)</text>
+  <text x="1434" y="540" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="800" fill="#59C9F5">• Dedup Ratio: 524 : 1</text>
+  <rect x="1420" y="648" width="422" height="342" fill="#0B071E"/>
+  <rect x="1414" y="642" width="422" height="342" fill="#2B2060" stroke="#43D17A" stroke-width="3"/>
+  <rect x="1417" y="645" width="416" height="6" fill="#43D17A"/>
+  <text x="1434" y="686" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="17" font-weight="900" fill="#7CE356">CASCADING RESOLUTION &amp; SSE</text>
+  <text x="1434" y="726" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="600" fill="#FFFFFF" text-anchor="start">When Master Incident #PRB-882 transitions</text>
+  <text x="1434" y="752" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="600" fill="#FFFFFF" text-anchor="start">to RESOLVED, all 524 linked child tickets</text>
+  <text x="1434" y="778" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="600" fill="#FFFFFF" text-anchor="start">atomically inherit the resolution and</text>
+  <text x="1434" y="804" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="600" fill="#FFFFFF" text-anchor="start">broadcast real-time SSE updates to every</text>
+  <text x="1434" y="830" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="600" fill="#FFFFFF" text-anchor="start">student HUD.</text>
+  <rect x="1434" y="900" width="382" height="52" fill="#43D17A" stroke="#0B071E" stroke-width="3"/>
+  <text x="1625" y="932" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="900" fill="#1B1530" text-anchor="middle">ZERO DUPLICATE TECH DISPATCH</text>
+  <!-- Subtle 16-Bit CRT Scanline Overlay -->
+  <rect x="24" y="24" width="1872" height="1032" fill="url(#crtScanlines)" pointer-events="none"/>
+</svg>

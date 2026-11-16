@@ -1,0 +1,9 @@
+{
+  "id": "act4_scene7",
+  "title": "Business Working Hours Calculator",
+  "file": "backend/src/main/java/edu/campus/iitsm/shared/domain/WorkingTimeCalculator.java",
+  "display_file": "backend/src/main/java/edu/campus/iitsm/shared/domain/WorkingTimeCalculator.java",
+  "lines": "1-22",
+  "exists": true,
+  "code": "package edu.campus.iitsm.shared.domain;\n\nimport java.time.Instant;\nimport java.time.LocalDate;\n\n/**\n * Pure domain outbound port for SLA business-hours elapsed time calculation.\n * Implemented by BusinessCalendar in the catalog domain without framework leaks.\n */\npublic interface WorkingTimeCalculator {\n\n  /**\n   * Computes active SLA working milliseconds between [start, end).\n   * If is24x7 is true (P1/T0), returns continuous wall-clock elapsed millis.\n   * Otherwise subtracts nights, weekends, and campus academic holidays.\n   */\n  long workingMillisBetween(Instant start, Instant end, boolean is24x7);\n\n  default boolean isWorkingDay(LocalDate date) {\n    return true;\n  }\n}\n"
+}

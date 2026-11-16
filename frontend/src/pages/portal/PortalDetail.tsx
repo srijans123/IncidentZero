@@ -17,6 +17,7 @@ import {
 import { ActionButton } from '../../components/ui/ActionButton';
 import { StatusBadge } from '../../components/ui/StatusBadge';
 import { HashPill } from '../../components/ui/HashPill';
+import { SlaPriorityPanel } from '../../components/SlaPriorityPanel';
 import { useSse } from '../../context/SseContext';
 import { useToast } from '../../components/ui/Toast';
 import { Modal } from '../../components/ui/Modal';
@@ -326,6 +327,9 @@ export const PortalDetail: React.FC<PortalDetailProps> = ({ incidentId, onBack }
           </div>
         </div>
       </div>
+
+      {/* Priority steps and SLA targets, straight from the backend */}
+      <SlaPriorityPanel incident={incident} />
 
       {/* Action Banner: User Info Requested (Clock Paused) */}
       {isPendingUserInfo && (

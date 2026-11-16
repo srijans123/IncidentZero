@@ -1,0 +1,43 @@
+{
+  "command": "mvn test -Dtest=SlaTimerTest",
+  "title": "Dual-Clock SLA Chronometer & Pause Interval Verification",
+  "duration_sec": 10.2,
+  "lines": [
+    {
+      "type": "prompt",
+      "text": "group76@bits-hyd:~/IncidentZero$ mvn test -Dtest=SlaTimerTest"
+    },
+    {
+      "type": "info",
+      "text": "[INFO] Running edu.campus.iitsm.sla.domain.SlaTimerTest"
+    },
+    {
+      "type": "success",
+      "text": "  [TEST 01] testWallClockTicksContinuouslyDuringClientPause ............ PASSED"
+    },
+    {
+      "type": "success",
+      "text": "  [TEST 02] testBusinessCalendarFreezesDuringNonBusinessHours .......... PASSED"
+    },
+    {
+      "type": "success",
+      "text": "  [TEST 03] testPauseIntervalSubtractionMatchesMathematicalFormula ..... PASSED"
+    },
+    {
+      "type": "success",
+      "text": "  [TEST 04] testStickyBreachInvariantPersistsAcrossStateDeltas ......... PASSED"
+    },
+    {
+      "type": "success",
+      "text": "  [TEST 05] testP1EscalationEmittedAt80PercentDeadline ................. PASSED"
+    },
+    {
+      "type": "info",
+      "text": "[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.941 s"
+    },
+    {
+      "type": "success",
+      "text": "[INFO] BUILD SUCCESS"
+    }
+  ]
+}

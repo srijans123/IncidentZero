@@ -1,0 +1,96 @@
+1
+00:00:00,000 --> 00:00:04,300
+We now demonstrate Core Workflow 1, following an incident through
+
+2
+00:00:04,300 --> 00:00:08,600
+all eleven finite states from initial report to cryptographic sealing.
+
+3
+00:00:09,100 --> 00:00:12,967
+Student Aarav Sharma logs into the self-service portal to report
+
+4
+00:00:12,967 --> 00:00:16,833
+a critical failure on the SWD Mess and Fee Payment
+
+5
+00:00:16,833 --> 00:00:17,220
+Gateway.
+
+6
+00:00:17,733 --> 00:00:21,890
+The student specifies high impact and high urgency. Our automated
+
+7
+00:00:21,890 --> 00:00:26,046
+Priority Engine evaluates the campus calendar and notes an active
+
+8
+00:00:26,046 --> 00:00:27,293
+fee payment window.
+
+9
+00:00:27,800 --> 00:00:32,444
+Because the service carries the FEE_DEADLINE calendar tag, the priority
+
+10
+00:00:32,444 --> 00:00:36,160
+calculation automatically bumps the ticket to P1 Critical.
+
+11
+00:00:36,667 --> 00:00:42,438
+A full priority explanation JSON array is embedded into the
+
+12
+00:00:42,438 --> 00:00:48,210
+ticket, explaining the exact formula, calendar modifiers, and institutional rules
+
+13
+00:00:48,210 --> 00:00:48,787
+applied.
+
+14
+00:00:49,300 --> 00:00:53,755
+The ticket is routed via the Least-Loaded Strategy to Senior
+
+15
+00:00:53,755 --> 00:00:58,209
+Technician Vikram Rao, moving state to ASSIGNED and starting the
+
+16
+00:00:58,209 --> 00:00:59,100
+response clock.
+
+17
+00:00:59,600 --> 00:01:05,900
+Vikram clicks Acknowledge in the workbench. The initial response clock
+
+18
+00:01:05,900 --> 00:01:12,200
+stops in two minutes, well under the five-minute P1 threshold.
+
+19
+00:01:12,700 --> 00:01:18,080
+Remediating the payment gateway, Vikram applies a database pool restart
+
+20
+00:01:18,080 --> 00:01:23,460
+and enters detailed resolution notes exceeding the mandatory twenty-character validation.
+
+21
+00:01:23,967 --> 00:01:29,546
+The incident enters RESOLVED. Aarav receives a real-time notification, tests
+
+22
+00:01:29,546 --> 00:01:34,567
+payment access, and confirms resolution with a five-star rating.
+
+23
+00:01:35,067 --> 00:01:39,887
+Finally, the IT Administrator archives the verified ticket into CLOSED
+
+24
+00:01:39,887 --> 00:01:44,707
+status, immutably sealing its resolution record in the audit ledger.
+

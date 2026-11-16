@@ -1,0 +1,9 @@
+{
+  "id": "act3_scene4",
+  "title": "Priority Calculation Enum & Bands",
+  "file": "backend/src/main/java/edu/campus/iitsm/incident/domain/Priority.java",
+  "display_file": "backend/src/main/java/edu/campus/iitsm/incident/domain/Priority.java",
+  "lines": "1-30",
+  "exists": true,
+  "code": "package edu.campus.iitsm.incident.domain;\n\npublic enum Priority {\n  P1, P2, P3, P4;\n\n  public boolean isCritical() { return this == P1 || this == P2; }\n  public Priority bumpOneLevel() {\n    return switch (this) {\n      case P4 -> P3;\n      case P3 -> P2;\n      case P2, P1 -> P1;\n    };\n  }\n}\n"
+}

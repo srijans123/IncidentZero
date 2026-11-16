@@ -1,0 +1,9 @@
+{
+  "id": "act8_scene2",
+  "title": "GoF Strategy Pattern: AssignmentStrategy",
+  "file": "backend/src/main/java/edu/campus/iitsm/assignment/domain/AssignmentStrategy.java",
+  "display_file": "backend/src/main/java/edu/campus/iitsm/assignment/domain/AssignmentStrategy.java",
+  "lines": "1-25",
+  "exists": true,
+  "code": "package edu.campus.iitsm.assignment.domain;\n\nimport edu.campus.iitsm.assignment.api.AssignmentRationale;\nimport edu.campus.iitsm.incident.domain.Priority;\nimport java.util.List;\nimport java.util.Optional;\nimport java.util.Set;\nimport java.util.UUID;\n\npublic interface AssignmentStrategy {\n  String name();\n  Optional<AssignmentRationale> selectTechnician(\n      UUID incidentId,\n      UUID serviceId,\n      UUID ownerTeamId,\n      Priority priority,\n      double ticketWeight,\n      Set<String> requiredSkills,\n      List<TechnicianCandidate> candidates\n  );\n}\n"
+}

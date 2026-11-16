@@ -1,0 +1,9 @@
+{
+  "id": "act8_scene6",
+  "title": "GoF Decorator/Adapter: Realtime SSE Hub",
+  "file": "backend/src/main/java/edu/campus/iitsm/notification/infrastructure/InAppSseHub.java",
+  "display_file": "backend/src/main/java/edu/campus/iitsm/notification/infrastructure/InAppSseHub.java",
+  "lines": "15-45",
+  "exists": true,
+  "code": "import java.util.concurrent.ConcurrentHashMap;\nimport java.util.concurrent.atomic.AtomicLong;\n\n@Component\npublic class InAppSseHub implements SseBroadcastPort {\n  private static final Logger log = LoggerFactory.getLogger(InAppSseHub.class);\n  private static final int BUFFER_CAPACITY = 512;\n  private static final long EMITTER_TIMEOUT = 300_000L; // 5 minutes\n\n  public record SseEvent(long id, String eventType, String dataJson, Instant timestamp) {}\n\n  private final ClockPort clockPort;\n  private final ObjectMapper objectMapper;\n  private final AtomicLong eventIdCounter = new AtomicLong(0);\n  private final SseEvent[] ringBuffer = new SseEvent[BUFFER_CAPACITY];\n  private final Set<SseEmitter> activeEmitters = ConcurrentHashMap.newKeySet();\n\n  public InAppSseHub(ClockPort clockPort, ObjectMapper objectMapper) {\n    this.clockPort = clockPort;\n    this.objectMapper = objectMapper;\n  }\n\n  public SseEmitter createEmitter(UUID userId, Long lastEventId) {\n    SseEmitter emitter = new SseEmitter(EMITTER_TIMEOUT);\n    activeEmitters.add(emitter);\n\n    emitter.onCompletion(() -> activeEmitters.remove(emitter));\n    emitter.onTimeout(() -> {\n      emitter.complete();\n      activeEmitters.remove(emitter);\n    });\n"
+}

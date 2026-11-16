@@ -1,0 +1,9 @@
+{
+  "id": "act4_scene7",
+  "title": "Business Working Hours Calculator",
+  "file": "backend/src/main/java/edu/campus/iitsm/shared/domain/WorkingTimeCalculator.java",
+  "display_file": "backend/src/main/java/edu/campus/iitsm/shared/domain/WorkingTimeCalculator.java",
+  "lines": "10-40",
+  "exists": true,
+  "code": ""
+}
