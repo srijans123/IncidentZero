@@ -27,8 +27,9 @@
 | V4 (T06) | DONE | `=== take T06 OK: 100.7 s, 5276 distinct frames, 0 warnings`<br>`T06: 16/16 pictures in video_v4/out/frames`<br>`C3 pictures checked: all match (a06b05, a06b08, a06b12, a06b13, a06b15)` |
 | V4 (T07) | DONE | `=== take T07 OK: 166.4 s, 6762 distinct frames, 0 warnings`<br>`T07: 23/23 pictures in video_v4/out/frames`<br>`C3 pictures checked: all match (a07b03, a07b13, a07b15, a07b18, a07b20)` |
 | V4 (T08) | DONE | `=== take T08 OK: 71.8 s, 2899 distinct frames, 0 warnings`<br>`T08: 9/9 pictures in video_v4/out/frames`<br>`C3 pictures checked: all match (a08b04, a08b07)` |
+| V5 (T09) | DONE | `=== take T09 OK: 250.0 s, 15892 distinct frames, 0 warnings`<br>`T09: 39/39 pictures in video_v4/out/frames`<br>`C3 pictures checked: all match (a09b02, a09b03, a09b07, a09b08, a09b09, a09b11, a09b12, a09b13, a09b14, a09b17, a09b22, a09b23, a09b25, a09b28, a09b29, a09b31, a09b33, a09b36, a09b37, a09b38)` |
 
-NEXT STEP: V5. Record live demo take T09
+NEXT STEP: V6 (Terminal & Ending - T10, T11)
 
 ### Gate R
 
