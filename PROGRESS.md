@@ -23,8 +23,9 @@
 | V4 (T02) | DONE | `=== take T02 OK: 85.7 s, 3096 distinct frames, 0 warnings`<br>`T02: 13/13 pictures in video_v4/out/frames`<br>`C3 pictures checked: all match (a02b05, a02b10, a02b12, a02b13)` |
 | V4 (T03) | DONE | `=== take T03 OK: 193.7 s, 10069 distinct frames, 0 warnings`<br>`T03: 29/29 pictures in video_v4/out/frames`<br>`C3 pictures checked: all match (a03b03, a03b05, a03b06, a03b08, a03b13, a03b16, a03b22, a03b28, a03b29)` |
 | V4 (T04) | DONE | `=== take T04 OK: 98.6 s, 4803 distinct frames, 0 warnings`<br>`T04: 14/14 pictures in video_v4/out/frames`<br>`C3 pictures checked: all match (a04b03, a04b06, a04b12, a04b14)` |
+| V4 (T05) | DONE | `=== take T05 OK: 135.3 s, 4472 distinct frames, 0 warnings`<br>`T05: 17/17 pictures in video_v4/out/frames`<br>`C3 pictures checked: all match (a05b06, a05b09, a05b15, a05b16)` |
 
-NEXT STEP: V4 (T05). Record take T05
+NEXT STEP: V4 (T06). Record take T06
 
 ### Gate R
 
