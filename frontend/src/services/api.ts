@@ -272,7 +272,8 @@ export async function probeBackend(timeoutMs = 2500): Promise<boolean> {
   const timer = setTimeout(() => ctrl.abort(), timeoutMs);
   try {
     const res = await fetch(`${API_BASE}/services`, { signal: ctrl.signal });
-    const alive = res.status < 500 && res.status !== 404;
+    const isHtml = res.headers.get('content-type')?.includes('text/html');
+    const alive = res.status < 500 && res.status !== 404 && !isHtml;
     if (!alive) setDemoMode(true);
     return alive;
   } catch {

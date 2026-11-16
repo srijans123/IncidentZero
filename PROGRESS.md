@@ -9,5 +9,6 @@
 | R2 | DONE | `✓ built in 20.46s` |
 | R3 | DONE | `[OK] Backend already running on 8080 and answering login.`<br>`curl http://localhost:8080/api/v1/services: 401`<br>`curl http://localhost:3000/app.html: 200` |
 | R4 | DONE | `SUMMARY: 24 passed, 0 failed (554590 transitions verified)`<br>`OVERALL GATE A STATUS: PASS (11/11)` |
+| R5 | DONE | `=== take T09 OK: 252.1 s, 15333 distinct frames, 0 warnings`<br>`all requested takes recorded` |
 
-NEXT STEP: R5. Prove the in-browser backend (preview server on 4173 & record T09)
+NEXT STEP: R6. Commit, push, deploy to GitHub Pages (git checkout main, merge, push, deploy-pages.mjs)
