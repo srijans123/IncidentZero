@@ -1,0 +1,174 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" shape-rendering="crispEdges" text-rendering="geometricPrecision">
+  <defs>
+    <!-- 24x24 16-Bit Pixel Checkerboard Dither Pattern (IncidentZero Signature Canvas) -->
+    <pattern id="pixelChecker" width="48" height="48" patternUnits="userSpaceOnUse">
+      <rect width="48" height="48" fill="#1E1646"/>
+      <rect x="0" y="0" width="24" height="24" fill="#261C58"/>
+      <rect x="24" y="24" width="24" height="24" fill="#261C58"/>
+    </pattern>
+    <!-- Subtle Pixel Grid Overlay -->
+    <pattern id="pixelGrid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#32266E" stroke-width="1" stroke-opacity="0.45"/>
+    </pattern>
+    <!-- CRT Scanline Overlay Pattern -->
+    <pattern id="crtScanlines" width="8" height="4" patternUnits="userSpaceOnUse">
+      <rect x="0" y="0" width="8" height="2" fill="#0B071E" fill-opacity="0.18"/>
+      <rect x="0" y="2" width="8" height="2" fill="none"/>
+    </pattern>
+  </defs>
+
+  <rect x="0" y="0" width="1920" height="1080" fill="url(#pixelChecker)"/>
+  <rect x="0" y="0" width="1920" height="1080" fill="url(#pixelGrid)"/>
+  <rect x="16" y="16" width="1888" height="1048" fill="none" stroke="#0B071E" stroke-width="8"/>
+  <rect x="24" y="24" width="1872" height="1032" fill="none" stroke="#7C5CFF" stroke-width="4"/>
+  <rect x="32" y="32" width="12" height="12" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="1876" y="32" width="12" height="12" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="32" y="1036" width="12" height="12" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="1876" y="1036" width="12" height="12" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="66" y="54" width="1800" height="108" fill="#0B071E"/>
+  <rect x="60" y="48" width="1800" height="108" fill="#1B1530" stroke="#0B071E" stroke-width="4"/>
+  <rect x="60" y="48" width="16" height="108" fill="#43D17A" stroke="#0B071E" stroke-width="4"/>
+  <line x1="76" y1="54" x2="1856" y2="54" stroke="#43D17A" stroke-width="2"/>
+  <text x="96" y="96" font-family="'Pixelify Sans', 'Silkscreen', 'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="30" font-weight="900" fill="#FFFFFF" letter-spacing="1.5">HEXAGONAL ARCHITECTURE (PORTS &amp; ADAPTERS)</text>
+  <text x="96" y="132" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="700" fill="#59C9F5" letter-spacing="0.5">Strict architectural decoupling: Pure domain core is 100% agnostic of frameworks &amp; databases</text>
+  <rect x="1516" y="72" width="320" height="44" fill="#0B071E"/>
+  <rect x="1510" y="66" width="320" height="44" fill="#FFD84D" stroke="#0B071E" stroke-width="3"/>
+  <rect x="1524" y="80" width="16" height="16" fill="#43D17A" stroke="#0B071E" stroke-width="2"/>
+  <text x="1682" y="94" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="900" fill="#1B1530" text-anchor="middle" letter-spacing="1">GROUP 76 · ARCH SPEC</text>
+  <text x="1670" y="134" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="12" font-weight="700" fill="#D4CBF7" text-anchor="middle" letter-spacing="1">INCIDENT-ZERO (I-ITSM v2.2)</text>
+  <rect x="68" y="188" width="450" height="840" fill="#0B071E"/>
+  <rect x="60" y="180" width="450" height="840" fill="#1B1530" stroke="#0B071E" stroke-width="4"/>
+  <rect x="64" y="184" width="442" height="832" fill="none" stroke="#59C9F5" stroke-width="2" stroke-opacity="0.65"/>
+  <rect x="60" y="180" width="450" height="46" fill="#2B2060" stroke="#0B071E" stroke-width="4"/>
+  <rect x="64" y="184" width="442" height="4" fill="#59C9F5"/>
+  <text x="78" y="209" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="900" fill="#FFFFFF" letter-spacing="1">DRIVING ADAPTERS (INBOUND)</text>
+  <rect x="390" y="195" width="108" height="24" fill="#0B071E"/>
+  <rect x="388" y="193" width="108" height="24" fill="#59C9F5" stroke="#0B071E" stroke-width="2"/>
+  <text x="442" y="209" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="12" font-weight="900" fill="#1B1530" text-anchor="middle" letter-spacing="1">HTTP / SSE</text>
+  <text x="84" y="258" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="800" fill="#D4CBF7">Inbound REST Controllers, SSE &amp; CLI Clients</text>
+  <rect x="89" y="287" width="402" height="154" fill="#0B071E"/>
+  <rect x="84" y="282" width="402" height="154" fill="#2B2060" stroke="#0B071E" stroke-width="3"/>
+  <rect x="87" y="285" width="396" height="6" fill="#59C9F5"/>
+  <text x="104" y="322" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="17" font-weight="900" fill="#FFFFFF">REST Controllers (Spring MVC)</text>
+  <text x="104" y="354" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="800" fill="#59C9F5">/api/v1/incidents, /auth, /routing</text>
+  <text x="104" y="386" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="13" font-weight="600" fill="#FFF3C4" text-anchor="start">Validates DTOs &amp; invokes inbound use-case</text>
+  <text x="104" y="406" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="13" font-weight="600" fill="#FFF3C4" text-anchor="start">ports</text>
+  <rect x="89" y="463" width="402" height="154" fill="#0B071E"/>
+  <rect x="84" y="458" width="402" height="154" fill="#2B2060" stroke="#0B071E" stroke-width="3"/>
+  <rect x="87" y="461" width="396" height="6" fill="#43D17A"/>
+  <text x="104" y="498" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="17" font-weight="900" fill="#FFFFFF">Server-Sent Events (SSE Hub)</text>
+  <text x="104" y="530" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="800" fill="#43D17A">Realtime State Broadcast to HUD</text>
+  <text x="104" y="562" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="13" font-weight="600" fill="#FFF3C4" text-anchor="start">Non-blocking reactive event stream to</text>
+  <text x="104" y="582" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="13" font-weight="600" fill="#FFF3C4" text-anchor="start">browsers</text>
+  <rect x="89" y="639" width="402" height="154" fill="#0B071E"/>
+  <rect x="84" y="634" width="402" height="154" fill="#2B2060" stroke="#0B071E" stroke-width="3"/>
+  <rect x="87" y="637" width="396" height="6" fill="#FFD84D"/>
+  <text x="104" y="674" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="17" font-weight="900" fill="#FFFFFF">React 19 Pixel Arcade Client</text>
+  <text x="104" y="706" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="800" fill="#FFD84D">Portal, Workbench, Stage &amp; Admin</text>
+  <text x="104" y="738" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="13" font-weight="600" fill="#FFF3C4" text-anchor="start">16-bit Four Skies operational UI console</text>
+  <rect x="89" y="815" width="402" height="154" fill="#0B071E"/>
+  <rect x="84" y="810" width="402" height="154" fill="#2B2060" stroke="#0B071E" stroke-width="3"/>
+  <rect x="87" y="813" width="396" height="6" fill="#7C5CFF"/>
+  <text x="104" y="850" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="17" font-weight="900" fill="#FFFFFF">Automated Verification Suites</text>
+  <text x="104" y="882" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="800" fill="#7C5CFF">verify-m1.sh ... verify-m6.sh</text>
+  <text x="104" y="914" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="13" font-weight="600" fill="#FFF3C4" text-anchor="start">Playwright E2E &amp; deterministic reset scripts</text>
+  <rect x="560" y="190" width="820" height="840" fill="#0B071E"/>
+  <rect x="550" y="180" width="820" height="840" fill="#1B1530" stroke="#0B071E" stroke-width="4"/>
+  <rect x="554" y="184" width="812" height="832" fill="none" stroke="#43D17A" stroke-width="2" stroke-opacity="0.65"/>
+  <rect x="550" y="180" width="820" height="48" fill="#43D17A" stroke="#0B071E" stroke-width="4"/>
+  <rect x="554" y="184" width="812" height="4" fill="#43D17A"/>
+  <rect x="566" y="199" width="14" height="14" fill="#FF4D3D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="588" y="199" width="14" height="14" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="610" y="199" width="14" height="14" fill="#43D17A" stroke="#0B071E" stroke-width="2"/>
+  <text x="640" y="210" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="900" fill="#FFFFFF" letter-spacing="1">PURE DOMAIN CORE // edu.campus.iitsm.*.domain</text>
+  <rect x="1166" y="196" width="192" height="24" fill="#0B071E"/>
+  <rect x="1164" y="194" width="192" height="24" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <text x="1260" y="210" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="12" font-weight="900" fill="#1B1530" text-anchor="middle" letter-spacing="1">ARCHUNIT R1 VERIFIED</text>
+  <rect x="578" y="248" width="764" height="52" fill="#FFF8DC" stroke="#0B071E" stroke-width="4"/>
+  <text x="960" y="280" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="900" fill="#1B1530" text-anchor="middle">COMPILER-VERIFIED: ZERO SPRING, JPA, HIBERNATE OR JACKSON IMPORTS</text>
+  <rect x="584" y="326" width="764" height="196" fill="#0B071E"/>
+  <rect x="578" y="320" width="764" height="196" fill="#2B2060" stroke="#59C9F5" stroke-width="3"/>
+  <rect x="581" y="323" width="758" height="6" fill="#59C9F5"/>
+  <text x="602" y="358" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="18" font-weight="900" fill="#59C9F5">INBOUND &amp; OUTBOUND PORTS (PURE JAVA INTERFACES)</text>
+  <text x="602" y="394" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="700" fill="#FFFFFF">• ClockPort (SystemClock / VirtualAnchoredClock deterministic time)</text>
+  <text x="602" y="424" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="700" fill="#FFFFFF">• WorkingTimeCalculator (BusinessCalendar 08:00-18:00 IST &amp; holidays)</text>
+  <text x="602" y="454" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="700" fill="#FFFFFF">• AssignmentStrategy &amp; RoutingPort (7 pluggable dispatch algorithms)</text>
+  <text x="602" y="484" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="700" fill="#FFFFFF">• IncidentRepositoryPort, SlaTimerPort, AuditLedgerPort, EmbeddingPort</text>
+  <rect x="584" y="544" width="764" height="452" fill="#0B071E"/>
+  <rect x="578" y="538" width="764" height="452" fill="#15102B" stroke="#43D17A" stroke-width="3"/>
+  <rect x="581" y="541" width="758" height="6" fill="#43D17A"/>
+  <text x="602" y="576" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="18" font-weight="900" fill="#7CE356">DOMAIN AGGREGATES &amp; RICH BUSINESS MODELS</text>
+  <rect x="606" y="600" width="350" height="116" fill="#0B071E"/>
+  <rect x="602" y="596" width="350" height="116" fill="#2B2060" stroke="#43D17A" stroke-width="2.5"/>
+  <rect x="604.5" y="598.5" width="345.0" height="6" fill="#43D17A"/>
+  <text x="620" y="632" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="17" font-weight="900" fill="#FFFFFF">Incident Aggregate Root</text>
+  <text x="620" y="664" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="700" fill="#43D17A">11-State Finite State Machine</text>
+  <text x="620" y="692" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="13" font-weight="600" fill="#D4CBF7">520,036 verified transitions</text>
+  <rect x="972" y="600" width="350" height="116" fill="#0B071E"/>
+  <rect x="968" y="596" width="350" height="116" fill="#2B2060" stroke="#FFD84D" stroke-width="2.5"/>
+  <rect x="970.5" y="598.5" width="345.0" height="6" fill="#FFD84D"/>
+  <text x="986" y="632" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="17" font-weight="900" fill="#FFFFFF">Dual-Clock SLA Engine</text>
+  <text x="986" y="664" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="700" fill="#FFD84D">Pause interval calendar logic</text>
+  <text x="986" y="692" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="13" font-weight="600" fill="#D4CBF7">Sticky breach state latch</text>
+  <rect x="606" y="734" width="350" height="116" fill="#0B071E"/>
+  <rect x="602" y="730" width="350" height="116" fill="#2B2060" stroke="#59C9F5" stroke-width="2.5"/>
+  <rect x="604.5" y="732.5" width="345.0" height="6" fill="#59C9F5"/>
+  <text x="620" y="766" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="17" font-weight="900" fill="#FFFFFF">Service Dependency DAG</text>
+  <text x="620" y="798" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="700" fill="#59C9F5">Tarjan SCC cycle validator</text>
+  <text x="620" y="826" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="13" font-weight="600" fill="#D4CBF7">O(V+E) blast radius engine</text>
+  <rect x="972" y="734" width="350" height="116" fill="#0B071E"/>
+  <rect x="968" y="730" width="350" height="116" fill="#2B2060" stroke="#7C5CFF" stroke-width="2.5"/>
+  <rect x="970.5" y="732.5" width="345.0" height="6" fill="#7C5CFF"/>
+  <text x="986" y="766" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="17" font-weight="900" fill="#FFFFFF">7 Routing Strategies</text>
+  <text x="986" y="798" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="700" fill="#7C5CFF">Polymorphic Strategy Pattern</text>
+  <text x="986" y="826" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="13" font-weight="600" fill="#D4CBF7">Skill, Load, Affinity &amp; AI</text>
+  <rect x="606" y="870" width="716" height="100" fill="#0B071E"/>
+  <rect x="602" y="866" width="716" height="100" fill="#2B2060" stroke="#FF4D3D" stroke-width="2.5"/>
+  <rect x="604.5" y="868.5" width="711.0" height="6" fill="#FF4D3D"/>
+  <text x="622" y="904" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="17" font-weight="900" fill="#FFD84D">Cryptographic SHA-256 Tamper-Evident Audit Ledger (AuditHasher)</text>
+  <text x="622" y="938" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="700" fill="#FFFFFF">Immutable Merkle hash chain linking every state delta · Pessimistic FOR UPDATE lock</text>
+  <rect x="1418" y="188" width="450" height="840" fill="#0B071E"/>
+  <rect x="1410" y="180" width="450" height="840" fill="#1B1530" stroke="#0B071E" stroke-width="4"/>
+  <rect x="1414" y="184" width="442" height="832" fill="none" stroke="#7C5CFF" stroke-width="2" stroke-opacity="0.65"/>
+  <rect x="1410" y="180" width="450" height="46" fill="#2B2060" stroke="#0B071E" stroke-width="4"/>
+  <rect x="1414" y="184" width="442" height="4" fill="#7C5CFF"/>
+  <text x="1428" y="209" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="900" fill="#FFFFFF" letter-spacing="1">DRIVEN ADAPTERS (OUTBOUND)</text>
+  <rect x="1723" y="195" width="125" height="24" fill="#0B071E"/>
+  <rect x="1721" y="193" width="125" height="24" fill="#7C5CFF" stroke="#0B071E" stroke-width="2"/>
+  <text x="1783" y="209" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="12" font-weight="900" fill="#1B1530" text-anchor="middle" letter-spacing="1">DB / AI / TX</text>
+  <text x="1434" y="258" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="800" fill="#D4CBF7">Outbound Persistence, Vector Search &amp; Listeners</text>
+  <rect x="1439" y="287" width="402" height="154" fill="#0B071E"/>
+  <rect x="1434" y="282" width="402" height="154" fill="#2B2060" stroke="#0B071E" stroke-width="3"/>
+  <rect x="1437" y="285" width="396" height="6" fill="#7C5CFF"/>
+  <text x="1454" y="322" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="17" font-weight="900" fill="#FFFFFF">PostgreSQL 16 &amp; Flyway</text>
+  <text x="1454" y="354" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="800" fill="#7C5CFF">Neon Serverless Cloud DB / JDBC</text>
+  <text x="1454" y="386" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="13" font-weight="600" fill="#FFF3C4" text-anchor="start">V001..V004 migrations &amp; row locking</text>
+  <rect x="1439" y="463" width="402" height="154" fill="#0B071E"/>
+  <rect x="1434" y="458" width="402" height="154" fill="#2B2060" stroke="#0B071E" stroke-width="3"/>
+  <rect x="1437" y="461" width="396" height="6" fill="#59C9F5"/>
+  <text x="1454" y="498" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="17" font-weight="900" fill="#FFFFFF">HNSW Vector Search Engine</text>
+  <text x="1454" y="530" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="800" fill="#59C9F5">ONNX + LSH Semantic Embeddings</text>
+  <text x="1454" y="562" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="13" font-weight="600" fill="#FFF3C4" text-anchor="start">Millisecond duplicate storm clustering</text>
+  <rect x="1439" y="639" width="402" height="154" fill="#0B071E"/>
+  <rect x="1434" y="634" width="402" height="154" fill="#2B2060" stroke="#0B071E" stroke-width="3"/>
+  <rect x="1437" y="637" width="396" height="6" fill="#FF4D3D"/>
+  <text x="1454" y="674" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="17" font-weight="900" fill="#FFFFFF">In-Tx Mandatory Listeners</text>
+  <text x="1454" y="706" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="800" fill="#FF4D3D">Propagation.MANDATORY Events</text>
+  <text x="1454" y="738" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="13" font-weight="600" fill="#FFF3C4" text-anchor="start">Atomic Audit &amp; SLA timer persistence</text>
+  <rect x="1439" y="815" width="402" height="154" fill="#0B071E"/>
+  <rect x="1434" y="810" width="402" height="154" fill="#2B2060" stroke="#0B071E" stroke-width="3"/>
+  <rect x="1437" y="813" width="396" height="6" fill="#43D17A"/>
+  <text x="1454" y="850" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="17" font-weight="900" fill="#FFFFFF">Notification &amp; Pager Hub</text>
+  <text x="1454" y="882" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="800" fill="#43D17A">Campus Email &amp; SSE Sinks</text>
+  <text x="1454" y="914" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="13" font-weight="600" fill="#FFF3C4" text-anchor="start">Realtime multi-channel alert dispatch</text>
+  <rect x="512" y="334" width="36" height="12" fill="#59C9F5" stroke="#0B071E" stroke-width="2"/>
+  <rect x="1372" y="334" width="36" height="12" fill="#7C5CFF" stroke="#0B071E" stroke-width="2"/>
+  <rect x="512" y="514" width="36" height="12" fill="#59C9F5" stroke="#0B071E" stroke-width="2"/>
+  <rect x="1372" y="514" width="36" height="12" fill="#7C5CFF" stroke="#0B071E" stroke-width="2"/>
+  <rect x="512" y="694" width="36" height="12" fill="#59C9F5" stroke="#0B071E" stroke-width="2"/>
+  <rect x="1372" y="694" width="36" height="12" fill="#7C5CFF" stroke="#0B071E" stroke-width="2"/>
+  <rect x="512" y="874" width="36" height="12" fill="#59C9F5" stroke="#0B071E" stroke-width="2"/>
+  <rect x="1372" y="874" width="36" height="12" fill="#7C5CFF" stroke="#0B071E" stroke-width="2"/>
+  <!-- Subtle 16-Bit CRT Scanline Overlay -->
+  <rect x="24" y="24" width="1872" height="1032" fill="url(#crtScanlines)" pointer-events="none"/>
+</svg>

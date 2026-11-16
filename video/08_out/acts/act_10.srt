@@ -1,0 +1,56 @@
+1
+00:00:00,000 --> 00:00:05,106
+In summary, Incident-Zero fully achieves every technical objective and specification
+
+2
+00:00:05,106 --> 00:00:08,680
+articulated in the BITS Pilani course brief.
+
+3
+00:00:09,200 --> 00:00:15,435
+All nine technology report questions on concurrency, database integrity, architectural
+
+4
+00:00:15,435 --> 00:00:19,800
+tradeoffs, and performance have been empirically answered.
+
+5
+00:00:20,300 --> 00:00:25,289
+Our concurrency report demonstrates how optimistic database locks combined with
+
+6
+00:00:25,289 --> 00:00:29,780
+virtual threads prevent phantom updates under peak student load.
+
+7
+00:00:30,300 --> 00:00:37,862
+By uniting rigorous object-oriented design with modern reactive architecture, we
+
+8
+00:00:37,862 --> 00:00:45,424
+transformed campus IT from a reactive bottleneck into a resilient
+
+9
+00:00:45,424 --> 00:00:46,180
+backbone.
+
+10
+00:00:46,700 --> 00:00:52,190
+On behalf of Group 76 — Srijan Shukla, Suhani Agarwal, Kartikey
+
+11
+00:00:52,190 --> 00:00:57,182
+Negi, and Hairsh Kumar — thank you for your time
+
+12
+00:00:57,182 --> 00:00:58,180
+and evaluation.
+
+13
+00:00:58,700 --> 00:01:03,875
+The complete source code, architectural decision records, and automated test
+
+14
+00:01:03,875 --> 00:01:06,980
+suites are publicly accessible on GitHub.
+

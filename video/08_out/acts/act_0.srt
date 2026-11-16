@@ -1,0 +1,44 @@
+1
+00:00:00,000 --> 00:00:06,404
+At BITS Pilani Hyderabad Campus, over six thousand students, faculty, and
+
+2
+00:00:06,404 --> 00:00:12,227
+administrative staff rely on complex digital infrastructure every single day
+
+3
+00:00:12,227 --> 00:00:15,720
+for academic, research, and residential operations.
+
+4
+00:00:16,233 --> 00:00:22,372
+When core fiber lines are damaged or central authentication clusters
+
+5
+00:00:22,372 --> 00:00:28,512
+halt during midsem examinations, campuses experience catastrophic operational paralysis and
+
+6
+00:00:28,512 --> 00:00:30,353
+cascading system downtime.
+
+7
+00:00:30,867 --> 00:00:35,940
+Traditional campus helpdesks fail under storm conditions, lacking deterministic state
+
+8
+00:00:35,940 --> 00:00:40,507
+machines, automated correlation engines, and verifiable cryptographic audit trails.
+
+9
+00:00:41,033 --> 00:00:46,268
+Welcome to Incident-Zero: a military-grade, reactive IT service management platform
+
+10
+00:00:46,268 --> 00:00:51,503
+engineered from the ground up for zero cascading downtime and
+
+11
+00:00:51,503 --> 00:00:53,073
+absolute institutional resilience.
+

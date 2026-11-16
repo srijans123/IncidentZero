@@ -1,0 +1,9 @@
+{
+  "id": "act10_scene3",
+  "title": "Pessimistic Concurrency (FOR UPDATE)",
+  "file": "backend/src/main/java/edu/campus/iitsm/audit/infrastructure/AuditLedgerInTxListener.java",
+  "display_file": "backend/src/main/java/edu/campus/iitsm/audit/infrastructure/AuditLedgerInTxListener.java",
+  "lines": "30-55",
+  "exists": true,
+  "code": "  public void onDomainEvent(DomainEvent event) {\n    UUID incidentId = event.incidentId();\n    Instant now = (event.occurredAt() != null ? event.occurredAt() : clockPort.now())\n        .truncatedTo(java.time.temporal.ChronoUnit.MICROS);\n\n    // Lock the incident row to serialize audit hash chain updates\n    String selectSql = \"SELECT last_audit_index, last_audit_hash, status FROM incident WHERE id = ? FOR UPDATE\";\n    Map<String, Object> row;\n    try {\n      row = jdbcTemplate.queryForMap(selectSql, incidentId);\n    } catch (Exception e) {\n      System.err.println(\"AuditLedgerInTxListener failed to lock incident \" + incidentId + \": \" + e.getMessage());\n      e.printStackTrace();\n      return;\n    }\n\n    int lastIndex = ((Number) row.getOrDefault(\"last_audit_index\", 0)).intValue();\n    String lastHash = (String) row.get(\"last_audit_hash\");\n    String currentStatus = (String) row.get(\"status\");\n\n    int nextIndex = lastIndex + 1;\n    String prevHash = (lastHash != null && !lastHash.isBlank()) ? lastHash : AuditHasher.GENESIS_HASH;\n\n    String action = event.getClass().getSimpleName();\n    String actorType = \"SYSTEM\";\n    UUID actorId = null;\n"
+}

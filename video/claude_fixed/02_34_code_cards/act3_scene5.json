@@ -1,0 +1,9 @@
+{
+  "id": "act3_scene5",
+  "title": "Priority Explanation Audit Record",
+  "file": "backend/src/main/java/edu/campus/iitsm/incident/domain/PriorityExplanation.java",
+  "display_file": "backend/src/main/java/edu/campus/iitsm/incident/domain/PriorityExplanation.java",
+  "lines": "1-25",
+  "exists": true,
+  "code": "package edu.campus.iitsm.incident.domain;\n\nimport java.util.ArrayList;\nimport java.util.List;\n\npublic record PriorityExplanation(List<PriorityStep> steps) {\n  public PriorityExplanation { steps = List.copyOf(steps); }\n  public static PriorityExplanation empty() { return new PriorityExplanation(List.of()); }\n  public PriorityExplanation with(PriorityStep step) {\n    List<PriorityStep> next = new ArrayList<>(steps);\n    next.add(step);\n    return new PriorityExplanation(next);\n  }\n}\n"
+}

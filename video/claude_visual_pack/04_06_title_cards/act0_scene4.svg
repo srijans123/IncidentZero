@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#04060a"/>
+      <stop offset="100%" stop-color="#0a1224"/>
+    </linearGradient>
+    <radialGradient id="cyan_glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="rgba(0, 240, 255, 0.25)"/>
+      <stop offset="100%" stop-color="rgba(0, 0, 0, 0)"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1920" height="1080" fill="url(#bg)"/>
+  <circle cx="960" cy="540" r="600" fill="url(#cyan_glow)"/>
+
+  <!-- Perspective Cyber Grid -->
+  <g stroke="rgba(0, 240, 255, 0.12)" stroke-width="1.5">
+    <line x1="0" y1="700" x2="1920" y2="700"/>
+    <line x1="0" y1="780" x2="1920" y2="780"/>
+    <line x1="0" y1="880" x2="1920" y2="880"/>
+    <line x1="0" y1="1000" x2="1920" y2="1000"/>
+    <line x1="960" y1="540" x2="100" y2="1080"/>
+    <line x1="960" y1="540" x2="400" y2="1080"/>
+    <line x1="960" y1="540" x2="700" y2="1080"/>
+    <line x1="960" y1="540" x2="960" y2="1080"/>
+    <line x1="960" y1="540" x2="1220" y2="1080"/>
+    <line x1="960" y1="540" x2="1520" y2="1080"/>
+    <line x1="960" y1="540" x2="1820" y2="1080"/>
+  </g>
+
+  <!-- Accent Reticle Box -->
+  <rect x="260" y="240" width="1400" height="600" rx="20" fill="rgba(10, 16, 28, 0.75)" stroke="rgba(0, 240, 255, 0.4)" stroke-width="2"/>
+
+  <!-- Badge -->
+  <rect x="835" y="320" width="250" height="38" rx="8" fill="rgba(0, 240, 255, 0.15)" stroke="#00f0ff" stroke-width="1.5"/>
+  <text x="960" y="345" fill="#00f0ff" font-family="'JetBrains Mono', monospace" font-size="14" font-weight="800" text-anchor="middle" letter-spacing="2">CS F213 / MAC F212</text>
+
+  <!-- Title -->
+  <text x="960" y="470" fill="#ffffff" font-family="'Segoe UI', -apple-system, sans-serif" font-size="56" font-weight="900" text-anchor="middle" letter-spacing="1.5">Incident-Zero (I-ITSM v2.2)</text>
+
+  <!-- Subtitle -->
+  <text x="960" y="550" fill="#94a3b8" font-family="'Segoe UI', sans-serif" font-size="28" font-weight="600" text-anchor="middle">Autonomous Enterprise Campus Service Management</text>
+
+  <!-- Team Pill -->
+  <rect x="760" y="660" width="400" height="50" rx="25" fill="#0f172a" stroke="rgba(0, 255, 157, 0.5)" stroke-width="2"/>
+  <text x="960" y="692" fill="#00ff9d" font-family="'JetBrains Mono', monospace" font-size="18" font-weight="800" text-anchor="middle">GROUP 76 · BITS PILANI HYDERABAD</text>
+</svg>

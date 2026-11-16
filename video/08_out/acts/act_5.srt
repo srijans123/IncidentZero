@@ -1,0 +1,84 @@
+1
+00:00:00,000 --> 00:00:05,482
+Campus IT services do not operate in a vacuum. Core
+
+2
+00:00:05,482 --> 00:00:09,320
+infrastructure failures produce massive, compounding blast radiuses.
+
+3
+00:00:09,833 --> 00:00:14,567
+Incident-Zero models all nineteen campus services across twenty-six hard and
+
+4
+00:00:14,567 --> 00:00:18,353
+soft dependency edges as a directed acyclic graph.
+
+5
+00:00:18,867 --> 00:00:25,542
+Tarjan's strongly connected components algorithm executes during graph updates, rejecting
+
+6
+00:00:25,542 --> 00:00:29,547
+any accidental circular dependencies at runtime.
+
+7
+00:00:30,067 --> 00:00:34,581
+When Data Center cooling fails, core switches overheat, and Central
+
+8
+00:00:34,581 --> 00:00:39,095
+LDAP goes down, hundreds of student login tickets flood the
+
+9
+00:00:39,095 --> 00:00:39,547
+portal.
+
+10
+00:00:40,067 --> 00:00:45,242
+Our Storm Detection Engine activates, tracking ticket velocity over five-minute
+
+11
+00:00:45,242 --> 00:00:48,347
+sliding windows against the dependency topology.
+
+12
+00:00:48,867 --> 00:00:54,838
+The system automatically pinpoints Central LDAP as the root cause, declaring
+
+13
+00:00:54,838 --> 00:01:00,267
+a Major Incident and linking forty-five tickets as child duplicates.
+
+14
+00:01:00,767 --> 00:01:05,647
+Chief Administrator Suresh Deshmukh is appointed Incident Commander, locking triage
+
+15
+00:01:05,647 --> 00:01:08,087
+roles and broadcasting campus-wide alerts.
+
+16
+00:01:08,600 --> 00:01:14,558
+The interactive 3D blast radius visualizer highlights downstream services at
+
+17
+00:01:14,558 --> 00:01:19,920
+risk, including Moodle LMS, AUGSD ERP, and hostel Wi-Fi.
+
+18
+00:01:20,433 --> 00:01:29,296
+Transactional cascade listeners propagate the root resolution notes down to
+
+19
+00:01:29,296 --> 00:01:37,273
+all child incidents, preserving audit integrity for each student.
+
+20
+00:01:37,800 --> 00:01:42,663
+When the Commander resolves the root LDAP ticket, Incident-Zero automatically
+
+21
+00:01:42,663 --> 00:01:47,040
+resolves all linked duplicate tickets and notifies affected students.
+

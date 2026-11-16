@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" shape-rendering="crispEdges" text-rendering="geometricPrecision">
+  <defs>
+    <!-- 24x24 16-Bit Pixel Checkerboard Dither Pattern (IncidentZero Signature Canvas) -->
+    <pattern id="pixelChecker" width="48" height="48" patternUnits="userSpaceOnUse">
+      <rect width="48" height="48" fill="#1E1646"/>
+      <rect x="0" y="0" width="24" height="24" fill="#261C58"/>
+      <rect x="24" y="24" width="24" height="24" fill="#261C58"/>
+    </pattern>
+    <!-- Subtle Pixel Grid Overlay -->
+    <pattern id="pixelGrid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#32266E" stroke-width="1" stroke-opacity="0.45"/>
+    </pattern>
+    <!-- CRT Scanline Overlay Pattern -->
+    <pattern id="crtScanlines" width="8" height="4" patternUnits="userSpaceOnUse">
+      <rect x="0" y="0" width="8" height="2" fill="#0B071E" fill-opacity="0.18"/>
+      <rect x="0" y="2" width="8" height="2" fill="none"/>
+    </pattern>
+  </defs>
+
+  <rect x="0" y="0" width="1920" height="1080" fill="url(#pixelChecker)"/>
+  <rect x="0" y="0" width="1920" height="1080" fill="url(#pixelGrid)"/>
+  <rect x="16" y="16" width="1888" height="1048" fill="none" stroke="#0B071E" stroke-width="8"/>
+  <rect x="24" y="24" width="1872" height="1032" fill="none" stroke="#7C5CFF" stroke-width="4"/>
+  <rect x="32" y="32" width="12" height="12" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="1876" y="32" width="12" height="12" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="32" y="1036" width="12" height="12" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="1876" y="1036" width="12" height="12" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="66" y="54" width="1800" height="108" fill="#0B071E"/>
+  <rect x="60" y="48" width="1800" height="108" fill="#1B1530" stroke="#0B071E" stroke-width="4"/>
+  <rect x="60" y="48" width="16" height="108" fill="#43D17A" stroke="#0B071E" stroke-width="4"/>
+  <line x1="76" y1="54" x2="1856" y2="54" stroke="#43D17A" stroke-width="2"/>
+  <text x="96" y="96" font-family="'Pixelify Sans', 'Silkscreen', 'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="30" font-weight="900" fill="#FFFFFF" letter-spacing="1.5">TESTING RIGOR &amp; AUTOMATED VERIFICATION PYRAMID</text>
+  <text x="96" y="132" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="700" fill="#59C9F5" letter-spacing="0.5">520,036 FSM transitions, 9 ArchUnit rules, 100% domain unit tests, and Playwright E2E suites</text>
+  <rect x="1516" y="72" width="320" height="44" fill="#0B071E"/>
+  <rect x="1510" y="66" width="320" height="44" fill="#FFD84D" stroke="#0B071E" stroke-width="3"/>
+  <rect x="1524" y="80" width="16" height="16" fill="#43D17A" stroke="#0B071E" stroke-width="2"/>
+  <text x="1682" y="94" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="900" fill="#1B1530" text-anchor="middle" letter-spacing="1">GROUP 76 · QA PYRAMID</text>
+  <text x="1670" y="134" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="12" font-weight="700" fill="#D4CBF7" text-anchor="middle" letter-spacing="1">INCIDENT-ZERO (I-ITSM v2.2)</text>
+  <rect x="68" y="188" width="1800" height="710" fill="#0B071E"/>
+  <rect x="60" y="180" width="1800" height="710" fill="#1B1530" stroke="#0B071E" stroke-width="4"/>
+  <rect x="64" y="184" width="1792" height="702" fill="none" stroke="#43D17A" stroke-width="2" stroke-opacity="0.65"/>
+  <rect x="60" y="180" width="1800" height="46" fill="#2B2060" stroke="#0B071E" stroke-width="4"/>
+  <rect x="64" y="184" width="1792" height="4" fill="#43D17A"/>
+  <rect x="76" y="198" width="14" height="14" fill="#FF4D3D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="98" y="198" width="14" height="14" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="120" y="198" width="14" height="14" fill="#43D17A" stroke="#0B071E" stroke-width="2"/>
+  <text x="150" y="209" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="900" fill="#FFFFFF" letter-spacing="1">MULTI-TIER AUTOMATED VERIFICATION ARCHITECTURE (STEPPED 16-BIT PYRAMID)</text>
+  <rect x="1706" y="195" width="142" height="24" fill="#0B071E"/>
+  <rect x="1704" y="193" width="142" height="24" fill="#43D17A" stroke="#0B071E" stroke-width="2"/>
+  <text x="1775" y="209" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="12" font-weight="900" fill="#1B1530" text-anchor="middle" letter-spacing="1">100% PASS RATE</text>
+  <rect x="306" y="258" width="380" height="122" fill="#0B071E"/>
+  <rect x="300" y="252" width="380" height="122" fill="#2B2060" stroke="#FF4D3D" stroke-width="4"/>
+  <rect x="304" y="256" width="372" height="6" fill="#FF4D3D"/>
+  <text x="490" y="308" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="18" font-weight="900" fill="#FF4D3D" text-anchor="middle">TIER 04 · PLAYWRIGHT E2E</text>
+  <text x="490" y="344" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="13" font-weight="800" fill="#FFFFFF" text-anchor="middle">[ VERIFIED · 0 FAILURES ]</text>
+  <line x1="686" y1="313" x2="926" y2="313" stroke="#FF4D3D" stroke-width="4" stroke-dasharray="8,6"/>
+  <rect x="916" y="307" width="12" height="12" fill="#FF4D3D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="942" y="258" width="888" height="122" fill="#0B071E"/>
+  <rect x="936" y="252" width="888" height="122" fill="#15102B" stroke="#FF4D3D" stroke-width="3"/>
+  <rect x="939" y="255" width="882" height="6" fill="#FF4D3D"/>
+  <text x="964" y="292" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="18" font-weight="900" fill="#FF4D3D">BROWSER END-TO-END JOURNEY SUITE</text>
+  <text x="964" y="324" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="600" fill="#FFFFFF" text-anchor="start">Full headless Chromium user journeys across Student Portal, Tech Workbench, Campus Stage,</text>
+  <text x="964" y="348" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="600" fill="#FFFFFF" text-anchor="start">and Admin consoles.</text>
+  <rect x="241" y="408" width="510" height="122" fill="#0B071E"/>
+  <rect x="235" y="402" width="510" height="122" fill="#2B2060" stroke="#FFD84D" stroke-width="4"/>
+  <rect x="239" y="406" width="502" height="6" fill="#FFD84D"/>
+  <text x="490" y="458" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="18" font-weight="900" fill="#FFD84D" text-anchor="middle">TIER 03 · INTEGRATION &amp; DB</text>
+  <text x="490" y="494" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="13" font-weight="800" fill="#FFFFFF" text-anchor="middle">[ VERIFIED · 0 FAILURES ]</text>
+  <line x1="751" y1="463" x2="926" y2="463" stroke="#FFD84D" stroke-width="4" stroke-dasharray="8,6"/>
+  <rect x="916" y="457" width="12" height="12" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="942" y="408" width="888" height="122" fill="#0B071E"/>
+  <rect x="936" y="402" width="888" height="122" fill="#15102B" stroke="#FFD84D" stroke-width="3"/>
+  <rect x="939" y="405" width="882" height="6" fill="#FFD84D"/>
+  <text x="964" y="442" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="18" font-weight="900" fill="#FFD84D">FLYWAY, JDBC &amp; REST INTEGRATION</text>
+  <text x="964" y="474" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="600" fill="#FFFFFF" text-anchor="start">Verified PostgreSQL 16 schema migrations, RFC-7807 ProblemDetail responses, and &lt;10s</text>
+  <text x="964" y="498" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="600" fill="#FFFFFF" text-anchor="start">deterministic DB resets.</text>
+  <rect x="176" y="558" width="640" height="122" fill="#0B071E"/>
+  <rect x="170" y="552" width="640" height="122" fill="#2B2060" stroke="#59C9F5" stroke-width="4"/>
+  <rect x="174" y="556" width="632" height="6" fill="#59C9F5"/>
+  <text x="490" y="608" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="18" font-weight="900" fill="#59C9F5" text-anchor="middle">TIER 02 · ARCHUNIT (R1–R9)</text>
+  <text x="490" y="644" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="13" font-weight="800" fill="#FFFFFF" text-anchor="middle">[ VERIFIED · 0 FAILURES ]</text>
+  <line x1="816" y1="613" x2="926" y2="613" stroke="#59C9F5" stroke-width="4" stroke-dasharray="8,6"/>
+  <rect x="916" y="607" width="12" height="12" fill="#59C9F5" stroke="#0B071E" stroke-width="2"/>
+  <rect x="942" y="558" width="888" height="122" fill="#0B071E"/>
+  <rect x="936" y="552" width="888" height="122" fill="#15102B" stroke="#59C9F5" stroke-width="3"/>
+  <rect x="939" y="555" width="882" height="6" fill="#59C9F5"/>
+  <text x="964" y="592" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="18" font-weight="900" fill="#59C9F5">STRUCTURAL COMPILER INVARIANTS</text>
+  <text x="964" y="624" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="600" fill="#FFFFFF" text-anchor="start">Enforces zero framework leaks in domain, mandatory transactional listeners, and acyclic</text>
+  <text x="964" y="648" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="600" fill="#FFFFFF" text-anchor="start">Modulith boundaries.</text>
+  <rect x="111" y="708" width="770" height="122" fill="#0B071E"/>
+  <rect x="105" y="702" width="770" height="122" fill="#2B2060" stroke="#43D17A" stroke-width="4"/>
+  <rect x="109" y="706" width="762" height="6" fill="#43D17A"/>
+  <text x="490" y="758" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="18" font-weight="900" fill="#43D17A" text-anchor="middle">TIER 01 · 520,036 FSM &amp; UNIT</text>
+  <text x="490" y="794" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="13" font-weight="800" fill="#FFFFFF" text-anchor="middle">[ VERIFIED · 0 FAILURES ]</text>
+  <line x1="881" y1="763" x2="926" y2="763" stroke="#43D17A" stroke-width="4" stroke-dasharray="8,6"/>
+  <rect x="916" y="757" width="12" height="12" fill="#43D17A" stroke="#0B071E" stroke-width="2"/>
+  <rect x="942" y="708" width="888" height="122" fill="#0B071E"/>
+  <rect x="936" y="702" width="888" height="122" fill="#15102B" stroke="#43D17A" stroke-width="3"/>
+  <rect x="939" y="705" width="882" height="6" fill="#43D17A"/>
+  <text x="964" y="742" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="18" font-weight="900" fill="#43D17A">EXHAUSTIVE STATE &amp; DOMAIN REASONING</text>
+  <text x="964" y="774" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="600" fill="#FFFFFF" text-anchor="start">All 11 x 11 x action-space state transitions mathematically evaluated; dual-clock SLA &amp;</text>
+  <text x="964" y="798" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="600" fill="#FFFFFF" text-anchor="start">Merkle hash unit suites.</text>
+  <rect x="68" y="924" width="1800" height="104" fill="#0B071E"/>
+  <rect x="60" y="916" width="1800" height="104" fill="#FFF8DC" stroke="#0B071E" stroke-width="4"/>
+  <rect x="64" y="920" width="1792" height="6" fill="#43D17A"/>
+  <text x="960" y="964" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="22" font-weight="900" fill="#1B1530" text-anchor="middle">TOTAL VERIFIED CHECKS: 520,140+  ·  PASS RATE: 100.0%  ·  SUITE TIME: 4.8s  ·  DOMAIN COVERAGE: 96.4%</text>
+  <text x="960" y="998" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="800" fill="#4A3F6B" text-anchor="middle" letter-spacing="1.5">DETERMINISTIC VIRTUAL CLOCK · ZERO FLAKY SLEEPS · FULL CI/CD REPRODUCIBILITY</text>
+  <!-- Subtle 16-Bit CRT Scanline Overlay -->
+  <rect x="24" y="24" width="1872" height="1032" fill="url(#crtScanlines)" pointer-events="none"/>
+</svg>

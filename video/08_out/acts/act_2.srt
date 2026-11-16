@@ -1,0 +1,92 @@
+1
+00:00:00,000 --> 00:00:05,622
+To guarantee long-term maintainability, the codebase enforces nine automated ArchUnit
+
+2
+00:00:05,622 --> 00:00:10,120
+architectural rules that run on every compilation pass.
+
+3
+00:00:10,633 --> 00:00:15,933
+Architecture Rule R1 establishes that domain classes contain zero imports
+
+4
+00:00:15,933 --> 00:00:21,233
+of Spring, JPA, Hibernate, or Jackson, preserving pure Java semantics.
+
+5
+00:00:21,733 --> 00:00:26,794
+Rule R5 strictly prohibits non-deterministic calls to Instant now and
+
+6
+00:00:26,794 --> 00:00:31,855
+UUID randomUUID inside domain and application services, mandating mockable clock
+
+7
+00:00:31,855 --> 00:00:33,373
+and identity ports.
+
+8
+00:00:33,900 --> 00:00:40,111
+Rule R3 dictates that transactional audit and SLA listeners must
+
+9
+00:00:40,111 --> 00:00:45,700
+execute synchronously with mandatory propagation, guaranteeing zero-orphan ledger entries.
+
+10
+00:00:46,200 --> 00:00:51,382
+Every continuous integration run verifies all nine rules in under
+
+11
+00:00:51,382 --> 00:00:56,564
+three seconds, catching architectural drift before any pull request can
+
+12
+00:00:56,564 --> 00:00:57,600
+be merged.
+
+13
+00:00:58,100 --> 00:01:03,680
+A rigorous domain exception hierarchy maps fifteen strongly typed campus
+
+14
+00:01:03,680 --> 00:01:09,260
+errors to standard RFC-7807 problem details with human-readable diagnostic remedies.
+
+15
+00:01:09,767 --> 00:01:18,355
+Codes range from ITSM-4001 for illegal state machine transitions up
+
+16
+00:01:18,355 --> 00:01:24,367
+to ITSM-5090 for optimistic concurrency locking conflicts.
+
+17
+00:01:24,867 --> 00:01:29,898
+Global exception translation ensures that sensitive backend stack traces and
+
+18
+00:01:29,898 --> 00:01:34,427
+credentials never leak to client browsers or terminal logs.
+
+19
+00:01:34,933 --> 00:01:40,845
+These strict invariants ensure that our domain model remains rock-solid, fully
+
+20
+00:01:40,845 --> 00:01:46,219
+testable without database containers, and compiler-verified across half a million
+
+21
+00:01:46,219 --> 00:01:47,293
+test vectors.
+
+22
+00:01:47,800 --> 00:01:55,270
+Spring Modulith continuously validates that package boundaries between incident, sla, audit, and
+
+23
+00:01:55,270 --> 00:01:57,760
+assignment remain strictly unidirectional.
+

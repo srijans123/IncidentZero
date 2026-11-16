@@ -1,0 +1,9 @@
+{
+  "id": "act2_scene7",
+  "title": "Domain Exception Root Hierarchy",
+  "file": "backend/src/main/java/edu/campus/iitsm/shared/domain/error/ItsmException.java",
+  "display_file": "backend/src/main/java/edu/campus/iitsm/shared/domain/error/ItsmException.java",
+  "lines": "1-30",
+  "exists": true,
+  "code": "package edu.campus.iitsm.shared.domain.error;\n\npublic abstract class ItsmException extends RuntimeException {\n  private final String code;\n  private final int httpStatus;\n\n  protected ItsmException(String code, int httpStatus, String message) {\n    super(message);\n    this.code = code;\n    this.httpStatus = httpStatus;\n  }\n  public String code() { return code; }\n  public int httpStatus() { return httpStatus; }\n}\n"
+}

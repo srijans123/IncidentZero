@@ -1,6 +1,6 @@
 import { Incident, IntakeAdvice, AuditVerificationResult, RcaResult, User, TimelineItem } from '../types';
 import { toIncident, toTimelineItem, toAuditVerify, toAdvice, toRca } from './mappers';
-import { demoBackendApi, IS_DEMO_MODE } from './demoBackend';
+import { demoBackendApi, isDemoMode, setDemoMode } from './demoBackend';
 
 const ORIGIN = (import.meta.env.VITE_API_BASE_URL ?? '').replace(/\/+$/, ''); // '' = same origin (Vite proxy)
 export const API_BASE = `${ORIGIN}/api/v1`;
@@ -258,4 +258,49 @@ const realApi = {
   },
 };
 
-export const api = (IS_DEMO_MODE ? demoBackendApi : realApi) as typeof realApi;
+/**
+ * Asks the Java backend whether it is there. Called once by main.tsx before the
+ * app renders. When nothing answers (GitHub Pages, or localhost with the backend
+ * switched off) the app switches to the in-browser backend instead of showing
+ * errors. Any normal answer from /services (200, or 401 because no token was
+ * sent) proves a Spring server is listening; a network error, a timeout, or a
+ * 404/5xx from a static host or the Vite proxy means there is none.
+ */
+export async function probeBackend(timeoutMs = 2500): Promise<boolean> {
+  if (isDemoMode()) return false;
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), timeoutMs);
+  try {
+    const res = await fetch(`${API_BASE}/services`, { signal: ctrl.signal });
+    const isHtml = res.headers.get('content-type')?.includes('text/html');
+    const alive = res.status < 500 && res.status !== 404 && !isHtml;
+    if (!alive) setDemoMode(true);
+    return alive;
+  } catch {
+    setDemoMode(true);
+    return false;
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+// Every call picks the backend at call time, so the switch above takes effect
+// without re-importing anything. The last ticket any call returned is kept on
+// window.__izLast for the recording scripts in video_v4/.
+function remember<T>(value: T): T {
+  const v: any = value;
+  if (v && typeof v === 'object' && typeof v.id === 'string' && typeof v.number === 'string') {
+    (window as any).__izLast = v;
+  }
+  return value;
+}
+function pick(group: string, method: string) {
+  return (...args: unknown[]) => {
+    const source: any = isDemoMode() ? demoBackendApi : realApi;
+    return Promise.resolve(source[group][method](...args)).then(remember);
+  };
+}
+export const api = new Proxy({} as typeof realApi, {
+  get: (_t, group: string) => new Proxy({}, { get: (_g, method: string) => pick(group, method) }),
+});
+

@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" shape-rendering="crispEdges" text-rendering="geometricPrecision">
+  <defs>
+    <!-- 24x24 16-Bit Pixel Checkerboard Dither Pattern (IncidentZero Signature Canvas) -->
+    <pattern id="pixelChecker" width="48" height="48" patternUnits="userSpaceOnUse">
+      <rect width="48" height="48" fill="#1E1646"/>
+      <rect x="0" y="0" width="24" height="24" fill="#261C58"/>
+      <rect x="24" y="24" width="24" height="24" fill="#261C58"/>
+    </pattern>
+    <!-- Subtle Pixel Grid Overlay -->
+    <pattern id="pixelGrid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#32266E" stroke-width="1" stroke-opacity="0.45"/>
+    </pattern>
+    <!-- CRT Scanline Overlay Pattern -->
+    <pattern id="crtScanlines" width="8" height="4" patternUnits="userSpaceOnUse">
+      <rect x="0" y="0" width="8" height="2" fill="#0B071E" fill-opacity="0.18"/>
+      <rect x="0" y="2" width="8" height="2" fill="none"/>
+    </pattern>
+  </defs>
+
+  <rect x="0" y="0" width="1920" height="1080" fill="url(#pixelChecker)"/>
+  <rect x="0" y="0" width="1920" height="1080" fill="url(#pixelGrid)"/>
+  <rect x="16" y="16" width="1888" height="1048" fill="none" stroke="#0B071E" stroke-width="8"/>
+  <rect x="24" y="24" width="1872" height="1032" fill="none" stroke="#7C5CFF" stroke-width="4"/>
+  <rect x="32" y="32" width="12" height="12" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="1876" y="32" width="12" height="12" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="32" y="1036" width="12" height="12" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="1876" y="1036" width="12" height="12" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="66" y="54" width="1800" height="108" fill="#0B071E"/>
+  <rect x="60" y="48" width="1800" height="108" fill="#1B1530" stroke="#0B071E" stroke-width="4"/>
+  <rect x="60" y="48" width="16" height="108" fill="#59C9F5" stroke="#0B071E" stroke-width="4"/>
+  <line x1="76" y1="54" x2="1856" y2="54" stroke="#59C9F5" stroke-width="2"/>
+  <text x="96" y="96" font-family="'Pixelify Sans', 'Silkscreen', 'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="30" font-weight="900" fill="#FFFFFF" letter-spacing="1.5">SLA TIMER BEHAVIOR ACROSS INCIDENT STATES</text>
+  <text x="96" y="132" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="700" fill="#59C9F5" letter-spacing="0.5">Chronometer timeline: Active running vs Paused freeze vs Stopped finality</text>
+  <rect x="1516" y="72" width="320" height="44" fill="#0B071E"/>
+  <rect x="1510" y="66" width="320" height="44" fill="#FFD84D" stroke="#0B071E" stroke-width="3"/>
+  <rect x="1524" y="80" width="16" height="16" fill="#43D17A" stroke="#0B071E" stroke-width="2"/>
+  <text x="1682" y="94" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="900" fill="#1B1530" text-anchor="middle" letter-spacing="1">GROUP 76 · SLA SPEC</text>
+  <text x="1670" y="134" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="12" font-weight="700" fill="#D4CBF7" text-anchor="middle" letter-spacing="1">INCIDENT-ZERO (I-ITSM v2.2)</text>
+  <rect x="68" y="188" width="1800" height="390" fill="#0B071E"/>
+  <rect x="60" y="180" width="1800" height="390" fill="#1B1530" stroke="#0B071E" stroke-width="4"/>
+  <rect x="64" y="184" width="1792" height="382" fill="none" stroke="#59C9F5" stroke-width="2" stroke-opacity="0.65"/>
+  <rect x="60" y="180" width="1800" height="44" fill="#2B2060" stroke="#0B071E" stroke-width="4"/>
+  <rect x="64" y="184" width="1792" height="4" fill="#59C9F5"/>
+  <rect x="76" y="197" width="14" height="14" fill="#FF4D3D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="98" y="197" width="14" height="14" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="120" y="197" width="14" height="14" fill="#43D17A" stroke="#0B071E" stroke-width="2"/>
+  <text x="150" y="208" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="900" fill="#FFFFFF" letter-spacing="1">FINITE STATE MACHINE SLA CHRONOMETER MODES (STATES 01 TO 05)</text>
+  <rect x="1673" y="194" width="175" height="24" fill="#0B071E"/>
+  <rect x="1671" y="192" width="175" height="24" fill="#59C9F5" stroke="#0B071E" stroke-width="2"/>
+  <text x="1758" y="208" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="12" font-weight="900" fill="#1B1530" text-anchor="middle" letter-spacing="1">5 LIFECYCLE STAGES</text>
+  <rect x="140" y="348" width="1640" height="10" fill="#0B071E"/>
+  <rect x="140" y="344" width="1640" height="8" fill="#7C5CFF"/>
+  <rect x="98" y="258" width="312" height="276" fill="#0B071E"/>
+  <rect x="92" y="252" width="312" height="276" fill="#2B2060" stroke="#0B071E" stroke-width="4"/>
+  <rect x="96" y="256" width="304" height="6" fill="#59C9F5"/>
+  <rect x="216" y="272" width="64" height="44" fill="#59C9F5" stroke="#0B071E" stroke-width="3"/>
+  <text x="248" y="301" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="20" font-weight="900" fill="#1B1530" text-anchor="middle">01</text>
+  <text x="248" y="348" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="20" font-weight="900" fill="#59C9F5" text-anchor="middle" letter-spacing="1">REPORTED</text>
+  <rect x="116" y="368" width="264" height="40" fill="#120C2C" stroke="#43D17A" stroke-width="2.5"/>
+  <text x="248" y="394" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="900" fill="#43D17A" text-anchor="middle">CLOCK TICKS ▶</text>
+  <text x="248" y="442" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="600" fill="#FFF3C4" text-anchor="middle">SLA timer starts immediately</text>
+  <text x="248" y="464" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="600" fill="#FFF3C4" text-anchor="middle">upon intake</text>
+  <polygon points="412,378 438,388 412,398" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="452" y="258" width="312" height="276" fill="#0B071E"/>
+  <rect x="446" y="252" width="312" height="276" fill="#2B2060" stroke="#0B071E" stroke-width="4"/>
+  <rect x="450" y="256" width="304" height="6" fill="#59C9F5"/>
+  <rect x="570" y="272" width="64" height="44" fill="#59C9F5" stroke="#0B071E" stroke-width="3"/>
+  <text x="602" y="301" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="20" font-weight="900" fill="#1B1530" text-anchor="middle">02</text>
+  <text x="602" y="348" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="20" font-weight="900" fill="#59C9F5" text-anchor="middle" letter-spacing="1">ASSIGNED</text>
+  <rect x="470" y="368" width="264" height="40" fill="#120C2C" stroke="#43D17A" stroke-width="2.5"/>
+  <text x="602" y="394" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="900" fill="#43D17A" text-anchor="middle">CLOCK TICKS ▶</text>
+  <text x="602" y="442" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="600" fill="#FFF3C4" text-anchor="middle">Response &amp; resolution clocks</text>
+  <text x="602" y="464" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="600" fill="#FFF3C4" text-anchor="middle">actively run</text>
+  <polygon points="766,378 792,388 766,398" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="806" y="258" width="312" height="276" fill="#0B071E"/>
+  <rect x="800" y="252" width="312" height="276" fill="#2B2060" stroke="#0B071E" stroke-width="4"/>
+  <rect x="804" y="256" width="304" height="6" fill="#59C9F5"/>
+  <rect x="924" y="272" width="64" height="44" fill="#59C9F5" stroke="#0B071E" stroke-width="3"/>
+  <text x="956" y="301" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="20" font-weight="900" fill="#1B1530" text-anchor="middle">03</text>
+  <text x="956" y="348" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="20" font-weight="900" fill="#59C9F5" text-anchor="middle" letter-spacing="1">IN_PROGRESS</text>
+  <rect x="824" y="368" width="264" height="40" fill="#120C2C" stroke="#43D17A" stroke-width="2.5"/>
+  <text x="956" y="394" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="900" fill="#43D17A" text-anchor="middle">CLOCK TICKS ▶</text>
+  <text x="956" y="442" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="600" fill="#FFF3C4" text-anchor="middle">Technician actively</text>
+  <text x="956" y="464" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="600" fill="#FFF3C4" text-anchor="middle">remediating incident</text>
+  <polygon points="1120,378 1146,388 1120,398" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="1160" y="258" width="312" height="276" fill="#0B071E"/>
+  <rect x="1154" y="252" width="312" height="276" fill="#2B2060" stroke="#0B071E" stroke-width="4"/>
+  <rect x="1158" y="256" width="304" height="6" fill="#FFD84D"/>
+  <rect x="1278" y="272" width="64" height="44" fill="#FFD84D" stroke="#0B071E" stroke-width="3"/>
+  <text x="1310" y="301" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="20" font-weight="900" fill="#1B1530" text-anchor="middle">04</text>
+  <text x="1310" y="348" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="20" font-weight="900" fill="#FFD84D" text-anchor="middle" letter-spacing="1">WAITING_CLIENT</text>
+  <rect x="1178" y="368" width="264" height="40" fill="#120C2C" stroke="#FFD84D" stroke-width="2.5"/>
+  <text x="1310" y="394" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="900" fill="#FFD84D" text-anchor="middle">FREEZE (0 PENALTY)</text>
+  <text x="1310" y="442" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="600" fill="#FFF3C4" text-anchor="middle">Clock frozen while awaiting</text>
+  <text x="1310" y="464" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="600" fill="#FFF3C4" text-anchor="middle">user reply</text>
+  <polygon points="1474,378 1500,388 1474,398" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="1514" y="258" width="312" height="276" fill="#0B071E"/>
+  <rect x="1508" y="252" width="312" height="276" fill="#2B2060" stroke="#0B071E" stroke-width="4"/>
+  <rect x="1512" y="256" width="304" height="6" fill="#43D17A"/>
+  <rect x="1632" y="272" width="64" height="44" fill="#43D17A" stroke="#0B071E" stroke-width="3"/>
+  <text x="1664" y="301" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="20" font-weight="900" fill="#1B1530" text-anchor="middle">05</text>
+  <text x="1664" y="348" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="20" font-weight="900" fill="#43D17A" text-anchor="middle" letter-spacing="1">RESOLVED</text>
+  <rect x="1532" y="368" width="264" height="40" fill="#120C2C" stroke="#7CE356" stroke-width="2.5"/>
+  <text x="1664" y="394" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="900" fill="#7CE356" text-anchor="middle">CLOCK STOPS ⏹</text>
+  <text x="1664" y="442" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="600" fill="#FFF3C4" text-anchor="middle">Final elapsed duration locked</text>
+  <text x="1664" y="464" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="600" fill="#FFF3C4" text-anchor="middle">in ledger</text>
+  <rect x="68" y="608" width="1800" height="420" fill="#0B071E"/>
+  <rect x="60" y="600" width="1800" height="420" fill="#1B1530" stroke="#0B071E" stroke-width="4"/>
+  <rect x="64" y="604" width="1792" height="412" fill="none" stroke="#FFD84D" stroke-width="2" stroke-opacity="0.65"/>
+  <rect x="60" y="600" width="1800" height="44" fill="#2B2060" stroke="#0B071E" stroke-width="4"/>
+  <rect x="64" y="604" width="1792" height="4" fill="#FFD84D"/>
+  <rect x="76" y="617" width="14" height="14" fill="#FF4D3D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="98" y="617" width="14" height="14" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="120" y="617" width="14" height="14" fill="#43D17A" stroke="#0B071E" stroke-width="2"/>
+  <text x="150" y="628" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="900" fill="#FFFFFF" letter-spacing="1">MATHEMATICAL INTERVAL CALCULATION // DETERMINISTIC SLA ARITHMETIC</text>
+  <rect x="1597" y="614" width="251" height="24" fill="#0B071E"/>
+  <rect x="1595" y="612" width="251" height="24" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <text x="1720" y="628" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="12" font-weight="900" fill="#1B1530" text-anchor="middle" letter-spacing="1">EXACT MILLISECOND PRECISION</text>
+  <rect x="102" y="672" width="1716" height="72" fill="#0B071E"/>
+  <rect x="96" y="666" width="1716" height="72" fill="#FFF8DC" stroke="#0B071E" stroke-width="4"/>
+  <rect x="100" y="670" width="14" height="64" fill="#FF4D3D"/>
+  <text x="954" y="711" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="22" font-weight="900" fill="#1B1530" text-anchor="middle">Effective SLA Elapsed = Total Wall Time − Σ(Pause Intervals) − Σ(Non-Business Hours)</text>
+  <rect x="102" y="772" width="836" height="220" fill="#0B071E"/>
+  <rect x="96" y="766" width="836" height="220" fill="#2B2060" stroke="#0B071E" stroke-width="4"/>
+  <rect x="100" y="770" width="828" height="6" fill="#59C9F5"/>
+  <text x="124" y="810" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="19" font-weight="900" fill="#59C9F5">01 · PAUSE INTERVAL ACCUMULATION</text>
+  <text x="124" y="848" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="600" fill="#FFFFFF" text-anchor="start">Every transition into WAITING_FOR_CLIENT records [pauseTimestamp,</text>
+  <text x="124" y="874" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="600" fill="#FFFFFF" text-anchor="start">resumeTimestamp] in sla_pause_intervals.</text>
+  <rect x="124" y="912" width="780" height="48" fill="#120C2C" stroke="#59C9F5" stroke-width="2"/>
+  <text x="142" y="942" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="700" fill="#7CE356">invariant: pausedElapsedMs == 0L during client hold window</text>
+  <rect x="982" y="772" width="836" height="220" fill="#0B071E"/>
+  <rect x="976" y="766" width="836" height="220" fill="#2B2060" stroke="#0B071E" stroke-width="4"/>
+  <rect x="980" y="770" width="828" height="6" fill="#43D17A"/>
+  <text x="1004" y="810" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="19" font-weight="900" fill="#43D17A">02 · DETERMINISTIC RESOLUTION VERIFICATION</text>
+  <text x="1004" y="848" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="600" fill="#FFFFFF" text-anchor="start">Evaluates active working milliseconds against tier threshold (T0=24x7</text>
+  <text x="1004" y="874" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="600" fill="#FFFFFF" text-anchor="start">continuous, T1/T2=08:00-18:00 IST).</text>
+  <rect x="1004" y="912" width="780" height="48" fill="#120C2C" stroke="#43D17A" stroke-width="2"/>
+  <text x="1022" y="942" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="700" fill="#FFD84D">Target Met: Effective SLA &lt;= Threshold ? SLA_MET : SLA_BREACHED</text>
+  <!-- Subtle 16-Bit CRT Scanline Overlay -->
+  <rect x="24" y="24" width="1872" height="1032" fill="url(#crtScanlines)" pointer-events="none"/>
+</svg>

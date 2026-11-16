@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" shape-rendering="crispEdges" text-rendering="geometricPrecision">
+  <defs>
+    <!-- 24x24 16-Bit Pixel Checkerboard Dither Pattern (IncidentZero Signature Canvas) -->
+    <pattern id="pixelChecker" width="48" height="48" patternUnits="userSpaceOnUse">
+      <rect width="48" height="48" fill="#1E1646"/>
+      <rect x="0" y="0" width="24" height="24" fill="#261C58"/>
+      <rect x="24" y="24" width="24" height="24" fill="#261C58"/>
+    </pattern>
+    <!-- Subtle Pixel Grid Overlay -->
+    <pattern id="pixelGrid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#32266E" stroke-width="1" stroke-opacity="0.45"/>
+    </pattern>
+    <!-- CRT Scanline Overlay Pattern -->
+    <pattern id="crtScanlines" width="8" height="4" patternUnits="userSpaceOnUse">
+      <rect x="0" y="0" width="8" height="2" fill="#0B071E" fill-opacity="0.18"/>
+      <rect x="0" y="2" width="8" height="2" fill="none"/>
+    </pattern>
+  </defs>
+
+  <rect x="0" y="0" width="1920" height="1080" fill="url(#pixelChecker)"/>
+  <rect x="0" y="0" width="1920" height="1080" fill="url(#pixelGrid)"/>
+  <rect x="16" y="16" width="1888" height="1048" fill="none" stroke="#0B071E" stroke-width="8"/>
+  <rect x="24" y="24" width="1872" height="1032" fill="none" stroke="#7C5CFF" stroke-width="4"/>
+  <rect x="32" y="32" width="12" height="12" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="1876" y="32" width="12" height="12" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="32" y="1036" width="12" height="12" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="1876" y="1036" width="12" height="12" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <g stroke="#32266E" stroke-width="2">
+    <line x1="28" y1="720" x2="1892" y2="720"/>
+    <line x1="28" y1="780" x2="1892" y2="780"/>
+    <line x1="28" y1="850" x2="1892" y2="850"/>
+    <line x1="28" y1="930" x2="1892" y2="930"/>
+    <line x1="28" y1="1020" x2="1892" y2="1020"/>
+    <line x1="960" y1="540" x2="160" y2="1052"/>
+    <line x1="960" y1="540" x2="360" y2="1052"/>
+    <line x1="960" y1="540" x2="560" y2="1052"/>
+    <line x1="960" y1="540" x2="760" y2="1052"/>
+    <line x1="960" y1="540" x2="960" y2="1052"/>
+    <line x1="960" y1="540" x2="1160" y2="1052"/>
+    <line x1="960" y1="540" x2="1360" y2="1052"/>
+    <line x1="960" y1="540" x2="1560" y2="1052"/>
+    <line x1="960" y1="540" x2="1760" y2="1052"/>
+  </g>
+  <rect x="226" y="186" width="1500" height="740" fill="#0B071E"/>
+  <rect x="218" y="178" width="1500" height="740" fill="#59C9F5" stroke="#0B071E" stroke-width="4"/>
+  <rect x="210" y="170" width="1500" height="740" fill="#1B1530" stroke="#0B071E" stroke-width="6"/>
+  <rect x="218" y="178" width="1484" height="724" fill="none" stroke="#FFD84D" stroke-width="3"/>
+  <rect x="210" y="170" width="1500" height="54" fill="#2B2060" stroke="#0B071E" stroke-width="4"/>
+  <rect x="232" y="188" width="18" height="18" fill="#FF4D3D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="258" y="188" width="18" height="18" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="284" y="188" width="18" height="18" fill="#43D17A" stroke="#0B071E" stroke-width="2"/>
+  <text x="324" y="204" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="900" fill="#FFF3C4" letter-spacing="2">INCIDENT-ZERO ARCADE OPS CONSOLE // ACT8_SCENE1</text>
+  <text x="1686" y="204" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="900" fill="#FFD84D" text-anchor="end">STAGE READY [16-BIT]</text>
+  <rect x="684" y="289" width="560" height="48" fill="#0B071E"/>
+  <rect x="680" y="285" width="560" height="48" fill="#FFD84D" stroke="#0B071E" stroke-width="4"/>
+  <text x="960" y="316" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="18" font-weight="900" fill="#1B1530" text-anchor="middle" letter-spacing="2.5">CS F213 / MAC F212 · GROUP 76</text>
+  <text x="964" y="454" font-family="'Pixelify Sans', 'Silkscreen', 'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="54" font-weight="900" fill="#0B071E" text-anchor="middle" letter-spacing="2">Object-Oriented Design Mastery</text>
+  <text x="962" y="452" font-family="'Pixelify Sans', 'Silkscreen', 'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="54" font-weight="900" fill="#FF4D3D" text-anchor="middle" letter-spacing="2">Object-Oriented Design Mastery</text>
+  <text x="960" y="450" font-family="'Pixelify Sans', 'Silkscreen', 'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="54" font-weight="900" fill="#FFFFFF" text-anchor="middle" letter-spacing="2">Object-Oriented Design Mastery</text>
+  <rect x="660" y="496" width="600" height="8" fill="#0B071E"/>
+  <rect x="660" y="492" width="200" height="8" fill="#FF4D3D"/>
+  <rect x="860" y="492" width="200" height="8" fill="#FFD84D"/>
+  <rect x="1060" y="492" width="200" height="8" fill="#43D17A"/>
+  <rect x="376" y="542" width="1180" height="68" fill="#0B071E"/>
+  <rect x="370" y="536" width="1180" height="68" fill="#FFF8DC" stroke="#0B071E" stroke-width="4"/>
+  <text x="960" y="579" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="24" font-weight="900" fill="#1B1530" text-anchor="middle" letter-spacing="1">11 Proven Gang of Four Design Patterns</text>
+  <rect x="404" y="670" width="350" height="52" fill="#0B071E"/>
+  <rect x="399" y="665" width="350" height="52" fill="#43D17A" stroke="#0B071E" stroke-width="4"/>
+  <text x="574" y="697" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="900" fill="#1B1530" text-anchor="middle" letter-spacing="1">BITS PILANI HYDERABAD</text>
+  <rect x="790" y="670" width="350" height="52" fill="#0B071E"/>
+  <rect x="785" y="665" width="350" height="52" fill="#59C9F5" stroke="#0B071E" stroke-width="4"/>
+  <text x="960" y="697" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="900" fill="#1B1530" text-anchor="middle" letter-spacing="1">SEMESTER-I 2026–2027</text>
+  <rect x="1176" y="670" width="350" height="52" fill="#0B071E"/>
+  <rect x="1171" y="665" width="350" height="52" fill="#7C5CFF" stroke="#0B071E" stroke-width="4"/>
+  <text x="1346" y="697" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="900" fill="#FFFFFF" text-anchor="middle" letter-spacing="1">REACH ZERO · I-ITSM v2.2</text>
+  <text x="960" y="882" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="700" fill="#D4CBF7" text-anchor="middle" letter-spacing="2">★ PRESS START // 520,036 FSM TRANSITIONS VERIFIED // ZERO DEFECTS ★</text>
+  <!-- Subtle 16-Bit CRT Scanline Overlay -->
+  <rect x="24" y="24" width="1872" height="1032" fill="url(#crtScanlines)" pointer-events="none"/>
+</svg>

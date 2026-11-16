@@ -1,4 +1,4 @@
-# scripts/demo-up.ps1
+﻿# scripts/demo-up.ps1
 # Starts DB if needed, starts backend on 8080 with demo DB, starts Vite on 3000, waits for login 200
 
 Write-Output "[*] Executing demo-up..."
@@ -15,9 +15,9 @@ $loginBody = '{"email":"emp@bits.campus","password":"Bits@2026"}'
 $backendUp = $false
 try {
     $res = Invoke-RestMethod -Uri "http://localhost:8080/api/v1/auth/login" -Method Post -Body $loginBody -ContentType "application/json" -TimeoutSec 3 -ErrorAction Stop
-    if ($res.token) {
+    if ($res.accessToken -or $res.token) {
         $backendUp = $true
-        Write-Output "[✓] Backend already running on 8080 and answering login."
+        Write-Output "[OK] Backend already running on 8080 and answering login."
     }
 } catch {
     $backendUp = $false
@@ -30,8 +30,8 @@ if (-not $backendUp) {
         Start-Sleep -Seconds 2
         try {
             $res = Invoke-RestMethod -Uri "http://localhost:8080/api/v1/auth/login" -Method Post -Body $loginBody -ContentType "application/json" -TimeoutSec 3 -ErrorAction Stop
-            if ($res.token) {
-                Write-Output "[✓] Backend is ready and login answered 200."
+            if ($res.accessToken -or $res.token) {
+                Write-Output "[OK] Backend is ready and login answered 200."
                 $backendUp = $true
                 break
             }
@@ -49,7 +49,7 @@ try {
     $fe = Invoke-WebRequest -Uri "http://localhost:3000" -UseBasicParsing -TimeoutSec 2 -ErrorAction Stop
     if ($fe.StatusCode -eq 200) {
         $frontendUp = $true
-        Write-Output "[✓] Frontend already running on 3000."
+        Write-Output "[OK] Frontend already running on 3000."
     }
 } catch {
     $frontendUp = $false
@@ -57,13 +57,13 @@ try {
 
 if (-not $frontendUp) {
     Write-Output "[*] Starting Vite frontend dev server on port 3000..."
-    Start-Process -FilePath "npm" -ArgumentList "--prefix frontend run dev" -NoNewWindow
+    Start-Process -FilePath "cmd.exe" -ArgumentList "/c npm --prefix frontend run dev" -NoNewWindow
     for ($i = 0; $i -lt 20; $i++) {
         Start-Sleep -Seconds 1
         try {
             $fe = Invoke-WebRequest -Uri "http://localhost:3000" -UseBasicParsing -TimeoutSec 2 -ErrorAction Stop
             if ($fe.StatusCode -eq 200) {
-                Write-Output "[✓] Frontend is ready on port 3000."
+                Write-Output "[OK] Frontend is ready on port 3000."
                 $frontendUp = $true
                 break
             }
@@ -71,4 +71,4 @@ if (-not $frontendUp) {
     }
 }
 
-Write-Output "[✓] demo-up completed. Stack is running!"
+Write-Output "[OK] demo-up completed. Stack is running!"

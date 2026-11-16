@@ -182,7 +182,7 @@ export const AdminAudit: React.FC = () => {
               ? verifyResult.valid
                 ? `ALL ${verifyResult.totalRecordsChecked} HASH BLOCKS SECURE`
                 : `BLOCK ${verifyResult.tamperedRowId || 'FAIL'} FRACTURED (TAMPER DETECTED)`
-              : 'CANONICAL MERKLE / SHA-256 SPINE'}
+              : 'SHA-256 HASH CHAIN'}
           </span>
         </div>
 

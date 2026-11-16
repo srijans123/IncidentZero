@@ -1,5 +1,6 @@
 import React, { useRef, useState, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
+import { Safe3D } from './Safe3D';
 import { OrbitControls, Float } from '@react-three/drei';
 import * as THREE from 'three';
 import { Layers, Server, Activity, AlertTriangle, CheckCircle2 } from 'lucide-react';
@@ -197,6 +198,7 @@ export const CampusCoreRack3D: React.FC<CampusCoreRack3DProps> = ({
       className={`relative w-full rounded-lg overflow-hidden border border-white/[0.08] bg-[#090A0D] ${className}`}
     >
       {/* 3D WebGL Canvas */}
+      <Safe3D>
       <Canvas
         shadows
         camera={{ position: [4.2, 2.0, 5.0], fov: 42 }}
@@ -231,6 +233,7 @@ export const CampusCoreRack3D: React.FC<CampusCoreRack3DProps> = ({
           maxPolarAngle={Math.PI / 1.7}
         />
       </Canvas>
+      </Safe3D>
 
       {/* Top Left Telemetry Header */}
       <div className="absolute top-3 left-3 flex items-center gap-2 pointer-events-none">

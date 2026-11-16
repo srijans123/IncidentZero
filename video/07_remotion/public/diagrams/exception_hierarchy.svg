@@ -1,0 +1,145 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" shape-rendering="crispEdges" text-rendering="geometricPrecision">
+  <defs>
+    <!-- 24x24 16-Bit Pixel Checkerboard Dither Pattern (IncidentZero Signature Canvas) -->
+    <pattern id="pixelChecker" width="48" height="48" patternUnits="userSpaceOnUse">
+      <rect width="48" height="48" fill="#1E1646"/>
+      <rect x="0" y="0" width="24" height="24" fill="#261C58"/>
+      <rect x="24" y="24" width="24" height="24" fill="#261C58"/>
+    </pattern>
+    <!-- Subtle Pixel Grid Overlay -->
+    <pattern id="pixelGrid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#32266E" stroke-width="1" stroke-opacity="0.45"/>
+    </pattern>
+    <!-- CRT Scanline Overlay Pattern -->
+    <pattern id="crtScanlines" width="8" height="4" patternUnits="userSpaceOnUse">
+      <rect x="0" y="0" width="8" height="2" fill="#0B071E" fill-opacity="0.18"/>
+      <rect x="0" y="2" width="8" height="2" fill="none"/>
+    </pattern>
+  </defs>
+
+  <rect x="0" y="0" width="1920" height="1080" fill="url(#pixelChecker)"/>
+  <rect x="0" y="0" width="1920" height="1080" fill="url(#pixelGrid)"/>
+  <rect x="16" y="16" width="1888" height="1048" fill="none" stroke="#0B071E" stroke-width="8"/>
+  <rect x="24" y="24" width="1872" height="1032" fill="none" stroke="#7C5CFF" stroke-width="4"/>
+  <rect x="32" y="32" width="12" height="12" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="1876" y="32" width="12" height="12" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="32" y="1036" width="12" height="12" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="1876" y="1036" width="12" height="12" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="66" y="54" width="1800" height="108" fill="#0B071E"/>
+  <rect x="60" y="48" width="1800" height="108" fill="#1B1530" stroke="#0B071E" stroke-width="4"/>
+  <rect x="60" y="48" width="16" height="108" fill="#FF4D3D" stroke="#0B071E" stroke-width="4"/>
+  <line x1="76" y1="54" x2="1856" y2="54" stroke="#FF4D3D" stroke-width="2"/>
+  <text x="96" y="96" font-family="'Pixelify Sans', 'Silkscreen', 'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="30" font-weight="900" fill="#FFFFFF" letter-spacing="1.5">PURE DOMAIN EXCEPTION HIERARCHY</text>
+  <text x="96" y="132" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="700" fill="#59C9F5" letter-spacing="0.5">Clean unchecked domain exception taxonomy: Zero framework dependencies, self-documenting error semantics</text>
+  <rect x="1516" y="72" width="320" height="44" fill="#0B071E"/>
+  <rect x="1510" y="66" width="320" height="44" fill="#FFD84D" stroke="#0B071E" stroke-width="3"/>
+  <rect x="1524" y="80" width="16" height="16" fill="#43D17A" stroke="#0B071E" stroke-width="2"/>
+  <text x="1682" y="94" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="900" fill="#1B1530" text-anchor="middle" letter-spacing="1">GROUP 76 · ERROR TAXONOMY</text>
+  <text x="1670" y="134" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="12" font-weight="700" fill="#D4CBF7" text-anchor="middle" letter-spacing="1">INCIDENT-ZERO (I-ITSM v2.2)</text>
+  <rect x="568" y="188" width="800" height="130" fill="#0B071E"/>
+  <rect x="560" y="180" width="800" height="130" fill="#1B1530" stroke="#0B071E" stroke-width="4"/>
+  <rect x="564" y="184" width="792" height="122" fill="none" stroke="#FF4D3D" stroke-width="2" stroke-opacity="0.65"/>
+  <rect x="560" y="180" width="800" height="40" fill="#FF4D3D" stroke="#0B071E" stroke-width="4"/>
+  <rect x="564" y="184" width="792" height="4" fill="#FF4D3D"/>
+  <text x="578" y="206" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="900" fill="#FFFFFF" letter-spacing="1">ROOT BASE CLASS // edu.campus.iitsm.shared.domain.error</text>
+  <rect x="1206" y="192" width="142" height="24" fill="#0B071E"/>
+  <rect x="1204" y="190" width="142" height="24" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <text x="1275" y="206" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="12" font-weight="900" fill="#1B1530" text-anchor="middle" letter-spacing="1">UNCHECKED ROOT</text>
+  <text x="960" y="256" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="24" font-weight="900" fill="#FFFFFF" text-anchor="middle">ItsmException / DomainException</text>
+  <text x="960" y="288" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="700" fill="#FFD84D" text-anchor="middle">extends RuntimeException · Zero Spring, Servlet, or Jackson imports</text>
+  <line x1="960" y1="310" x2="960" y2="355" stroke="#FF4D3D" stroke-width="6"/>
+  <line x1="228" y1="355" x2="1692" y2="355" stroke="#FF4D3D" stroke-width="6"/>
+  <line x1="228" y1="355" x2="228" y2="395" stroke="#59C9F5" stroke-width="5"/>
+  <rect x="220" y="385" width="16" height="10" fill="#59C9F5" stroke="#0B071E" stroke-width="2"/>
+  <rect x="68" y="403" width="336" height="460" fill="#0B071E"/>
+  <rect x="60" y="395" width="336" height="460" fill="#1B1530" stroke="#0B071E" stroke-width="4"/>
+  <rect x="64" y="399" width="328" height="6" fill="#59C9F5"/>
+  <rect x="76" y="417" width="304" height="74" fill="#2B2060" stroke="#59C9F5" stroke-width="2.5"/>
+  <text x="228" y="447" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="18" font-weight="900" fill="#59C9F5" text-anchor="middle">InvalidStateTransition</text>
+  <text x="228" y="475" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="18" font-weight="900" fill="#FFFFFF" text-anchor="middle">Exception</text>
+  <text x="84" y="531" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="600" fill="#FFF3C4" text-anchor="start">Thrown when an illegal FSM</text>
+  <text x="84" y="557" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="600" fill="#FFF3C4" text-anchor="start">state transition is attempted</text>
+  <text x="84" y="583" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="600" fill="#FFF3C4" text-anchor="start">(e.g. CLOSED to REPORTED or</text>
+  <text x="84" y="609" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="600" fill="#FFF3C4" text-anchor="start">skipping TRIAGED).</text>
+  <rect x="80" y="711" width="296" height="44" fill="#120C2C" stroke="#7C5CFF" stroke-width="2"/>
+  <text x="228" y="739" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="800" fill="#D4CBF7" text-anchor="middle">GUARD: 11-State FSM Table</text>
+  <rect x="84" y="775" width="288" height="50" fill="#0B071E"/>
+  <rect x="80" y="771" width="288" height="50" fill="#59C9F5" stroke="#0B071E" stroke-width="3"/>
+  <text x="226" y="802" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="900" fill="#1B1530" text-anchor="middle" letter-spacing="1">HTTP 409 CONFLICT</text>
+  <line x1="594" y1="355" x2="594" y2="395" stroke="#FFD84D" stroke-width="5"/>
+  <rect x="586" y="385" width="16" height="10" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="434" y="403" width="336" height="460" fill="#0B071E"/>
+  <rect x="426" y="395" width="336" height="460" fill="#1B1530" stroke="#0B071E" stroke-width="4"/>
+  <rect x="430" y="399" width="328" height="6" fill="#FFD84D"/>
+  <rect x="442" y="417" width="304" height="74" fill="#2B2060" stroke="#FFD84D" stroke-width="2.5"/>
+  <text x="594" y="447" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="18" font-weight="900" fill="#FFD84D" text-anchor="middle">SlaBreached</text>
+  <text x="594" y="475" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="18" font-weight="900" fill="#FFFFFF" text-anchor="middle">Exception</text>
+  <text x="450" y="531" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="600" fill="#FFF3C4" text-anchor="start">Triggered by SLA Chronometer</text>
+  <text x="450" y="557" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="600" fill="#FFF3C4" text-anchor="start">when response or resolution</text>
+  <text x="450" y="583" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="600" fill="#FFF3C4" text-anchor="start">deadline expires under active</text>
+  <text x="450" y="609" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="600" fill="#FFF3C4" text-anchor="start">business clock.</text>
+  <rect x="446" y="711" width="296" height="44" fill="#120C2C" stroke="#7C5CFF" stroke-width="2"/>
+  <text x="594" y="739" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="800" fill="#D4CBF7" text-anchor="middle">GUARD: Sticky Breach Latch</text>
+  <rect x="450" y="775" width="288" height="50" fill="#0B071E"/>
+  <rect x="446" y="771" width="288" height="50" fill="#FFD84D" stroke="#0B071E" stroke-width="3"/>
+  <text x="592" y="802" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="900" fill="#1B1530" text-anchor="middle" letter-spacing="1">SLA_BREACHED EVENT</text>
+  <line x1="960" y1="355" x2="960" y2="395" stroke="#FF4D3D" stroke-width="5"/>
+  <rect x="952" y="385" width="16" height="10" fill="#FF4D3D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="800" y="403" width="336" height="460" fill="#0B071E"/>
+  <rect x="792" y="395" width="336" height="460" fill="#1B1530" stroke="#0B071E" stroke-width="4"/>
+  <rect x="796" y="399" width="328" height="6" fill="#FF4D3D"/>
+  <rect x="808" y="417" width="304" height="74" fill="#2B2060" stroke="#FF4D3D" stroke-width="2.5"/>
+  <text x="960" y="447" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="18" font-weight="900" fill="#FF4D3D" text-anchor="middle">CycleDetected</text>
+  <text x="960" y="475" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="18" font-weight="900" fill="#FFFFFF" text-anchor="middle">Exception</text>
+  <text x="816" y="531" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="600" fill="#FFF3C4" text-anchor="start">Raised by Tarjan SCC engine if</text>
+  <text x="816" y="557" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="600" fill="#FFF3C4" text-anchor="start">adding a service dependency</text>
+  <text x="816" y="583" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="600" fill="#FFF3C4" text-anchor="start">edge creates a circular</text>
+  <text x="816" y="609" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="600" fill="#FFF3C4" text-anchor="start">topology loop.</text>
+  <rect x="812" y="711" width="296" height="44" fill="#120C2C" stroke="#7C5CFF" stroke-width="2"/>
+  <text x="960" y="739" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="800" fill="#D4CBF7" text-anchor="middle">GUARD: O(V+E) Tarjan DAG</text>
+  <rect x="816" y="775" width="288" height="50" fill="#0B071E"/>
+  <rect x="812" y="771" width="288" height="50" fill="#FF4D3D" stroke="#0B071E" stroke-width="3"/>
+  <text x="958" y="802" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="900" fill="#1B1530" text-anchor="middle" letter-spacing="1">HTTP 422 UNPROCESSABLE</text>
+  <line x1="1326" y1="355" x2="1326" y2="395" stroke="#7C5CFF" stroke-width="5"/>
+  <rect x="1318" y="385" width="16" height="10" fill="#7C5CFF" stroke="#0B071E" stroke-width="2"/>
+  <rect x="1166" y="403" width="336" height="460" fill="#0B071E"/>
+  <rect x="1158" y="395" width="336" height="460" fill="#1B1530" stroke="#0B071E" stroke-width="4"/>
+  <rect x="1162" y="399" width="328" height="6" fill="#7C5CFF"/>
+  <rect x="1174" y="417" width="304" height="74" fill="#2B2060" stroke="#7C5CFF" stroke-width="2.5"/>
+  <text x="1326" y="447" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="18" font-weight="900" fill="#7C5CFF" text-anchor="middle">AccessDeniedDomain</text>
+  <text x="1326" y="475" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="18" font-weight="900" fill="#FFFFFF" text-anchor="middle">Exception</text>
+  <text x="1182" y="531" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="600" fill="#FFF3C4" text-anchor="start">Enforces strict role-based</text>
+  <text x="1182" y="557" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="600" fill="#FFF3C4" text-anchor="start">authorization invariants</text>
+  <text x="1182" y="583" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="600" fill="#FFF3C4" text-anchor="start">directly at the pure domain</text>
+  <text x="1182" y="609" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="600" fill="#FFF3C4" text-anchor="start">aggregate boundary.</text>
+  <rect x="1178" y="711" width="296" height="44" fill="#120C2C" stroke="#7C5CFF" stroke-width="2"/>
+  <text x="1326" y="739" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="800" fill="#D4CBF7" text-anchor="middle">GUARD: RBAC Domain Policy</text>
+  <rect x="1182" y="775" width="288" height="50" fill="#0B071E"/>
+  <rect x="1178" y="771" width="288" height="50" fill="#7C5CFF" stroke="#0B071E" stroke-width="3"/>
+  <text x="1324" y="802" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="900" fill="#1B1530" text-anchor="middle" letter-spacing="1">HTTP 403 FORBIDDEN</text>
+  <line x1="1692" y1="355" x2="1692" y2="395" stroke="#43D17A" stroke-width="5"/>
+  <rect x="1684" y="385" width="16" height="10" fill="#43D17A" stroke="#0B071E" stroke-width="2"/>
+  <rect x="1532" y="403" width="336" height="460" fill="#0B071E"/>
+  <rect x="1524" y="395" width="336" height="460" fill="#1B1530" stroke="#0B071E" stroke-width="4"/>
+  <rect x="1528" y="399" width="328" height="6" fill="#43D17A"/>
+  <rect x="1540" y="417" width="304" height="74" fill="#2B2060" stroke="#43D17A" stroke-width="2.5"/>
+  <text x="1692" y="447" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="18" font-weight="900" fill="#43D17A" text-anchor="middle">EntityNotFound</text>
+  <text x="1692" y="475" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="18" font-weight="900" fill="#FFFFFF" text-anchor="middle">Exception</text>
+  <text x="1548" y="531" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="600" fill="#FFF3C4" text-anchor="start">Signals missing Incident</text>
+  <text x="1548" y="557" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="600" fill="#FFF3C4" text-anchor="start">aggregate ID, unknown service</text>
+  <text x="1548" y="583" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="600" fill="#FFF3C4" text-anchor="start">node, or unregistered</text>
+  <text x="1548" y="609" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="600" fill="#FFF3C4" text-anchor="start">technician UUID.</text>
+  <rect x="1544" y="711" width="296" height="44" fill="#120C2C" stroke="#7C5CFF" stroke-width="2"/>
+  <text x="1692" y="739" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="800" fill="#D4CBF7" text-anchor="middle">GUARD: Repository Port</text>
+  <rect x="1548" y="775" width="288" height="50" fill="#0B071E"/>
+  <rect x="1544" y="771" width="288" height="50" fill="#43D17A" stroke="#0B071E" stroke-width="3"/>
+  <text x="1690" y="802" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="900" fill="#1B1530" text-anchor="middle" letter-spacing="1">HTTP 404 NOT FOUND</text>
+  <rect x="68" y="896" width="1800" height="128" fill="#0B071E"/>
+  <rect x="60" y="888" width="1800" height="128" fill="#2B2060" stroke="#0B071E" stroke-width="4"/>
+  <rect x="64" y="892" width="1792" height="6" fill="#FFD84D"/>
+  <text x="96" y="934" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="19" font-weight="900" fill="#FFD84D">INFRASTRUCTURE TRANSLATION BOUNDARY // GlobalProblemDetailsHandler (RFC-7807)</text>
+  <text x="96" y="968" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="700" fill="#FFFFFF">All domain exceptions carry machine-readable errorCode + structured metadata and translate cleanly to RFC-7807 ProblemDetail JSON</text>
+  <text x="96" y="996" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="700" fill="#7CE356">without leaking stack traces, SQL dialects, or Spring HTTP status classes into edu.campus.iitsm.*.domain packages.</text>
+  <!-- Subtle 16-Bit CRT Scanline Overlay -->
+  <rect x="24" y="24" width="1872" height="1032" fill="url(#crtScanlines)" pointer-events="none"/>
+</svg>

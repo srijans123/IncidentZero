@@ -1,0 +1,147 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080a10"/>
+      <stop offset="50%" stop-color="#0e1322"/>
+      <stop offset="100%" stop-color="#06080d"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141a2e" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#0d111d" stop-opacity="0.85"/>
+    </linearGradient>
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00f0ff"/>
+      <stop offset="100%" stop-color="#7000ff"/>
+    </linearGradient>
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00ff9d"/>
+      <stop offset="100%" stop-color="#00b4d8"/>
+    </linearGradient>
+    <linearGradient id="amberGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffb800"/>
+      <stop offset="100%" stop-color="#ff4d00"/>
+    </linearGradient>
+    <filter id="glowCyan" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+    <filter id="glowGreen" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+    <filter id="dropShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.6"/>
+    </filter>
+    <pattern id="gridPattern" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1f293d" stroke-width="0.75" stroke-opacity="0.4"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1920" height="1080" fill="url(#bgGrad)"/>
+  <rect width="1920" height="1080" fill="url(#gridPattern)"/>
+
+  <!-- Top Accent Bar -->
+  <rect x="0" y="0" width="1920" height="4" fill="url(#cyanGrad)"/>
+
+  <!-- Header Header -->
+  <g transform="translate(100, 75)">
+    <rect x="0" y="0" width="8" height="48" fill="#00f0ff" rx="4" filter="url(#glowCyan)"/>
+    <text x="24" y="34" font-family="'JetBrains Mono', 'Segoe UI', monospace" font-size="34" font-weight="900" fill="#ffffff" letter-spacing="2">CAMPUS SERVICE DEPENDENCY DAG & TARJAN SCC ENGINE</text>
+    <text x="24" y="62" font-family="'Segoe UI', sans-serif" font-size="18" font-weight="500" fill="#00f0ff" letter-spacing="1">Directed acyclic topology of 12 campus nodes with O(V+E) cycle rejection and cascading blast radius</text>
+    
+    <g transform="translate(1500, 0)">
+      <rect x="0" y="0" width="220" height="38" rx="6" fill="#141a2e" stroke="#00f0ff" stroke-width="1.5" stroke-opacity="0.5"/>
+      <circle cx="20" cy="19" r="6" fill="#00ff9d" filter="url(#glowGreen)"/>
+      <text x="36" y="24" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="700" fill="#00ff9d">GROUP 76 · ARCH SPEC</text>
+    </g>
+  </g>
+
+  <!-- Body Content -->
+  <g transform="translate(100, 180)">
+    
+    <g transform="translate(60, 40)">
+      <!-- Root Node: Core Network -->
+      <g transform="translate(680, 20)">
+        <rect x="0" y="0" width="280" height="80" rx="10" fill="#2d1217" stroke="#ff3864" stroke-width="2.5" filter="url(#dropShadow)"/>
+        <text x="25" y="35" font-family="'JetBrains Mono', monospace" font-size="16" font-weight="900" fill="#ff3864">CORE NETWORK</text>
+        <text x="25" y="60" font-family="'Segoe UI', sans-serif" font-size="13" fill="#ffffff">Root Switch &amp; Gateway</text>
+      </g>
+
+      <!-- Connectors from Root -->
+      <path d="M 720 100 L 340 180" stroke="#00f0ff" stroke-width="2.5" marker-end="url(#arrow)"/>
+      <path d="M 820 100 L 820 180" stroke="#00f0ff" stroke-width="2.5"/>
+      <path d="M 920 100 L 1300 180" stroke="#00f0ff" stroke-width="2.5"/>
+
+      <!-- Layer 1 Nodes -->
+      <g transform="translate(200, 180)">
+        <rect x="0" y="0" width="260" height="75" rx="10" fill="#141c2e" stroke="#00f0ff" stroke-width="2"/>
+        <text x="20" y="32" font-family="'JetBrains Mono', monospace" font-size="15" font-weight="800" fill="#00f0ff">CAMPUS WI-FI</text>
+        <text x="20" y="55" font-family="'Segoe UI', sans-serif" font-size="13" fill="#a0aec0">Aruba Access Points</text>
+      </g>
+
+      <g transform="translate(690, 180)">
+        <rect x="0" y="0" width="260" height="75" rx="10" fill="#141c2e" stroke="#00f0ff" stroke-width="2"/>
+        <text x="20" y="32" font-family="'JetBrains Mono', monospace" font-size="15" font-weight="800" fill="#00f0ff">LMS PORTAL</text>
+        <text x="20" y="55" font-family="'Segoe UI', sans-serif" font-size="13" fill="#a0aec0">Moodle &amp; Online Exams</text>
+      </g>
+
+      <g transform="translate(1180, 180)">
+        <rect x="0" y="0" width="260" height="75" rx="10" fill="#141c2e" stroke="#00f0ff" stroke-width="2"/>
+        <text x="20" y="32" font-family="'JetBrains Mono', monospace" font-size="15" font-weight="800" fill="#00f0ff">DATA CENTER</text>
+        <text x="20" y="55" font-family="'Segoe UI', sans-serif" font-size="13" fill="#a0aec0">Hyper-V Virtual Hosts</text>
+      </g>
+
+      <!-- Connectors to Layer 2 -->
+      <path d="M 330 255 L 180 340" stroke="#00f0ff" stroke-width="2"/>
+      <path d="M 330 255 L 480 340" stroke="#00f0ff" stroke-width="2"/>
+      <path d="M 820 255 L 750 340" stroke="#00f0ff" stroke-width="2"/>
+      <path d="M 820 255 L 980 340" stroke="#00f0ff" stroke-width="2"/>
+      <path d="M 1310 255 L 1310 340" stroke="#00f0ff" stroke-width="2"/>
+
+      <!-- Layer 2 Nodes -->
+      <g transform="translate(60, 340)">
+        <rect x="0" y="0" width="220" height="70" rx="8" fill="#141c2e" stroke="#2d3748" stroke-width="1.5"/>
+        <text x="15" y="30" font-family="'JetBrains Mono', monospace" font-size="14" font-weight="700" fill="#ffffff">HOSTEL NET</text>
+        <text x="15" y="52" font-family="'Segoe UI', sans-serif" font-size="12" fill="#a0aec0">Bhavan Subnets</text>
+      </g>
+
+      <g transform="translate(360, 340)">
+        <rect x="0" y="0" width="220" height="70" rx="8" fill="#141c2e" stroke="#2d3748" stroke-width="1.5"/>
+        <text x="15" y="30" font-family="'JetBrains Mono', monospace" font-size="14" font-weight="700" fill="#ffffff">LIBRARY SYSTEM</text>
+        <text x="15" y="52" font-family="'Segoe UI', sans-serif" font-size="12" fill="#a0aec0">RFID &amp; KOHA DB</text>
+      </g>
+
+      <g transform="translate(640, 340)">
+        <rect x="0" y="0" width="220" height="70" rx="8" fill="#141c2e" stroke="#2d3748" stroke-width="1.5"/>
+        <text x="15" y="30" font-family="'JetBrains Mono', monospace" font-size="14" font-weight="700" fill="#ffffff">EXAM SYSTEM</text>
+        <text x="15" y="52" font-family="'Segoe UI', sans-serif" font-size="12" fill="#a0aec0">Secure Browser Engine</text>
+      </g>
+
+      <g transform="translate(900, 340)">
+        <rect x="0" y="0" width="220" height="70" rx="8" fill="#141c2e" stroke="#2d3748" stroke-width="1.5"/>
+        <text x="15" y="30" font-family="'JetBrains Mono', monospace" font-size="14" font-weight="700" fill="#ffffff">ERP PORTAL</text>
+        <text x="15" y="52" font-family="'Segoe UI', sans-serif" font-size="12" fill="#a0aec0">SWD / Timetable</text>
+      </g>
+
+      <g transform="translate(1200, 340)">
+        <rect x="0" y="0" width="220" height="70" rx="8" fill="#141c2e" stroke="#2d3748" stroke-width="1.5"/>
+        <text x="15" y="30" font-family="'JetBrains Mono', monospace" font-size="14" font-weight="700" fill="#ffffff">LAB VM CLUSTER</text>
+        <text x="15" y="52" font-family="'Segoe UI', sans-serif" font-size="12" fill="#a0aec0">GPU / HPC Nodes</text>
+      </g>
+
+      <!-- Tarjan Algorithm Explanatory Box -->
+      <g transform="translate(60, 470)">
+        <rect x="0" y="0" width="1520" height="150" rx="12" fill="#0d1b2a" stroke="#00ff9d" stroke-width="2"/>
+        <text x="30" y="35" font-family="'JetBrains Mono', monospace" font-size="18" font-weight="800" fill="#00ff9d">TARJAN STRONGLY CONNECTED COMPONENTS (SCC) GUARANTEE</text>
+        
+        <g transform="translate(30, 60)">
+          <text x="0" y="20" font-family="'Segoe UI', sans-serif" font-size="15" fill="#ffffff">• <tspan font-weight="bold">Linear Time Complexity:</tspan> Runs in exact O(|V| + |E|) time using single-pass depth-first search indexing.</text>
+          <text x="0" y="45" font-family="'Segoe UI', sans-serif" font-size="15" fill="#ffffff">• <tspan font-weight="bold">Cycle Prevention:</tspan> An edge addition (u → v) is immediately aborted if Tarjan identifies SCC with &gt; 1 node.</text>
+          <text x="0" y="70" font-family="'Segoe UI', sans-serif" font-size="15" fill="#00f0ff">• <tspan font-weight="bold">Cascading Blast Radius:</tspan> Breadth-first traversal down the DAG reveals all affected downstream services instantly.</text>
+        </g>
+      </g>
+    </g>
+    
+  </g>
+</svg>

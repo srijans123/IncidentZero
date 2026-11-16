@@ -1,0 +1,156 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" shape-rendering="crispEdges" text-rendering="geometricPrecision">
+  <defs>
+    <!-- 24x24 16-Bit Pixel Checkerboard Dither Pattern (IncidentZero Signature Canvas) -->
+    <pattern id="pixelChecker" width="48" height="48" patternUnits="userSpaceOnUse">
+      <rect width="48" height="48" fill="#1E1646"/>
+      <rect x="0" y="0" width="24" height="24" fill="#261C58"/>
+      <rect x="24" y="24" width="24" height="24" fill="#261C58"/>
+    </pattern>
+    <!-- Subtle Pixel Grid Overlay -->
+    <pattern id="pixelGrid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#32266E" stroke-width="1" stroke-opacity="0.45"/>
+    </pattern>
+    <!-- CRT Scanline Overlay Pattern -->
+    <pattern id="crtScanlines" width="8" height="4" patternUnits="userSpaceOnUse">
+      <rect x="0" y="0" width="8" height="2" fill="#0B071E" fill-opacity="0.18"/>
+      <rect x="0" y="2" width="8" height="2" fill="none"/>
+    </pattern>
+  </defs>
+
+  <rect x="0" y="0" width="1920" height="1080" fill="url(#pixelChecker)"/>
+  <rect x="0" y="0" width="1920" height="1080" fill="url(#pixelGrid)"/>
+  <rect x="16" y="16" width="1888" height="1048" fill="none" stroke="#0B071E" stroke-width="8"/>
+  <rect x="24" y="24" width="1872" height="1032" fill="none" stroke="#7C5CFF" stroke-width="4"/>
+  <rect x="32" y="32" width="12" height="12" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="1876" y="32" width="12" height="12" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="32" y="1036" width="12" height="12" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="1876" y="1036" width="12" height="12" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="66" y="54" width="1800" height="108" fill="#0B071E"/>
+  <rect x="60" y="48" width="1800" height="108" fill="#1B1530" stroke="#0B071E" stroke-width="4"/>
+  <rect x="60" y="48" width="16" height="108" fill="#7C5CFF" stroke="#0B071E" stroke-width="4"/>
+  <line x1="76" y1="54" x2="1856" y2="54" stroke="#7C5CFF" stroke-width="2"/>
+  <text x="96" y="96" font-family="'Pixelify Sans', 'Silkscreen', 'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="30" font-weight="900" fill="#FFFFFF" letter-spacing="1.5">CRYPTOGRAPHIC SHA-256 TAMPER-EVIDENT AUDIT LEDGER</text>
+  <text x="96" y="132" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="700" fill="#59C9F5" letter-spacing="0.5">Append-only Merkle-linked chain: Every state transition binds to preceding block hash</text>
+  <rect x="1516" y="72" width="320" height="44" fill="#0B071E"/>
+  <rect x="1510" y="66" width="320" height="44" fill="#FFD84D" stroke="#0B071E" stroke-width="3"/>
+  <rect x="1524" y="80" width="16" height="16" fill="#43D17A" stroke="#0B071E" stroke-width="2"/>
+  <text x="1682" y="94" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="900" fill="#1B1530" text-anchor="middle" letter-spacing="1">GROUP 76 · AUDIT LEDGER</text>
+  <text x="1670" y="134" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="12" font-weight="700" fill="#D4CBF7" text-anchor="middle" letter-spacing="1">INCIDENT-ZERO (I-ITSM v2.2)</text>
+  <rect x="68" y="193" width="408" height="560" fill="#0B071E"/>
+  <rect x="60" y="185" width="408" height="560" fill="#1B1530" stroke="#0B071E" stroke-width="4"/>
+  <rect x="64" y="189" width="400" height="552" fill="none" stroke="#D4CBF7" stroke-width="2" stroke-opacity="0.65"/>
+  <rect x="60" y="185" width="408" height="44" fill="#2B2060" stroke="#0B071E" stroke-width="4"/>
+  <rect x="64" y="189" width="400" height="4" fill="#D4CBF7"/>
+  <text x="78" y="213" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="900" fill="#FFFFFF" letter-spacing="1">BLOCK #0 (GENESIS)</text>
+  <rect x="372" y="199" width="84" height="24" fill="#0B071E"/>
+  <rect x="370" y="197" width="84" height="24" fill="#D4CBF7" stroke="#0B071E" stroke-width="2"/>
+  <text x="412" y="213" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="12" font-weight="900" fill="#1B1530" text-anchor="middle" letter-spacing="1">SEQ #0</text>
+  <text x="84" y="263" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="13" font-weight="900" fill="#D4CBF7">PREV_HASH (SHA-256 LINK):</text>
+  <rect x="84" y="275" width="360" height="46" fill="#120C2C" stroke="#7C5CFF" stroke-width="2"/>
+  <text x="100" y="304" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="800" fill="#D4CBF7">00000000000000000000...</text>
+  <text x="84" y="357" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="13" font-weight="900" fill="#D4CBF7">IMMUTABLE EVENT PAYLOAD:</text>
+  <rect x="88" y="375" width="360" height="178" fill="#0B071E"/>
+  <rect x="84" y="371" width="360" height="178" fill="#2B2060" stroke="#D4CBF7" stroke-width="2.5"/>
+  <rect x="86.5" y="373.5" width="355.0" height="6" fill="#D4CBF7"/>
+  <text x="102" y="415" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="900" fill="#FFFFFF">Action: SYSTEM_INIT</text>
+  <text x="102" y="457" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="700" fill="#FFF3C4">Detail: 2026-11-09T08:00Z</text>
+  <text x="102" y="499" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="800" fill="#7CE356">Meta:   system@bits.campus</text>
+  <text x="84" y="589" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="13" font-weight="900" fill="#FFD84D">CURRENT BLOCK SHA-256 HASH:</text>
+  <rect x="84" y="603" width="360" height="54" fill="#FFF8DC" stroke="#0B071E" stroke-width="3"/>
+  <text x="264" y="636" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="900" fill="#1B1530" text-anchor="middle">a17f8b9c4d2e5a610f...</text>
+  <rect x="84" y="677" width="360" height="40" fill="#120C2C" stroke="#43D17A" stroke-width="2"/>
+  <text x="264" y="702" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="13" font-weight="900" fill="#7CE356" text-anchor="middle">LOCKED IN-TX (FOR UPDATE)</text>
+  <rect x="476" y="459" width="28" height="12" fill="#D4CBF7" stroke="#0B071E" stroke-width="2"/>
+  <polygon points="504,451 522,465 504,479" fill="#D4CBF7" stroke="#0B071E" stroke-width="2"/>
+  <rect x="532" y="193" width="408" height="560" fill="#0B071E"/>
+  <rect x="524" y="185" width="408" height="560" fill="#1B1530" stroke="#0B071E" stroke-width="4"/>
+  <rect x="528" y="189" width="400" height="552" fill="none" stroke="#59C9F5" stroke-width="2" stroke-opacity="0.65"/>
+  <rect x="524" y="185" width="408" height="44" fill="#2B2060" stroke="#0B071E" stroke-width="4"/>
+  <rect x="528" y="189" width="400" height="4" fill="#59C9F5"/>
+  <text x="542" y="213" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="900" fill="#FFFFFF" letter-spacing="1">BLOCK #1 (REPORTED)</text>
+  <rect x="836" y="199" width="84" height="24" fill="#0B071E"/>
+  <rect x="834" y="197" width="84" height="24" fill="#59C9F5" stroke="#0B071E" stroke-width="2"/>
+  <text x="876" y="213" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="12" font-weight="900" fill="#1B1530" text-anchor="middle" letter-spacing="1">SEQ #1</text>
+  <text x="548" y="263" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="13" font-weight="900" fill="#D4CBF7">PREV_HASH (SHA-256 LINK):</text>
+  <rect x="548" y="275" width="360" height="46" fill="#120C2C" stroke="#7C5CFF" stroke-width="2"/>
+  <text x="564" y="304" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="800" fill="#59C9F5">a17f8b9c4d2e5a610f...</text>
+  <text x="548" y="357" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="13" font-weight="900" fill="#D4CBF7">IMMUTABLE EVENT PAYLOAD:</text>
+  <rect x="552" y="375" width="360" height="178" fill="#0B071E"/>
+  <rect x="548" y="371" width="360" height="178" fill="#2B2060" stroke="#59C9F5" stroke-width="2.5"/>
+  <rect x="550.5" y="373.5" width="355.0" height="6" fill="#59C9F5"/>
+  <text x="566" y="415" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="900" fill="#FFFFFF">Action: INCIDENT_CREATED</text>
+  <text x="566" y="457" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="700" fill="#FFF3C4">Detail: INC-2026-0045 (P1)</text>
+  <text x="566" y="499" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="800" fill="#7CE356">Meta:   emp@bits.campus</text>
+  <text x="548" y="589" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="13" font-weight="900" fill="#FFD84D">CURRENT BLOCK SHA-256 HASH:</text>
+  <rect x="548" y="603" width="360" height="54" fill="#FFF8DC" stroke="#0B071E" stroke-width="3"/>
+  <text x="728" y="636" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="900" fill="#1B1530" text-anchor="middle">7d3e91aa4bc820f1...</text>
+  <rect x="548" y="677" width="360" height="40" fill="#120C2C" stroke="#43D17A" stroke-width="2"/>
+  <text x="728" y="702" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="13" font-weight="900" fill="#7CE356" text-anchor="middle">LOCKED IN-TX (FOR UPDATE)</text>
+  <rect x="940" y="459" width="28" height="12" fill="#59C9F5" stroke="#0B071E" stroke-width="2"/>
+  <polygon points="968,451 986,465 968,479" fill="#59C9F5" stroke="#0B071E" stroke-width="2"/>
+  <rect x="996" y="193" width="408" height="560" fill="#0B071E"/>
+  <rect x="988" y="185" width="408" height="560" fill="#1B1530" stroke="#0B071E" stroke-width="4"/>
+  <rect x="992" y="189" width="400" height="552" fill="none" stroke="#43D17A" stroke-width="2" stroke-opacity="0.65"/>
+  <rect x="988" y="185" width="408" height="44" fill="#2B2060" stroke="#0B071E" stroke-width="4"/>
+  <rect x="992" y="189" width="400" height="4" fill="#43D17A"/>
+  <text x="1006" y="213" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="900" fill="#FFFFFF" letter-spacing="1">BLOCK #2 (ASSIGNED)</text>
+  <rect x="1300" y="199" width="84" height="24" fill="#0B071E"/>
+  <rect x="1298" y="197" width="84" height="24" fill="#43D17A" stroke="#0B071E" stroke-width="2"/>
+  <text x="1340" y="213" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="12" font-weight="900" fill="#1B1530" text-anchor="middle" letter-spacing="1">SEQ #2</text>
+  <text x="1012" y="263" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="13" font-weight="900" fill="#D4CBF7">PREV_HASH (SHA-256 LINK):</text>
+  <rect x="1012" y="275" width="360" height="46" fill="#120C2C" stroke="#7C5CFF" stroke-width="2"/>
+  <text x="1028" y="304" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="800" fill="#43D17A">7d3e91aa4bc820f1...</text>
+  <text x="1012" y="357" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="13" font-weight="900" fill="#D4CBF7">IMMUTABLE EVENT PAYLOAD:</text>
+  <rect x="1016" y="375" width="360" height="178" fill="#0B071E"/>
+  <rect x="1012" y="371" width="360" height="178" fill="#2B2060" stroke="#43D17A" stroke-width="2.5"/>
+  <rect x="1014.5" y="373.5" width="355.0" height="6" fill="#43D17A"/>
+  <text x="1030" y="415" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="900" fill="#FFFFFF">Action: TECH_ASSIGNED</text>
+  <text x="1030" y="457" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="700" fill="#FFF3C4">Detail: Assignee: Vikram A.</text>
+  <text x="1030" y="499" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="800" fill="#7CE356">Meta:   LEAST_LOADED</text>
+  <text x="1012" y="589" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="13" font-weight="900" fill="#FFD84D">CURRENT BLOCK SHA-256 HASH:</text>
+  <rect x="1012" y="603" width="360" height="54" fill="#FFF8DC" stroke="#0B071E" stroke-width="3"/>
+  <text x="1192" y="636" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="900" fill="#1B1530" text-anchor="middle">f94c12089bca5543...</text>
+  <rect x="1012" y="677" width="360" height="40" fill="#120C2C" stroke="#43D17A" stroke-width="2"/>
+  <text x="1192" y="702" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="13" font-weight="900" fill="#7CE356" text-anchor="middle">LOCKED IN-TX (FOR UPDATE)</text>
+  <rect x="1404" y="459" width="28" height="12" fill="#43D17A" stroke="#0B071E" stroke-width="2"/>
+  <polygon points="1432,451 1450,465 1432,479" fill="#43D17A" stroke="#0B071E" stroke-width="2"/>
+  <rect x="1460" y="193" width="408" height="560" fill="#0B071E"/>
+  <rect x="1452" y="185" width="408" height="560" fill="#1B1530" stroke="#0B071E" stroke-width="4"/>
+  <rect x="1456" y="189" width="400" height="552" fill="none" stroke="#FFD84D" stroke-width="2" stroke-opacity="0.65"/>
+  <rect x="1452" y="185" width="408" height="44" fill="#2B2060" stroke="#0B071E" stroke-width="4"/>
+  <rect x="1456" y="189" width="400" height="4" fill="#FFD84D"/>
+  <text x="1470" y="213" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="900" fill="#FFFFFF" letter-spacing="1">BLOCK #3 (RESOLVED)</text>
+  <rect x="1764" y="199" width="84" height="24" fill="#0B071E"/>
+  <rect x="1762" y="197" width="84" height="24" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <text x="1804" y="213" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="12" font-weight="900" fill="#1B1530" text-anchor="middle" letter-spacing="1">SEQ #3</text>
+  <text x="1476" y="263" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="13" font-weight="900" fill="#D4CBF7">PREV_HASH (SHA-256 LINK):</text>
+  <rect x="1476" y="275" width="360" height="46" fill="#120C2C" stroke="#7C5CFF" stroke-width="2"/>
+  <text x="1492" y="304" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="800" fill="#FFD84D">f94c12089bca5543...</text>
+  <text x="1476" y="357" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="13" font-weight="900" fill="#D4CBF7">IMMUTABLE EVENT PAYLOAD:</text>
+  <rect x="1480" y="375" width="360" height="178" fill="#0B071E"/>
+  <rect x="1476" y="371" width="360" height="178" fill="#2B2060" stroke="#FFD84D" stroke-width="2.5"/>
+  <rect x="1478.5" y="373.5" width="355.0" height="6" fill="#FFD84D"/>
+  <text x="1494" y="415" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="900" fill="#FFFFFF">Action: INCIDENT_RESOLVED</text>
+  <text x="1494" y="457" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="700" fill="#FFF3C4">Detail: Code: FIBER_SPLICED</text>
+  <text x="1494" y="499" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="15" font-weight="800" fill="#7CE356">Meta:   SLA: MET (38m)</text>
+  <text x="1476" y="589" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="13" font-weight="900" fill="#FFD84D">CURRENT BLOCK SHA-256 HASH:</text>
+  <rect x="1476" y="603" width="360" height="54" fill="#FFF8DC" stroke="#0B071E" stroke-width="3"/>
+  <text x="1656" y="636" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="900" fill="#1B1530" text-anchor="middle">88e401b38cf47a22...</text>
+  <rect x="1476" y="677" width="360" height="40" fill="#120C2C" stroke="#43D17A" stroke-width="2"/>
+  <text x="1656" y="702" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="13" font-weight="900" fill="#7CE356" text-anchor="middle">LOCKED IN-TX (FOR UPDATE)</text>
+  <rect x="68" y="783" width="1800" height="245" fill="#0B071E"/>
+  <rect x="60" y="775" width="1800" height="245" fill="#1B1530" stroke="#0B071E" stroke-width="4"/>
+  <rect x="64" y="779" width="1792" height="237" fill="none" stroke="#FF4D3D" stroke-width="2" stroke-opacity="0.65"/>
+  <rect x="60" y="775" width="1800" height="44" fill="#FF4D3D" stroke="#0B071E" stroke-width="4"/>
+  <rect x="64" y="779" width="1792" height="4" fill="#FF4D3D"/>
+  <text x="78" y="803" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="900" fill="#FFFFFF" letter-spacing="1">MATHEMATICAL TAMPER DETECTION GUARANTEE // SHA-256 MERKLE VERIFIER</text>
+  <rect x="1706" y="789" width="142" height="24" fill="#0B071E"/>
+  <rect x="1704" y="787" width="142" height="24" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <text x="1775" y="803" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="12" font-weight="900" fill="#1B1530" text-anchor="middle" letter-spacing="1">TAMPER-EVIDENT</text>
+  <text x="96" y="858" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="18" font-weight="900" fill="#FFD84D">Hash_i = SHA256( PrevHash_{i-1} || IncidentID ||SeqNo || EventType || ActorID || OccurredAt || CanonicalPayload )</text>
+  <text x="96" y="902" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="700" fill="#FFFFFF">• If an adversary alters any byte of historical SQL data (e.g. modifying timestamp, actor, or resolution code),</text>
+  <text x="96" y="934" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="700" fill="#FFFFFF">  the recomputed SHA-256 digest diverges from all downstream prev_hash pointers in the audit_ledger table.</text>
+  <text x="96" y="974" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="900" fill="#7CE356">• Verification endpoint (/api/v1/audit/verify) scans the chain in O(N) and pinpoints the exact corrupted block index.</text>
+  <!-- Subtle 16-Bit CRT Scanline Overlay -->
+  <rect x="24" y="24" width="1872" height="1032" fill="url(#crtScanlines)" pointer-events="none"/>
+</svg>

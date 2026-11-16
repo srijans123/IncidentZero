@@ -1,0 +1,84 @@
+1
+00:00:00,000 --> 00:00:05,874
+Incident-Zero was conceived, designed, and implemented by Group 76 under
+
+2
+00:00:05,874 --> 00:00:11,160
+the Object-Oriented Programming curriculum at BITS Pilani, Hyderabad Campus.
+
+3
+00:00:11,667 --> 00:00:16,740
+Srijan Shukla architected the pure domain core, the eleven-state deterministic
+
+4
+00:00:16,740 --> 00:00:21,307
+finite state machine, and the tamper-evident cryptographic audit ledger.
+
+5
+00:00:21,833 --> 00:00:29,158
+Suhani Agarwal spearheaded the precision dual-clock SLA chronometer engine, business
+
+6
+00:00:29,158 --> 00:00:33,553
+calendar arithmetic, and multi-tier escalation policies.
+
+7
+00:00:34,067 --> 00:00:39,469
+Kartikey Negi engineered the campus service dependency directed acyclic graph, Tarjan
+
+8
+00:00:39,469 --> 00:00:42,907
+cycle validation, and major incident storm correlation.
+
+9
+00:00:43,433 --> 00:00:49,808
+Hairsh Kumar crafted the full-stack responsive interface, interactive Three.js hardware
+
+10
+00:00:49,808 --> 00:00:53,633
+telemetry, and enterprise REST controller adapters.
+
+11
+00:00:54,133 --> 00:01:00,406
+Our platform adheres strictly to Ports and Adapters, or Hexagonal
+
+12
+00:01:00,406 --> 00:01:06,679
+Architecture, isolating pure business entities completely from frameworks, persistence, and
+
+13
+00:01:06,679 --> 00:01:07,933
+external drivers.
+
+14
+00:01:08,433 --> 00:01:13,760
+Eleven discrete domain modules are governed by Spring Modulith, running
+
+15
+00:01:13,760 --> 00:01:18,553
+atop high-throughput Java 22 virtual threads and cloud-native PostgreSQL.
+
+16
+00:01:19,067 --> 00:01:25,048
+The frontend combines modern React 19 and Tailwind CSS with
+
+17
+00:01:25,048 --> 00:01:31,030
+a distinctive 16-bit pixel-arcade design language, making operational monitoring engaging
+
+18
+00:01:31,030 --> 00:01:32,227
+and intuitive.
+
+19
+00:01:32,733 --> 00:01:38,142
+Bi-directional Server-Sent Events stream live status updates across all connected
+
+20
+00:01:38,142 --> 00:01:43,551
+stations, ensuring that student reports and technician actions remain synchronized
+
+21
+00:01:43,551 --> 00:01:45,173
+with zero polling.
+

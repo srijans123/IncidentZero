@@ -1,0 +1,9 @@
+{
+  "id": "act8_scene3",
+  "title": "GoF State Pattern: FSM Transition Enforcement",
+  "file": "backend/src/main/java/edu/campus/iitsm/incident/domain/Incident.java",
+  "display_file": "backend/src/main/java/edu/campus/iitsm/incident/domain/Incident.java",
+  "lines": "50-85",
+  "exists": true,
+  "code": "  private UUID teamId;\n  private UUID parentId;\n  private UUID commanderId;\n  private int affectedUsers = 1;\n  private int reassignCount;\n  private int reopenCount;\n  private Resolution resolution;\n  private Integer rating;\n  private String closureNote;\n  private Instant respondedAt;\n  private Instant resolvedAt;\n  private Instant closedAt;\n  private boolean major;\n  private long version;\n\n  private Incident(UUID id, String number, UUID reporterId, UUID serviceId, String title, String description,\n                   int impact, int urgency, Priority priority, PriorityExplanation explanation, SlaSnapshot sla, Instant now) {\n    this.id = id;\n    this.number = number;\n    this.reporterId = reporterId;\n    this.serviceId = serviceId;\n    this.title = title;\n    this.description = description;\n    this.createdAt = now;\n    this.impact = impact;\n    this.urgency = urgency;\n    this.priority = priority;\n    this.priorityExplanation = explanation;\n    this.sla = sla;\n    this.responseClock = SlaClock.start(now, sla.responseTargetMs(), sla.mode());\n    this.resolutionClock = SlaClock.start(now, sla.resolutionTargetMs(), sla.mode());\n  }\n\n  public static Incident create(UUID id, UUID reporterId, UUID serviceId, int impact, int urgency, Priority provisional,\n                                PriorityExplanation explanation, SlaSnapshot sla, Instant now) {\n    return createWithNumber(id, \"INC-2026-000001\", reporterId, serviceId,\n"
+}

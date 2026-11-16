@@ -1,0 +1,79 @@
+{
+  "source_document": "OOP_S1_2026-2027_Project.pdf",
+  "course": "CS F213 / MAC F212 OOP",
+  "semester": "Semester-I, 2026-2027",
+  "total_marks": 120,
+  "video_duration_window": {
+    "min_minutes": 15.0,
+    "max_minutes": 20.0,
+    "target_minutes": "19:00 - 19:30"
+  },
+  "primary_objective": "Develop an industry-oriented application managing the complete lifecycle: Report - Classify - Prioritize - Assign - Investigate - Resolve - Verify - Close using sound OOP principles.",
+  "fourteen_step_scenario": [
+    "1. Create an incident",
+    "2. Classify the incident",
+    "3. Identify the affected service",
+    "4. Determine its business impact",
+    "5. Calculate its priority",
+    "6. Determine the applicable SLA",
+    "7. Identify suitable technicians",
+    "8. Assign the incident",
+    "9. Notify relevant personnel",
+    "10. Track investigation and resolution",
+    "11. Monitor SLA compliance",
+    "12. Record all important activities",
+    "13. Close the incident after resolution",
+    "14. Include the incident in relevant reports and analytics"
+  ],
+  "mvp_requirements": {
+    "user_management": ["Employee", "Technician", "Administrator"],
+    "incident_management": ["Create", "View", "Update", "Assign", "Resolve", "Close"],
+    "priority_management": ["Impact", "Urgency", "Business Criticality"],
+    "technician_assignment": "At least two assignment strategies",
+    "sla_management": ["SLA calculation", "Deadline tracking", "Violation detection"],
+    "notification": "At least two notification mechanisms (simulated or real)",
+    "audit": "Complete incident history",
+    "search_and_reporting": "At least five meaningful search/filter criteria + overview/workload/service reports",
+    "intelligent_features": "At least two intelligent/automated features",
+    "persistence": "Database or equivalent persistent storage"
+  },
+  "three_mandatory_workflows": {
+    "workflow_1": "Employee reports -> system classifies/prioritizes -> technician assigned -> notification generated",
+    "workflow_2": "Technician investigates -> SLA monitored -> incident resolved -> user notified",
+    "workflow_3": "Multiple incidents reported -> duplicates/related identified -> correlated/escalated"
+  },
+  "oop_design_requirements": [
+    "Encapsulation: Data protected through appropriate access mechanisms",
+    "Abstraction: Complex business operations represented through suitable abstractions",
+    "Inheritance: Used only where an appropriate is-a relationship exists",
+    "Polymorphism: Interchangeable implementations at runtime",
+    "Interfaces: Suitable contracts defined",
+    "Composition: Collaboration through composition where appropriate",
+    "Association and Aggregation: Demonstrated between domain objects",
+    "Exception Handling: Handling invalid situations with custom exceptions",
+    "Collections / Data Structures: Selected based on application requirements",
+    "Design Patterns: At least two design patterns implemented"
+  ],
+  "tech_selection_report_questions": [
+    "Q1. Why did you choose this programming language?",
+    "Q2. Why did you choose this frontend technology?",
+    "Q3. Why did you choose this backend technology?",
+    "Q4. Why did you select this database?",
+    "Q5. Why did you choose this architecture?",
+    "Q6. What alternatives did you consider?",
+    "Q7. What are the advantages and limitations of your technology stack?",
+    "Q8. How does your technology support object-oriented design?",
+    "Q9. How would your system evolve if the number of users increased significantly?"
+  ],
+  "testing_requirements": "At least 15 meaningful test cases covering normal operations, boundary conditions, invalid inputs, exceptions, authorization, business rules",
+  "rubric": [
+    { "criteria": "System Design & Architecture", "marks": 10, "desc": "Problem understanding and clear prototype development" },
+    { "criteria": "Functionality Implementation", "marks": 60, "desc": "Working implementation of mandatory modules (refer MVP)" },
+    { "criteria": "User Experience", "marks": 10, "desc": "Value-added features (SLA, Security, intelligent features)" },
+    { "criteria": "Technical Depth", "marks": 15, "desc": "Code quality, APIs, third-party services, scalability of design" },
+    { "criteria": "Testing & Validation", "marks": 5, "desc": "Unit testing, integration testing, edge cases, exception handling" },
+    { "criteria": "Innovation", "marks": 10, "desc": "Going beyond basic requirements with intelligent features" },
+    { "criteria": "Documentation & Presentation", "marks": 10, "desc": "Completeness of report, clarity, and effectiveness of demo video" }
+  ]
+}
+

@@ -1,0 +1,9 @@
+{
+  "id": "act7_scene2",
+  "title": "SHA-256 Merkle Ledger Hash Engine",
+  "file": "backend/src/main/java/edu/campus/iitsm/audit/domain/AuditHasher.java",
+  "display_file": "backend/src/main/java/edu/campus/iitsm/audit/domain/AuditHasher.java",
+  "lines": "1-35",
+  "exists": true,
+  "code": "package edu.campus.iitsm.audit.domain;\n\nimport java.nio.charset.StandardCharsets;\nimport java.security.MessageDigest;\nimport java.time.Instant;\nimport java.time.temporal.ChronoUnit;\nimport java.util.HexFormat;\nimport java.util.List;\nimport java.util.Map;\nimport java.util.TreeMap;\nimport java.util.UUID;\n\npublic final class AuditHasher {\n  private static final String SEP = \"\\u001F\";\n  public static final String GENESIS_HASH = \"0\".repeat(64);\n\n  public record AuditRowView(\n      long id, UUID incidentId, int chainIndex, Instant ts, String actorType, UUID actorId,\n      String action, String prevState, String newState, String description,\n      String canonicalPayloadJson, String prevHash, String hash\n  ) {}\n\n  public record VerificationReport(boolean valid, Long firstCorruptedRowId, String failureReason) {\n    public static VerificationReport ok() { return new VerificationReport(true, null, null); }\n    public static VerificationReport fail(long rowId, String reason) {\n      return new VerificationReport(false, rowId, reason);\n    }\n  }\n\n  /**\n   * Recursively canonicalizes any JSON value (objects, arrays, strings with escaped quotes/colons,\n   * numbers, booleans, null) with lexicographically sorted object keys at all nesting levels and\n   * zero insignificant whitespace outside string literals.\n   */\n  public static String canonicalizeJson(String rawJson) {\n"
+}

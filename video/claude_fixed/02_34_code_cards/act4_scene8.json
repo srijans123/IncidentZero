@@ -1,0 +1,9 @@
+{
+  "id": "act4_scene8",
+  "title": "Campus Academic Holiday Calendar",
+  "file": "backend/src/main/java/edu/campus/iitsm/catalog/domain/BusinessCalendar.java",
+  "display_file": "backend/src/main/java/edu/campus/iitsm/catalog/domain/BusinessCalendar.java",
+  "lines": "15-45",
+  "exists": true,
+  "code": "                          LocalTime dayStart, LocalTime dayEnd, Set<LocalDate> holidays) {\n    if (!dayEnd.isAfter(dayStart)) {\n      throw new IllegalArgumentException(\"dayEnd must be after dayStart\");\n    }\n    if (workDays == null || workDays.isEmpty()) {\n      throw new IllegalArgumentException(\"at least one working day is required\");\n    }\n    this.zone = zone;\n    this.workDays = Set.copyOf(workDays);\n    this.dayStart = dayStart;\n    this.dayEnd = dayEnd;\n    this.holidays = Set.copyOf(holidays);\n  }\n\n  public boolean isWorkingDay(LocalDate date) {\n    return workDays.contains(date.getDayOfWeek()) && !holidays.contains(date);\n  }\n\n  @Override\n  public long workingMillisBetween(Instant start, Instant end, boolean is24x7) {\n    if (!end.isAfter(start)) return 0L;\n    if (is24x7) return Duration.between(start, end).toMillis();\n\n    ZonedDateTime cur = start.atZone(zone);\n    ZonedDateTime stop = end.atZone(zone);\n    long totalMs = 0L;\n    int guardDays = 0;\n\n    while (!cur.toLocalDate().isAfter(stop.toLocalDate())) {\n      if (++guardDays > 3700) {\n        throw new IllegalStateException(\"workingMillisBetween span exceeds 10-year horizon guard (3700 days)\");\n"
+}

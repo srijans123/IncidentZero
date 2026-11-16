@@ -1,0 +1,9 @@
+{
+  "id": "act4_scene2",
+  "title": "SLA Timer Mandatory Transactional Listener",
+  "file": "backend/src/main/java/edu/campus/iitsm/sla/infrastructure/SlaTimerInTxListener.java",
+  "display_file": "backend/src/main/java/edu/campus/iitsm/sla/infrastructure/SlaTimerInTxListener.java",
+  "lines": "15-45",
+  "exists": true,
+  "code": "import java.util.Map;\nimport java.util.UUID;\n\n@Component\npublic class SlaTimerInTxListener {\n\n  private final JdbcTemplate jdbcTemplate;\n  private final ClockPort clockPort;\n\n  public SlaTimerInTxListener(JdbcTemplate jdbcTemplate, ClockPort clockPort) {\n    this.jdbcTemplate = jdbcTemplate;\n    this.clockPort = clockPort;\n  }\n\n  @EventListener\n  @Transactional(propagation = Propagation.MANDATORY)\n  public void onDomainEvent(DomainEvent event) {\n    UUID incidentId = event.incidentId();\n    Instant now = event.occurredAt() != null ? event.occurredAt() : clockPort.now();\n\n    // Fetch current incident clock generation, status, and SLA target durations\n    String query = \"SELECT clock_generation, status, response_target_min, resolution_target_min FROM incident WHERE id = ?\";\n    Map<String, Object> incidentRow;\n    try {\n      incidentRow = jdbcTemplate.queryForMap(query, incidentId);\n    } catch (Exception e) {\n      // Incident may not yet be persisted in some tests\n      return;\n    }\n\n    int generation = ((Number) incidentRow.getOrDefault(\"clock_generation\", 0)).intValue();\n"
+}

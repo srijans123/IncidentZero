@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" shape-rendering="crispEdges" text-rendering="geometricPrecision">
+  <defs>
+    <!-- 24x24 16-Bit Pixel Checkerboard Dither Pattern (IncidentZero Signature Canvas) -->
+    <pattern id="pixelChecker" width="48" height="48" patternUnits="userSpaceOnUse">
+      <rect width="48" height="48" fill="#1E1646"/>
+      <rect x="0" y="0" width="24" height="24" fill="#261C58"/>
+      <rect x="24" y="24" width="24" height="24" fill="#261C58"/>
+    </pattern>
+    <!-- Subtle Pixel Grid Overlay -->
+    <pattern id="pixelGrid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#32266E" stroke-width="1" stroke-opacity="0.45"/>
+    </pattern>
+    <!-- CRT Scanline Overlay Pattern -->
+    <pattern id="crtScanlines" width="8" height="4" patternUnits="userSpaceOnUse">
+      <rect x="0" y="0" width="8" height="2" fill="#0B071E" fill-opacity="0.18"/>
+      <rect x="0" y="2" width="8" height="2" fill="none"/>
+    </pattern>
+  </defs>
+
+  <rect x="0" y="0" width="1920" height="1080" fill="url(#pixelChecker)"/>
+  <rect x="0" y="0" width="1920" height="1080" fill="url(#pixelGrid)"/>
+  <rect x="16" y="16" width="1888" height="1048" fill="none" stroke="#0B071E" stroke-width="8"/>
+  <rect x="24" y="24" width="1872" height="1032" fill="none" stroke="#7C5CFF" stroke-width="4"/>
+  <rect x="32" y="32" width="12" height="12" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="1876" y="32" width="12" height="12" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="32" y="1036" width="12" height="12" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="1876" y="1036" width="12" height="12" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="66" y="54" width="1800" height="108" fill="#0B071E"/>
+  <rect x="60" y="48" width="1800" height="108" fill="#1B1530" stroke="#0B071E" stroke-width="4"/>
+  <rect x="60" y="48" width="16" height="108" fill="#43D17A" stroke="#0B071E" stroke-width="4"/>
+  <line x1="76" y1="54" x2="1856" y2="54" stroke="#43D17A" stroke-width="2"/>
+  <text x="96" y="96" font-family="'Pixelify Sans', 'Silkscreen', 'JetBrains Mono', 'DejaVu Sans Mono', monospace" font-size="30" font-weight="900" fill="#FFFFFF" letter-spacing="1.5">OPS TERMINAL // SEVEN POLYMORPHIC ROUTING STRATEGIES VERIFICATION</text>
+  <text x="96" y="132" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="700" fill="#59C9F5" letter-spacing="0.5">COMMAND: $ mvn test -Dtest=RoutingStrategyTest   ·   DURATION: 11.2s</text>
+  <rect x="1516" y="72" width="320" height="44" fill="#0B071E"/>
+  <rect x="1510" y="66" width="320" height="44" fill="#FFD84D" stroke="#0B071E" stroke-width="3"/>
+  <rect x="1524" y="80" width="16" height="16" fill="#43D17A" stroke="#0B071E" stroke-width="2"/>
+  <text x="1682" y="94" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="900" fill="#1B1530" text-anchor="middle" letter-spacing="1">CLI VERIFICATION</text>
+  <text x="1670" y="134" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="12" font-weight="700" fill="#D4CBF7" text-anchor="middle" letter-spacing="1">INCIDENT-ZERO (I-ITSM v2.2)</text>
+  <clipPath id="clip_term_act6_scene9"><rect x="64" y="180" width="1792" height="836"/></clipPath>
+  <rect x="68" y="184" width="1800" height="844" fill="#0B071E"/>
+  <rect x="60" y="176" width="1800" height="844" fill="#0B071E" stroke="#0B071E" stroke-width="4"/>
+  <rect x="64" y="180" width="1792" height="836" fill="none" stroke="#43D17A" stroke-width="2" stroke-opacity="0.65"/>
+  <rect x="60" y="176" width="1800" height="46" fill="#1B1530" stroke="#0B071E" stroke-width="4"/>
+  <rect x="64" y="180" width="1792" height="4" fill="#43D17A"/>
+  <rect x="76" y="194" width="14" height="14" fill="#FF4D3D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="98" y="194" width="14" height="14" fill="#FFD84D" stroke="#0B071E" stroke-width="2"/>
+  <rect x="120" y="194" width="14" height="14" fill="#43D17A" stroke="#0B071E" stroke-width="2"/>
+  <text x="150" y="205" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="900" fill="#FFFFFF" letter-spacing="1">group76@bits-hyd:~/IncidentZero — mvn test -Dtest=RoutingStrategyTest</text>
+  <rect x="1732" y="191" width="116" height="24" fill="#0B071E"/>
+  <rect x="1730" y="189" width="116" height="24" fill="#43D17A" stroke="#0B071E" stroke-width="2"/>
+  <text x="1788" y="205" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="12" font-weight="900" fill="#1B1530" text-anchor="middle" letter-spacing="1">ZSH // BASH</text>
+  <rect x="64" y="222" width="1792" height="44" fill="#161032"/>
+  <line x1="64" y1="266" x2="1856" y2="266" stroke="#43D17A" stroke-width="2" stroke-opacity="0.6"/>
+  <text x="84" y="250" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="900" fill="#FFD84D">root@iitsm-cluster:~# <tspan fill="#FFFFFF">mvn test -Dtest=RoutingStrategyTest</tspan></text>
+  <text x="1836" y="250" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="13" font-weight="700" fill="#59C9F5" text-anchor="end">[TTY-01 · 1920x1080 · 16-BIT CRT]</text>
+  <g clip-path="url(#clip_term_act6_scene9)">
+    <rect x="84" y="283" width="52" height="20" fill="#1B1530" stroke="#7CE356" stroke-width="1.5"/>
+    <text x="110" y="297" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="11" font-weight="900" fill="#7CE356" text-anchor="middle">PROM</text>
+    <text x="150" y="298" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="800" fill="#7CE356" xml:space="preserve">group76@bits-hyd:~/IncidentZero$ mvn test -Dtest=RoutingStrategyTest</text>
+    <rect x="84" y="315" width="52" height="20" fill="#1B1530" stroke="#FFF3C4" stroke-width="1.5"/>
+    <text x="110" y="329" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="11" font-weight="900" fill="#FFF3C4" text-anchor="middle">INFO</text>
+    <text x="150" y="330" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="600" fill="#FFF3C4" xml:space="preserve">[INFO] Running edu.campus.iitsm.assignment.domain.RoutingStrategyTest</text>
+    <rect x="84" y="347" width="52" height="20" fill="#1B1530" stroke="#43D17A" stroke-width="1.5"/>
+    <text x="110" y="361" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="11" font-weight="900" fill="#43D17A" text-anchor="middle">SUCC</text>
+    <text x="150" y="362" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="800" fill="#43D17A" xml:space="preserve">  [STRATEGY 1] RoundRobinStrategy: Equal modulo distribution across 6 tech PASSED</text>
+    <rect x="84" y="379" width="52" height="20" fill="#1B1530" stroke="#43D17A" stroke-width="1.5"/>
+    <text x="110" y="393" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="11" font-weight="900" fill="#43D17A" text-anchor="middle">SUCC</text>
+    <text x="150" y="394" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="800" fill="#43D17A" xml:space="preserve">  [STRATEGY 2] LeastLoadedStrategy: Dispatches to min active workload ... PASSED</text>
+    <rect x="84" y="411" width="52" height="20" fill="#1B1530" stroke="#43D17A" stroke-width="1.5"/>
+    <text x="110" y="425" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="11" font-weight="900" fill="#43D17A" text-anchor="middle">SUCC</text>
+    <text x="150" y="426" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="800" fill="#43D17A" xml:space="preserve">  [STRATEGY 3] CampusAffinityStrategy: Matches Hostel / Academic zones .. PASSED</text>
+    <rect x="84" y="443" width="52" height="20" fill="#1B1530" stroke="#43D17A" stroke-width="1.5"/>
+    <text x="110" y="457" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="11" font-weight="900" fill="#43D17A" text-anchor="middle">SUCC</text>
+    <text x="150" y="458" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="800" fill="#43D17A" xml:space="preserve">  [STRATEGY 4] SkillMatchStrategy: Matches Network / Hardware matrix .... PASSED</text>
+    <rect x="84" y="475" width="52" height="20" fill="#1B1530" stroke="#43D17A" stroke-width="1.5"/>
+    <text x="110" y="489" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="11" font-weight="900" fill="#43D17A" text-anchor="middle">SUCC</text>
+    <text x="150" y="490" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="800" fill="#43D17A" xml:space="preserve">  [STRATEGY 5] PriorityWeightedStrategy: Reserves Senior for P1/P2 ...... PASSED</text>
+    <rect x="84" y="507" width="52" height="20" fill="#1B1530" stroke="#43D17A" stroke-width="1.5"/>
+    <text x="110" y="521" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="11" font-weight="900" fill="#43D17A" text-anchor="middle">SUCC</text>
+    <text x="150" y="522" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="800" fill="#43D17A" xml:space="preserve">  [STRATEGY 6] ShiftAwareStrategy: Excludes off-duty technicians ....... PASSED</text>
+    <rect x="84" y="539" width="52" height="20" fill="#1B1530" stroke="#43D17A" stroke-width="1.5"/>
+    <text x="110" y="553" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="11" font-weight="900" fill="#43D17A" text-anchor="middle">SUCC</text>
+    <text x="150" y="554" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="800" fill="#43D17A" xml:space="preserve">  [STRATEGY 7] HungarianBatchStrategy: Global optimal bipartite matching . PASSED</text>
+    <rect x="84" y="571" width="52" height="20" fill="#1B1530" stroke="#FFF3C4" stroke-width="1.5"/>
+    <text x="110" y="585" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="11" font-weight="900" fill="#FFF3C4" text-anchor="middle">INFO</text>
+    <text x="150" y="586" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="600" fill="#FFF3C4" xml:space="preserve">[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.120 s</text>
+    <rect x="84" y="603" width="52" height="20" fill="#1B1530" stroke="#43D17A" stroke-width="1.5"/>
+    <text x="110" y="617" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="11" font-weight="900" fill="#43D17A" text-anchor="middle">SUCC</text>
+    <text x="150" y="618" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="800" fill="#43D17A" xml:space="preserve">[INFO] BUILD SUCCESS</text>
+    <text x="84" y="656" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="16" font-weight="900" fill="#7CE356">group76@bits-hyd:~/IncidentZero$ <tspan fill="#FFD84D">█</tspan></text>
+  </g>
+  <rect x="64" y="976" width="1792" height="40" fill="#1B1530"/>
+  <line x1="64" y1="976" x2="1856" y2="976" stroke="#43D17A" stroke-width="2"/>
+  <rect x="80" y="988" width="16" height="16" fill="#43D17A" stroke="#0B071E" stroke-width="2"/>
+  <text x="106" y="1001" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="14" font-weight="900" fill="#7CE356" letter-spacing="1">EXECUTION COMPLETE // EXIT CODE 0 // DETERMINISTIC VERIFICATION PASSED</text>
+  <text x="1836" y="1001" font-family="'JetBrains Mono', 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="13" font-weight="700" fill="#FFD84D" text-anchor="end">ELAPSED: 11.2s</text>
+  <!-- Subtle 16-Bit CRT Scanline Overlay -->
+  <rect x="24" y="24" width="1872" height="1032" fill="url(#crtScanlines)" pointer-events="none"/>
+</svg>

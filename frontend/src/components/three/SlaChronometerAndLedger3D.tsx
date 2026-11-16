@@ -1,5 +1,6 @@
 import React, { useRef, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
+import { Safe3D } from './Safe3D';
 import { OrbitControls, Float, Text } from '@react-three/drei';
 import * as THREE from 'three';
 import { Clock, ShieldCheck, ShieldAlert, Cpu } from 'lucide-react';
@@ -210,6 +211,7 @@ export const SlaChronometerAndLedger3D: React.FC<SlaChronometerAndLedger3DProps>
 }) => {
   return (
     <div className={`relative w-full rounded-lg overflow-hidden border border-white/[0.08] bg-[#090A0D] ${className}`}>
+      <Safe3D>
       <Canvas
         camera={{ position: [0, 0, mode === 'chronometer' ? 5.2 : 6.0], fov: 42 }}
         className="w-full h-full cursor-grab active:cursor-grabbing"
@@ -232,6 +234,7 @@ export const SlaChronometerAndLedger3D: React.FC<SlaChronometerAndLedger3DProps>
 
         <OrbitControls enableZoom={false} enablePan={false} />
       </Canvas>
+      </Safe3D>
 
       {/* Top Header Label */}
       <div className="absolute top-3 left-3 flex items-center gap-2 pointer-events-none">

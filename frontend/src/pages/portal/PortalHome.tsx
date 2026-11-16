@@ -32,7 +32,7 @@ export const PortalHome: React.FC<PortalHomeProps> = ({ onSelectIncident, onOpen
     }
     try {
       setLoading(true);
-      const res = await api.incidents.list({ limit: 50 });
+      const res = await api.incidents.list({ limit: 50, mine: true });
       setIncidents(res.items || []);
     } catch (err) {
       console.error('Failed to load portal incidents', err);

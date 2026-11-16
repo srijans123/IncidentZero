@@ -1,0 +1,27 @@
+<!doctype html><meta charset="utf-8">
+<style>
+html,body{margin:0;background:#202124;font-family:"Segoe UI",system-ui,sans-serif;color:#e8eaed;width:1920px;height:88px;overflow:hidden}
+.tabs{height:42px;display:flex;align-items:flex-end;padding-left:10px;gap:2px}
+.tab{height:34px;width:300px;border-radius:9px 9px 0 0;padding:0 12px;display:flex;align-items:center;gap:9px;font-size:13px;color:#bdc1c6;white-space:nowrap;overflow:hidden}
+.tab.on{background:#35363a;color:#fff}
+.tab .ico{width:16px;height:16px;border-radius:4px;flex:none}
+.tab .x{margin-left:auto;color:#9aa0a6}
+.plus{color:#9aa0a6;font-size:20px;padding:0 12px 6px}
+.bar{height:46px;background:#35363a;display:flex;align-items:center;gap:14px;padding:0 14px}
+.nav{color:#9aa0a6;font-size:19px;letter-spacing:10px}
+.url{flex:1;height:32px;background:#202124;border-radius:16px;display:flex;align-items:center;padding:0 16px;font-size:14.5px;gap:9px}
+.url .lock{color:#9aa0a6}.url b{font-weight:400;color:#fff}.url span{color:#9aa0a6}
+.dots{color:#9aa0a6;font-size:20px}
+</style>
+<div class="tabs">
+  <div class="tab" id="t1"><span class="ico" style="background:#fff;border-radius:50%"></span><span>srijans123/IncidentZero</span><span class="x">✕</span></div>
+  <div class="tab" id="t2"><span class="ico" style="background:#FF4D3D"></span><span>Incident-Zero (I-ITSM v2.2)</span><span class="x">✕</span></div>
+  <div class="plus">+</div>
+</div>
+<div class="bar"><div class="nav">←→⟳</div><div class="url"><span class="lock">⌂</span><b id="host"></b><span id="path"></span></div><div class="dots">⋮</div></div>
+<script>
+const u = new URL(new URLSearchParams(location.search).get('u') || 'https://github.com/srijans123/IncidentZero');
+document.getElementById(u.hostname === 'github.com' ? 't1' : 't2').classList.add('on');
+document.getElementById('host').textContent = u.host;
+document.getElementById('path').textContent = (u.pathname === '/' ? '' : u.pathname) + u.search;
+</script>

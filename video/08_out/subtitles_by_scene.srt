@@ -1,0 +1,383 @@
+1
+00:00:00,000 --> 00:00:15,720
+At BITS Pilani Hyderabad Campus, over six thousand students, faculty, and administrative staff rely on complex digital infrastructure every single day for academic, research, and residential operations.
+
+2
+00:00:16,233 --> 00:00:30,353
+When core fiber lines are damaged or central authentication clusters halt during midsem examinations, campuses experience catastrophic operational paralysis and cascading system downtime.
+
+3
+00:00:30,867 --> 00:00:40,507
+Traditional campus helpdesks fail under storm conditions, lacking deterministic state machines, automated correlation engines, and verifiable cryptographic audit trails.
+
+4
+00:00:41,033 --> 00:00:53,073
+Welcome to Incident-Zero: a military-grade, reactive IT service management platform engineered from the ground up for zero cascading downtime and absolute institutional resilience.
+
+5
+00:00:53,900 --> 00:01:05,060
+Incident-Zero was conceived, designed, and implemented by Group 76 under the Object-Oriented Programming curriculum at BITS Pilani, Hyderabad Campus.
+
+6
+00:01:05,567 --> 00:01:15,207
+Srijan Shukla architected the pure domain core, the eleven-state deterministic finite state machine, and the tamper-evident cryptographic audit ledger.
+
+7
+00:01:15,733 --> 00:01:27,453
+Suhani Agarwal spearheaded the precision dual-clock SLA chronometer engine, business calendar arithmetic, and multi-tier escalation policies.
+
+8
+00:01:27,967 --> 00:01:36,807
+Kartikey Negi engineered the campus service dependency directed acyclic graph, Tarjan cycle validation, and major incident storm correlation.
+
+9
+00:01:37,333 --> 00:01:47,533
+Hairsh Kumar crafted the full-stack responsive interface, interactive Three.js hardware telemetry, and enterprise REST controller adapters.
+
+10
+00:01:48,033 --> 00:02:01,833
+Our platform adheres strictly to Ports and Adapters, or Hexagonal Architecture, isolating pure business entities completely from frameworks, persistence, and external drivers.
+
+11
+00:02:02,333 --> 00:02:12,453
+Eleven discrete domain modules are governed by Spring Modulith, running atop high-throughput Java 22 virtual threads and cloud-native PostgreSQL.
+
+12
+00:02:12,967 --> 00:02:26,127
+The frontend combines modern React 19 and Tailwind CSS with a distinctive 16-bit pixel-arcade design language, making operational monitoring engaging and intuitive.
+
+13
+00:02:26,633 --> 00:02:39,073
+Bi-directional Server-Sent Events stream live status updates across all connected stations, ensuring that student reports and technician actions remain synchronized with zero polling.
+
+14
+00:02:39,900 --> 00:02:50,020
+To guarantee long-term maintainability, the codebase enforces nine automated ArchUnit architectural rules that run on every compilation pass.
+
+15
+00:02:50,533 --> 00:03:01,133
+Architecture Rule R1 establishes that domain classes contain zero imports of Spring, JPA, Hibernate, or Jackson, preserving pure Java semantics.
+
+16
+00:03:01,633 --> 00:03:13,273
+Rule R5 strictly prohibits non-deterministic calls to Instant now and UUID randomUUID inside domain and application services, mandating mockable clock and identity ports.
+
+17
+00:03:13,800 --> 00:03:25,600
+Rule R3 dictates that transactional audit and SLA listeners must execute synchronously with mandatory propagation, guaranteeing zero-orphan ledger entries.
+
+18
+00:03:26,100 --> 00:03:37,500
+Every continuous integration run verifies all nine rules in under three seconds, catching architectural drift before any pull request can be merged.
+
+19
+00:03:38,000 --> 00:03:49,160
+A rigorous domain exception hierarchy maps fifteen strongly typed campus errors to standard RFC-7807 problem details with human-readable diagnostic remedies.
+
+20
+00:03:49,667 --> 00:04:04,267
+Codes range from ITSM-4001 for illegal state machine transitions up to ITSM-5090 for optimistic concurrency locking conflicts.
+
+21
+00:04:04,767 --> 00:04:14,327
+Global exception translation ensures that sensitive backend stack traces and credentials never leak to client browsers or terminal logs.
+
+22
+00:04:14,833 --> 00:04:27,193
+These strict invariants ensure that our domain model remains rock-solid, fully testable without database containers, and compiler-verified across half a million test vectors.
+
+23
+00:04:27,700 --> 00:04:37,660
+Spring Modulith continuously validates that package boundaries between incident, sla, audit, and assignment remain strictly unidirectional.
+
+24
+00:04:38,467 --> 00:04:47,067
+We now demonstrate Core Workflow 1, following an incident through all eleven finite states from initial report to cryptographic sealing.
+
+25
+00:04:47,567 --> 00:04:55,687
+Student Aarav Sharma logs into the self-service portal to report a critical failure on the SWD Mess and Fee Payment Gateway.
+
+26
+00:04:56,200 --> 00:05:05,760
+The student specifies high impact and high urgency. Our automated Priority Engine evaluates the campus calendar and notes an active fee payment window.
+
+27
+00:05:06,267 --> 00:05:14,627
+Because the service carries the FEE_DEADLINE calendar tag, the priority calculation automatically bumps the ticket to P1 Critical.
+
+28
+00:05:15,133 --> 00:05:27,253
+A full priority explanation JSON array is embedded into the ticket, explaining the exact formula, calendar modifiers, and institutional rules applied.
+
+29
+00:05:27,767 --> 00:05:37,567
+The ticket is routed via the Least-Loaded Strategy to Senior Technician Vikram Rao, moving state to ASSIGNED and starting the response clock.
+
+30
+00:05:38,067 --> 00:05:50,667
+Vikram clicks Acknowledge in the workbench. The initial response clock stops in two minutes, well under the five-minute P1 threshold.
+
+31
+00:05:51,167 --> 00:06:01,927
+Remediating the payment gateway, Vikram applies a database pool restart and enters detailed resolution notes exceeding the mandatory twenty-character validation.
+
+32
+00:06:02,433 --> 00:06:13,033
+The incident enters RESOLVED. Aarav receives a real-time notification, tests payment access, and confirms resolution with a five-star rating.
+
+33
+00:06:13,533 --> 00:06:23,173
+Finally, the IT Administrator archives the verified ticket into CLOSED status, immutably sealing its resolution record in the audit ledger.
+
+34
+00:06:24,000 --> 00:06:34,360
+In enterprise operations, Service Level Agreements are legally binding commitments. Incident-Zero implements a dual-clock chronometer system.
+
+35
+00:06:34,867 --> 00:06:49,707
+Across four service tiers and four priority levels, sixteen distinct SLA policies govern response targets from five minutes to resolution targets of three days.
+
+36
+00:06:50,233 --> 00:06:59,953
+Tier zero and tier one services run on continuous twenty-four-seven clocks, while peripheral services operate under standard business hours.
+
+37
+00:07:00,467 --> 00:07:11,627
+Our dynamic chronometer evaluates time consumption, firing visual warnings at fifty percent, seventy-five percent, and ninety percent intervals.
+
+38
+00:07:12,133 --> 00:07:23,213
+If a resolution target lapses, the ticket marks a sticky breach. Once breached, the status remains permanently attached to the ticket history.
+
+39
+00:07:23,733 --> 00:07:33,533
+Breaching ninety percent automatically triggers the multi-tier Escalation Ladder, notifying team leads, IT managers, and system administrators.
+
+40
+00:07:34,033 --> 00:07:43,353
+When a ticket transitions to PENDING_USER for student feedback, the resolution clock cleanly suspends and resumes upon user reply.
+
+41
+00:07:43,867 --> 00:07:54,787
+A monotonic clock generation counter ensures that whenever an SLA timer pauses or updates, legacy in-flight async timer events are safely invalidated.
+
+42
+00:07:55,300 --> 00:08:03,900
+Business hours arithmetic automatically excludes official BITS holidays like Gandhi Jayanti, Dussehra, and Diwali from timer countdowns.
+
+43
+00:08:04,400 --> 00:08:13,000
+Comprehensive unit tests prove that clock pauses, resumptions, and holiday skips maintain microsecond accuracy across month-long windows.
+
+44
+00:08:13,800 --> 00:08:23,120
+Campus IT services do not operate in a vacuum. Core infrastructure failures produce massive, compounding blast radiuses.
+
+45
+00:08:23,633 --> 00:08:32,153
+Incident-Zero models all nineteen campus services across twenty-six hard and soft dependency edges as a directed acyclic graph.
+
+46
+00:08:32,667 --> 00:08:43,347
+Tarjan's strongly connected components algorithm executes during graph updates, rejecting any accidental circular dependencies at runtime.
+
+47
+00:08:43,867 --> 00:08:53,347
+When Data Center cooling fails, core switches overheat, and Central LDAP goes down, hundreds of student login tickets flood the portal.
+
+48
+00:08:53,867 --> 00:09:02,147
+Our Storm Detection Engine activates, tracking ticket velocity over five-minute sliding windows against the dependency topology.
+
+49
+00:09:02,667 --> 00:09:14,067
+The system automatically pinpoints Central LDAP as the root cause, declaring a Major Incident and linking forty-five tickets as child duplicates.
+
+50
+00:09:14,567 --> 00:09:21,887
+Chief Administrator Suresh Deshmukh is appointed Incident Commander, locking triage roles and broadcasting campus-wide alerts.
+
+51
+00:09:22,400 --> 00:09:33,720
+The interactive 3D blast radius visualizer highlights downstream services at risk, including Moodle LMS, AUGSD ERP, and hostel Wi-Fi.
+
+52
+00:09:34,233 --> 00:09:51,073
+Transactional cascade listeners propagate the root resolution notes down to all child incidents, preserving audit integrity for each student.
+
+53
+00:09:51,600 --> 00:10:00,840
+When the Commander resolves the root LDAP ticket, Incident-Zero automatically resolves all linked duplicate tickets and notifies affected students.
+
+54
+00:10:01,667 --> 00:10:10,827
+To reduce technician load, Incident-Zero integrates fully offline, local intelligence for automated ticket deflection and dispatch.
+
+55
+00:10:11,333 --> 00:10:20,973
+Incident titles and knowledge base articles are transformed into 384-dimensional dense vectors using an embedded ONNX runtime.
+
+56
+00:10:21,500 --> 00:10:33,140
+PostgreSQL pgvector with Hierarchical Navigable Small World indexes enables sub-millisecond approximate nearest neighbor searches.
+
+57
+00:10:33,667 --> 00:10:43,147
+When a student begins typing an issue with campus Wi-Fi, verified articles on CAS cookie resets appear instantly, deflecting redundant tickets.
+
+58
+00:10:43,667 --> 00:10:55,307
+For unresolved tickets, seven pluggable Routing Strategies evaluate technician shifts, verified skill badges, and active point loads.
+
+59
+00:10:55,833 --> 00:11:04,113
+Skill-based routing matches Aruba Wi-Fi and BIND DNS certifications, ensuring specialized problems land with certified engineers.
+
+60
+00:11:04,633 --> 00:11:13,473
+Load tracking enforces maximum point capacities per technician, guaranteeing balanced distribution across morning and evening shifts.
+
+61
+00:11:14,000 --> 00:11:22,680
+Atomic load tracking prevents race conditions under high concurrency, using database row versions to guarantee fairness.
+
+62
+00:11:23,200 --> 00:11:31,800
+Automated test suites confirm zero routing race conditions even under concurrent ticket bursts from hundreds of client threads.
+
+63
+00:11:32,600 --> 00:11:44,000
+Accountability requires unalterable proof. Incident-Zero guarantees non-repudiation through a cryptographically linked audit ledger.
+
+64
+00:11:44,500 --> 00:11:55,740
+Every ticket change computes a SHA-256 digest over the sequence index, timestamp, actor ID, action name, payload, and the prior hash.
+
+65
+00:11:56,267 --> 00:12:04,707
+The admin console displays the unbroken cryptographic hash chain for every ticket, allowing one-click verification of history.
+
+66
+00:12:05,233 --> 00:12:13,193
+At the database level, an append-only trigger immediately rejects any UPDATE, DELETE, or TRUNCATE statement on audit records.
+
+67
+00:12:13,700 --> 00:12:21,500
+If a malicious actor alters a single byte directly in the database, the cryptographic verification algorithm flags the chain as tampered.
+
+68
+00:12:22,033 --> 00:12:32,313
+Authentication is powered by RFC-9106 Argon2id password hashing and cryptographically signed stateless JWT access tokens.
+
+69
+00:12:32,833 --> 00:12:40,473
+Strict Role-Based Access Control isolates student self-service from technician queues and executive administrative governance.
+
+70
+00:12:41,000 --> 00:12:49,440
+Tokens carry cryptographically verified claims, preventing privilege escalation between Employee, Technician, and Administrator roles.
+
+71
+00:12:49,967 --> 00:12:56,887
+Real-time updates stream securely over Server-Sent Events using short-lived, single-use stream tickets to prevent ticket hijacking.
+
+72
+00:12:57,700 --> 00:13:08,780
+A premier objective of this course project was translating classical object-oriented design principles into enterprise reality.
+
+73
+00:13:09,300 --> 00:13:18,620
+The Strategy Pattern abstracts incident assignment algorithms, allowing runtime polymorphism between Round Robin and Least Loaded routing.
+
+74
+00:13:19,133 --> 00:13:28,373
+The State Pattern encapsulates all eleven lifecycle states, isolating valid transitions and eliminating fragile conditional branching.
+
+75
+00:13:28,900 --> 00:13:38,700
+The Observer Pattern, powered by Spring Modulith event publication, decouples SLA timers, audit logging, and email notifications.
+
+76
+00:13:39,200 --> 00:13:49,400
+The Builder Pattern enforces strict entity construction invariants, calculating initial SLA deadlines and priority ratings atomically.
+
+77
+00:13:49,900 --> 00:13:59,460
+The Decorator Pattern layers multi-channel notifications, wrapping base email alerts with in-app notifications and SMS broadcasts.
+
+78
+00:13:59,967 --> 00:14:09,687
+The Adapter Pattern bridges domain repositories with Spring Data JPA entities, protecting domain logic from database schema changes.
+
+79
+00:14:10,200 --> 00:14:18,480
+The Facade Pattern provides clean, high-level interfaces for controllers, coordinating complex multi-module transactions seamlessly.
+
+80
+00:14:19,000 --> 00:14:27,360
+The Template Method Pattern governs calendar calculations, providing a rigid skeleton for holiday checks while allowing variable shift windows.
+
+81
+00:14:27,867 --> 00:14:38,547
+Together, these eleven patterns exemplify SOLID principles, yielding a codebase that is deeply modular, extensible, and easy to maintain.
+
+82
+00:14:39,367 --> 00:14:48,287
+Engineering excellence requires exhaustive verification. Our test harness spans unit tests, integration slices, and state machine fuzzing.
+
+83
+00:14:48,800 --> 00:14:58,440
+Over five hundred and twenty thousand valid and invalid transition permutations are checked to prove zero deadlocks exist in our state model.
+
+84
+00:14:58,967 --> 00:15:09,887
+Deterministic testing is powered by our automated reset script, which recreates the full campus schema and seeds forty-five tickets in 2.14 seconds.
+
+85
+00:15:10,400 --> 00:15:20,440
+End-to-end integration tests execute complete multi-user workflows headlessly, verifying token passing, clock ticks, and audit hashing.
+
+86
+00:15:20,967 --> 00:15:29,087
+Every custom exception, from validation constraints to database deadlock retries, is verified under heavy concurrent load.
+
+87
+00:15:29,600 --> 00:15:37,640
+On the frontend, Playwright end-to-end specs ensure responsive layout rendering across 1080p desktop, tablet, and mobile viewports.
+
+88
+00:15:38,167 --> 00:15:46,527
+Global exception translation ensures that sensitive backend stack traces never leak to client browsers or terminal logs.
+
+89
+00:15:47,033 --> 00:15:54,273
+Our test suite delivers ninety-four percent statement coverage across all domain aggregates and critical business pathways.
+
+90
+00:15:54,800 --> 00:16:05,240
+The entire verification pipeline runs completely locally, offline, and deterministically without external network dependencies.
+
+91
+00:16:06,067 --> 00:16:14,747
+In summary, Incident-Zero fully achieves every technical objective and specification articulated in the BITS Pilani course brief.
+
+92
+00:16:15,267 --> 00:16:25,867
+All nine technology report questions on concurrency, database integrity, architectural tradeoffs, and performance have been empirically answered.
+
+93
+00:16:26,367 --> 00:16:35,847
+Our concurrency report demonstrates how optimistic database locks combined with virtual threads prevent phantom updates under peak student load.
+
+94
+00:16:36,367 --> 00:16:52,247
+By uniting rigorous object-oriented design with modern reactive architecture, we transformed campus IT from a reactive bottleneck into a resilient backbone.
+
+95
+00:16:52,767 --> 00:17:04,247
+On behalf of Group 76 — Srijan Shukla, Suhani Agarwal, Kartikey Negi, and Hairsh Kumar — thank you for your time and evaluation.
+
+96
+00:17:04,767 --> 00:17:13,047
+The complete source code, architectural decision records, and automated test suites are publicly accessible on GitHub.

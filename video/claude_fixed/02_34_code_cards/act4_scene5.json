@@ -1,0 +1,9 @@
+{
+  "id": "act4_scene5",
+  "title": "Virtual Anchored SLA Chronometer",
+  "file": "backend/src/main/java/edu/campus/iitsm/shared/domain/VirtualAnchoredClock.java",
+  "display_file": "backend/src/main/java/edu/campus/iitsm/shared/domain/VirtualAnchoredClock.java",
+  "lines": "10-40",
+  "exists": true,
+  "code": "  private final AtomicReference<Anchor> state;\n  private final Runnable onScaleChangeWakeup;\n\n  public VirtualAnchoredClock(Instant initialInstant, int initialScale, Runnable onScaleChangeWakeup) {\n    if (initialScale < 1 || initialScale > 3600) {\n      throw new IllegalArgumentException(\"Scale factor must be in [1, 3600]\");\n    }\n    this.state = new AtomicReference<>(new Anchor(initialInstant, System.nanoTime(), initialScale));\n    this.onScaleChangeWakeup = onScaleChangeWakeup;\n  }\n\n  @Override\n  public Instant now() {\n    Anchor a = state.get();\n    long elapsedRealNanos = Math.max(0L, System.nanoTime() - a.realNanos());\n    return a.virtualInstant().plusNanos(elapsedRealNanos * a.scaleFactor());\n  }\n\n  @Override\n  public Instant wallNow() {\n    return Instant.now();\n  }\n\n  @Override\n  public int scaleFactor() { return state.get().scaleFactor(); }\n\n  public void setScaleFactor(int newFactor) {\n    if (newFactor < 1 || newFactor > 3600) {\n      throw new IllegalArgumentException(\"Scale factor must be in [1, 3600]\");\n    }\n    state.updateAndGet(prev -> {\n"
+}

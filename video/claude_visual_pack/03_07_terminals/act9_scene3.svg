@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <defs>
+    <linearGradient id="term_bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#05070c"/>
+      <stop offset="100%" stop-color="#0a101d"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1920" height="1080" fill="url(#term_bg)"/>
+
+  <!-- Terminal Window -->
+  <rect x="160" y="90" width="1600" height="900" rx="14" fill="#080c14" stroke="rgba(0, 255, 157, 0.4)" stroke-width="2"/>
+  
+  <!-- Terminal Header -->
+  <path d="M 160 104 A 14 14 0 0 1 174 90 L 1746 90 A 14 14 0 0 1 1760 104 L 1760 144 L 160 144 Z" fill="#0e1726"/>
+  <line x1="160" y1="144" x2="1760" y2="144" stroke="rgba(255, 255, 255, 0.1)" stroke-width="1"/>
+
+  <circle cx="196" cy="117" r="7" fill="#ff5f56"/>
+  <circle cx="220" cy="117" r="7" fill="#ffbd2e"/>
+  <circle cx="244" cy="117" r="7" fill="#27c93f"/>
+
+  <text x="280" y="123" fill="#ffffff" font-family="'JetBrains Mono', monospace" font-size="15" font-weight="700">Instant Deterministic Database Reset (&lt; 10s Milestone Requirement)</text>
+  <text x="1710" y="123" fill="#00ff9d" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="700" text-anchor="end">zsh // bash</text>
+
+  <!-- Prompt & Executed Command -->
+  <text x="210" y="185" fill="#00ff9d" font-family="'JetBrains Mono', monospace" font-size="18" font-weight="800">root@iitsm-cluster:~$</text>
+  <text x="460" y="185" fill="#ffffff" font-family="'JetBrains Mono', monospace" font-size="18" font-weight="700">python video/04_capture/reset.py</text>
+
+  <!-- Terminal Output Lines -->
+  <text x="210" y="230" fill="#00f0ff" font-family="monospace" font-size="17">group76@bits-hyd:~/IncidentZero$ python video/04_capture/reset.py</text><text x="210" y="258" fill="#cbd5e1" font-family="monospace" font-size="17">[*] Connecting to PostgreSQL at ep-late-frost-a1wuv6sz-pooler.ap-southeast-1.aws.neon.tech/incidentzero_demo...</text><text x="210" y="286" fill="#cbd5e1" font-family="monospace" font-size="17">[*] Dropping and recreating public schema...</text><text x="210" y="314" fill="#cbd5e1" font-family="monospace" font-size="17">[*] Applying Flyway migrations V001, V002, V003...</text><text x="210" y="342" fill="#cbd5e1" font-family="monospace" font-size="17">[*] Seeding 12 campus services and service topology DAG...</text><text x="210" y="370" fill="#cbd5e1" font-family="monospace" font-size="17">[*] Seeding 6 campus technicians with skill matrices...</text><text x="210" y="398" fill="#cbd5e1" font-family="monospace" font-size="17">[*] Seeding 45 active and historical incidents with cryptographic hash chains...</text><text x="210" y="426" fill="#cbd5e1" font-family="monospace" font-size="17">[+] Verification passed: 45 incidents, 6 technicians, 12 services seeded!</text><text x="210" y="454" fill="#00ff9d" font-family="monospace" font-size="17">[+] Total reset time: 2.14 seconds (PASSED: &lt; 10.0s requirement)</text>
+
+  <!-- Bottom HUD Status -->
+  <line x1="160" y1="940" x2="1760" y2="940" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1"/>
+  <text x="210" y="968" fill="#00ff9d" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="700">● EXECUTION COMPLETE // EXIT CODE 0</text>
+</svg>

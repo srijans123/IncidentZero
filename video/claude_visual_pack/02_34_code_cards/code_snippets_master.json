@@ -1,0 +1,317 @@
+{
+  "act2_scene1": {
+    "id": "act2_scene1",
+    "title": "ArchUnit & Architectural Invariant Tests",
+    "file": "backend/src/test/java/edu/campus/iitsm/ApiControllerAndProblemDetailsTest.java",
+    "display_file": "backend/src/test/java/edu/campus/iitsm/ApiControllerAndProblemDetailsTest.java",
+    "lines": "20-45",
+    "exists": true,
+    "code": "import edu.campus.iitsm.shared.domain.error.InvalidStateTransitionException;\nimport edu.campus.iitsm.shared.infrastructure.web.GlobalProblemDetailsHandler;\nimport org.junit.jupiter.api.BeforeEach;\nimport org.junit.jupiter.api.Test;\nimport org.springframework.http.MediaType;\nimport org.springframework.jdbc.core.JdbcTemplate;\nimport org.springframework.test.web.servlet.MockMvc;\nimport org.springframework.test.web.servlet.setup.MockMvcBuilders;\n\nimport java.time.Instant;\nimport java.util.List;\nimport java.util.Map;\nimport java.util.Optional;\nimport java.util.UUID;\n\nimport static org.mockito.ArgumentMatchers.*;\nimport static org.mockito.Mockito.*;\nimport static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;\nimport static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;\n\nclass ApiControllerAndProblemDetailsTest {\n\n  private MockMvc mockMvc;\n  private IncidentCommandService commandService;\n  private IncidentQueryPort queryPort;\n  private IntakeService intakeService;\n"
+  },
+  "act2_scene2": {
+    "id": "act2_scene2",
+    "title": "Incident Aggregate Root (Pure Domain)",
+    "file": "backend/src/main/java/edu/campus/iitsm/incident/domain/Incident.java",
+    "display_file": "backend/src/main/java/edu/campus/iitsm/incident/domain/Incident.java",
+    "lines": "15-45",
+    "exists": true,
+    "code": "  public record Snapshot(\n      UUID id, String number, UUID reporterId, UUID serviceId, UUID categoryId,\n      String title, String description, int impact, int urgency,\n      Priority priority, PriorityExplanation priorityExplanation,\n      IncidentStatus status, SlaStatus slaStatus, SlaSnapshot sla,\n      SlaClock responseClock, SlaClock resolutionClock, int clockGeneration,\n      UUID assigneeId, UUID teamId, UUID parentId, UUID commanderId,\n      boolean major, int affectedUsers, int reassignCount, int reopenCount,\n      Resolution resolution, List<Resolution> archivedResolutions, Integer rating,\n      String closureNote, Instant createdAt, Instant respondedAt,\n      Instant resolvedAt, Instant closedAt, long version\n  ) {}\n\n  private final UUID id;\n  private final String number;\n  private final UUID reporterId;\n  private final UUID serviceId;\n  private final Instant createdAt;\n  private final List<DomainEvent> pending = new ArrayList<>();\n  private final List<Resolution> archivedResolutions = new ArrayList<>();\n\n  private String title;\n  private String description;\n  private IncidentState state = NewState.INSTANCE;\n  private UUID categoryId;\n  private final int impact;\n  private final int urgency;\n  private Priority priority;\n  private PriorityExplanation priorityExplanation;\n  private SlaSnapshot sla;\n  private SlaClock responseClock;\n"
+  },
+  "act2_scene3": {
+    "id": "act2_scene3",
+    "title": "ClockPort Hexagonal Outbound Port",
+    "file": "backend/src/main/java/edu/campus/iitsm/shared/domain/ClockPort.java",
+    "display_file": "backend/src/main/java/edu/campus/iitsm/shared/domain/ClockPort.java",
+    "lines": "1-25",
+    "exists": true,
+    "code": "package edu.campus.iitsm.shared.domain;\n\nimport java.time.Instant;\n\npublic interface ClockPort {\n  /** Virtual/simulated clock time for incident lifecycle, SLA clocks, timers, and audit rows. */\n  Instant now();\n  /** Real wall-clock time for JWT expiration, 30s SSE stream tickets, and HTTP rate-limit windows. */\n  default Instant wallNow() { return Instant.now(); }\n  int scaleFactor();\n  long realNanosUntil(Instant targetVirtualInstant);\n}\n"
+  },
+  "act2_scene4": {
+    "id": "act2_scene4",
+    "title": "AuditLedger In-Tx Listener (@EventListener)",
+    "file": "backend/src/main/java/edu/campus/iitsm/audit/infrastructure/AuditLedgerInTxListener.java",
+    "display_file": "backend/src/main/java/edu/campus/iitsm/audit/infrastructure/AuditLedgerInTxListener.java",
+    "lines": "20-40",
+    "exists": true,
+    "code": "  private final JdbcTemplate jdbcTemplate;\n  private final ClockPort clockPort;\n\n  public AuditLedgerInTxListener(JdbcTemplate jdbcTemplate, ClockPort clockPort) {\n    this.jdbcTemplate = jdbcTemplate;\n    this.clockPort = clockPort;\n  }\n\n  @EventListener\n  @Transactional(propagation = Propagation.MANDATORY)\n  public void onDomainEvent(DomainEvent event) {\n    UUID incidentId = event.incidentId();\n    Instant now = (event.occurredAt() != null ? event.occurredAt() : clockPort.now())\n        .truncatedTo(java.time.temporal.ChronoUnit.MICROS);\n\n    // Lock the incident row to serialize audit hash chain updates\n    String selectSql = \"SELECT last_audit_index, last_audit_hash, status FROM incident WHERE id = ? FOR UPDATE\";\n    Map<String, Object> row;\n    try {\n      row = jdbcTemplate.queryForMap(selectSql, incidentId);\n    } catch (Exception e) {\n"
+  },
+  "act2_scene7": {
+    "id": "act2_scene7",
+    "title": "Domain Exception Root Hierarchy",
+    "file": "backend/src/main/java/edu/campus/iitsm/shared/domain/error/ItsmException.java",
+    "display_file": "backend/src/main/java/edu/campus/iitsm/shared/domain/error/ItsmException.java",
+    "lines": "1-30",
+    "exists": true,
+    "code": "package edu.campus.iitsm.shared.domain.error;\n\npublic abstract class ItsmException extends RuntimeException {\n  private final String code;\n  private final int httpStatus;\n\n  protected ItsmException(String code, int httpStatus, String message) {\n    super(message);\n    this.code = code;\n    this.httpStatus = httpStatus;\n  }\n  public String code() { return code; }\n  public int httpStatus() { return httpStatus; }\n}\n"
+  },
+  "act2_scene8": {
+    "id": "act2_scene8",
+    "title": "RFC-7807 Problem Details Handler",
+    "file": "backend/src/main/java/edu/campus/iitsm/shared/infrastructure/web/GlobalProblemDetailsHandler.java",
+    "display_file": "backend/src/main/java/edu/campus/iitsm/shared/infrastructure/web/GlobalProblemDetailsHandler.java",
+    "lines": "25-55",
+    "exists": true,
+    "code": "    HttpStatus status = HttpStatus.resolve(ex.httpStatus());\n    if (status == null) {\n      status = HttpStatus.INTERNAL_SERVER_ERROR;\n    }\n\n    ProblemDetail problem = ProblemDetail.forStatusAndDetail(status, ex.getMessage());\n    problem.setType(URI.create(BASE_URI + ex.code()));\n    problem.setTitle(resolveTitle(ex.code()));\n    problem.setInstance(URI.create(request.getRequestURI()));\n\n    String traceId = UUID.randomUUID().toString().replace(\"-\", \"\");\n    problem.setProperty(\"code\", ex.code());\n    problem.setProperty(\"traceId\", traceId);\n\n    if (ex instanceof InvalidStateTransitionException ste) {\n      problem.setProperty(\"incidentId\", ste.incidentId() != null ? ste.incidentId().toString() : null);\n      problem.setProperty(\"currentState\", ste.currentState());\n      problem.setProperty(\"attemptedCommand\", ste.attemptedCommand());\n    }\n\n    log.warn(\"Handled {}: status={} code={} detail={}\", ex.getClass().getSimpleName(), ex.httpStatus(), ex.code(), ex.getMessage());\n    return ResponseEntity.status(status).body(problem);\n  }\n\n  @ExceptionHandler(MethodArgumentNotValidException.class)\n  public ResponseEntity<ProblemDetail> handleValidation(MethodArgumentNotValidException ex, HttpServletRequest request) {\n    ProblemDetail problem = ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST, \"Validation failed for request payload\");\n    problem.setType(URI.create(BASE_URI + \"ITSM-4000\"));\n    problem.setTitle(\"Validation Failure\");\n    problem.setInstance(URI.create(request.getRequestURI()));\n    problem.setProperty(\"code\", \"ITSM-4000\");\n"
+  },
+  "act3_scene4": {
+    "id": "act3_scene4",
+    "title": "Priority Calculation Enum & Bands",
+    "file": "backend/src/main/java/edu/campus/iitsm/incident/domain/Priority.java",
+    "display_file": "backend/src/main/java/edu/campus/iitsm/incident/domain/Priority.java",
+    "lines": "1-30",
+    "exists": true,
+    "code": "package edu.campus.iitsm.incident.domain;\n\npublic enum Priority {\n  P1, P2, P3, P4;\n\n  public boolean isCritical() { return this == P1 || this == P2; }\n  public Priority bumpOneLevel() {\n    return switch (this) {\n      case P4 -> P3;\n      case P3 -> P2;\n      case P2, P1 -> P1;\n    };\n  }\n}\n"
+  },
+  "act3_scene5": {
+    "id": "act3_scene5",
+    "title": "Priority Explanation Audit Record",
+    "file": "backend/src/main/java/edu/campus/iitsm/incident/domain/PriorityExplanation.java",
+    "display_file": "backend/src/main/java/edu/campus/iitsm/incident/domain/PriorityExplanation.java",
+    "lines": "1-25",
+    "exists": true,
+    "code": "package edu.campus.iitsm.incident.domain;\n\nimport java.util.ArrayList;\nimport java.util.List;\n\npublic record PriorityExplanation(List<PriorityStep> steps) {\n  public PriorityExplanation { steps = List.copyOf(steps); }\n  public static PriorityExplanation empty() { return new PriorityExplanation(List.of()); }\n  public PriorityExplanation with(PriorityStep step) {\n    List<PriorityStep> next = new ArrayList<>(steps);\n    next.add(step);\n    return new PriorityExplanation(next);\n  }\n}\n"
+  },
+  "act4_scene2": {
+    "id": "act4_scene2",
+    "title": "SLA Timer Mandatory Transactional Listener",
+    "file": "backend/src/main/java/edu/campus/iitsm/sla/infrastructure/SlaTimerInTxListener.java",
+    "display_file": "backend/src/main/java/edu/campus/iitsm/sla/infrastructure/SlaTimerInTxListener.java",
+    "lines": "15-45",
+    "exists": true,
+    "code": "import java.util.Map;\nimport java.util.UUID;\n\n@Component\npublic class SlaTimerInTxListener {\n\n  private final JdbcTemplate jdbcTemplate;\n  private final ClockPort clockPort;\n\n  public SlaTimerInTxListener(JdbcTemplate jdbcTemplate, ClockPort clockPort) {\n    this.jdbcTemplate = jdbcTemplate;\n    this.clockPort = clockPort;\n  }\n\n  @EventListener\n  @Transactional(propagation = Propagation.MANDATORY)\n  public void onDomainEvent(DomainEvent event) {\n    UUID incidentId = event.incidentId();\n    Instant now = event.occurredAt() != null ? event.occurredAt() : clockPort.now();\n\n    // Fetch current incident clock generation, status, and SLA target durations\n    String query = \"SELECT clock_generation, status, response_target_min, resolution_target_min FROM incident WHERE id = ?\";\n    Map<String, Object> incidentRow;\n    try {\n      incidentRow = jdbcTemplate.queryForMap(query, incidentId);\n    } catch (Exception e) {\n      // Incident may not yet be persisted in some tests\n      return;\n    }\n\n    int generation = ((Number) incidentRow.getOrDefault(\"clock_generation\", 0)).intValue();\n"
+  },
+  "act4_scene5": {
+    "id": "act4_scene5",
+    "title": "Virtual Anchored SLA Chronometer",
+    "file": "backend/src/main/java/edu/campus/iitsm/shared/domain/VirtualAnchoredClock.java",
+    "display_file": "backend/src/main/java/edu/campus/iitsm/shared/domain/VirtualAnchoredClock.java",
+    "lines": "10-40",
+    "exists": true,
+    "code": "  private final AtomicReference<Anchor> state;\n  private final Runnable onScaleChangeWakeup;\n\n  public VirtualAnchoredClock(Instant initialInstant, int initialScale, Runnable onScaleChangeWakeup) {\n    if (initialScale < 1 || initialScale > 3600) {\n      throw new IllegalArgumentException(\"Scale factor must be in [1, 3600]\");\n    }\n    this.state = new AtomicReference<>(new Anchor(initialInstant, System.nanoTime(), initialScale));\n    this.onScaleChangeWakeup = onScaleChangeWakeup;\n  }\n\n  @Override\n  public Instant now() {\n    Anchor a = state.get();\n    long elapsedRealNanos = Math.max(0L, System.nanoTime() - a.realNanos());\n    return a.virtualInstant().plusNanos(elapsedRealNanos * a.scaleFactor());\n  }\n\n  @Override\n  public Instant wallNow() {\n    return Instant.now();\n  }\n\n  @Override\n  public int scaleFactor() { return state.get().scaleFactor(); }\n\n  public void setScaleFactor(int newFactor) {\n    if (newFactor < 1 || newFactor > 3600) {\n      throw new IllegalArgumentException(\"Scale factor must be in [1, 3600]\");\n    }\n    state.updateAndGet(prev -> {\n"
+  },
+  "act4_scene7": {
+    "id": "act4_scene7",
+    "title": "Business Working Hours Calculator",
+    "file": "backend/src/main/java/edu/campus/iitsm/shared/domain/WorkingTimeCalculator.java",
+    "display_file": "backend/src/main/java/edu/campus/iitsm/shared/domain/WorkingTimeCalculator.java",
+    "lines": "10-40",
+    "exists": true,
+    "code": ""
+  },
+  "act4_scene8": {
+    "id": "act4_scene8",
+    "title": "Campus Academic Holiday Calendar",
+    "file": "backend/src/main/java/edu/campus/iitsm/catalog/domain/BusinessCalendar.java",
+    "display_file": "backend/src/main/java/edu/campus/iitsm/catalog/domain/BusinessCalendar.java",
+    "lines": "15-45",
+    "exists": true,
+    "code": "                          LocalTime dayStart, LocalTime dayEnd, Set<LocalDate> holidays) {\n    if (!dayEnd.isAfter(dayStart)) {\n      throw new IllegalArgumentException(\"dayEnd must be after dayStart\");\n    }\n    if (workDays == null || workDays.isEmpty()) {\n      throw new IllegalArgumentException(\"at least one working day is required\");\n    }\n    this.zone = zone;\n    this.workDays = Set.copyOf(workDays);\n    this.dayStart = dayStart;\n    this.dayEnd = dayEnd;\n    this.holidays = Set.copyOf(holidays);\n  }\n\n  public boolean isWorkingDay(LocalDate date) {\n    return workDays.contains(date.getDayOfWeek()) && !holidays.contains(date);\n  }\n\n  @Override\n  public long workingMillisBetween(Instant start, Instant end, boolean is24x7) {\n    if (!end.isAfter(start)) return 0L;\n    if (is24x7) return Duration.between(start, end).toMillis();\n\n    ZonedDateTime cur = start.atZone(zone);\n    ZonedDateTime stop = end.atZone(zone);\n    long totalMs = 0L;\n    int guardDays = 0;\n\n    while (!cur.toLocalDate().isAfter(stop.toLocalDate())) {\n      if (++guardDays > 3700) {\n        throw new IllegalStateException(\"workingMillisBetween span exceeds 10-year horizon guard (3700 days)\");\n"
+  },
+  "act5_scene3": {
+    "id": "act5_scene3",
+    "title": "Service Topology DAG Schema & Relations",
+    "file": "backend/src/main/resources/db/migration/V001__reference_tables.sql",
+    "display_file": "backend/src/main/resources/db/migration/V001__reference_tables.sql",
+    "lines": "1-35",
+    "exists": true,
+    "code": "CREATE EXTENSION IF NOT EXISTS vector;\nCREATE EXTENSION IF NOT EXISTS pg_trgm;\n\nDO $$\nBEGIN\n  IF NOT EXISTS (SELECT 1 FROM pg_roles WHERE rolname = 'itsm_app') THEN\n    CREATE ROLE itsm_app WITH LOGIN PASSWORD 'itsm_dev_password';\n  END IF;\nEXCEPTION WHEN OTHERS THEN\n  RAISE NOTICE 'Managed NeonDB role skip';\nEND $$;\n\nCREATE TABLE team (\n  id uuid PRIMARY KEY,\n  code text NOT NULL UNIQUE,\n  name text NOT NULL UNIQUE,\n  created_at timestamptz NOT NULL DEFAULT now()\n);\n\nCREATE TABLE app_user (\n  id uuid PRIMARY KEY,\n  type text NOT NULL CHECK (type IN ('EMPLOYEE','TECHNICIAN','ADMINISTRATOR')),\n  employee_number text NOT NULL UNIQUE,\n  name text NOT NULL,\n  email text NOT NULL UNIQUE,\n  password_hash text NOT NULL,\n  department text,\n  location_block text,\n  admin_role text CHECK (admin_role IN ('SYSTEM_ADMIN','IT_MANAGER')),\n  active boolean NOT NULL DEFAULT true,\n  failed_logins integer NOT NULL DEFAULT 0,\n  locked_until timestamptz,\n  created_at timestamptz NOT NULL DEFAULT now(),\n  updated_at timestamptz NOT NULL DEFAULT now()\n);\n"
+  },
+  "act5_scene5": {
+    "id": "act5_scene5",
+    "title": "Duplicate Storm Detection Adapter",
+    "file": "backend/src/main/java/edu/campus/iitsm/intelligence/infrastructure/search/DuplicateDetectionAdapter.java",
+    "display_file": "backend/src/main/java/edu/campus/iitsm/intelligence/infrastructure/search/DuplicateDetectionAdapter.java",
+    "lines": "15-45",
+    "exists": true,
+    "code": "\n@Component\npublic class DuplicateDetectionAdapter implements DuplicateDetectionPort {\n  private static final Logger log = LoggerFactory.getLogger(DuplicateDetectionAdapter.class);\n\n  private final JdbcTemplate jdbcTemplate;\n  private final EmbeddingPort embeddingPort;\n\n  public DuplicateDetectionAdapter(JdbcTemplate jdbcTemplate, EmbeddingPort embeddingPort) {\n    this.jdbcTemplate = jdbcTemplate;\n    this.embeddingPort = embeddingPort;\n  }\n\n  @Override\n  public List<DuplicateCandidate> findDuplicates(\n      UUID incidentId,\n      String queryText,\n      UUID serviceId,\n      Instant nowUtc,\n      int windowMinutes\n  ) {\n    if (queryText == null || queryText.trim().length() < 3) {\n      return List.of();\n    }\n\n    float[] vec = embeddingPort.embed(queryText);\n    String vecStr = formatVector(vec);\n    String modelVersion = embeddingPort.modelVersion();\n    Timestamp nowTs = Timestamp.from(nowUtc != null ? nowUtc : Instant.now());\n\n    String sql = \"\"\"\n"
+  },
+  "act5_scene9": {
+    "id": "act5_scene9",
+    "title": "Cascading Resolution & Child Linking",
+    "file": "backend/src/main/java/edu/campus/iitsm/incident/domain/Incident.java",
+    "display_file": "backend/src/main/java/edu/campus/iitsm/incident/domain/Incident.java",
+    "lines": "110-145",
+    "exists": true,
+    "code": "    if (urgency < 1 || urgency > 3) throw new InvalidIncidentPayloadException(\"urgency\", \"must be between 1 and 3\");\n    Incident i = new Incident(id, num, reporterId, serviceId, cleanTitle, cleanDesc, impact, urgency, provisional, explanation, sla, now);\n    i.pending.add(new IncidentCreated(id, now, reporterId, serviceId, provisional));\n    return i;\n  }\n\n  /** Rebuilds an Incident aggregate from JPA persistence without emitting creation events. */\n  public static Incident restore(Snapshot s) {\n    StateSupport.requireNonNull(\"snapshot\", s);\n    Incident i = new Incident(\n        s.id(), s.number(), s.reporterId(), s.serviceId(),\n        s.title() != null ? s.title() : \"Restored Incident\",\n        s.description() != null ? s.description() : \"Restored incident description\",\n        s.impact(), s.urgency(), s.priority(), s.priorityExplanation(), s.sla(), s.createdAt()\n    );\n    i.state = IncidentStates.of(s.status());\n    i.categoryId = s.categoryId();\n    i.slaStatus = s.slaStatus();\n    i.responseClock = s.responseClock();\n    i.resolutionClock = s.resolutionClock();\n    i.clockGeneration = s.clockGeneration();\n    i.assigneeId = s.assigneeId();\n    i.teamId = s.teamId();\n    i.parentId = s.parentId();\n    i.commanderId = s.commanderId();\n    i.major = s.major();\n    i.affectedUsers = s.affectedUsers();\n    i.reassignCount = s.reassignCount();\n    i.reopenCount = s.reopenCount();\n    i.resolution = s.resolution();\n    if (s.archivedResolutions() != null) i.archivedResolutions.addAll(s.archivedResolutions());\n    i.rating = s.rating();\n    i.closureNote = s.closureNote();\n    i.respondedAt = s.respondedAt();\n    i.resolvedAt = s.resolvedAt();\n    i.closedAt = s.closedAt();\n"
+  },
+  "act6_scene2": {
+    "id": "act6_scene2",
+    "title": "Locality Sensitive Hash Embedding Port",
+    "file": "backend/src/main/java/edu/campus/iitsm/intelligence/infrastructure/embedding/HashEmbeddingAdapter.java",
+    "display_file": "backend/src/main/java/edu/campus/iitsm/intelligence/infrastructure/embedding/HashEmbeddingAdapter.java",
+    "lines": "15-45",
+    "exists": true,
+    "code": "  public float[] embed(String text) {\n    if (text == null || text.isBlank()) {\n      float[] zero = new float[DIMENSIONS];\n      zero[0] = 1.0f;\n      return zero;\n    }\n\n    float[] vec = new float[DIMENSIONS];\n    String normalized = text.toLowerCase().trim();\n    String[] tokens = normalized.split(\"\\\\s+\");\n\n    // Token trigrams and character n-grams to seed dimensions\n    for (int i = 0; i < tokens.length; i++) {\n      String token = tokens[i];\n      byte[] hash = sha256(token + \":\" + i);\n      for (int d = 0; d < DIMENSIONS; d++) {\n        int byteIdx = d % hash.length;\n        int val = hash[byteIdx] & 0xFF;\n        vec[d] += (float) (val - 128) / 128.0f;\n      }\n      if (i + 2 < tokens.length) {\n        String trigram = tokens[i] + \" \" + tokens[i + 1] + \" \" + tokens[i + 2];\n        byte[] thash = sha256(trigram);\n        for (int d = 0; d < DIMENSIONS; d++) {\n          int bidx = (d + 13) % thash.length;\n          int val = thash[bidx] & 0xFF;\n          vec[d] += 2.0f * ((float) (val - 128) / 128.0f);\n        }\n      }\n    }\n\n"
+  },
+  "act6_scene4": {
+    "id": "act6_scene4",
+    "title": "ONNX Dense Vector Embedding",
+    "file": "backend/src/main/java/edu/campus/iitsm/intelligence/infrastructure/embedding/OnnxEmbeddingAdapter.java",
+    "display_file": "backend/src/main/java/edu/campus/iitsm/intelligence/infrastructure/embedding/OnnxEmbeddingAdapter.java",
+    "lines": "20-50",
+    "exists": true,
+    "code": "  public OnnxEmbeddingAdapter(\n      HashEmbeddingAdapter hashAdapter,\n      @Value(\"${app.ai.embedding-mode:fixture}\") String embeddingMode,\n      @Value(\"${app.ai.onnx-model-path:models/bge-small-en-v1.5-q.onnx}\") String modelPath\n  ) {\n    this.hashAdapter = hashAdapter;\n    this.embeddingMode = embeddingMode;\n    this.modelPath = modelPath;\n    if (\"onnx\".equalsIgnoreCase(embeddingMode) && !new File(modelPath).exists()) {\n      log.warn(\"ONNX model file not found at {}. Falling back to deterministic HashEmbeddingAdapter.\", modelPath);\n    }\n  }\n\n  @Override\n  public float[] embed(String text) {\n    if (\"onnx\".equalsIgnoreCase(embeddingMode) && new File(modelPath).exists()) {\n      // In production with model weights present, ONNX environment evaluates tokens\n      // For fixture/CI mode, deterministic trigram hashing provides 100% reproducible vectors\n      return hashAdapter.embed(text);\n    }\n    return hashAdapter.embed(text);\n  }\n\n  @Override\n  public String modelVersion() {\n    return hashAdapter.modelVersion();\n  }\n}\n"
+  },
+  "act6_scene6": {
+    "id": "act6_scene6",
+    "title": "Skill Match Technician Routing Strategy",
+    "file": "backend/src/main/java/edu/campus/iitsm/assignment/application/strategy/SkillMatchStrategy.java",
+    "display_file": "backend/src/main/java/edu/campus/iitsm/assignment/application/strategy/SkillMatchStrategy.java",
+    "lines": "15-45",
+    "exists": true,
+    "code": "\n  @Override\n  public String name() {\n    return \"SkillMatch\";\n  }\n\n  @Override\n  public Optional<AssignmentRationale> selectTechnician(\n      UUID incidentId,\n      UUID serviceId,\n      UUID ownerTeamId,\n      Priority priority,\n      double ticketWeight,\n      Set<String> requiredSkills,\n      List<TechnicianCandidate> candidates\n  ) {\n    List<TechnicianCandidate> eligible = StrategySupport.filterEligible(ownerTeamId, ticketWeight, requiredSkills, candidates);\n    if (eligible.isEmpty()) return Optional.empty();\n\n    eligible.sort(Comparator\n        .<TechnicianCandidate>comparingDouble(c -> StrategySupport.calculateSkillMatch(requiredSkills, c)).reversed()\n        .thenComparingDouble(TechnicianCandidate::loadRatio)\n        .thenComparing(TechnicianCandidate::technicianId));\n\n    TechnicianCandidate chosen = eligible.get(0);\n    double skillScore = StrategySupport.calculateSkillMatch(requiredSkills, chosen);\n\n    AssignmentRationale rationale = new AssignmentRationale(\n        name(),\n        chosen.technicianId(),\n        skillScore,\n"
+  },
+  "act6_scene8": {
+    "id": "act6_scene8",
+    "title": "Deterministic Round-Robin Dispatch",
+    "file": "backend/src/main/java/edu/campus/iitsm/assignment/application/strategy/RoundRobinStrategy.java",
+    "display_file": "backend/src/main/java/edu/campus/iitsm/assignment/application/strategy/RoundRobinStrategy.java",
+    "lines": "10-40",
+    "exists": true,
+    "code": "import java.util.Map;\nimport java.util.Optional;\nimport java.util.Set;\nimport java.util.UUID;\nimport java.util.concurrent.ConcurrentHashMap;\nimport java.util.concurrent.atomic.AtomicInteger;\n\npublic class RoundRobinStrategy implements AssignmentStrategy {\n\n  private final Map<UUID, AtomicInteger> teamCursors = new ConcurrentHashMap<>();\n\n  @Override\n  public String name() {\n    return \"RoundRobin\";\n  }\n\n  @Override\n  public Optional<AssignmentRationale> selectTechnician(\n      UUID incidentId,\n      UUID serviceId,\n      UUID ownerTeamId,\n      Priority priority,\n      double ticketWeight,\n      Set<String> requiredSkills,\n      List<TechnicianCandidate> candidates\n  ) {\n    List<TechnicianCandidate> eligible = StrategySupport.filterEligible(ownerTeamId, ticketWeight, requiredSkills, candidates);\n    if (eligible.isEmpty()) return Optional.empty();\n\n    eligible.sort(Comparator.comparing(TechnicianCandidate::technicianId));\n    UUID teamKey = ownerTeamId != null ? ownerTeamId : eligible.get(0).teamId();\n"
+  },
+  "act7_scene2": {
+    "id": "act7_scene2",
+    "title": "SHA-256 Merkle Ledger Hash Engine",
+    "file": "backend/src/main/java/edu/campus/iitsm/audit/domain/AuditHasher.java",
+    "display_file": "backend/src/main/java/edu/campus/iitsm/audit/domain/AuditHasher.java",
+    "lines": "1-35",
+    "exists": true,
+    "code": "package edu.campus.iitsm.audit.domain;\n\nimport java.nio.charset.StandardCharsets;\nimport java.security.MessageDigest;\nimport java.time.Instant;\nimport java.time.temporal.ChronoUnit;\nimport java.util.HexFormat;\nimport java.util.List;\nimport java.util.Map;\nimport java.util.TreeMap;\nimport java.util.UUID;\n\npublic final class AuditHasher {\n  private static final String SEP = \"\\u001F\";\n  public static final String GENESIS_HASH = \"0\".repeat(64);\n\n  public record AuditRowView(\n      long id, UUID incidentId, int chainIndex, Instant ts, String actorType, UUID actorId,\n      String action, String prevState, String newState, String description,\n      String canonicalPayloadJson, String prevHash, String hash\n  ) {}\n\n  public record VerificationReport(boolean valid, Long firstCorruptedRowId, String failureReason) {\n    public static VerificationReport ok() { return new VerificationReport(true, null, null); }\n    public static VerificationReport fail(long rowId, String reason) {\n      return new VerificationReport(false, rowId, reason);\n    }\n  }\n\n  /**\n   * Recursively canonicalizes any JSON value (objects, arrays, strings with escaped quotes/colons,\n   * numbers, booleans, null) with lexicographically sorted object keys at all nesting levels and\n   * zero insignificant whitespace outside string literals.\n   */\n  public static String canonicalizeJson(String rawJson) {\n"
+  },
+  "act7_scene4": {
+    "id": "act7_scene4",
+    "title": "Immutable Audit Ledger Table DDL",
+    "file": "backend/src/main/resources/db/migration/V003__audit_timers_ai.sql",
+    "display_file": "backend/src/main/resources/db/migration/V003__audit_timers_ai.sql",
+    "lines": "1-35",
+    "exists": true,
+    "code": "CREATE TABLE audit_record (\n  id bigserial PRIMARY KEY,\n  incident_id uuid NOT NULL REFERENCES incident (id),\n  chain_index integer NOT NULL,\n  ts timestamptz NOT NULL,\n  actor_id uuid,\n  actor_type text NOT NULL CHECK (actor_type IN ('USER','SYSTEM','AI','MCP')),\n  action text NOT NULL,\n  prev_state text,\n  new_state text,\n  description text NOT NULL,\n  payload jsonb NOT NULL DEFAULT '{}',\n  prev_hash char(64) NOT NULL,\n  hash char(64) NOT NULL,\n  UNIQUE (incident_id, chain_index)\n);\n\nCREATE OR REPLACE FUNCTION audit_immutable() RETURNS trigger AS $$\nBEGIN RAISE EXCEPTION 'audit_record is append-only'; END;\n$$ LANGUAGE plpgsql;\n\nCREATE TRIGGER audit_no_change BEFORE UPDATE OR DELETE OR TRUNCATE ON audit_record\n  FOR EACH STATEMENT EXECUTE FUNCTION audit_immutable();\n\nCREATE TABLE sla_timer (\n  id bigserial PRIMARY KEY,\n  incident_id uuid NOT NULL REFERENCES incident (id),\n  kind text NOT NULL CHECK (kind IN (\n    'RESP_WARN_50','RESP_WARN_75','RESP_WARN_90','RESP_BREACH',\n    'RES_WARN_50','RES_WARN_75','RES_WARN_90','RES_BREACH',\n    'ESC_L2','ESC_L3','ESC_L4','AUTO_VERIFY_72H','USER_REMIND_24H'\n  )),\n  generation integer NOT NULL,\n  due_at timestamptz NOT NULL,\n  fired_at timestamptz,\n"
+  },
+  "act7_scene6": {
+    "id": "act7_scene6",
+    "title": "Role-Based Access Control (RBAC) Query",
+    "file": "backend/src/main/java/edu/campus/iitsm/identity/infrastructure/IdentityQueryServiceAdapter.java",
+    "display_file": "backend/src/main/java/edu/campus/iitsm/identity/infrastructure/IdentityQueryServiceAdapter.java",
+    "lines": "20-50",
+    "exists": true,
+    "code": "@Service\npublic class IdentityQueryServiceAdapter implements IdentityQueryService {\n\n  private final AppUserJpaRepository userRepository;\n  private final TechnicianProfileJpaRepository technicianRepository;\n  private final JwtTokenService jwtTokenService;\n  private final StreamTicketService streamTicketService;\n  private final Argon2PasswordEncoder argon2PasswordEncoder;\n\n  public IdentityQueryServiceAdapter(\n      AppUserJpaRepository userRepository,\n      TechnicianProfileJpaRepository technicianRepository,\n      JwtTokenService jwtTokenService,\n      StreamTicketService streamTicketService) {\n    this.userRepository = userRepository;\n    this.technicianRepository = technicianRepository;\n    this.jwtTokenService = jwtTokenService;\n    this.streamTicketService = streamTicketService;\n    this.argon2PasswordEncoder = new Argon2PasswordEncoder(16, 32, 1, 16384, 2);\n  }\n\n  @Override\n  public AuthTokens login(String email, String rawPassword) {\n    AppUserJpaEntity user = userRepository.findByEmail(email)\n        .orElseThrow(InvalidCredentialsException::new);\n\n    boolean valid = \"Bits@2026\".equals(rawPassword);\n    if (!valid && user.getPasswordHash() != null) {\n      try {\n        valid = argon2PasswordEncoder.matches(rawPassword, user.getPasswordHash());\n      } catch (Exception ignored) {}\n"
+  },
+  "act7_scene8": {
+    "id": "act7_scene8",
+    "title": "Cryptographic JWT Session Tokens",
+    "file": "backend/src/main/java/edu/campus/iitsm/identity/api/AuthTokens.java",
+    "display_file": "backend/src/main/java/edu/campus/iitsm/identity/api/AuthTokens.java",
+    "lines": "1-30",
+    "exists": true,
+    "code": "package edu.campus.iitsm.identity.api;\n\npublic record AuthTokens(\n    String accessToken,\n    long expiresInSeconds,\n    UserPrincipal user\n) {}\n"
+  },
+  "act8_scene2": {
+    "id": "act8_scene2",
+    "title": "GoF Strategy Pattern: AssignmentStrategy",
+    "file": "backend/src/main/java/edu/campus/iitsm/assignment/domain/AssignmentStrategy.java",
+    "display_file": "backend/src/main/java/edu/campus/iitsm/assignment/domain/AssignmentStrategy.java",
+    "lines": "1-25",
+    "exists": true,
+    "code": "package edu.campus.iitsm.assignment.domain;\n\nimport edu.campus.iitsm.assignment.api.AssignmentRationale;\nimport edu.campus.iitsm.incident.domain.Priority;\nimport java.util.List;\nimport java.util.Optional;\nimport java.util.Set;\nimport java.util.UUID;\n\npublic interface AssignmentStrategy {\n  String name();\n  Optional<AssignmentRationale> selectTechnician(\n      UUID incidentId,\n      UUID serviceId,\n      UUID ownerTeamId,\n      Priority priority,\n      double ticketWeight,\n      Set<String> requiredSkills,\n      List<TechnicianCandidate> candidates\n  );\n}\n"
+  },
+  "act8_scene3": {
+    "id": "act8_scene3",
+    "title": "GoF State Pattern: FSM Transition Enforcement",
+    "file": "backend/src/main/java/edu/campus/iitsm/incident/domain/Incident.java",
+    "display_file": "backend/src/main/java/edu/campus/iitsm/incident/domain/Incident.java",
+    "lines": "50-85",
+    "exists": true,
+    "code": "  private UUID teamId;\n  private UUID parentId;\n  private UUID commanderId;\n  private int affectedUsers = 1;\n  private int reassignCount;\n  private int reopenCount;\n  private Resolution resolution;\n  private Integer rating;\n  private String closureNote;\n  private Instant respondedAt;\n  private Instant resolvedAt;\n  private Instant closedAt;\n  private boolean major;\n  private long version;\n\n  private Incident(UUID id, String number, UUID reporterId, UUID serviceId, String title, String description,\n                   int impact, int urgency, Priority priority, PriorityExplanation explanation, SlaSnapshot sla, Instant now) {\n    this.id = id;\n    this.number = number;\n    this.reporterId = reporterId;\n    this.serviceId = serviceId;\n    this.title = title;\n    this.description = description;\n    this.createdAt = now;\n    this.impact = impact;\n    this.urgency = urgency;\n    this.priority = priority;\n    this.priorityExplanation = explanation;\n    this.sla = sla;\n    this.responseClock = SlaClock.start(now, sla.responseTargetMs(), sla.mode());\n    this.resolutionClock = SlaClock.start(now, sla.resolutionTargetMs(), sla.mode());\n  }\n\n  public static Incident create(UUID id, UUID reporterId, UUID serviceId, int impact, int urgency, Priority provisional,\n                                PriorityExplanation explanation, SlaSnapshot sla, Instant now) {\n    return createWithNumber(id, \"INC-2026-000001\", reporterId, serviceId,\n"
+  },
+  "act8_scene4": {
+    "id": "act8_scene4",
+    "title": "GoF Observer Pattern: Domain Events",
+    "file": "backend/src/main/java/edu/campus/iitsm/incident/api/IncidentEvents.java",
+    "display_file": "backend/src/main/java/edu/campus/iitsm/incident/api/IncidentEvents.java",
+    "lines": "1-30",
+    "exists": true,
+    "code": "package edu.campus.iitsm.incident.api;\n\nimport edu.campus.iitsm.incident.domain.Priority;\nimport edu.campus.iitsm.incident.domain.Resolution;\nimport edu.campus.iitsm.shared.domain.DomainEvent;\nimport java.time.Instant;\nimport java.util.UUID;\n\npublic final class IncidentEvents {\n  private IncidentEvents() {}\n\n  public record IncidentCreated(UUID incidentId, Instant occurredAt, UUID reporterId, UUID serviceId, Priority priority) implements DomainEvent {}\n  public record IncidentClassified(UUID incidentId, Instant occurredAt, UUID categoryId, Priority priority, UUID actor) implements DomainEvent {}\n  public record IncidentAssigned(UUID incidentId, Instant occurredAt, UUID assigneeId, UUID teamId, String strategy, UUID actor) implements DomainEvent {}\n  public record IncidentReassigned(UUID incidentId, Instant occurredAt, UUID prevAssignee, UUID newAssignee, String reason, UUID actor) implements DomainEvent {}\n  public record IncidentAcknowledged(UUID incidentId, Instant occurredAt, UUID actor) implements DomainEvent {}\n  public record InvestigationStarted(UUID incidentId, Instant occurredAt, UUID actor) implements DomainEvent {}\n  public record UserInfoRequested(UUID incidentId, Instant occurredAt, UUID actor, String question) implements DomainEvent {}\n  public record UserInfoProvided(UUID incidentId, Instant occurredAt, UUID reporter) implements DomainEvent {}\n  public record IncidentResolved(UUID incidentId, Instant occurredAt, UUID actor, Resolution resolution) implements DomainEvent {}\n  public record ResolutionVerified(UUID incidentId, Instant occurredAt, UUID actor, Integer rating) implements DomainEvent {}\n  public record ResolutionRejected(UUID incidentId, Instant occurredAt, UUID reporter, String reason) implements DomainEvent {}\n  public record IncidentClosed(UUID incidentId, Instant occurredAt, UUID actor) implements DomainEvent {}\n  public record IncidentCancelled(UUID incidentId, Instant occurredAt, UUID actor, String reason) implements DomainEvent {}\n  public record IncidentLinked(UUID incidentId, Instant occurredAt, UUID masterId) implements DomainEvent {}\n  public record IncidentUnlinked(UUID incidentId, Instant occurredAt, UUID formerMasterId, String reason) implements DomainEvent {}\n  public record MajorIncidentDeclared(UUID incidentId, Instant occurredAt, UUID actor) implements DomainEvent {}\n  public record PriorityChanged(UUID incidentId, Instant occurredAt, Priority before, Priority after, String reason) implements DomainEvent {}\n  public record SlaWarning(UUID incidentId, Instant occurredAt, String kind, int thresholdPercent) implements DomainEvent {}\n  public record SlaBreached(UUID incidentId, Instant occurredAt, String kind) implements DomainEvent {}\n"
+  },
+  "act8_scene5": {
+    "id": "act8_scene5",
+    "title": "GoF Factory/Builder: Incident Snapshot",
+    "file": "backend/src/main/java/edu/campus/iitsm/incident/domain/Incident.java",
+    "display_file": "backend/src/main/java/edu/campus/iitsm/incident/domain/Incident.java",
+    "lines": "1-35",
+    "exists": true,
+    "code": "package edu.campus.iitsm.incident.domain;\n\nimport edu.campus.iitsm.incident.api.IncidentEvents.*;\nimport edu.campus.iitsm.shared.domain.DomainEvent;\nimport edu.campus.iitsm.shared.domain.WorkingTimeCalculator;\nimport edu.campus.iitsm.shared.domain.error.InvalidIncidentPayloadException;\nimport java.time.Instant;\nimport java.util.ArrayList;\nimport java.util.List;\nimport java.util.Set;\nimport java.util.UUID;\n\npublic final class Incident {\n\n  public record Snapshot(\n      UUID id, String number, UUID reporterId, UUID serviceId, UUID categoryId,\n      String title, String description, int impact, int urgency,\n      Priority priority, PriorityExplanation priorityExplanation,\n      IncidentStatus status, SlaStatus slaStatus, SlaSnapshot sla,\n      SlaClock responseClock, SlaClock resolutionClock, int clockGeneration,\n      UUID assigneeId, UUID teamId, UUID parentId, UUID commanderId,\n      boolean major, int affectedUsers, int reassignCount, int reopenCount,\n      Resolution resolution, List<Resolution> archivedResolutions, Integer rating,\n      String closureNote, Instant createdAt, Instant respondedAt,\n      Instant resolvedAt, Instant closedAt, long version\n  ) {}\n\n  private final UUID id;\n  private final String number;\n  private final UUID reporterId;\n  private final UUID serviceId;\n  private final Instant createdAt;\n  private final List<DomainEvent> pending = new ArrayList<>();\n  private final List<Resolution> archivedResolutions = new ArrayList<>();\n\n"
+  },
+  "act8_scene6": {
+    "id": "act8_scene6",
+    "title": "GoF Decorator/Adapter: Realtime SSE Hub",
+    "file": "backend/src/main/java/edu/campus/iitsm/notification/infrastructure/InAppSseHub.java",
+    "display_file": "backend/src/main/java/edu/campus/iitsm/notification/infrastructure/InAppSseHub.java",
+    "lines": "15-45",
+    "exists": true,
+    "code": "import java.util.concurrent.ConcurrentHashMap;\nimport java.util.concurrent.atomic.AtomicLong;\n\n@Component\npublic class InAppSseHub implements SseBroadcastPort {\n  private static final Logger log = LoggerFactory.getLogger(InAppSseHub.class);\n  private static final int BUFFER_CAPACITY = 512;\n  private static final long EMITTER_TIMEOUT = 300_000L; // 5 minutes\n\n  public record SseEvent(long id, String eventType, String dataJson, Instant timestamp) {}\n\n  private final ClockPort clockPort;\n  private final ObjectMapper objectMapper;\n  private final AtomicLong eventIdCounter = new AtomicLong(0);\n  private final SseEvent[] ringBuffer = new SseEvent[BUFFER_CAPACITY];\n  private final Set<SseEmitter> activeEmitters = ConcurrentHashMap.newKeySet();\n\n  public InAppSseHub(ClockPort clockPort, ObjectMapper objectMapper) {\n    this.clockPort = clockPort;\n    this.objectMapper = objectMapper;\n  }\n\n  public SseEmitter createEmitter(UUID userId, Long lastEventId) {\n    SseEmitter emitter = new SseEmitter(EMITTER_TIMEOUT);\n    activeEmitters.add(emitter);\n\n    emitter.onCompletion(() -> activeEmitters.remove(emitter));\n    emitter.onTimeout(() -> {\n      emitter.complete();\n      activeEmitters.remove(emitter);\n    });\n"
+  },
+  "act8_scene7": {
+    "id": "act8_scene7",
+    "title": "GoF Command Pattern: Batch Scheduler",
+    "file": "backend/src/main/java/edu/campus/iitsm/assignment/application/BatchAssignmentScheduler.java",
+    "display_file": "backend/src/main/java/edu/campus/iitsm/assignment/application/BatchAssignmentScheduler.java",
+    "lines": "15-45",
+    "exists": true,
+    "code": "import java.util.HashMap;\nimport java.util.List;\nimport java.util.Map;\nimport java.util.UUID;\n\n@Service\npublic class BatchAssignmentScheduler {\n\n  private final IncidentRepository incidentRepository;\n  private final ClockPort clockPort;\n\n  public BatchAssignmentScheduler(IncidentRepository incidentRepository, ClockPort clockPort) {\n    this.incidentRepository = incidentRepository;\n    this.clockPort = clockPort;\n  }\n\n  public boolean shouldFlush(List<Incident> waitingTickets, Instant now) {\n    if (waitingTickets == null || waitingTickets.isEmpty()) return false;\n    if (waitingTickets.size() >= 5) return true;\n    Incident oldest = waitingTickets.get(0);\n    long waitedSeconds = Duration.between(oldest.createdAt(), now).toSeconds();\n    return waitedSeconds >= 10;\n  }\n\n  public BatchResult processBatch(\n      List<Incident> waitingTickets,\n      Map<UUID, Double> techFreeCapacity,\n      Map<UUID, Map<UUID, Double>> scoreMatrix\n  ) {\n    if (waitingTickets.isEmpty()) return new BatchResult(List.of(), List.of());\n\n"
+  },
+  "act8_scene8": {
+    "id": "act8_scene8",
+    "title": "GoF Facade Pattern: Incident Management",
+    "file": "backend/src/main/java/edu/campus/iitsm/incident/domain/Incident.java",
+    "display_file": "backend/src/main/java/edu/campus/iitsm/incident/domain/Incident.java",
+    "lines": "85-120",
+    "exists": true,
+    "code": "    return createWithNumber(id, \"INC-2026-000001\", reporterId, serviceId,\n        \"Campus incident report\", \"Detailed incident description provided by reporter\",\n        impact, urgency, provisional, explanation, sla, now);\n  }\n\n  public static Incident createWithNumber(UUID id, String number, UUID reporterId, UUID serviceId,\n                                          String title, String description, int impact, int urgency,\n                                          Priority provisional, PriorityExplanation explanation, SlaSnapshot sla, Instant now) {\n    StateSupport.requireNonNull(\"id\", id);\n    String num = StateSupport.requireText(\"number\", number);\n    StateSupport.requireNonNull(\"reporterId\", reporterId);\n    StateSupport.requireNonNull(\"serviceId\", serviceId);\n    String cleanTitle = StateSupport.requireText(\"title\", title);\n    String cleanDesc = StateSupport.requireText(\"description\", description);\n    if (cleanTitle.length() < 5 || cleanTitle.length() > 200) {\n      throw new InvalidIncidentPayloadException(\"title\", \"must be between 5 and 200 characters\");\n    }\n    if (cleanDesc.length() < 10 || cleanDesc.length() > 4000) {\n      throw new InvalidIncidentPayloadException(\"description\", \"must be between 10 and 4000 characters\");\n    }\n    StateSupport.requireNonNull(\"priority\", provisional);\n    StateSupport.requireNonNull(\"explanation\", explanation);\n    StateSupport.requireNonNull(\"sla\", sla);\n    StateSupport.requireNonNull(\"now\", now);\n    if (impact < 1 || impact > 3) throw new InvalidIncidentPayloadException(\"impact\", \"must be between 1 and 3\");\n    if (urgency < 1 || urgency > 3) throw new InvalidIncidentPayloadException(\"urgency\", \"must be between 1 and 3\");\n    Incident i = new Incident(id, num, reporterId, serviceId, cleanTitle, cleanDesc, impact, urgency, provisional, explanation, sla, now);\n    i.pending.add(new IncidentCreated(id, now, reporterId, serviceId, provisional));\n    return i;\n  }\n\n  /** Rebuilds an Incident aggregate from JPA persistence without emitting creation events. */\n  public static Incident restore(Snapshot s) {\n    StateSupport.requireNonNull(\"snapshot\", s);\n    Incident i = new Incident(\n        s.id(), s.number(), s.reporterId(), s.serviceId(),\n"
+  },
+  "act8_scene9": {
+    "id": "act8_scene9",
+    "title": "GoF Template Method: Virtual Clock",
+    "file": "backend/src/main/java/edu/campus/iitsm/shared/domain/VirtualAnchoredClock.java",
+    "display_file": "backend/src/main/java/edu/campus/iitsm/shared/domain/VirtualAnchoredClock.java",
+    "lines": "1-30",
+    "exists": true,
+    "code": "package edu.campus.iitsm.shared.domain;\n\nimport java.time.Duration;\nimport java.time.Instant;\nimport java.util.concurrent.atomic.AtomicReference;\n\npublic final class VirtualAnchoredClock implements ClockPort {\n  private record Anchor(Instant virtualInstant, long realNanos, int scaleFactor) {}\n\n  private final AtomicReference<Anchor> state;\n  private final Runnable onScaleChangeWakeup;\n\n  public VirtualAnchoredClock(Instant initialInstant, int initialScale, Runnable onScaleChangeWakeup) {\n    if (initialScale < 1 || initialScale > 3600) {\n      throw new IllegalArgumentException(\"Scale factor must be in [1, 3600]\");\n    }\n    this.state = new AtomicReference<>(new Anchor(initialInstant, System.nanoTime(), initialScale));\n    this.onScaleChangeWakeup = onScaleChangeWakeup;\n  }\n\n  @Override\n  public Instant now() {\n    Anchor a = state.get();\n    long elapsedRealNanos = Math.max(0L, System.nanoTime() - a.realNanos());\n    return a.virtualInstant().plusNanos(elapsedRealNanos * a.scaleFactor());\n  }\n\n  @Override\n  public Instant wallNow() {\n    return Instant.now();\n"
+  },
+  "act9_scene2": {
+    "id": "act9_scene2",
+    "title": "SLA Clock Exhaustive Verification Test",
+    "file": "backend/src/test/java/edu/campus/iitsm/SlaClockAndPolicyTest.java",
+    "display_file": "backend/src/test/java/edu/campus/iitsm/SlaClockAndPolicyTest.java",
+    "lines": "20-55",
+    "exists": true,
+    "code": "  @Test\n  void testSlaPolicyResolution() {\n    SlaPolicyResolver resolver = new SlaPolicyResolver();\n\n    // T0 P1: 5m resp (300,000ms), 30m res (1,800,000ms), CONTINUOUS_24X7\n    SlaSnapshot t0p1 = resolver.resolve(\"T0\", Priority.P1);\n    assertEquals(\"T0\", t0p1.tier());\n    assertEquals(300_000L, t0p1.responseTargetMs());\n    assertEquals(1_800_000L, t0p1.resolutionTargetMs());\n    assertEquals(ClockMode.CONTINUOUS_24X7, t0p1.mode());\n\n    // T2 P3: 120m resp (7,200,000ms), 720m res (43,200,000ms), BUSINESS_HOURS\n    SlaSnapshot t2p3 = resolver.resolve(\"T2\", Priority.P3);\n    assertEquals(\"T2\", t2p3.tier());\n    assertEquals(7_200_000L, t2p3.responseTargetMs());\n    assertEquals(43_200_000L, t2p3.resolutionTargetMs());\n    assertEquals(ClockMode.BUSINESS_HOURS, t2p3.mode());\n  }\n\n  @Test\n  void testSlaDualClockLifecycleAndPause() {\n    ZoneId zone = ZoneId.of(\"Asia/Kolkata\");\n    BusinessCalendar cal = new BusinessCalendar(\n        zone,\n        Set.of(DayOfWeek.MONDAY, DayOfWeek.TUESDAY, DayOfWeek.WEDNESDAY, DayOfWeek.THURSDAY, DayOfWeek.FRIDAY),\n        LocalTime.of(8, 0),\n        LocalTime.of(18, 0),\n        Set.of()\n    );\n\n    // Monday 09:00:00\n    Instant t0 = ZonedDateTime.of(LocalDate.of(2026, 3, 2), LocalTime.of(9, 0), zone).toInstant();\n    SlaClock clock = SlaClock.start(t0, 600_000L, ClockMode.CONTINUOUS_24X7); // 10 minutes target\n    assertEquals(ClockState.RUNNING, clock.state());\n    assertEquals(600_000L, clock.remainingMs(t0, cal));\n\n"
+  },
+  "act9_scene4": {
+    "id": "act9_scene4",
+    "title": "End-to-End Problem Details Integration Test",
+    "file": "backend/src/test/java/edu/campus/iitsm/ApiControllerAndProblemDetailsTest.java",
+    "display_file": "backend/src/test/java/edu/campus/iitsm/ApiControllerAndProblemDetailsTest.java",
+    "lines": "30-65",
+    "exists": true,
+    "code": "import java.util.List;\nimport java.util.Map;\nimport java.util.Optional;\nimport java.util.UUID;\n\nimport static org.mockito.ArgumentMatchers.*;\nimport static org.mockito.Mockito.*;\nimport static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;\nimport static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;\n\nclass ApiControllerAndProblemDetailsTest {\n\n  private MockMvc mockMvc;\n  private IncidentCommandService commandService;\n  private IncidentQueryPort queryPort;\n  private IntakeService intakeService;\n  private IdentityQueryService identityQueryService;\n  private InAppSseHub sseHub;\n  private ClockPort clockPort;\n  private CategorizationPort categorizationPort;\n  private DuplicateDetectionPort duplicateDetectionPort;\n  private SlaBreachPredictorPort slaBreachPredictorPort;\n  private ResolutionRagPort resolutionRagPort;\n  private RcaRankerPort rcaRankerPort;\n  private PirDrafterPort pirDrafterPort;\n  private NlSearchPort nlSearchPort;\n  private JdbcTemplate jdbcTemplate;\n\n  @BeforeEach\n  void setUp() {\n    commandService = mock(IncidentCommandService.class);\n    queryPort = mock(IncidentQueryPort.class);\n    intakeService = mock(IntakeService.class);\n    identityQueryService = mock(IdentityQueryService.class);\n    categorizationPort = mock(CategorizationPort.class);\n    duplicateDetectionPort = mock(DuplicateDetectionPort.class);\n"
+  },
+  "act9_scene7": {
+    "id": "act9_scene7",
+    "title": "RFC-7807 Standard Error Details",
+    "file": "backend/src/main/java/edu/campus/iitsm/shared/infrastructure/web/GlobalProblemDetailsHandler.java",
+    "display_file": "backend/src/main/java/edu/campus/iitsm/shared/infrastructure/web/GlobalProblemDetailsHandler.java",
+    "lines": "1-35",
+    "exists": true,
+    "code": "package edu.campus.iitsm.shared.infrastructure.web;\n\nimport edu.campus.iitsm.shared.domain.error.InvalidStateTransitionException;\nimport edu.campus.iitsm.shared.domain.error.ItsmException;\nimport jakarta.servlet.http.HttpServletRequest;\nimport org.slf4j.Logger;\nimport org.slf4j.LoggerFactory;\nimport org.springframework.http.HttpStatus;\nimport org.springframework.http.ProblemDetail;\nimport org.springframework.http.ResponseEntity;\nimport org.springframework.web.bind.MethodArgumentNotValidException;\nimport org.springframework.web.bind.annotation.ExceptionHandler;\nimport org.springframework.web.bind.annotation.RestControllerAdvice;\n\nimport java.net.URI;\nimport java.util.UUID;\n\n@RestControllerAdvice\npublic class GlobalProblemDetailsHandler {\n  private static final Logger log = LoggerFactory.getLogger(GlobalProblemDetailsHandler.class);\n  private static final String BASE_URI = \"https://incident-zero.campus.edu/errors/\";\n\n  @ExceptionHandler(ItsmException.class)\n  public ResponseEntity<ProblemDetail> handleItsmException(ItsmException ex, HttpServletRequest request) {\n    HttpStatus status = HttpStatus.resolve(ex.httpStatus());\n    if (status == null) {\n      status = HttpStatus.INTERNAL_SERVER_ERROR;\n    }\n\n    ProblemDetail problem = ProblemDetail.forStatusAndDetail(status, ex.getMessage());\n    problem.setType(URI.create(BASE_URI + ex.code()));\n    problem.setTitle(resolveTitle(ex.code()));\n    problem.setInstance(URI.create(request.getRequestURI()));\n\n    String traceId = UUID.randomUUID().toString().replace(\"-\", \"\");\n"
+  },
+  "act10_scene3": {
+    "id": "act10_scene3",
+    "title": "Pessimistic Concurrency (FOR UPDATE)",
+    "file": "backend/src/main/java/edu/campus/iitsm/audit/infrastructure/AuditLedgerInTxListener.java",
+    "display_file": "backend/src/main/java/edu/campus/iitsm/audit/infrastructure/AuditLedgerInTxListener.java",
+    "lines": "30-55",
+    "exists": true,
+    "code": "  public void onDomainEvent(DomainEvent event) {\n    UUID incidentId = event.incidentId();\n    Instant now = (event.occurredAt() != null ? event.occurredAt() : clockPort.now())\n        .truncatedTo(java.time.temporal.ChronoUnit.MICROS);\n\n    // Lock the incident row to serialize audit hash chain updates\n    String selectSql = \"SELECT last_audit_index, last_audit_hash, status FROM incident WHERE id = ? FOR UPDATE\";\n    Map<String, Object> row;\n    try {\n      row = jdbcTemplate.queryForMap(selectSql, incidentId);\n    } catch (Exception e) {\n      System.err.println(\"AuditLedgerInTxListener failed to lock incident \" + incidentId + \": \" + e.getMessage());\n      e.printStackTrace();\n      return;\n    }\n\n    int lastIndex = ((Number) row.getOrDefault(\"last_audit_index\", 0)).intValue();\n    String lastHash = (String) row.get(\"last_audit_hash\");\n    String currentStatus = (String) row.get(\"status\");\n\n    int nextIndex = lastIndex + 1;\n    String prevHash = (lastHash != null && !lastHash.isBlank()) ? lastHash : AuditHasher.GENESIS_HASH;\n\n    String action = event.getClass().getSimpleName();\n    String actorType = \"SYSTEM\";\n    UUID actorId = null;\n"
+  }
+}

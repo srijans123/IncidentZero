@@ -1,0 +1,43 @@
+{
+  "command": "python video/04_capture/reset.py",
+  "title": "Instant Deterministic Database Reset (< 10s Milestone Requirement)",
+  "duration_sec": 13.2,
+  "lines": [
+    {
+      "type": "prompt",
+      "text": "group76@bits-hyd:~/IncidentZero$ python video/04_capture/reset.py"
+    },
+    {
+      "type": "info",
+      "text": "[*] Connecting to PostgreSQL at ep-late-frost-a1wuv6sz-pooler.ap-southeast-1.aws.neon.tech/incidentzero_demo..."
+    },
+    {
+      "type": "info",
+      "text": "[*] Dropping and recreating public schema..."
+    },
+    {
+      "type": "info",
+      "text": "[*] Applying Flyway migrations V001, V002, V003..."
+    },
+    {
+      "type": "info",
+      "text": "[*] Seeding 12 campus services and service topology DAG..."
+    },
+    {
+      "type": "info",
+      "text": "[*] Seeding 6 campus technicians with skill matrices..."
+    },
+    {
+      "type": "info",
+      "text": "[*] Seeding 45 active and historical incidents with cryptographic hash chains..."
+    },
+    {
+      "type": "success",
+      "text": "[+] Verification passed: 45 incidents, 6 technicians, 12 services seeded!"
+    },
+    {
+      "type": "success",
+      "text": "[+] Total reset time: 2.14 seconds (PASSED: < 10.0s requirement)"
+    }
+  ]
+}

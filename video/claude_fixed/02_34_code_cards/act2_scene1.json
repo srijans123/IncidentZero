@@ -1,0 +1,9 @@
+{
+  "id": "act2_scene1",
+  "title": "ArchUnit & Architectural Invariant Tests",
+  "file": "backend/src/test/java/edu/campus/iitsm/ApiControllerAndProblemDetailsTest.java",
+  "display_file": "backend/src/test/java/edu/campus/iitsm/ApiControllerAndProblemDetailsTest.java",
+  "lines": "20-45",
+  "exists": true,
+  "code": "import edu.campus.iitsm.shared.domain.error.InvalidStateTransitionException;\nimport edu.campus.iitsm.shared.infrastructure.web.GlobalProblemDetailsHandler;\nimport org.junit.jupiter.api.BeforeEach;\nimport org.junit.jupiter.api.Test;\nimport org.springframework.http.MediaType;\nimport org.springframework.jdbc.core.JdbcTemplate;\nimport org.springframework.test.web.servlet.MockMvc;\nimport org.springframework.test.web.servlet.setup.MockMvcBuilders;\n\nimport java.time.Instant;\nimport java.util.List;\nimport java.util.Map;\nimport java.util.Optional;\nimport java.util.UUID;\n\nimport static org.mockito.ArgumentMatchers.*;\nimport static org.mockito.Mockito.*;\nimport static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;\nimport static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;\n\nclass ApiControllerAndProblemDetailsTest {\n\n  private MockMvc mockMvc;\n  private IncidentCommandService commandService;\n  private IncidentQueryPort queryPort;\n  private IntakeService intakeService;\n"
+}

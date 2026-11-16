@@ -1,0 +1,9 @@
+{
+  "id": "act5_scene5",
+  "title": "Duplicate Storm Detection Adapter",
+  "file": "backend/src/main/java/edu/campus/iitsm/intelligence/infrastructure/search/DuplicateDetectionAdapter.java",
+  "display_file": "backend/src/main/java/edu/campus/iitsm/intelligence/infrastructure/search/DuplicateDetectionAdapter.java",
+  "lines": "15-45",
+  "exists": true,
+  "code": "\n@Component\npublic class DuplicateDetectionAdapter implements DuplicateDetectionPort {\n  private static final Logger log = LoggerFactory.getLogger(DuplicateDetectionAdapter.class);\n\n  private final JdbcTemplate jdbcTemplate;\n  private final EmbeddingPort embeddingPort;\n\n  public DuplicateDetectionAdapter(JdbcTemplate jdbcTemplate, EmbeddingPort embeddingPort) {\n    this.jdbcTemplate = jdbcTemplate;\n    this.embeddingPort = embeddingPort;\n  }\n\n  @Override\n  public List<DuplicateCandidate> findDuplicates(\n      UUID incidentId,\n      String queryText,\n      UUID serviceId,\n      Instant nowUtc,\n      int windowMinutes\n  ) {\n    if (queryText == null || queryText.trim().length() < 3) {\n      return List.of();\n    }\n\n    float[] vec = embeddingPort.embed(queryText);\n    String vecStr = formatVector(vec);\n    String modelVersion = embeddingPort.modelVersion();\n    Timestamp nowTs = Timestamp.from(nowUtc != null ? nowUtc : Instant.now());\n\n    String sql = \"\"\"\n"
+}
