@@ -10,5 +10,7 @@
 | R3 | DONE | `[OK] Backend already running on 8080 and answering login.`<br>`curl http://localhost:8080/api/v1/services: 401`<br>`curl http://localhost:3000/app.html: 200` |
 | R4 | DONE | `SUMMARY: 24 passed, 0 failed (554590 transitions verified)`<br>`OVERALL GATE A STATUS: PASS (11/11)` |
 | R5 | DONE | `=== take T09 OK: 252.1 s, 15333 distinct frames, 0 warnings`<br>`all requested takes recorded` |
+| R6 | DONE | `92ba4d4e65f461cea6134424c61f8482d2d61d6b` (git rev-parse HEAD matches live version.txt) |
+| R7 | DONE | `=== take T09 OK: 245.8 s, 15515 distinct frames, 0 warnings`<br>`all requested takes recorded` |
 
-NEXT STEP: R6. Commit, push, deploy to GitHub Pages (git checkout main, merge, push, deploy-pages.mjs)
+NEXT STEP: R8. Pin the repository commit and print Gate R

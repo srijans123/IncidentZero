@@ -2,7 +2,7 @@
   "appUrl": "http://localhost:3000",
   "landingUrl": "https://srijans123.github.io/IncidentZero/",
   "repoUrl": "https://github.com/srijans123/IncidentZero",
-  "pinnedSha": "",
+  "pinnedSha": "92ba4d4e65f461cea6134424c61f8482d2d61d6b",
   "timings": "video_v3/03_audio/timings.json",
   "musicBed": "video/06_music_sfx/ambient_bed.wav",
   "channel": "chrome",
