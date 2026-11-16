@@ -44,7 +44,7 @@ export const act1 = {
     { id: 'a01b01', cues: [[0.3, 'ghHover', 'README.md', 500], ['@readme', 'scrollTo', { text: 'What is Incident-Zero?' }, { block: 'start', ms: 1300 }]] },
     { id: 'a01b02', cues: [[0, 'point', { text: 'It is deliberately small to operate' }, { hold: 2600 }]] },
     { id: 'a01b03', cues: [[0, 'scrollTo', { text: 'Report · Classify · Prioritize' }, { ms: 1100 }], ['+0', 'point', { text: 'Report · Classify · Prioritize' }, { hold: 3800 }]] },
-    { id: 'a01b04', cues: [[0, 'scrollTop'], ['@backend', 'ghHover', 'backend', 1600]] },
+    { id: 'a01b04', cues: [[0, 'scrollTop'], ['@backend', 'ghHover', 'backend', 1600], ['+2.5', 'move', '#__zk_layer', { at: [0.35, 0.62] }]] },
     { id: 'a01b05', cues: [[0, 'ghHover', 'frontend', 1600]] },
     { id: 'a01b06', cues: [[0, 'ghClick', 'docs', { fallback: 'tree/<SHA>/docs' }], ['+0', 'ghClick', 'adr', { fallback: 'tree/<SHA>/docs/adr' }], ['@Each', 'ghHover', 'ADR-001.md', 400], ['+0', 'ghHover', 'ADR-004.md', 400]] },
     { id: 'a01b07', cues: [[0, 'ghGoto', 'tree/<SHA>'], ['+0', 'ghHover', 'scripts', 1400]] },

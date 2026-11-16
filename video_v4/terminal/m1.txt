@@ -1,0 +1,14 @@
+PASS  TC-16 business clock: Fri 17:00 to Mon 10:00 is 2h elapsed
+PASS  major incident: P1, major flag, commander set, clocks retargeted keeping 2m elapsed
+PASS  declareMajor is idempotent
+PASS  TC-21 SLA: AT_RISK at 80%, resets to ON_TRACK on SLA extension, BREACHED sticky on tick/late-ack, restore round-trips
+PASS  rejected child unlinks to REOPENED and can be reassigned
+PASS  fuzz: invariants hold across all 50,000 sequences (554590 transitions)
+PASS  fuzz: all 11 statuses visited (including deep states)
+PASS  TC-14 product score collides (both P3) while ITIL matrix separates (P2 vs P4)
+PASS  audit: valid chain verifies even when jsonb reorders keys
+PASS  TC-54 audit: edited row 103 is pinpointed
+PASS  TC-31 hungarian: exact (n <= 7) + multi-pass (n > 7) across 5,000 batches have 0 overbookings and <= 1 P1/tech
+
+SUMMARY: 24 passed, 0 failed (554590 transitions verified)
+SUMMARY: 24 passed, 0 failed (554590 transitions verified)

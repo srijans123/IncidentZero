@@ -7,6 +7,6 @@
   "musicBed": "video/06_music_sfx/ambient_bed.wav",
   "channel": "chrome",
   "headless": true,
-  "pace": 1,
-  "directFiles": false
+  "pace": 0.6,
+  "directFiles": true
 }

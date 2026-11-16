@@ -1,0 +1,11 @@
+{
+  "type": "https://incident-zero.campus.edu/errors/ITSM-4090",
+  "title": "Invalid Incident Lifecycle State Transition",
+  "status": 409,
+  "detail": "Command CLOSE is not permitted when incident 01a1e4f0-0046-7040-b70f-bf47934cd591 is in state CLOSED",
+  "instance": "/api/v1/incidents/01a1e4f0-0046-7040-b70f-bf47934cd591/commands/close",
+  "code": "ITSM-4090",
+  "incidentId": "01a1e4f0-0046-7040-b70f-bf47934cd591",
+  "currentState": "CLOSED",
+  "attemptedCommand": "CLOSE"
+}

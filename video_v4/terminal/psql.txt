@@ -1,0 +1,1 @@
+ERROR:  audit_record is append-only
