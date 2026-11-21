@@ -77,3 +77,22 @@ video_v4/out/
 video/03_audio/models/
 *.onnx
 *.bin
+
+# _archive rules
+_archive/**/.venv/
+_archive/**/.remotion/
+_archive/**/.cache/
+_archive/**/node_modules/
+_archive/**/out/
+_archive/**/demo/
+_archive/**/*.mp4
+_archive/**/*.webm
+_archive/**/*.wav
+_archive/**/*.wasm
+_archive/**/*.onnx
+_archive/**/*.bin
+_archive/**/*.exe
+_archive/**/*.dll
+_archive/**/*.pack
+_archive/**/test-results/
+_archive/**/build/

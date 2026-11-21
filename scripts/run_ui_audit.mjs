@@ -283,7 +283,8 @@ async function main() {
       '',
     ];
 
-    const auditFilePath = path.resolve('video_v3/01_facts/ui_audit.md');
+    const auditFilePath = path.resolve('docs/UI_AUDIT.md');
+    fs.mkdirSync(path.dirname(auditFilePath), { recursive: true });
     fs.writeFileSync(auditFilePath, markdownLines.join('\n'), 'utf-8');
     console.log(`[Playwright E2E] Wrote UI audit report to ${auditFilePath}`);
     console.log('[Playwright E2E] ALL UI LIFECYCLE STEPS COMPLETED SUCCESSFULLY!');

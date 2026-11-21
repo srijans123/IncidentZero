@@ -15,7 +15,7 @@ if ($port8080) {
 }
 
 # 2. Reset database schema
-& "video\.venv\Scripts\python" scripts/demo_db_helper.py --reset
+& ".venv\\Scripts\\python" scripts/demo_db_helper.py --reset
 if ($LASTEXITCODE -ne 0) {
     Write-Error "Failed to reset demo database schema!"
     exit 1
@@ -23,7 +23,7 @@ if ($LASTEXITCODE -ne 0) {
 
 # 3. Start backend daemon
 Write-Output "[*] Launching backend against incidentzero_demo..."
-$backendJob = Start-Process -FilePath "video\.venv\Scripts\python" -ArgumentList "scripts/run_backend_demo.py" -PassThru -NoNewWindow
+$backendJob = Start-Process -FilePath ".venv\\Scripts\\python" -ArgumentList "scripts/run_backend_demo.py" -PassThru -NoNewWindow
 
 # 4. Poll until login responds 200
 $loginBody = '{"email":"emp@bits.campus","password":"Bits@2026"}'

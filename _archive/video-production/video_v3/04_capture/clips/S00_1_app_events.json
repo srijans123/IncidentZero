@@ -1,0 +1,21 @@
+{
+  "t0": 1794784745.427,
+  "tEnd": 1794784750.946,
+  "events": [
+    {
+      "t": 0,
+      "type": "hold_stage",
+      "url": "http://localhost:3000/app.html?tab=stage"
+    },
+    {
+      "t": 2.003999948501587,
+      "type": "click_student_portal",
+      "url": "http://localhost:3000/app.html?tab=stage"
+    },
+    {
+      "t": 4.013000011444092,
+      "type": "point_report",
+      "url": "http://localhost:3000/app.html?tab=portal"
+    }
+  ]
+}

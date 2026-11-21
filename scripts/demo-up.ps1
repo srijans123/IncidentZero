@@ -4,7 +4,7 @@
 Write-Output "[*] Executing demo-up..."
 
 # 1. Verify demo DB
-& "video\.venv\Scripts\python" scripts/demo_db_helper.py --check
+& ".venv\\Scripts\\python" scripts/demo_db_helper.py --check
 if ($LASTEXITCODE -ne 0) {
     Write-Error "Failed to connect to incidentzero_demo!"
     exit 1
@@ -25,7 +25,7 @@ try {
 
 if (-not $backendUp) {
     Write-Output "[*] Starting backend on 8080..."
-    Start-Process -FilePath "video\.venv\Scripts\python" -ArgumentList "scripts/run_backend_demo.py" -NoNewWindow
+    Start-Process -FilePath ".venv\\Scripts\\python" -ArgumentList "scripts/run_backend_demo.py" -NoNewWindow
     for ($i = 0; $i -lt 45; $i++) {
         Start-Sleep -Seconds 2
         try {

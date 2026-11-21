@@ -1,0 +1,31 @@
+{
+  "t0": 1794784755.06,
+  "tEnd": 1794784759.71,
+  "events": [
+    {
+      "t": 0,
+      "type": "click_report_button",
+      "url": "http://localhost:3000/app.html?tab=portal"
+    },
+    {
+      "t": 0.809999942779541,
+      "type": "type_title",
+      "url": "http://localhost:3000/app.html?tab=portal"
+    },
+    {
+      "t": 1.5390000343322754,
+      "type": "type_description",
+      "url": "http://localhost:3000/app.html?tab=portal"
+    },
+    {
+      "t": 2.193000078201294,
+      "type": "pick_urgency_high",
+      "url": "http://localhost:3000/app.html?tab=portal"
+    },
+    {
+      "t": 3.0789999961853027,
+      "type": "submit",
+      "url": "http://localhost:3000/app.html?tab=portal"
+    }
+  ]
+}

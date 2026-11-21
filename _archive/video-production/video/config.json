@@ -1,0 +1,85 @@
+{
+  "group_no": 76,
+  "project_name": "Incident-Zero (I-ITSM v2.2)",
+  "course": "CS F213 / MAC F212 \u2014 Object-Oriented Programming (Semester-I, 2026-2027)",
+  "institution": "BITS Pilani, Hyderabad Campus",
+  "fps": 30,
+  "resolution": {
+    "width": 1920,
+    "height": 1080
+  },
+  "palette": {
+    "bg_dark": "#0c0e14",
+    "card_dark": "#161922",
+    "accent_cyan": "#00f0ff",
+    "accent_amber": "#ffb800",
+    "accent_green": "#00ff88",
+    "accent_red": "#ff3366",
+    "text_main": "#e6edf3",
+    "text_muted": "#8b949e"
+  },
+  "members": [
+    {
+      "name": "Srijan Shukla",
+      "id": "2025A7PS0194H",
+      "role": "Team Lead & Architecture / Workflows",
+      "module": "System Architecture, Hexagonal Modular Monolith & Core Workflows",
+      "clip_path": ""
+    },
+    {
+      "name": "Suhani Agarwal",
+      "id": "2025ADPS0216H",
+      "role": "Domain Modeler & Lifecycle Engineer",
+      "module": "Incident Aggregate, Sealed State Machine & Dual SLA Clocks",
+      "clip_path": ""
+    },
+    {
+      "name": "Kartikey Negi",
+      "id": "2025ADPS0129H",
+      "role": "Database & Security Specialist",
+      "module": "PostgreSQL 16 Schema, pgvector HNSW, Flyway & SHA-256 Audit Ledger",
+      "clip_path": ""
+    },
+    {
+      "name": "Hairsh Kumar",
+      "id": "2025A7PS0910H",
+      "role": "AI / Algorithms & Verification Engineer",
+      "module": "Hybrid RRF Triage, Kuhn-Munkres Assignment & 71-Test Verification Suite",
+      "clip_path": ""
+    }
+  ],
+  "pronunciation_map": {
+    "Srijan Shukla": "Sree-jahn Shook-la",
+    "Suhani Agarwal": "Soo-hah-nee Uh-gur-wahl",
+    "Kartikey Negi": "Kar-tih-kay Nay-gee",
+    "Hairsh Kumar": "Har-ish Koo-mar",
+    "I-ITSM": "eye-it-sm",
+    "ITSM": "it-sm",
+    "BITS": "bits",
+    "BPHC": "B-P-H-C",
+    "SLA": "S-L-A",
+    "SLO": "S-L-O",
+    "RRF": "R-R-F",
+    "HNSW": "H-N-S-W",
+    "ONNX": "on-ix",
+    "P1": "P-one",
+    "P2": "P-two",
+    "P3": "P-three",
+    "P4": "P-four",
+    "INC1024": "I-N-C ten twenty-four",
+    "INC-0842": "I-N-C zero eight forty-two",
+    "ArchUnit": "ark-unit",
+    "Modulith": "mod-yoo-lith",
+    "pgvector": "P-G vector",
+    "Kuhn-Munkres": "Koon Moon-krez",
+    "Tarjan": "Tar-jan",
+    "Dijkstra": "Dike-struh"
+  },
+  "qwen_voice_setting": {
+    "model": "Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice",
+    "speaker": "ryan",
+    "setting": "no_instruct",
+    "instruct": null,
+    "seed": 42
+  }
+}
